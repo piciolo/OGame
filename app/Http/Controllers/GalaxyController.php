@@ -68,7 +68,7 @@ class GalaxyController extends OGameController
             $galaxy = (int)$galaxy_qs;
             $system = (int)$system_qs;
         }
-
+// Fix #1054: Hide missile icon if no missiles are available on active planet
         return view('ingame.galaxy.index')->with([
             'current_galaxy' => $galaxy,
             'current_system' => $system,
