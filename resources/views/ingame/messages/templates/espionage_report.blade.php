@@ -10,10 +10,9 @@
 </div>
 
 <div class="compacting">
-    <!-- TODO: implement player class -->
     <span class="ctn ctn4">{{ __('t_ingame.messages.spy_class') }}:</span>
     &nbsp;
-    {{ __('t_ingame.messages.spy_unknown') }}
+    {{ $character_class ?? __('t_ingame.messages.spy_unknown') }}
 </div>
 
 <div class="compacting">

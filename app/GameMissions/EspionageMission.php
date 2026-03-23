@@ -20,6 +20,7 @@ use OGame\Models\EspionageReport;
 use OGame\Models\FleetMission;
 use OGame\Models\Planet\Coordinate;
 use OGame\Models\Resources;
+use OGame\Services\CharacterClassService;
 use OGame\Services\CounterEspionageService;
 use OGame\Services\DebrisFieldService;
 use OGame\Services\PlanetService;
@@ -428,9 +429,13 @@ class EspionageMission extends GameMission
 
         $report->planet_user_id = $targetPlanet->getPlayer()->getId();
 
+        $characterClassService = resolve(CharacterClassService::class);
+        $targetCharacterClass = $characterClassService->getCharacterClass($targetPlanet->getPlayer()->getUser());
+
         $report->player_info = [
             'player_id' => (string)$targetPlanet->getPlayer()->getId(),
             'player_name' => $targetPlanet->getPlayer()->getUsername(),
+            'character_class' => $targetCharacterClass?->getName(),
         ];
 
         // Resources
