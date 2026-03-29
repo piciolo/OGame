@@ -61,7 +61,7 @@ class FleetTimingController extends OGameController
             'allUsers'          => $allUsers,
             'missionTypeLabels' => self::MISSION_TYPE_LABELS,
             'filterUserId'      => $request->input('user_id'),
-            'now'               => Date::now()->timestamp,
+            'now'               => Date::now()->getTimestamp(),
         ]);
     }
 
