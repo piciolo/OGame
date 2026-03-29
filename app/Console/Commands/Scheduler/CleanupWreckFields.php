@@ -10,6 +10,7 @@ use OGame\Models\Planet\Coordinate;
 use OGame\Models\WreckField;
 use OGame\Services\MessageService;
 use OGame\Services\ObjectService;
+use OGame\Services\SettingsService;
 
 class CleanupWreckFields extends Command
 {
@@ -26,6 +27,11 @@ class CleanupWreckFields extends Command
      * @var string
      */
     protected $description = 'Clean up expired wreck fields and process completed repairs';
+
+    public function __construct(private SettingsService $settingsService)
+    {
+        parent::__construct();
+    }
 
     /**
      * Execute the console command.
@@ -57,17 +63,18 @@ class CleanupWreckFields extends Command
      */
     private function cleanupExpiredWreckFields(): int
     {
+        // Exclude 'burned' and 'repairing' wreck fields directly in the query.
+        // 'repairing' wreck fields must survive past their expires_at so that
+        // repairs can complete (max 12 h) before the record is removed.
         $expiredWreckFields = WreckField::where('expires_at', '<', now())
             ->where('status', '!=', 'burned')
+            ->where('status', '!=', 'repairing')
             ->get();
 
         $count = 0;
         foreach ($expiredWreckFields as $wreckField) {
-            // Only delete if not currently repairing
-            if ($wreckField->status !== 'repairing') {
-                $wreckField->delete();
-                $count++;
-            }
+            $wreckField->delete();
+            $count++;
         }
 
         return $count;
@@ -81,8 +88,9 @@ class CleanupWreckFields extends Command
      */
     private function processAutoDeployRepairs(): int
     {
-        // Find wreck fields that started repairs more than 72 hours ago
-        $autoDeployDeadline = now()->subHours(72);
+        // Ships automatically return after wreckFieldLifetimeHours from repair start
+        // if not manually collected by the player (default 72 h).
+        $autoDeployDeadline = now()->subHours($this->settingsService->wreckFieldLifetimeHours());
 
         $repairingWreckFields = WreckField::where('status', 'repairing')
             ->where('repair_started_at', '<', $autoDeployDeadline)

@@ -476,6 +476,11 @@ class WreckFieldService
         $sqrtValue = sqrt($shipCount * 30);
         $repairDuration = (int)($sqrtValue * 10);
 
+        // Apply min/max bounds from settings (default: 30 min floor, 12 h cap = 43200 s)
+        $maxRepairSeconds = $this->settingsService->wreckFieldRepairMaxHours() * 3600;
+        $minRepairSeconds = $this->settingsService->wreckFieldRepairMinMinutes() * 60;
+        $repairDuration = min($maxRepairSeconds, max($minRepairSeconds, $repairDuration));
+
         $this->wreckField->repair_completed_at = now()->addSeconds($repairDuration);
         $this->wreckField->save();
 
