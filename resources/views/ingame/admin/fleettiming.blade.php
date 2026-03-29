@@ -159,7 +159,7 @@
                                list="player-datalist"
                                placeholder="🔍 cerca..."
                                autocomplete="off"
-                               value="{{ $filterUserId && isset($allUsers[$filterUserId]) ? $allUsers[$filterUserId].' (#'.$filterUserId.')' : '' }}"
+                               value="{{ $filterUserId && $allUsers->has($filterUserId) ? $allUsers->get($filterUserId).' (#'.$filterUserId.')' : '' }}"
                                style="background:#0d1a26;border:1px solid #2a4a6a;color:#8ec8f0;padding:3px 6px;font-size:11px;width:180px;">
                         <input type="submit" class="btn_blue" value="Go" style="font-size:11px;padding:3px 8px;">
                         @if ($filterUserId)
