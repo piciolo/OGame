@@ -1604,7 +1604,11 @@ class PlanetService
     public function addUnit(string $machine_name, int $amount, bool $save_planet = true): void
     {
         $object = ObjectService::getUnitObjectByMachineName($machine_name);
-        $this->planet->{$object->machine_name} += $amount;
+        // Cap at MySQL INT max (2,147,483,647) to prevent out-of-range errors.
+        $this->planet->{$object->machine_name} = min(
+            $this->planet->{$object->machine_name} + $amount,
+            2147483647
+        );
 
         if ($save_planet) {
             $this->save();
@@ -2402,8 +2406,9 @@ class PlanetService
         }
 
         // Divide the score by 1000 to get the amount of points. Floor the result.
+        // Clamp to PHP_INT_MAX to avoid overflow with extremely large fleets.
         $resources_sum = $resources_spent->sum();
-        return (int)floor($resources_sum / 1000);
+        return (int)min(floor($resources_sum / 1000), PHP_INT_MAX);
     }
 
     /**
