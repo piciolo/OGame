@@ -14,15 +14,24 @@ class BuildingQueueServiceTest extends UnitTestCase
     protected BuildingQueueService $buildingQueueService;
 
     /**
-     * Sequential counter to guarantee unique planet coordinates across tests.
-     * rand() is unreliable because the DB is shared and not reset between tests.
+     * Randomized base offset chosen fresh on every setUp() to avoid collisions
+     * across repeated or parallel runs against a shared DB that is never wiped.
      */
-    private static int $coordCounter = 0;
+    private int $coordBase = 0;
+
+    /**
+     * Per-test sequential counter (non-static so it resets between tests).
+     */
+    private int $coordCounter = 0;
 
     protected function setUp(): void
     {
         parent::setUp();
         $this->buildingQueueService = resolve(BuildingQueueService::class);
+
+        // Pick a random base far from other tests' ranges on every setUp call.
+        $this->coordBase = mt_rand(1000, 50000) * 10;
+        $this->coordCounter = 0;
     }
 
     /**
@@ -32,10 +41,10 @@ class BuildingQueueServiceTest extends UnitTestCase
      */
     private function uniqueCoords(): array
     {
-        self::$coordCounter++;
+        $this->coordCounter++;
         return [
             'galaxy' => 9,
-            'system' => 490 + self::$coordCounter,
+            'system' => $this->coordBase + $this->coordCounter,
             'planet' => 1,
         ];
     }
