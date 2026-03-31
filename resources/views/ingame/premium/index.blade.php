@@ -18,8 +18,10 @@
                 <h2>{{ __('t_ingame.premium.recruit_officers') }}</h2>
             </div>
 
-            <div id="detail" class="detail_screen small">
-                <div id="techDetailLoading"></div>
+            <div id="detailWrapper">
+                <div id="detail" class="detail_screen small">
+                    <div id="techDetailLoading"></div>
+                </div>
             </div>
 
         </div>	<div class="c-left"></div>
@@ -47,7 +49,7 @@
                         </div>			</li>
                     <li class="button" id="button2">
                         <div class="premium">
-                            <div class="officers100  commander">
+                            <div class="officers100  commander {{ $officer->isCommanderActive() ? 'on' : '' }}">
                                 <a tabindex="2" href="javascript:void(0);" title="{{ __('t_ingame.premium.info_commander') }}" ref="2" class="detail_button tooltip js_hideTipOnMobile slideIn">
                         <span class="ecke">
                             <span class="level">
@@ -60,7 +62,7 @@
                     </li>
                     <li class="button" id="button3">
                         <div class="premium">
-                            <div class="officers100  admiral">
+                            <div class="officers100  admiral {{ $officer->isAdmiralActive() ? 'on' : '' }}">
                                 <a tabindex="3" href="javascript:void(0);" title="{{ __('t_ingame.premium.info_admiral') }}" ref="3" class="detail_button tooltip js_hideTipOnMobile slideIn">
                         <span class="ecke">
                             <span class="level">
@@ -73,7 +75,7 @@
                     </li>
                     <li class="button" id="button4">
                         <div class="premium">
-                            <div class="officers100  engineer">
+                            <div class="officers100  engineer {{ $officer->isEngineerActive() ? 'on' : '' }}">
                                 <a tabindex="4" href="javascript:void(0);" title="{{ __('t_ingame.premium.info_engineer') }}" ref="4" class="detail_button tooltip js_hideTipOnMobile slideIn">
                         <span class="ecke">
                             <span class="level">
@@ -86,7 +88,7 @@
                     </li>
                     <li class="button" id="button5">
                         <div class="premium">
-                            <div class="officers100  geologist">
+                            <div class="officers100  geologist {{ $officer->isGeologistActive() ? 'on' : '' }}">
                                 <a tabindex="5" href="javascript:void(0);" title="{{ __('t_ingame.premium.info_geologist') }}" ref="5" class="detail_button tooltip js_hideTipOnMobile slideIn">
                         <span class="ecke">
                             <span class="level">
@@ -99,7 +101,7 @@
                     </li>
                     <li class="button" id="button6">
                         <div class="premium">
-                            <div class="officers100  technocrat">
+                            <div class="officers100  technocrat {{ $officer->isTechnocratActive() ? 'on' : '' }}">
                                 <a tabindex="6" href="javascript:void(0);" title="{{ __('t_ingame.premium.info_technocrat') }}" ref="6" class="detail_button tooltip js_hideTipOnMobile slideIn">
                         <span class="ecke">
                             <span class="level">
@@ -112,7 +114,7 @@
                     </li>
                     <li class="button" id="button12">
                         <div class="premium">
-                            <div class="officers100  allOfficers">
+                            <div class="officers100  allOfficers {{ $officer->isAllOfficersActive() ? 'on' : '' }}">
                                 <a tabindex="12" href="javascript:void(0);" title="{{ __('t_ingame.premium.info_commanding_staff') }}" ref="12" class="detail_button tooltip js_hideTipOnMobile slideIn">
                         <span class="ecke">
                             <span class="level">
@@ -122,12 +124,12 @@
                                 </a>
                             </div>
                             <div class="remaining tooltip " title="">
-                                <span class="remDate">{{ __('t_ingame.premium.remaining_officers', ['current' => 0, 'max' => 5]) }}</span>
+                                <span class="remDate">{{ __('t_ingame.premium.remaining_officers', ['current' => $officer->getActiveOfficerCount(), 'max' => 5]) }}</span>
                             </div>
                         </div>
                     </li>
 
-                    <li class="allOfficers off">
+                    <li class="allOfficers {{ $officer->getActiveOfficerCount() >= 5 ? 'on' : 'off' }}">
                         <span title="{{ __('t_ingame.premium.benefit_fleet_slots_title') }}" class="tooltipCustom tooltipTop">{{ __('t_ingame.premium.benefit_fleet_slots') }}</span><span title="{{ __('t_ingame.premium.benefit_energy_title') }}" class="tooltipCustom tooltipTop">{{ __('t_ingame.premium.benefit_energy') }}</span><span title="{{ __('t_ingame.premium.benefit_mines_title') }}" class="tooltipCustom tooltipTop">{{ __('t_ingame.premium.benefit_mines') }}</span><span title="{{ __('t_ingame.premium.benefit_espionage_title') }}" class="tooltipCustom tooltipTop">{{ __('t_ingame.premium.benefit_espionage') }}</span>            </li>
                 </ul>
                 <br class="clearfloat">
@@ -135,5 +137,12 @@
             </div>
         </div>
     </div>
+
+    <script>
+        var detailUrl = "{{ route('premium.ajax') }}";
+        $(document).ready(function () {
+            gfSlider = new GFSlider(getElementByIdWithCache('detailWrapper'));
+        });
+    </script>
 
 @endsection
