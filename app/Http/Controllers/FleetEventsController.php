@@ -329,6 +329,8 @@ class FleetEventsController extends OGameController
                 $waitEndRow->destination_planet_name = $eventRowViewModel->destination_planet_name;
                 $waitEndRow->destination_planet_coords = $eventRowViewModel->destination_planet_coords;
                 $waitEndRow->destination_planet_type = $eventRowViewModel->destination_planet_type;
+                $waitEndRow->destination_player_id = $eventRowViewModel->destination_player_id;
+                $waitEndRow->destination_player_name = $eventRowViewModel->destination_player_name;
                 $waitEndRow->fleet_unit_count = $eventRowViewModel->fleet_unit_count;
                 $waitEndRow->fleet_units = $eventRowViewModel->fleet_units;
                 $waitEndRow->resources = $eventRowViewModel->resources;
@@ -368,6 +370,8 @@ class FleetEventsController extends OGameController
                 $returnTripRow->fleet_unit_count = $eventRowViewModel->fleet_unit_count;
                 $returnTripRow->fleet_units = $eventRowViewModel->fleet_units;
                 $returnTripRow->resources = new Resources(0, 0, 0, 0);
+                $returnTripRow->origin_player_id = $eventRowViewModel->destination_player_id;
+                $returnTripRow->origin_player_name = $eventRowViewModel->destination_player_name;
                 $fleet_events[] = $returnTripRow;
             }
         }

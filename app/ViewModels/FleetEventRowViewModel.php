@@ -128,4 +128,14 @@ class FleetEventRowViewModel
      * @var string The username of the destination planet owner (for chat button).
      */
     public string $destination_player_name = '';
+
+    /**
+     * @var int|null The user ID of the origin planet owner (for chat button on return trips).
+     */
+    public int|null $origin_player_id = null;
+
+    /**
+     * @var string The username of the origin planet owner (for chat button on return trips).
+     */
+    public string $origin_player_name = '';
 }
