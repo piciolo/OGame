@@ -435,7 +435,6 @@ class DeveloperShortcutsController extends OGameController
         $officer = $officerService->getOfficer($user);
 
         if ($validated['officer_key'] === 'all_officers') {
-            // Activate all 5 individual officers + all_officers pack
             foreach (array_values(OfficerService::TYPE_MAP) as $key) {
                 $officer->activate($key, (int)$validated['days']);
             }
