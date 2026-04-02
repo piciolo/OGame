@@ -16,6 +16,7 @@ use OGame\Models\User;
 use OGame\Services\DarkMatterService;
 use OGame\Services\DebrisFieldService;
 use OGame\Services\ObjectService;
+use OGame\Services\OfficerService;
 use OGame\Services\PlayerService;
 use OGame\Services\SettingsService;
 
@@ -413,6 +414,42 @@ class DeveloperShortcutsController extends OGameController
         } catch (Exception $e) {
             return redirect()->back()->with('error', 'Failed to update dark matter: ' . $e->getMessage());
         }
+    }
+
+    /**
+     * Activate an officer for a player by username (admin/dev shortcut).
+     */
+    public function activateOfficer(Request $request, OfficerService $officerService): RedirectResponse
+    {
+        $validated = $request->validate([
+            'username'    => ['required', 'string'],
+            'officer_key' => ['required', 'string', 'in:' . implode(',', array_values(OfficerService::TYPE_MAP))],
+            'days'        => ['required', 'integer', 'in:' . implode(',', OfficerService::DURATIONS)],
+        ]);
+
+        $user = User::where('username', $validated['username'])->first();
+        if (!$user) {
+            return redirect()->back()->with('error', 'Player "' . $validated['username'] . '" not found.');
+        }
+
+        $officer = $officerService->getOfficer($user);
+
+        if ($validated['officer_key'] === 'all_officers') {
+            // Activate all 5 individual officers + all_officers pack
+            foreach (array_values(OfficerService::TYPE_MAP) as $key) {
+                $officer->activate($key, (int)$validated['days']);
+            }
+        } else {
+            $officer->activate($validated['officer_key'], (int)$validated['days']);
+        }
+
+        $officer->save();
+        $officerService->clearCache($user);
+
+        return redirect()->back()->with('success',
+            'Officer "' . $validated['officer_key'] . '" activated for ' . $user->username .
+            ' for ' . $validated['days'] . ' days.'
+        );
     }
 
     /**
