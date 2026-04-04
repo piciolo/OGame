@@ -403,6 +403,70 @@ class MerchantTest extends AccountTestCase
         $response->assertJson(['success' => true]);
     }
 
+    /**
+     * Test executing a trade with multiple receive resources simultaneously.
+     * This verifies the fix for bug #1274: Resource Market unable to fill two resources at once.
+     */
+    public function testExecuteTradeWithMultipleReceiveResources(): void
+    {
+        // Call a deuterium merchant
+        $this->planetService->getPlayer()->getUser()->dark_matter = 10000;
+        $this->planetService->getPlayer()->save();
+
+        $callResponse = $this->post('/merchant/call', [
+            'type' => 'deuterium',
+            '_token' => csrf_token(),
+        ]);
+        $callResponse->assertJson(['success' => true]);
+
+        $tradeRates = $callResponse->json()['tradeRates'];
+        $metalRate = $tradeRates['receive']['metal']['rate'];
+        $crystalRate = $tradeRates['receive']['crystal']['rate'];
+
+        // Give planet deuterium to trade with
+        $this->planetService->addResources(new Resources(0, 0, 50000, 0));
+        $this->planetService->save();
+
+        // Calculate amounts for both resources using half the budget each
+        $halfBudget = 5000;
+        $metalAmount = (int)floor($halfBudget * ($metalRate / 1.00));
+        $crystalAmount = (int)floor($halfBudget * ($crystalRate / 1.00));
+        $metalCost = (int)ceil($metalAmount * (1.00 / $metalRate));
+        $crystalCost = (int)ceil($crystalAmount * (1.00 / $crystalRate));
+        $totalGive = $metalCost + $crystalCost;
+
+        $initialDeuterium = $this->planetService->deuterium()->get();
+
+        // Execute trade requesting BOTH metal AND crystal simultaneously
+        $response = $this->post('/merchant/trade', [
+            'give_resource' => 'deuterium',
+            'receive_resources' => [
+                'metal' => $metalAmount,
+                'crystal' => $crystalAmount,
+            ],
+            'give_amount' => $totalGive,
+            '_token' => csrf_token(),
+        ]);
+
+        $response->assertStatus(200);
+        $response->assertJson(['success' => true]);
+
+        // Verify BOTH resources were credited
+        $this->planetService->reloadPlanet();
+        $this->assertGreaterThan(0, $this->planetService->metal()->get(), 'Metal should have been credited');
+        $this->assertGreaterThan(0, $this->planetService->crystal()->get(), 'Crystal should have been credited');
+
+        // Verify deuterium was deducted
+        $this->assertLessThan($initialDeuterium, $this->planetService->deuterium()->get(), 'Deuterium should have been deducted');
+
+        // Verify the response includes both received resources
+        $received = $response->json('received');
+        $this->assertArrayHasKey('metal', $received, 'Response should include received metal');
+        $this->assertArrayHasKey('crystal', $received, 'Response should include received crystal');
+        $this->assertGreaterThan(0, $received['metal']);
+        $this->assertGreaterThan(0, $received['crystal']);
+    }
+
     // ==============================================
     // Scrap Merchant Tests
     // ==============================================
