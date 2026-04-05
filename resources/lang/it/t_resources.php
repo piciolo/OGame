@@ -116,23 +116,22 @@ Fluttuando nell`orbita, il Porto Spaziale non ha bisogno di Spazi pianeta.',
     ],
 
     'lunar_base' => [
-        'title'            => 'Base Lunare',
-        'description'      => 'Poiché la luna non ha atmosfera, è necessaria una base lunare per creare spazio abitabile.',
-        'description_long' => 'La luna non ha atmosfera, quindi prima di poter stabilire un insediamento è necessario costruire una base lunare. Questa fornisce ossigeno, riscaldamento e gravità. Con ogni livello costruito, viene fornita una superficie abitabile e di sviluppo più ampia all\'interno della biosfera. Ogni livello costruito consente tre campi per altri edifici. Con ogni livello, la base lunare occupa da sé un campo.
-Una volta costruita, la base lunare non può essere smantellata.',
+        'title'            => 'Avamposto lunare',
+        'description'      => 'Poiché la luna non ha atmosfera, è necessario un Avamposto lunare per creare uno spazio abitabile.',
+        'description_long' => 'Dato che la luna non ha atmosfera, bisogna avere un Avamposto lunare per generare uno spazio abitabile. L`Avamposto lunare non fornisce solo l`ossigeno necessario ma anche la gravità artificiale e il riscaldamento. Aumentandone il livello si aumenterà l`area resa abitabile dalla biosfera; per ogni livello dell`Avamposto lunare possono essere costruiti 3 spazi. Una volta costruito, l`Avamposto lunare non può essere smantellato.',
     ],
 
     'sensor_phalanx' => [
-        'title'            => 'Sensore Falanx',
-        'description'      => 'Tramite il sensore falanx è possibile scoprire e osservare le flotte di altri imperi. Più grande è l\'array del sensore falanx, maggiore è il raggio di scansione.',
-        'description_long' => 'Sfruttando sensori ad alta risoluzione, il Sensore Falanx analizza inizialmente lo spettro luminoso, la composizione gassosa e le emissioni di radiazioni di un mondo lontano, trasmettendo i dati a un supercomputer per l\'elaborazione. Una volta ottenute le informazioni, il supercomputer confronta le variazioni dello spettro, della composizione gassosa e delle emissioni di radiazioni con un grafico di riferimento dei cambiamenti noti dello spettro generati dai vari movimenti di navi. I dati risultanti mostrano l\'attività di qualsiasi flotta all\'interno del raggio del falanx. Per evitare il surriscaldamento del supercomputer durante il processo, viene raffreddato utilizzando 5k di deuterio raffinato.
-Per utilizzare il Falanx, clicca su qualsiasi pianeta nella Vista Galattica all\'interno del raggio dei tuoi sensori.',
+        'title'            => 'Falange di sensori',
+        'description'      => 'Tramite la Falange di sensori è possibile scoprire e osservare le flotte di altri imperi. Il raggio di scansione dipende dal livello della Falange.',
+        'description_long' => 'Lo schieramento di sensori ad alta risoluzione viene usato per analizzare un ampio spettro di frequenze. Unità processuali parallele sono poi massicciamente predisposte per analizzare i segnali ricevuti e scovare anche la più flebile anomalia nella frequenza o intensità in modo da rilevare flotte o manovre di imperi distanti.
+Data la complessità del sistema ogni scansione richiede una moderata quantità di deuterio per fornire l`energia necessaria al processo.',
     ],
 
     'jump_gate' => [
-        'title'            => 'Portale di Salto',
-        'description'      => 'I portali di salto sono enormi ricetrasmettitori in grado di inviare anche la flotta più grande in un istante verso un portale di salto distante.',
-        'description_long' => 'Un Portale di Salto è un sistema di giganteschi ricetrasmettitori in grado di inviare anche le flotte più grandi verso un portale ricevente in qualunque punto dell\'universo senza perdita di tempo. Utilizzando una tecnologia simile a quella di un Buco di Verme per effettuare il salto, il deuterio non è necessario. Tra un salto e l\'altro deve trascorrere un periodo di ricarica di pochi minuti per consentire la rigenerazione. Non è possibile trasportare risorse attraverso il portale. Con ogni livello di potenziamento, il tempo di ricarica del portale di salto può essere ridotto.',
+        'title'            => 'Portale iperspaziale',
+        'description'      => 'I portali iperspaziali sono enormi trasmettitori capaci di inviare anche la più grande flotta istantaneamente verso un altro portale iperspaziale.',
+        'description_long' => 'I portali iperspaziali sono enormi trasmettitori capaci di inviare anche la più grande flotta istantaneamente a un altro portale in una qualsiasi galassia. Questi trasmettitori non impiegano deuterio. Tuttavia, durante un salto iperspaziale si sviluppa un`altissima temperatura. I portali iperspaziali necessitano di qualche minuto per raffreddarsi e per poter essere impiegati per il salto successivo. Non è possibile il trasporto di risorse attraverso i portali. Il tempo di ricarica del portale iperspaziale si riduce ad ogni livello di sviluppo, fino a un massimo di livello 9.',
     ],
 
     // -------------------------------------------------------------------------
