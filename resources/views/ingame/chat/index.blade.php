@@ -3,9 +3,7 @@
 @section('content')
 
     <div id="planet" class="shortHeader">
-        <div id="header_text">
-            <h2>Chat</h2>
-        </div>
+        <h2>Chat</h2>
     </div>
 
     @if($chatPartner)
