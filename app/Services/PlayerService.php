@@ -475,39 +475,41 @@ class PlayerService
     /**
      * Get planet ID that player has currently selected / is looking at.
      *
+     * Planet selection is stored per-session so that multiple devices/browsers
+     * are fully isolated from each other. On a fresh session (e.g. after login)
+     * the player always starts on their home planet (first planet).
+     *
      * @return int
      */
     public function getCurrentPlanetId(): int
     {
-        // Check session first for per-session isolation (multi-device support).
         $sessionPlanetId = session('current_planet_id');
-        if ($sessionPlanetId) {
-            return $sessionPlanetId;
+
+        if ($sessionPlanetId && $this->planets->planetExistsAndOwnedByPlayer((int)$sessionPlanetId)) {
+            return (int)$sessionPlanetId;
         }
 
-        // Fall back to DB field on the first request after login (session not yet initialized).
-        if ($this->user->planet_current) {
-            return $this->user->planet_current;
-        }
-
-        // Last resort: return first planet of the player.
+        // No valid session value: default to the home planet (first planet).
         return $this->planets->first()->getPlanetId();
     }
 
     /**
      * Set current planet ID (session-based, per-session isolation).
      *
+     * Stores the selection in the Laravel session only — not in the database —
+     * so each browser/device maintains its own independent planet selection.
+     *
      * @param int $planet_id
      */
     public function setCurrentPlanetId(int $planet_id): void
     {
-        // Planet ID 0 means reset to the player's first (home) planet.
+        // Planet ID 0 resets the selection to the home planet.
         if ($planet_id == 0) {
-            session(['current_planet_id' => $this->planets->first()->getPlanetId()]);
+            session()->forget('current_planet_id');
             return;
         }
 
-        // Only allow switching to a planet owned by this player.
+        // Only accept planet IDs that are owned by this player.
         if ($this->planets->planetExistsAndOwnedByPlayer($planet_id)) {
             session(['current_planet_id' => $planet_id]);
         }
