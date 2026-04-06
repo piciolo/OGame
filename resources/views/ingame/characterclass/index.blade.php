@@ -133,6 +133,7 @@
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
+                            'Accept': 'application/json',
                             'X-CSRF-TOKEN': '{{ csrf_token() }}'
                         }
                     })
@@ -144,7 +145,7 @@
                                 location.reload();
                             }, 1000);
                         } else {
-                            fadeBox(data.message, true);
+                            fadeBox(data.message || 'An error occurred. Please try again.', true);
                         }
                     })
                     .catch(error => {
