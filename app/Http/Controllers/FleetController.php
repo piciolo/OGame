@@ -92,11 +92,11 @@ class FleetController extends OGameController
             'units' => $units,
             'objects' => ObjectService::getShipObjects(),
             'shipAmount' => $planet->getFlightShipAmount(),
-            'galaxy' => $request->get('galaxy'),
-            'system' => $request->get('system'),
-            'position' => $request->get('position'),
-            'type' => $request->get('type'),
-            'mission' => $request->get('mission'),
+            'galaxy' => $request->input('galaxy'),
+            'system' => $request->input('system'),
+            'position' => $request->input('position'),
+            'type' => $request->input('type'),
+            'mission' => $request->input('mission'),
             'settings' => $settings,
             'fleetSlotsInUse' => $player->getFleetSlotsInUse(),
             'fleetSlotsMax' => $player->getFleetSlotsMax(),
@@ -632,7 +632,7 @@ class FleetController extends OGameController
         $responseMessage = '';
         switch ($mission_type) {
             case 6: // Espionage
-                $responseMessage = __('t_ingame.fleet.fleet_dispatch');
+                $responseMessage = __('Send espionage probe to:');
                 $probeCount = $player->getEspionageProbesAmount() ?? 1;
                 $units->addUnit(ObjectService::getUnitObjectByMachineName('espionage_probe'), $probeCount);
                 break;
