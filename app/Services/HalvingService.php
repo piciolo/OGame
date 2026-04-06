@@ -170,6 +170,10 @@ class HalvingService
                 throw new Exception('Queue item not found or already completed');
             }
 
+            if ($queueItem->dm_halved) {
+                throw new Exception('Queue item has already been halved. Use Complete to finish instantly.');
+            }
+
             // Calculate new time values
             // Cost is based on remaining time, reduction is 50% of original time
             $timeValues = $this->calculateNewTimeValues(
@@ -199,8 +203,9 @@ class HalvingService
                 $lockedUser->dark_matter
             );
 
-            // Update queue item time_end
+            // Update queue item time_end and mark as halved
             $queueItem->time_end = $timeValues['new_time_end'];
+            $queueItem->dm_halved = 1;
             $queueItem->save();
 
             return [
@@ -209,6 +214,85 @@ class HalvingService
                 'cost' => $cost,
                 'new_balance' => $lockedUser->dark_matter,
                 'remaining_time' => $timeValues['remaining_time'],
+            ];
+        });
+
+        return $result;
+    }
+
+    /**
+     * Complete a building queue item instantly using Dark Matter.
+     *
+     * This is used after a building has already been halved once.
+     * Instead of halving again, the construction is completed immediately.
+     *
+     * @param User $user The user performing the completion
+     * @param int $queueItemId The building queue item ID
+     * @param PlanetService $planet The planet service
+     * @return array{success: bool, cost: int, new_balance: int}
+     * @throws Exception If insufficient Dark Matter or invalid queue item
+     */
+    public function completeBuilding(User $user, int $queueItemId, PlanetService $planet): array
+    {
+        /** @var array{success: bool, cost: int, new_balance: int} $result */
+        $result = DB::transaction(function () use ($user, $queueItemId, $planet) {
+            // Lock user row for Dark Matter balance
+            $lockedUser = User::where('id', $user->id)->lockForUpdate()->first();
+            if (!$lockedUser) {
+                throw new Exception('User not found');
+            }
+
+            // Lock and retrieve queue item
+            $queueItem = BuildingQueue::where('id', $queueItemId)
+                ->where('planet_id', $planet->getPlanetId())
+                ->where('processed', 0)
+                ->where('canceled', 0)
+                ->where('building', 1)
+                ->lockForUpdate()
+                ->first();
+
+            if (!$queueItem) {
+                throw new Exception('Queue item not found or already completed');
+            }
+
+            // Calculate cost based on remaining time
+            $currentTime = $this->getCurrentTimestamp();
+            $remainingTime = (int)$queueItem->time_end - $currentTime;
+
+            if ($remainingTime <= 0) {
+                throw new Exception('Queue item already completed');
+            }
+
+            $cost = $this->calculateHalvingCost($remainingTime, 'building');
+
+            // Check balance
+            if ($lockedUser->dark_matter < $cost) {
+                throw new Exception("Insufficient Dark Matter. Required: {$cost}, Available: {$lockedUser->dark_matter}");
+            }
+
+            // Debit Dark Matter
+            $lockedUser->dark_matter -= $cost;
+            $lockedUser->save();
+
+            // Record transaction
+            $object = ObjectService::getObjectById($queueItem->object_id);
+            $description = "Completing building: {$object->title} on planet {$planet->getPlanetName()} (ID: {$planet->getPlanetId()})";
+            $this->transactionService->recordTransaction(
+                $lockedUser,
+                -$cost,
+                DarkMatterTransactionType::HALVING->value,
+                $description,
+                $lockedUser->dark_matter
+            );
+
+            // Set time_end to now so updateBuildingQueue() processes it on next request
+            $queueItem->time_end = $currentTime;
+            $queueItem->save();
+
+            return [
+                'success' => true,
+                'cost' => $cost,
+                'new_balance' => $lockedUser->dark_matter,
             ];
         });
 

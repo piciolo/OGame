@@ -25,7 +25,8 @@ class BuildingQueueViewModel extends QueueViewModel
         int $time_total,
         public bool $building,
         public int $level_target,
-        public bool $is_downgrade = false
+        public bool $is_downgrade = false,
+        public bool $dm_halved = false
     ) {
         parent::__construct($id, $object, $time_countdown, $time_total);
     }

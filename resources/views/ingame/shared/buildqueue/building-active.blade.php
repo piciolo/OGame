@@ -45,23 +45,39 @@
             <td colspan="2">
                 @php
                     $halvingService = app(\OGame\Services\HalvingService::class);
-                    $halvingCost = $halvingService->calculateHalvingCost($build_active->time_total, 'building');
+                    $halvingCost = $halvingService->calculateHalvingCost($build_active->time_countdown, 'building');
+                    $wouldComplete = $build_active->dm_halved;
                 @endphp
-                <a class="build-faster dark_highlight tooltipLeft js_hideTipOnMobile building "
-                   title="Reduces construction time by 50% of the total construction time."
-                   href="javascript:void(0);"
-                   rel="{{ route('facilities.halvebuilding') }}?queue_item_id={{ $build_active->id }}">
-                    <div class="build-faster-img" alt="Halve time"></div>
-                    <span class="build-txt">Halve time</span>
-                    <span class="dm_cost">Costs: {{ number_format($halvingCost) }} DM</span>
-                </a>
+                @if ($wouldComplete)
+                    <a class="build-faster dark_highlight tooltipLeft js_hideTipOnMobile building tpd-hideOnClickOutside"
+                       title="Complete this building instantly with Dark Matter"
+                       href="javascript:void(0);"
+                       rel="{{ route('facilities.completebuilding') }}?queue_item_id={{ $build_active->id }}">
+                        <div class="build-finish-img" alt="Complete now"></div>
+                        <span class="build-txt">Complete now</span>
+                        <span class="dm_cost">Costs: {{ number_format($halvingCost) }} DM</span>
+                    </a>
+                @else
+                    <a class="build-faster dark_highlight tooltipLeft js_hideTipOnMobile building tpd-hideOnClickOutside"
+                       title="Reduces construction time by 50% of the total construction time."
+                       href="javascript:void(0);"
+                       rel="{{ route('facilities.halvebuilding') }}?queue_item_id={{ $build_active->id }}">
+                        <div class="build-faster-img" alt="Halve time"></div>
+                        <span class="build-txt">Halve time</span>
+                        <span class="dm_cost">Costs: {{ number_format($halvingCost) }} DM</span>
+                    </a>
+                @endif
             </td>
         </tr>
         </tbody>
     </table>
     <script type="text/javascript">
         var cancelBuildListEntryUrl = '{{ route('resources.cancelbuildrequest') }}';
+        @if ($wouldComplete)
+        var questionbuilding = 'Do you want to complete this building immediately for <span style="font-weight: bold;">{{ number_format($halvingCost) }} Dark Matter</span>?';
+        @else
         var questionbuilding = 'Do you want to reduce the construction time of the current construction project by 50% of the total construction time for <span style="font-weight: bold;">{{ number_format($halvingCost) }} Dark Matter</span>?';
+        @endif
         var pricebuilding = {{ $halvingCost }};
         var referrerPage = $.deparam.querystring().page;
 

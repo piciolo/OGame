@@ -269,6 +269,7 @@ class BuildingQueueService
             }
 
             $is_downgrade = (bool)($item['is_downgrade'] ?? false);
+            $dm_halved = (bool)($item['dm_halved'] ?? false);
             $viewModel = new BuildingQueueViewModel(
                 $item['id'],
                 $object,
@@ -277,6 +278,7 @@ class BuildingQueueService
                 $item['building'],
                 $item['object_level_target'],
                 $is_downgrade,
+                $dm_halved,
             );
 
             $list[] = $viewModel;
