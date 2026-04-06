@@ -348,9 +348,9 @@ Gli Incrociatori sono corazzati quasi tre volte rispetto ai Cacciatori Pesanti e
     ],
 
     'battlecruiser' => [
-        'title'            => 'Corazzata',
-        'description'      => 'La Corazzata è altamente specializzata nell\'intercettazione di flotte ostili.',
-        'description_long' => 'Questa nave è una delle più avanzate mai sviluppate, ed è particolarmente letale quando si tratta di distruggere flotte in attacco. Con i suoi migliorati cannoni laser a bordo e il motore Iperspaziale avanzato, la Corazzata è una forza seria da affrontare in qualsiasi attacco. A causa del design della nave e del suo grande sistema d\'armi, le stive hanno dovuto essere ridotte, ma questo è compensato dal minor consumo di carburante.',
+        'title'            => 'Incrociatore da Battaglia',
+        'description'      => 'L\'Incrociatore da Battaglia è altamente specializzato nell\'intercettazione di flotte ostili.',
+        'description_long' => 'Questa nave è una delle più avanzate mai sviluppate, ed è particolarmente letale quando si tratta di distruggere flotte in attacco. Con i suoi migliorati cannoni laser a bordo e il motore Iperspaziale avanzato, l\'Incrociatore da Battaglia è una forza seria da affrontare in qualsiasi attacco. A causa del design della nave e del suo grande sistema d\'armi, le stive hanno dovuto essere ridotte, ma questo è compensato dal minor consumo di carburante.',
     ],
 
     'bomber' => [
