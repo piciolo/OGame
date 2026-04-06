@@ -1357,6 +1357,12 @@ return [
         'points'                  => 'Punti',
         'action'                  => 'Azione',
         'apply_for_alliance'      => 'Candidati per questa alleanza',
+        'search_player_link'      => 'Cerca giocatore',
+        'alliance'                => 'Alleanza',
+        'home_planet'             => 'Pianeta Madre',
+        'send_message'            => 'Scrivi messaggio',
+        'buddy_request'           => 'Richiesta amico',
+        'highscore'               => 'Classifica punti',
     ],
 
     // -------------------------------------------------------------------------

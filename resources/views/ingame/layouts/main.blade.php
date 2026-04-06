@@ -836,7 +836,9 @@
                 var chatUrl = "{{ route('chat.send') }}";
                 var chatHistoryUrl = "{{ route('chat.history') }}";
                 var chatUrlLoadMoreMessages = "{{ route('chat.more') }}";
+                var chatSearchUrl = "{{ route('search.overlay') }}";
                 var chatLoca = {!! json_encode([
+                    'SEARCH_PLAYER'            => __('t_ingame.search.search_player_link'),
                     'TEXT_EMPTY'               => __('t_ingame.layout.chat_text_empty'),
                     'TEXT_TOO_LONG'            => __('t_ingame.layout.chat_text_too_long'),
                     'SAME_USER'                => __('t_ingame.layout.chat_same_user'),

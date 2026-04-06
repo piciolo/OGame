@@ -1095,6 +1095,9 @@ ogame.chat = {
                     html += '<h2 class="header"><span class="c-right"></span><span class="c-left"></span>Player list</h2>';
                     html += '<div class="content">';
 
+                    // Search player link
+                    html += '<a href="' + chatSearchUrl + '" class="txt_link overlay pl_search_link">' + (chatLoca['SEARCH_PLAYER'] || 'Search player') + '</a>';
+
                     // Filter checkboxes
                     html += '<form id="playerlistFilters">';
                     html += '<p class="overlay pl_filter_title">Filter by:</p>';

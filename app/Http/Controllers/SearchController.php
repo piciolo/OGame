@@ -6,6 +6,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use OGame\Models\Alliance;
+use OGame\Models\Highscore;
 use OGame\Models\Planet;
 use OGame\Models\User;
 
@@ -63,15 +64,30 @@ class SearchController extends OGameController
     private function searchPlayers(string $searchText): array
     {
         $users = User::where('username', 'LIKE', '%' . $searchText . '%')
+            ->with(['alliance', 'highscore'])
             ->limit(50)
             ->get();
 
+        $userIds = $users->pluck('id')->toArray();
+        $homePlanets = Planet::whereIn('user_id', $userIds)
+            ->where('planet_type', 1)
+            ->orderBy('id')
+            ->get()
+            ->keyBy('user_id');
+
         $results = [];
         foreach ($users as $user) {
+            $homePlanet = $homePlanets->get($user->id);
             $results[] = [
                 'id' => $user->id,
                 'name' => $user->username,
                 'type' => 'player',
+                'alliance_tag' => $user->alliance?->alliance_tag ?? '',
+                'alliance_id' => $user->alliance_id,
+                'home_planet' => $homePlanet ? '[' . $homePlanet->galaxy . ':' . $homePlanet->system . ':' . $homePlanet->planet . ']' : '',
+                'home_galaxy' => $homePlanet?->galaxy ?? 0,
+                'home_system' => $homePlanet?->system ?? 0,
+                'highscore_rank' => $user->highscore?->general_rank ?? 0,
             ];
         }
 
