@@ -42,7 +42,7 @@
         <span>{{ __('t_ingame.messages.spy_player') }}&nbsp;&nbsp;<span class="status_abbr_active">{!! $playername !!}</span></span>
     </div>
     <div class="detail_txt">
-        <span>{{ __('t_ingame.messages.spy_class') }}:<span class="status_abbr_inactive">&nbsp;{{ __('t_ingame.messages.spy_unknown') }}</span></span>
+        <span>{{ __('t_ingame.messages.spy_class') }}:<span class="status_abbr_inactive">&nbsp;{{ $character_class ?? __('t_ingame.messages.spy_unknown') }}</span></span>
     </div>
     <div class="detail_txt">
         <span>{{ __('t_ingame.messages.spy_alliance_class') }}:&nbsp;<span class="alliance_class small none">{{ __('t_ingame.messages.spy_no_alliance_class') }}</span></span>
