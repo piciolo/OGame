@@ -110,7 +110,7 @@ trait ObjectAjaxTrait
             $production_current = $planet->getObjectProduction($object->machine_name);
             $production_next = $planet->getObjectProduction($object->machine_name, $next_level);
 
-            if (!empty($production_current->energy->get())) {
+            if (!empty($production_current->energy->get()) || !empty($production_next->energy->get())) {
                 $energy_difference = ($production_next->energy->get() - $production_current->energy->get()) * -1;
             }
         } elseif ($object->machine_name === 'crawler') {
