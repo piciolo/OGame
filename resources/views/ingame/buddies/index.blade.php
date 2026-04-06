@@ -18,6 +18,7 @@
                 <h2>{{ __('t_buddies.ui.my_buddies') }}</h2>
             </div>
             <div class="content">
+                <a href="{{ route('search.overlay') }}" class="txt_link overlay btn_blue" data-overlay-title="{{ __('t_ingame.search.input_hint') }}">{{ __('t_ingame.search.search_player_link') }}</a>
                 <div id="buddyRequests" class="js_accordion ui-accordion ui-widget ui-helper-reset" role="tablist">
                     <h3 class="ui-accordion-header ui-corner-top ui-state-default ui-accordion-header-active ui-state-active ui-accordion-icons" role="tab" id="ui-id-1" aria-controls="ui-id-2" aria-selected="true" aria-expanded="true" tabindex="0"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span>{{ __('t_buddies.ui.buddy_requests') }} ({{ $received_requests->count() + $sent_requests->count() }})</h3>
                     <div class="js_tabs ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content ui-accordion-content-active ui-tabs ui-corner-all ui-widget" id="ui-id-2" aria-labelledby="ui-id-1" role="tabpanel" aria-hidden="false" style="">

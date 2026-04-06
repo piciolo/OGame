@@ -147,9 +147,32 @@
         if (category === 2) {
             // Player results
             html += '<table class="searchresults" cellpadding="0" cellspacing="0">';
-            html += '<tbody><tr><th>' + locaSearch.playerName + '</th></tr>';
+            html += '<tbody><tr>';
+            html += '<th class="userName">' + locaSearch.playerName + '</th>';
+            html += '<th class="allyName">{{ __('t_ingame.search.alliance') }}</th>';
+            html += '<th class="home">{{ __('t_ingame.search.home_planet') }}</th>';
+            html += '<th class="position">{{ __('t_ingame.search.coordinates') }}</th>';
+            html += '<th class="highscore">{{ __('t_ingame.search.highscore') }}</th>';
+            html += '<th colspan="2" class="action">{{ __('t_ingame.search.action') }}</th>';
+            html += '</tr>';
+
+            let rowClass = 'alt';
             results.forEach(function(result) {
-                html += '<tr><td>' + escapeHtml(result.name) + '</td></tr>';
+                const chatUrl = '{{ route('chat.index') }}?playerId=' + result.id;
+                const galaxyUrl = '{{ route('galaxy.index') }}?galaxy=' + result.home_galaxy + '&system=' + result.home_system;
+                const buddyDialogUrl = '{{ route('buddies.requestdialog') }}?id=' + result.id + '&name=' + encodeURIComponent(result.name);
+
+                html += '<tr class="' + rowClass + '">';
+                html += '<td class="userName"><span class="status_abbr_active">' + escapeHtml(result.name) + '</span></td>';
+                html += '<td class="allyName">' + (result.alliance_tag ? '<a class="dark_highlight_tablet" target="_ally" href="#">' + escapeHtml(result.alliance_tag) + '</a>' : '') + '</td>';
+                html += '<td class="home">{{ __('t_ingame.search.home_planet') }}</td>';
+                html += '<td class="position">' + (result.home_planet ? '<a class="dark_highlight_tablet" href="' + galaxyUrl + '">' + escapeHtml(result.home_planet) + '</a>' : '') + '</td>';
+                html += '<td class="highscore">' + (result.highscore_rank > 0 ? result.highscore_rank : '-') + '</td>';
+                html += '<td class="action"><a href="' + chatUrl + '" class="tooltip js_hideTipOnMobile icon" title="{{ __('t_ingame.search.send_message') }}"><span class="icon icon_chat"></span></a></td>';
+                html += '<td class="action"><a href="' + buddyDialogUrl + '" class="tooltip overlay js_hideTipOnMobile icon" data-overlay-title="{{ __('t_ingame.search.buddy_request') }}" title="{{ __('t_ingame.search.buddy_request') }}"><span class="icon icon_user"></span></a></td>';
+                html += '</tr>';
+
+                rowClass = (rowClass === 'alt') ? '' : 'alt';
             });
             html += '</tbody></table>';
         } else if (category === 3) {

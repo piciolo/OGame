@@ -1465,6 +1465,12 @@ return [
         'points'                  => 'Points',
         'action'                  => 'Action',
         'apply_for_alliance'      => 'Apply for this alliance',
+        'search_player_link'      => 'Search player',
+        'alliance'                => 'Alliance',
+        'home_planet'             => 'Home Planet',
+        'send_message'            => 'Send message',
+        'buddy_request'           => 'Buddy request',
+        'highscore'               => 'Score ranking',
     ],
 
     // -------------------------------------------------------------------------

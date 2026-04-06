@@ -1413,6 +1413,12 @@ return [
         'points'                  => 'Punten',
         'action'                  => 'Actie',
         'apply_for_alliance'      => 'Solliciteer bij deze alliantie',
+        'search_player_link'      => 'Speler zoeken',
+        'alliance'                => 'Alliantie',
+        'home_planet'             => 'Thuisplaneet',
+        'send_message'            => 'Stuur bericht',
+        'buddy_request'           => 'Vriendschapsverzoek',
+        'highscore'               => 'Score ranking',
     ],
 
     // -------------------------------------------------------------------------
