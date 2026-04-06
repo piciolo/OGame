@@ -332,6 +332,7 @@ class FleetEventsController extends OGameController
                 $waitEndRow->fleet_unit_count = $eventRowViewModel->fleet_unit_count;
                 $waitEndRow->fleet_units = $eventRowViewModel->fleet_units;
                 $waitEndRow->resources = $eventRowViewModel->resources;
+                $waitEndRow->friendly_status = $eventRowViewModel->friendly_status;
                 $fleet_events[] = $waitEndRow;
             }
 
@@ -368,6 +369,7 @@ class FleetEventsController extends OGameController
                 $returnTripRow->fleet_unit_count = $eventRowViewModel->fleet_unit_count;
                 $returnTripRow->fleet_units = $eventRowViewModel->fleet_units;
                 $returnTripRow->resources = new Resources(0, 0, 0, 0);
+                $returnTripRow->friendly_status = $eventRowViewModel->friendly_status;
                 $fleet_events[] = $returnTripRow;
             }
         }
