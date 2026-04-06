@@ -10,30 +10,30 @@
                 <div>
                     <a href="javascript:void(0);" class="tooltip js_hideTipOnMobile tpd-hideOnClickOutside"
                        style="display: block;"
-                       onclick="cancelbuilding({{ $build_active->object->id }}, {{ $build_active->id }}, &quot;Cancel production of {!! $build_active->object->title !!} level {!! $build_active->level_target !!}?&quot;); return false;"
+                       onclick="cancelbuilding({{ $build_active->object->id }}, {{ $build_active->id }}, '{{ __('Cancel production of :object_title level :level_target?', ['object_title' => $build_active->object->title, 'level_target' => $build_active->level_target]) }}'); return false;"
                        title="">
                         <img class="queuePic" width="40" height="40"
                              src="{!! asset('img/objects/buildings/' . $build_active->object->assets->imgSmall) !!}"
                              alt="{{ $build_active->object->title }}">
                     </a>
                     <a href="javascript:void(0);" class="tooltip js_hideTipOnMobile abortNow"
-                       onclick="cancelbuilding({{ $build_active->object->id }}, {{ $build_active->id }}, &quot;Cancel production of {!! $build_active->object->title !!} level {!! $build_active->level_target !!}?&quot;); return false;"
-                       title="Cancel production of {!! $build_active->object->title !!} level {!! $build_active->level_target !!}?">
+                       onclick="cancelbuilding({{ $build_active->object->id }}, {{ $build_active->id }}, '{{ __('Cancel production of :object_title level :level_target?', ['object_title' => $build_active->object->title, 'level_target' => $build_active->level_target]) }}'); return false;"
+                       title="{{ __('Cancel production of :object_title level :level_target?', ['object_title' => $build_active->object->title, 'level_target' => $build_active->level_target]) }}">
                         <img src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif" height="15" width="15">
                     </a>
                 </div>
             </td>
             <td class="desc ausbau">
                 @if ($build_active->is_downgrade ?? false)
-                    @lang('Downgrade to')
+                    {{ __('t_ingame.buildqueue.downgrade_to') }}
                 @else
-                    @lang('Improve to')
+                    {{ __('t_ingame.buildqueue.improve_to') }}
                 @endif
-                <span class="level">@lang('Level') {!! $build_active->level_target !!}</span>
+                <span class="level">{{ __('t_ingame.shared.level') }} {!! $build_active->level_target !!}</span>
             </td>
         </tr>
         <tr class="data">
-            <td class="desc">@lang('Duration'):</td>
+            <td class="desc">{{ __('t_ingame.shared.duration') }}:</td>
         </tr>
         <tr class="data">
             <td class="desc timer">
@@ -84,7 +84,7 @@
         new CountdownTimer('buildingCountdown', {{ $build_active->time_countdown }}, '{{ url()->current() }}', null, true, 3)
 
         function cancelbuilding(id, listId, question) {
-            errorBoxDecision('Caution', "" + question + "", 'yes', 'No', function () {
+            errorBoxDecision('{{ __('t_ingame.shared.caution') }}', "" + question + "", '{{ __('t_ingame.shared.yes') }}', '{{ __('t_ingame.shared.no') }}', function () {
                 buildListActionCancel(id, listId)
             });
         }
@@ -97,9 +97,9 @@
             <td colspan="2" class="idle">
                 <a class="tooltip js_hideTipOnMobile
                                    "
-                   title="@lang('At the moment there is no building being built on this planet. Click here to go to the build page.')"
+                   title="{{ __('t_ingame.buildqueue.no_building_idle_tooltip') }}"
                    href="{{ url()->current() }}">
-                    @lang('No buildings in construction.')</a>
+                    {{ __('t_ingame.buildqueue.no_building_idle') }}</a>
             </td>
         </tr>
         </tbody>
