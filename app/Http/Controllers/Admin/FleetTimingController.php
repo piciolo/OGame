@@ -6,6 +6,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
 use Illuminate\View\View;
+use OGame\Factories\GameMissionFactory;
 use OGame\Http\Controllers\OGameController;
 use OGame\Models\FleetMission;
 use OGame\Models\User;
@@ -13,18 +14,9 @@ use OGame\Services\PlayerService;
 
 class FleetTimingController extends OGameController
 {
-    private const MISSION_TYPE_LABELS = [
-        1  => 'Attack',
-        2  => 'ACS Attack',
-        3  => 'Transport',
-        4  => 'Deployment',
-        5  => 'ACS Defend',
-        6  => 'Espionage',
-        7  => 'Colonization',
-        8  => 'Recycle',
-        9  => 'Moon Destruction',
-        15 => 'Expedition',
-    ];
+
+    private const PER_PAGE_OPTIONS = [50, 100, 200, 500];
+    private const PER_PAGE_DEFAULT = 50;
 
     /**
      * Shows the fleet timing control panel.
@@ -32,8 +24,11 @@ class FleetTimingController extends OGameController
     public function index(PlayerService $playerService, Request $request): View
     {
         $request->validate([
-            'user_id' => 'sometimes|nullable|integer|min:1',
+            'user_id'  => 'sometimes|nullable|integer|min:1',
+            'per_page' => 'sometimes|nullable|integer|in:50,100,200,500',
         ]);
+
+        $perPage = (int) $request->input('per_page', self::PER_PAGE_DEFAULT);
 
         $query = FleetMission::where('processed', 0)
             ->where('canceled', 0)
@@ -43,7 +38,7 @@ class FleetTimingController extends OGameController
             $query->where('user_id', (int) $request->input('user_id'));
         }
 
-        $missions = $query->get();
+        $missions = $query->paginate($perPage)->withQueryString();
 
         $userIds = $missions->pluck('user_id')->unique();
         $users   = User::whereIn('id', $userIds)->pluck('username', 'id');
@@ -59,8 +54,11 @@ class FleetTimingController extends OGameController
             'missions'          => $missions,
             'users'             => $users,
             'allUsers'          => $allUsers,
-            'missionTypeLabels' => self::MISSION_TYPE_LABELS,
+            'missionTypeLabels' => collect(GameMissionFactory::getAllMissions())
+                ->mapWithKeys(fn ($mission, $id) => [$id => $mission::getName()]),
             'filterUserId'      => $request->input('user_id'),
+            'perPage'           => $perPage,
+            'perPageOptions'    => self::PER_PAGE_OPTIONS,
             'now'               => Date::now()->timestamp,
         ]);
     }
