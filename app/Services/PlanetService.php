@@ -2059,8 +2059,8 @@ class PlanetService
             }
         }
 
-        $this->planet->energy_used = (int) $energy_consumption_total;
-        $this->planet->energy_max  = (int) $energy_production_total;
+        $this->planet->energy_used = (int) min($energy_consumption_total, PHP_INT_MAX);
+        $this->planet->energy_max  = (int) min($energy_production_total, PHP_INT_MAX);
 
         $production_factor = $this->getResourceProductionFactor() / 100;
 
@@ -2073,10 +2073,11 @@ class PlanetService
         $production_total->add($building_production_total);
 
         // Write values to planet.
-        // Use ceil() for positive production to match getObjectProduction() rounding
-        $this->planet->metal_production     = (int) ceil($production_total->metal->get());
-        $this->planet->crystal_production   = (int) ceil($production_total->crystal->get());
-        $this->planet->deuterium_production = (int) ceil($production_total->deuterium->get());
+        // Use ceil() for positive production to match getObjectProduction() rounding.
+        // Cap at PHP_INT_MAX to prevent float-to-int overflow on high-level mines.
+        $this->planet->metal_production     = (int) min(ceil($production_total->metal->get()), PHP_INT_MAX);
+        $this->planet->crystal_production   = (int) min(ceil($production_total->crystal->get()), PHP_INT_MAX);
+        $this->planet->deuterium_production = (int) min(ceil($production_total->deuterium->get()), PHP_INT_MAX);
     }
 
     /**
