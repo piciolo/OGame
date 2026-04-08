@@ -1,426 +1,635 @@
 /**
- * OGame UI Text Grabber
- * =====================
- * Script da eseguire nella console del browser mentre si è loggati su OGame.
- * Naviga automaticamente le pagine principali e raccoglie tutti i testi UI visibili.
+ * OGame UI Text Grabber — Autonomous Edition
+ * ============================================
+ * Naviga AUTOMATICAMENTE tutte le pagine OGame e raccoglie ogni testo UI.
+ * Usa localStorage per persistere i dati tra le navigazioni.
  *
  * USO:
- * 1. Accedi al tuo account OGame (server italiano per testi IT)
+ * 1. Accedi al tuo account OGame (server IT per testi italiani, NL per olandesi, ecc.)
  * 2. Apri la console del browser (F12 → Console)
  * 3. Incolla e esegui questo script
- * 4. Attendi che finisca (naviga le pagine automaticamente)
- * 5. Il risultato JSON viene scaricato automaticamente
+ * 4. NON TOCCARE NULLA — lo script naviga da solo tutte le 17+ pagine
+ * 5. Al termine scarica automaticamente il JSON con TUTTI i testi
  *
- * NOTA: Eseguire su ogni lingua necessaria (IT, NL, EN, etc.)
+ * COMANDI MANUALI (in console):
+ *   OGameGrabber.status()   — mostra progresso corrente
+ *   OGameGrabber.abort()    — ferma la navigazione e scarica quello che ha
+ *   OGameGrabber.reset()    — cancella tutto e ricomincia da zero
+ *   OGameGrabber.download() — forza il download del JSON raccolto finora
  */
 
-(async function grabOGameUITexts() {
+(function () {
   'use strict';
 
-  const results = {
-    timestamp: new Date().toISOString(),
-    server: window.location.hostname,
-    language: document.documentElement.lang || 'unknown',
-    pages: {}
-  };
+  const STORAGE_KEY = 'ogame_grabber_data';
+  const STORAGE_QUEUE = 'ogame_grabber_queue';
+  const STORAGE_STATE = 'ogame_grabber_state';
+  const DELAY_BETWEEN_PAGES = 3000;       // ms tra una pagina e l'altra
+  const DELAY_BEFORE_GRAB = 1500;         // ms attesa dopo il caricamento DOM
+  const DELAY_TECHNOLOGY_CLICK = 800;     // ms attesa dopo click su tecnologia
+  const MAX_TECH_DETAILS_PER_PAGE = 50;   // max tecnologie da cliccare per pagina
 
-  // Helper: attende il caricamento della pagina
-  function wait(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+  // ========================================================================
+  // Pagine da visitare (in ordine)
+  // ========================================================================
+  const ALL_PAGES = [
+    { name: 'overview',          component: 'overview' },
+    { name: 'supplies',          component: 'supplies' },
+    { name: 'resource_settings', component: 'resourcesettings' },
+    { name: 'facilities',        component: 'facilities' },
+    { name: 'research',          component: 'research' },
+    { name: 'shipyard',          component: 'shipyard' },
+    { name: 'defense',           component: 'defenses' },
+    { name: 'fleet',             component: 'fleetdispatch' },
+    { name: 'galaxy',            component: 'galaxy' },
+    { name: 'messages',          component: 'messages' },
+    { name: 'alliance',          component: 'alliance' },
+    { name: 'premium',           component: 'premium' },
+    { name: 'shop',              component: 'shop' },
+    { name: 'options',           component: 'options' },
+    { name: 'highscore',         component: 'highscore' },
+    { name: 'rewards',           component: 'rewards' },
+    { name: 'characterclass',    component: 'characterclassselection' },
+    { name: 'techtree',          component: 'techtree' },
+    { name: 'notes',             component: 'notes' },
+    { name: 'search',            component: 'search' },
+  ];
+
+  // ========================================================================
+  // Persistence helpers
+  // ========================================================================
+  function loadData() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+    catch { return {}; }
   }
 
-  // Helper: estrae testi visibili da un elemento
-  function getVisibleText(el) {
-    const style = window.getComputedStyle(el);
-    if (style.display === 'none' || style.visibility === 'hidden' || style.opacity === '0') {
-      return null;
+  function saveData(data) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  }
+
+  function loadQueue() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_QUEUE)) || []; }
+    catch { return []; }
+  }
+
+  function saveQueue(queue) {
+    localStorage.setItem(STORAGE_QUEUE, JSON.stringify(queue));
+  }
+
+  function loadState() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_STATE)) || {}; }
+    catch { return {}; }
+  }
+
+  function saveState(state) {
+    localStorage.setItem(STORAGE_STATE, JSON.stringify(state));
+  }
+
+  function clearAll() {
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(STORAGE_QUEUE);
+    localStorage.removeItem(STORAGE_STATE);
+  }
+
+  // ========================================================================
+  // Text extraction engine
+  // ========================================================================
+
+  function extractAllTexts(root) {
+    const texts = {};
+    let idx = 0;
+
+    function addText(category, value) {
+      if (!value || typeof value !== 'string') return;
+      const clean = value.trim().replace(/\s+/g, ' ');
+      if (clean.length < 2 || clean.length > 2000) return;
+      if (/^\d+[\d.,:%]*$/.test(clean)) return;           // pure numbers
+      if (/^[a-z][a-zA-Z0-9_]+$/.test(clean)) return;     // camelCase/identifiers
+      if (clean.startsWith('http') || clean.startsWith('//') || clean.startsWith('javascript:')) return;
+      if (clean.startsWith('{') || clean.startsWith('<')) return;
+      texts[`${category}_${idx++}`] = clean;
     }
-    return el.textContent.trim();
-  }
 
-  // ==========================================================================
-  // 1. LAYOUT — Elementi comuni presenti su tutte le pagine
-  // ==========================================================================
-  function grabLayout() {
-    const layout = {};
-
-    // Menu di navigazione principale
-    const menuLinks = document.querySelectorAll('#menuTable .menubutton, #menuTable a span');
-    menuLinks.forEach((el, i) => {
-      const text = el.textContent.trim();
-      if (text) layout[`menu_item_${i}`] = text;
-    });
-
-    // Topbar / header elements
-    const topbarItems = document.querySelectorAll('.OGameClock, #bar .bar_item, .tutorialIcon, .comm_menu');
-    topbarItems.forEach((el, i) => {
-      const text = el.textContent.trim();
-      if (text) layout[`topbar_${i}`] = text;
-    });
-
-    // Resource bar labels
-    const resourceLabels = document.querySelectorAll('#resourcesbarcomponent .resourceIcon');
-    resourceLabels.forEach(el => {
-      const title = el.getAttribute('title') || el.closest('[title]')?.getAttribute('title');
-      if (title) layout[`resource_${el.className}`] = title;
-    });
-
-    // Planet list labels
-    const planetNames = document.querySelectorAll('#planetList .planet-name, .smallplanet .planet-name');
-    planetNames.forEach((el, i) => {
-      layout[`planet_name_${i}`] = el.textContent.trim();
-    });
-
-    // Tooltips from title attributes on main elements
-    document.querySelectorAll('#links [title], #planetList [title], #bar [title], #resourcesbarcomponent [title]').forEach((el, i) => {
-      const title = el.getAttribute('title');
-      if (title && title.length > 2 && !/^\d+$/.test(title) && !title.startsWith('http')) {
-        layout[`tooltip_${i}`] = title;
+    // 1. Leaf text nodes (elements with no children)
+    root.querySelectorAll('*').forEach(el => {
+      if (el.children.length === 0 && el.closest('script, style, noscript') === null) {
+        addText('text', el.textContent);
       }
     });
 
-    // Officers bar
-    document.querySelectorAll('#officers .officers_tooltip, #officers [title]').forEach((el, i) => {
-      const title = el.getAttribute('title') || el.textContent.trim();
-      if (title && title.length > 2) layout[`officer_${i}`] = title;
+    // 2. title attributes
+    root.querySelectorAll('[title]').forEach(el => {
+      addText('title', el.getAttribute('title'));
+    });
+
+    // 3. alt attributes
+    root.querySelectorAll('[alt]').forEach(el => {
+      addText('alt', el.getAttribute('alt'));
+    });
+
+    // 4. placeholder attributes
+    root.querySelectorAll('[placeholder]').forEach(el => {
+      addText('placeholder', el.getAttribute('placeholder'));
+    });
+
+    // 5. data-tooltip / data-tooltip-title
+    root.querySelectorAll('[data-tooltip], [data-tooltip-title]').forEach(el => {
+      addText('tooltip', el.getAttribute('data-tooltip') || el.getAttribute('data-tooltip-title'));
+    });
+
+    // 6. value of buttons and inputs
+    root.querySelectorAll('input[type="submit"], input[type="button"]').forEach(el => {
+      addText('input_value', el.value);
+    });
+
+    // 7. option text in selects
+    root.querySelectorAll('select option').forEach(el => {
+      addText('option', el.textContent);
+    });
+
+    // 8. aria-label
+    root.querySelectorAll('[aria-label]').forEach(el => {
+      addText('aria', el.getAttribute('aria-label'));
+    });
+
+    return texts;
+  }
+
+  // Grab the global layout elements (menu, topbar, officers, resources)
+  function extractLayout() {
+    const layout = {};
+    let idx = 0;
+
+    function add(cat, val) {
+      if (!val || val.length < 2) return;
+      const clean = val.trim().replace(/\s+/g, ' ');
+      if (/^\d+[\d.,:%]*$/.test(clean)) return;
+      layout[`${cat}_${idx++}`] = clean;
+    }
+
+    // Navigation menu
+    document.querySelectorAll('#menuTable a, #menuTable .menubutton').forEach(el => {
+      add('menu', el.textContent.trim());
+      add('menu_title', el.getAttribute('title'));
+    });
+
+    // Top bar
+    document.querySelectorAll('#bar a, #bar span, .OGameClock').forEach(el => {
+      if (el.children.length === 0) add('topbar', el.textContent.trim());
+      add('topbar_title', el.getAttribute('title'));
+    });
+
+    // Resource bar
+    document.querySelectorAll('#resourcesbarcomponent [title]').forEach(el => {
+      add('resource', el.getAttribute('title'));
+    });
+
+    // Officers
+    document.querySelectorAll('#officers [title], #officers a').forEach(el => {
+      add('officer', el.getAttribute('title'));
+    });
+
+    // Planet sidebar
+    document.querySelectorAll('#planetList [title], .smallplanet .planet-name').forEach(el => {
+      add('planet', el.getAttribute('title') || el.textContent.trim());
+    });
+
+    // Comm menu (messages icon etc)
+    document.querySelectorAll('#comm_menu [title], .comm_menu [title]').forEach(el => {
+      add('comm', el.getAttribute('title'));
     });
 
     return layout;
   }
 
-  // ==========================================================================
-  // 2. Grab generico per qualsiasi pagina corrente
-  // ==========================================================================
-  function grabCurrentPage() {
-    const pageData = {};
+  // Click on each technology item to grab its detail overlay
+  async function extractTechnologyDetails() {
+    const details = {};
+    const techItems = document.querySelectorAll(
+      '.technology, .hasmark, li[data-technology], .buildable, .detail_button, ' +
+      '.research_items li, .defense_items li, .ship_items li'
+    );
 
-    // Page title / heading
-    const pageTitle = document.querySelector('#inhalt h2, .content-box-s h3, #content .content h2');
-    if (pageTitle) pageData.page_title = pageTitle.textContent.trim();
-
-    // All visible text in main content area
-    const contentArea = document.querySelector('#inhalt, #content, .maincontent');
-    if (!contentArea) return pageData;
-
-    // Buttons
-    contentArea.querySelectorAll('button, .btn, input[type="submit"], input[type="button"], a.btn_blue, a.btn_dark, .build-it, .upgrade, .build-it_wrap').forEach((el, i) => {
-      const text = el.textContent.trim() || el.value || el.getAttribute('title');
-      if (text && text.length > 1) pageData[`btn_${i}`] = text;
-    });
-
-    // Labels (th, label, dt, strong with text)
-    contentArea.querySelectorAll('th, label, dt, .label, .info_label').forEach((el, i) => {
-      const text = el.textContent.trim();
-      if (text && text.length > 1 && !/^\d+[\d.,]*$/.test(text)) {
-        pageData[`label_${i}`] = text;
+    const clickTargets = [];
+    techItems.forEach(el => {
+      const techId = el.getAttribute('data-technology') || el.getAttribute('data-tech') || el.id;
+      if (techId && !clickTargets.find(t => t.id === techId)) {
+        clickTargets.push({ id: techId, el });
       }
     });
 
-    // Tab headers
-    contentArea.querySelectorAll('.tabs_wrap li, .tab_inner, .tablinks, .ajax_tab').forEach((el, i) => {
-      const text = el.textContent.trim();
-      if (text) pageData[`tab_${i}`] = text;
-    });
+    const toClick = clickTargets.slice(0, MAX_TECH_DETAILS_PER_PAGE);
+    console.log(`[Grabber] Found ${clickTargets.length} technologies, clicking ${toClick.length}...`);
 
-    // Tooltips and titles in content
-    contentArea.querySelectorAll('[title]').forEach((el, i) => {
-      const title = el.getAttribute('title');
-      if (title && title.length > 3 && !title.startsWith('http') && !title.startsWith('/') && !/^\d+$/.test(title)) {
-        pageData[`title_attr_${i}`] = title;
-      }
-    });
+    for (const target of toClick) {
+      try {
+        // Click to open the detail panel
+        target.el.click();
+        await new Promise(r => setTimeout(r, DELAY_TECHNOLOGY_CLICK));
 
-    // Data-tooltip attributes
-    contentArea.querySelectorAll('[data-tooltip], [data-tooltip-title]').forEach((el, i) => {
-      const tip = el.getAttribute('data-tooltip') || el.getAttribute('data-tooltip-title');
-      if (tip && tip.length > 3) pageData[`data_tooltip_${i}`] = tip;
-    });
-
-    // Select options
-    contentArea.querySelectorAll('select option').forEach((el, i) => {
-      const text = el.textContent.trim();
-      if (text && text.length > 1 && !/^\d+$/.test(text)) {
-        pageData[`option_${i}`] = text;
-      }
-    });
-
-    // Placeholder attributes
-    contentArea.querySelectorAll('[placeholder]').forEach((el, i) => {
-      const ph = el.getAttribute('placeholder');
-      if (ph && ph.length > 2) pageData[`placeholder_${i}`] = ph;
-    });
-
-    // Alt attributes on images
-    contentArea.querySelectorAll('img[alt]').forEach((el, i) => {
-      const alt = el.getAttribute('alt');
-      if (alt && alt.length > 2 && !/^\d+$/.test(alt)) {
-        pageData[`img_alt_${i}`] = alt;
-      }
-    });
-
-    // Paragraphs and text blocks
-    contentArea.querySelectorAll('p, .info, .description, .notice, .warning, .error-box, .success-box').forEach((el, i) => {
-      const text = el.textContent.trim();
-      if (text && text.length > 5 && text.length < 500) {
-        pageData[`text_${i}`] = text;
-      }
-    });
-
-    // Table headers
-    contentArea.querySelectorAll('table th, table .header').forEach((el, i) => {
-      const text = el.textContent.trim();
-      if (text && text.length > 1) pageData[`table_header_${i}`] = text;
-    });
-
-    // Spans with direct text (no child elements)
-    contentArea.querySelectorAll('span').forEach((el, i) => {
-      if (el.children.length === 0) {
-        const text = el.textContent.trim();
-        if (text && text.length > 2 && text.length < 100 && !/^\d+[\d.,]*$/.test(text) && !/^[a-z_]+$/.test(text)) {
-          pageData[`span_${i}`] = text;
-        }
-      }
-    });
-
-    return pageData;
-  }
-
-  // ==========================================================================
-  // 3. Grab specifico per dialog/overlay (se aperti)
-  // ==========================================================================
-  function grabDialogs() {
-    const dialogs = {};
-    document.querySelectorAll('.ui-dialog, .overlay, .tpd-content, .tooltip, #technologydetails').forEach((el, i) => {
-      const texts = [];
-      el.querySelectorAll('*').forEach(child => {
-        if (child.children.length === 0) {
-          const text = child.textContent.trim();
-          if (text && text.length > 1 && text.length < 300 && !/^\d+[\d.,]*$/.test(text)) {
-            texts.push(text);
+        // Grab text from the detail panel
+        const detailPanel = document.querySelector(
+          '#technologydetails, .technologyDetails, #technologydetails_content, ' +
+          '.detail_content, #detail'
+        );
+        if (detailPanel) {
+          const panelTexts = extractAllTexts(detailPanel);
+          if (Object.keys(panelTexts).length > 0) {
+            details[`tech_${target.id}`] = panelTexts;
           }
         }
-      });
-      if (texts.length > 0) {
-        dialogs[`dialog_${i}`] = [...new Set(texts)];
+      } catch (e) {
+        console.warn(`[Grabber] Could not click tech ${target.id}:`, e.message);
       }
-    });
-    return dialogs;
+    }
+
+    return details;
   }
 
-  // ==========================================================================
-  // 4. Grab specifico per pagine conosciute
-  // ==========================================================================
+  // ========================================================================
+  // Deduplication
+  // ========================================================================
+  function deduplicateResults(allPages) {
+    const seen = new Set();
+    const deduped = {};
 
-  // Fleet page specifics
-  function grabFleetPage() {
-    const fleet = {};
+    for (const [pageName, pageData] of Object.entries(allPages)) {
+      if (typeof pageData !== 'object' || pageData === null) continue;
+      deduped[pageName] = {};
 
-    // Ship names and counts
-    document.querySelectorAll('#military, #civil, #battleships, #civilships').forEach(section => {
-      section.querySelectorAll('li, .technology').forEach((el, i) => {
-        const name = el.querySelector('.name, .technologyName, .tooltip')?.textContent?.trim();
-        const title = el.getAttribute('title') || el.querySelector('[title]')?.getAttribute('title');
-        if (name) fleet[`ship_name_${i}`] = name;
-        if (title) fleet[`ship_title_${i}`] = title;
-      });
-    });
-
-    // Mission types in fleet dispatch
-    document.querySelectorAll('#missions .missionName, #missions [data-mission], .mission_select option').forEach((el, i) => {
-      const text = el.textContent.trim();
-      if (text) fleet[`mission_${i}`] = text;
-    });
-
-    // Speed selector
-    document.querySelectorAll('#speedPercentage option, .speed_row option').forEach((el, i) => {
-      const text = el.textContent.trim();
-      if (text) fleet[`speed_${i}`] = text;
-    });
-
-    // Fleet movement labels
-    document.querySelectorAll('.eventFleet .tooltip, .eventFleet td').forEach((el, i) => {
-      const text = el.textContent.trim();
-      if (text && text.length > 1) fleet[`movement_${i}`] = text;
-    });
-
-    return fleet;
-  }
-
-  // Galaxy page specifics
-  function grabGalaxyPage() {
-    const galaxy = {};
-
-    document.querySelectorAll('#galaxyContent th, #galaxyContent .info, .galaxyRow [title]').forEach((el, i) => {
-      const text = el.textContent?.trim() || el.getAttribute('title');
-      if (text && text.length > 1 && text.length < 200) galaxy[`galaxy_${i}`] = text;
-    });
-
-    // Context menu items (right-click actions)
-    document.querySelectorAll('.dropdown-menu li, .galaxy_tooltip, .galaxyCell [title]').forEach((el, i) => {
-      const text = el.textContent?.trim() || el.getAttribute('title');
-      if (text && text.length > 1) galaxy[`action_${i}`] = text;
-    });
-
-    return galaxy;
-  }
-
-  // Messages page specifics
-  function grabMessagesPage() {
-    const msgs = {};
-
-    // Message categories/tabs
-    document.querySelectorAll('.tabs_wrap li, .msg_actions button, .msg_head').forEach((el, i) => {
-      const text = el.textContent.trim();
-      if (text) msgs[`msg_ui_${i}`] = text;
-    });
-
-    // Spy report labels
-    document.querySelectorAll('.espionageDefText, .spyRaport th, .spyRaport .res_name').forEach((el, i) => {
-      const text = el.textContent.trim();
-      if (text) msgs[`spy_${i}`] = text;
-    });
-
-    // Battle report labels
-    document.querySelectorAll('.combatReport th, .combatReport .label').forEach((el, i) => {
-      const text = el.textContent.trim();
-      if (text) msgs[`combat_${i}`] = text;
-    });
-
-    return msgs;
-  }
-
-  // ==========================================================================
-  // 5. Navigazione automatica delle pagine
-  // ==========================================================================
-  const pages = [
-    { name: 'overview',          url: 'page=ingame&component=overview' },
-    { name: 'resources',         url: 'page=ingame&component=supplies' },
-    { name: 'resource_settings', url: 'page=ingame&component=resourcesettings' },
-    { name: 'facilities',       url: 'page=ingame&component=facilities' },
-    { name: 'research',          url: 'page=ingame&component=research' },
-    { name: 'shipyard',          url: 'page=ingame&component=shipyard' },
-    { name: 'defense',           url: 'page=ingame&component=defenses' },
-    { name: 'fleet',             url: 'page=ingame&component=fleetdispatch' },
-    { name: 'galaxy',            url: 'page=ingame&component=galaxy' },
-    { name: 'messages',          url: 'page=ingame&component=messages' },
-    { name: 'alliance',          url: 'page=ingame&component=alliance' },
-    { name: 'premium',           url: 'page=ingame&component=premium' },
-    { name: 'shop',              url: 'page=ingame&component=shop' },
-    { name: 'options',           url: 'page=ingame&component=options' },
-    { name: 'highscore',         url: 'page=ingame&component=highscore' },
-    { name: 'rewards',           url: 'page=ingame&component=rewards' },
-    { name: 'characterclass',    url: 'page=ingame&component=characterclassselection' },
-  ];
-
-  // Grab layout (available on current page)
-  console.log('[OGame Grabber] Grabbing layout elements...');
-  results.pages.layout = grabLayout();
-  results.pages.dialogs = grabDialogs();
-
-  // Get base URL
-  const baseUrl = window.location.origin + window.location.pathname + '?';
-
-  // Option A: Grab only current page (fast, no navigation)
-  const currentComponent = new URLSearchParams(window.location.search).get('component') || 'unknown';
-  console.log(`[OGame Grabber] Grabbing current page: ${currentComponent}`);
-
-  const currentData = grabCurrentPage();
-
-  // Add page-specific grabs
-  if (currentComponent === 'fleetdispatch') Object.assign(currentData, grabFleetPage());
-  if (currentComponent === 'galaxy') Object.assign(currentData, grabGalaxyPage());
-  if (currentComponent === 'messages') Object.assign(currentData, grabMessagesPage());
-
-  results.pages[currentComponent] = currentData;
-
-  // ==========================================================================
-  // 6. Opzione navigazione automatica (decommentare per usare)
-  // ==========================================================================
-  /*
-  // ATTENZIONE: Questo naviga tra le pagine! Usare con cautela.
-  for (const page of pages) {
-    console.log(`[OGame Grabber] Navigating to ${page.name}...`);
-
-    // Usa fetch per ottenere l'HTML senza navigare
-    try {
-      const response = await fetch(baseUrl + page.url, {
-        credentials: 'same-origin',
-        headers: { 'X-Requested-With': 'XMLHttpRequest' }
-      });
-      const html = await response.text();
-
-      // Parse HTML
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, 'text/html');
-
-      // Extract texts from parsed document
-      const pageTexts = {};
-
-      // All elements with text
-      doc.querySelectorAll('*').forEach((el, i) => {
-        if (el.children.length === 0) {
-          const text = el.textContent.trim();
-          if (text && text.length > 1 && text.length < 500 &&
-              !/^\d+[\d.,]*$/.test(text) && !/^[a-z_]+$/.test(text) &&
-              !text.startsWith('{') && !text.startsWith('<')) {
-            pageTexts[`text_${i}`] = text;
+      // Handle nested objects (technology details)
+      for (const [key, value] of Object.entries(pageData)) {
+        if (typeof value === 'object' && value !== null) {
+          const nestedDeduped = {};
+          for (const [nk, nv] of Object.entries(value)) {
+            const sv = String(nv);
+            if (!seen.has(sv)) { seen.add(sv); nestedDeduped[nk] = nv; }
           }
+          if (Object.keys(nestedDeduped).length > 0) deduped[pageName][key] = nestedDeduped;
+        } else {
+          const sv = String(value);
+          if (!seen.has(sv)) { seen.add(sv); deduped[pageName][key] = value; }
         }
-      });
-
-      // All title/alt/placeholder attributes
-      doc.querySelectorAll('[title], [alt], [placeholder]').forEach((el, i) => {
-        const attr = el.getAttribute('title') || el.getAttribute('alt') || el.getAttribute('placeholder');
-        if (attr && attr.length > 2 && !attr.startsWith('http') && !attr.startsWith('/')) {
-          pageTexts[`attr_${i}`] = attr;
-        }
-      });
-
-      results.pages[page.name] = pageTexts;
-      console.log(`[OGame Grabber] ${page.name}: ${Object.keys(pageTexts).length} texts found`);
-
-      await wait(1000); // Rate limiting
-    } catch (e) {
-      console.error(`[OGame Grabber] Error on ${page.name}:`, e);
-      results.pages[page.name] = { error: e.message };
-    }
-  }
-  */
-
-  // ==========================================================================
-  // 7. Output e download
-  // ==========================================================================
-
-  // Deduplicate values across all pages
-  const allTexts = new Set();
-  const deduped = {};
-  for (const [pageName, pageData] of Object.entries(results.pages)) {
-    deduped[pageName] = {};
-    for (const [key, value] of Object.entries(pageData)) {
-      const textVal = typeof value === 'string' ? value : JSON.stringify(value);
-      if (!allTexts.has(textVal)) {
-        allTexts.add(textVal);
-        deduped[pageName][key] = value;
       }
+
+      if (Object.keys(deduped[pageName]).length === 0) delete deduped[pageName];
     }
+
+    return { deduped, uniqueCount: seen.size };
   }
-  results.pages = deduped;
-  results.total_unique_texts = allTexts.size;
 
-  // Download as JSON
-  const blob = new Blob([JSON.stringify(results, null, 2)], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `ogame_ui_texts_${results.language}_${currentComponent}_${Date.now()}.json`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
+  // ========================================================================
+  // Download helper
+  // ========================================================================
+  function downloadJSON(data, filename) {
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
 
-  console.log('[OGame Grabber] Done! JSON file downloaded.');
-  console.log(`[OGame Grabber] Total unique texts: ${allTexts.size}`);
-  console.log('[OGame Grabber] Results:', results);
+  // ========================================================================
+  // Progress banner UI
+  // ========================================================================
+  function showBanner(text, color = '#00cc00') {
+    let banner = document.getElementById('ogame-grabber-banner');
+    if (!banner) {
+      banner = document.createElement('div');
+      banner.id = 'ogame-grabber-banner';
+      banner.style.cssText = `
+        position: fixed; top: 0; left: 0; right: 0; z-index: 999999;
+        padding: 8px 16px; font-family: monospace; font-size: 14px; font-weight: bold;
+        color: #fff; text-align: center; transition: background 0.3s;
+      `;
+      document.body.appendChild(banner);
+    }
+    banner.style.background = color;
+    banner.textContent = text;
+  }
 
-  return results;
+  function removeBanner() {
+    document.getElementById('ogame-grabber-banner')?.remove();
+  }
+
+  // ========================================================================
+  // Navigation logic
+  // ========================================================================
+  function getBaseUrl() {
+    // Works on both /game/index.php?page=... and similar URL structures
+    const url = new URL(window.location.href);
+    return url.origin + url.pathname + '?';
+  }
+
+  function navigateToComponent(component) {
+    const base = getBaseUrl();
+    window.location.href = `${base}page=ingame&component=${component}`;
+  }
+
+  // ========================================================================
+  // MAIN — runs on every page load
+  // ========================================================================
+  async function main() {
+    const state = loadState();
+
+    // FIRST RUN: initialize queue
+    if (!state.running) {
+      console.log('%c[OGame Grabber] Starting autonomous scan...', 'color: #0f0; font-size: 16px');
+      console.log('[Grabber] Will navigate through', ALL_PAGES.length, 'pages automatically.');
+      console.log('[Grabber] DO NOT interact with the page. Use OGameGrabber.abort() to stop.');
+
+      clearAll();
+      saveState({ running: true, startTime: Date.now(), pagesCompleted: 0, totalPages: ALL_PAGES.length });
+      saveQueue(ALL_PAGES.map(p => p.component));
+      saveData({
+        timestamp: new Date().toISOString(),
+        server: window.location.hostname,
+        language: document.documentElement.lang || navigator.language || 'unknown',
+        pages: {}
+      });
+
+      // Grab layout from current page first
+      showBanner(`[Grabber] Initializing... Grabbing layout elements`, '#005500');
+      await new Promise(r => setTimeout(r, DELAY_BEFORE_GRAB));
+
+      const data = loadData();
+      data.pages._layout = extractLayout();
+      saveData(data);
+
+      // Start navigating
+      const queue = loadQueue();
+      if (queue.length > 0) {
+        const next = queue[0];
+        showBanner(`[Grabber] Navigating to: ${next} (1/${ALL_PAGES.length})`, '#333399');
+        await new Promise(r => setTimeout(r, 500));
+        navigateToComponent(next);
+      }
+      return;
+    }
+
+    // SUBSEQUENT RUNS: grab current page, then navigate to next
+    const queue = loadQueue();
+    const currentComponent = new URLSearchParams(window.location.search).get('component') || 'unknown';
+
+    if (queue.length === 0) {
+      // All done! Finalize and download
+      finalize();
+      return;
+    }
+
+    // Check if we're on the expected page
+    const expectedComponent = queue[0];
+    if (currentComponent !== expectedComponent) {
+      // Track redirect attempts to avoid infinite loops
+      const retryKey = `ogame_grabber_retry_${expectedComponent}`;
+      const retryCount = parseInt(sessionStorage.getItem(retryKey) || '0', 10);
+
+      if (retryCount >= 1) {
+        // Already tried once — OGame is redirecting us away. SKIP this page.
+        console.warn(`[Grabber] Page "${expectedComponent}" redirects to "${currentComponent}". SKIPPING.`);
+        sessionStorage.removeItem(retryKey);
+
+        // Remove from queue and advance
+        queue.shift();
+        saveQueue(queue);
+        const completed = (state.pagesCompleted || 0) + 1;
+        saveState({ ...state, pagesCompleted: completed });
+
+        if (queue.length === 0) {
+          finalize();
+          return;
+        }
+
+        const nextComponent = queue[0];
+        showBanner(
+          `[Grabber] Skipped "${expectedComponent}" (redirect). Next: ${nextComponent}`,
+          '#996600'
+        );
+        await new Promise(r => setTimeout(r, 1500));
+        navigateToComponent(nextComponent);
+        return;
+      }
+
+      // First attempt — try once to navigate to the expected page
+      sessionStorage.setItem(retryKey, String(retryCount + 1));
+      console.warn(`[Grabber] Expected ${expectedComponent}, got ${currentComponent}. Retrying (attempt ${retryCount + 1})...`);
+      await new Promise(r => setTimeout(r, 1000));
+      navigateToComponent(expectedComponent);
+      return;
+    }
+
+    // Clear any retry counter for this page (we arrived successfully)
+    sessionStorage.removeItem(`ogame_grabber_retry_${expectedComponent}`);
+
+    const completed = state.pagesCompleted || 0;
+    const total = state.totalPages || ALL_PAGES.length;
+    const pageName = ALL_PAGES.find(p => p.component === currentComponent)?.name || currentComponent;
+
+    showBanner(
+      `[Grabber] Scanning: ${pageName} (${completed + 1}/${total}) — DO NOT TOUCH`,
+      '#005500'
+    );
+
+    console.log(`%c[Grabber] Scanning page: ${pageName}`, 'color: #0f0');
+
+    // Wait for dynamic content to load
+    await new Promise(r => setTimeout(r, DELAY_BEFORE_GRAB));
+
+    // === EXTRACT TEXTS ===
+    const contentRoot = document.querySelector('#inhalt, #content, .maincontent, #contentWrapper, body');
+    const pageTexts = extractAllTexts(contentRoot || document.body);
+
+    // === CLICK TECHNOLOGIES for detail panels ===
+    let techDetails = {};
+    const techPages = ['supplies', 'facilities', 'research', 'shipyard', 'defenses', 'fleetdispatch'];
+    if (techPages.includes(currentComponent)) {
+      showBanner(
+        `[Grabber] Clicking technologies on: ${pageName} (${completed + 1}/${total})`,
+        '#555500'
+      );
+      techDetails = await extractTechnologyDetails();
+    }
+
+    // === GRAB DIALOGS if any are open ===
+    const dialogTexts = {};
+    document.querySelectorAll('.ui-dialog, .overlay, .tpd-content, #technologydetails').forEach((el, i) => {
+      const dt = extractAllTexts(el);
+      if (Object.keys(dt).length > 0) dialogTexts[`dialog_${i}`] = dt;
+    });
+
+    // === SAVE PAGE DATA ===
+    const data = loadData();
+    data.pages[pageName] = {
+      component: currentComponent,
+      url: window.location.href,
+      ...pageTexts,
+    };
+
+    if (Object.keys(techDetails).length > 0) {
+      data.pages[`${pageName}_tech_details`] = techDetails;
+    }
+    if (Object.keys(dialogTexts).length > 0) {
+      data.pages[`${pageName}_dialogs`] = dialogTexts;
+    }
+
+    saveData(data);
+
+    // === ADVANCE QUEUE ===
+    queue.shift();
+    saveQueue(queue);
+    saveState({ ...state, pagesCompleted: completed + 1 });
+
+    const textsFound = Object.keys(pageTexts).length + Object.keys(techDetails).length;
+    console.log(`[Grabber] ${pageName}: ${textsFound} texts captured`);
+
+    if (queue.length === 0) {
+      // All pages done! Finalize.
+      showBanner(`[Grabber] All pages scanned! Preparing download...`, '#006600');
+      await new Promise(r => setTimeout(r, 1000));
+      finalize();
+      return;
+    }
+
+    // Navigate to next page
+    const nextComponent = queue[0];
+    const nextName = ALL_PAGES.find(p => p.component === nextComponent)?.name || nextComponent;
+    showBanner(
+      `[Grabber] Done with ${pageName} (${textsFound} texts). Next: ${nextName} in ${DELAY_BETWEEN_PAGES / 1000}s...`,
+      '#333399'
+    );
+
+    await new Promise(r => setTimeout(r, DELAY_BETWEEN_PAGES));
+    navigateToComponent(nextComponent);
+  }
+
+  // ========================================================================
+  // Finalization — deduplicate & download
+  // ========================================================================
+  function finalize() {
+    const data = loadData();
+    const state = loadState();
+
+    const { deduped, uniqueCount } = deduplicateResults(data.pages);
+    const elapsed = state.startTime ? Math.round((Date.now() - state.startTime) / 1000) : 0;
+
+    const finalResult = {
+      timestamp: data.timestamp,
+      completed: new Date().toISOString(),
+      server: data.server,
+      language: data.language,
+      elapsed_seconds: elapsed,
+      pages_scanned: state.pagesCompleted || Object.keys(data.pages).length,
+      total_unique_texts: uniqueCount,
+      pages: deduped
+    };
+
+    const lang = data.language || 'unknown';
+    const filename = `ogame_ALL_UI_TEXTS_${lang.toUpperCase()}_${Date.now()}.json`;
+    downloadJSON(finalResult, filename);
+
+    showBanner(
+      `DONE! ${uniqueCount} unique texts from ${finalResult.pages_scanned} pages (${elapsed}s). File: ${filename}`,
+      '#006600'
+    );
+
+    console.log('%c[OGame Grabber] COMPLETE!', 'color: #0f0; font-size: 18px');
+    console.log(`  Unique texts: ${uniqueCount}`);
+    console.log(`  Pages scanned: ${finalResult.pages_scanned}`);
+    console.log(`  Time elapsed: ${elapsed}s`);
+    console.log(`  Downloaded: ${filename}`);
+    console.log('[Grabber] Full results:', finalResult);
+
+    // Clean up localStorage
+    clearAll();
+
+    // Keep banner visible for 30 seconds
+    setTimeout(removeBanner, 30000);
+  }
+
+  // ========================================================================
+  // Public API (accessible via console)
+  // ========================================================================
+  window.OGameGrabber = {
+    status() {
+      const state = loadState();
+      const queue = loadQueue();
+      const data = loadData();
+      const pagesScanned = Object.keys(data.pages || {}).length;
+      const elapsed = state.startTime ? Math.round((Date.now() - state.startTime) / 1000) : 0;
+
+      console.log('%c[OGame Grabber Status]', 'color: #0ff; font-size: 14px');
+      console.log(`  Running: ${state.running ? 'YES' : 'NO'}`);
+      console.log(`  Pages completed: ${state.pagesCompleted || 0} / ${state.totalPages || '?'}`);
+      console.log(`  Remaining in queue: ${queue.length}`);
+      console.log(`  Data keys collected: ${pagesScanned}`);
+      console.log(`  Elapsed: ${elapsed}s`);
+      if (queue.length > 0) console.log(`  Next page: ${queue[0]}`);
+      return { state, queueLength: queue.length, pagesScanned, elapsed };
+    },
+
+    abort() {
+      console.log('%c[OGame Grabber] Aborting... downloading collected data.', 'color: #ff0; font-size: 14px');
+      finalize();
+    },
+
+    reset() {
+      clearAll();
+      removeBanner();
+      console.log('%c[OGame Grabber] Reset complete. Run the script again to restart.', 'color: #f80; font-size: 14px');
+    },
+
+    download() {
+      const data = loadData();
+      if (!data || !data.pages) {
+        console.error('[Grabber] No data to download.');
+        return;
+      }
+      finalize();
+    },
+
+    // Skip to a specific page (useful if stuck)
+    skipTo(componentName) {
+      const queue = loadQueue();
+      const idx = queue.indexOf(componentName);
+      if (idx === -1) {
+        console.error(`[Grabber] Component "${componentName}" not found in queue. Available:`, queue);
+        return;
+      }
+      const newQueue = queue.slice(idx);
+      saveQueue(newQueue);
+      console.log(`[Grabber] Skipping to ${componentName}. Remaining pages: ${newQueue.length}`);
+      navigateToComponent(componentName);
+    },
+
+    // Resume if the script stopped (e.g., after browser refresh without script)
+    resume() {
+      const state = loadState();
+      if (!state.running) {
+        console.error('[Grabber] No active session. Run the full script to start.');
+        return;
+      }
+      const queue = loadQueue();
+      if (queue.length === 0) {
+        finalize();
+        return;
+      }
+      console.log(`[Grabber] Resuming... ${queue.length} pages remaining.`);
+      navigateToComponent(queue[0]);
+    }
+  };
+
+  // ========================================================================
+  // Auto-start
+  // ========================================================================
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => main());
+  } else {
+    // Small delay to let OGame's own JS finish loading
+    setTimeout(() => main(), 500);
+  }
+
 })();
