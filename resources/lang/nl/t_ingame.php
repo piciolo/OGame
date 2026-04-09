@@ -1731,6 +1731,14 @@ return [
     // Admin paneel (admin/serversettings.blade.php + admin/developershortcuts.blade.php)
     // -------------------------------------------------------------------------
     'admin' => [
+        // Adminbalk menu
+        'server_admin_label'           => 'Serverbeheer',
+        'masquerading_as'              => 'Ingelogd als gebruiker',
+        'exit_masquerade'              => 'Verlaat impersonatie',
+        'menu_dev_shortcuts'           => 'Ontwikkelaarssnelkoppelingen',
+        'menu_server_settings'         => 'Serverinstellingen',
+        'menu_rules_legal'             => 'Regels & Juridisch',
+
         'title'                        => 'Serverinstellingen',
         'section_basic'                => 'Basisinstellingen',
         'section_changes_note'         => 'Opmerking: de meeste wijzigingen vereisen een herstart van de server om van kracht te worden.',

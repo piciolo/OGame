@@ -1777,6 +1777,14 @@ return [
     // Admin panel (admin/serversettings.blade.php + admin/developershortcuts.blade.php)
     // -------------------------------------------------------------------------
     'admin' => [
+        // Admin bar menu
+        'server_admin_label'           => 'Server admin',
+        'masquerading_as'              => 'Masquerading as user',
+        'exit_masquerade'              => 'Exit masquerade',
+        'menu_dev_shortcuts'           => 'Developer shortcuts',
+        'menu_server_settings'         => 'Server settings',
+        'menu_rules_legal'             => 'Rules & Legal',
+
         // Page title
         'title'                        => 'Server Settings',
 

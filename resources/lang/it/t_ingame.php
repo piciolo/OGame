@@ -1739,6 +1739,14 @@ return [
     // Pannello admin (admin/serversettings.blade.php + admin/developershortcuts.blade.php)
     // -------------------------------------------------------------------------
     'admin' => [
+        // Barra menu admin
+        'server_admin_label'           => 'Admin server',
+        'masquerading_as'              => 'Impersonando utente',
+        'exit_masquerade'              => 'Esci dall\'impersonificazione',
+        'menu_dev_shortcuts'           => 'Scorciatoie sviluppatore',
+        'menu_server_settings'         => 'Impostazioni server',
+        'menu_rules_legal'             => 'Regole e note legali',
+
         'title'                        => 'Impostazioni server',
         'section_basic'                => 'Impostazioni di base',
         'section_changes_note'         => 'Nota: la maggior parte delle modifiche richiede un riavvio del server per avere effetto.',
