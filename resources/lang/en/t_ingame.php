@@ -26,6 +26,10 @@ return [
         'abandon_rename'       => 'Abandon/Rename',
         'abandon_rename_title'  => 'Abandon/Rename Planet',
         'abandon_rename_modal'  => 'Abandon/Rename :planet_name',
+
+        // Default planet names (used at registration)
+        'homeworld'            => 'Homeworld',
+        'colony'               => 'Colony',
     ],
 
     // -------------------------------------------------------------------------
@@ -43,6 +47,15 @@ return [
         'relocate'       => 'Relocate',
         'cancel'         => 'cancel',
         'explanation'    => 'The relocation allows you to move your planets to another position in a distant system of your choosing.<br /><br />The actual relocation first takes place 24 hours after activation. In this time, you can use your planets as normal. A countdown shows you how much time remains prior to the relocation.<br /><br />Once the countdown has run down and the planet is to be moved, none of your fleets that are stationed there can be active. At this time, there should also be nothing in construction, nothing being repaired and nothing researched. If there is a construction task, a repair task or a fleet still active upon the countdown\'s expiry, the relocation will be cancelled.<br /><br />If the relocation is successful, you will be charged 240.000 Dark Matter. The planets, the buildings and the stored resources including moon will be moved immediately. Your fleets travel to the new coordinates automatically with the speed of the slowest ship. The jump gate to a relocated moon is deactivated for 24 hours.',
+        'err_position_not_empty'      => 'The target position is not empty.',
+        'err_already_in_progress'     => 'A planet relocation is already in progress.',
+        'err_on_cooldown'             => 'Relocation is on cooldown. Please wait before relocating again.',
+        'err_insufficient_dm'         => 'Insufficient Dark Matter. You need :amount DM.',
+        'err_buildings_in_progress'   => 'Cannot relocate while buildings are being constructed.',
+        'err_research_in_progress'    => 'Cannot relocate while research is in progress.',
+        'err_units_in_progress'       => 'Cannot relocate while units are being built.',
+        'err_fleets_active'           => 'Cannot relocate while fleet missions are active.',
+        'err_no_active_relocation'    => 'No active planet relocation found.',
     ],
 
     // -------------------------------------------------------------------------
@@ -90,6 +103,11 @@ return [
         'last_inquiry_error'     => 'Your last action could not be processed. Please try again.',
         'planet_move_warning'    => 'Caution! This mission may still be running once the relocation period starts and if this is the case, the process will be canceled. Do you really want to continue with this job?',
         'building_started'       => 'Building started successfully.',
+        'invalid_token'          => 'Invalid token.',
+        'downgrade_started'      => 'Building downgrade started.',
+        'construction_canceled'  => 'Building construction canceled.',
+        'added_to_queue'         => 'Added to build order.',
+        'invalid_queue_item'     => 'Invalid queue item ID',
     ],
 
     // -------------------------------------------------------------------------
@@ -404,6 +422,7 @@ return [
         'tactical_retreat_label'          => 'Tactical retreat',
         'tactical_retreat_full_tooltip'   => 'Enable tactical retreat: your fleet will retreat if the combat ratio is unfavourable. Requires Admiral for the 3:1 ratio.',
         'tactical_retreat_admiral_tooltip'=> 'Tactical retreat at 3:1 ratio (requires Admiral)',
+        'fleet_sent_success'             => 'Your fleet has been successfully sent.',
     ],
 
     // -------------------------------------------------------------------------
@@ -1921,5 +1940,133 @@ return [
         'dev_dm_desc'                  => 'Add Dark Matter to the current player account.',
         'dev_dm_amount'                => 'Amount',
         'dev_update_dm'                => 'Add Dark Matter',
+    ],
+
+    // -------------------------------------------------------------------------
+    // Character class selection page
+    // -------------------------------------------------------------------------
+
+    'characterclass' => [
+        'page_title'              => 'Class Selection',
+        'choose_your_class'       => 'Choose Your Class',
+        'choose_description'      => 'Select a class to receive additional benefits. You can change your class in the class selection section in the top-right.',
+        'select_for_free'         => 'Select for Free',
+        'buy_for'                 => 'Buy for',
+        'deactivate'              => 'Deactivate',
+        'confirm'                 => 'Confirm',
+        'cancel'                  => 'Cancel',
+        'select_title'            => 'Select Character Class',
+        'deactivate_title'        => 'Deactivate Character Class',
+        'activated_free_msg'      => 'Do you want to activate the :className class for free?',
+        'activated_paid_msg'      => 'Do you want to activate the :className class for :price Dark Matter? In doing so, you will lose your current class.',
+        'deactivate_confirm_msg'  => 'Do you really want to deactivate your character class? Reactivation requires :price Dark Matter.',
+        'success_selected'        => 'Character class selected successfully!',
+        'success_deactivated'     => 'Character class deactivated successfully!',
+        'not_enough_dm_title'     => 'Not enough Dark Matter',
+        'not_enough_dm_msg'       => 'Not enough Dark Matter available! Do you want to buy some now?',
+        'buy_dm'                  => 'Buy Dark Matter',
+        'error_generic'           => 'An error occurred. Please try again.',
+    ],
+
+    // -------------------------------------------------------------------------
+    // Rewards page
+    // -------------------------------------------------------------------------
+
+    'rewards' => [
+        'page_title'          => 'Rewards',
+        'hint_tooltip'        => 'Rewards will be dispatched every day and can be collected manually. From the 7th day on, no further rewards will be sent out. The first reward will be given on the 2nd day of registration.',
+        'new_awards'          => 'New awards',
+        'not_yet_reached'     => 'Awards not yet reached',
+        'not_fulfilled'       => 'Not fulfilled',
+        'collected_awards'    => 'Collected awards',
+        'claim'               => 'Claim',
+    ],
+
+    // -------------------------------------------------------------------------
+    // Phalanx scan overlay
+    // -------------------------------------------------------------------------
+
+    'phalanx' => [
+        'no_movements'      => 'No fleet movements detected at this location.',
+        'fleet_details'     => 'Fleet details',
+        'ships'             => 'Ships',
+        'loading'           => 'Loading...',
+        'time_label'        => 'Time',
+        'speed_label'       => 'Speed',
+    ],
+
+    // -------------------------------------------------------------------------
+    // Wreckage / Space Dock (facilities page)
+    // -------------------------------------------------------------------------
+
+    'wreckage' => [
+        'no_wreckage'          => 'There is no wreckage at this position.',
+        'burns_up_in'          => 'Wreckage burns up in:',
+        'leave_to_burn'        => 'Leave to burn up',
+        'leave_confirm'        => 'The wreckage will descend into the planet`s atmosphere and burn up. Are you sure?',
+        'repair_time'          => 'Repair time:',
+        'ships_being_repaired' => 'Ships being repaired:',
+        'repair_time_remaining'=> 'Repair time remaining:',
+        'no_ship_data'         => 'No ship data available',
+        'collect'              => 'Collect',
+        'start_repairs'        => 'Start repairs',
+        'err_network_start'    => 'Network error starting repairs',
+        'err_network_complete' => 'Network error completing repairs',
+        'err_network_collect'  => 'Network error collecting ships',
+        'err_network_burn'     => 'Network error burning wreck field',
+        'err_burn_up'          => 'Error burning up wreck field',
+        'wreckage_label'       => 'Wreckage',
+        'repairs_started'      => 'Repairs started successfully!',
+        'repairs_completed'    => 'Repairs completed and ships collected successfully!',
+        'ships_back_service'   => 'All ships have been put back into service',
+        'wreck_burned'         => 'Wreck field burned successfully!',
+        'err_start_repairs'    => 'Error starting repairs',
+        'err_complete_repairs' => 'Error completing repairs',
+        'err_collect_ships'    => 'Error collecting ships',
+        'err_burn_wreck'       => 'Error burning wreck field',
+        'can_be_repaired'      => 'Wreckages can be repaired in the Space Dock.',
+        'collect_back_service' => 'Put ships that are already repaired back into service',
+        'auto_return_service'  => 'Your last ships will be automatically returned to service on',
+        'no_ships_for_repair'  => 'No ships available for repair',
+        'repairable_ships'     => 'Repairable Ships:',
+        'repaired_ships'       => 'Repaired Ships:',
+        'ships_count'          => 'Ships',
+        'details'              => 'Details',
+        'tooltip_late_added'   => 'Ships added during ongoing repairs cannot be collected manually. You must wait until all repairs are automatically completed.',
+        'tooltip_in_progress'  => 'Repairs are still in progress. Use the Details window for partial collection.',
+        'tooltip_no_repaired'  => 'No ships repaired yet',
+        'tooltip_must_complete'=> 'Repairs must be completed to collect ships from here.',
+        'burn_confirm_title'   => 'Leave to burn up',
+        'burn_confirm_msg'     => 'The wreckage will descend into the planet\'s atmosphere and burn up. Once struck, a repair will no longer be possible. Are you sure you want to burn up the wreckage?',
+        'burn_confirm_yes'     => 'yes',
+        'burn_confirm_no'      => 'No',
+    ],
+
+    // -------------------------------------------------------------------------
+    // Fleet template labels (fleet/index)
+    // -------------------------------------------------------------------------
+
+    'fleet_templates' => [
+        'name_col'            => 'Name',
+        'actions_col'         => 'Actions',
+        'template_name_label' => 'Name',
+        'delete_tooltip'      => 'Delete template/input',
+        'save_tooltip'        => 'Save template',
+        'err_name_required'   => 'Template name is required.',
+        'err_need_ships'      => 'Template must contain at least one ship.',
+        'err_not_found'       => 'Template not found.',
+        'err_max_reached'     => 'Maximum number of templates reached (10).',
+        'saved_success'       => 'Template saved successfully.',
+        'deleted_success'     => 'Template deleted successfully.',
+    ],
+
+    // -------------------------------------------------------------------------
+    // Fleet events (eventlist, eventrow)
+    // -------------------------------------------------------------------------
+
+    'fleet_events' => [
+        'events'              => 'Events',
+        'recall_title'        => 'Recall',
+        'recall_fleet'        => 'Recall fleet',
     ],
 ];

@@ -255,7 +255,7 @@ abstract class AbstractBuildingsController extends OGameController
         if (!hash_equals($request->session()->token(), $request->input('_token'))) {
             return response()->json([
                 'success' => false,
-                'message' => 'Invalid token.',
+                'message' => __('t_ingame.buildings.invalid_token'),
             ]);
         }
 
@@ -298,7 +298,7 @@ abstract class AbstractBuildingsController extends OGameController
         if (!hash_equals($request->session()->token(), $request->input('_token'))) {
             return response()->json([
                 'success' => false,
-                'message' => 'Invalid token.',
+                'message' => __('t_ingame.buildings.invalid_token'),
             ]);
         }
 
@@ -309,7 +309,7 @@ abstract class AbstractBuildingsController extends OGameController
 
             return response()->json([
                 'status' => 'success',
-                'message' => 'Building downgrade started.',
+                'message' => __('t_ingame.buildings.downgrade_started'),
             ]);
         } catch (Exception $e) {
             return response()->json([
@@ -336,7 +336,7 @@ abstract class AbstractBuildingsController extends OGameController
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Building construction canceled.',
+            'message' => __('t_ingame.buildings.construction_canceled'),
         ]);
     }
 }

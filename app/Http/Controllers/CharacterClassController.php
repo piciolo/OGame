@@ -72,7 +72,7 @@ class CharacterClassController extends OGameController
             if (!$this->characterClassService->canChangeClass($user, $newClass)) {
                 return response()->json([
                     'status' => 'error',
-                    'message' => 'Not enough Dark Matter to change class',
+                    'message' => __('t_ingame.characterclass.not_enough_dm_title'),
                     'lackingDM' => true,
                 ], 400);
             }
@@ -85,7 +85,7 @@ class CharacterClassController extends OGameController
 
             return response()->json([
                 'status' => 'success',
-                'message' => 'Character class selected successfully',
+                'message' => __('t_ingame.characterclass.success_selected'),
                 'newClass' => $newClass->getName(),
             ]);
         } catch (Exception $e) {
@@ -113,7 +113,7 @@ class CharacterClassController extends OGameController
 
             return response()->json([
                 'status' => 'success',
-                'message' => 'Character class deactivated successfully',
+                'message' => __('t_ingame.characterclass.success_deactivated'),
             ]);
         } catch (Exception $e) {
             return response()->json([

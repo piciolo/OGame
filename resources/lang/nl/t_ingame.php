@@ -26,6 +26,10 @@ return [
         'abandon_rename'       => 'Verlaten/Hernoemen',
         'abandon_rename_title'  => 'Planeet verlaten/hernoemen',
         'abandon_rename_modal'  => 'Verlaten/Hernoemen :planet_name',
+
+        // Default planet names (used at registration)
+        'homeworld'            => 'Hoofdplaneet',
+        'colony'               => 'Kolonie',
     ],
 
     // -------------------------------------------------------------------------
@@ -43,6 +47,15 @@ return [
         'relocate'       => 'Verplaatsen',
         'cancel'         => 'annuleren',
         'explanation'    => 'Met de verplaatsing kunt u uw planeten verplaatsen naar een andere positie in een ver systeem naar keuze.<br /><br />De daadwerkelijke verplaatsing vindt voor het eerst 24 uur na activering plaats. In deze tijd kunt u uw planeten normaal gebruiken. Een afteltimer toont hoeveel tijd er resteert voor de verplaatsing.<br /><br />Zodra de afteltimer is verlopen en de planeet moet worden verplaatst, mogen geen van uw vloten die daar gestationeerd zijn actief zijn. Op dit moment mag er ook niets in aanbouw zijn, niets worden gerepareerd en niets worden onderzocht. Als er een bouwactiviteit, een reparatietaak of een vloot nog actief is bij het verstrijken van de afteltimer, wordt de verplaatsing geannuleerd.<br /><br />Als de verplaatsing succesvol is, worden 240.000 Donkere Materie in rekening gebracht. De planeten, de gebouwen en de opgeslagen grondstoffen inclusief maan worden onmiddellijk verplaatst. Uw vloten reizen automatisch naar de nieuwe coördinaten met de snelheid van het langzaamste schip. De sprongpoort naar een verplaatste maan wordt 24 uur gedeactiveerd.',
+        'err_position_not_empty'      => 'De doelpositie is niet leeg.',
+        'err_already_in_progress'     => 'Er is al een planeetverplaatsing bezig.',
+        'err_on_cooldown'             => 'Verplaatsing is in afkoeling. Wacht even voordat je het opnieuw probeert.',
+        'err_insufficient_dm'         => 'Onvoldoende Donkere Materie. Je hebt :amount DM nodig.',
+        'err_buildings_in_progress'   => 'Kan niet verplaatsen terwijl gebouwen worden gebouwd.',
+        'err_research_in_progress'    => 'Kan niet verplaatsen terwijl onderzoek wordt uitgevoerd.',
+        'err_units_in_progress'       => 'Kan niet verplaatsen terwijl eenheden worden gebouwd.',
+        'err_fleets_active'           => 'Kan niet verplaatsen terwijl vlootmissies actief zijn.',
+        'err_no_active_relocation'    => 'Geen actieve planeetverplaatsing gevonden.',
     ],
 
     // -------------------------------------------------------------------------
@@ -90,6 +103,11 @@ return [
         'last_inquiry_error'     => 'Uw laatste actie kon niet worden verwerkt. Probeer het opnieuw.',
         'planet_move_warning'    => 'Waarschuwing! Deze missie kan nog actief zijn wanneer de verplaatsingsperiode begint. Als dat zo is, wordt het proces geannuleerd. Wilt u toch doorgaan met deze taak?',
         'building_started'       => 'Gebouw succesvol gestart.',
+        'invalid_token'          => 'Ongeldig token.',
+        'downgrade_started'      => 'Gebouwafbraak gestart.',
+        'construction_canceled'  => 'Bouw geannuleerd.',
+        'added_to_queue'         => 'Toegevoegd aan bouwwachtrij.',
+        'invalid_queue_item'     => 'Ongeldig wachtrij-item ID',
     ],
 
     // -------------------------------------------------------------------------
@@ -199,9 +217,9 @@ return [
 
     'fleet' => [
         // Pagina / stap koppen
-        'dispatch_1_title'         => 'Vloot versturen I',
-        'dispatch_2_title'         => 'Vloot versturen II',
-        'dispatch_3_title'         => 'Vloot versturen III',
+        'dispatch_1_title'         => 'Vlootverzending I',
+        'dispatch_2_title'         => 'Vlootverzending II',
+        'dispatch_3_title'         => 'Vlootverzending III',
         'movement_title'           => 'Vlootbeweging',
         'to_movement'              => 'Naar vlootbeweging',
 
@@ -222,19 +240,19 @@ return [
 
         // Waarschuwing / onmogelijke staten
         'fleet_dispatch'           => 'Vloot versturen',
-        'dispatch_impossible'      => 'Vloot versturen onmogelijk',
+        'dispatch_impossible'      => 'Vloot verzending onmogelijk',
         'no_ships'                 => 'Er zijn geen schepen op deze planeet.',
         'in_combat'                => 'De vloot is momenteel in gevecht.',
         'vacation_error'           => 'Er kunnen geen vloten worden verstuurd vanuit vakantiemodus!',
         'not_enough_deuterium'     => 'Onvoldoende deuterium!',
         'no_target'                => 'U moet een geldig doel selecteren.',
         'cannot_send_to_target'    => 'Vloten kunnen niet naar dit doel worden gestuurd.',
-        'cannot_start_mission'     => 'U kunt deze missie niet starten.',
+        'cannot_start_mission'     => 'Deze missie kan niet gestart worden.',
 
         // Statusbalk labels (zonder afsluitende dubbele punt)
         'mission_label'            => 'Missie',
         'target_label'             => 'Doel',
-        'player_name_label'        => 'Spelernaam',
+        'player_name_label'        => 'Spelersnaam',
         'no_selection'             => 'Niets geselecteerd',
         'no_mission_selected'      => 'Geen missie geselecteerd!',
 
@@ -246,13 +264,13 @@ return [
         'select_all_ships'         => 'Alle schepen selecteren',
         'reset_choice'             => 'Selectie resetten',
         'api_data'                 => 'Deze gegevens kunnen worden ingevoerd in een compatibele gevechtssimulator:',
-        'tactical_retreat'         => 'Tactische terugtrekking',
+        'tactical_retreat'         => 'Tactische Terugtrekking',
         'tactical_retreat_tooltip' => 'Toon deuteriumverbruik per tactische terugtrekking',
         'continue'                 => 'Doorgaan',
         'back'                     => 'Terug',
 
         // Stap 2 – bestemming
-        'origin'                   => 'Herkomst',
+        'origin'                   => 'Vertrek locatie',
         'destination'              => 'Bestemming',
         'planet'                   => 'Planeet',
         'moon'                     => 'Maan',
@@ -271,15 +289,15 @@ return [
 
         // Missienamen
         'mission_expedition'       => 'Expeditie',
-        'mission_colonise'         => 'Kolonisatie',
-        'mission_recycle'          => 'Puinveld opruimen',
+        'mission_colonise'         => 'Koloniseren',
+        'mission_recycle'          => 'Recycle puinveld',
         'mission_transport'        => 'Transport',
-        'mission_deploy'           => 'Stationering',
-        'mission_espionage'        => 'Spionage',
-        'mission_acs_defend'       => 'ACS Verdedigen',
-        'mission_attack'           => 'Aanval',
-        'mission_acs_attack'       => 'ACS Aanval',
-        'mission_destroy_moon'     => 'Maanvernietiging',
+        'mission_deploy'           => 'Plaatsen',
+        'mission_espionage'        => 'Spioneren',
+        'mission_acs_defend'       => 'Halt',
+        'mission_attack'           => 'Aanvallen',
+        'mission_acs_attack'       => 'Federatie aanval',
+        'mission_destroy_moon'     => 'Vernietigen',
 
         // Missiebeschrijvingen
         'desc_attack'              => 'Valt de vloot en verdediging van uw tegenstander aan.',
@@ -295,7 +313,7 @@ return [
 
         // Briefingsectie (zonder afsluitende dubbele punt)
         'briefing'                 => 'Briefing',
-        'load_resources'           => 'Grondstoffen laden',
+        'load_resources'           => 'Grondstoffen inladen',
         'load_all_resources'       => 'Alle grondstoffen laden',
         'all_resources'            => 'alle grondstoffen',
         'flight_duration'          => 'Vluchttijd (enkel)',
@@ -305,16 +323,16 @@ return [
         'speed'                    => 'Snelheid:',
         'max_abbr'                 => 'max.',
         'hour_abbr'                => 'u',
-        'deuterium_consumption'    => 'Deuteriumverbruik',
+        'deuterium_consumption'    => 'Brandstofverbruik',
         'empty_cargobays'          => 'Lege laadruimte',
         'hold_time'                => 'Bezettingstijd',
         'expedition_duration'      => 'Duur van expeditie',
         'cargo_bay'                => 'laadruimte',
         'cargo_space'              => 'Beschikbare ruimte / Max. laadruimte',
-        'send_fleet'               => 'Vloot sturen',
-        'retreat_on_defender'      => 'Terugtrekken bij verdedigersvlucht',
+        'send_fleet'               => 'Stuur vloot',
+        'retreat_on_defender'      => 'Terugkeren als verdediger ontsnapt.',
         'retreat_tooltip'          => 'Als deze optie is geactiveerd, zal uw vloot zich ook zonder gevecht terugtrekken als uw tegenstander vlucht.',
-        'plunder_food'             => 'Voedsel plunderen',
+        'plunder_food'             => 'Plunder voedsel',
 
         // Grondstoffenlabels (voor loca-object)
         'metal'                    => 'Metaal',
@@ -383,6 +401,7 @@ return [
         'tactical_retreat_label'          => 'Tactische terugtrekking',
         'tactical_retreat_full_tooltip'   => 'Activeer tactische terugtrekking: je vloot trekt zich terug als de gevechtsverhouding ongunstig is. Admiraal vereist voor 3:1 verhouding.',
         'tactical_retreat_admiral_tooltip'=> 'Tactische terugtrekking bij 3:1 verhouding (vereist Admiraal)',
+        'fleet_sent_success'             => 'Je vloot is succesvol verstuurd.',
     ],
 
     // -------------------------------------------------------------------------
@@ -1844,5 +1863,108 @@ return [
         'dev_dm_desc'                  => 'Donkere Materie toevoegen aan het huidige spelersaccount.',
         'dev_dm_amount'                => 'Hoeveelheid',
         'dev_update_dm'                => 'Donkere Materie toevoegen',
+    ],
+
+    // -------------------------------------------------------------------------
+    // Character class selection page
+    // -------------------------------------------------------------------------
+
+    'characterclass' => [
+        'page_title'              => 'Klasse Keuze',
+        'choose_your_class'       => 'Kies Jouw Klasse',
+        'choose_description'      => 'Selecteer een klasse om extra voordelen te ontvangen. Je kunt je klasse wijzigen in het klasseselectie-gedeelte rechtsboven.',
+        'select_for_free'         => 'Gratis Activatie',
+        'buy_for'                 => 'Kopen voor',
+        'deactivate'              => 'Deactiveren',
+        'confirm'                 => 'Bevestigen',
+        'cancel'                  => 'Annuleren',
+        'select_title'            => 'Personageklasse selecteren',
+        'deactivate_title'        => 'Personageklasse deactiveren',
+        'activated_free_msg'      => 'Wil je de klasse :className gratis activeren?',
+        'activated_paid_msg'      => 'Wil je de klasse :className activeren voor :price Donkere Materie? Je verliest hierdoor je huidige klasse.',
+        'deactivate_confirm_msg'  => 'Wil je je personageklasse echt deactiveren? Heractivering vereist :price Donkere Materie.',
+        'success_selected'        => 'Personageklasse succesvol geselecteerd!',
+        'success_deactivated'     => 'Personageklasse succesvol gedeactiveerd!',
+        'not_enough_dm_title'     => 'Niet genoeg Donkere Materie',
+        'not_enough_dm_msg'       => 'Niet genoeg Donkere Materie beschikbaar! Wil je er nu kopen?',
+        'buy_dm'                  => 'Donkere Materie kopen',
+        'error_generic'           => 'Er is een fout opgetreden. Probeer het opnieuw.',
+    ],
+
+    // -------------------------------------------------------------------------
+    // Rewards page
+    // -------------------------------------------------------------------------
+
+    'rewards' => [
+        'page_title'          => 'Beloningen',
+        'hint_tooltip'        => 'Beloningen worden elke dag verzonden en kunnen handmatig worden opgehaald. Vanaf de 7e dag worden er geen beloningen meer verzonden. De eerste beloning wordt gegeven op de 2e dag na registratie.',
+        'new_awards'          => 'Nieuwe onderscheidingen',
+        'not_yet_reached'     => 'Nog niet behaalde onderscheidingen',
+        'not_fulfilled'       => 'Niet behaald',
+        'collected_awards'    => 'Opgehaalde onderscheidingen',
+        'claim'               => 'Ophalen',
+    ],
+
+    // -------------------------------------------------------------------------
+    // Phalanx scan overlay
+    // -------------------------------------------------------------------------
+
+    'phalanx' => [
+        'no_movements'      => 'Geen vlootbewegingen gedetecteerd op deze locatie.',
+        'fleet_details'     => 'Vlootdetails',
+        'ships'             => 'Schepen',
+        'loading'           => 'Laden...',
+        'time_label'        => 'Tijd',
+        'speed_label'       => 'Snelheid',
+    ],
+
+    // -------------------------------------------------------------------------
+    // Wreckage / Space Dock (facilities page)
+    // -------------------------------------------------------------------------
+
+    'wreckage' => [
+        'no_wreckage'          => 'Er is geen wrak op deze positie.',
+        'burns_up_in'          => 'Wrak verbrandt over:',
+        'leave_to_burn'        => 'Laat verbranden',
+        'leave_confirm'        => 'Het wrak zal in de atmosfeer van de planeet vallen en verbranden. Weet je het zeker?',
+        'repair_time'          => 'Reparatietijd:',
+        'ships_being_repaired' => 'Schepen worden gerepareerd:',
+        'repair_time_remaining'=> 'Resterende reparatietijd:',
+        'no_ship_data'         => 'Geen scheepsgegevens beschikbaar',
+        'collect'              => 'Verzamelen',
+        'start_repairs'        => 'Start reparaties',
+        'err_network_start'    => 'Netwerkfout bij starten reparaties',
+        'err_network_complete' => 'Netwerkfout bij voltooien reparaties',
+        'err_network_collect'  => 'Netwerkfout bij verzamelen schepen',
+        'err_network_burn'     => 'Netwerkfout bij verbranden wrak',
+        'wreckage_label'       => 'Wrak',
+    ],
+
+    // -------------------------------------------------------------------------
+    // Fleet template labels (fleet/index)
+    // -------------------------------------------------------------------------
+
+    'fleet_templates' => [
+        'name_col'            => 'Naam',
+        'actions_col'         => 'Acties',
+        'template_name_label' => 'Naam',
+        'delete_tooltip'      => 'Verwijder sjabloon/invoer',
+        'save_tooltip'        => 'Opslaan sjabloon',
+        'err_name_required'   => 'Templatenaam is vereist.',
+        'err_need_ships'      => 'Template moet minstens één schip bevatten.',
+        'err_not_found'       => 'Template niet gevonden.',
+        'err_max_reached'     => 'Maximum aantal templates bereikt (10).',
+        'saved_success'       => 'Template succesvol opgeslagen.',
+        'deleted_success'     => 'Template succesvol verwijderd.',
+    ],
+
+    // -------------------------------------------------------------------------
+    // Fleet events (eventlist, eventrow)
+    // -------------------------------------------------------------------------
+
+    'fleet_events' => [
+        'events'              => 'Gebeurtenissen',
+        'recall_title'        => 'Terugroepen',
+        'recall_fleet'        => 'Vloot terugroepen',
     ],
 ];

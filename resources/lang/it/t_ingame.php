@@ -26,6 +26,10 @@ return [
         'abandon_rename'       => 'Abbandona/Rinomina',
         'abandon_rename_title'  => 'Abbandona/Rinomina Pianeta',
         'abandon_rename_modal'  => 'Abbandona/Rinomina :planet_name',
+
+        // Default planet names (used at registration)
+        'homeworld'            => 'Pianeta Madre',
+        'colony'               => 'Colonia',
     ],
 
     // -------------------------------------------------------------------------
@@ -43,6 +47,15 @@ return [
         'relocate'       => 'Trasferisci',
         'cancel'         => 'annulla',
         'explanation'    => 'Il trasferimento ti permette di spostare i tuoi pianeti in un\'altra posizione in un sistema lontano a tua scelta.<br /><br />Il trasferimento effettivo avviene per la prima volta 24 ore dopo l\'attivazione. In questo periodo puoi usare i tuoi pianeti normalmente. Un conto alla rovescia mostra quanto tempo rimane prima del trasferimento.<br /><br />Una volta scaduto il conto alla rovescia e il pianeta deve essere spostato, nessuna delle tue flotte stazionate lì può essere attiva. A questo punto non deve essere in costruzione nulla, nulla in riparazione e nulla in ricerca. Se ci sono attività di costruzione, riparazione o flotte ancora attive alla scadenza del conto alla rovescia, il trasferimento verrà annullato.<br /><br />Se il trasferimento ha successo, ti verranno addebitati 240.000 Materia Oscura. I pianeti, gli edifici e le risorse immagazzinate inclusa la luna verranno spostati immediatamente. Le tue flotte viaggiano automaticamente verso le nuove coordinate alla velocità della nave più lenta. Il portale di salto verso una luna trasferita viene disattivato per 24 ore.',
+        'err_position_not_empty'      => 'La posizione di destinazione non è vuota.',
+        'err_already_in_progress'     => 'Un trasferimento è già in corso.',
+        'err_on_cooldown'             => 'Il trasferimento è in raffreddamento. Attendi prima di riprovare.',
+        'err_insufficient_dm'         => 'Materia Oscura insufficiente. Ti servono :amount MO.',
+        'err_buildings_in_progress'   => 'Impossibile trasferirsi durante la costruzione di edifici.',
+        'err_research_in_progress'    => 'Impossibile trasferirsi durante una ricerca in corso.',
+        'err_units_in_progress'       => 'Impossibile trasferirsi durante la costruzione di unità.',
+        'err_fleets_active'           => 'Impossibile trasferirsi con missioni di flotta attive.',
+        'err_no_active_relocation'    => 'Nessun trasferimento attivo trovato.',
     ],
 
     // -------------------------------------------------------------------------
@@ -90,6 +103,11 @@ return [
         'last_inquiry_error'     => "Impossibile elaborare l'ultima azione. Per favore riprova.",
         'planet_move_warning'    => 'Attenzione! Questa missione potrebbe essere ancora in corso quando inizia il periodo di ricollocazione e, in tal caso, il processo verrà annullato. Vuoi davvero continuare con questo lavoro?',
         'building_started'       => 'Costruzione avviata con successo.',
+        'invalid_token'          => 'Token non valido.',
+        'downgrade_started'      => 'Demolizione dell`edificio avviata.',
+        'construction_canceled'  => 'Costruzione annullata.',
+        'added_to_queue'         => 'Aggiunto alla coda di produzione.',
+        'invalid_queue_item'     => 'ID elemento coda non valido',
     ],
 
     // -------------------------------------------------------------------------
@@ -383,6 +401,7 @@ return [
         'tactical_retreat_label'          => 'Ritirata tattica',
         'tactical_retreat_full_tooltip'   => 'Attiva la ritirata tattica: la tua flotta si ritirerà se il rapporto di combattimento è sfavorevole. Richiede Ammiraglio per il rapporto 3:1.',
         'tactical_retreat_admiral_tooltip'=> 'Ritirata tattica al rapporto 3:1 (richiede Ammiraglio)',
+        'fleet_sent_success'             => 'La tua flotta è stata inviata con successo.',
     ],
 
     // -------------------------------------------------------------------------
@@ -1852,5 +1871,133 @@ return [
         'dev_dm_desc'                  => 'Aggiungi Materia Oscura all\'account giocatore corrente.',
         'dev_dm_amount'                => 'Quantità',
         'dev_update_dm'                => 'Aggiungi Materia Oscura',
+    ],
+
+    // -------------------------------------------------------------------------
+    // Character class selection page
+    // -------------------------------------------------------------------------
+
+    'characterclass' => [
+        'page_title'              => 'Seleziona classe',
+        'choose_your_class'       => 'Scegli la tua classe',
+        'choose_description'      => 'Seleziona una classe per ottenere dei bonus speciali. Puoi cambiare la tua classe nella sezione di selezione classe in alto a destra.',
+        'select_for_free'         => 'Attiva gratis',
+        'buy_for'                 => 'Acquista per',
+        'deactivate'              => 'Disattiva',
+        'confirm'                 => 'Conferma',
+        'cancel'                  => 'Annulla',
+        'select_title'            => 'Seleziona classe personaggio',
+        'deactivate_title'        => 'Disattiva classe personaggio',
+        'activated_free_msg'      => 'Vuoi attivare la classe :className gratuitamente?',
+        'activated_paid_msg'      => 'Vuoi attivare la classe :className per :price Materia Oscura? Perderai la tua classe attuale.',
+        'deactivate_confirm_msg'  => 'Vuoi davvero disattivare la tua classe personaggio? La riattivazione richiede :price Materia Oscura.',
+        'success_selected'        => 'Classe personaggio selezionata con successo!',
+        'success_deactivated'     => 'Classe personaggio disattivata con successo!',
+        'not_enough_dm_title'     => 'Materia Oscura insufficiente',
+        'not_enough_dm_msg'       => 'Materia Oscura insufficiente! Vuoi acquistarne adesso?',
+        'buy_dm'                  => 'Acquista Materia Oscura',
+        'error_generic'           => 'Si è verificato un errore. Riprova.',
+    ],
+
+    // -------------------------------------------------------------------------
+    // Rewards page
+    // -------------------------------------------------------------------------
+
+    'rewards' => [
+        'page_title'          => 'Ricompense',
+        'hint_tooltip'        => 'Le ricompense vengono inviate ogni giorno e possono essere riscosse manualmente. Dal 7° giorno in poi non verranno più inviate ricompense. La prima ricompensa viene concessa al 2° giorno dalla registrazione.',
+        'new_awards'          => 'Nuovi premi',
+        'not_yet_reached'     => 'Premi non ancora raggiunti',
+        'not_fulfilled'       => 'Non raggiunto',
+        'collected_awards'    => 'Premi riscossi',
+        'claim'               => 'Riscuoti',
+    ],
+
+    // -------------------------------------------------------------------------
+    // Phalanx scan overlay
+    // -------------------------------------------------------------------------
+
+    'phalanx' => [
+        'no_movements'      => 'Nessun movimento di flotta rilevato in questa posizione.',
+        'fleet_details'     => 'Dettagli flotta',
+        'ships'             => 'Navi',
+        'loading'           => 'Caricamento...',
+        'time_label'        => 'Orario',
+        'speed_label'       => 'Velocità',
+    ],
+
+    // -------------------------------------------------------------------------
+    // Wreckage / Space Dock (facilities page)
+    // -------------------------------------------------------------------------
+
+    'wreckage' => [
+        'no_wreckage'          => 'Non ci sono relitti in questa posizione.',
+        'burns_up_in'          => 'I relitti bruceranno tra:',
+        'leave_to_burn'        => 'Lascia bruciare',
+        'leave_confirm'        => 'I relitti precipiteranno nell`atmosfera del pianeta e bruceranno. Sei sicuro?',
+        'repair_time'          => 'Tempo di riparazione:',
+        'ships_being_repaired' => 'Navi in riparazione:',
+        'repair_time_remaining'=> 'Tempo di riparazione rimanente:',
+        'no_ship_data'         => 'Nessun dato nave disponibile',
+        'collect'              => 'Raccogli',
+        'start_repairs'        => 'Avvia riparazioni',
+        'err_network_start'    => 'Errore di rete nell`avvio riparazioni',
+        'err_network_complete' => 'Errore di rete nel completamento riparazioni',
+        'err_network_collect'  => 'Errore di rete nella raccolta navi',
+        'err_network_burn'     => 'Errore di rete nella distruzione relitti',
+        'err_burn_up'          => 'Errore nella distruzione del campo di relitti',
+        'wreckage_label'       => 'Relitti',
+        'repairs_started'      => 'Riparazioni avviate con successo!',
+        'repairs_completed'    => 'Riparazioni completate e navi raccolte con successo!',
+        'ships_back_service'   => 'Tutte le navi sono state rimesse in servizio',
+        'wreck_burned'         => 'Campo di relitti bruciato con successo!',
+        'err_start_repairs'    => 'Errore nell\'avvio delle riparazioni',
+        'err_complete_repairs' => 'Errore nel completamento delle riparazioni',
+        'err_collect_ships'    => 'Errore nella raccolta delle navi',
+        'err_burn_wreck'       => 'Errore nella distruzione del campo di relitti',
+        'can_be_repaired'      => 'I relitti possono essere riparati nello Space Dock.',
+        'collect_back_service' => 'Rimetti in servizio le navi gi\u00e0 riparate',
+        'auto_return_service'  => 'Le tue ultime navi saranno automaticamente rimesse in servizio il',
+        'no_ships_for_repair'  => 'Nessuna nave disponibile per la riparazione',
+        'repairable_ships'     => 'Navi riparabili:',
+        'repaired_ships'       => 'Navi riparate:',
+        'ships_count'          => 'Navi',
+        'details'              => 'Dettagli',
+        'tooltip_late_added'   => 'Le navi aggiunte durante le riparazioni in corso non possono essere raccolte manualmente. Devi attendere il completamento automatico.',
+        'tooltip_in_progress'  => 'Riparazioni ancora in corso. Usa la finestra Dettagli per la raccolta parziale.',
+        'tooltip_no_repaired'  => 'Nessuna nave ancora riparata',
+        'tooltip_must_complete'=> 'Le riparazioni devono essere completate per raccogliere le navi.',
+        'burn_confirm_title'   => 'Lascia bruciare',
+        'burn_confirm_msg'     => 'I relitti precipiteranno nell\'atmosfera del pianeta e bruceranno. Una volta fatto, la riparazione non sar\u00e0 pi\u00f9 possibile. Sei sicuro di voler bruciare i relitti?',
+        'burn_confirm_yes'     => 's\u00ec',
+        'burn_confirm_no'      => 'No',
+    ],
+
+    // -------------------------------------------------------------------------
+    // Fleet template labels (fleet/index)
+    // -------------------------------------------------------------------------
+
+    'fleet_templates' => [
+        'name_col'            => 'Nome',
+        'actions_col'         => 'Azioni',
+        'template_name_label' => 'Nome',
+        'delete_tooltip'      => 'Cancella template/input',
+        'save_tooltip'        => 'Salva template',
+        'err_name_required'   => 'Il nome del template è obbligatorio.',
+        'err_need_ships'      => 'Il template deve contenere almeno una nave.',
+        'err_not_found'       => 'Template non trovato.',
+        'err_max_reached'     => 'Numero massimo di template raggiunto (10).',
+        'saved_success'       => 'Template salvato con successo.',
+        'deleted_success'     => 'Template eliminato con successo.',
+    ],
+
+    // -------------------------------------------------------------------------
+    // Fleet events (eventlist, eventrow)
+    // -------------------------------------------------------------------------
+
+    'fleet_events' => [
+        'events'              => 'Eventi',
+        'recall_title'        => 'Richiama',
+        'recall_fleet'        => 'Richiama flotta',
     ],
 ];

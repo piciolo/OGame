@@ -5,16 +5,16 @@
 
 <div id="phalanxEventContent">
     @if (empty($fleet_movements))
-        <div style="padding: 20px; text-align: center;">No fleet movements detected at this location.</div>
+        <div style="padding: 20px; text-align: center;">{{ __('t_ingame.phalanx.no_movements') }}</div>
     @else
         @foreach ($fleet_movements as $movement)
             {{-- Hidden tooltip content for this fleet movement --}}
             <div id="fleet-tooltip-{{ $movement['mission_id'] }}" style="display: none;">
                 <div class="htmlTooltip">
-                    <h1>Fleet details:</h1>
+                    <h1>{{ __('t_ingame.phalanx.fleet_details') }}:</h1>
                     <div class="splitLine"></div>
                     <table cellpadding="0" cellspacing="0" class="fleetinfo">
-                        <tr><th colspan="2">Ships:</th></tr>
+                        <tr><th colspan="2">{{ __('t_ingame.phalanx.ships') }}:</th></tr>
                         @foreach ($movement['ships'] as $ship_type => $count)
                             <tr>
                                 <td>{{ ucwords(str_replace('_', ' ', $ship_type)) }}:</td>
@@ -28,9 +28,9 @@
             <div class="{{ $loop->even ? 'eventFleet even' : 'eventFleet odd' }}" id="eventRow-{{ $movement['mission_id'] }}" data-mission-type="{{ $movement['mission_type'] }}" data-return-flight="{{ $movement['is_return_trip'] ? 'true' : 'false' }}" data-arrival-time="{{ $movement['display_time'] }}">
                 <ul>
                     <li class="countDown">
-                        <span class="friendly textBeefy" id="counter-phalanx-{{ $movement['mission_id'] }}">Loading...</span>
+                        <span class="friendly textBeefy" id="counter-phalanx-{{ $movement['mission_id'] }}">{{ __('t_ingame.phalanx.loading') }}</span>
                     </li>
-                    <li class="arrivalTime">{{ date('H:i:s', $movement['display_time']) }} Time</li>
+                    <li class="arrivalTime">{{ date('H:i:s', $movement['display_time']) }} {{ __('t_ingame.phalanx.time_label') }}</li>
                     <li class="descFleet">{{ $movement['fleet_direction'] }}</li>
                     <li class="missionFleet">
                         <img src="/img/fleet/{{ $movement['mission_type'] }}.gif">
@@ -58,7 +58,7 @@
                             [{{ $movement['destination']['galaxy'] }}:{{ $movement['destination']['system'] }}:{{ $movement['destination']['position'] }}]
                         </a>
                     </li>
-                    <li class="descSpeed">Speed</li>
+                    <li class="descSpeed">{{ __('t_ingame.phalanx.speed_label') }}</li>
                     <li class="baseSpeed">{{ $movement['fleet_speed'] }}</li>
                 </ul>
             </div>
