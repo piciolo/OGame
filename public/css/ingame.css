@@ -17199,6 +17199,79 @@ selected-language-icon {
     background-position: center;
     background-size: contain;
 }
+
+/* Language dropdown */
+.lang-dropdown-wrapper {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.lang-dropdown-wrapper:hover .lang-dropdown {
+    display: block;
+}
+.lang-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 4px;
+    background: #0d1014;
+    border: 1px solid #3a4959;
+    border-radius: 3px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    min-width: 70px;
+    padding: 4px 0;
+}
+.lang-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #3a4959;
+}
+.lang-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    color: #848484;
+    text-decoration: none;
+    font-size: 11px;
+    white-space: nowrap;
+}
+.lang-dropdown-item:hover {
+    background: #1a2230;
+    color: #fff;
+}
+.lang-dropdown-item.lang-active {
+    color: #6f9fc8;
+}
+
+/* CSS flag icons */
+.lang-flag {
+    display: inline-block;
+    flex-shrink: 0;
+    width: 16px;
+    min-width: 16px;
+    height: 11px;
+    margin-right: 6px;
+    border-radius: 1px;
+    vertical-align: middle;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 0 0 1px rgba(0,0,0,0.4);
+}
+.lang-flag-en { background-image: url('/img/flags/en.svg'); }
+.lang-flag-it { background-image: url('/img/flags/it.svg'); }
+.lang-flag-nl { background-image: url('/img/flags/nl.svg'); }
+.lang-flag-de { background-image: url('/img/flags/de.svg'); }
 /* selected language styling end */
 
 /* fleet speed bar start */

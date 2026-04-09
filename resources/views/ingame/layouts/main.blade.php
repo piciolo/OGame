@@ -132,8 +132,15 @@
                 <ul>
                     <li id="playerName">
                         {{ __('t_ingame.layout.player') }}:
-                        <selected-language-icon
-                                style="background-image: url('/img/flags/a176fcd6f3e3de2bed6a73a8b1d5e7.png');"></selected-language-icon>
+                        @php $localeActive = $locale ?? app()->getLocale(); @endphp
+                        <div class="lang-dropdown-wrapper">
+                            <selected-language-icon class="lang-flag lang-flag-{{ $localeActive }}" title="{{ strtoupper($localeActive) }}"></selected-language-icon>
+                            <div class="lang-dropdown">
+                                @foreach(['en', 'it', 'nl', 'de'] as $lng)
+                                    <a href="{{ route('language.switch', ['lang' => $lng]) }}" class="lang-dropdown-item @if($localeActive === $lng) lang-active @endif"><span class="lang-flag lang-flag-{{ $lng }}"></span><span>{{ strtoupper($lng) }}</span></a>
+                                @endforeach
+                            </div>
+                        </div>
 
                         <span class="textBeefy">
                                 <a href="{{ route('changenick.overlay') }}"
@@ -1846,11 +1853,6 @@ However, the Space Dock's engineers think that some of the remains can be salvag
                data-overlay-title="{{ __('t_ingame.layout.server_settings') }}" data-overlay-class="serversettingsoverlay"
                data-overlay-popup-width="400" data-overlay-popup-height="510">{{ __('t_ingame.layout.server_settings') }}</a>|
             <a href="http://wiki.ogame.org/" target="_blank">{{ __('t_ingame.layout.help') }}</a>|
-            @php $localeActive = $locale ?? app()->getLocale(); @endphp
-            <a href="{{ route('language.switch', ['lang' => 'en']) }}" @if($localeActive === 'en') class="bold" @endif>EN</a>|
-            <a href="{{ route('language.switch', ['lang' => 'it']) }}" @if($localeActive === 'it') class="bold" @endif>IT</a>|
-            <a href="{{ route('language.switch', ['lang' => 'nl']) }}" @if($localeActive === 'nl') class="bold" @endif>NL</a>|
-            <a href="{{ route('language.switch', ['lang' => 'de']) }}" @if($localeActive === 'de') class="bold" @endif>DE</a>|
             <a href="#">{{ __('t_ingame.layout.board') }}</a>|
             <a class="overlay" href="{{ route('rules.ajax') }}"
                data-overlay-title="{{ __('t_ingame.layout.rules') }}">{{ __('t_ingame.layout.rules') }}</a>|
