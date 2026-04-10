@@ -15,10 +15,10 @@ $fleet_type_label = match($fleet_event_row->friendly_status) {
     >
         <td class="countDown">
             <span id="counter-eventlist-{{ $fleet_event_row->id }}" class="{{ $fleet_event_row->friendly_status }} textBeefy">
-                load...
+                {{ __('t_ingame.fleet.load_dots') }}
             </span>
         </td>
-        <td class="arrivalTime">{{ date('H:i:s', $fleet_event_row->mission_time_arrival) }} Clock</td>
+        <td class="arrivalTime">{{ date('H:i:s', $fleet_event_row->mission_time_arrival) }} {{ __('t_ingame.fleet.clock') }}</td>
         <td class="missionFleet">
             <img src="/img/fleet/{{ $fleet_event_row->mission_type }}.gif" class="tooltipHTML"
                  title="{{ $fleet_type_label }} | {{ $fleet_event_row->mission_label }} (R)" alt=""/>
@@ -28,14 +28,14 @@ $fleet_type_label = match($fleet_event_row->friendly_status) {
             @switch ($fleet_event_row->destination_planet_type)
                 @case (OGame\Models\Enums\PlanetType::Planet)
                     <figure class="planetIcon planet js_hideTipOnMobile"
-                            title="Planet"></figure>{{ $fleet_event_row->destination_planet_name }}
+                            title="{{ __('t_ingame.fleet.planet') }}"></figure>{{ $fleet_event_row->destination_planet_name }}
                     @break
                 @case (OGame\Models\Enums\PlanetType::Moon)
                     <figure class="planetIcon moon js_hideTipOnMobile"
-                            title="Moon"></figure>{{ $fleet_event_row->destination_planet_name }}
+                            title="{{ __('t_ingame.fleet.moon') }}"></figure>{{ $fleet_event_row->destination_planet_name }}
                     @break
                 @case (OGame\Models\Enums\PlanetType::DebrisField)
-                    <figure class="planetIcon tf js_hideTipOnMobile" title="Debris Field"></figure>debris field
+                    <figure class="planetIcon tf js_hideTipOnMobile" title="{{ __('t_ingame.fleet.debris_field') }}"></figure>{{ __('t_ingame.fleet.debris_field_lower') }}
                     @break
                 @case (OGame\Models\Enums\PlanetType::DeepSpace)
                     <span class="deep-space-text">{{ __('t_ingame.fleet.deep_space') }}</span>
@@ -101,14 +101,14 @@ $fleet_type_label = match($fleet_event_row->friendly_status) {
             @switch ($fleet_event_row->origin_planet_type)
                 @case (OGame\Models\Enums\PlanetType::Planet)
                     <figure class="planetIcon planet js_hideTipOnMobile"
-                            title="Planet"></figure>{{ $fleet_event_row->origin_planet_name }}
+                            title="{{ __('t_ingame.fleet.planet') }}"></figure>{{ $fleet_event_row->origin_planet_name }}
                     @break
                 @case (OGame\Models\Enums\PlanetType::Moon)
                     <figure class="planetIcon moon js_hideTipOnMobile"
-                            title="Moon"></figure>{{ $fleet_event_row->origin_planet_name }}
+                            title="{{ __('t_ingame.fleet.moon') }}"></figure>{{ $fleet_event_row->origin_planet_name }}
                     @break
                 @case (OGame\Models\Enums\PlanetType::DebrisField)
-                    <figure class="planetIcon tf js_hideTipOnMobile" title="Debris Field"></figure>debris field
+                    <figure class="planetIcon tf js_hideTipOnMobile" title="{{ __('t_ingame.fleet.debris_field') }}"></figure>{{ __('t_ingame.fleet.debris_field_lower') }}
                     @break
                 @case (OGame\Models\Enums\PlanetType::DeepSpace)
                     <span class="deep-space-text">{{ __('t_ingame.fleet.deep_space') }}</span>
@@ -140,10 +140,10 @@ $fleet_type_label = match($fleet_event_row->friendly_status) {
     >
         <td class="countDown">
         <span id="counter-eventlist-{{ $fleet_event_row->id }}" class="{{ $fleet_event_row->friendly_status }} textBeefy">
-                    load...
+                    {{ __('t_ingame.fleet.load_dots') }}
         </span>
         </td>
-        <td class="arrivalTime">{{ date('H:i:s', $fleet_event_row->mission_time_arrival) }} Clock</td>
+        <td class="arrivalTime">{{ date('H:i:s', $fleet_event_row->mission_time_arrival) }} {{ __('t_ingame.fleet.clock') }}</td>
         <td class="missionFleet">
             <img src="/img/fleet/{{ $fleet_event_row->mission_type }}.gif" class="tooltipHTML"
                  title="{{ $fleet_type_label }} | {{ $fleet_event_row->mission_label }}" alt=""/>
@@ -153,14 +153,14 @@ $fleet_type_label = match($fleet_event_row->friendly_status) {
             @switch ($fleet_event_row->origin_planet_type)
                 @case (OGame\Models\Enums\PlanetType::Planet)
                     <figure class="planetIcon planet js_hideTipOnMobile"
-                            title="Planet"></figure>{{ $fleet_event_row->origin_planet_name }}
+                            title="{{ __('t_ingame.fleet.planet') }}"></figure>{{ $fleet_event_row->origin_planet_name }}
                     @break
                 @case (OGame\Models\Enums\PlanetType::Moon)
                     <figure class="planetIcon moon js_hideTipOnMobile"
-                            title="Moon"></figure>{{ $fleet_event_row->origin_planet_name }}
+                            title="{{ __('t_ingame.fleet.moon') }}"></figure>{{ $fleet_event_row->origin_planet_name }}
                     @break
                 @case (OGame\Models\Enums\PlanetType::DebrisField)
-                    <figure class="planetIcon tf js_hideTipOnMobile" title="Debris Field"></figure>debris field
+                    <figure class="planetIcon tf js_hideTipOnMobile" title="{{ __('t_ingame.fleet.debris_field') }}"></figure>{{ __('t_ingame.fleet.debris_field_lower') }}
                     @break
                 @case (OGame\Models\Enums\PlanetType::DeepSpace)
                     <span class="deep-space-text">{{ __('t_ingame.fleet.deep_space') }}</span>
@@ -226,14 +226,14 @@ $fleet_type_label = match($fleet_event_row->friendly_status) {
             @switch ($fleet_event_row->destination_planet_type)
                 @case (OGame\Models\Enums\PlanetType::Planet)
                     <figure class="planetIcon planet js_hideTipOnMobile"
-                            title="Planet"></figure>{{ $fleet_event_row->destination_planet_name }}
+                            title="{{ __('t_ingame.fleet.planet') }}"></figure>{{ $fleet_event_row->destination_planet_name }}
                     @break
                 @case (OGame\Models\Enums\PlanetType::Moon)
                     <figure class="planetIcon moon js_hideTipOnMobile"
-                            title="Moon"></figure>{{ $fleet_event_row->destination_planet_name }}
+                            title="{{ __('t_ingame.fleet.moon') }}"></figure>{{ $fleet_event_row->destination_planet_name }}
                     @break
                 @case (OGame\Models\Enums\PlanetType::DebrisField)
-                    <figure class="planetIcon tf js_hideTipOnMobile" title="Debris Field"></figure>debris field
+                    <figure class="planetIcon tf js_hideTipOnMobile" title="{{ __('t_ingame.fleet.debris_field') }}"></figure>{{ __('t_ingame.fleet.debris_field_lower') }}
                     @break
                 @case (OGame\Models\Enums\PlanetType::DeepSpace)
                     <span class="deep-space-text">{{ __('t_ingame.fleet.deep_space') }}</span>

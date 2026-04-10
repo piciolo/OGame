@@ -587,7 +587,7 @@ class FleetController extends OGameController
 
             return response()->json([
                 'success' => true,
-                'message' => 'Your fleet has been successfully sent.',
+                'message' => __('t_ingame.fleet.fleet_sent_success'),
                 'components' => [],
                 'newAjaxToken' => csrf_token(),
                 'redirectUrl' => route('fleet.index'),
@@ -1277,7 +1277,7 @@ class FleetController extends OGameController
         if (empty($name)) {
             return response()->json([
                 'success' => false,
-                'message' => 'Template name is required.',
+                'message' => __('t_ingame.fleet_templates.err_name_required'),
             ]);
         }
 
@@ -1296,7 +1296,7 @@ class FleetController extends OGameController
         if (array_sum($validatedShips) === 0) {
             return response()->json([
                 'success' => false,
-                'message' => 'Template must contain at least one ship.',
+                'message' => __('t_ingame.fleet_templates.err_need_ships'),
             ]);
         }
 
@@ -1309,7 +1309,7 @@ class FleetController extends OGameController
             if ($template === null) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'Template not found.',
+                    'message' => __('t_ingame.fleet_templates.err_not_found'),
                 ]);
             }
 
@@ -1322,7 +1322,7 @@ class FleetController extends OGameController
             if ($templateCount >= 10) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'Maximum number of templates reached (10).',
+                    'message' => __('t_ingame.fleet_templates.err_max_reached'),
                 ]);
             }
 
@@ -1335,7 +1335,7 @@ class FleetController extends OGameController
 
         return response()->json([
             'success' => true,
-            'message' => 'Template saved successfully.',
+            'message' => __('t_ingame.fleet_templates.saved_success'),
             'template' => [
                 'id' => $template->id,
                 'name' => $template->name,
@@ -1360,7 +1360,7 @@ class FleetController extends OGameController
         if ($template === null) {
             return response()->json([
                 'success' => false,
-                'message' => 'Template not found.',
+                'message' => __('t_ingame.fleet_templates.err_not_found'),
             ]);
         }
 
@@ -1368,7 +1368,7 @@ class FleetController extends OGameController
 
         return response()->json([
             'success' => true,
-            'message' => 'Template deleted successfully.',
+            'message' => __('t_ingame.fleet_templates.deleted_success'),
         ]);
     }
 }

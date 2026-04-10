@@ -204,7 +204,7 @@ class CreateNewUser implements CreatesNewUsers
 
         // Create initial planet(s) for the player.
         $playerService = $this->playerServiceFactory->make($user->id);
-        $planetNames = ['Homeworld', 'Colony'];
+        $planetNames = [__('t_ingame.overview.homeworld'), __('t_ingame.overview.colony')];
         // The amount of planets to create is defined in the settings and defaults to 1.
         for ($i = 0; $i < $this->settings->registrationPlanetAmount(); $i++) {
             $this->planetServiceFactory->createInitialPlanetForPlayer($playerService, $planetNames[$i === 0 ? 0 : 1]);

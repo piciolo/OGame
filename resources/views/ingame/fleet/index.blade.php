@@ -495,11 +495,11 @@
                                 <tbody>
                                 <tr class="separator alt">
                                     <th class="textCenter fleet_id">#</th>
-                                    <th class="fleet_name">Name</th>
-                                    <th class="fleet_actions">Actions</th>
+                                    <th class="fleet_name">{{ __('t_ingame.fleet_templates.name_col') }}</th>
+                                    <th class="fleet_actions">{{ __('t_ingame.fleet_templates.actions_col') }}</th>
                                     <th class="textCenter fleet_id">#</th>
-                                    <th class="fleet_name">Name</th>
-                                    <th class="fleet_actions">Actions</th>
+                                    <th class="fleet_name">{{ __('t_ingame.fleet_templates.name_col') }}</th>
+                                    <th class="fleet_actions">{{ __('t_ingame.fleet_templates.actions_col') }}</th>
                                 </tr>
                                 <tr>
                                     <td colspan="3"></td>
@@ -521,7 +521,7 @@
                                 <input type="hidden" name="open_std" value="1">
                                 <input type="hidden" name="template_id" id="template_id" value="0">
                                 <input type="hidden" name="mode" value="save">
-                                <label class="fleet_tpl_name">Name</label>
+                                <label class="fleet_tpl_name">{{ __('t_ingame.fleet_templates.template_name_label') }}</label>
                                 <input size="20" maxlength="30" type="text" class="w200 textinput" name="template_name"
                                        id="template_name">
                                 <table cellpadding="0" cellspacing="0" class="list ship_selection_table" id="mail">
@@ -529,12 +529,10 @@
                                     <tr class="alt">
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech204" width="28" height="28" alt="Light Fighter" title="Light Fighter"
+                                                <img class="tech204" width="28" height="28" alt="{{ __('t_resources.light_fighter.title') }}" title="{{ __('t_resources.light_fighter.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Light Fighter
-                                            </p>
+                                            <p>{{ __('t_resources.light_fighter.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -544,12 +542,10 @@
                                         </td>
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech205" width="28" height="28" alt="Heavy Fighter" title="Heavy Fighter"
+                                                <img class="tech205" width="28" height="28" alt="{{ __('t_resources.heavy_fighter.title') }}" title="{{ __('t_resources.heavy_fighter.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Heavy Fighter
-                                            </p>
+                                            <p>{{ __('t_resources.heavy_fighter.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -561,12 +557,10 @@
                                     <tr>
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech206" width="28" height="28" alt="Cruiser" title="Cruiser"
+                                                <img class="tech206" width="28" height="28" alt="{{ __('t_resources.cruiser.title') }}" title="{{ __('t_resources.cruiser.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Cruiser
-                                            </p>
+                                            <p>{{ __('t_resources.cruiser.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -576,12 +570,10 @@
                                         </td>
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech207" width="28" height="28" alt="Battleship" title="Battleship"
+                                                <img class="tech207" width="28" height="28" alt="{{ __('t_resources.battle_ship.title') }}" title="{{ __('t_resources.battle_ship.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Battleship
-                                            </p>
+                                            <p>{{ __('t_resources.battle_ship.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -593,12 +585,10 @@
                                     <tr class="alt">
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech215" width="28" height="28" alt="Battlecruiser" title="Battlecruiser"
+                                                <img class="tech215" width="28" height="28" alt="{{ __('t_resources.battlecruiser.title') }}" title="{{ __('t_resources.battlecruiser.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Battlecruiser
-                                            </p>
+                                            <p>{{ __('t_resources.battlecruiser.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -608,12 +598,10 @@
                                         </td>
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech211" width="28" height="28" alt="Bomber" title="Bomber"
+                                                <img class="tech211" width="28" height="28" alt="{{ __('t_resources.bomber.title') }}" title="{{ __('t_resources.bomber.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Bomber
-                                            </p>
+                                            <p>{{ __('t_resources.bomber.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -625,12 +613,10 @@
                                     <tr>
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech213" width="28" height="28" alt="Destroyer" title="Destroyer"
+                                                <img class="tech213" width="28" height="28" alt="{{ __('t_resources.destroyer.title') }}" title="{{ __('t_resources.destroyer.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Destroyer
-                                            </p>
+                                            <p>{{ __('t_resources.destroyer.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -640,12 +626,10 @@
                                         </td>
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech214" width="28" height="28" alt="Deathstar" title="Deathstar"
+                                                <img class="tech214" width="28" height="28" alt="{{ __('t_resources.deathstar.title') }}" title="{{ __('t_resources.deathstar.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Deathstar
-                                            </p>
+                                            <p>{{ __('t_resources.deathstar.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -657,12 +641,10 @@
                                     <tr class="alt">
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech218" width="28" height="28" alt="Reaper" title="Reaper"
+                                                <img class="tech218" width="28" height="28" alt="{{ __('t_resources.reaper.title') }}" title="{{ __('t_resources.reaper.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Reaper
-                                            </p>
+                                            <p>{{ __('t_resources.reaper.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -672,12 +654,10 @@
                                         </td>
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech219" width="28" height="28" alt="Pathfinder" title="Pathfinder"
+                                                <img class="tech219" width="28" height="28" alt="{{ __('t_resources.pathfinder.title') }}" title="{{ __('t_resources.pathfinder.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Pathfinder
-                                            </p>
+                                            <p>{{ __('t_resources.pathfinder.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -689,12 +669,10 @@
                                     <tr>
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech202" width="28" height="28" alt="Small Cargo" title="Small Cargo"
+                                                <img class="tech202" width="28" height="28" alt="{{ __('t_resources.small_cargo.title') }}" title="{{ __('t_resources.small_cargo.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Small Cargo
-                                            </p>
+                                            <p>{{ __('t_resources.small_cargo.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -704,12 +682,10 @@
                                         </td>
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech203" width="28" height="28" alt="Large Cargo" title="Large Cargo"
+                                                <img class="tech203" width="28" height="28" alt="{{ __('t_resources.large_cargo.title') }}" title="{{ __('t_resources.large_cargo.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Large Cargo
-                                            </p>
+                                            <p>{{ __('t_resources.large_cargo.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -721,12 +697,10 @@
                                     <tr class="alt">
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech208" width="28" height="28" alt="Colony Ship" title="Colony Ship"
+                                                <img class="tech208" width="28" height="28" alt="{{ __('t_resources.colony_ship.title') }}" title="{{ __('t_resources.colony_ship.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Colony Ship
-                                            </p>
+                                            <p>{{ __('t_resources.colony_ship.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -736,12 +710,10 @@
                                         </td>
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech209" width="28" height="28" alt="Recycler" title="Recycler"
+                                                <img class="tech209" width="28" height="28" alt="{{ __('t_resources.recycler.title') }}" title="{{ __('t_resources.recycler.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Recycler
-                                            </p>
+                                            <p>{{ __('t_resources.recycler.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -753,12 +725,10 @@
                                     <tr>
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech210" width="28" height="28" alt="Espionage Probe" title="Espionage Probe"
+                                                <img class="tech210" width="28" height="28" alt="{{ __('t_resources.espionage_probe.title') }}" title="{{ __('t_resources.espionage_probe.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Espionage Probe
-                                            </p>
+                                            <p>{{ __('t_resources.espionage_probe.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -771,12 +741,12 @@
                                         <td colspan="4" class="textRight name">
                                             <a href="javascript: void(0);"
                                                class="tooltip js_hideTipOnMobile standardFleetReset float_right icon_link"
-                                               title="Delete template/input">
+                                               title="{{ __('t_ingame.fleet_templates.delete_tooltip') }}">
                                                 <span class="icon icon_trash"></span>
                                             </a>
                                             <a href="javascript: void(0);"
                                                class="tooltip js_hideTipOnMobile standardFleetSubmit float_right icon_link"
-                                               title="Save template">
+                                               title="{{ __('t_ingame.fleet_templates.save_tooltip') }}">
                                                 <span class="icon icon_checkmark"></span>
                                             </a>
                                         </td>
@@ -1325,7 +1295,7 @@
                                     <div class="border5px">
                                         <div id="resources" class="border5px lifeforms-enabled">
                                             <div class="res_wrap border3px">
-                                                <div class="resourceIcon metal tooltip" title="Metal"></div>
+                                                <div class="resourceIcon metal tooltip" title="{{ __('t_ingame.fleet.metal') }}"></div>
                                                 <div class="res">
                                                     <input type="text" pattern="[0-9,.]*"
                                                            class="checkThousandSeparator hideNumberSpin" name="metal"
@@ -1341,7 +1311,7 @@
                                                 </div>
                                             </div>
                                             <div class="res_wrap border3px">
-                                                <div class="resourceIcon crystal tooltip" title="Crystal"></div>
+                                                <div class="resourceIcon crystal tooltip" title="{{ __('t_ingame.fleet.crystal') }}"></div>
                                                 <div class="res">
                                                     <input type="text" pattern="[0-9,.]*"
                                                            class="checkThousandSeparator hideNumberSpin" name="crystal"
@@ -1356,7 +1326,7 @@
                                                 </div>
                                             </div>
                                             <div class="res_wrap border3px">
-                                                <div class="resourceIcon deuterium tooltip" title="Deuterium"></div>
+                                                <div class="resourceIcon deuterium tooltip" title="{{ __('t_ingame.fleet.deuterium') }}"></div>
                                                 <div class="res">
                                                     <input type="text" pattern="[0-9,.]*"
                                                            class="checkThousandSeparator hideNumberSpin"

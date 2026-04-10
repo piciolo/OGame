@@ -132,9 +132,8 @@
                 <ul>
                     <li id="playerName">
                         {{ __('t_ingame.layout.player') }}:
-                        <selected-language-icon
-                                style="background-image: url('/img/flags/a176fcd6f3e3de2bed6a73a8b1d5e7.png');"></selected-language-icon>
-
+                        @php $playerLocale = $currentPlayer->getUser()->lang ?: app()->getLocale(); @endphp
+                        <span class="lang-flag lang-flag-{{ $playerLocale }}" title="{{ strtoupper($playerLocale) }}"></span>
                         <span class="textBeefy">
                                 <a href="{{ route('changenick.overlay') }}"
                                    class="overlay textBeefy"
@@ -344,7 +343,7 @@
                 <!-- Neue Chatnachrichten-Zähler -->
                 <a class="comm_menu chat tooltip js_hideTipOnMobile"
                    href="{{ route('chat.index') }}"
-                   title="{{ $unreadChatCount }} unread message(s)">
+                   title="{{ $unreadChatCount }} {{ __('t_ingame.layout.unread_messages') }}">
                     <!-- js modification !-->
                     <span class="new_msg_count totalChatMessages @if($unreadChatCount === 0) noMessage @endif" data-new-messages="{{ $unreadChatCount }}">
                     {{ $unreadChatCount }}                </span>
@@ -353,10 +352,10 @@
                     <div id="eventboxFilled" class="eventToggle" style="display: none;">
                         <a id="js_eventDetailsClosed" class="tooltipRight js_hideTipOnMobile"
                            href="javascript:void(0);"
-                           title="More details"></a>
+                           title="{{ __('t_ingame.layout.js_more_details') }}"></a>
                         <a id="js_eventDetailsOpen" class="tooltipRight open js_hideTipOnMobile"
                            href="javascript:void(0);"
-                           title="Less detail"></a>
+                           title="{{ __('t_ingame.layout.js_less_details') }}"></a>
 
 
                     </div>
@@ -1009,7 +1008,7 @@
                             <div class="repairableShips">
                                 ${wreckFieldData.is_repairing ?
                                     // During repairs: show minimal content
-                                    `<span>There is no wreckage at this position.</span>` :
+                                    `<span>{{ __('t_ingame.wreckage.no_wreckage') }}</span>` :
                                     // Before repairs: show full description
                                     `<div>
                                         <div class="descriptionText">Electronic charges flicker through defective drive units, atmosphere escapes from the wrecks of destroyed ships and is released into space. Huge gaping holes can be seen in the burned out hulls and empty escape capsules whirl around the room. So many ships have fallen victim to the great battle!
@@ -1017,13 +1016,13 @@
 However, the Space Dock's engineers think that some of the remains can be salvaged, before the wreckage enters the atmosphere and ultimately burns up. The repair crews are ready.</div>
                                         <div class="rightArea">
                                             <div class="boxed">
-                                                <p>Wreckage burns up in: </p>
+                                                <p>{{ __('t_ingame.wreckage.burns_up_in') }} </p>
                                                 <p id="burnUpCountDownForRepairOverlay" data-duration="${timeRemaining}">${timeDisplay}</p>
                                             </div>
                                             <br>
                                             ${!wreckFieldData.is_repairing && !wreckFieldData.is_completed && wreckFieldData.can_repair ?
                                             `<div class="btn btn_dark fright burnUpButton">
-                                                <input type="button" class="overmark burnUpButton" value="Leave to burn up" data-loca_box_text="Leave to burn up" data-loca_decision_text="The wreckage will descend into the planet's atmosphere and burn up. Once struck, a repair will no longer be possible. Are you sure you want to burn up the wreckage?" data-loca_yes="yes" data-loca_no="No" onclick="goToSpaceDockAndBurnUp();">
+                                                <input type="button" class="overmark burnUpButton" value="{{ __('t_ingame.wreckage.leave_to_burn') }}" data-loca_box_text="{{ __('t_ingame.wreckage.leave_to_burn') }}" data-loca_decision_text="The wreckage will descend into the planet's atmosphere and burn up. Once struck, a repair will no longer be possible. Are you sure you want to burn up the wreckage?" data-loca_yes="yes" data-loca_no="No" onclick="goToSpaceDockAndBurnUp();">
                                             </div>` : ''
                             }
                                         </div>
@@ -1091,7 +1090,7 @@ However, the Space Dock's engineers think that some of the remains can be salvag
                                             <input type="button" class="middlemark" value="Repairs completed - Collect ships" onclick="location.href='{{ route('facilities.index') }}';">
                                         </div>` :
                                         // Before repairs: show repair time and start button
-                                        `<label>Repair time: </label><span id="repairTime">${wreckFieldData.remaining_repair_time > 0 ? Math.floor(wreckFieldData.remaining_repair_time / 60) + 'm ' + (wreckFieldData.remaining_repair_time % 60) + 's' : '32m 0s'}</span>
+                                        `<label>{{ __('t_ingame.wreckage.repair_time') }} </label><span id="repairTime">${wreckFieldData.remaining_repair_time > 0 ? Math.floor(wreckFieldData.remaining_repair_time / 60) + 'm ' + (wreckFieldData.remaining_repair_time % 60) + 's' : '32m 0s'}</span>
                                         <div class="btn btn_dark fright startRepairsButton">
                                             <input type="button" class="middlemark startRepairsButton" value="Start repairs" onclick="goToSpaceDockAndRepair();">
                                         </div>`
@@ -1758,13 +1757,13 @@ However, the Space Dock's engineers think that some of the remains can be salvag
                                                     <img id="planetBarSpaceObjectImg_{{ $moon->getPlanetId() }}"
                                                          src="/img/moons/small/{{ $moon->getPlanetImageType() }}.gif"
                                                          width="16" height="16"
-                                                         alt="Moon"
+                                                         alt="{{ __('t_ingame.fleet.moon') }}"
                                                          class="icon-moon">
                                                 </div>
                                             @else
                                                 <img src="/img/moons/small/{{ $moon->getPlanetImageType() }}.gif"
                                                      width="16" height="16"
-                                                     alt="Moon"
+                                                     alt="{{ __('t_ingame.fleet.moon') }}"
                                                      class="icon-moon">
                                             @endif
                                         </a>
@@ -1793,7 +1792,7 @@ However, the Space Dock's engineers think that some of the remains can be salvag
                                         @endphp
                                         @if ($isOwner && $hasSpaceDock)
                                         <a class="wreckFieldIcon tooltip js_hideTipOnMobile"
-                                           title="Wreckage"
+                                           title="{{ __('t_ingame.wreckage.wreckage_label') }}"
                                            href="javascript:void(0);" onclick="openFacilitiesSpaceDock();">
                                             <span class="icon icon_wreck_field"></span>
                                         </a>
@@ -1849,10 +1848,6 @@ However, the Space Dock's engineers think that some of the remains can be salvag
                data-overlay-title="{{ __('t_ingame.layout.server_settings') }}" data-overlay-class="serversettingsoverlay"
                data-overlay-popup-width="400" data-overlay-popup-height="510">{{ __('t_ingame.layout.server_settings') }}</a>|
             <a href="http://wiki.ogame.org/" target="_blank">{{ __('t_ingame.layout.help') }}</a>|
-            @php $localeActive = $locale ?? app()->getLocale(); @endphp
-            <a href="{{ route('language.switch', ['lang' => 'en']) }}" @if($localeActive === 'en') class="bold" @endif>EN</a>|
-            <a href="{{ route('language.switch', ['lang' => 'it']) }}" @if($localeActive === 'it') class="bold" @endif>IT</a>|
-            <a href="{{ route('language.switch', ['lang' => 'nl']) }}" @if($localeActive === 'nl') class="bold" @endif>NL</a>|
             <a href="#">{{ __('t_ingame.layout.board') }}</a>|
             <a class="overlay" href="{{ route('rules.ajax') }}"
                data-overlay-title="{{ __('t_ingame.layout.rules') }}">{{ __('t_ingame.layout.rules') }}</a>|
