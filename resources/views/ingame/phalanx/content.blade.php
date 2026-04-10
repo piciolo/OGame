@@ -40,7 +40,7 @@
                     <li class="originFleet">
                         <figure class="planetIcon planet"></figure>
                         @if (!empty($movement['origin']['planet_name']))
-                            <span class="planetName" style="font-weight: bold; color: #fff;">{{ $movement['origin']['planet_name'] }}</span>
+                            <span class="planetName">{{ $movement['origin']['planet_name'] }}</span>
                         @endif
                     </li>
                     <li class="coordsOrigin">
@@ -67,7 +67,7 @@
                     </li>
                     <li class="descSpeed">Speed</li>
                     <li class="baseSpeed">{{ $movement['fleet_speed'] }}</li>
-                    @if (!empty($movement['fleet_owner_id']) && isset($scanner_player_id) && (int)$movement['fleet_owner_id'] !== $scanner_player_id)
+                    @if (!empty($movement['fleet_owner_id']))
                         <li class="sendMail">
                             <a href="javascript:void(0)"
                                class="sendMail js_openChat tooltip"
