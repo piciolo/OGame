@@ -323,15 +323,42 @@
                         @endforeach
                     </div>
                 </div>
-                <style>
-                    .lang-dropdown-wrapper:hover .lang-dropdown { display: block !important; }
-                    .lang-dropdown a:hover { background: #1a2230; color: #fff !important; }
-                    .lang-flag { display:inline-block;flex-shrink:0;width:16px;min-width:16px;height:11px;margin-right:6px;border-radius:1px;vertical-align:middle;background-size:cover;background-repeat:no-repeat;background-position:center;box-shadow:0 0 1px rgba(0,0,0,0.4); }
-                    .lang-flag-en { background-image: url('/img/flags/en.svg'); }
-                    .lang-flag-it { background-image: url('/img/flags/it.svg'); }
-                    .lang-flag-nl { background-image: url('/img/flags/nl.svg'); }
-                    .lang-flag-de { background-image: url('/img/flags/de.svg'); }
-                </style>
+           <style>
+    .lang-dropdown-wrapper:hover .lang-dropdown { display: block !important; }
+    .lang-dropdown a:hover { background: #1a2230; color: #fff !important; }
+    
+    .lang-flag { 
+        display: inline-block;
+        flex-shrink: 0;
+        box-sizing: border-box; /* NUOVO: Impedisce al browser di aggiungere pixel invisibili */
+        width: 16px;
+        min-width: 16px;
+        height: 11px;
+        margin-right: 6px;
+        border-radius: 1px;
+        vertical-align: middle;
+        background-size: 100% 100%; /* SOSTITUITO "cover": Forza l'immagine esattamente a 16x11 pixel */
+        background-repeat: no-repeat;
+        background-position: center;
+        box-shadow: 0 0 1px rgba(0,0,0,0.4); 
+    }
+    
+    /* EN rimane immagine */
+    .lang-flag-en { 
+        background-image: url('/img/flags/en.svg'); 
+    }
+    
+    /* IT, NL e DE restano gradienti matematicamente perfetti */
+    .lang-flag-it { 
+        background-image: linear-gradient(to right, #009246 33.33%, #ffffff 33.33%, #ffffff 66.66%, #CE2B37 66.66%); 
+    }
+    .lang-flag-nl { 
+        background-image: linear-gradient(to bottom, #AE1C28 33.33%, #ffffff 33.33%, #ffffff 66.66%, #21468B 66.66%); 
+    }
+    .lang-flag-de { 
+        background-image: linear-gradient(to bottom, #000000 33.33%, #DD0000 33.33%, #DD0000 66.66%, #FFCE00 66.66%); 
+    }
+</style>
                 <br/>
                 <div class="align_center">
                     <a href="#" target="_blank">

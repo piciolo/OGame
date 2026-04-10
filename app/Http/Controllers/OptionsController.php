@@ -5,7 +5,9 @@ namespace OGame\Http\Controllers;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\View\View;
+use OGame\Http\Middleware\Locale;
 use OGame\Services\PlayerService;
 
 class OptionsController extends OGameController
@@ -31,6 +33,8 @@ class OptionsController extends OGameController
             'canUpdateUsername' => $canUpdateUsername,
             'player' => $player,
             'espionage_probes_amount' => $player->getEspionageProbesAmount(),
+            'current_language' => $player->getUser()->lang ?: app()->getLocale(),
+            'supported_languages' => Locale::SUPPORTED_LOCALES,
         ]);
     }
 
@@ -139,6 +143,44 @@ class OptionsController extends OGameController
     }
 
     /**
+     * Process language change request.
+     *
+     * @param Request $request
+     * @param PlayerService $player
+     * @return array<string,string>|null
+     */
+    public function processChangeLanguage(Request $request, PlayerService $player): array|null
+    {
+        if (!$request->has('language')) {
+            return null;
+        }
+
+        $requested = (string) $request->input('language');
+
+        // Validate against supported locales; ignore unsupported values silently.
+        if (!in_array($requested, Locale::SUPPORTED_LOCALES, true)) {
+            return null;
+        }
+
+        $user = $player->getUser();
+
+        // Skip work if the value hasn't actually changed.
+        if ($user->lang === $requested) {
+            return null;
+        }
+
+        $user->lang = $requested;
+        $user->save();
+
+        // Apply immediately so the redirect response is rendered in the new locale.
+        App::setLocale($requested);
+        session()->put('locale', $requested);
+        session()->save();
+
+        return array('success' => __('t_ingame.options.msg_language_changed'));
+    }
+
+    /**
      * Save handler for index() form.
      *
      * @param Request $request
@@ -148,10 +190,14 @@ class OptionsController extends OGameController
     public function save(Request $request, PlayerService $player): RedirectResponse
     {
         // Define change handlers.
+        // NOTE: processChangeLanguage MUST run first. processEspionageProbesAmount
+        // returns success on every submit (the field is present in every form post),
+        // so anything placed after it would never be reached.
         $change_handlers = [
+            'processChangeLanguage',
             'processChangeUsername',
             'processVacationMode',
-            'processEspionageProbesAmount'
+            'processEspionageProbesAmount',
         ];
 
         // Loop through change handlers, execute them and if it triggers

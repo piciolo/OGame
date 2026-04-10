@@ -1055,6 +1055,12 @@ return [
 
         // Tab 3 — Visualizzazione
         'section_general_display'               => 'Generale',
+        'language'                              => 'Lingua:',
+        'language_en'                           => 'English',
+        'language_it'                           => 'Italiano',
+        'language_nl'                           => 'Nederlands',
+        'language_de'                           => 'Deutsch',
+        'msg_language_changed'                  => 'Preferenza lingua salvata.',
         'show_mobile_version'                   => 'Mostra versione mobile:',
         'show_alt_dropdowns'                    => 'Mostra menu a tendina alternativi:',
         'activate_autofocus'                    => 'Attiva autofocus nella classifica:',

@@ -1081,6 +1081,12 @@ return [
 
         // Tab 3 – Display > General
         'section_general_display'                   => 'Allgemein',
+        'language'                                  => 'Sprache:',
+        'language_en'                               => 'English',
+        'language_it'                               => 'Italiano',
+        'language_nl'                               => 'Nederlands',
+        'language_de'                               => 'Deutsch',
+        'msg_language_changed'                      => 'Spracheinstellung gespeichert.',
         'show_mobile_version'                       => 'Mobile Version anzeigen:',
         'show_alt_dropdowns'                        => 'Alternative Dropdowns anzeigen:',
         'activate_autofocus'                        => 'Autofokus im Highscore aktivieren:',

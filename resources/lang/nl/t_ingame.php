@@ -1055,6 +1055,12 @@ return [
 
         // Tab 3 — Weergave
         'section_general_display'               => 'Algemeen',
+        'language'                              => 'Taal:',
+        'language_en'                           => 'English',
+        'language_it'                           => 'Italiano',
+        'language_nl'                           => 'Nederlands',
+        'language_de'                           => 'Deutsch',
+        'msg_language_changed'                  => 'Taalvoorkeur opgeslagen.',
         'show_mobile_version'                   => 'Mobiele versie weergeven:',
         'show_alt_dropdowns'                    => 'Alternatieve dropdowns weergeven:',
         'activate_autofocus'                    => 'Autofocus activeren in de ranglijsten:',

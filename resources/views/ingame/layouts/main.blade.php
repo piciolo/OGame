@@ -132,16 +132,8 @@
                 <ul>
                     <li id="playerName">
                         {{ __('t_ingame.layout.player') }}:
-                        @php $localeActive = $locale ?? app()->getLocale(); @endphp
-                        <div class="lang-dropdown-wrapper">
-                            <selected-language-icon class="lang-flag lang-flag-{{ $localeActive }}" title="{{ strtoupper($localeActive) }}"></selected-language-icon>
-                            <div class="lang-dropdown">
-                                @foreach(['en', 'it', 'nl', 'de'] as $lng)
-                                    <a href="{{ route('language.switch', ['lang' => $lng]) }}" class="lang-dropdown-item @if($localeActive === $lng) lang-active @endif"><span class="lang-flag lang-flag-{{ $lng }}"></span><span>{{ strtoupper($lng) }}</span></a>
-                                @endforeach
-                            </div>
-                        </div>
-
+                        @php $playerLocale = $currentPlayer->getUser()->lang ?: app()->getLocale(); @endphp
+                        <span class="lang-flag lang-flag-{{ $playerLocale }}" title="{{ strtoupper($playerLocale) }}"></span>
                         <span class="textBeefy">
                                 <a href="{{ route('changenick.overlay') }}"
                                    class="overlay textBeefy"

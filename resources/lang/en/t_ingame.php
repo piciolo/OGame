@@ -1081,6 +1081,12 @@ return [
 
         // Tab 3 – Display > General
         'section_general_display'                   => 'General',
+        'language'                                  => 'Language:',
+        'language_en'                               => 'English',
+        'language_it'                               => 'Italiano',
+        'language_nl'                               => 'Nederlands',
+        'language_de'                               => 'Deutsch',
+        'msg_language_changed'                      => 'Language preference saved.',
         'show_mobile_version'                       => 'Show mobile version:',
         'show_alt_dropdowns'                        => 'Show alternative drop downs:',
         'activate_autofocus'                        => 'Activate autofocus in the highscores:',
