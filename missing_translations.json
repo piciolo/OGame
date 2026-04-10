@@ -1,0 +1,1086 @@
+{
+  "generated": "2026-04-08T15:53:31.861Z",
+  "total_missing": 180,
+  "texts": [
+    {
+      "text": "' + locaSearch.applyForAlliance + '",
+      "file": "resources/views/ingame/search/overlay.blade.php",
+      "line": 199,
+      "type": "attribute"
+    },
+    {
+      "text": "@lang('Attack')",
+      "file": "resources/views/ingame/fleetevents/eventrow-union.blade.php",
+      "line": 17,
+      "type": "attribute"
+    },
+    {
+      "text": "@lang('Espionage')",
+      "file": "resources/views/ingame/fleetevents/eventrow-union.blade.php",
+      "line": 203,
+      "type": "attribute"
+    },
+    {
+      "text": "@lang('Fleet union')",
+      "file": "resources/views/ingame/fleet/partials/movement-row.blade.php",
+      "line": 181,
+      "type": "attribute"
+    },
+    {
+      "text": "@lang('Recall'):| &lt;br&gt;",
+      "file": "resources/views/ingame/fleetevents/eventrow-union.blade.php",
+      "line": 196,
+      "type": "attribute"
+    },
+    {
+      "text": "+2% mine production<br>+2% energy production",
+      "file": "resources/views/ingame/resources/settings.blade.php",
+      "line": 416,
+      "type": "attribute"
+    },
+    {
+      "text": "<br/><input value='cr-en-255-5b67379a1bc25465e7e7692d01afc560e85eda30' readonly onclick='ogame.messages.copyToClipboard(this)' style='width:360px'></input>",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 31,
+      "type": "attribute"
+    },
+    {
+      "text": "<br/><input value='sr-en-256-265b38b75e565e12526a560bf4f5c83bfce4c5c5' readonly onclick='select()' style='width:360px'></input>",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 14,
+      "type": "attribute"
+    },
+    {
+      "text": "|@if($classBonuses)@else @endif",
+      "file": "resources/views/ingame/layouts/main.blade.php",
+      "line": 303,
+      "type": "attribute"
+    },
+    {
+      "text": "|<table class=&quot;resourceTooltip&quot;><tr><th>:</th><td><span class=&quot;&quot;></span></td></tr></table>",
+      "file": "resources/views/ingame/layouts/main.blade.php",
+      "line": 267,
+      "type": "attribute"
+    },
+    {
+      "text": "|<table class=&quot;resourceTooltip&quot;><tr><th>:</th><td><span class=&quot;&quot;></span></td></tr><tr><th>:</th><td><span class=&quot;undermark&quot;>+</span></td></tr><tr><th></th><td><span class=&quot;overmark&quot;>-</span></td></tr></table>",
+      "file": "resources/views/ingame/layouts/main.blade.php",
+      "line": 235,
+      "type": "attribute"
+    },
+    {
+      "text": "|<table class=&quot;resourceTooltip&quot;><tr><th>:</th><td><span class=&quot;&quot;></span></td></tr><tr><th></th><td><span class=&quot;&quot;></span></td></tr><tr><th>:</th><td><span class=&quot;undermark&quot;>+</span></td></tr><tr><th>:</th><td><span class=&quot;middlemark&quot;>0</span></td></tr></table>",
+      "file": "resources/views/ingame/layouts/main.blade.php",
+      "line": 196,
+      "type": "attribute"
+    },
+    {
+      "text": "${collectButtonTooltip}",
+      "file": "resources/views/ingame/facilities/index.blade.php",
+      "line": 767,
+      "type": "attribute"
+    },
+    {
+      "text": "${shipName}",
+      "file": "resources/views/ingame/layouts/main.blade.php",
+      "line": 981,
+      "type": "attribute"
+    },
+    {
+      "text": "${shipName}|${currentRepairedCount}/${totalQuantity}",
+      "file": "resources/views/ingame/layouts/main.blade.php",
+      "line": 981,
+      "type": "attribute"
+    },
+    {
+      "text": "${shipName}|${repairedCount} / ${ship.quantity}",
+      "file": "resources/views/ingame/facilities/index.blade.php",
+      "line": 461,
+      "type": "attribute"
+    },
+    {
+      "text": "Academy of Sciences",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 205,
+      "type": "html_text"
+    },
+    {
+      "text": "Available:",
+      "file": "resources/views/ingame/layouts/main.blade.php",
+      "line": 246,
+      "type": "html_text"
+    },
+    {
+      "text": "Awards not yet reached",
+      "file": "resources/views/ingame/rewards/index.blade.php",
+      "line": 38,
+      "type": "html_text"
+    },
+    {
+      "text": "Biosphere Farm",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 191,
+      "type": "html_text"
+    },
+    {
+      "text": "Biotech Lab",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 241,
+      "type": "html_text"
+    },
+    {
+      "text": "Bold [Ctrl+B]",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "attribute"
+    },
+    {
+      "text": "Broadcast by",
+      "file": "resources/views/ingame/messages/tabs/communication/tab.blade.php",
+      "line": 607,
+      "type": "html_text"
+    },
+    {
+      "text": "Bronze Crystal Booster",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Bronze Deuterium Booster",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Bronze Expedition Slots",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Bronze Fleet Slots",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Bronze M.O.O.N.S.",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Bronze Metal Booster",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Bronze Moon Fields",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Bronze Planet Fields",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Choose Your Class",
+      "file": "resources/views/ingame/characterclass/index.blade.php",
+      "line": 17,
+      "type": "html_text"
+    },
+    {
+      "text": "Collect",
+      "file": "resources/views/ingame/facilities/index.blade.php",
+      "line": 767,
+      "type": "html_text"
+    },
+    {
+      "text": "Collected awards",
+      "file": "resources/views/ingame/rewards/index.blade.php",
+      "line": 187,
+      "type": "html_text"
+    },
+    {
+      "text": "Collector",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Comments",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 1131,
+      "type": "html_text"
+    },
+    {
+      "text": "Complete Resource Package",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Conquer outer space",
+      "file": "resources/views/ingame/rewards/index.blade.php",
+      "line": 150,
+      "type": "html_text"
+    },
+    {
+      "text": "Consumed in",
+      "file": "resources/views/ingame/layouts/main.blade.php",
+      "line": 257,
+      "type": "html_text"
+    },
+    {
+      "text": "Crystal Package",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "delete permanently",
+      "file": "resources/views/ingame/messages/tabs/fleets/tab.blade.php",
+      "line": 89,
+      "type": "html_text"
+    },
+    {
+      "text": "Delete template/input",
+      "file": "resources/views/ingame/fleet/index.blade.php",
+      "line": 768,
+      "type": "attribute"
+    },
+    {
+      "text": "DETROID Bronze",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "DETROID Gold",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "DETROID Platinum",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "DETROID Silver",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Deuterium Package",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Developer shortcuts",
+      "file": "resources/views/ingame/layouts/admin-menu.blade.php",
+      "line": 83,
+      "type": "html_text"
+    },
+    {
+      "text": "Discoverer",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Email [Ctrl+E]",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "attribute"
+    },
+    {
+      "text": "Energy Booster Bronze",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Energy Booster Gold",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Energy Booster Platinum",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Energy Booster Silver",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Events",
+      "file": "resources/views/ingame/resources/settings.blade.php",
+      "line": 566,
+      "type": "html_text"
+    },
+    {
+      "text": "Expansion of the empire",
+      "file": "resources/views/ingame/rewards/index.blade.php",
+      "line": 171,
+      "type": "html_text"
+    },
+    {
+      "text": "Exploration Flight Duration Bonus",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 1073,
+      "type": "html_text"
+    },
+    {
+      "text": "Facebook",
+      "file": "resources/views/outgame/layouts/main.blade.php",
+      "line": 326,
+      "type": "html_text"
+    },
+    {
+      "text": "Fleet details:",
+      "file": "resources/views/ingame/phalanx/content.blade.php",
+      "line": 14,
+      "type": "html_text"
+    },
+    {
+      "text": "Fleets: 0",
+      "file": "resources/views/ingame/messages/templates/espionage_report.blade.php",
+      "line": 51,
+      "type": "attribute"
+    },
+    {
+      "text": "Food",
+      "file": "resources/views/ingame/fleet/index.blade.php",
+      "line": 1368,
+      "type": "attribute"
+    },
+    {
+      "text": "Food Silo",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 219,
+      "type": "html_text"
+    },
+    {
+      "text": "Food|<table class=&quot;resourceTooltip&quot;><tr><th>Available:</th><td><span class=&quot;overmark&quot;>0</span></td></tr><tr><th>Storage capacity</th><td><span class=&quot;overmark&quot;>0</span></td></tr><tr><th>Overproduction</th><td><span class=&quot;undermark&quot;>0</span></td></tr><tr><th>Consumption</th><td><span class=&quot;overmark&quot;>0</span></td></tr><tr><th>Consumed in</th><td><span class=&quot;overmark timeTillFoodRunsOut&quot;>~</span></td></tr></table>",
+      "file": "resources/views/ingame/layouts/main.blade.php",
+      "line": 257,
+      "type": "attribute"
+    },
+    {
+      "text": "Fuel can only be reduced by a maximum of 90% of the base value. Even with server settings, your ships' fuel consumption cannot be reduced below 10%.",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 773,
+      "type": "attribute"
+    },
+    {
+      "text": "Fuel consumption %",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 772,
+      "type": "attribute"
+    },
+    {
+      "text": "Fusion-Powered Production",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 226,
+      "type": "html_text"
+    },
+    {
+      "text": "Geothermal Power Plants",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 650,
+      "type": "html_text"
+    },
+    {
+      "text": "Global Lifeform Tech Bonus",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 482,
+      "type": "html_text"
+    },
+    {
+      "text": "Gold Crystal Booster",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Gold Deuterium Booster",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Gold Expedition Slots",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Gold Fleet Slots",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Gold M.O.O.N.S.",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Gold Metal Booster",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Gold Moon Fields",
+      "file": "resources/views/ingame/shared/buildings/last-building-slot-warning.blade.php",
+      "line": 7,
+      "type": "html_text"
+    },
+    {
+      "text": "Gold Planet Fields",
+      "file": "resources/views/ingame/shared/buildings/last-building-slot-warning.blade.php",
+      "line": 9,
+      "type": "html_text"
+    },
+    {
+      "text": "Growth rate",
+      "file": "resources/views/ingame/layouts/main.blade.php",
+      "line": 247,
+      "type": "html_text"
+    },
+    {
+      "text": "High Energy Pump Systems",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 616,
+      "type": "html_text"
+    },
+    {
+      "text": "High Energy Smelting",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 212,
+      "type": "html_text"
+    },
+    {
+      "text": "High-Performance Extractors",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 539,
+      "type": "html_text"
+    },
+    {
+      "text": "Highscore ranking",
+      "file": "resources/views/ingame/messages/tabs/communication/tab.blade.php",
+      "line": 608,
+      "type": "html_text"
+    },
+    {
+      "text": "Hire Commander",
+      "file": "resources/views/ingame/ajax/object.blade.php",
+      "line": 270,
+      "type": "html_text"
+    },
+    {
+      "text": "Homeworld",
+      "file": "resources/views/ingame/messages/tabs/communication/tab.blade.php",
+      "line": 608,
+      "type": "html_text"
+    },
+    {
+      "text": "Hungry",
+      "file": "resources/views/ingame/layouts/main.blade.php",
+      "line": 247,
+      "type": "html_text"
+    },
+    {
+      "text": "Increasing the experience level of your lifeforms gives you a 0.1% bonus per level to all lifeform technologies on planets where these lifeforms are active. The bonus is only available while these lifeforms are active on the planet. All lifeform technologies on the planet benefit from this bonus, not just those of the active lifeform. You can increase your lifeform experience level by sending people on discovery missions using the Humans' Intergalactic Envoys tech. Once you've discovered all lifeforms, you'll receive a random amount of experience each time you would have discovered a new lifeform. The maximum experience level for this bonus is level 100 (10% bonus).",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 280,
+      "type": "attribute"
+    },
+    {
+      "text": "Intergalactic Envoys",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 1109,
+      "type": "html_text"
+    },
+    {
+      "text": "Italic [Ctrl+I]",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "attribute"
+    },
+    {
+      "text": "KRAKEN Bronze",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "KRAKEN Bronze (Lifeforms)",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "KRAKEN Gold",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "KRAKEN Gold (Lifeforms)",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "KRAKEN Platinum",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "KRAKEN Platinum (Lifeforms)",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "KRAKEN Silver",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "KRAKEN Silver (Lifeforms)",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Leave to burn up",
+      "file": "resources/views/ingame/layouts/main.blade.php",
+      "line": 1023,
+      "type": "js_inline"
+    },
+    {
+      "text": "Lifeform Buildings",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 177,
+      "type": "html_text"
+    },
+    {
+      "text": "Lifeform experience level bonus",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 279,
+      "type": "html_text"
+    },
+    {
+      "text": "Lifeform Research",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 271,
+      "type": "html_text"
+    },
+    {
+      "text": "Loot: 352,927<br/><a href=&quot;#TODO_page=ingame&amp;component=fleetdispatch&amp;galaxy=1&amp;system=4&amp;position=10&amp;type=1&amp;mission=1&amp;am202=51&quot;>S.Cargo: 51</a><br/><a href=&quot;#TODO_page=ingame&amp;component=fleetdispatch&amp;galaxy=1&amp;system=4&amp;position=10&amp;type=1&amp;mission=1&amp;am203=11&quot;>L.Cargo: 11</a><br/>",
+      "file": "resources/views/ingame/messages/templates/espionage_report.blade.php",
+      "line": 40,
+      "type": "attribute"
+    },
+    {
+      "text": "Metal Package",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Misc.",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 1060,
+      "type": "html_text"
+    },
+    {
+      "text": "N/A",
+      "file": "resources/views/ingame/buddies/partials/buddy-list.blade.php",
+      "line": 61,
+      "type": "html_text"
+    },
+    {
+      "text": "Network error burning wreck field",
+      "file": "resources/views/ingame/facilities/index.blade.php",
+      "line": 385,
+      "type": "js_inline"
+    },
+    {
+      "text": "Network error collecting ships",
+      "file": "resources/views/ingame/facilities/index.blade.php",
+      "line": 353,
+      "type": "js_inline"
+    },
+    {
+      "text": "Network error completing repairs",
+      "file": "resources/views/ingame/facilities/index.blade.php",
+      "line": 303,
+      "type": "js_inline"
+    },
+    {
+      "text": "Network error starting repairs",
+      "file": "resources/views/ingame/facilities/index.blade.php",
+      "line": 272,
+      "type": "js_inline"
+    },
+    {
+      "text": "New awards",
+      "file": "resources/views/ingame/rewards/index.blade.php",
+      "line": 36,
+      "type": "html_text"
+    },
+    {
+      "text": "NEWTRON Bronze",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "NEWTRON Bronze (Lifeforms)",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "NEWTRON Gold",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "NEWTRON Gold (Lifeforms)",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "NEWTRON Platinum",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "NEWTRON Platinum (Lifeforms)",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "NEWTRON Silver",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "NEWTRON Silver (Lifeforms)",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "No fleet movements detected at this location.",
+      "file": "resources/views/ingame/phalanx/content.blade.php",
+      "line": 8,
+      "type": "html_text"
+    },
+    {
+      "text": "No ship data available",
+      "file": "resources/views/ingame/facilities/index.blade.php",
+      "line": 472,
+      "type": "html_text"
+    },
+    {
+      "text": "Not fulfilled",
+      "file": "resources/views/ingame/rewards/index.blade.php",
+      "line": 53,
+      "type": "html_text"
+    },
+    {
+      "text": "only rank: Founder",
+      "file": "resources/views/ingame/messages/tabs/communication/tab.blade.php",
+      "line": 140,
+      "type": "html_text"
+    },
+    {
+      "text": "only rank: Newcomer",
+      "file": "resources/views/ingame/messages/tabs/communication/tab.blade.php",
+      "line": 141,
+      "type": "html_text"
+    },
+    {
+      "text": "Overproduction",
+      "file": "resources/views/ingame/layouts/main.blade.php",
+      "line": 257,
+      "type": "html_text"
+    },
+    {
+      "text": "Phalanx refresh failed:",
+      "file": "resources/views/ingame/galaxy/index.blade.php",
+      "line": 715,
+      "type": "js_inline"
+    },
+    {
+      "text": "Phalanx scan failed:",
+      "file": "resources/views/ingame/galaxy/index.blade.php",
+      "line": 589,
+      "type": "js_inline"
+    },
+    {
+      "text": "PHP",
+      "file": "resources/views/ingame/admin/serversettings.blade.php",
+      "line": 196,
+      "type": "html_text"
+    },
+    {
+      "text": "Platinum Crystal Booster",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Platinum Deuterium Booster",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Platinum Metal Booster",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Platinum Moon Fields",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Platinum Planet Fields",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Player: President Hati2|<table class=&quot;playerTooltip&quot;><tr><th>Homeworld</th><td><a target=&quot;_parent&quot; href=&quot;#TODO_?page=ingame&amp;component=galaxy&amp;galaxy=7&amp;system=158&quot;>[7:158:10]</a></td></tr><tr><th>Highscore ranking</th><td><a target=&quot;_parent&quot; href=&quot;#TODO_page=highscore&amp;searchRelId=113970&amp;category=1&quot;>1147</a></td></tr></table>",
+      "file": "resources/views/ingame/messages/tabs/communication/tab.blade.php",
+      "line": 608,
+      "type": "attribute"
+    },
+    {
+      "text": "Player: President Hati2|<table class=&quot;playerTooltip&quot;><tr><th>Homeworld</th><td><a target=&quot;_parent&quot; href=&quot;#TODO_game/index.php?page=ingame&amp;component=galaxy&amp;galaxy=7&amp;system=158&quot;>[7:158:10]</a></td></tr><tr><th>Highscore ranking</th><td><a target=&quot;_parent&quot; href=&quot;#TODO_page=highscore&amp;searchRelId=113970&amp;category=1&quot;>1147</a></td></tr></table>",
+      "file": "resources/views/ingame/messages/tabs/communication/tab.blade.php",
+      "line": 678,
+      "type": "attribute"
+    },
+    {
+      "text": "Player: President Hati2|<table class=&quot;playerTooltip&quot;><tr><th>Homeworld</th><td><a target=&quot;_parent&quot; href=&quot;#TODO_index.php?page=ingame&amp;component=galaxy&amp;galaxy=7&amp;system=158&quot;>[7:158:10]</a></td></tr><tr><th>Highscore ranking</th><td><a target=&quot;_parent&quot; href=&quot;#TODO_?page=highscore&amp;searchRelId=113970&amp;category=1&quot;>1147</a></td></tr></table>",
+      "file": "resources/views/ingame/messages/tabs/communication/tab.blade.php",
+      "line": 655,
+      "type": "attribute"
+    },
+    {
+      "text": "Player: President Hati2|<table class=&quot;playerTooltip&quot;><tr><th>Homeworld</th><td><a target=&quot;_parent&quot; href=&quot;#TODO_ingame&amp;component=galaxy&amp;galaxy=7&amp;system=158&quot;>[7:158:10]</a></td></tr><tr><th>Highscore ranking</th><td><a target=&quot;_parent&quot; href=&quot;#TODO_game/index.php?page=highscore&amp;searchRelId=113970&amp;category=1&quot;>1147</a></td></tr></table>",
+      "file": "resources/views/ingame/messages/tabs/communication/tab.blade.php",
+      "line": 643,
+      "type": "attribute"
+    },
+    {
+      "text": "Player: President Hati2|<table class=&quot;playerTooltip&quot;><tr><th>Homeworld</th><td><a target=&quot;_parent&quot; href=&quot;#TODO_page=ingame&amp;component=galaxy&amp;galaxy=7&amp;system=158&quot;>[7:158:10]</a></td></tr><tr><th>Highscore ranking</th><td><a target=&quot;_parent&quot; href=&quot;#TODO_highscore&amp;searchRelId=113970&amp;category=1&quot;>1147</a></td></tr></table>",
+      "file": "resources/views/ingame/messages/tabs/communication/tab.blade.php",
+      "line": 620,
+      "type": "attribute"
+    },
+    {
+      "text": "Player: President Hati2|<table class=&quot;playerTooltip&quot;><tr><th>Homeworld</th><td><a target=&quot;_parent&quot; href=&quot;#TODOpage=ingame&amp;component=galaxy&amp;galaxy=7&amp;system=158&quot;>[7:158:10]</a></td></tr><tr><th>Highscore ranking</th><td><a target=&quot;_parent&quot; href=&quot;#TODO_page=highscore&amp;searchRelId=113970&amp;category=1&quot;>1147</a></td></tr></table>",
+      "file": "resources/views/ingame/messages/tabs/communication/tab.blade.php",
+      "line": 690,
+      "type": "attribute"
+    },
+    {
+      "text": "Progress through technology",
+      "file": "resources/views/ingame/rewards/index.blade.php",
+      "line": 108,
+      "type": "html_text"
+    },
+    {
+      "text": "Random",
+      "file": "resources/views/ingame/admin/developershortcuts.blade.php",
+      "line": 212,
+      "type": "attribute"
+    },
+    {
+      "text": "Repair time remaining:",
+      "file": "resources/views/ingame/facilities/index.blade.php",
+      "line": 490,
+      "type": "html_text"
+    },
+    {
+      "text": "Repair time:",
+      "file": "resources/views/ingame/layouts/main.blade.php",
+      "line": 1091,
+      "type": "html_text"
+    },
+    {
+      "text": "Research Centre",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 198,
+      "type": "html_text"
+    },
+    {
+      "text": "Researchers",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Residential Sector",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 184,
+      "type": "html_text"
+    },
+    {
+      "text": "Resource bonuses",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 502,
+      "type": "html_text"
+    },
+    {
+      "text": "Rewards will be dispatched every day and can be collected manually. From the 7th day on, no further rewards will be sent out. The first reward will be given on the 2nd day of registration.",
+      "file": "resources/views/ingame/rewards/index.blade.php",
+      "line": 32,
+      "type": "attribute"
+    },
+    {
+      "text": "Rules & Legal",
+      "file": "resources/views/ingame/layouts/admin-menu.blade.php",
+      "line": 85,
+      "type": "html_text"
+    },
+    {
+      "text": "Rust",
+      "file": "resources/views/ingame/admin/serversettings.blade.php",
+      "line": 195,
+      "type": "html_text"
+    },
+    {
+      "text": "Satisfied",
+      "file": "resources/views/ingame/layouts/main.blade.php",
+      "line": 247,
+      "type": "html_text"
+    },
+    {
+      "text": "Save template",
+      "file": "resources/views/ingame/fleet/index.blade.php",
+      "line": 773,
+      "type": "attribute"
+    },
+    {
+      "text": "Select a class to receive additional benefits. You can change your class in the class selection section in the top-right.",
+      "file": "resources/views/ingame/characterclass/index.blade.php",
+      "line": 18,
+      "type": "html_text"
+    },
+    {
+      "text": "Select for Free",
+      "file": "resources/views/ingame/characterclass/index.blade.php",
+      "line": 33,
+      "type": "html_text"
+    },
+    {
+      "text": "Ship bonuses",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 749,
+      "type": "html_text"
+    },
+    {
+      "text": "Ships being repaired:",
+      "file": "resources/views/ingame/facilities/index.blade.php",
+      "line": 407,
+      "type": "html_text"
+    },
+    {
+      "text": "Ships:",
+      "file": "resources/views/ingame/phalanx/content.blade.php",
+      "line": 17,
+      "type": "html_text"
+    },
+    {
+      "text": "Silver Crystal Booster",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Silver Deuterium Booster",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Silver Expedition Slots",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Silver Fleet Slots",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Silver M.O.O.N.S.",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Silver Metal Booster",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Silver Moon Fields",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Silver Planet Fields",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Slot",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 529,
+      "type": "html_text"
+    },
+    {
+      "text": "Strikethrough [Ctrl+S]",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "attribute"
+    },
+    {
+      "text": "Supply and demand",
+      "file": "resources/views/ingame/rewards/index.blade.php",
+      "line": 87,
+      "type": "html_text"
+    },
+    {
+      "text": "The colony is growing!",
+      "file": "resources/views/ingame/rewards/index.blade.php",
+      "line": 66,
+      "type": "html_text"
+    },
+    {
+      "text": "The wreckage will descend into the planet",
+      "file": "resources/views/ingame/layouts/main.blade.php",
+      "line": 1023,
+      "type": "js_inline"
+    },
+    {
+      "text": "There is no wreckage at this position.",
+      "file": "resources/views/ingame/layouts/main.blade.php",
+      "line": 1009,
+      "type": "html_text"
+    },
+    {
+      "text": "Time",
+      "file": "resources/views/ingame/phalanx/content.blade.php",
+      "line": 33,
+      "type": "html_text"
+    },
+    {
+      "text": "TODO: Implementation pending",
+      "file": "resources/views/ingame/merchant/resource-market.blade.php",
+      "line": 94,
+      "type": "html_text"
+    },
+    {
+      "text": "Total",
+      "file": "resources/views/ingame/messages/templates/espionage_report_full.blade.php",
+      "line": 510,
+      "type": "html_text"
+    },
+    {
+      "text": "Total debris (metal+crystal+deuterium) that determines moon size",
+      "file": "resources/views/ingame/admin/developershortcuts.blade.php",
+      "line": 206,
+      "type": "attribute"
+    },
+    {
+      "text": "Traders",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Trash",
+      "file": "resources/views/ingame/messages/tabs/fleets/tab.blade.php",
+      "line": 85,
+      "type": "html_text"
+    },
+    {
+      "text": "Underline [Ctrl+U]",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "attribute"
+    },
+    {
+      "text": "Warriors",
+      "file": "resources/views/ingame/messages/templates/battle_report_full.blade.php",
+      "line": 724,
+      "type": "html_text"
+    },
+    {
+      "text": "Welcome to OGame!",
+      "file": "resources/views/ingame/layouts/main.blade.php",
+      "line": 115,
+      "type": "attribute"
+    },
+    {
+      "text": "Wreckage",
+      "file": "resources/views/ingame/layouts/main.blade.php",
+      "line": 1793,
+      "type": "attribute"
+    },
+    {
+      "text": "Wreckage burns up in:",
+      "file": "resources/views/ingame/layouts/main.blade.php",
+      "line": 1017,
+      "type": "html_text"
+    },
+    {
+      "text": "X factor in formula (10-20). Leave blank for random.",
+      "file": "resources/views/ingame/admin/developershortcuts.blade.php",
+      "line": 212,
+      "type": "attribute"
+    }
+  ]
+}
