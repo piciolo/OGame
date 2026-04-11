@@ -77,7 +77,7 @@ class BuildDictionaryCommand extends Command
         [$dictionary, $stats] = $this->buildDictionary($data['entries'], $declaredLangs);
 
         $overridesPath = $this->resolveOverridesPath();
-        $overrideStats = ['files' => 0, 'applied' => 0, 'skipped' => 0];
+        $overrideStats = ['files' => 0, 'applied' => 0, 'skipped' => 0, 'added' => 0];
         if ($overridesPath !== null) {
             $overrideStats = $this->applyOverrides($dictionary, $overridesPath);
         }
@@ -124,11 +124,11 @@ class BuildDictionaryCommand extends Command
 
     /**
      * @param  array<string, array<string, string>>  $dictionary
-     * @return array{files:int, applied:int, skipped:int}
+     * @return array{files:int, applied:int, skipped:int, added:int}
      */
     private function applyOverrides(array &$dictionary, string $path): array
     {
-        $stats = ['files' => 1, 'applied' => 0, 'skipped' => 0];
+        $stats = ['files' => 1, 'applied' => 0, 'skipped' => 0, 'added' => 0];
 
         /** @var mixed $loaded */
         $loaded = require $path;
@@ -142,24 +142,27 @@ class BuildDictionaryCommand extends Command
                 continue;
             }
             if (!isset($dictionary[$englishText])) {
-                $this->warn("Override skipped — english text not in dictionary: \"$englishText\"");
-                $stats['skipped'] += count($langMap);
-                continue;
+                // New entry — seed with the English source string itself.
+                $dictionary[$englishText] = ['en' => $this->normalizeText($englishText)];
+                $stats['added']++;
             }
             foreach ($langMap as $lang => $value) {
                 if (!is_string($lang) || !is_string($value)) {
                     $stats['skipped']++;
                     continue;
                 }
-                $dictionary[$englishText][$lang] = $value;
+                $dictionary[$englishText][$lang] = $this->normalizeText($value);
                 $stats['applied']++;
             }
         }
 
+        ksort($dictionary, SORT_NATURAL | SORT_FLAG_CASE);
+
         $this->info(sprintf(
-            'Applied %d override(s) from %s',
+            'Applied %d override(s) from %s (%d new entries added)',
             $stats['applied'],
-            basename($path)
+            basename($path),
+            $stats['added']
         ));
 
         return $stats;
@@ -273,7 +276,7 @@ class BuildDictionaryCommand extends Command
      * @param  array<string, array<string, string>>  $dictionary
      * @param  array<int, string>                    $languages
      * @param  array{total:int,variant:int,invariant:int} $stats
-     * @param  array{files:int,applied:int,skipped:int} $overrideStats
+     * @param  array{files:int,applied:int,skipped:int,added?:int} $overrideStats
      */
     private function renderPhp(
         array $dictionary,

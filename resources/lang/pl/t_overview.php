@@ -5,7 +5,7 @@
  *
  * Language : pl
  * Source   : resources/lang/en/t_overview.php
- * Built    : 2026-04-11T19:56:17+00:00
+ * Built    : 2026-04-11T21:17:54+00:00
  *
  * Untranslated leaves fall back to the english source string.
  * See _TRANSLATION_STATUS.md in this directory for the list of
@@ -14,6 +14,6 @@
 
 return [
     'overview' => 'Podgląd',
-    'temperature' => 'Temperature',
-    'position' => 'Position',
+    'temperature' => 'Temperatura',
+    'position' => 'Pozycja',
 ];
