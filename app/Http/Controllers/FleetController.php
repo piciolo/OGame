@@ -290,6 +290,9 @@ class FleetController extends OGameController
         
         $fuelMultiplier = $characterClassService->getDeuteriumConsumptionMultiplier($currentPlayer->getUser());
 
+        // Pre-multiply fuel by character class modifier so JS and PHP use the same values.
+        $fuelMultiplier = $characterClassService->getDeuteriumConsumptionMultiplier($currentPlayer->getUser());
+
         // Return ships data for this planet taking into account the current planet's properties and research levels.
         $shipsData = [];
         foreach (ObjectService::getShipObjects() as $shipObject) {

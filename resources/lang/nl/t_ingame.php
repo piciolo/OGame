@@ -512,6 +512,7 @@ return [
         'alliance_page'                => 'Alliantie informatie',
         'apply'                        => 'Solliciteer',
         'contact_support'              => 'Neem contact op met support',
+        'insufficient_range'           => 'Onvoldoende bereik (onderzoeksniveau impulsaandrijving) van uw interplanetaire raketten!',
     ],
 
     // -------------------------------------------------------------------------

@@ -533,6 +533,7 @@ return [
         'alliance_page'                => 'Alliance Information',
         'apply'                        => 'Apply',
         'contact_support'              => 'Contact Support',
+        'insufficient_range'           => 'Insufficient range (research level impulse drive) of your interplanetary missiles!',
     ],
 
     // -------------------------------------------------------------------------

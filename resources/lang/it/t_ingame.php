@@ -512,6 +512,7 @@ return [
         'alliance_page'                => 'Informazioni alleanza',
         'apply'                        => 'Candidati',
         'contact_support'              => 'Contatta il supporto',
+        'insufficient_range'           => 'Gittata insufficiente (livello ricerca propulsori a impulso) dei tuoi missili interplanetari!',
     ],
 
     // -------------------------------------------------------------------------
