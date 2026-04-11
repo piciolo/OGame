@@ -3,6 +3,7 @@
 namespace OGame\Console\Commands\I18n;
 
 use Illuminate\Console\Command;
+use JsonException;
 use RuntimeException;
 
 class BuildDictionaryCommand extends Command
@@ -57,7 +58,7 @@ class BuildDictionaryCommand extends Command
 
         try {
             $data = json_decode($raw, true, 512, JSON_THROW_ON_ERROR);
-        } catch (\JsonException $e) {
+        } catch (JsonException $e) {
             $this->error('Invalid JSON: ' . $e->getMessage());
             return self::FAILURE;
         }
@@ -106,7 +107,7 @@ class BuildDictionaryCommand extends Command
         return self::SUCCESS;
     }
 
-    private function resolveOverridesPath(): ?string
+    private function resolveOverridesPath(): string|null
     {
         if ($this->option('no-overrides')) {
             return null;
@@ -219,20 +220,23 @@ class BuildDictionaryCommand extends Command
         return str_replace("\u{0060}", "'", $value);
     }
 
-    private function resolveSourcePath(): ?string
+    private function resolveSourcePath(): string|null
     {
         $explicit = (string) ($this->option('source') ?? '');
         if ($explicit !== '') {
             return is_file($explicit) ? $explicit : null;
         }
 
+        /** @var array<int, string> $candidates */
         $candidates = [];
         foreach ([base_path('resources/i18n/source'), storage_path('i18n/source')] as $dir) {
             if (!is_dir($dir)) {
                 continue;
             }
             foreach ((array) glob($dir . DIRECTORY_SEPARATOR . 'ogame_CANONICAL_en_*.json') as $file) {
-                $candidates[] = $file;
+                if (is_string($file)) {
+                    $candidates[] = $file;
+                }
             }
         }
 
@@ -240,7 +244,7 @@ class BuildDictionaryCommand extends Command
             return null;
         }
 
-        usort($candidates, static fn ($a, $b) => filemtime($b) <=> filemtime($a));
+        usort($candidates, static fn (string $a, string $b): int => (int) filemtime($b) <=> (int) filemtime($a));
 
         return $candidates[0];
     }
@@ -276,7 +280,7 @@ class BuildDictionaryCommand extends Command
         string $sourcePath,
         array $languages,
         array $stats,
-        ?string $overridesPath,
+        string|null $overridesPath,
         array $overrideStats
     ): string {
         $overrideLine = $overridesPath !== null

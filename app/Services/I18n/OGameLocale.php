@@ -35,7 +35,7 @@ class OGameLocale
      * Returns null if the english string is not present in the dictionary
      * or if the requested language has no entry for it.
      */
-    public static function lookup(string $englishText, string $lang): ?string
+    public static function lookup(string $englishText, string $lang): string|null
     {
         $dict = self::dictionary();
         if (!isset($dict[$englishText][$lang])) {
