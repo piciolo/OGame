@@ -5,7 +5,7 @@
  *
  * Language : ru
  * Source   : resources/lang/en/t_ingame.php
- * Built    : 2026-04-11T18:34:10+00:00
+ * Built    : 2026-04-11T19:56:17+00:00
  *
  * Untranslated leaves fall back to the english source string.
  * See _TRANSLATION_STATUS.md in this directory for the list of
@@ -850,9 +850,32 @@ return [
         'section_general_display' => 'Общие',
         'language' => 'Язык:',
         'language_en' => 'English',
+        'language_de' => 'Deutsch',
         'language_it' => 'Italiano',
         'language_nl' => 'Nederlands',
-        'language_de' => 'Deutsch',
+        'language_ar' => 'Español (AR)',
+        'language_br' => 'Português (BR)',
+        'language_cz' => 'Čeština',
+        'language_dk' => 'Dansk',
+        'language_es' => 'Español',
+        'language_fi' => 'Suomi',
+        'language_fr' => 'Français',
+        'language_gr' => 'Ελληνικά',
+        'language_hr' => 'Hrvatski',
+        'language_hu' => 'Magyar',
+        'language_jp' => '日本語',
+        'language_mx' => 'Español (MX)',
+        'language_pl' => 'Polski',
+        'language_pt' => 'Português',
+        'language_ro' => 'Română',
+        'language_ru' => 'Русский',
+        'language_se' => 'Svenska',
+        'language_si' => 'Slovenščina',
+        'language_sk' => 'Slovenčina',
+        'language_tr' => 'Türkçe',
+        'language_tw' => '繁體中文',
+        'language_us' => 'English (US)',
+        'language_yu' => 'Srpski',
         'msg_language_changed' => 'Language preference saved.',
         'show_mobile_version' => 'Show mobile version:',
         'show_alt_dropdowns' => 'Show alternative drop downs:',
