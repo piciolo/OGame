@@ -171,7 +171,7 @@ class ResearchController extends OGameController
         if (!hash_equals($request->session()->token(), $request->input('_token'))) {
             return response()->json([
                 'success' => false,
-                'message' => 'Invalid token.',
+                'message' => __('t_ingame.buildings.invalid_token'),
             ]);
         }
 
@@ -209,7 +209,7 @@ class ResearchController extends OGameController
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Building construction canceled.',
+            'message' => __('t_ingame.buildings.construction_canceled'),
         ]);
     }
 
@@ -230,7 +230,7 @@ class ResearchController extends OGameController
                 return response()->json([
                     'success' => false,
                     'error' => true,
-                    'message' => 'Invalid queue item ID',
+                    'message' => __('t_ingame.buildings.invalid_queue_item'),
                     'newAjaxToken' => csrf_token(),
                 ]);
             }

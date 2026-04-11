@@ -2,7 +2,7 @@
     <div id="eventHeader">
         <a class="close_details eventToggle" href="javascript:toggleEvents();">
         </a>
-        <h2>Events</h2>
+        <h2>{{ __('t_ingame.fleet_events.events') }}</h2>
     </div>
     <table id="eventContent">
         <tbody>
@@ -25,8 +25,8 @@
         e.preventDefault();
         var fleetId = $(this).attr("data-fleet-id");
         errorBoxDecision(
-            "Recall",
-            "Recall fleet",
+            @json(__('t_ingame.fleet_events.recall_title')),
+            @json(__('t_ingame.fleet_events.recall_fleet')),
             "yes",
             "No",
             function() {

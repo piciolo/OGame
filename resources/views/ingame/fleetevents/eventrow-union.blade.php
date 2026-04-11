@@ -8,13 +8,13 @@
 >
     <td class="countDown">
         <span id="counter-eventlist-union{{ $fleet_event_row->union_id }}" class="{{ $fleet_event_row->friendly_status }} textBeefy">
-            @lang('load...')
+            {{ __('t_ingame.fleet.load_dots') }}
         </span>
     </td>
-    <td class="arrivalTime">{{ date('H:i:s', $fleet_event_row->mission_time_arrival) }} @lang('Clock')</td>
+    <td class="arrivalTime">{{ date('H:i:s', $fleet_event_row->mission_time_arrival) }} {{ __('t_ingame.fleet.clock') }}</td>
     <td class="missionFleet">
         <img src="/img/fleet/{{ $fleet_event_row->mission_type }}.gif" class="tooltip"
-             alt="" data-tooltip-title="@lang('Attack')"/>
+             alt="" data-tooltip-title="{{ __('t_ingame.fleet.mission_attack') }}"/>
     </td>
 
     <td class="originFleet">{{ $fleet_event_row->union_fleet_count }} / {{ $fleet_event_row->union_max_fleets }}</td>
@@ -26,7 +26,7 @@
     <td class="icon_movement">
         <span class="tooltip tooltipRight tooltipClose"
               title="&lt;div class=&quot;htmlTooltip&quot;&gt;
-    &lt;h1&gt;@lang('Fleet details'):&lt;/h1&gt;
+    &lt;h1&gt;{{ __('t_ingame.fleet.fleet_details') }}:&lt;/h1&gt;
     &lt;div class=&quot;splitLine&quot;&gt;&lt;/div&gt;
             &lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;fleetinfo&quot;&gt;
             @foreach ($fleet_event_row->union_player_breakdown as $playerInfo)
@@ -39,11 +39,11 @@
                     &lt;td&gt;{{ $origin['coords'] }}&lt;/td&gt;
                 &lt;/tr&gt;
                 &lt;tr&gt;
-                    &lt;td&gt;@lang('Fleets')&lt;/td&gt;
+                    &lt;td&gt;{{ __('t_ingame.fleet.fleets') }}&lt;/td&gt;
                     &lt;td&gt;{{ $origin['fleet_count'] }}&lt;/td&gt;
                 &lt;/tr&gt;
                 &lt;tr&gt;
-                    &lt;td&gt;@lang('Ships')&lt;/td&gt;
+                    &lt;td&gt;{{ __('t_ingame.fleet.ships') }}&lt;/td&gt;
                     &lt;td&gt;{{ $origin['ship_count'] }}&lt;/td&gt;
                 &lt;/tr&gt;
                 @endforeach
@@ -59,11 +59,11 @@
         @switch ($fleet_event_row->destination_planet_type)
             @case (OGame\Models\Enums\PlanetType::Planet)
                 <figure class="planetIcon planet tooltip js_hideTipOnMobile"
-                        data-tooltip-title="Planet"></figure>{{ $fleet_event_row->destination_planet_name }}
+                        data-tooltip-title="{{ __('t_ingame.fleet.planet') }}"></figure>{{ $fleet_event_row->destination_planet_name }}
                 @break
             @case (OGame\Models\Enums\PlanetType::Moon)
                 <figure class="planetIcon moon tooltip js_hideTipOnMobile"
-                        data-tooltip-title="Moon"></figure>{{ $fleet_event_row->destination_planet_name }}
+                        data-tooltip-title="{{ __('t_ingame.fleet.moon') }}"></figure>{{ $fleet_event_row->destination_planet_name }}
                 @break
             @default
                 {{ $fleet_event_row->destination_planet_name }}
@@ -105,11 +105,11 @@
             @switch ($member_fleet->origin_planet_type)
                 @case (OGame\Models\Enums\PlanetType::Planet)
                     <figure class="planetIcon planet js_hideTipOnMobile"
-                            title="Planet"></figure>{{ $member_fleet->origin_planet_name }}
+                            title="{{ __('t_ingame.fleet.planet') }}"></figure>{{ $member_fleet->origin_planet_name }}
                     @break
                 @case (OGame\Models\Enums\PlanetType::Moon)
                     <figure class="planetIcon moon js_hideTipOnMobile"
-                            title="Moon"></figure>{{ $member_fleet->origin_planet_name }}
+                            title="{{ __('t_ingame.fleet.moon') }}"></figure>{{ $member_fleet->origin_planet_name }}
                     @break
                 @default
                     {{ $member_fleet->origin_planet_name }}
@@ -128,11 +128,11 @@
         <td class="icon_movement">
             <span class="tooltip tooltipRight tooltipClose"
                   title="&lt;div class=&quot;htmlTooltip&quot;&gt;
-    &lt;h1&gt;@lang('Fleet details'):&lt;/h1&gt;
+    &lt;h1&gt;{{ __('t_ingame.fleet.fleet_details') }}:&lt;/h1&gt;
     &lt;div class=&quot;splitLine&quot;&gt;&lt;/div&gt;
             &lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; class=&quot;fleetinfo&quot;&gt;
             &lt;tr&gt;
-                &lt;th colspan=&quot;3&quot;&gt;@lang('Ships'):&lt;/th&gt;
+                &lt;th colspan=&quot;3&quot;&gt;{{ __('t_ingame.fleet.ships') }}:&lt;/th&gt;
             &lt;/tr&gt;
             @foreach ($member_fleet->fleet_units->units as $fleet_unit)
                 &lt;tr&gt;
@@ -146,20 +146,20 @@
                 &lt;/tr&gt;
 
                 &lt;tr&gt;
-                    &lt;th colspan=&quot;3&quot;&gt;@lang('Shipment'):&lt;/th&gt;
+                    &lt;th colspan=&quot;3&quot;&gt;{{ __('t_ingame.fleet.shipment') }}:&lt;/th&gt;
                 &lt;/tr&gt;
 
                 &lt;tr&gt;
-                    &lt;td colspan=&quot;2&quot;&gt;@lang('Metal'):&lt;/td&gt;
+                    &lt;td colspan=&quot;2&quot;&gt;{{ __('t_ingame.fleet.metal') }}:&lt;/td&gt;
                     &lt;td class=&quot;value&quot;&gt;{{ $member_fleet->resources->metal->getFormattedLong() }}&lt;/td&gt;
                 &lt;/tr&gt;
 
                 &lt;tr&gt;
-                    &lt;td colspan=&quot;2&quot;&gt;@lang('Crystal'):&lt;/td&gt;
+                    &lt;td colspan=&quot;2&quot;&gt;{{ __('t_ingame.fleet.crystal') }}:&lt;/td&gt;
                     &lt;td class=&quot;value&quot;&gt;{{ $member_fleet->resources->crystal->getFormattedLong() }}&lt;/td&gt;
                 &lt;/tr&gt;
                 &lt;tr&gt;
-                    &lt;td colspan=&quot;2&quot;&gt;@lang('Deuterium'):&lt;/td&gt;
+                    &lt;td colspan=&quot;2&quot;&gt;{{ __('t_ingame.fleet.deuterium') }}:&lt;/td&gt;
                     &lt;td class=&quot;value&quot;&gt;{{ $member_fleet->resources->deuterium->getFormattedLong() }}&lt;/td&gt;
                 &lt;/tr&gt;
             &lt;/table&gt;
@@ -173,11 +173,11 @@
             @switch ($member_fleet->destination_planet_type)
                 @case (OGame\Models\Enums\PlanetType::Planet)
                     <figure class="planetIcon planet tooltip js_hideTipOnMobile"
-                            data-tooltip-title="Planet"></figure>{{ $member_fleet->destination_planet_name }}
+                            data-tooltip-title="{{ __('t_ingame.fleet.planet') }}"></figure>{{ $member_fleet->destination_planet_name }}
                     @break
                 @case (OGame\Models\Enums\PlanetType::Moon)
                     <figure class="planetIcon moon tooltip js_hideTipOnMobile"
-                            data-tooltip-title="Moon"></figure>{{ $member_fleet->destination_planet_name }}
+                            data-tooltip-title="{{ __('t_ingame.fleet.moon') }}"></figure>{{ $member_fleet->destination_planet_name }}
                     @break
                 @default
                     {{ $member_fleet->destination_planet_name }}
@@ -193,14 +193,14 @@
             @if ($member_fleet->is_recallable)
                 <span class="reversal reversal_time" ref="{{ $member_fleet->id }}">
                     <a class="icon_link tooltipHTML recallFleet" data-fleet-id="{{ $member_fleet->real_mission_id ?? $member_fleet->id }}"
-                       title="@lang('Recall'):| {{ date('d.m.Y', $member_fleet->active_recall_time) }}&lt;br&gt;{{ date('H:i:s', $member_fleet->active_recall_time) }}">
+                       title="{{ __('t_ingame.fleet.recall') }}:| {{ date('d.m.Y', $member_fleet->active_recall_time) }}&lt;br&gt;{{ date('H:i:s', $member_fleet->active_recall_time) }}">
                         <img src="/img/icons/89624964d4b06356842188dba05b1b.gif" height="16" width="16"/>
                     </a>
                 </span>
             @endif
         </td>
         <td class="sendProbe">
-            <a class="tooltip js_hideTipOnMobile icon_link" href="javascript:void(0);" onclick="sendShips(6, {{ $member_fleet->destination_planet_coords->galaxy }}, {{ $member_fleet->destination_planet_coords->system }}, {{ $member_fleet->destination_planet_coords->position }}, {{ $member_fleet->destination_planet_type->value }}, {{ $espionage_probe_count }});return false;" title="@lang('Espionage')">
+            <a class="tooltip js_hideTipOnMobile icon_link" href="javascript:void(0);" onclick="sendShips(6, {{ $member_fleet->destination_planet_coords->galaxy }}, {{ $member_fleet->destination_planet_coords->system }}, {{ $member_fleet->destination_planet_coords->position }}, {{ $member_fleet->destination_planet_type->value }}, {{ $espionage_probe_count }});return false;" title="{{ __('t_ingame.fleet.mission_espionage') }}">
                 <span class="icon icon_eye"></span>
             </a>
         </td>

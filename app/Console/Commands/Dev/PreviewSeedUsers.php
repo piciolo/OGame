@@ -331,10 +331,10 @@ class PreviewSeedUsers extends Command
         $isFirstPlanet = $playerService->planets->planetCount() === 0;
 
         if ($isFirstPlanet) {
-            // Create initial planet using the built-in factory (default name: "Homeworld")
+            // Create initial planet using the built-in factory
             $planetService = $planetServiceFactory->createInitialPlanetForPlayer(
                 $playerService,
-                $planetName ?? 'Homeworld'
+                $planetName ?? __('t_ingame.overview.homeworld')
             );
         } else {
             // Create additional planet (colony) - factory will find available position

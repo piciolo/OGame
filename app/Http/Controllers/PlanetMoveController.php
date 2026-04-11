@@ -43,7 +43,7 @@ class PlanetMoveController extends OGameController
         // Validate the target position is empty.
         $existingPlanet = $planetServiceFactory->makePlanetForCoordinate($targetCoordinate, false);
         if ($existingPlanet !== null) {
-            return response()->json(['error' => 'The target position is not empty.']);
+            return response()->json(['error' => __('t_ingame.planet_move.err_position_not_empty')]);
         }
 
         $planet = $player->planets->current();
@@ -52,42 +52,42 @@ class PlanetMoveController extends OGameController
         // Validate the player doesn't already have an active move for this planet.
         $activeMove = $planetMoveService->getActiveMoveForPlanet($planet);
         if ($activeMove !== null) {
-            return response()->json(['error' => 'A planet relocation is already in progress.']);
+            return response()->json(['error' => __('t_ingame.planet_move.err_already_in_progress')]);
         }
 
         // Validate the planet is not on cooldown from a recent relocation.
         if ($planetMoveService->getCooldownSecondsForPlanet($planet) > 0) {
-            return response()->json(['error' => 'Relocation is on cooldown. Please wait before relocating again.']);
+            return response()->json(['error' => __('t_ingame.planet_move.err_on_cooldown')]);
         }
 
         // Validate the player can afford the relocation cost (check only, don't deduct yet).
         $cost = (int) $settingsService->get('planet_relocation_cost', 240000);
         if (!$darkMatterService->canAfford($user, $cost)) {
-            return response()->json(['error' => 'Insufficient Dark Matter. You need ' . number_format($cost) . ' DM.']);
+            return response()->json(['error' => __('t_ingame.planet_move.err_insufficient_dm', ['amount' => number_format($cost)])]);
         }
 
         // Validate no active building queue on the current planet.
         $buildingQueue = $buildingQueueService->retrieveQueueItems($planet);
         if ($buildingQueue->isNotEmpty()) {
-            return response()->json(['error' => 'Cannot relocate while buildings are being constructed.']);
+            return response()->json(['error' => __('t_ingame.planet_move.err_buildings_in_progress')]);
         }
 
         // Validate no active research queue on the current planet.
         $researchQueue = $researchQueueService->retrieveQueueForPlanet($planet);
         if (count($researchQueue->queue) > 0) {
-            return response()->json(['error' => 'Cannot relocate while research is in progress.']);
+            return response()->json(['error' => __('t_ingame.planet_move.err_research_in_progress')]);
         }
 
         // Validate no active unit queue on the current planet.
         $unitQueue = $unitQueueService->retrieveQueue($planet);
         if (count($unitQueue->queue) > 0) {
-            return response()->json(['error' => 'Cannot relocate while units are being built.']);
+            return response()->json(['error' => __('t_ingame.planet_move.err_units_in_progress')]);
         }
 
         // Validate no active fleet missions from/to the current planet.
         $activeMissions = $fleetMissionService->getActiveMissionsByPlanetIds([$planet->getPlanetId()]);
         if ($activeMissions->isNotEmpty()) {
-            return response()->json(['error' => 'Cannot relocate while fleet missions are active.']);
+            return response()->json(['error' => __('t_ingame.planet_move.err_fleets_active')]);
         }
 
         // Schedule the move (DM will be deducted when the countdown expires).
@@ -105,7 +105,7 @@ class PlanetMoveController extends OGameController
         $activeMove = $planetMoveService->getActiveMoveForPlanet($planet);
 
         if ($activeMove === null) {
-            return response()->json(['error' => 'No active planet relocation found.']);
+            return response()->json(['error' => __('t_ingame.planet_move.err_no_active_relocation')]);
         }
 
         $planetMoveService->cancelMove($activeMove);
