@@ -313,12 +313,15 @@
                 <a class="overlay" data-type="ajax" href="/ajax/main/contact">{{ __('t_external.footer.contact') }}</a> |
                 <a class="overlay" data-type="ajax" href="/ajax/main/rules">{{ __('t_external.footer.rules') }}</a>
                 <br/>
-                @php $outgameLocale = app()->getLocale(); @endphp
+                @php
+                    $outgameLocale = app()->getLocale();
+                    $outgameLocales = \OGame\Http\Middleware\Locale::SUPPORTED_LOCALES;
+                @endphp
                 <div class="lang-dropdown-wrapper" style="display:inline-block;position:relative;cursor:pointer;vertical-align:middle;">
                     <span class="lang-flag lang-flag-{{ $outgameLocale }}" style="vertical-align:middle;"></span>
                     <span style="color:#6f9fc8;font-size:11px;vertical-align:middle;">{{ strtoupper($outgameLocale) }} ▾</span>
-                    <div class="lang-dropdown" style="display:none;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:#0d1014;border:1px solid #3a4959;border-radius:3px;box-shadow:0 4px 12px rgba(0,0,0,0.6);z-index:9999;min-width:70px;padding:4px 0;">
-                        @foreach(['en', 'it', 'nl', 'de'] as $lng)
+                    <div class="lang-dropdown" style="display:none;position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:4px;background:#0d1014;border:1px solid #3a4959;border-radius:3px;box-shadow:0 4px 12px rgba(0,0,0,0.6);z-index:9999;min-width:90px;padding:4px 0;max-height:320px;overflow-y:auto;">
+                        @foreach($outgameLocales as $lng)
                             <a href="{{ route('language.switch', ['lang' => $lng]) }}" style="display:flex;align-items:center;padding:4px 10px;color:{{ $outgameLocale === $lng ? '#6f9fc8' : '#848484' }};text-decoration:none;font-size:11px;"><span class="lang-flag lang-flag-{{ $lng }}"></span><span>{{ strtoupper($lng) }}</span></a>
                         @endforeach
                     </div>
@@ -355,9 +358,34 @@
     .lang-flag-nl { 
         background-image: linear-gradient(to bottom, #AE1C28 33.33%, #ffffff 33.33%, #ffffff 66.66%, #21468B 66.66%); 
     }
-    .lang-flag-de { 
-        background-image: linear-gradient(to bottom, #000000 33.33%, #DD0000 33.33%, #DD0000 66.66%, #FFCE00 66.66%); 
+    .lang-flag-de {
+        background-image: linear-gradient(to bottom, #000000 33.33%, #DD0000 33.33%, #DD0000 66.66%, #FFCE00 66.66%);
     }
+
+    /* 23 OGame community flags from SVG sources */
+    .lang-flag-ar { background-image: url('/img/flags/ar.svg'); }
+    .lang-flag-br { background-image: url('/img/flags/br.svg'); }
+    .lang-flag-cz { background-image: url('/img/flags/cz.svg'); }
+    .lang-flag-dk { background-image: url('/img/flags/dk.svg'); }
+    .lang-flag-es { background-image: url('/img/flags/es.svg'); }
+    .lang-flag-fi { background-image: url('/img/flags/fi.svg'); }
+    .lang-flag-fr { background-image: url('/img/flags/fr.svg'); }
+    .lang-flag-gr { background-image: url('/img/flags/gr.svg'); }
+    .lang-flag-hr { background-image: url('/img/flags/hr.svg'); }
+    .lang-flag-hu { background-image: url('/img/flags/hu.svg'); }
+    .lang-flag-jp { background-image: url('/img/flags/jp.svg'); }
+    .lang-flag-mx { background-image: url('/img/flags/mx.svg'); }
+    .lang-flag-pl { background-image: url('/img/flags/pl.svg'); }
+    .lang-flag-pt { background-image: url('/img/flags/pt.svg'); }
+    .lang-flag-ro { background-image: url('/img/flags/ro.svg'); }
+    .lang-flag-ru { background-image: url('/img/flags/ru.svg'); }
+    .lang-flag-se { background-image: url('/img/flags/se.svg'); }
+    .lang-flag-si { background-image: url('/img/flags/si.svg'); }
+    .lang-flag-sk { background-image: url('/img/flags/sk.svg'); }
+    .lang-flag-tr { background-image: url('/img/flags/tr.svg'); }
+    .lang-flag-tw { background-image: url('/img/flags/tw.svg'); }
+    .lang-flag-us { background-image: url('/img/flags/us.svg'); }
+    .lang-flag-yu { background-image: url('/img/flags/yu.svg'); }
 </style>
                 <br/>
                 <div class="align_center">
