@@ -182,13 +182,13 @@ class BuildDictionaryCommand extends Command
             $row = [];
             foreach ($languages as $lang) {
                 if (isset($entry[$lang]) && is_string($entry[$lang])) {
-                    $row[$lang] = $entry[$lang];
+                    $row[$lang] = $this->normalizeText($entry[$lang]);
                 }
             }
 
             // Always guarantee an 'en' entry — fall back to the key itself.
             if (!isset($row['en'])) {
-                $row['en'] = (string) $englishText;
+                $row['en'] = $this->normalizeText((string) $englishText);
             }
 
             $dictionary[(string) $englishText] = $row;
@@ -204,6 +204,19 @@ class BuildDictionaryCommand extends Command
         ksort($dictionary, SORT_NATURAL | SORT_FLAG_CASE);
 
         return [$dictionary, $stats];
+    }
+
+    /**
+     * Normalize text scraped from the OGame UI before storing it in the dictionary.
+     *
+     * The upstream scrape consistently captures typographic apostrophes as
+     * literal backticks (U+0060) — French alone has 50+ occurrences. Every
+     * inspected case is unambiguously meant to be an apostrophe (l`unica,
+     * d`ensemble, video`s, απ` ό,τι), so we normalize them globally.
+     */
+    private function normalizeText(string $value): string
+    {
+        return str_replace("\u{0060}", "'", $value);
     }
 
     private function resolveSourcePath(): ?string
