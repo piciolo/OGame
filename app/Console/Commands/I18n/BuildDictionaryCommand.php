@@ -14,7 +14,9 @@ class BuildDictionaryCommand extends Command
      */
     protected $signature = 'i18n:build-dictionary
                             {--source= : Path to ogame_CANONICAL_en_*.json. Defaults to the most recent file in resources/i18n/source/ or storage/i18n/source/}
-                            {--out= : Output PHP file. Defaults to storage/i18n/master_dictionary.php}';
+                            {--out= : Output PHP file. Defaults to storage/i18n/master_dictionary.php}
+                            {--overrides= : Path to a PHP file returning manual overrides. Defaults to resources/i18n/overrides.php}
+                            {--no-overrides : Skip the overrides file even if it exists}';
 
     /**
      * The console command description.
@@ -73,10 +75,19 @@ class BuildDictionaryCommand extends Command
 
         [$dictionary, $stats] = $this->buildDictionary($data['entries'], $declaredLangs);
 
+        $overridesPath = $this->resolveOverridesPath();
+        $overrideStats = ['files' => 0, 'applied' => 0, 'skipped' => 0];
+        if ($overridesPath !== null) {
+            $overrideStats = $this->applyOverrides($dictionary, $overridesPath);
+        }
+
         $outPath = $this->resolveOutputPath();
         $this->ensureDirectory(dirname($outPath));
 
-        file_put_contents($outPath, $this->renderPhp($dictionary, $sourcePath, $declaredLangs, $stats));
+        file_put_contents(
+            $outPath,
+            $this->renderPhp($dictionary, $sourcePath, $declaredLangs, $stats, $overridesPath, $overrideStats)
+        );
 
         $this->info('Wrote dictionary: ' . $outPath);
         $this->table(
@@ -86,11 +97,71 @@ class BuildDictionaryCommand extends Command
                 ['variant entries', $stats['variant']],
                 ['invariant entries', $stats['invariant']],
                 ['languages', count($declaredLangs)],
+                ['overrides applied', $overrideStats['applied']],
+                ['overrides skipped', $overrideStats['skipped']],
                 ['file size (bytes)', filesize($outPath) ?: 0],
             ]
         );
 
         return self::SUCCESS;
+    }
+
+    private function resolveOverridesPath(): ?string
+    {
+        if ($this->option('no-overrides')) {
+            return null;
+        }
+
+        $explicit = (string) ($this->option('overrides') ?? '');
+        if ($explicit !== '') {
+            return is_file($explicit) ? $explicit : null;
+        }
+
+        $default = base_path('resources/i18n/overrides.php');
+        return is_file($default) ? $default : null;
+    }
+
+    /**
+     * @param  array<string, array<string, string>>  $dictionary
+     * @return array{files:int, applied:int, skipped:int}
+     */
+    private function applyOverrides(array &$dictionary, string $path): array
+    {
+        $stats = ['files' => 1, 'applied' => 0, 'skipped' => 0];
+
+        /** @var mixed $loaded */
+        $loaded = require $path;
+        if (!is_array($loaded)) {
+            $this->warn("Overrides file did not return an array: $path");
+            return $stats;
+        }
+
+        foreach ($loaded as $englishText => $langMap) {
+            if (!is_string($englishText) || !is_array($langMap)) {
+                continue;
+            }
+            if (!isset($dictionary[$englishText])) {
+                $this->warn("Override skipped — english text not in dictionary: \"$englishText\"");
+                $stats['skipped'] += count($langMap);
+                continue;
+            }
+            foreach ($langMap as $lang => $value) {
+                if (!is_string($lang) || !is_string($value)) {
+                    $stats['skipped']++;
+                    continue;
+                }
+                $dictionary[$englishText][$lang] = $value;
+                $stats['applied']++;
+            }
+        }
+
+        $this->info(sprintf(
+            'Applied %d override(s) from %s',
+            $stats['applied'],
+            basename($path)
+        ));
+
+        return $stats;
     }
 
     /**
@@ -185,19 +256,31 @@ class BuildDictionaryCommand extends Command
      * @param  array<string, array<string, string>>  $dictionary
      * @param  array<int, string>                    $languages
      * @param  array{total:int,variant:int,invariant:int} $stats
+     * @param  array{files:int,applied:int,skipped:int} $overrideStats
      */
-    private function renderPhp(array $dictionary, string $sourcePath, array $languages, array $stats): string
-    {
+    private function renderPhp(
+        array $dictionary,
+        string $sourcePath,
+        array $languages,
+        array $stats,
+        ?string $overridesPath,
+        array $overrideStats
+    ): string {
+        $overrideLine = $overridesPath !== null
+            ? basename($overridesPath) . ' (' . $overrideStats['applied'] . ' applied)'
+            : 'none';
+
         $header = "<?php\n\n"
             . "/**\n"
             . " * OGame master translation dictionary.\n"
             . " *\n"
             . " * AUTO-GENERATED by `php artisan i18n:build-dictionary`. DO NOT EDIT BY HAND.\n"
             . " *\n"
-            . " * Source : " . basename($sourcePath) . "\n"
-            . " * Built  : " . date('c') . "\n"
-            . " * Total  : " . $stats['total'] . " entries (" . $stats['variant'] . " variant, " . $stats['invariant'] . " invariant)\n"
-            . " * Langs  : " . implode(', ', $languages) . "\n"
+            . " * Source    : " . basename($sourcePath) . "\n"
+            . " * Built     : " . date('c') . "\n"
+            . " * Total     : " . $stats['total'] . " entries (" . $stats['variant'] . " variant, " . $stats['invariant'] . " invariant)\n"
+            . " * Langs     : " . implode(', ', $languages) . "\n"
+            . " * Overrides : " . $overrideLine . "\n"
             . " *\n"
             . " * Structure: array<englishText, array<langCode, translation>>\n"
             . " */\n\n"
