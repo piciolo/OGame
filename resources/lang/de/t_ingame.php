@@ -1812,6 +1812,8 @@ return [
         'exit_masquerade'              => 'Identitätswechsel beenden',
         'menu_dev_shortcuts'           => 'Entwickler-Schnellzugriffe',
         'menu_server_settings'         => 'Servereinstellungen',
+        'menu_fleet_timing'            => 'Flotten-Timing',
+        'menu_server_administration'   => 'Serververwaltung',
         'menu_rules_legal'             => 'Regeln & Impressum',
 
         // Page title

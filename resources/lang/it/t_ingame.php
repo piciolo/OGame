@@ -1790,6 +1790,8 @@ return [
         'exit_masquerade'              => 'Esci dall\'impersonificazione',
         'menu_dev_shortcuts'           => 'Scorciatoie sviluppatore',
         'menu_server_settings'         => 'Impostazioni server',
+        'menu_fleet_timing'            => 'Tempistica flotta',
+        'menu_server_administration'   => 'Amministrazione server',
         'menu_rules_legal'             => 'Regole e note legali',
 
         'title'                        => 'Impostazioni server',

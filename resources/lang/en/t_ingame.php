@@ -1828,6 +1828,8 @@ return [
         'exit_masquerade'              => 'Exit masquerade',
         'menu_dev_shortcuts'           => 'Developer shortcuts',
         'menu_server_settings'         => 'Server settings',
+        'menu_fleet_timing'            => 'Fleet timing',
+        'menu_server_administration'   => 'Server administration',
         'menu_rules_legal'             => 'Rules & Legal',
 
         // Page title

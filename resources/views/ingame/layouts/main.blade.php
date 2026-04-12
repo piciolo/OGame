@@ -48,6 +48,40 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <link rel="stylesheet" href="{{ mix('css/ingame.css') }}">
+    <style>
+        .lang-flag {
+            display:inline-block; width:16px; height:11px;
+            background-size:contain; background-repeat:no-repeat; background-position:center;
+            border:1px solid rgba(255,255,255,.15); border-radius:2px; margin-right:3px;
+        }
+        .lang-flag-en { background-image: url('/img/flags/en.svg'); }
+        .lang-flag-it { background-image: url('/img/flags/it.svg'); }
+        .lang-flag-nl { background-image: url('/img/flags/nl.svg'); }
+        .lang-flag-de { background-image: url('/img/flags/de.svg'); }
+        .lang-flag-ar { background-image: url('/img/flags/ar.svg'); }
+        .lang-flag-br { background-image: url('/img/flags/br.svg'); }
+        .lang-flag-cz { background-image: url('/img/flags/cz.svg'); }
+        .lang-flag-dk { background-image: url('/img/flags/dk.svg'); }
+        .lang-flag-es { background-image: url('/img/flags/es.svg'); }
+        .lang-flag-fi { background-image: url('/img/flags/fi.svg'); }
+        .lang-flag-fr { background-image: url('/img/flags/fr.svg'); }
+        .lang-flag-gr { background-image: url('/img/flags/gr.svg'); }
+        .lang-flag-hr { background-image: url('/img/flags/hr.svg'); }
+        .lang-flag-hu { background-image: url('/img/flags/hu.svg'); }
+        .lang-flag-jp { background-image: url('/img/flags/jp.svg'); }
+        .lang-flag-mx { background-image: url('/img/flags/mx.svg'); }
+        .lang-flag-pl { background-image: url('/img/flags/pl.svg'); }
+        .lang-flag-pt { background-image: url('/img/flags/pt.svg'); }
+        .lang-flag-ro { background-image: url('/img/flags/ro.svg'); }
+        .lang-flag-ru { background-image: url('/img/flags/ru.svg'); }
+        .lang-flag-se { background-image: url('/img/flags/se.svg'); }
+        .lang-flag-si { background-image: url('/img/flags/si.svg'); }
+        .lang-flag-sk { background-image: url('/img/flags/sk.svg'); }
+        .lang-flag-tr { background-image: url('/img/flags/tr.svg'); }
+        .lang-flag-tw { background-image: url('/img/flags/tw.svg'); }
+        .lang-flag-us { background-image: url('/img/flags/us.svg'); }
+        .lang-flag-yu { background-image: url('/img/flags/yu.svg'); }
+    </style>
     <script src="{{ mix('js/ingame.min.js') }}"></script>
 
     <script type="text/javascript">

@@ -1776,6 +1776,8 @@ return [
         'exit_masquerade'              => 'Verlaat impersonatie',
         'menu_dev_shortcuts'           => 'Ontwikkelaarssnelkoppelingen',
         'menu_server_settings'         => 'Serverinstellingen',
+        'menu_fleet_timing'            => 'Vloot timing',
+        'menu_server_administration'   => 'Serverbeheer',
         'menu_rules_legal'             => 'Regels & Juridisch',
 
         'title'                        => 'Serverinstellingen',
