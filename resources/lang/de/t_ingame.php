@@ -1444,6 +1444,7 @@ return [
         'officer_commander_benefit_queue' => 'Bauliste',
         'officer_commander_benefit_scanner' => 'Transportscanner',
         'officer_commander_benefit_ads' => 'Werbefreiheit',
+        'officer_commander_tooltip' => '<b>+40 Favoriten</b><p>Mit mehr Favoriten lassen sich mehr Nachrichten speichern, die dann auch geteilt werden können.</p><br/><b>Bauliste</b><p>Stelle bis zu 4 zusätzliche Gebäude- oder Forschungsaufträge auf einmal in die Schleife.</p><br/><b>Transportscanner</b><p>Es wird die Anzahl an Rohstoffen angezeigt, die Transporter auf deine Planeten bringen.</p><br/><b>Werbefreiheit</b><p>Du bekommst keine Werbung mehr für andere Spiele eingeblendet, sondern nur noch Hinweise auf Events und Aktionen, die mit OGame zu tun haben.</p><br/><b>Forschungsüberblick</b><p>Im Forschungsmenü wird die Gesamtstufe aller Forschungslabore in deinem Intergalaktischen Forschungsnetzwerk angezeigt.</p>',
 
         'officer_admiral_title' => 'Admiral',
         'officer_admiral_description' => 'Der Flottenadmiral ist ein kriegserfahrener Veteran und meisterhafter Stratege. Auch im heißesten Gefecht behält er im Gefechtsleitstand den Überblick und hält Kontakt zu den ihm unterstellten Admirälen. Ein weiser Herrscher kann sich auf seine Unterstützung im Kampf absolut verlassen und somit mehr Raumflotten gleichzeitig ins Gefecht führen. Er ermöglicht einen weiteren Expeditions- Slot und kann festlegen, welche Ressourcen nach einem Angriff zuerst eingeladen werden sollen. Außerdem verleiht er zwanzig weitere Speicherplätze für Kampfsimulationen.',
@@ -1452,23 +1453,27 @@ return [
         'officer_admiral_benefit_expeditions' => 'Max. Expeditionen +1',
         'officer_admiral_benefit_escape' => 'Verbessertes Flottenfluchtverhältnis',
         'officer_admiral_benefit_save_slots' => 'Max. Speicherplätze +20',
+        'officer_admiral_tooltip' => '<b>Max. Flottenanzahl +2</b><p>Du kannst mehr Flotten gleichzeitig verschicken.</p><br/><b>Max. Expeditionen +1</b><p>Du bekommst einen zusätzlichen Expeditions- Slot.</p><br/><b>Verbessertes Flottenfluchtverhältnis</b><p>Bis du 500.000 Punkte erreicht hast, kann deine Flotte bei einer Übermacht im Verhältnis von 3 zu 1 fliehen.</p><br/><b>Max. Speicherplätze +20</b><p>Du kannst mehr Kampfsimulationen gleichzeitig speichern.</p>',
 
         'officer_engineer_title' => 'Ingenieur',
         'officer_engineer_description' => 'Der Ingenieur ist ein Spezialist für Energiemanagement. In Friedenszeiten erhöht er den Wirkungsgrad der Energienetze der Kolonien. Im Fall eines Angriffs gewährleistet er die Versorgung energiekritischer Systeme in den planetaren Geschützen und verhindert Überlastungen, was zu einer deutlich verringerten Rate an Totalverlusten im Gefecht führt.',
         'officer_engineer_benefits'               => '+10% Energie auf allen Planeten, 50% der zerstörten Verteidigungsanlagen überleben den Kampf.',
         'officer_engineer_benefit_defence' => 'Halbiert Verluste an Verteidigungsanlagen',
         'officer_engineer_benefit_energy' => '+10% Energieproduktion',
+        'officer_engineer_tooltip' => '<b>Halbiert Verluste an Verteidigungsanlagen</b><p>Nach einem Kampf werden die Hälfte der verlorenen Verteidigungsanlagen wiederhergestellt.</p><br/><b>+10% Energieproduktion</b><p>Deine Kraftwerke und Solarsatelliten erzeugen 10% mehr Energie.</p>',
 
         'officer_geologist_title' => 'Geologe',
         'officer_geologist_description' => 'Der Geologe ist ein anerkannter Experte in Astromineralogie und -kristallographie. Mithilfe seines Teams aus Metallurgen und Chemieingenieuren unterstützt er interplanetarische Regierungen bei der Erschließung neuer Rohstoffquellen und der Optimierung ihrer Raffination.',
         'officer_geologist_benefits'              => '+10% Produktion von Metall, Kristall und Deuterium auf allen Planeten.',
         'officer_geologist_benefit_mines' => '+10% Minenertrag',
+        'officer_geologist_tooltip' => '<b>+10% Minenertrag</b><p>Deine Minen produzieren 10% mehr.</p>',
 
         'officer_technocrat_title' => 'Technokrat',
         'officer_technocrat_description' => 'Die Gilde der Technokraten sind geniale Wissenschaftler. Man findet sie immer dort, wo die Grenzen des technisch Machbaren gesprengt werden. Kein normaler Mensch knackt je den Chiffrierungscode eines Technokraten und durch ihre reine Anwesenheit inspirieren diese Genies die Forscher des Imperiums.',
         'officer_technocrat_benefits'             => '-25% Forschungszeit für alle Technologien.',
         'officer_technocrat_benefit_espionage' => '+2 Spionagestufen',
         'officer_technocrat_benefit_research' => '25% weniger Forschungszeit',
+        'officer_technocrat_tooltip' => '<b>+2 Spionagestufen</b><p>Es werden 2 Stufen zu deiner Spionageforschung hinzugefügt.</p><br/><b>25% weniger Forschungszeit</b><p>Deine Forschungen benötigen 25% weniger Zeit bis zur Fertigstellung.</p>',
 
         'officer_all_officers_title' => 'Kommandostab',
         'officer_all_officers_description' => 'Mit dem Bundle holst du dir nicht nur einen Spezialisten, sondern gleich eine ganze Crew an Bord. Du erhältst alle Effekte der einzelnen Offiziere sowie zusätzliche Vorteile, die nur das Gesamtpaket gewährt.\nWährend der strategisch versierte Commander die Übersicht behält, kümmern sich die Offiziere um Energiemanagement, Systemversorgung, Rohstofferschließung und Raffination. Weiterhin treiben sie die Forschungen voran und bringen ihre Kriegserfahrungen in Raumschlachten ein.',
@@ -1477,6 +1482,7 @@ return [
         'officer_all_officers_benefit_energy' => '+2% Energieproduktion',
         'officer_all_officers_benefit_mines' => '+2% Minenertrag',
         'officer_all_officers_benefit_espionage' => '+1 Spionagestufen',
+        'officer_all_officers_tooltip' => '<b>Max. Flottenanzahl +1</b><p>Du kannst mehr Flotten gleichzeitig verschicken.</p><br/><b>+2% Energieproduktion</b><p>Deine Kraftwerke und Solarsatelliten erzeugen 2% mehr Energie.</p><br/><b>+2% Minenertrag</b><p>Deine Minen produzieren 2% mehr.</p><br/><b>+1 Spionagestufen</b><p>Es werden 1 Stufen zu deiner Spionageforschung hinzugefügt.</p>',
     ],
 
     // -- Shop ----------------------------------------------------------------

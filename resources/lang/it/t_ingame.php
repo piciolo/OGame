@@ -1410,7 +1410,7 @@ return [
         'officer_commander_benefit_queue' => 'Coda costruzione',
         'officer_commander_benefit_scanner' => 'Informazioni sul carico',
         'officer_commander_benefit_ads' => 'Nessuna pubblicità',
-        'officer_commander_tooltip' => '<b>+40 favoriti</b><p>Coda costruzione, Informazioni sul carico, Nessuna pubblicità</p>',
+        'officer_commander_tooltip' => '<b>+40 favoriti</b><p>Più "favoriti" a disposizione permettono di salvare più messaggi, che possono anche essere condivisi.</p><br/><b>Coda costruzione</b><p>Puoi avviare contemporaneamente fino a 4 incarichi in più per edifici e ricerche.</p><br/><b>Informazioni sul carico</b><p>Viene visualizzata la quantità di risorse trasportate dai cargo verso i tuoi pianeti.</p><br/><b>Nessuna pubblicità</b><p>Non ricevi più alcun messaggio pubblicitario riguardante altri giochi, ma solo avvisi sugli eventi e offerte speciali relativi a OGame.</p>',
 
         'officer_admiral_title' => 'Ammiraglio',
         'officer_admiral_description' => 'L`ammiraglio è un veterano esperto e stratega eccellente. Anche nelle battaglie più accese mantiene una visione d`insieme nel centro di controllo della battaglia e mantiene i contatti con gli ammiragli sotto il suo comando. Un sovrano saggio può contare completamente sul suo sostegno in battaglia e può quindi guidare più flotte spaziali in battaglia contemporaneamente. Consente uno slot spedizione aggiuntivo e può determinare quali risorse dovrebbero essere invitate per prime dopo un attacco. Fornisce inoltre venti slot di memoria aggiuntivi per le simulazioni di battaglia.',
@@ -1419,27 +1419,27 @@ return [
         'officer_admiral_benefit_expeditions' => 'Numero massimo di spedizioni +1',
         'officer_admiral_benefit_escape' => 'Miglioramento del tasso di fuga delle flotte',
         'officer_admiral_benefit_save_slots' => 'Slot memoria massimi +20',
-        'officer_admiral_tooltip' => '<b>Quantità max. flotte +2</b><p>Numero massimo di spedizioni +1, Miglioramento del tasso di fuga delle flotte, Slot memoria massimi +20</p>',
+        'officer_admiral_tooltip' => '<b>Quantità max. flotte +2</b><p>Puoi inviare più flotte contemporaneamente.</p><br/><b>Numero massimo di spedizioni +1</b><p>Ricevi uno slot spedizione in più.</p><br/><b>Miglioramento del tasso di fuga delle flotte </b><p>La tua flotta può fuggire in caso di potenze 3 volte superiori alla propria fino a quando avrai raggiunto 500.000 punti</p><br/><b> Slot memoria massimi +20</b><p>Puoi salvare più simulazioni di battaglia contemporaneamente.</p>',
 
         'officer_engineer_title' => 'Ingegnere',
         'officer_engineer_description' => 'L`Ingegnere è specializzato nella gestione dell`energia e delle difese. In tempi di pace, aumenta l`energia prodotta dai pianeti, assicurando un`adeguata distribuzione di energia attraverso tutte le griglie. In caso di attacco nemico, dirotta tutta l`energia disponibile alle difese, evitando sovraccarichi e riducendo il numero di difese perse durante la battaglia.',
         'officer_engineer_benefits'               => '+10% energia prodotta su tutti i pianeti, il 50% delle difese distrutte sopravvive alla battaglia.',
         'officer_engineer_benefit_defence' => 'Dimezza le perdite delle strutture difensive',
         'officer_engineer_benefit_energy' => '+10% di produzione di energia',
-        'officer_engineer_tooltip' => '<b>Dimezza le perdite delle strutture difensive</b><p>+10% di produzione di energia</p>',
+        'officer_engineer_tooltip' => '<b>Dimezza le perdite delle strutture difensive</b><p>Dopo un combattimento, la metà delle tue strutture difensive viene ripristinata.</p><br/><b>+10% di produzione di energia</b><p>Le tue centrali e i tuoi satelliti solari producono la seguente percentuale di energia in più: 10%</p>',
 
         'officer_geologist_title' => 'Geologo',
         'officer_geologist_description' => 'Il geologo è esperto in astromineralogia e cristallografia. Egli assiste la sua squadra in metallurgia e chimica, mentre si prende anche cura della comunicazione interplanetaria ottimizzando l`utilizzo e raffinando i materiali grezzi in tutto l`impero. Utilizzando un equipaggiamento appropriato, è in grado di localizzare ottimi giacimenti, aumentando la produzione delle miniere del 10%.',
         'officer_geologist_benefits'              => '+10% produzione di metallo, cristallo e deuterio su tutti i pianeti.',
         'officer_geologist_benefit_mines' => '+10% produzione delle miniere',
-        'officer_geologist_tooltip' => '<b>+10% produzione delle miniere</b>',
+        'officer_geologist_tooltip' => '<b>+10% produzione delle miniere</b><p>Le tue miniere producono la seguente percentuale in più: 10%</p>',
 
         'officer_technocrat_title' => 'Tecnico',
         'officer_technocrat_description' => 'La cooperativa dei Tecnici è composta da scienziati geniali, e vedrete che non hanno limiti; nessun altro comprenderebbe certe tecnologie. Nessun essere umano normale cercherà mai di decifrare il codice di un tecnico, egli inoltre, ispira i ricercatori dell`impero con la sua sola presenza.',
         'officer_technocrat_benefits'             => '-25% tempo di ricerca su tutte le tecnologie.',
         'officer_technocrat_benefit_espionage' => '+2 livelli di spionaggio',
         'officer_technocrat_benefit_research' => '25% di riduzione del tempo di ricerca',
-        'officer_technocrat_tooltip' => '<b>+2 livelli di spionaggio</b><p>25% di riduzione del tempo di ricerca</p>',
+        'officer_technocrat_tooltip' => '<b>+2 livelli di spionaggio</b><p>Vengono aggiunti 2 livelli alla tua ricerca di spionaggio.</p><br/><b>25% di riduzione del tempo di ricerca</b><p>Le tue ricerche necessitano della seguente percentuale di tempo in meno per essere completate: 25%.</p>',
 
         'officer_all_officers_title' => 'Staff di comando',
         'officer_all_officers_description' => 'Con questo pacchetto non ti assicurerai solo uno specialista, bensì un intero staff di bordo. Beneficerai di tutti gli effetti dei singoli ufficiali, nonché dei vantaggi extra disponibili solo col pacchetto.\nMentre il Commander, esperto di strategia, tiene la situazione sotto controllo, gli Ufficiali si occupano della gestione dell`energia, del rifornimento del sistema, dello sfruttamento delle risorse e del raffinamento. Inoltre, essi si dedicano alla ricerca e impiegano la loro esperienza militare nelle battaglie spaziali.',
@@ -1448,7 +1448,7 @@ return [
         'officer_all_officers_benefit_energy' => '+2% Produzione di energia',
         'officer_all_officers_benefit_mines' => '+2% Prodotto delle miniere',
         'officer_all_officers_benefit_espionage' => '+1 Livelli di spionaggio',
-        'officer_all_officers_tooltip' => '<b>Quantità max. flotte +1</b><p>+2% Produzione di energia, +2% Prodotto delle miniere, +1 Livelli di spionaggio</p>',
+        'officer_all_officers_tooltip' => '<b>Quantità max. flotte +1</b><p>Puoi inviare più flotte contemporaneamente.</p><br/><b>+2% Produzione di energia</b><p>Le tue centrali e i tuoi satelliti solari producono un 2% in più di energia.</p><br/><b>+2% Prodotto delle miniere</b><p>Le tue miniere producono un 2% in più.</p><br/><b>+1 Livelli di spionaggio</b><p>Saranno aggiunti 1 livelli alla tua ricerca di spionaggio.</p>',
     ],
 
     // ── Shop ────────────────────────────────────────────────────────────────
