@@ -5,7 +5,7 @@
  *
  * Language : es (OGame: es)
  * Source   : resources/lang/en/t_galaxy.php
- * Built    : 2026-04-12T16:16:20+00:00
+ * Built    : 2026-04-12T16:28:31+00:00
  */
 
 return [

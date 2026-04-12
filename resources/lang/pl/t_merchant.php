@@ -5,7 +5,7 @@
  *
  * Language : pl (OGame: pl)
  * Source   : resources/lang/en/t_merchant.php
- * Built    : 2026-04-12T16:16:20+00:00
+ * Built    : 2026-04-12T16:28:31+00:00
  */
 
 return [

@@ -5,7 +5,7 @@
  *
  * Language : es_AR (OGame: ar)
  * Source   : resources/lang/en/t_facilities.php
- * Built    : 2026-04-12T16:16:20+00:00
+ * Built    : 2026-04-12T16:28:31+00:00
  */
 
 return [
