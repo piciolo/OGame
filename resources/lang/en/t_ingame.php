@@ -1448,7 +1448,7 @@ return [
         'officer_commander_benefit_queue' => 'Building queue',
         'officer_commander_benefit_scanner' => 'Transport scanner',
         'officer_commander_benefit_ads' => 'Advertisement free',
-        'officer_commander_tooltip'               => '<b>Manage favourites</b><p>More favourites for your empire.</p>',
+        'officer_commander_tooltip' => '<b>+40 favourites</b><p>Building queue, Transport scanner, Advertisement free</p>',
 
         'officer_admiral_title' => 'Admiral',
         'officer_admiral_description' => 'The Fleet Admiral is an experienced combat war veteran and skilled strategist. Even in the toughest of battles, he is able to keep an overview of the situation and maintain contact to his subordinate admirals. Wise rulers can depend on the Fleet Admiral’s unwavering support in combat, allowing two additional fleets to be dispatched. He also provides an additional expedition slot, and can instruct the fleet which resources should be prioritised when looting after a successful attack. On top of all that, he unlocks 20 additional save slots for combat simulations.',
@@ -1457,27 +1457,27 @@ return [
         'officer_admiral_benefit_expeditions' => 'Max. expeditions +1',
         'officer_admiral_benefit_escape' => 'Improved fleet escape rate',
         'officer_admiral_benefit_save_slots' => 'Max. save slots +20',
-        'officer_admiral_tooltip'                 => '<b>+1 fleet slot</b><p>Extra fleet slot for your fleet.</p>',
+        'officer_admiral_tooltip' => '<b>Max. fleet slots +2</b><p>Max. expeditions +1, Improved fleet escape rate, Max. save slots +20</p>',
 
         'officer_engineer_title' => 'Engineer',
         'officer_engineer_description' => 'The Engineer is a specialist on energy management and defence capabilities. In times of peace, he increases the energy of the colonies, insuring an equal distribution of power across all the grids. In case of an enemy attack, he immediately routs all the power to all defence mechanisms, avoiding an eventual overload, which results in lower defence losses during a battle.',
         'officer_engineer_benefits'               => '+10% energy produced on all planets, 50% of destroyed defenses survive the battle.',
         'officer_engineer_benefit_defence' => 'Halves losses to defence systems',
         'officer_engineer_benefit_energy' => '+10% energy production',
-        'officer_engineer_tooltip'                => '<b>+10% energy</b><p>More energy production on all your planets.</p>',
+        'officer_engineer_tooltip' => '<b>Halves losses to defence systems</b><p>+10% energy production</p>',
 
         'officer_geologist_title' => 'Geologist',
         'officer_geologist_description' => 'The Geologist is a expert in astro-mineralogy and crystalography. He assists his teams in metallurgy and chemistry as he also takes care of the interplanetary communications optimizing the use and refining of the raw material along the empire. Utilizing state of the art equipment for surveying, the Geologist can locate optimal areas for mining, increasing mining production by 10%.',
         'officer_geologist_benefits'              => '+10% production of metal, crystal and deuterium on all planets.',
         'officer_geologist_benefit_mines' => '+10% mine production',
-        'officer_geologist_tooltip'               => '<b>+10% mine production</b><p>More resources on all your planets.</p>',
+        'officer_geologist_tooltip' => '<b>+10% mine production</b>',
 
         'officer_technocrat_title' => 'Technocrat',
         'officer_technocrat_description' => 'The guild of The Technocrats is composed of genius scientists, and you will find them always over the realm where all human logic would be defied. For thousands of years, no normal humans have ever cracked the code of a Technocrat. The Technocrat inspires the researchers of the empire with his presence.',
         'officer_technocrat_benefits'             => '-25% research time on all technologies.',
         'officer_technocrat_benefit_espionage' => '+2 espionage levels',
         'officer_technocrat_benefit_research' => '25% less research time',
-        'officer_technocrat_tooltip'              => '<b>-25% research time</b><p>Faster research across the empire.</p>',
+        'officer_technocrat_tooltip' => '<b>+2 espionage levels</b><p>25% less research time</p>',
 
         'officer_all_officers_title' => 'Commanding Staff',
         'officer_all_officers_description' => 'This bundle provides you with not just one specialist, but an entire staff instead. You receive all effects of the individual officers along with additional advantages that only the full pack provides.\nWhile the strategically adept Commander keeps overwatch, the Officers take care of energy management, system supply, resource provision and refinement. Furthermore they press ahead with the research and bring their battle experience to space battles too.',
@@ -1486,7 +1486,7 @@ return [
         'officer_all_officers_benefit_energy' => '+2% energy production',
         'officer_all_officers_benefit_mines' => '+2% mine production',
         'officer_all_officers_benefit_espionage' => '+1 espionage levels',
-        'officer_all_officers_tooltip'            => '<b>All bonuses</b><p>All benefits of all officers combined.</p>',
+        'officer_all_officers_tooltip' => '<b>Max. fleet slots +1</b><p>+2% energy production, +2% mine production, +1 espionage levels</p>',
     ],
 
     // ── Shop ────────────────────────────────────────────────────────────────

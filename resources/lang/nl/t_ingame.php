@@ -1401,7 +1401,7 @@ return [
         'officer_commander_benefit_queue' => 'Bouwlijst',
         'officer_commander_benefit_scanner' => 'Transportscanner',
         'officer_commander_benefit_ads' => 'Vrij van advertenties',
-        'officer_commander_tooltip'            => '<b>Favorieten beheren</b><p>Meer favorieten voor je imperium.</p>',
+        'officer_commander_tooltip' => '<b>+40 favorieten</b><p>Bouwlijst, Transportscanner, Vrij van advertenties</p>',
 
         'officer_admiral_title' => 'Admiraal',
         'officer_admiral_description' => 'De Vloot Admiraal is een ervaren oorlogsveteraan en groot strateeg. Zelfs in het heetst van de strijd houdt hij het hoofd koel. Door zijn groot inzicht is hij in staat al zijn ondergeschikte admiralen te dirigeren. Slimme heersers rekenen op de Vloot Admiraal zijn onvoorwaardelijke ondersteuning in gevechten, wat hen toestaat om twee extra vloten uit te sturen. Ook geeft hij een extra expeditieslot en kan hij instructies geven aan de vloot welke grondstoffen voorrang moeten krijgen bij het inladen van de buit na een succesvolle aanval. En naast al deze voordelen, ontgrendeld hij ook nog eens 20 extra velden voor gevechtssimulaties.',
@@ -1409,24 +1409,24 @@ return [
         'officer_admiral_benefit_expeditions' => 'Max. expeditions +1',
         'officer_admiral_benefit_escape' => 'Verbeterde vlootontsnappingsratio',
         'officer_admiral_benefit_save_slots' => 'Max. slots +20',
-        'officer_admiral_tooltip'              => '<b>+1 vlootslot</b><p>Extra vlootslot voor je vloot.</p>',
+        'officer_admiral_tooltip' => '<b>Max. vlootsloten +2</b><p>Max. expeditions +1, Verbeterde vlootontsnappingsratio, Max. slots +20</p>',
 
         'officer_engineer_title' => 'Ingenieur',
         'officer_engineer_description' => 'Een ervaren Hoofdingenieur is een specialist op het gebied van energiebeheer. Tijdens een aanval verzekert hij de energiebehoefte van de kanonnen. Zo voorkomt hij overbelasting wat leidt tot lagere verliezen aan de verdediging.',
         'officer_engineer_benefit_defence' => 'Halveert het verlies van verdediging.',
         'officer_engineer_benefit_energy' => '+10% energieproductie',
-        'officer_engineer_tooltip'         => '<b>+10% energie</b><p>Meer energieproductie op al je planeten.</p>',
+        'officer_engineer_tooltip' => '<b>Halveert het verlies van verdediging.</b><p>+10% energieproductie</p>',
 
         'officer_geologist_title' => 'Geoloog',
         'officer_geologist_description' => 'De geoloog is een erkend expert in Astro-mineralogie en Kristallografie. Met hulp van zijn team, bestaande uit metallurgen en chemici ondersteunt hij interplanetaire regeringen bij het ontginnen van grondstoffen. De Geoloog verhoogt de productie van de mijnen met 10%.',
         'officer_geologist_benefit_mines' => '+10% mijnproductie',
-        'officer_geologist_tooltip'       => '<b>+10% mijnproductie</b><p>Meer grondstoffen op al je planeten.</p>',
+        'officer_geologist_tooltip' => '<b>+10% mijnproductie</b>',
 
         'officer_technocrat_title' => 'Technocraat',
         'officer_technocrat_description' => 'De Gilde van Technocraten bestaat uit geniale wetenschappers die men daar aantreft waar het technische mogelijke en denkbare ver overschreden wordt. Een normaal mens zal nooit in staat zijn de becijferingen van een technocraat te doorgronden, en alleen al door zijn aanwezigheid worden andere onderzoekers aangezet tot het ontwikkelen van wat men voorheen niet mogelijk achtte.',
         'officer_technocrat_benefit_espionage' => '+2 spionagelevels',
         'officer_technocrat_benefit_research' => '25% kortere onderzoekstijd',
-        'officer_technocrat_tooltip'           => '<b>-25% onderzoekstijd</b><p>Snellere onderzoeken in het hele imperium.</p>',
+        'officer_technocrat_tooltip' => '<b>+2 spionagelevels</b><p>25% kortere onderzoekstijd</p>',
 
         'officer_all_officers_title' => 'Legerleiding',
         'officer_all_officers_description' => 'Deze bundel geeft je niet slechts één specialist, maar een volledige ploeg. Je ontvangt alle effecten van de individuele officiers met extra voordelen die enkel de volledige bundel biedt.\nTerwijl de strategisch commandant het overzicht bewaart, zorgen de officieren voor energiemanagement, grondstofproductie en andere zaken. Uiteraard zorgen zij ook voor onderzoeken en brengen zij hun ervaring in gevechten in.',
@@ -1434,7 +1434,7 @@ return [
         'officer_all_officers_benefit_energy' => '+2% energieproductie',
         'officer_all_officers_benefit_mines' => '+2% mijnproductie',
         'officer_all_officers_benefit_espionage' => '+1 spionagelevel(s)',
-        'officer_all_officers_tooltip'             => '<b>Alle bonussen</b><p>Alle voordelen van alle officieren gecombineerd.</p>',
+        'officer_all_officers_tooltip' => '<b>Max. vlootsloten +1</b><p>+2% energieproductie, +2% mijnproductie, +1 spionagelevel(s)</p>',
     ],
 
     // ── Shop ────────────────────────────────────────────────────────────────
