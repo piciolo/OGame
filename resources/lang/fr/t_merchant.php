@@ -5,7 +5,7 @@
  *
  * Language : fr (OGame: fr)
  * Source   : resources/lang/en/t_merchant.php
- * Built    : 2026-04-12T13:09:51+00:00
+ * Built    : 2026-04-12T16:16:20+00:00
  */
 
 return [
@@ -103,9 +103,12 @@ return [
     'offer' => 'Offre',
     'scrap_merchant_quote' => 'Vous n’obtiendrez pas de meilleure offre dans aucune autre galaxie.',
     'bargain' => 'Marchander',
+    'objects_to_be_scrapped' => 'Objects to be scrapped',
     'ships' => 'Vaisseaux',
     'defensive_structures' => 'Installations de défense',
+    'no_defensive_structures' => 'No defensive structures available',
     'select_all' => 'Tout sélectionner',
+    'reset_choice' => 'Reset choice',
     'scrap' => 'Ferraille',
     'select_items_to_scrap' => 'Veuillez sélectionner les éléments à supprimer.',
     'scrap_confirmation' => 'Voulez-vous vraiment détruire les navires/structures défensives suivants ?',

@@ -5,7 +5,7 @@
  *
  * Language : da (OGame: dk)
  * Source   : resources/lang/en/t_messages.php
- * Built    : 2026-04-12T13:09:51+00:00
+ * Built    : 2026-04-12T16:16:20+00:00
  */
 
 return [
@@ -291,6 +291,13 @@ Missiler opfanget: :missiler_opfanget
 Missiler ramt: :missiles_hit 
 
 Forsvar ødelagt: :defenses_destroyed',
+        'missile_singular' => 'missile',
+        'missile_plural' => 'missiles',
+        'from_your_planet' => ' from your planet ',
+        'smashed_into' => ' smashed into the planet ',
+        'intercepted_label' => 'Missiles Intercepted:',
+        'defenses_hit_label' => 'Defenses Hit',
+        'none' => 'None',
     ],
     'missile_defense_report' => [
         'from' => 'Forsvarskommandoen',
@@ -302,6 +309,12 @@ Missiler opfanget: :missiler_opfanget
 Missiler ramt: :missiles_hit 
 
 Forsvar ødelagt: :defenses_destroyed',
+        'your_planet' => 'Your planet ',
+        'attacked_by_prefix' => ' has been attacked by interplanetary missiles from ',
+        'incoming_label' => 'Incoming Missiles:',
+        'intercepted_label' => 'Missiles Intercepted:',
+        'defenses_hit_label' => 'Defenses Hit',
+        'none' => 'None',
     ],
     'alliance_broadcast' => [
         'from' => ':afsendernavn',

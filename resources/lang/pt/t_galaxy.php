@@ -5,7 +5,7 @@
  *
  * Language : pt (OGame: pt)
  * Source   : resources/lang/en/t_galaxy.php
- * Built    : 2026-04-12T13:09:51+00:00
+ * Built    : 2026-04-12T16:16:20+00:00
  */
 
 return [
@@ -22,5 +22,8 @@ return [
             'name' => 'Colonizar',
             'no_ship' => 'Não é possível colonizar um planeta sem uma nave colonizadora.',
         ],
+    ],
+    'discovery' => [
+        'locked' => 'You haven\'t unlocked the research to discover new lifeforms yet.',
     ],
 ];

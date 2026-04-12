@@ -1,7 +1,7 @@
 # Translation Status: pl
 
-- Generated: 2026-04-12T13:09:51+00:00
+- Generated: 2026-04-12T16:16:20+00:00
 - OGame language code: pl
-- Total leaves: 1900
-- Translated: 1900 (100%)
-- English fallback: 0
+- Total leaves: 2424
+- Translated: 1900 (78.4%)
+- English fallback: 524

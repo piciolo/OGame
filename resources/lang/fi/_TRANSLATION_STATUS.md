@@ -1,7 +1,7 @@
 # Translation Status: fi
 
-- Generated: 2026-04-12T13:09:51+00:00
+- Generated: 2026-04-12T16:16:20+00:00
 - OGame language code: fi
-- Total leaves: 1900
-- Translated: 1824 (96%)
-- English fallback: 76
+- Total leaves: 2424
+- Translated: 1824 (75.2%)
+- English fallback: 600

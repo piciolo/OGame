@@ -1,7 +1,7 @@
 # Translation Status: da
 
-- Generated: 2026-04-12T13:09:51+00:00
+- Generated: 2026-04-12T16:16:20+00:00
 - OGame language code: dk
-- Total leaves: 1900
-- Translated: 1890 (99.5%)
-- English fallback: 10
+- Total leaves: 2424
+- Translated: 1890 (78%)
+- English fallback: 534

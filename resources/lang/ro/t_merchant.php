@@ -5,7 +5,7 @@
  *
  * Language : ro (OGame: ro)
  * Source   : resources/lang/en/t_merchant.php
- * Built    : 2026-04-12T13:09:51+00:00
+ * Built    : 2026-04-12T16:16:20+00:00
  */
 
 return [
@@ -103,9 +103,12 @@ return [
     'offer' => 'Oferi',
     'scrap_merchant_quote' => 'Nu vei primi o ofertă mai bună în nicio altă galaxie.',
     'bargain' => 'Afacere',
+    'objects_to_be_scrapped' => 'Objects to be scrapped',
     'ships' => 'Nave',
     'defensive_structures' => 'Structuri defensive',
+    'no_defensive_structures' => 'No defensive structures available',
     'select_all' => 'Selectați toate',
+    'reset_choice' => 'Reset choice',
     'scrap' => 'Resturi',
     'select_items_to_scrap' => 'Vă rugăm să selectați articolele de eliminat.',
     'scrap_confirmation' => 'Chiar doriți să casați următoarele nave/structuri defensive?',

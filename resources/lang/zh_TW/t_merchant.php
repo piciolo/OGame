@@ -5,7 +5,7 @@
  *
  * Language : zh_TW (OGame: tw)
  * Source   : resources/lang/en/t_merchant.php
- * Built    : 2026-04-12T13:09:51+00:00
+ * Built    : 2026-04-12T16:16:20+00:00
  */
 
 return [
@@ -103,9 +103,12 @@ return [
     'offer' => '提供',
     'scrap_merchant_quote' => '在任何其他星係你都不會得到更好的報價。',
     'bargain' => '便宜貨',
+    'objects_to_be_scrapped' => 'Objects to be scrapped',
     'ships' => '艦船數',
     'defensive_structures' => '防禦設施',
+    'no_defensive_structures' => 'No defensive structures available',
     'select_all' => '選擇全部',
+    'reset_choice' => 'Reset choice',
     'scrap' => '廢棄物',
     'select_items_to_scrap' => '請選擇要報廢的項目。',
     'scrap_confirmation' => '您真的想廢棄以下船隻/防禦結構嗎？',

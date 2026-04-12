@@ -5,7 +5,7 @@
  *
  * Language : pl (OGame: pl)
  * Source   : resources/lang/en/t_buddies.php
- * Built    : 2026-04-12T13:09:51+00:00
+ * Built    : 2026-04-12T16:16:20+00:00
  */
 
 return [

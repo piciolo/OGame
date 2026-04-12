@@ -5,7 +5,7 @@
  *
  * Language : pl (OGame: pl)
  * Source   : resources/lang/en/t_merchant.php
- * Built    : 2026-04-12T13:09:51+00:00
+ * Built    : 2026-04-12T16:16:20+00:00
  */
 
 return [
@@ -103,9 +103,12 @@ return [
     'offer' => 'Oferta',
     'scrap_merchant_quote' => 'Lepszej oferty nie dostaniesz w żadnej innej galaktyce.',
     'bargain' => 'Okazja',
+    'objects_to_be_scrapped' => 'Objects to be scrapped',
     'ships' => 'Statki',
     'defensive_structures' => 'Systemy obronne',
+    'no_defensive_structures' => 'No defensive structures available',
     'select_all' => 'Zaznacz wszystko',
+    'reset_choice' => 'Reset choice',
     'scrap' => 'Skrawek',
     'select_items_to_scrap' => 'Wybierz elementy do złomowania.',
     'scrap_confirmation' => 'Czy na pewno chcesz zezłomować następujące statki/konstrukcje obronne?',

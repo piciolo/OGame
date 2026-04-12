@@ -5,7 +5,7 @@
  *
  * Language : ru (OGame: ru)
  * Source   : resources/lang/en/wreck_field.php
- * Built    : 2026-04-12T13:09:51+00:00
+ * Built    : 2026-04-12T16:16:20+00:00
  */
 
 return [

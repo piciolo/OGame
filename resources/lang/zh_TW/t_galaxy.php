@@ -5,7 +5,7 @@
  *
  * Language : zh_TW (OGame: tw)
  * Source   : resources/lang/en/t_galaxy.php
- * Built    : 2026-04-12T13:09:51+00:00
+ * Built    : 2026-04-12T16:16:20+00:00
  */
 
 return [
@@ -22,5 +22,8 @@ return [
             'name' => '殖民化',
             'no_ship' => '沒有殖民船就不可能殖民一顆行星。',
         ],
+    ],
+    'discovery' => [
+        'locked' => 'You haven\'t unlocked the research to discover new lifeforms yet.',
     ],
 ];

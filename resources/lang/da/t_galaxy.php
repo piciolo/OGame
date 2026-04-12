@@ -5,7 +5,7 @@
  *
  * Language : da (OGame: dk)
  * Source   : resources/lang/en/t_galaxy.php
- * Built    : 2026-04-12T13:09:51+00:00
+ * Built    : 2026-04-12T16:16:20+00:00
  */
 
 return [
@@ -22,5 +22,8 @@ return [
             'name' => 'Kolonisere',
             'no_ship' => 'Det er ikke muligt at kolonisere en planet uden et koloniskib.',
         ],
+    ],
+    'discovery' => [
+        'locked' => 'You haven\'t unlocked the research to discover new lifeforms yet.',
     ],
 ];

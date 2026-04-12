@@ -5,7 +5,7 @@
  *
  * Language : ru (OGame: ru)
  * Source   : resources/lang/en/t_merchant.php
- * Built    : 2026-04-12T13:09:51+00:00
+ * Built    : 2026-04-12T16:16:20+00:00
  */
 
 return [
@@ -103,9 +103,12 @@ return [
     'offer' => 'Предложение',
     'scrap_merchant_quote' => 'Вы не получите лучшего предложения ни в одной другой галактике.',
     'bargain' => 'Торговаться',
+    'objects_to_be_scrapped' => 'Objects to be scrapped',
     'ships' => 'Корабли',
     'defensive_structures' => 'Оборона',
+    'no_defensive_structures' => 'No defensive structures available',
     'select_all' => 'Выбрать все',
+    'reset_choice' => 'Reset choice',
     'scrap' => 'Лом',
     'select_items_to_scrap' => 'Пожалуйста, выберите предметы для утилизации.',
     'scrap_confirmation' => 'Вы действительно хотите списать следующие корабли/защитные сооружения?',

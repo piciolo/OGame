@@ -1,7 +1,7 @@
 # Translation Status: sv
 
-- Generated: 2026-04-12T13:09:51+00:00
+- Generated: 2026-04-12T16:16:20+00:00
 - OGame language code: se
-- Total leaves: 1900
-- Translated: 1893 (99.6%)
-- English fallback: 7
+- Total leaves: 2424
+- Translated: 1893 (78.1%)
+- English fallback: 531

@@ -5,7 +5,7 @@
  *
  * Language : hr (OGame: hr)
  * Source   : resources/lang/en/t_merchant.php
- * Built    : 2026-04-12T13:09:51+00:00
+ * Built    : 2026-04-12T16:16:20+00:00
  */
 
 return [
@@ -103,9 +103,12 @@ return [
     'offer' => 'Ponuda',
     'scrap_merchant_quote' => 'Nećete dobiti bolju ponudu ni u jednoj drugoj galaksiji.',
     'bargain' => 'Cjenkanje',
+    'objects_to_be_scrapped' => 'Objects to be scrapped',
     'ships' => 'Brodovi',
     'defensive_structures' => 'Obrambene strukture',
+    'no_defensive_structures' => 'No defensive structures available',
     'select_all' => 'Odaberite sve',
+    'reset_choice' => 'Reset choice',
     'scrap' => 'otpad',
     'select_items_to_scrap' => 'Odaberite stavke za bilješku.',
     'scrap_confirmation' => 'Želite li doista odbaciti sljedeće brodove/obrambene strukture?',

@@ -5,7 +5,7 @@
  *
  * Language : hu (OGame: hu)
  * Source   : resources/lang/en/t_merchant.php
- * Built    : 2026-04-12T13:09:51+00:00
+ * Built    : 2026-04-12T16:16:20+00:00
  */
 
 return [
@@ -103,9 +103,12 @@ return [
     'offer' => 'Ajánlat',
     'scrap_merchant_quote' => 'Nem kapsz jobb ajánlatot egyetlen másik galaxisban sem.',
     'bargain' => 'Alku',
+    'objects_to_be_scrapped' => 'Objects to be scrapped',
     'ships' => 'Hajók',
     'defensive_structures' => 'Védelmi eszközök',
+    'no_defensive_structures' => 'No defensive structures available',
     'select_all' => 'Válassza ki az összeset',
+    'reset_choice' => 'Reset choice',
     'scrap' => 'Selejt',
     'select_items_to_scrap' => 'Kérjük, válassza ki a törölni kívánt elemeket.',
     'scrap_confirmation' => 'Valóban le akarja semmisíteni a következő hajókat/védelmi építményeket?',

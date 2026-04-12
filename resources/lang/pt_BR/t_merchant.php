@@ -5,7 +5,7 @@
  *
  * Language : pt_BR (OGame: br)
  * Source   : resources/lang/en/t_merchant.php
- * Built    : 2026-04-12T13:09:51+00:00
+ * Built    : 2026-04-12T16:16:20+00:00
  */
 
 return [
@@ -103,9 +103,12 @@ return [
     'offer' => 'Oferecer',
     'scrap_merchant_quote' => 'Você não receberá uma oferta melhor em nenhuma outra galáxia.',
     'bargain' => 'Negociar',
+    'objects_to_be_scrapped' => 'Objects to be scrapped',
     'ships' => 'Naves',
     'defensive_structures' => 'Estruturas defensivas',
+    'no_defensive_structures' => 'No defensive structures available',
     'select_all' => 'Selecionar tudo',
+    'reset_choice' => 'Reset choice',
     'scrap' => 'Sucata',
     'select_items_to_scrap' => 'Selecione os itens a serem descartados.',
     'scrap_confirmation' => 'Você realmente deseja desmantelar os seguintes navios/estruturas defensivas?',

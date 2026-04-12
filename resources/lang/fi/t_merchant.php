@@ -5,7 +5,7 @@
  *
  * Language : fi (OGame: fi)
  * Source   : resources/lang/en/t_merchant.php
- * Built    : 2026-04-12T13:09:51+00:00
+ * Built    : 2026-04-12T16:16:20+00:00
  */
 
 return [
@@ -103,9 +103,12 @@ return [
     'offer' => 'Tarjous',
     'scrap_merchant_quote' => 'Et saa parempaa tarjousta missään muussa galaksissa.',
     'bargain' => 'Tinkiä',
+    'objects_to_be_scrapped' => 'Objects to be scrapped',
     'ships' => 'Ships',
     'defensive_structures' => 'Defensive structures',
+    'no_defensive_structures' => 'No defensive structures available',
     'select_all' => 'Valitse kaikki',
+    'reset_choice' => 'Reset choice',
     'scrap' => 'Romu',
     'select_items_to_scrap' => 'Valitse poistettavat tuotteet.',
     'scrap_confirmation' => 'Haluatko todella romuttaa seuraavat alukset/puolustusrakenteet?',

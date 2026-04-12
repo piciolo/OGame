@@ -5,7 +5,7 @@
  *
  * Language : sv (OGame: se)
  * Source   : resources/lang/en/t_merchant.php
- * Built    : 2026-04-12T13:09:51+00:00
+ * Built    : 2026-04-12T16:16:20+00:00
  */
 
 return [
@@ -103,9 +103,12 @@ return [
     'offer' => 'Erbjuda',
     'scrap_merchant_quote' => 'Du kommer inte att få ett bättre erbjudande i någon annan galax.',
     'bargain' => 'Förhandla',
+    'objects_to_be_scrapped' => 'Objects to be scrapped',
     'ships' => 'Skepp',
     'defensive_structures' => 'Försvarsbyggnader',
+    'no_defensive_structures' => 'No defensive structures available',
     'select_all' => 'Välj alla',
+    'reset_choice' => 'Reset choice',
     'scrap' => 'Skrot',
     'select_items_to_scrap' => 'Välj objekt som ska skrotas.',
     'scrap_confirmation' => 'Vill du verkligen skrota följande fartyg/försvarsstrukturer?',

@@ -5,7 +5,7 @@
  *
  * Language : es_AR (OGame: ar)
  * Source   : resources/lang/en/t_merchant.php
- * Built    : 2026-04-12T13:09:51+00:00
+ * Built    : 2026-04-12T16:16:20+00:00
  */
 
 return [
@@ -103,9 +103,12 @@ return [
     'offer' => 'Oferta',
     'scrap_merchant_quote' => 'No encontrarás una oferta mejor en ninguna otra galaxia.',
     'bargain' => 'Oferta',
+    'objects_to_be_scrapped' => 'Objects to be scrapped',
     'ships' => 'Naves',
     'defensive_structures' => 'Estructuras de defensa',
+    'no_defensive_structures' => 'No defensive structures available',
     'select_all' => 'Seleccionar todo',
+    'reset_choice' => 'Reset choice',
     'scrap' => 'Chatarra',
     'select_items_to_scrap' => 'Seleccione los artículos que desea desechar.',
     'scrap_confirmation' => '¿Realmente quieres desechar los siguientes barcos/estructuras defensivas?',

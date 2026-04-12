@@ -5,7 +5,7 @@
  *
  * Language : tr (OGame: tr)
  * Source   : resources/lang/en/t_merchant.php
- * Built    : 2026-04-12T13:09:51+00:00
+ * Built    : 2026-04-12T16:16:20+00:00
  */
 
 return [
@@ -103,9 +103,12 @@ return [
     'offer' => 'Teklif',
     'scrap_merchant_quote' => 'Başka hiçbir galakside daha iyi bir teklif alamazsınız.',
     'bargain' => 'Pazarlık',
+    'objects_to_be_scrapped' => 'Objects to be scrapped',
     'ships' => 'Gemi',
     'defensive_structures' => 'Savunma binaları',
+    'no_defensive_structures' => 'No defensive structures available',
     'select_all' => 'Tümünü seç',
+    'reset_choice' => 'Reset choice',
     'scrap' => 'Hurda',
     'select_items_to_scrap' => 'Lütfen hurdaya çıkarılacak öğeleri seçin.',
     'scrap_confirmation' => 'Aşağıdaki gemileri/savunma yapılarını gerçekten hurdaya çıkarmak istiyor musunuz?',

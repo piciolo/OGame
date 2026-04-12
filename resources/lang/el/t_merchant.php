@@ -5,7 +5,7 @@
  *
  * Language : el (OGame: gr)
  * Source   : resources/lang/en/t_merchant.php
- * Built    : 2026-04-12T13:09:51+00:00
+ * Built    : 2026-04-12T16:16:20+00:00
  */
 
 return [
@@ -103,9 +103,12 @@ return [
     'offer' => 'Προσφορά',
     'scrap_merchant_quote' => 'Δεν θα έχετε καλύτερη προσφορά σε κανέναν άλλο γαλαξία.',
     'bargain' => 'Παζάρι',
+    'objects_to_be_scrapped' => 'Objects to be scrapped',
     'ships' => 'Ships',
     'defensive_structures' => 'Αμυντικές εγκαταστάσεις',
+    'no_defensive_structures' => 'No defensive structures available',
     'select_all' => 'Επιλέξτε όλα',
+    'reset_choice' => 'Reset choice',
     'scrap' => 'Ξύσμα',
     'select_items_to_scrap' => 'Επιλέξτε αντικείμενα προς απόρριψη.',
     'scrap_confirmation' => 'Θέλετε πραγματικά να καταργήσετε τα ακόλουθα πλοία/αμυντικές κατασκευές;',

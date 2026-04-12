@@ -5,7 +5,7 @@
  *
  * Language : sk (OGame: sk)
  * Source   : resources/lang/en/t_merchant.php
- * Built    : 2026-04-12T13:09:51+00:00
+ * Built    : 2026-04-12T16:16:20+00:00
  */
 
 return [
@@ -103,9 +103,12 @@ return [
     'offer' => 'Ponuka',
     'scrap_merchant_quote' => 'Lepšiu ponuku v žiadnej inej galaxii nedostanete.',
     'bargain' => 'Vyjednávať',
+    'objects_to_be_scrapped' => 'Objects to be scrapped',
     'ships' => 'Lode',
     'defensive_structures' => 'Obranné jednotky',
+    'no_defensive_structures' => 'No defensive structures available',
     'select_all' => 'Vybrať všetko',
+    'reset_choice' => 'Reset choice',
     'scrap' => 'šrot',
     'select_items_to_scrap' => 'Vyberte položky na zošrotovanie.',
     'scrap_confirmation' => 'Naozaj chcete zošrotovať nasledujúce lode/obranné štruktúry?',

@@ -1,7 +1,7 @@
 # Translation Status: hr
 
-- Generated: 2026-04-12T13:09:51+00:00
+- Generated: 2026-04-12T16:16:20+00:00
 - OGame language code: hr
-- Total leaves: 1900
-- Translated: 1896 (99.8%)
-- English fallback: 4
+- Total leaves: 2424
+- Translated: 1896 (78.2%)
+- English fallback: 528

@@ -5,7 +5,7 @@
  *
  * Language : ja (OGame: jp)
  * Source   : resources/lang/en/t_merchant.php
- * Built    : 2026-04-12T13:09:51+00:00
+ * Built    : 2026-04-12T16:16:20+00:00
  */
 
 return [
@@ -103,9 +103,12 @@ return [
     'offer' => 'オファー',
     'scrap_merchant_quote' => '他の銀河系ではこれ以上のオファーは得られません。',
     'bargain' => 'バーゲン',
+    'objects_to_be_scrapped' => 'Objects to be scrapped',
     'ships' => '戦艦',
     'defensive_structures' => '防衛建造物',
+    'no_defensive_structures' => 'No defensive structures available',
     'select_all' => 'すべて選択',
+    'reset_choice' => 'Reset choice',
     'scrap' => 'スクラップ',
     'select_items_to_scrap' => '廃棄するアイテムを選択してください。',
     'scrap_confirmation' => '本当に以下の船/防御構造物を廃棄してもよろしいですか?',

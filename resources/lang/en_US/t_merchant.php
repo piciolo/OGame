@@ -5,7 +5,7 @@
  *
  * Language : en_US (OGame: us)
  * Source   : resources/lang/en/t_merchant.php
- * Built    : 2026-04-12T13:09:51+00:00
+ * Built    : 2026-04-12T16:16:20+00:00
  */
 
 return [
@@ -103,9 +103,12 @@ return [
     'offer' => 'Offer',
     'scrap_merchant_quote' => 'You won`t get a better offer in any other galaxy.',
     'bargain' => 'Bargain',
+    'objects_to_be_scrapped' => 'Objects to be scrapped',
     'ships' => 'Ships',
     'defensive_structures' => 'Defensive structures',
+    'no_defensive_structures' => 'No defensive structures available',
     'select_all' => 'Select all',
+    'reset_choice' => 'Reset choice',
     'scrap' => 'Scrap',
     'select_items_to_scrap' => 'Please select items to scrap.',
     'scrap_confirmation' => 'Do you really want to scrap the following ships/defensive structures?',

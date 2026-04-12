@@ -1,7 +1,7 @@
 # Translation Status: sr
 
-- Generated: 2026-04-12T13:09:51+00:00
+- Generated: 2026-04-12T16:16:20+00:00
 - OGame language code: yu
-- Total leaves: 1900
-- Translated: 1844 (97.1%)
-- English fallback: 56
+- Total leaves: 2424
+- Translated: 1844 (76.1%)
+- English fallback: 580
