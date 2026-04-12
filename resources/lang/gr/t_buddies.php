@@ -5,7 +5,7 @@
  *
  * Language : gr
  * Source   : resources/lang/en/t_buddies.php
- * Built    : 2026-04-11T19:56:17+00:00
+ * Built    : 2026-04-11T21:17:54+00:00
  *
  * Untranslated leaves fall back to the english source string.
  * See _TRANSLATION_STATUS.md in this directory for the list of
@@ -90,7 +90,7 @@ return [
     'table' => [
         'id' => 'ID',
         'name' => 'Όνομα',
-        'points' => 'Points',
+        'points' => 'Πόντοι',
         'rank' => 'Rank',
         'alliance' => 'Συμμαχία',
         'coords' => 'Coords',

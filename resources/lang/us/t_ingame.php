@@ -5,7 +5,7 @@
  *
  * Language : us
  * Source   : resources/lang/en/t_ingame.php
- * Built    : 2026-04-11T19:56:17+00:00
+ * Built    : 2026-04-11T21:17:54+00:00
  *
  * Untranslated leaves fall back to the english source string.
  * See _TRANSLATION_STATUS.md in this directory for the list of
@@ -18,7 +18,7 @@ return [
         'temperature' => 'Temperature',
         'position' => 'Position',
         'points' => 'Points',
-        'honour_points' => 'Honour points',
+        'honour_points' => 'Honor points',
         'score_place' => 'Place',
         'score_of' => 'of',
         'page_title' => 'Overview',
@@ -536,7 +536,7 @@ return [
         'battle_mined_after' => 'Mined after combat',
         'battle_reaper' => 'Reaper',
         'battle_debris_left' => 'Debris fields (left)',
-        'battle_honour_points' => 'Honour points',
+        'battle_honour_points' => 'Honor points',
         'battle_dishonourable' => 'Dishonourable fight',
         'battle_vs' => 'vs',
         'battle_honourable' => 'Honourable fight',
@@ -1079,7 +1079,7 @@ return [
         'military_built' => 'Military points built',
         'military_destroyed' => 'Military points destroyed',
         'military_lost' => 'Military points lost',
-        'honour_points' => 'Honour points',
+        'honour_points' => 'Honor points',
         'position' => 'Position',
         'player_name_honour' => 'Player\'s Name (Honour points)',
         'action' => 'Action',

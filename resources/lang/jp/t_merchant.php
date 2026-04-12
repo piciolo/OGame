@@ -5,7 +5,7 @@
  *
  * Language : jp
  * Source   : resources/lang/en/t_merchant.php
- * Built    : 2026-04-11T19:56:17+00:00
+ * Built    : 2026-04-11T21:17:54+00:00
  *
  * Untranslated leaves fall back to the english source string.
  * See _TRANSLATION_STATUS.md in this directory for the list of
@@ -91,7 +91,7 @@ return [
     'sell_deuterium_desc' => 'Sell your Deuterium and get Metal or Crystal.',
     'costs' => 'Costs:',
     'already_paid' => 'Already paid',
-    'dark_matter' => 'Dark Matter',
+    'dark_matter' => 'ダークマター',
     'per_call' => 'per call',
     'trade_tooltip' => 'Trade|Trade your resources at the agreed price',
     'get_more_resources' => 'Get more resources',
