@@ -530,6 +530,7 @@ return [
 
         // Phalanx result dialog (JS strings inside Blade-rendered script block)
         'sensor_report'                => 'Sensorbericht',
+        'sensor_report_from'           => 'Sensorbericht von',
         'refresh'                      => 'Aktualisieren',
         'arrived'                      => 'Angekommen',
 
@@ -1317,6 +1318,32 @@ return [
         'js_planet_unlock'          => 'Anordnung entsperren',
         'js_activate_item_question' => 'Möchtest du den bestehenden Gegenstand ersetzen? Der alte Bonus geht dabei verloren.',
         'js_activate_item_header'   => 'Gegenstand ersetzen?',
+
+        // Welcome dialog
+        'welcome_title'             => 'Willkommen bei OGame!',
+        'welcome_body'              => 'Damit du schnell loslegen kannst, haben wir dir den Namen Commodore Nebula zugewiesen. Du kannst ihn jederzeit ändern, indem du auf den Benutzernamen klickst.<br/>Das Flottenkommando hat dir Informationen zu deinen ersten Schritten im Posteingang hinterlassen.<br/><br/>Viel Spaß beim Spielen!',
+
+        // Time unit abbreviations (short)
+        'time_short_year'            => 'J',
+        'time_short_month'           => 'M',
+        'time_short_week'            => 'W',
+        'time_short_day'             => 'T',
+        'time_short_hour'            => 'Std',
+        'time_short_minute'          => 'Min',
+        'time_short_second'          => 'Sek',
+
+        // Time unit names (long)
+        'time_long_day'              => 'Tag',
+        'time_long_hour'             => 'Stunde',
+        'time_long_minute'           => 'Minute',
+        'time_long_second'           => 'Sekunde',
+
+        // Number formatting
+        'decimal_point'             => ',',
+        'thousand_separator'        => '.',
+        'unit_mega'                 => 'Mio',
+        'unit_kilo'                 => 'K',
+        'unit_milliard'             => 'Mrd',
 
         // JS — chatLoca
         'chat_text_empty'           => 'Wo ist die Nachricht?',

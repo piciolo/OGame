@@ -116,16 +116,16 @@
             window.LocalizationStrings = {
                 timeunits: {
                     short: {
-                        day: 'd',
-                        hour: 'h',
-                        minute: 'm',
-                        second: 's'
+                        day: '{{ __('t_ingame.layout.time_short_day') }}',
+                        hour: '{{ __('t_ingame.layout.time_short_hour') }}',
+                        minute: '{{ __('t_ingame.layout.time_short_minute') }}',
+                        second: '{{ __('t_ingame.layout.time_short_second') }}'
                     },
                     long: {
-                        day: 'day',
-                        hour: 'hour',
-                        minute: 'minute',
-                        second: 'second'
+                        day: '{{ __('t_ingame.layout.time_long_day') }}',
+                        hour: '{{ __('t_ingame.layout.time_long_hour') }}',
+                        minute: '{{ __('t_ingame.layout.time_long_minute') }}',
+                        second: '{{ __('t_ingame.layout.time_long_second') }}'
                     }
                 }
             };
@@ -145,14 +145,9 @@
 
     <!-- Removed all custom close button CSS to restore normal jQuery UI behavior -->
 </head>
-<body id="{{ !empty($body_id) ? $body_id : 'ingamepage' }}" class="ogame lang-en default no-touch">
-<div id="initial_welcome_dialog" title="Welcome to OGame!" style="display: none;">
-    To help your game start get moving quickly, we've assigned you the name Commodore Nebula. You can change this at any
-    time by clicking on the username.<br/>
-    Fleet Command has left you information on your first steps in your inbox, to help you be well-equipped for your
-    start.<br/>
-    <br/>
-    Have fun playing!
+<body id="{{ !empty($body_id) ? $body_id : 'ingamepage' }}" class="ogame lang-{{ app()->getLocale() }} default no-touch">
+<div id="initial_welcome_dialog" title="{{ __('t_ingame.layout.welcome_title') }}" style="display: none;">
+    {{ __('t_ingame.layout.welcome_body') }}
 </div>
 @if ($currentPlayer->isAdmin() || !empty($isImpersonating))
     @include ('ingame.layouts.admin-menu', ['currentPlayer' => $currentPlayer, 'isImpersonating' => $isImpersonating ?? false, 'impersonateLeaveUrl' => $impersonateLeaveUrl ?? null])
@@ -823,13 +818,13 @@
                 localTS = localTime.getTime();
                 var startServerTime = localTime.getTime() - (0) - localTime.getTimezoneOffset() * 60 * 1000;
                 var LocalizationStrings = {!! json_encode([
-                    'timeunits'            => ['short' => ['year' => 'y', 'month' => 'm', 'week' => 'w', 'day' => 'd', 'hour' => 'h', 'minute' => 'm', 'second' => 's']],
+                    'timeunits'            => ['short' => ['year' => __('t_ingame.layout.time_short_year'), 'month' => __('t_ingame.layout.time_short_month'), 'week' => __('t_ingame.layout.time_short_week'), 'day' => __('t_ingame.layout.time_short_day'), 'hour' => __('t_ingame.layout.time_short_hour'), 'minute' => __('t_ingame.layout.time_short_minute'), 'second' => __('t_ingame.layout.time_short_second')]],
                     'status'               => ['ready' => __('t_ingame.layout.js_time_done')],
-                    'decimalPoint'         => '.',
-                    'thousandSeperator'    => ',',
-                    'unitMega'             => 'M',
-                    'unitKilo'             => 'K',
-                    'unitMilliard'         => 'B',
+                    'decimalPoint'         => __('t_ingame.layout.decimal_point'),
+                    'thousandSeperator'    => __('t_ingame.layout.thousand_separator'),
+                    'unitMega'             => __('t_ingame.layout.unit_mega'),
+                    'unitKilo'             => __('t_ingame.layout.unit_kilo'),
+                    'unitMilliard'         => __('t_ingame.layout.unit_milliard'),
                     'question'             => __('t_ingame.layout.js_question'),
                     'error'                => __('t_ingame.shared.error'),
                     'loading'              => __('t_ingame.layout.loading'),
@@ -850,7 +845,7 @@
                 var constants = {
                     "espionage": 6,
                     "missleattack": 10,
-                    "language": "en",
+                    "language": "{{ app()->getLocale() }}",
                     "name": "144"
                 };
                 var userData = {

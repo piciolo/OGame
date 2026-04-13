@@ -512,6 +512,7 @@ return [
 
         // Dialogo risultati phalanx (stringhe JS nel blocco script Blade-rendered)
         'sensor_report'                => 'rapporto sensore',
+        'sensor_report_from'           => 'Rapporto sensore da',
         'refresh'                      => 'Aggiorna',
         'arrived'                      => 'Arrivata',
 
@@ -1283,6 +1284,32 @@ return [
         'js_planet_unlock'          => 'Sblocca disposizione',
         'js_activate_item_question' => 'Vuoi sostituire l\'oggetto esistente? Il vecchio bonus andrà perso.',
         'js_activate_item_header'   => 'Sostituisci oggetto?',
+
+        // Dialogo di benvenuto
+        'welcome_title'             => 'Benvenuto su OGame!',
+        'welcome_body'              => 'Per aiutarti a iniziare rapidamente, ti abbiamo assegnato il nome Commodore Nebula. Puoi cambiarlo in qualsiasi momento cliccando sul nome utente.<br/>Il Comando Flotta ha lasciato informazioni sui primi passi nella tua casella di posta, per aiutarti a partire preparato.<br/><br/>Buon divertimento!',
+
+        // Abbreviazioni unità di tempo (corte)
+        'time_short_year'           => 'a',
+        'time_short_month'          => 'M',
+        'time_short_week'           => 'sett',
+        'time_short_day'            => 'g',
+        'time_short_hour'           => 'h',
+        'time_short_minute'         => 'm',
+        'time_short_second'         => 's',
+
+        // Nomi unità di tempo (lunghi)
+        'time_long_day'             => 'giorno',
+        'time_long_hour'            => 'ora',
+        'time_long_minute'          => 'minuto',
+        'time_long_second'          => 'secondo',
+
+        // Formattazione numeri
+        'decimal_point'             => ',',
+        'thousand_separator'        => '.',
+        'unit_mega'                 => 'M',
+        'unit_kilo'                 => 'K',
+        'unit_milliard'             => 'Mld',
 
         // JS — chatLoca
         'chat_text_empty'           => 'Dove è il messaggio?',

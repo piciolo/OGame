@@ -512,6 +512,7 @@ return [
 
         // Phalanx-resultaatdialoog (JS-strings in Blade-rendered scriptblok)
         'sensor_report'                => 'sensorrapport',
+        'sensor_report_from'           => 'Sensorrapport van',
         'refresh'                      => 'Vernieuwen',
         'arrived'                      => 'Aangekomen',
 
@@ -1283,6 +1284,32 @@ return [
         'js_planet_unlock'          => 'Indeling ontgrendelen',
         'js_activate_item_question' => 'Wil je het bestaande item vervangen? De oude bonus gaat verloren.',
         'js_activate_item_header'   => 'Item vervangen?',
+
+        // Welcome dialog
+        'welcome_title'             => 'Welkom bij OGame!',
+        'welcome_body'              => 'Om je snel op weg te helpen, hebben we je de naam Commodore Nebula gegeven. Je kunt dit op elk moment wijzigen door op je gebruikersnaam te klikken.<br/>Het Vlootcommando heeft informatie over je eerste stappen in je inbox achtergelaten.<br/><br/>Veel plezier!',
+
+        // Time unit abbreviations (short)
+        'time_short_year'            => 'j',
+        'time_short_month'           => 'm',
+        'time_short_week'            => 'w',
+        'time_short_day'             => 'd',
+        'time_short_hour'            => 'u',
+        'time_short_minute'          => 'min',
+        'time_short_second'          => 's',
+
+        // Time unit names (long)
+        'time_long_day'              => 'dag',
+        'time_long_hour'             => 'uur',
+        'time_long_minute'           => 'minuut',
+        'time_long_second'           => 'seconde',
+
+        // Number formatting
+        'decimal_point'             => ',',
+        'thousand_separator'        => '.',
+        'unit_mega'                 => 'M',
+        'unit_kilo'                 => 'K',
+        'unit_milliard'             => 'Mrd',
 
         // JS — chatLoca
         'chat_text_empty'           => 'Waar is het bericht?',
