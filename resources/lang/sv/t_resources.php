@@ -12,450 +12,366 @@ return [
     'metal_mine' => [
         'title' => 'Metallgruva',
         'description' => 'På alla planeter, såväl nya som gamla, krävs metallgruvor för att kunna bryta metallmalm.',
-        'description_long' => 'Metallen finns i överflöd och är därmed värderad lägst i bytessammanhang. Den används vid tillverkning av både skepp och byggnader. Ju djupare metallgruvorna når desto större mängd metall kan anskaffas, dock 
-kräver detta en högre energitillförsel.',
+        'description_long' => 'På alla planeter, såväl nya som gamla, krävs metallgruvor för att kunna bryta metallmalm.',
     ],
     'crystal_mine' => [
         'title' => 'Kristallgruva',
         'description' => 'Kristall är den huvudsakliga resursen för att kunna tillverka 
 elektroniska kretskort och skapa speciella legeringar.',
-        'description_long' => 'Kristallgruvor levererar den viktigaste resursen som används för att producera elektroniska kretsar och från vissa legeringar. Att bryta kristall 
-förbrukar cirka en och en halv gånger mer energi än att bryta metall, vilket gör kristall mer värdefull. Nästan alla fartyg och alla byggnader kräver kristall. De flesta kristaller krävs för att bygga rymdskepp, men är mycket sällsynta, och liksom metall kan endast finns på ett visst djup. Att bygga gruvor i djupare skikt kommer därför öka mängden kristallen produceras.',
+        'description_long' => 'Kristall är den huvudsakliga resursen för att kunna tillverka 
+elektroniska kretskort och skapa speciella legeringar.',
     ],
     'deuterium_synthesizer' => [
         'title' => 'Deuteriumplattform',
         'description' => 'Deuterium används som bränsle för rymdskeppen och skördas 
 djupt nere i vattnet. Deuterium är en sällsynt substans och är mycket dyr.',
-        'description_long' => 'Deuterium är en beståndsdel i tungt vatten. Man utvinner det ur vanligt
-havsvatten. Uppgradering av plattformen gör det möjligt att utvinna mer 
-deuterium. Deuterium används till att utföra radarsökningar, utforska 
-galaxer, tanka rymdskeppen och för att utföra olika forskningsuppdrag.',
+        'description_long' => 'Deuterium används som bränsle för rymdskeppen och skördas 
+djupt nere i vattnet. Deuterium är en sällsynt substans och är mycket dyr.',
     ],
     'solar_plant' => [
         'title' => 'Solkraftverk',
         'description' => 'Solkraftverken absorberar solenergi. Alla gruvor behöver energi för att fungera.',
-        'description_long' => 'Gigantiska solpaneler används för att utvinna energi till 
-dina gruvor och deuteriumplattformar. Ju högre nivå du har på dina 
-solkraftverk desto större solpaneler får du som kan samla in solenergin, 
-vilket resulterar i en högre energinivå. Solkraftverken täcker den största 
-delen av energibehovet på planeten.',
+        'description_long' => 'Solkraftverken absorberar solenergi. Alla gruvor behöver energi för att fungera.',
     ],
     'fusion_plant' => [
         'title' => 'Fusionskraftverk',
         'description' => 'Fusionkraftverket använder deuterium för att producera 
 energi.',
-        'description_long' => 'I fusionskraftverk smälts vätekärnor till heliumkärnor under enorma temperaturer och tryck, vilket frigör enorma mängder energi. För varje gram deuterium som förbrukas kan upp till 41,32*10^-13 Joule energi produceras; med 1 g kan du producera 172 MWh energi. 
-
-Större reaktorkomplex använder mer deuterium och kan producera mer energi per timme. Energieffekten skulle kunna ökas genom att forska om energiteknik. 
-
-Energiproduktionen i fusionsanläggningen beräknas så här: 
-30 * [Level Fusion Plant] * (1,05 + [Level Energy Technology] * 0,01) ^ [Level Fusion Plant]',
+        'description_long' => 'Fusionkraftverket använder deuterium för att producera 
+energi.',
     ],
     'metal_store' => [
         'title' => 'Metallager',
         'description' => 'Ger lagringsutrymme för överskottsmetall.',
-        'description_long' => 'Denna gigantiska lagringsanläggning används för att lagra metallmalm. Varje nivå av uppgradering ökar mängden metallmalm som kan lagras. Om förråden är fulla kommer ingen ytterligare metall att brytas. 
-
-Metalllagret skyddar en viss andel av gruvans dagliga produktion (max 10 procent).',
+        'description_long' => 'Ger lagringsutrymme för överskottsmetall.',
     ],
     'crystal_store' => [
         'title' => 'Kristallager',
         'description' => 'Ger lagringsutrymme för överskottskristall.',
-        'description_long' => 'Den obearbetade kristallen kommer att förvaras i dessa gigantiska lagerhallar under tiden. Med varje uppgraderingsnivå ökar den mängden kristaller som kan lagras. Om kristalllagren är fulla kommer inga fler kristaller att brytas. 
-
-Kristalllagret skyddar en viss andel av gruvans dagliga produktion (max 10 procent).',
+        'description_long' => 'Ger lagringsutrymme för överskottskristall.',
     ],
     'deuterium_store' => [
         'title' => 'Deuteriumtank',
         'description' => 'Stora tankar för lagring av nyligen extraherad deuterium.',
-        'description_long' => 'Deuteriumtanken är till för att lagra nysyntetiserat deuterium. När det väl har bearbetats av synthesizern leds det in i denna tank för senare användning. Med varje uppgradering av tanken ökar den totala lagringskapaciteten. När kapaciteten är uppnådd kommer inget ytterligare Deuterium att syntetiseras. 
-
-Deuteriumtanken skyddar en viss procent av synthesizerns dagliga produktion (max 10 procent).',
+        'description_long' => 'Stora tankar för lagring av nyligen extraherad deuterium.',
     ],
     'robot_factory' => [
         'title' => 'Robotfabrik',
         'description' => 'Robotfabriken tillverkar konstruktionsrobotar som assisterar 
 i byggandet. Varje nivå ökar hastigheten för att bygga.',
-        'description_long' => 'Robotfabriken tillverkar robotar som används till att 
-uppgradera byggnader. Varje uppgradering av Robotfabriken ökar antalet 
-robotar som används till byggnadskonstruktioner. Det medför att tiden för 
-att bygga en byggnad minskas.',
+        'description_long' => 'Robotfabriken tillverkar konstruktionsrobotar som assisterar 
+i byggandet. Varje nivå ökar hastigheten för att bygga.',
     ],
     'shipyard' => [
         'title' => 'Skeppsvarv',
         'description' => 'Alla typer av skepp och försvarsbyggnader kan byggas i det planetära skeppsvarvet.',
-        'description_long' => 'Det planetära skeppsvarvet är där det byggs rymdskepp och försvarssystem. Ju mer man uppgraderar skeppsvarvet kan fler skepp produceras i en högre hastighet. Om nanofabriken också finns upprättad på planeten, kommer hastigheten av varje skepp och försvarssystem att byggas mycket snabbare.',
+        'description_long' => 'Alla typer av skepp och försvarsbyggnader kan byggas i det planetära skeppsvarvet.',
     ],
     'research_lab' => [
         'title' => 'Forskningslabb',
         'description' => 'Forskningslabbet är nödvändigt för att kunna forska fram nya 
 teknologier.',
-        'description_long' => 'I försök att forska fram nya teknologier behöver man 
-forskningslabb. Varje nivå ökar hastigheten på forskningen men tar också 
-fram nya unika teknologier. För att kunna utföra forskning så snabbt som 
-möjligt, skickas alla forskare till den planet där man startade forskningen. 
-När uppgiften är klar, åker forskarna hem till deras planeter och tar med 
-sig den nya teknologin. På detta vis lär sig hela imperiet den nya 
-teknologin.',
+        'description_long' => 'Forskningslabbet är nödvändigt för att kunna forska fram nya 
+teknologier.',
     ],
     'alliance_depot' => [
         'title' => 'Alliansdepå',
         'description' => 'Alliansdepån levererar bränsle till vänligt sinnade flottor som är 
 i omloppsbana och hjälper till med försvaret.',
         'description_long' => 'Alliansdepån levererar bränsle till vänligt sinnade flottor som är 
-i omloppsbana och hjälper till med försvaret. Vid varje nivå av 
-alliansdepån, kan ett speciell begäran av deuterium per timma skickas ut till flotta i omloppsbana.',
+i omloppsbana och hjälper till med försvaret.',
     ],
     'missile_silo' => [
         'title' => 'Missilsilo',
         'description' => 'Missilsilon används till att lagra och avfyra missiler.',
-        'description_long' => 'Missilsilon används till att lagra och avfyra missiler. Fem Interplanetära missiler eller 10 Anti-ballistiska missiler kan lagras per 
-nivå. En Interplanetär missil tar upp lika mycket plats som två Anti-ballistiska missiler.',
+        'description_long' => 'Missilsilon används till att lagra och avfyra missiler.',
     ],
     'nano_factory' => [
         'title' => 'Nanofabrik',
         'description' => 'Detta är den ultimata robotteknologin. Varje nivå halverar konstruktionstiden för byggnader, skepp och försvar.',
-        'description_long' => 'Denna fabrik producerar naniter som man tror är den ultimata 
-revolutionen inom robotteknologin. Naniter är robotar som arbetar i 
-storleken nanometer alltså 0,000 000 001 meter.
-Varje nivå halverar konstruktionstiden för byggnader, skepp och försvar.',
+        'description_long' => 'Detta är den ultimata robotteknologin. Varje nivå halverar konstruktionstiden för byggnader, skepp och försvar.',
     ],
     'terraformer' => [
         'title' => 'Terraformare',
         'description' => 'Terraformaren ökar den brukbara ytan på planeten.',
-        'description_long' => 'Med den ökande konstruktionen på planeter blir även livsutrymmet för kolonin mer och mer begränsat. Traditionella metoder som hög- och underjordsbyggande blir alltmer otillräckliga. En liten grupp högenergifysiker och nanoingenjörer kom så småningom fram till lösningen: terraforming. 
-Genom att använda enorma mängder energi kan terraformern göra hela landområden eller till och med kontinenter odlingsbara. Denna byggnad inrymmer tillverkning av naniter som skapats speciellt för detta ändamål, vilket säkerställer en jämn markkvalitet genomgående. 
-
-Varje terraformernivå tillåter 5 fält att odlas. Med varje nivå upptar terraformern ett fält själv. Varannan terraformer-nivå kommer du att få 1 bonusfält. 
-
-När terraformern väl är byggd kan den inte demonteras.',
+        'description_long' => 'Terraformaren ökar den brukbara ytan på planeten.',
     ],
     'space_dock' => [
         'title' => 'Rymddocka',
         'description' => 'Vrak kan lagas i rymddockan.',
-        'description_long' => 'Space Dock erbjuder möjligheten att reparera fartyg som förstörts i strid som lämnade efter sig vrakdelar. Reparationstiden tar max 12 timmar, men det tar minst 30 minuter innan fartygen kan tas i bruk igen. 
-
-Reparationer måste påbörjas inom 3 dagar efter att vraket skapades. De reparerade fartygen måste återställas i tjänst manuellt efter avslutad reparation. Om detta inte görs kommer enskilda fartyg av vilken typ som helst att återgå i drift efter 3 dagar. 
-
-Vrakdelar dyker endast upp om mer än 150 000 enheter har förstörts inklusive ens egna skepp som deltog i striden med ett värde av minst 5 % av fartygspoängen. 
-
-Eftersom Space Dock flyter i omloppsbana kräver den inget planetfält.',
+        'description_long' => 'Vrak kan lagas i rymddockan.',
     ],
     'lunar_base' => [
         'title' => 'Månbas',
         'description' => 'Eftersom månen inte har någon atmosfär krävs en månbas för att generera beboeligt utrymme.',
-        'description_long' => 'En måne har ingen atmosfär, så en månbas måste först byggas innan en bosättning kan upprättas. Detta ger sedan syre, värme och gravitation. Med varje plan byggd tillhandahålls ett större bostads- och utvecklingsområde inom biosfären. Varje byggd nivå tillåter tre fält för andra byggnader. Med varje nivå upptar månbasen ett fält själv. 
-När månbasen väl är byggd kan den inte rivas.',
+        'description_long' => 'Då månen inte har någon atmosfär, är månbasen nödvändig för 
+att skapa boendeyta.',
     ],
     'sensor_phalanx' => [
         'title' => 'Radarstation',
         'description' => 'Med hjälp av sensorfalangen kan flottor av andra imperier upptäckas och observeras. Ju större sensorfalangarrayen är, desto större räckvidd kan den skanna.',
-        'description_long' => 'Med hjälp av högupplösta sensorer skannar Sensor Phalanx först ljusspektrumet, sammansättningen av gaser och strålningsemissioner från en avlägsen värld och överför data till en superdator för bearbetning. När informationen väl har erhållits jämför superdatorn förändringar i spektrum, gassammansättning och strålningsemissioner med ett baslinjediagram över kända förändringar av spektrumet som skapas av olika fartygsrörelser. Den resulterande informationen visar sedan aktiviteten för alla flottor inom falangens räckvidd. För att förhindra att superdatorn överhettas under processen, kyls den genom att använda 5k bearbetat Deuterium. 
-För att använda Phalanx, klicka på valfri planet i Galaxy View inom sensorernas räckvidd.',
+        'description_long' => 'När man använder radarstationen, kan flottor från andras imperium bli upptäckta och observerade. Ju större radarstation man har desto längre kan man scanna.',
     ],
     'jump_gate' => [
         'title' => 'Månportal',
         'description' => 'Hoppportar är enorma sändtagare som kan skicka även den största flottan på nolltid till en avlägsen hoppgrind.',
-        'description_long' => 'En Jump Gate är ett system av gigantiska transceivrar som kan skicka även de största flottorna till en mottagande Gate var som helst i universum utan tidsförlust. Genom att använda teknik som liknar den för ett maskhål för att uppnå hoppet, krävs inte deuterium. En laddningsperiod på några minuter måste passera mellan hoppen för att möjliggöra regenerering. Att transportera resurser genom porten är inte heller möjligt. Med varje uppgraderingsnivå kan hoppgrindens nedkylningstid reduceras.',
+        'description_long' => 'Månportalen är som stora sändare och mottagare, kapabla att 
+skicka och ta emot t.o.m. de största flottorna helt utan tidsförluster.',
     ],
     'energy_technology' => [
         'title' => 'Energiteknologi',
         'description' => 'Att kunna kontrollera olika energier är nödvändigt för att 
 kunna utveckla nya teknologier.',
-        'description_long' => 'När olika forskningsområden utvecklades, upptäcktes det att den nuvarande tekniken för energidistribution inte var tillräcklig för att påbörja viss specialiserad forskning. Med varje uppgradering av din energiteknik kan ny forskning utföras som låser upp utvecklingen av mer sofistikerade fartyg och försvar.',
+        'description_long' => 'Att kunna kontrollera olika energier är nödvändigt för att 
+kunna utveckla nya teknologier.',
     ],
     'laser_technology' => [
         'title' => 'Laserteknologi',
         'description' => 'Ljus som fokuseras till att träffa en liten punkt kan därigenom skada mål som träffas.',
-        'description_long' => 'Lasrar (ljusförstärkning genom stimulerad emission av strålning) producerar en intensiv, energirik emission av koherent ljus. Dessa enheter kan användas inom alla möjliga områden, från optiska datorer till tunga laservapen, som utan ansträngning skär igenom pansarteknik. Lasertekniken ger en viktig grund för forskning av andra vapenteknologier.',
+        'description_long' => 'Ljus som fokuseras till att träffa en liten punkt kan därigenom skada mål som träffas.',
     ],
     'ion_technology' => [
         'title' => 'Jonteknologi',
         'description' => 'Koncentrationer av joner tillåter tillverkningen av kanoner, vilka orsakar enorm skada och reducerar dekonstruktionskostnaden per nivå med 4%.',
-        'description_long' => 'Joner kan koncentreras och accelereras till en dödlig stråle. Dessa strålar kan då orsaka enorm skada. Våra forskare har också utvecklat en teknik som klart kommer att minska dekonstruktionskostnaderna för byggnader och system. För varje forskningsnivå kommer dekonstruktionskostnaderna att sjunka med 4 %.',
+        'description_long' => 'Koncentrationer av joner tillåter tillverkningen av kanoner, vilka orsakar enorm skada och reducerar dekonstruktionskostnaden per nivå med 4%.',
     ],
     'hyperspace_technology' => [
         'title' => 'Hyperrymd Teknologi',
         'description' => 'Genom att integrera den 4:e och 5:e dimensionen är det nu möjligt att utforska en ny typ av drivning som är mer ekonomisk och effektiv.',
-        'description_long' => 'I teorin bygger idén om hyperrymdresor på att det finns en separat och angränsande dimension. När den aktiveras, shuntar en hyperrymddrift rymdskeppet in i denna andra dimension, där det kan täcka stora avstånd på en tid som är kraftigt reducerad från den tid det skulle ta i "normal" rymd. När den väl når den punkt i hyperrymden som motsvarar dess destination i det verkliga rymden, dyker den upp igen. 
-När väl en tillräcklig nivå av hyperrymdteknik har forskats är Hyperspace Drive inte längre bara en teori. Varje förbättring av denna drivenhet ökar lastkapaciteten på dina fartyg med 5 % av basvärdet.',
+        'description_long' => 'Genom att introducera fjärde och femte dimensionen är det 
+nu möjligt att forska fram en ny motor som är mer ekonomisk och mer 
+effektiv än tidigare. Genom att använda fjärde och femte dimensionen är det nu möjligt att krympa lastkajerna på dina skepp för att spara plats.',
     ],
     'plasma_technology' => [
         'title' => 'Plasmateknologi',
         'description' => 'Ytterligare en utveckling av jonteknologin vilken accelererar hög-energi plasma, som  i sin tur orsakar förödande skada och ytterligare optimerar produktionen av metall och kristall (1%/0,66%/0,33% per nivå).',
-        'description_long' => 'En vidareutveckling av jonteknik som inte påskyndar joner utan högenergiplasma istället, som sedan kan orsaka förödande skada vid kollisioner med ett föremål. Våra forskare har också hittat ett sätt att märkbart förbättra brytningen av metall och kristaller med denna teknik. 
-
-Metallproduktionen ökar med 1 %, kristallproduktionen med 0,66 % och deuteriumproduktionen med 0,33 % per konstruktionsnivå av plasmateknologin.',
+        'description_long' => 'Ytterligare en utveckling av jonteknologin vilken accelererar hög-energi plasma, som  i sin tur orsakar förödande skada och ytterligare optimerar produktionen av metall och kristall (1%/0,66%/0,33% per nivå).',
     ],
     'combustion_drive' => [
         'title' => 'Raketmotor',
         'description' => 'Utvecklingen av denna motor gör att skeppen med raketmotor 
 får högre hastighet. Varje nivå ökar hastigheten med 10 % av basvärdet.',
-        'description_long' => 'Combustion Drive är den äldsta av teknologier, men används fortfarande. Med Combustion Drive bildas avgaser från drivmedel som transporteras i fartyget före användning. I en sluten kammare är trycken lika i varje riktning och ingen acceleration sker. Om en öppning är anordnad i botten av kammaren är trycket inte längre motverkat på den sidan. Det återstående trycket ger en resulterande dragkraft i sidan mittemot öppningen, som driver fartyget framåt genom att driva ut avgaserna bakåt i extremt hög hastighet. 
-
-Med varje nivå av Combustion Drive som utvecklats, ökas hastigheten för små och stora lastfartyg, lätta jaktplan, återvinningsföretag och spionagesonder med 10 %.',
+        'description_long' => 'Utvecklingen av denna motor gör att skeppen med raketmotor 
+får högre hastighet. Varje nivå ökar hastigheten med 10 % av basvärdet.',
     ],
     'impulse_drive' => [
         'title' => 'Impulsmotor',
         'description' => 'Impulsmotorn är baserad på reaktionsprincipen. 
 Vidareutveckling av denna motor gör så att vissa skepp får högre hastighet. 
 Varje nivå ökar hastigheten med 20 % av basvärdet.',
-        'description_long' => 'Impulsdriften bygger på rekylprincipen, genom vilken den stimulerade strålningsemissionen huvudsakligen produceras som en restprodukt från kärnfusionen för att få energi. Dessutom kan andra massor injiceras. Med varje nivå av Impulse Drive som utvecklats ökas hastigheten för bombplan, kryssare, tunga stridsflygplan och kolonifartyg med 20 % av basvärdet. Dessutom förses de små transportörerna med impulsdrift så snart deras forskningsnivå når 5. Så snart Impulse Drive-forskningen har nått nivå 17, utrustas återvinningsföretagen med Impulse Drives. 
-
-Interplanetära missiler färdas också längre med varje nivå.',
+        'description_long' => 'Impulsmotorn är baserad på reaktionsprincipen. 
+Vidareutveckling av denna motor gör så att vissa skepp får högre hastighet. 
+Varje nivå ökar hastigheten med 20 % av basvärdet.',
     ],
     'hyperspace_drive' => [
         'title' => 'Hyperrymdmotor',
         'description' => 'Hyperrymdmotor vrider rymden runt skeppet. Utvecklingen 
 av denna teknologi gör att vissa skepp blir snabbare. Varje nivå ökar 
 hastigheten med 30 % av basvärdet.',
-        'description_long' => 'I fartygets omedelbara närhet är utrymmet skevt så att långa sträckor kan tillryggaläggas mycket snabbt. Ju mer Hyperspace Drive utvecklas, desto starkare blir utrymmets förvrängda karaktär, varigenom farten för fartygen utrustade med den (Battlecruisers, Battleships, Destroyers, Deathstars, Pathfinders och Reapers) ökar med 30 % per nivå. Dessutom är bombplanen byggd med en Hyperspace Drive så snart forskningen når nivå 8. Så snart Hyperspace Drive-forskningen når nivå 15, utrustas Recycler med en Hyperspace Drive.',
+        'description_long' => 'Hyperrymdmotor vrider rymden runt skeppet. Utvecklingen 
+av denna teknologi gör att vissa skepp blir snabbare. Varje nivå ökar 
+hastigheten med 30 % av basvärdet.',
     ],
     'espionage_technology' => [
         'title' => 'Spionageteknologi',
         'description' => 'Ger information om andra planeter och månar när man forskar 
 fram denna teknologi.',
-        'description_long' => 'Spionageteknologi handlar om att man uppgraderar mer och 
-mer effektiva sensorer. Ju mer denna teknologi utvecklas desto mer 
-information kan man få från andra planeter som man spionerar på. Skillnaden mellan din och 
-motståndarens nivå på spionageteknologin är mycket viktig. Ju mer du 
-utvecklar spionageteknologin desto mer detaljer kan du få och du har mindre 
-chans att bli upptäckt. Men ju fler sonder du sänder ut ju mer information 
-får du om din motståndare. Men chansen att bli upptäckt ökar samtidigt. 
-Spionageteknologin kan även hjälpa dig att kunna se vilka skepp som 
-attackerar dig. Här avgör nivån på spionageteknologin. Vid nivå 2 
-kan du se totala antalet av de attackerande skeppen. Vid nivå 4 kan du 
-se vilka olika typer av skepp som attackerar och hur många de är. Vid 
-nivå 8 kan du se det exakta antalet skepp av vilka sorter som attackerar.
-För räder så är denna teknologi mycket viktig då du kan se vilken flotta 
-eller försvar man har på planeten. Denna teknologi bör utvecklas så fort man kan.',
+        'description_long' => 'Ger information om andra planeter och månar när man forskar 
+fram denna teknologi.',
     ],
     'computer_technology' => [
         'title' => 'Datorteknologi',
         'description' => 'Fler flottor kan skickas iväg på uppdrag om 
 datorteknologin uppgraderas. Varje nivå av datorteknologin ökar det 
 maximala antalet flottor som man kan ha ute samtidigt med 1.',
-        'description_long' => 'Datorteknologin involverar att expandera det nuvarande 
-datasystemet. Kraftfullare och effektivare datasystem utvecklas vilket gör att fler flottor kan kontrolleras samtidigt.  Fler 
-flottor kan bli ivägskickade på uppdrag om datorteknologin uppgraderas. 
-Varje nivå av datorteknologin ökar det maximala antalet flottor som man kan 
-ha ute samtidigt med 1. Ju fler flottor man kan skicka iväg desto fler planeter kan man attackera och tömma på resurser. Men även nyttigt för dem som har 
-byteshandel med andra. Därför bör denna teknologi utvecklas mer och mer under spelets gång.',
+        'description_long' => 'Fler flottor kan skickas iväg på uppdrag om 
+datorteknologin uppgraderas. Varje nivå av datorteknologin ökar det 
+maximala antalet flottor som man kan ha ute samtidigt med 1.',
     ],
     'astrophysics' => [
         'title' => 'Astrofysik',
         'description' => 'Med en astrofysisk forskningsmodul så kan skepp åka ut på långa expeditioner. Varannan nivå av den här teknologin låter dig kolonisera en extra planet.',
-        'description_long' => 'Ytterligare fynd inom området astrofysik möjliggör konstruktion av laboratorier som kan monteras på allt fler fartyg. Detta gör långa expeditioner långt in i outforskade områden i rymden möjliga. Dessutom kan dessa framsteg användas för att ytterligare kolonisera universum. För varje två nivåer av denna teknik kan ytterligare en planet göras användbar.',
+        'description_long' => 'Med en astrofysisk forskningsmodul så kan skepp åka ut på långa expeditioner. Varannan nivå av den här teknologin låter dig kolonisera en extra planet.',
     ],
     'intergalactic_research_network' => [
         'title' => 'Intergalaktiskt forskningsnätverk',
         'description' => 'Forskningen sker på flera planeter istället för på bara en. Planeterna kommunicerar via detta nätverk.',
-        'description_long' => 'Detta är ditt djupa rymdnätverk för att kommunicera forskningsresultat till dina kolonier. Med IRN kan snabbare forskningstider uppnås genom att länka forskningslabb på högsta nivå lika med nivån på det utvecklade IRN. 
-För att fungera måste varje koloni kunna bedriva forskningen självständigt.',
+        'description_long' => 'Forskningen sker på flera planeter istället för på bara en. Planeterna kommunicerar via detta nätverk.',
     ],
     'graviton_technology' => [
         'title' => 'Gravitonteknologi',
         'description' => 'Avfyrar en koncentrerad laddning av gravitonpartiklar som 
 genererar ett tillfälligt kraftfält. Det kan förstöra skepp och även hela 
 månar.',
-        'description_long' => 'En graviton är en elementarpartikel som är masslös och inte har någon last. Det bestämmer gravitationskraften. Genom att avfyra en koncentrerad last av gravitoner kan ett artificiellt gravitationsfält konstrueras. Inte olikt ett svart hål, drar det in massa i sig själv. På så sätt kan den förstöra fartyg och till och med hela månar. För att producera en tillräcklig mängd gravitoner krävs enorma mängder energi. Graviton Research krävs för att konstruera en destruktiv Deathstar.',
+        'description_long' => 'Avfyrar en koncentrerad laddning av gravitonpartiklar som 
+genererar ett tillfälligt kraftfält. Det kan förstöra skepp och även hela 
+månar.',
     ],
     'weapon_technology' => [
-        'title' => 'Vapenteknik',
+        'title' => 'Vapenteknologi',
         'description' => 'Vapenteknologin gör att vapensystemen blir mer effektiva. 
 Varje nivå av vapenteknologin som man forskar ökar vapenstyrkan med 10 % av basvärdet.',
-        'description_long' => 'Vapenteknologin involverar en vidareutveckling av den 
-nuvarande vapensystemet. Man kan tillföra mer energi som gör att 
-vapensystemet blir mer effektivt och gör mer skada. Varje nivå av vapensystemet 
-ökar vapenstyrkan med 10 % av basvärdet. Man bör utveckla vapenteknologin 
-hela tiden under spelets gång.',
+        'description_long' => 'Vapenteknologin gör att vapensystemen blir mer effektiva. 
+Varje nivå av vapenteknologin som man forskar ökar vapenstyrkan med 10 % av basvärdet.',
     ],
     'shielding_technology' => [
-        'title' => 'Shield Technology',
+        'title' => 'Sköldteknologi',
         'description' => 'Shield-teknik gör sköldarna på fartyg och defensiva anläggningar mer effektiva. Varje nivå av sköldteknologi ökar sköldarnas styrka med 10 % av basvärdet.',
-        'description_long' => 'Med uppfinningen av den magnetgenerator, lärde sig forskarna att en konstgjord sköld kunde produceras för att skydda besättningen i rymdskepp, inte bara från den hårda solstrålningen miljö i rymden, men också ge skydd mot fiendens eld under en attack. När forskarna äntligen fulländat tekniken, var en magnetgenerator installeras på alla fartyg och försvarssystem.  Eftersom tekniken är avancerad på varje nivå, är den magnetgeneratorn uppgraderas vilket ger ytterligare 10% styrka till sköldarna basvärdet.',
+        'description_long' => 'Sköldteknologin gör så att skeppens och försvarsbyggnadernas sköldar blir mer effektiva. Varje nivå av Sköldteknologin ökar styrkan med 10 % av basvärdet.',
     ],
     'armor_technology' => [
         'title' => 'Pansarteknologi',
         'description' => 'Speciella legeringar gör att pansaret blir starkare på skepp och försvarsbyggnader. Pansaret blir 10% starkare per nivå.',
-        'description_long' => 'Miljön i deep space är hård. Piloter och besättningar på olika uppdrag möttes inte bara av intensiv solstrålning, de stod också inför utsikten att träffas av rymdskräp eller förstöras av fiendens eld i en attack. Med upptäckten av en aluminium-litium-titan-karbidlegering, som visade sig vara både lätt och hållbar, gav detta besättningen en viss grad av skydd. Med varje utvecklad nivå av pansarteknologi produceras en legering av högre kvalitet, vilket ökar pansarstyrkan med 10 %.',
+        'description_long' => 'Speciella legeringar gör att pansaret blir starkare på skepp och försvarsbyggnader. Pansaret blir 10% starkare per nivå.',
     ],
     'small_cargo' => [
         'title' => 'Litet transportskepp',
         'description' => 'Det lilla transportskeppet är ett lättmanövrerat skepp som snabbt kan transportera resurser till andra planeter.',
-        'description_long' => 'Transportörer är ungefär lika stora som jaktplan, men de avstår från högpresterande drivningar och vapen ombord för att öka sin fraktkapacitet. Som ett resultat bör en transportör endast skickas in i strider när den åtföljs av stridsfärdiga fartyg. 
-
-Så fort Impulse Drive når forskningsnivå 5, färdas den lilla transportören med ökad bashastighet och utrustas med en Impulse Drive.',
+        'description_long' => 'Det lilla transportskeppet är ett lättmanövrerat skepp som snabbt kan transportera resurser till andra planeter.',
     ],
     'large_cargo' => [
         'title' => 'Stort transportskepp',
         'description' => 'Det stora transportskeppet har en mycket större lastkapacitet än det lilla transportskeppet, och är generellt snabbare tack vare en förbättrad motor.',
-        'description_long' => 'Allt eftersom tiden utvecklades resulterade räden mot kolonier i att allt större mängder resurser tillfångatogs. Som ett resultat skickades Small Cargos ut i massantal för att kompensera för de större fångstmängderna. Man lärde sig snabbt att en ny klass av fartyg behövdes för att maximera resurser som fångats i räder, men samtidigt vara kostnadseffektiva. Efter mycket utveckling föddes Large Cargo. 
-
-För att maximera resurserna som kan lagras i lastrummen, har detta skepp lite i vägen för vapen eller rustningar. Tack vare den högutvecklade förbränningsmotorn som är installerad fungerar den som den mest ekonomiska resursleverantören mellan planeter och mest effektiv vid räder mot fientliga världar.',
+        'description_long' => 'Det stora transportskeppet har en mycket större lastkapacitet än det lilla transportskeppet, och är generellt snabbare tack vare en förbättrad motor.',
     ],
     'colony_ship' => [
         'title' => 'Koloniskepp',
         'description' => 'Obebodda planeter kan bli koloniserade med detta skepp.',
-        'description_long' => 'Under 1900-talet bestämde sig människan för att satsa på stjärnorna. Först landade den på månen. Efter det byggdes en rymdstation. Mars koloniserades kort därefter. Det fastställdes snart att vår tillväxt berodde på att kolonisera andra världar. Forskare och ingenjörer över hela världen samlades för att utveckla människans största prestation någonsin. Kolonifartyget är fött. 
-
-Detta skepp används för att förbereda en nyupptäckt planet för kolonisering. När det väl anländer till destinationen förvandlas fartyget omedelbart till ett vanligt livsrum för att hjälpa till att befolka och bryta den nya världen. Det maximala antalet planeter bestäms därmed av framstegen inom astrofysikforskningen. Två nya nivåer av astroteknologi möjliggör kolonisering av ytterligare en planet.',
+        'description_long' => 'Obebodda planeter kan bli koloniserade med detta skepp.',
     ],
     'recycler' => [
         'title' => 'Återvinnare',
         'description' => 'Återvinningsföretag är de enda fartyg som kan skörda skräpfält som flyter i en planets omloppsbana efter strid.',
-        'description_long' => 'Kampen i rymden tog allt större skalor. Tusentals fartyg förstördes och resurserna från deras kvarlevor verkade vara förlorade till skräpfälten för alltid. Normala lastfartyg kunde inte komma tillräckligt nära dessa fält utan att riskera betydande skador. 
-En nyligen genomförd utveckling av sköldteknologier förbigick detta problem effektivt. En ny klass av fartyg skapades som liknade Transporters: Recyclers. Deras ansträngningar hjälpte till att samla ihop de tankeförlorade resurserna och sedan rädda dem. Skräpet utgjorde inte längre någon verklig fara tack vare de nya sköldarna. 
-
-Så snart Impulse Drive-forskningen har nått nivå 17, utrustas återvinningsföretagen med Impulse Drives. Så fort Hyperspace Drive-forskningen har nått nivå 15, utrustas återvinningsföretag med Hyperspace Drives.',
+        'description_long' => 'Återvinnaren är det enda skepp som kan skörda vrakfält. 
+Vrakfälten flyter runt i omloppsbana runt en planet efter en strid.',
     ],
     'espionage_probe' => [
         'title' => 'Spionsond',
         'description' => 'Spionsonder är små, snabba sonder som samlar information från andra planeter genom att spionera.',
-        'description_long' => 'Spionagesonder är små, smidiga drönare som ger data om flottor och planeter. Utrustad med specialdesignade motorer gör den att de kan täcka stora avstånd på bara några minuter. Väl i omloppsbana runt målplaneten samlar de snabbt in data och skickar tillbaka rapporten via ditt Deep Space Network för utvärdering. Men det finns en risk för den intelligenta insamlingsaspekten. Under tiden som rapporten sänds tillbaka till ditt nätverk kan signalen detekteras av målet och sonderna kan förstöras.',
+        'description_long' => 'Spionsonder är små, snabba sonder som samlar information från andra planeter genom att spionera.',
     ],
     'solar_satellite' => [
         'title' => 'Solsatellit',
         'description' => 'Solsatelliter är enkla plattformar av solceller, belägna i en hög, stationär bana. De samlar in solljus och överför det till markstationen via laser.',
-        'description_long' => 'Forskare upptäckte en metod för att överföra elektrisk energi till kolonin med hjälp av specialdesignade satelliter i en geosynkron bana. Solsatelliter samlar solenergi och överför den till en markstation med hjälp av avancerad laserteknik. Effektiviteten hos en solsatellit beror på styrkan på den solstrålning den tar emot. I princip är energiproduktionen i omloppsbanor närmare solen större än för planeter i banor på avstånd från solen. 
-På grund av deras goda kostnad/prestanda-förhållande kan solsatelliter lösa många energiproblem. Men se upp: Solsatelliter kan lätt förstöras i strid.',
+        'description_long' => 'Solsatelliter är enkla plattformar med solceller. De är 
+stationerade högt upp i en omloppsbana runt planeten. De absorberar solljus 
+och skickar det sedan vidare till planeten via laser. En sol satellit producerar 35 energi på denna planeten.',
     ],
     'crawler' => [
         'title' => 'Krypare',
         'description' => 'Krypare ökar produktionen av metall, kristall och deuterium på deras uppdragsplanet med respektive 0,02%, 0,02% och 0,02%. Som en samlare ökar också produktionen. Den maximala totala bonusen beror på den totala nivån för dina gruvor.',
-        'description_long' => 'En Krypare är ett stort grävfordon som ökar produktionen av gruvor och synteser. Det är mer smidigt än det ser ut men det är inte särskilt robust. Varje Krypare ökar metallproduktionen med 0,02%, kristallproduktion med 0,02% och deuteriumproduktionen med 0,02%. Som en samlare ökar också produktionen. Den maximala totala bonusen beror på den totala nivån för dina gruvor.',
+        'description_long' => 'Krypare ökar produktionen av metall, kristall och deuterium på deras uppdragsplanet med respektive 0,02%, 0,02% och 0,02%. Som en samlare ökar också produktionen. Den maximala totala bonusen beror på den totala nivån för dina gruvor.',
     ],
     'pathfinder' => [
         'title' => 'Stigfinnare',
         'description' => 'Pathfinder är ett snabbt och smidigt fartyg, specialbyggt för expeditioner till okända rymdsektorer.',
-        'description_long' => 'Pathfinder är den senaste utvecklingen inom prospekteringsteknik. Detta fartyg var speciellt designat för medlemmar i Discoverer-klassen för att maximera sin potential. Utrustad med avancerade skanningssystem och ett stort lastrum för att rädda resurser, utmärker sig Pathfinder på expeditioner. Dess sofistikerade sensorer kan upptäcka värdefulla resurser och anomalier som skulle gå obemärkt förbi av andra fartyg. Fartyget kombinerar hög hastighet med god lastkapacitet, vilket gör det perfekt för snabba prospekteringsuppdrag och resursinsamling från avlägsna sektorer.',
+        'description_long' => 'Stigfinnare är snabba, rymliga och kan bryta vrakfält under expeditioner. Totalavkastningen ökar också.',
     ],
     'light_fighter' => [
         'title' => 'Litet jaktskepp',
         'description' => 'Det här är det första jaktskeppet alla kejsare kommer bygga. Det lilla jaktskeppet är lättmanövrerat, men ett lätt byte om det är ensamt. I stort antal kan dom hota vilket imperium som helst. Dom är först och främst till för att följa små och stora fraktskepp till fientliga planeter med litet motstånd.',
-        'description_long' => 'Detta är det första stridsskeppet som alla kejsare kommer att bygga. Den lätta fightern är ett smidigt fartyg, men sårbart när det är på egen hand. I massantal kan de bli ett stort hot mot vilket imperium som helst. De är de första som följer med små och stora laster till fientliga planeter med mindre försvar.',
+        'description_long' => 'Det här är det första jaktskeppet alla kejsare kommer bygga. Det lilla jaktskeppet är lättmanövrerat, men ett lätt byte om det är ensamt. I stort antal kan dom hota vilket imperium som helst. Dom är först och främst till för att följa små och stora fraktskepp till fientliga planeter med litet motstånd.',
     ],
     'heavy_fighter' => [
         'title' => 'Stort jaktskepp',
         'description' => 'Det stora jaktskeppet är bättre bepansrat och har en högre 
 attackstyrka än de små jaktskeppen.',
-        'description_long' => 'Vid utvecklingen av det tunga stridsflygplanet nådde forskarna en punkt där konventionella enheter inte längre gav tillräcklig prestanda. För att förflytta fartyget optimalt användes impulsdrivningen för första gången. Detta ökade kostnaderna, men öppnade också nya möjligheter. Genom att använda denna drivenhet blev det mer energi kvar till vapen och sköldar; dessutom användes högkvalitativa material för denna nya familj av fighters. Med dessa förändringar representerar det tunga stridsflygplanet en ny era inom fartygsteknologin och är grunden för kryssningsteknologin. 
-
-Den tunga jaktplanen är något större än den lätta jaktplanen och har tjockare skrov, vilket ger mer skydd och starkare vapen.',
+        'description_long' => 'Det stora jaktskeppet är bättre bepansrat och har en högre 
+attackstyrka än de små jaktskeppen.',
     ],
     'cruiser' => [
         'title' => 'Kryssare',
         'description' => 'Kryssaren är nästan tre gånger mer bepansrad än det stora 
 jaktskeppet och har nästan två gånger mer i attackstyrka. Den är även väldigt 
 snabb.',
-        'description_long' => 'Med utvecklingen av den tunga lasern och jonkanonen mötte lätta och tunga jagare ett oroväckande stort antal nederlag som ökade för varje raid. Trots många modifieringar, vapenstyrka och rustningsförändringar kunde den inte ökas tillräckligt snabbt för att effektivt motverka dessa nya defensiva åtgärder. Därför beslutades det att bygga en ny klass av fartyg som kombinerade mer rustning och mer eldkraft. Som ett resultat av år av forskning och utveckling föddes Cruiser. 
-
-Kryssare är bepansrade nästan tre gånger jämfört med tunga stridsflygplan och har mer än dubbelt så mycket eldkraft som något stridsfartyg som finns. De har också hastigheter som vida överträffade alla rymdfarkoster som någonsin tillverkats. I nästan ett sekel dominerade kryssare universum. Men med utvecklingen av Gauss-kanoner och plasmatorn upphörde deras dominans. De används än idag mot stridsgrupper, men inte lika övervägande som tidigare.',
+        'description_long' => 'Kryssaren är nästan tre gånger mer bepansrad än det stora 
+jaktskeppet och har nästan två gånger mer i attackstyrka. Den är även väldigt 
+snabb.',
     ],
     'battle_ship' => [
         'title' => 'Slagskepp',
         'description' => 'Slagskeppen utgör ryggraden i varje flotta. Deras kraftiga kanoner, höga hastighet och stora lastkapacitet ger fienden rysningar.',
-        'description_long' => 'När det blev uppenbart att kryssaren tappade mark till det ökande antalet försvarsstrukturer den stod inför, och med förlusten av fartyg på uppdrag på oacceptabla nivåer, beslutades det att bygga ett fartyg som kunde möta samma typ av försvarsstrukturer med så lite förlust som möjligt. Efter omfattande utveckling föddes Battleship. Slagskeppet är byggt för att klara de största striderna och har stora lastutrymmen, tunga kanoner och hög hyperdrivhastighet. När det väl utvecklats visade det sig så småningom vara ryggraden i varje plundrande kejsarflotta.',
+        'description_long' => 'Slagskeppen utgör ryggraden i varje flotta. Deras kraftiga kanoner, höga hastighet och stora lastkapacitet ger fienden rysningar.',
     ],
     'battlecruiser' => [
         'title' => 'Jagare',
         'description' => 'Jagaren är specialiserad på att hindra fientliga flottor att ta sig fram.',
-        'description_long' => 'Detta fartyg är ett av de mest avancerade stridsfartygen som någonsin har utvecklats, och är särskilt dödligt när det kommer till att förstöra attackerande flottor. Med sina förbättrade laserkanoner ombord och avancerade Hyperspace-motor är Battlecruiser en seriös kraft att ta itu med i alla attacker. På grund av fartygets konstruktion och dess stora vapensystem var lastrummen tvungna att kapas, men detta kompenseras av den sänkta bränsleförbrukningen.',
+        'description_long' => 'Jagaren är specialiserad på att hindra fientliga flottor att ta sig fram.',
     ],
     'bomber' => [
         'title' => 'Bombare',
         'description' => 'Bombaren är speciellt utvecklad för att förstöra en planets försvar.',
-        'description_long' => 'Under århundradena, när försvaret började bli större och mer sofistikerat, började flottor att förstöras i en alarmerande takt. Det beslutades att ett nytt fartyg behövdes för att bryta försvar för att säkerställa maximala resultat. Efter år av forskning och utveckling skapades bombplanen. 
-
-Med hjälp av laserstyrd målutrustning och plasmabomber söker bombplanen upp och förstör alla försvarsmekanismer den kan hitta. Så fort hyperrymddriften är utvecklad till nivå 8, är bombplanen utrustad med hyperrymdmotorn och kan flyga i högre hastigheter.',
+        'description_long' => 'Bombaren är speciellt utvecklad för att förstöra en planets försvar.',
     ],
     'destroyer' => [
         'title' => 'Flaggskepp',
         'description' => 'Flaggskeppet är krigsskeppens konung.',
-        'description_long' => 'Destroyern är resultatet av år av arbete och utveckling. Med utvecklingen av Deathstars beslutades det att en klass av fartyg behövdes för att försvara sig mot ett så massivt vapen. Tack vare sina förbättrade målsökningssensorer, jonkanoner med flera falanger, Gausskanoner och plasmatorn, visade sig Destroyer vara ett av de mest skrämmande skeppen som skapats. 
-
-Eftersom jagaren är mycket stor är dess manövrerbarhet kraftigt begränsad, vilket gör den mer till en stridsstation än ett stridsskepp. Bristen på manövrerbarhet kompenseras av dess rena eldkraft, men det kostar också betydande mängder deuterium att bygga och använda.',
+        'description_long' => 'Flaggskeppet är krigsskeppens konung.',
     ],
     'deathstar' => [
         'title' => 'Dödsstjärna',
         'description' => 'Den enorma styrkan i en dödsstjärna är oöverträffad.',
-        'description_long' => 'The Deathstar är det mäktigaste skeppet som någonsin skapats. Detta månstora skepp är det enda skeppet som kan ses med blotta ögat på marken. När du upptäcker det är det tyvärr för sent att göra någonting. 
-
-Beväpnad med en gigantisk gravitonkanon, det mest avancerade vapensystemet som någonsin skapats i universum, har detta enorma fartyg inte bara förmågan att förstöra hela flottor och försvar, utan har också förmågan att förstöra hela månar. Endast de mest avancerade imperierna har förmågan att bygga ett skepp av denna maffiga storlek.',
+        'description_long' => 'Den enorma styrkan i en dödsstjärna är oöverträffad.',
     ],
     'reaper' => [
         'title' => 'Dödsängel',
         'description' => 'The Reaper är ett kraftfullt stridsfartyg som är specialiserat för aggressiv raid och skörd av skräpfält.',
-        'description_long' => 'The Reaper representerar höjdpunkten av militärteknik i allmän klass. Detta tungt beväpnade fartyg designades för befälhavare som värdesätter både stridsförmåga och taktisk flexibilitet. Medan dess primära roll är strid, har Reaper förstärkta lastrum som gör att den kan skörda skräpfält efter strid. Dess avancerade målsystem och tunga rustningar gör den till en formidabel motståndare, medan dess design med dubbla ändamål innebär att den både kan skapa och dra nytta av blodbad på slagfältet. Fartyget är utrustat med banbrytande vapenteknik och kan hålla sig mot mycket större fartyg.',
+        'description_long' => 'Ett skepp i Dödsängel-klassen är ett mäktigt destruktivt instrument som kan plundra vrakfälten omedelbart efter striden.',
     ],
     'rocket_launcher' => [
         'title' => 'Raketramp',
         'description' => 'Raketrampen är ett enkelt och kostnadseffektivt försvarsval.',
-        'description_long' => 'Din första grundläggande försvarslinje. Dessa är enkla markbaserade uppskjutningsanläggningar som avfyrar konventionella stridsspetsspetsade missiler mot attackerande fiendemål. Eftersom de är billiga att konstruera och ingen forskning krävs, är de väl lämpade för att försvara räder, men förlorar effektivitet för att försvara sig från attacker i större skala. När du väl börjar bygga på mer avancerade försvarsvapensystem, blir raketavfyrningsanordningar ett enkelt foder för att tillåta dina mer skadliga vapen att orsaka större skada under en längre tid. 
-
-Efter en strid finns det upp till 70 % chans att misslyckade defensiva anläggningar kan återgå till användning.',
+        'description_long' => 'Raketrampen är ett enkelt och kostnadseffektivt försvarsval.',
     ],
     'light_laser' => [
         'title' => 'Litet lasertorn',
         'description' => 'Koncentrerad avfyrning mot målen med protoner kan förorsaka större skada än vanliga ballistiska skjutvapen.',
-        'description_long' => 'När teknologin utvecklades och mer sofistikerade fartyg skapades, bestämdes det att en starkare försvarslinje behövdes för att motverka attackerna. När lasertekniken utvecklades, designades ett nytt vapen för att ge nästa nivå av försvar. Lättlasrar är enkla markbaserade vapen som använder speciella målsystem för att spåra fienden och avfyra en högintensiv laser utformad för att skära igenom målets skrov. För att hållas kostnadseffektiva försågs de med ett förbättrat avskärmningssystem, men den strukturella integriteten är densamma som för raketkastaren. 
-
-Efter en strid finns det upp till 70 % chans att misslyckade defensiva anläggningar kan återgå till användning.',
+        'description_long' => 'Koncentrerad avfyrning mot målen med protoner kan förorsaka större skada än vanliga ballistiska skjutvapen.',
     ],
     'heavy_laser' => [
         'title' => 'Stort lasertorn',
         'description' => 'Det stora lasertornet är en vidareutveckling av det lilla lasertornet.',
-        'description_long' => 'Heavy Laser är en praktisk, förbättrad version av Light Laser. Eftersom den är mer balanserad än lättlasern med förbättrad legeringssammansättning, använder den starkare, tätare strålar och ännu bättre målinriktningssystem ombord. 
-
-Efter en strid finns det upp till 70 % chans att misslyckade defensiva anläggningar kan återgå till användning.',
+        'description_long' => 'Det stora lasertornet är en vidareutveckling av det lilla lasertornet.',
     ],
     'gauss_cannon' => [
         'title' => 'Gausskanon',
         'description' => 'Gausskanonen avfyrar höghastighetsprojektiler som väger hundratals ton.',
-        'description_long' => 'Under lång tid ansågs projektilvapen som föråldrade i kölvattnet av modern termonukleär och energiteknik och på grund av utvecklingen av hyperdriften och förbättrad rustning. Det var tills den exakta energitekniken som en gång hade åldrat den, hjälpte den att återuppnå sin etablerade position. 
-En gauss kanon är en stor version av partikelacceleratorn. Extremt tunga missiler accelereras med en enorm elektromagnetisk kraft och har mynningshastigheter som gör att smutsen som omger missilen brinner i himlen. Det här vapnet är så kraftfullt när det avfyras att det skapar en ljudboom. Moderna rustningar och sköldar tål knappt kraften, ofta är målet helt genomträngt av missilens kraft. Försvarskonstruktioner avaktiveras så fort de har blivit för svårt skadade. 
-
-Efter en strid finns det upp till 70 % chans att misslyckade defensiva anläggningar kan återgå till användning.',
+        'description_long' => 'Gausskanonen avfyrar höghastighetsprojektiler som väger hundratals ton.',
     ],
     'ion_cannon' => [
         'title' => 'Jonkanon',
         'description' => 'Jonkanonen avfyrar en kontinuerlig stråle av accelererande joner, vilket orsakar stora skador på föremål som den träffar.',
-        'description_long' => 'En jonkanon är ett vapen som avfyrar strålar av joner (positivt eller negativt laddade partiklar). Jonkanonen är faktiskt en typ av partikelkanon; endast de använda partiklarna joniseras. På grund av sina elektriska laddningar har de också potential att inaktivera elektroniska enheter och allt annat som har en elektrisk eller liknande strömkälla, med hjälp av ett fenomen som kallas den elektromagetiska pulsen (EMP-effekten). På grund av kanonernas mycket förbättrade skärmningssystem ger denna kanon förbättrat skydd för dina större, mer destruktiva försvarsvapen. 
-
-Efter en strid finns det upp till 70 % chans att misslyckade defensiva anläggningar kan återgå till användning.',
+        'description_long' => 'Jonkanonen avfyrar en kontinuerlig stråle av accelererande joner, vilket orsakar stora skador på föremål som den träffar.',
     ],
     'plasma_turret' => [
         'title' => 'Plasmakanon',
         'description' => 'Plasmakanonen frigör sin energi likt en solstråle och överträffar till och med Flaggskeppet med sin attackstyrka.',
-        'description_long' => 'Ett av de mest avancerade försvarsvapensystemen som någonsin utvecklats, Plasma Turret använder en stor kärnreaktorbränslecell för att driva en elektromagnetisk accelerator som avfyrar en puls, eller toroid, av plasma. Under drift låser plasmatornet först ett mål och börjar skjuta. En plasmasfär skapas i tornets kärna genom att överhetta och komprimera gaser, avlägsna dem från sina joner. När gasen är överhettad, komprimerad och en plasmasfär har skapats, laddas den sedan in i den elektromagnetiska acceleratorn som aktiveras. När den är fullsatt aktiveras gaspedalen, vilket resulterar i att plasmasfären lanseras med extremt hög hastighet till det avsedda målet. Ur målens perspektiv är den annalkande blåaktiga plasmakulan imponerande, men när den väl slår till orsakar den omedelbar förstörelse. 
-
-Försvarsanläggningar avaktiveras så snart de är för hårt skadade. Efter en strid finns det upp till 70 % chans att misslyckade defensiva anläggningar kan återgå till användning.',
+        'description_long' => 'Plasmakanonen frigör sin energi likt en solstråle och överträffar till och med Flaggskeppet med sin attackstyrka.',
     ],
     'small_shield_dome' => [
         'title' => 'Liten Sköldkupol',
         'description' => 'Den Lilla sköld kupolen täcker hela planeten med ett fält 
 som kan absorbera enorma mängder energi från attackerande fiender.',
-        'description_long' => 'Att kolonisera nya världar medförde en ny fara, rymdskräp. En stor asteroid skulle lätt kunna utplåna världen och alla invånare. Framsteg inom skärmningsteknik gav forskare ett sätt att utveckla en sköld för att skydda en hel planet inte bara från rymdskräp utan, som man lärde sig, från en fiendeattack. Genom att skapa ett stort elektromagnetiskt fält runt planeten avleddes rymdskräp som normalt skulle ha förstört planeten och attacker från fiendens imperier omintetgjordes. De första generatorerna var stora och skölden gav måttligt skydd, men det upptäcktes senare att små sköldar inte gav skydd mot attacker i större skala. Den lilla sköldkupolen var upptakten till ett starkare, mer avancerat planetariskt avskärmningssystem som skulle komma. 
-
-Efter en strid finns det upp till 70 % chans att misslyckade defensiva anläggningar kan återgå till användning.',
+        'description_long' => 'Den Lilla sköld kupolen täcker hela planeten med ett fält 
+som kan absorbera enorma mängder energi från attackerande fiender.',
     ],
     'large_shield_dome' => [
         'title' => 'Stor sköldkupol',
         'description' => 'Utvecklingen av den lilla sköld kupolen kan använda betydligt mer energi för att stå emot angrepp.',
-        'description_long' => 'The Large Shield Dome är nästa steg i utvecklingen av planetariska sköldar, det är resultatet av år av arbete med att förbättra Small Shield Dome. Byggda för att motstå en större störtflod av fiendens eld genom att ge ett elektromagnetiskt fält med högre energi, ger stora kupoler en längre period av skydd innan de kollapsar. 
-
-Efter en strid finns det upp till 70 % chans att misslyckade defensiva anläggningar kan återgå till användning.',
+        'description_long' => 'Utvecklingen av den lilla sköld kupolen kan använda betydligt mer energi för att stå emot angrepp.',
     ],
     'anti_ballistic_missile' => [
         'title' => 'Antiballistiska missiler',
         'description' => 'Antiballistiska missiler förstör inkommande Interplanetära 
 missiler.',
-        'description_long' => 'Antiballistiska missiler (ABM) är din enda försvarslinje när de attackeras av interplanetära missiler (IPM) på din planet eller måne. När en uppskjutning av IPM:er upptäcks, armeras dessa missiler automatiskt, bearbetar en uppskjutningskod i sina flygdatorer, riktar in sig på den inkommande IPM:n och startar för att avlyssna. Under flygningen spåras mål-IPM ständigt och kurskorrigeringar tillämpas tills ABM når målet och förstör den attackerande IPM. Varje ABM förstör en inkommande IPM.',
+        'description_long' => 'Antiballistiska missiler förstör inkommande Interplanetära 
+missiler.',
     ],
     'interplanetary_missile' => [
         'title' => 'Interplanetära missiler',
         'description' => 'Interplanetära missiler förstör fiendens försvar.',
-        'description_long' => 'Interplanetära missiler (IPM) är ditt offensiva vapen för att förstöra ditt måls försvar. Med hjälp av toppmodern spårningsteknik riktar varje missil ett visst antal försvar för förstörelse. Tippade med en antimateriabomb levererar de en destruktiv kraft så allvarlig att förstörda sköldar och försvar inte kan repareras. Det enda sättet att motverka dessa missiler är med ABM.',
+        'description_long' => 'Interplanetära missiler förstör fiendens 
+försvarsbyggnader. Dina interplanetära missiler täcker 0 system.',
     ],
     'kraken' => [
         'title' => 'KRAKEN',

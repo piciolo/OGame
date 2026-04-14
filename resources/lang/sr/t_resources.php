@@ -10,383 +10,315 @@
 
 return [
     'metal_mine' => [
-        'title' => 'Događanja',
+        'title' => 'Rudnik metala',
         'description' => 'Used in the extraction of metal ore, metal mines are of primary importance to all emerging and established empires.',
-        'description_long' => 'Metal je najjeftinija sirovina te za njegov rad je potrebno najmanje energije, zato je najvise potreban. Sto su rudnici na vecem levelu razvijenosti, to su oni dublji te se moze vise sirovina izvaditi, ali zato trose vise energije.',
+        'description_long' => 'Metal je glavna sirovina za izgradnju strukture zgrada i brodova.',
     ],
     'crystal_mine' => [
-        'title' => 'Događanja',
+        'title' => 'Rudnik kristala',
         'description' => 'Crystals are the main resource used to build electronic circuits and form certain alloy compounds.',
-        'description_long' => 'Rudnici kristala proizvode glavni resurs koji se koristi u proizvodnji električnih uređaja. Kopanje kristala uzima 50% više energije nego kopanje metala, pa je time kristal vrijedniji. Skoro svi brodovi i sve zgrade zahtjevaju kristal. Najviše kristala odlazi na izgradnju brodova, no problem je što je kristal dosta rijedak i nalazi se na velikim dubinama. To ujedno znači da što je dublje rudnik kristala to će ga više proizvoditi.',
+        'description_long' => 'Glavna sirovina za elektronicne dijelove i izradu odredjenih slitina je kristal.',
     ],
     'deuterium_synthesizer' => [
-        'title' => 'Događanja',
+        'title' => 'Sintizer deuterija',
         'description' => 'Deuterium Synthesizers draw the trace Deuterium content from the water on a planet.',
-        'description_long' => 'Deuterij je izotop vodika kod kojeg se atomska jezgra sastoji od jednog protona i jednog neutrona. Vece kolicine se nalaze u dubinama mora. Izgradnja sintizera takoder obuhvaca izgradnju spremnika za deuterij. Ono je najvise potrebno kao gorivo za brodove, istrazivanja, pogled u galaksiju i za snimak senzora.',
+        'description_long' => 'Deuterij je najvise potreban kao gorivo za brodove, istrazivanja...',
     ],
     'solar_plant' => [
-        'title' => 'Događanja',
+        'title' => 'Solarna elektrana',
         'description' => 'Solar power plants absorb energy from solar radiation. All mines need energy to operate.',
-        'description_long' => 'Solarna elektrana je jedan nacin proizvodnje energije, ona koristi poluvodice u foto celijama koje pretvaraju svjetlosnu energiju u elektricnu struju.',
+        'description_long' => 'Kako bi zgrade mogle funkcionirati potrebna je energija koju proizvode velike solarne elektrane.',
     ],
     'fusion_plant' => [
-        'title' => 'Događanja',
+        'title' => 'Fuzijska elektrana',
         'description' => 'The fusion reactor uses deuterium to produce energy.',
-        'description_long' => 'У фузионим електранама, језгра водоника се спајају у језгра хелијума под енормном температуром и притиском, ослобађајући огромне количине енергије. За сваки утрошени грам деутеријума може се произвести до 41,32*10^-13 џула енергије; са 1 г можете произвести 172 МВх енергије. 
-
-Већи реакторски комплекси користе више деутеријума и могу произвести више енергије на сат. Енергетски ефекат би се могао повећати истраживањем енергетске технологије. 
-
-Производња енергије фузионог постројења израчунава се на следећи начин: 
-30 * [Постројење за фузију нивоа] * (1,05 + [Технологија енергије нивоа] * 0,01) ^ [Постројење за фузију нивоа]',
+        'description_long' => 'Fuzijski reaktor stvara jedan atom vodika kombinirajuci da atoma deuterija pri visokoj temperaturi i tlaku.',
     ],
     'metal_store' => [
-        'title' => 'Događanja',
+        'title' => 'Spremnik metala',
         'description' => 'Provides storage for excess metal.',
-        'description_long' => 'Ово огромно складиште се користи за складиштење металне руде. Сваки ниво надоградње повећава количину металне руде која се може ускладиштити. Ако су продавнице пуне, неће се даље копати метал. 
-
-Складиште метала штити одређени проценат дневне производње рудника (макс. 10 процената).',
+        'description_long' => 'Ogromni spremnici za izvadjenu metalnu rudu.',
     ],
     'crystal_store' => [
-        'title' => 'Događanja',
+        'title' => 'Spremnik kristala',
         'description' => 'Provides storage for excess crystal.',
-        'description_long' => 'Необрађени кристал ће у међувремену бити ускладиштен у овим огромним складишним халама. Са сваким нивоом надоградње, повећава се количина кристала која се може ускладиштити. Ако су складишта кристала пуна, више кристала се неће вадити. 
-
-Цристал Стораге штити одређени проценат дневне производње рудника (макс. 10 процената).',
+        'description_long' => 'Ogromni spremnici za izvadjenu kristalnu rudu.',
     ],
     'deuterium_store' => [
-        'title' => 'Događanja',
+        'title' => 'Spremnik deuterija',
         'description' => 'Giant tanks for storing newly-extracted deuterium.',
-        'description_long' => 'Резервоар за деутеријум је за складиштење новосинтетизованог деутеријума. Када га синтисајзер обради, он се доводи у овај резервоар за каснију употребу. Са сваком надоградњом резервоара, укупни капацитет складиштења се повећава. Када се капацитет достигне, више неће бити синтетисаног деутеријума. 
-
-Резервоар деутеријума штити одређени проценат дневне производње синтисајзера (макс. 10 процената).',
+        'description_long' => 'Ogromni spremnici za spremanje novo proizvedenog deuterija.',
     ],
     'robot_factory' => [
-        'title' => 'Događanja',
+        'title' => 'Tvornica robota',
         'description' => 'Robotic factories provide construction robots to aid in the construction of buildings. Each level increases the speed of the upgrade of buildings.',
-        'description_long' => 'Tvornice robota proizvode jednostavne radnike, koji se koriste za izgradnju planetarne infrastrukture. Sto je veci level razvijenosti, to je brza gradnja zgrada',
+        'description_long' => 'Tvornice robota proizvode jednostavne radnike, koji se koriste za izgradnju planetarne infrastrukture.',
     ],
     'shipyard' => [
-        'title' => 'Događanja',
+        'title' => 'Tvornica brodova',
         'description' => 'All types of ships and defensive facilities are built in the planetary shipyard.',
-        'description_long' => 'Sto je veca tvornica, povecava se brzina izgradnje te se mogu proizvoditi veci i slozeniji brodovi i obrambeni sistemi. Nakon izgradnje tvornice nanita proizvode se maleni roboti, koji pomazu radnicima da brze rade.',
+        'description_long' => 'U tvornici brodova se proizvode sve vrste brodova, kao i obrambeni sustavi.',
     ],
     'research_lab' => [
-        'title' => 'Događanja',
+        'title' => 'Centar za istrazivanje',
         'description' => 'A research lab is required in order to conduct research into new technologies.',
-        'description_long' => 'Level razvijenosti centra je najvazniji faktor za brzinu, te kolicinu dostupnih novih istrazivanja. Da bi se ubrzalo istrazivanje, automatski se svi radnici koji stoje na raspolaganju salju u centar, i radi toga nisu dostupni drugim planetama. Ukoliko je tehnologija istrazena, radnici se vracaju na svoju maticnu planetu i donose istrazene radove, tako da se jednom istrazena tehnologija moze koristiti na svim svojim planetama.',
+        'description_long' => 'Da bi se istrazile nove tehnologije, potreban je centar za istrazivanje.',
     ],
     'alliance_depot' => [
-        'title' => 'Događanja',
+        'title' => 'Depo saveza',
         'description' => 'The alliance depot supplies fuel to friendly fleets in orbit helping with defense.',
-        'description_long' => 'Depo saveza daje mogucnost da se udruzene flote koje pomazu u obrani i koje se nalaze u orbitu obezbjede sa gorivom. Za svaki Level izgradnje depoa mogu se 10.000 jedinicne mjere Deuterij-a po satu poslati flotama u orbitu.',
+        'description_long' => 'Depo saveza daje mogucnost da se udruzene flote koje pomazu u obrani i koje se nalaze u orbitu obezbjede sa gorivom',
     ],
     'missile_silo' => [
-        'title' => 'Događanja',
+        'title' => 'Silos za rakete',
         'description' => 'Missile silos are used to store missiles.',
-        'description_long' => 'Imate mjesta za 5 interplanetarnih i 10 antibalistickih projektila za svaki level vaseg silosa. Mjesanje projektila po vrstama je takoder moguce. 1 interplanetarni projektil koristi mjesto za 2 antibalisticka projektila.',
+        'description_long' => 'Silos za rakete je planetarno postrojenje za skladistenje i lansiranje raketa.',
     ],
     'nano_factory' => [
-        'title' => 'Događanja',
+        'title' => 'Tvornica nanita',
         'description' => 'This is the ultimate in robotics technology. Each level cuts the construction time for buildings, ships, and defenses.',
-        'description_long' => 'Naniti su zapravo sicusni roboti velicine par nanometara. Ovi mehanicki mikrobi su medjusobno umrezeni i programirani za vrlo brzu izgradnju. Kako su izradjeni na razini molekule vrlo su korisni kod izgradnje brodova jer nakon izgradnje postaju dio broda te popravljaju brod ako su opskrbljeni energijom i resursima.',
+        'description_long' => 'Svaki level tvornice nanita polovi vrijeme za izgradnju zgrada, brodova i obrane.',
     ],
     'terraformer' => [
-        'title' => 'Događanja',
+        'title' => 'Terraformer',
         'description' => 'The terraformer increases the usable surface of planets.',
-        'description_long' => 'Са све већом изградњом на планетама, чак и животни простор за колонију постаје све ограниченији. Традиционалне методе као што су висока и подземна градња све више постају недовољне. Мала група физичара високе енергије и нано инжењера на крају је дошла до решења: тераформирања. 
-Користећи огромне количине енергије, тераформер може да обради читаве делове земље или чак континенте. У овој згради се налази производња нанита креираних специјално за ову сврху, који обезбеђују константан квалитет тла у целом простору. 
-
-Сваки ниво терраформера омогућава обрађивање 5 поља. Са сваким нивоом, терраформер заузима једно поље. Свака 2 нивоа терраформера добићете 1 бонус поље. 
-
-Једном изграђен, тераформер се не може демонтирати.',
+        'description_long' => 'Koristeci se ogromnim kolicinama energije terraformer moze ogromne predjele, cak i kontinente napraviti korisnim za gradnju.',
     ],
     'space_dock' => [
-        'title' => 'Događanja',
+        'title' => 'Svemirsko Pristanište',
         'description' => 'Wreckages can be repaired in the Space Dock.',
-        'description_long' => 'Спаце Доцк нуди могућност поправке бродова уништених у борби који су оставили олупину. Време поправке траје највише 12 сати, али је потребно најмање 30 минута док се бродови не могу поново пустити у употребу. 
-
-Поправке морају почети у року од 3 дана од настанка олупине. Поправљени бродови морају бити враћени у рад ручно након завршетка поправке. Ако се то не уради, појединачни бродови било ког типа биће враћени у употребу након 3 дана. 
-
-Олупина се појављује само ако је уништено више од 150.000 јединица укључујући и сопствене бродове који су учествовали у борби са вредношћу од најмање 5% бродских бодова. 
-
-Пошто Спаце Доцк лебди у орбити, није му потребно поље планете.',
+        'description_long' => 'Ruševine mogu biti popravljene na Svemirskom Pristaništu.',
     ],
     'lunar_base' => [
         'title' => 'Svemirska baza na mjesecu',
         'description' => 'Пошто Месец нема атмосферу, потребна је лунарна база да би се створио насељиви простор.',
-        'description_long' => 'Месец нема атмосферу, тако да се мора прво изградити лунарна база пре него што се може успоставити насеље. Ово онда обезбеђује кисеоник, грејање и гравитацију. Са сваким изграђеним нивоом, у биосфери се обезбеђује већа животна и развојна област. Сваки изграђени ниво дозвољава три поља за друге зграде. Са сваким нивоом, Лунарна база заузима једно поље. 
-Једном изграђена, лунарна база се не може срушити.',
+        'description_long' => 'Mjesec nema atmosferu, potrebna je svemirska baza kako bi se stvorilo naseljivo podrucje.',
     ],
     'sensor_phalanx' => [
         'title' => 'Senzorfalanga',
         'description' => 'Користећи сензорску фалангу, могу се открити и посматрати флоте других империја. Што је већи низ сензорских фаланга, већи је опсег који може да скенира.',
-        'description_long' => 'Користећи сензоре високе резолуције, Сенсор Пхаланк прво скенира спектар светлости, састав гасова и емисије зрачења из удаљеног света и преноси податке суперкомпјутеру на обраду. Једном када се добију информације, суперкомпјутер упоређује промене у спектру, саставу гаса и емисијама зрачења, са основном линијом графикона познатих промена спектра створених различитим покретима брода. Добијени подаци затим приказују активност било које флоте у домету фаланге. Да би се спречило да се суперкомпјутер прегреје током процеса, он се хлади коришћењем 5к прерађеног деутеријума. 
-Да бисте користили Фалангу, кликните на било коју планету у Галаки Виев-у у домету ваших сензора.',
+        'description_long' => 'Senzorfalanga dozvoljava posmatranje kretnje brodske flote. Sto je veci Level izgradnje, to je veci dijametar falange.',
     ],
     'jump_gate' => [
         'title' => 'Odskocna vrata',
         'description' => 'Скок капије су огромни примопредајници који могу да пошаљу чак и највећу флоту за кратко време до удаљене капије за скок.',
-        'description_long' => 'Јумп Гате је систем џиновских примопредајника који могу да пошаљу чак и највеће флоте до капије за пријем било где у универзуму без губитка времена. Користећи технологију сличну оној од црвоточне рупе за постизање скока, деутеријум није потребан. Између скокова мора проћи период пуњења од неколико минута да би се омогућила регенерација. Ни транспорт ресурса кроз Капију није могућ. Са сваким нивоом надоградње, време хлађења капије за скок може се смањити.',
+        'description_long' => 'Odskocne platforme su ogromni prenosnici koji su u stanju da cak i velike flote posalju u galaksiju bez gubitka vremena.',
     ],
     'energy_technology' => [
-        'title' => 'Događanja',
+        'title' => 'Tehnologija za energiju',
         'description' => 'The command of different types of energy is necessary for many new technologies.',
-        'description_long' => 'Како су разна поља истраживања напредовала, откривено је да тренутна технологија дистрибуције енергије није довољна да започне одређена специјализована истраживања. Са сваком надоградњом ваше енергетске технологије, могу се спровести нова истраживања која откључавају развој софистициранијих бродова и одбране.',
+        'description_long' => 'Energetska tehnologija se bavi istrazivanjem energetskih izvora.',
     ],
     'laser_technology' => [
-        'title' => 'Događanja',
+        'title' => 'Tehnologija za lasere',
         'description' => 'Focusing light produces a beam that causes damage when it strikes an object.',
-        'description_long' => 'Ласери (појачавање светлости стимулисаном емисијом зрачења) производе интензивну, енергијом богату емисију кохерентне светлости. Ови уређаји се могу користити у свим врстама области, од оптичких рачунара до тешког ласерског оружја, које без напора сече кроз технологију оклопа. Ласерска технологија представља важну основу за истраживање других технологија оружја.',
+        'description_long' => 'Fokusirajuća svijetlost proizvodi zraku koja uzrokuje štetu kada pogodi objekt.',
     ],
     'ion_technology' => [
-        'title' => 'Događanja',
+        'title' => 'Tehnologija za ione',
         'description' => 'The concentration of ions allows for the construction of cannons, which can inflict enormous damage and reduce the deconstruction costs per level by 4%.',
-        'description_long' => 'Јони се могу концентрисати и убрзати у смртоносни сноп. Ове греде тада могу нанети огромну штету. Наши научници су такође развили технику која ће јасно смањити трошкове деконструкције зграда и система. За сваки ниво истраживања, трошкови деконструкције ће потонути за 4%.',
+        'description_long' => 'Koncentracija iona omogućava izgradnju topova, koji mogu nanijeti ogromnu štetu i umanjiti trošak dekonstrukcije po levelu za 4%.',
     ],
     'hyperspace_technology' => [
-        'title' => 'Događanja',
+        'title' => 'Tehnologija za hiperzonu',
         'description' => 'Интеграцијом 4. и 5. димензије сада је могуће истражити нову врсту погона која је економичнија и ефикаснија.',
-        'description_long' => 'У теорији, идеја путовања у хиперсвемир ослања се на постојање одвојене и суседне димензије. Када се активира, хиперсвемирски погон усмерава звездани брод у ову другу димензију, где може да пређе огромне удаљености за време које је знатно смањено у односу на време које би му требало у „нормалном“ простору. Једном када достигне тачку у хиперпростору која одговара његовом одредишту у стварном простору, поново се појављује. 
-Једном када се истражи довољан ниво Хиперспаце технологије, Хиперспаце Дриве више није само теорија. Свако побољшање овог погона повећава носивост ваших бродова за 5% основне вредности.',
+        'description_long' => 'S uvodenjem 4. i 5. dimenzije u pogonsku tehnologiju dobiven je novi pogonski sustav koji je efikasniji i stedljiviji od konvencionalnih. Koristeći četvrtu i petu dimenziju od sada je moguće stisnuti luke za utovar brodovi kako bi uštedili na prostoru.',
     ],
     'plasma_technology' => [
-        'title' => 'Događanja',
+        'title' => 'Tehnologija za plazmu',
         'description' => 'A further development of ion technology which accelerates high-energy plasma, which then inflicts devastating damage and additionally optimises the production of metal, crystal and deuterium (1%/0.66%/0.33% per level).',
-        'description_long' => 'Даљи развој јонске технологије која не убрзава јоне, већ плазму високе енергије, која онда може нанети разорну штету при удару са предметом. Наши научници су такође пронашли начин да приметно побољшају експлоатацију метала и кристала помоћу ове технологије. 
-
-Производња метала се повећава за 1%, производња кристала за 0,66% и производња деутеријума за 0,33% по нивоу конструкције плазма технологије.',
+        'description_long' => 'Daljnji razvitak tehnologije za ione koje ubrzava visoko energijsku plazmu, koja tada nanosi razarajuću štetu i dodatno optimizira proizvodnju metala, kristala i deuterija (1%/0.66%/0.33% po levelu).',
     ],
     'combustion_drive' => [
-        'title' => 'Događanja',
+        'title' => 'Mehanizam sagorjevanja',
         'description' => 'The development of this drive makes some ships faster, although each level increases speed by only 10 % of the base value.',
-        'description_long' => 'Цомбустион Дриве је најстарија технологија, али се још увек користи. Са погоном за сагоревање, издувни гасови се формирају од погонских горива која се носе у броду пре употребе. У затвореној комори притисци су једнаки у сваком правцу и не долази до убрзања. Ако је на дну коморе обезбеђен отвор, тада притисак на тој страни више није супротан. Преостали притисак даје резултујући потисак у страну супротну отвору, који покреће брод напред тако што избацује издувне гасове уназад при екстремно великој брзини. 
-
-Са сваким развијеним нивоом Цомбустион Дриве-а, брзина малих и великих теретних бродова, лаких ловаца, рециклера и шпијунских сонди се повећава за 10%.',
+        'description_long' => 'Razvoj ovih mehanizama ubrzava neke brodove, medjutim svaki Level podize brzinu za samo 10% osnovnog faktora.',
     ],
     'impulse_drive' => [
-        'title' => 'Događanja',
+        'title' => 'Impulsni pogon',
         'description' => 'The impulse drive is based on the reaction principle. Further development of this drive makes some ships faster, although each level increases speed by only 20 % of the base value.',
-        'description_long' => 'Импулсни погон се заснива на принципу трзања, по коме се стимулисана емисија зрачења углавном производи као отпадни производ фузије језгра за добијање енергије. Поред тога, могу се убризгати и друге масе. Са сваким развијеним нивоом Импулс Дриве-а, брзина бомбардера, крстарица, тешких ловаца и колонијалних бродова се повећава за 20% од основне вредности. Додатно, мали транспортери су опремљени импулсним погонима чим њихов ниво истраживања достигне 5. Чим истраживање Импулсе Дриве-а достигне ниво 17, рециклери се поново опремају импулсним погонима. 
-
-Међупланетарне ракете такође путују даље са сваким нивоом.',
+        'description_long' => 'Sustav impulsnog pogona se temelji na principu odbijanja cestica. Usavrsavanje tog impulsa ubrzava neke brodove, medjutim svaki Level samo podize brzinu samo za 20% osnovnog faktora.',
     ],
     'hyperspace_drive' => [
-        'title' => 'Događanja',
+        'title' => 'Hyperspace pogon',
         'description' => 'Hyperspace drive warps space around a ship. The development of this drive makes some ships faster, although each level increases speed by only 30 % of the base value.',
-        'description_long' => 'У непосредној близини брода простор је искривљен тако да се велике удаљености могу прећи врло брзо. Што је Хиперспаце Дриве више развијен, то је јача искривљена природа простора, при чему се брзина бродова опремљених њиме (Баттлецруисери, Баттлесхипс, Дестроиерс, Деатхстарс, Патхфиндерс и Реаперс) повећава за 30% по нивоу. Поред тога, бомбардер је направљен са Хиперспаце Дриве-ом чим истраживање достигне ниво 8. Чим истраживање Хиперспаце Дриве-а достигне ниво 15, Рецицлер је поново опремљен Хиперспаце Дриве-ом.',
+        'description_long' => 'Kroz zakrivljenost prostora-vremena u neposrednoj se okolini putujuceg broda prostor savija do takvog stupnja da se velike udaljenosti mogu preci u kratkom vremenu, medjutim svaki Level podize brzinu za samo 30% osnovnog faktora.',
     ],
     'espionage_technology' => [
-        'title' => 'Događanja',
+        'title' => 'Tehnologija za spijunazu',
         'description' => 'Information about other planets and moons can be gained using this technology.',
-        'description_long' => 'Tehnologija za spijunazu je razvoj senzora, spijunske opreme i znanja koje carstvo treba da se zastiti od protivnickih spijunaza i da sama provodi iste. Cim je tehnologija razvijenija, vise informacija saznamo o neprijatelju. Za spijunske sonde i njihovu sansu za uspjehom, razlika izmedju vlastitog i neprijateljskog razvoja je vrlo vazna. Cim je vise razvijena tehnologija, sonda moze vise informacija saznati i manja je sansa da bude otkrivena od strane neprijatelja.Sto je vise sondi poslano, vise ce se informacija dobiti, ali je i sansa za razotkrivanjem veca. Level tehnologije spijunaze isto tako definira kolicinu detalja o nadolazecoj floti: - level 2. omogucuje da vidimo broj brodova koji nas napadaju - level 4. omogucuje da vidimo i tip brodova koji nas napadaju. - level 8. omogucuje da vidimo tip i kolicinu pojedinih brodova koji nas napadaju U globalu, tehnologija spijunaze je vrlo bitna svakom igracu, bilo agresivnom ili prijateljskom. Preporuceno je razviti ovu tehnologiju, odmah nakon sto mali transporteri mogu biti izgradeni.',
+        'description_long' => 'Uz pomoc ove tehnologije postoji mogucnost da se dobiju informacije o drugim planetama.',
     ],
     'computer_technology' => [
-        'title' => 'Događanja',
+        'title' => 'Tehnologija za kompjutere',
         'description' => 'More fleets can be commanded by increasing computer capacities. Each level of computer technology increases the maximum number of fleets by one.',
-        'description_long' => 'Tehnologija za kompjutere se koristi za izgradnju jacih procesora i upravljackih jedinica. Svaki level povecava snagu racunala i level paralelnosti. Sto je veca razina tehnologije istrazena, vise se flota moze kontrolirati u isto vrijeme. Sto vise praznih mjesta za flote carstvo ima, tim vise aktivnosti moze imati,a samim time i veci profit. Prostor flote koriste borbene flote, isto kao i transportne flote i sonde za spijunazu. Dobra je ideja konstantno povecavati level tehnologije, da omogucite vecu fleksibilnost flota.',
+        'description_long' => 'Sa povecanjem kapaciteta kompjutera, moze se vise flota kontrolisati. Svaki Level povecava maksimalni broj flote za 1.',
     ],
     'astrophysics' => [
-        'title' => 'Događanja',
+        'title' => 'Astrofizika',
         'description' => 'With an astrophysics research module, ships can undertake long expeditions. Every second level of this technology will allow you to colonise an extra planet.',
-        'description_long' => 'Даља сазнања у области астрофизике омогућавају изградњу лабораторија које се могу уградити на све више бродова. Ово омогућава дуге експедиције далеко у неистражена подручја свемира. Поред тога, ова унапређења се могу користити за даљу колонизацију универзума. За свака два нивоа ове технологије може се учинити употребљивом додатна планета.',
+        'description_long' => 'Sa tehnologijom za astrofiziku brodovi mogu ići na duge ekspedicije.
+Svaki drugi level tehnologije vam omogućava koloniziranje još jedne dodatne planete.',
     ],
     'intergalactic_research_network' => [
-        'title' => 'Događanja',
+        'title' => 'Intergalakticna znanstvena mreza',
         'description' => 'Researchers on different planets communicate via this network.',
-        'description_long' => 'Ово је ваша мрежа дубоког свемира за преношење резултата истраживања вашим колонијама. Са ИРН-ом, брже време истраживања се може постићи повезивањем истраживачких лабораторија највишег нивоа на нивоу развијеног ИРН-а. 
-Да би функционисала, свака колонија мора бити способна да самостално спроводи истраживање.',
+        'description_long' => 'Kroz ovu mrezu znanstvenici sa tvojih planeta mogu komunicirati jedni sa drugima.',
     ],
     'graviton_technology' => [
-        'title' => 'Događanja',
+        'title' => 'Tehnologija za gravitone',
         'description' => 'Firing a concentrated charge of graviton particles can create an artificial gravity field, which can destroy ships or even moons.',
-        'description_long' => 'Гравитон је елементарна честица која је без масе и нема терет. Одређује гравитациону моћ. Испаљивањем концентрисаног терета гравитона, може се конструисати вештачко гравитационо поље. За разлику од црне рупе, она увлачи масу у себе. Тако може уништити бродове, па чак и читаве месеце. За производњу довољне количине гравитона потребне су огромне количине енергије. Гравитон Ресеарцх је потребан да би се направила деструктивна Деатхстар.',
+        'description_long' => 'Graviton je elementarna cestica koja je odgovorna za gravitaciju.',
     ],
     'weapon_technology' => [
-        'title' => 'Технологија оружја',
+        'title' => 'Tehnologija za oruzje',
         'description' => 'Weapons technology makes weapons systems more efficient. Each level of weapons technology increases the weapon strength of units by 10 % of the base value.',
-        'description_long' => 'Tehnologija oruzja usredotocuje se na razvoj postojecih oruzja. Uglavnom je fokusirana na povecanje snage oruzja i ucinkovitosti. Tako, povecavajuci level tehnologije, isto oruzje je jace i ima vecu ucinkovitost - svaki level podize osnovnu snagu oruzja za 10%. Posto su oruzani sustavi vazni da ostanete korak uz korak sa neprijateljima, dobra je ideja konstantno povecavati level razvijenosti.',
+        'description_long' => 'Svaki Level tehnologije za oruzje povecava jacinu oruzja za 10% od osnovnog faktora.',
     ],
     'shielding_technology' => [
-        'title' => 'Схиелд Тецхнологи',
+        'title' => 'Tehnologija za stitove',
         'description' => 'Технологија штитова чини штитове на бродовима и одбрамбеним објектима ефикаснијим. Сваки ниво технологије штита повећава снагу штитова за 10% основне вредности.',
-        'description_long' => 'Svaka razina ove tehnologije podize efikasnost stitova za 10% (bazirano na osnovnoj razini stita odredjene zgrade). Nova razina zapravo povecava kolicinu energije koju taj stit moze absorbirati prije nego sto se srusi. Stitovi ne sluze samo kod brodova vec i za planetarnu obranu zastitnih kupola.',
+        'description_long' => 'Tehnologija stitova se koristi za stvaranje zastitnih cestica koje okruzuju tvoje zgrade i brodove. Svaki Level stitne tehnologije povecava efikasnost stita za 10% osnovne jacine.',
     ],
     'armor_technology' => [
-        'title' => 'Događanja',
+        'title' => 'Tehnologija za oklop',
         'description' => 'Special alloys improve the armour on ships and defensive structures. The effectiveness of the armour can be increased by 10 % per level.',
-        'description_long' => 'Окружење дубоког свемира је сурово. Пилоти и посада у разним мисијама не само да су се суочили са интензивним сунчевим зрачењем, већ су се суочили и са могућношћу да буду погођени свемирским отпадом или уништени непријатељском ватром у нападу. Са открићем легуре алуминијум-литијум титанијум карбида, за коју је утврђено да је и лагана и издржљива, ово је посади пружило одређени степен заштите. Са сваким развијеним нивоом технологије оклопа, производи се легура вишег квалитета, која повећава снагу оклопа за 10%.',
+        'description_long' => 'Za sve jaci oklop brodova odgovorne su komplicirane slitine. Djelatnost oklopa povecava se za 10% po Levelu.',
     ],
     'small_cargo' => [
-        'title' => 'Događanja',
+        'title' => 'Mali transporter',
         'description' => 'The small cargo is an agile ship which can quickly transport resources to other planets.',
-        'description_long' => 'Транспортери су отприлике велики као ловци, али се одричу погона високих перформанси и уграђеног наоружања да би повећали свој теретни капацитет. Као резултат тога, транспортер треба да се шаље у битке само када га прате бродови спремни за борбу. 
-
-Чим Импулсни погон достигне истраживачки ниво 5, мали транспортер путује повећаном основном брзином и опремљен је Импулсним погоном.',
+        'description_long' => 'Mali transporter je okretan brod koji je u stanju da brzo transportuje sirovine na druge planete.',
     ],
     'large_cargo' => [
-        'title' => 'Događanja',
+        'title' => 'Veliki transporter',
         'description' => 'This cargo ship has a much larger cargo capacity than the small cargo, and is generally faster thanks to an improved drive.',
-        'description_long' => 'Како је време еволуирало, напади на колоније су довели до хватања све веће количине ресурса. Као резултат тога, мали терети су слани у масовном броју како би се надокнадила већа хватања. Брзо се сазнало да је потребна нова класа брода како би се максимизирали ресурси заробљени у нападима, али и исплативи. Након много развоја, настао је Ларге Царго. 
-
-Да би се максимизирали ресурси који се могу ускладиштити у складиштима, овај брод има мало оружја или оклопа. Захваљујући уграђеном високоразвијеном мотору са унутрашњим сагоревањем, он служи као најекономичнији добављач ресурса између планета и најефикаснији у нападима на непријатељске светове.',
+        'description_long' => 'Veliki transporter je razvijeniji mali transporter sa vecim kapacitetom za teret.',
     ],
     'colony_ship' => [
-        'title' => 'Događanja',
+        'title' => 'Kolonijalni brod',
         'description' => 'Vacant planets can be colonised with this ship.',
-        'description_long' => 'У 20. веку, човек је одлучио да иде ка звездама. Прво, слетео је на Месец. Након тога је изграђена свемирска станица. Марс је убрзо потом колонизован. Убрзо је утврђено да наш раст зависи од колонизације других светова. Научници и инжењери широм света окупили су се да развију највеће људско достигнуће икада. Колонски брод је рођен. 
-
-Овај брод се користи за припрему новооткривене планете за колонизацију. Када стигне на одредиште, брод се тренутно претвара у уобичајени животни простор како би помогао у насељавању и рударењу новог света. Тиме је максималан број планета одређен напретком истраживања астрофизике. Два нова нивоа астротехнологије омогућавају колонизацију још једне планете.',
+        'description_long' => 'Prazne planete mogu biti kolonizirane s ovim brodom.',
     ],
     'recycler' => [
-        'title' => 'Događanja',
+        'title' => 'Recikler',
         'description' => 'Рециклери су једини бродови који могу сакупљати рушевине која плутају у орбити планете након борбе.',
-        'description_long' => 'Борбе у свемиру добијале су све веће размере. Хиљаде бродова је уништено и чинило се да су ресурси њихових остатака заувек изгубљени у пољима рушевина. Нормални теретни бродови нису могли да приђу довољно близу овим пољима, а да не ризикују значајну штету. 
-Недавни развој технологија штитова ефикасно је заобишао ово питање. Створена је нова класа бродова који су били слични транспортерима: рециклери. Њихови напори су помогли да се прикупе изгубљени ресурси и затим спасу. Крхотине више нису представљале никакву стварну опасност захваљујући новим штитовима. 
-
-Чим истраживање Импулсе Дриве-а достигне ниво 17, Рециклери су поново опремљени Импулсе Дриве-овима. Чим истраживање Хиперспаце Дриве-а достигне ниво 15, Рециклери су поново опремљени Хиперспаце Дриве-овима.',
+        'description_long' => 'Recikler je veoma spor brod pomocu kojeg se vade sirovine iz rusevina.',
     ],
     'espionage_probe' => [
-        'title' => 'Događanja',
+        'title' => 'Sonde za spijunazu',
         'description' => 'Espionage probes are small, agile drones that provide data on fleets and planets over great distances.',
-        'description_long' => 'Сонде за шпијунажу су мале, окретне беспилотне летелице које пружају податке о флотама и планетама. Опремљен специјално дизајнираним моторима, омогућава им да пређу велике удаљености за само неколико минута. Једном у орбити око циљне планете, они брзо прикупљају податке и шаљу извештај назад преко ваше мреже дубоког свемира на процену. Али постоји ризик за аспект интелигентног прикупљања. Током времена када се извештај шаље назад у вашу мрежу, циљ може детектовати сигнал и сонде могу бити уништене.',
+        'description_long' => 'Sonde za spijunazu su male brze sonde koje daju podatke o flotama i obrani.',
     ],
     'solar_satellite' => [
-        'title' => 'Događanja',
+        'title' => 'Solarni satelit',
         'description' => 'Соларни сателити су једноставне платформе соларних ћелија, смештене у високој, стационарној орбити. Они прикупљају сунчеву светлост и преносе је до земаљске станице путем ласера.',
-        'description_long' => 'Научници су открили метод преноса електричне енергије у колонију користећи специјално дизајниране сателите у геосинхроној орбити. Соларни сателити прикупљају сунчеву енергију и преносе је до земаљске станице користећи напредну ласерску технологију. Ефикасност соларног сателита зависи од јачине сунчевог зрачења које прима. У принципу, производња енергије у орбитама ближе Сунцу је већа него за планете у орбитама удаљеним од Сунца. 
-Због свог доброг односа цена/перформансе, соларни сателити могу решити много енергетских проблема. Али пазите: соларни сателити се лако могу уништити у борби.',
+        'description_long' => 'Solarni sateliti su jednostavne platforme od solarnih celija koje se nalaze u visokom nepokretnom orbitu. Oni skupljaju suncanu svijetlost i salju ih putem lasera u bazu. Solarni satelit proizvodi 35 na planetu.',
     ],
     'crawler' => [
-        'title' => 'Događanja',
+        'title' => 'Puzavac',
         'description' => 'Crawlers increase the production of metal, crystal and Deuterium on their tasked planet each by 0.02%, 0.02% and 0.02% respectively. As a collector, production also increases. The maximum total bonus depends on the overall level of your mines.',
-        'description_long' => 'Puzavac je veliko vozilo za rovove koje povećava proizvodnju rudnika i sintetizera. Brže je nego što izgleda, međutim nije pretjerano robustno. Svaki Puzavac poveća proizvodnju metala za 0.02%, kristala za 0.02% te deuterija za 0.02%. Kao sakupljaču, proizvodnja se također povećava. Maksimalan ukupan bonus ovisi o levelu vaših rudnika.',
+        'description_long' => 'Puzavci povećavaju proizvodnju metala, kristala i Deuterija na planetima gdje je postavljena za 0.02%, 0.02% te 0.02%. Kao sakupljaču, proizvodnja se također povećava. Maksimalan ukupan bonus ovisi o levelu vaših rudnika.',
     ],
     'pathfinder' => [
-        'title' => 'Događanja',
+        'title' => 'Krčilac',
         'description' => 'Патхфиндер је брз и окретан брод, наменски направљен за експедиције у непознате секторе свемира.',
-        'description_long' => 'Патхфиндер је најновији развој у технологији истраживања. Овај брод је специјално дизајниран за припаднике класе Дисцоверер како би максимизирали свој потенцијал. Опремљен напредним системима за скенирање и великим товарним простором за спасавање ресурса, Патхфиндер се истиче у експедицијама. Његови софистицирани сензори могу открити вредне ресурсе и аномалије које би остали непримећени од стране других бродова. Брод комбинује велику брзину са добрим капацитетом терета, што га чини савршеним за брзе истраживачке мисије и прикупљање ресурса из удаљених сектора.',
+        'description_long' => 'Krčilci su brzi, prostrani i mogu rudariti ruševine na ekspedicijama. Ukupni prinos se također povećava.',
     ],
     'light_fighter' => [
-        'title' => 'Događanja',
+        'title' => 'Mali lovac',
         'description' => 'This is the first fighting ship all emperors will build. The light fighter is an agile ship, but vulnerable on its own. In mass numbers, they can become a great threat to any empire. They are the first to accompany small and large cargoes to hostile planets with minor defenses.',
-        'description_long' => 'Ово је први борбени брод који ће изградити сви цареви. Лаки ловац је окретан брод, али рањив када је сам. У масовном броју, они могу постати велика претња било којој империји. Они су први који прате мале и велике терете на непријатељске планете уз мању одбрану.',
+        'description_long' => 'Mali lovac je okretan brod koji se nalazi na skoro svakoj planeti. Izdaci su veoma mali, medjutim je jacina oklopa veoma slaba kao i kapacitet za teret.',
     ],
     'heavy_fighter' => [
-        'title' => 'Događanja',
+        'title' => 'Veliki lovac',
         'description' => 'This fighter is better armoured and has a higher attack strength than the light fighter.',
-        'description_long' => 'У развоју тешког ловца, истраживачи су дошли до тачке у којој конвенционални погони више нису пружали довољне перформансе. Да би се брод оптимално померио, први пут је коришћен импулсни погон. То је повећало трошкове, али и отворило нове могућности. Коришћењем овог погона, остало је више енергије за оружје и штитове; поред тога, за ову нову породицу бораца коришћени су висококвалитетни материјали. Са овим променама, тешки ловац представља нову еру у бродској технологији и представља основу за технологију крстарица. 
-
-Нешто већи од лаког ловца, тешки ловац има дебљи труп, пружа већу заштиту и јаче наоружање.',
+        'description_long' => 'Usavrseni mali lovac sa boljim oklopom i jacom snagom za napad.',
     ],
     'cruiser' => [
-        'title' => 'Događanja',
+        'title' => 'Krstarice',
         'description' => 'Cruisers are armoured almost three times as heavily as heavy fighters and have more than twice the firepower. In addition, they are very fast.',
-        'description_long' => 'Са развојем тешког ласера ​​и јонског топа, лаки и тешки борци су наилазили на алармантно велики број пораза који се повећавао са сваким нападом. Упркос многим модификацијама, јачини оружја и променама оклопа, није се могло повећати довољно брзо да се ефикасно супротстави овим новим одбрамбеним мерама. Због тога је одлучено да се изгради нова класа брода која је комбиновала више оклопа и више ватрене моћи. Као резултат дугогодишњег истраживања и развоја, настао је Цруисер. 
-
-Крстарице су оклопљене скоро три пута више од оклопа тешких ловаца и поседују више него двоструко већу ватрену моћ од било ког постојећег борбеног брода. Такође поседују брзине које су далеко надмашиле било коју летелицу икада направљену. Скоро један век, крстарице су доминирале универзумом. Међутим, развојем Гаусових топова и плазма купола, њихова превласт је престала. И данас се користе против борачких група, али не тако претежно као раније.',
+        'description_long' => 'Oklop krstarica je tri puta jaci nego oklop teskih lovaca i posjeduje duplo jacu vatrenu snagu. Uz to su jos i veoma brzi.',
     ],
     'battle_ship' => [
-        'title' => 'Događanja',
+        'title' => 'Borbeni brodovi',
         'description' => 'Battleships form the backbone of a fleet. Their heavy cannons, high speed, and large cargo holds make them opponents to be taken seriously.',
-        'description_long' => 'Када је постало очигледно да крстарица губи тло под утицајем све већег броја одбрамбених структура са којима се суочава, а са губитком бродова у мисијама на неприхватљивим нивоима, одлучено је да се изгради брод који би могао да се суочи са тим истим типом одбрамбених структура са што мањим губицима. Након опсежног развоја, рођен је Бојни брод. Направљен да издржи највеће битке, бојни брод има велике товарне просторе, тешке топове и велику брзину хиперпогона. Када се једном развио, на крају се испоставило да је кичма сваке флоте царских напада.',
+        'description_long' => 'Borbeni brodovi su u sustini poledje jedne flote. Njihova teska artelerija, visoka brzina kao i veliki kapacitet za teret pravi ih opasnim protivnicima.',
     ],
     'battlecruiser' => [
-        'title' => 'Događanja',
+        'title' => 'Oklopna krstarica',
         'description' => 'The Battlecruiser is highly specialized in the interception of hostile fleets.',
-        'description_long' => 'Овај брод је један од најнапреднијих борбених бродова икада развијених, а посебно је смртоносан када је у питању уништавање нападачких флота. Са својим побољшаним ласерским топовима на броду и напредним Хиперспаце мотором, Баттлецруисер је озбиљна сила са којом се треба носити у сваком нападу. Због дизајна брода и његовог великог система наоружања, теретни простори су морали бити пресечени, али то је надокнађено смањеном потрошњом горива.',
+        'description_long' => 'Oklopna krstarica je brod posebno napravljen za presretanje neprijateljskih flota.',
     ],
     'bomber' => [
-        'title' => 'Događanja',
+        'title' => 'Bombarder',
         'description' => 'The bomber was developed especially to destroy the planetary defenses of a world.',
-        'description_long' => 'Током векова, како је одбрана постајала све већа и софистициранија, флоте су почеле да се уништавају алармантном брзином. Одлучено је да је потребан нови брод за разбијање одбране како би се осигурали максимални резултати. Након година истраживања и развоја, Бомбер је настао. 
-
-Користећи ласерски вођену опрему за циљање и плазма бомбе, бомбардер тражи и уништава сваки одбрамбени механизам који може да пронађе. Чим се хиперсвемирски погон развије до нивоа 8, Бомбер је накнадно опремљен хиперсвемирским мотором и може да лети већим брзинама.',
+        'description_long' => 'Bombarderi su specijalno razvijeni da uniste planetarnu obranu jedne planete.',
     ],
     'destroyer' => [
-        'title' => 'Događanja',
+        'title' => 'Razaraci',
         'description' => 'The destroyer is the king of the warships.',
-        'description_long' => 'Дестроиер је резултат вишегодишњег рада и развоја. Са развојем Деатхстарс-а, одлучено је да је потребна класа брода за одбрану од тако масивног оружја. Захваљујући побољшаним сензорима за навођење, вишефалангним јонским топовима, Гаусовим топовима и плазма куполама, разарач се показао као један од најстрашнијих створених бродова. 
-
-Пошто је разарач веома велик, његова маневарска способност је озбиљно ограничена, што га чини више борбеном станицом него борбеним бродом. Недостатак маневрисања је надокнађен његовом чистом ватреном моћи, али такође кошта значајне количине деутеријума за изградњу и рад.',
+        'description_long' => 'Razarac je kralj nad ratnim brodovima.',
     ],
     'deathstar' => [
-        'title' => 'Događanja',
+        'title' => 'Zvijezda smrti',
         'description' => 'The destructive power of the deathstar is unsurpassed.',
-        'description_long' => 'Деатхстар је најмоћнији брод икада створен. Овај брод величине месеца је једини брод који се може видети голим оком на земљи. Док то приметите, нажалост, прекасно је да било шта урадите. 
-
-Наоружан гигантским гравитонским топом, најнапреднијим системом наоружања икада створеним у Универзуму, овај масивни брод има не само способност да уништи читаву флоту и одбрану, већ има и способност да уништи читаве месеце. Само најнапредније империје имају способност да направе брод ове мамутске величине.',
+        'description_long' => 'Jacina unistavanja zvijezde smrti je neopisiva.',
     ],
     'reaper' => [
-        'title' => 'Događanja',
+        'title' => 'Žetelac',
         'description' => 'Реапер је моћан борбени брод специјализован за агресивне нападе и сакупљање отпада.',
-        'description_long' => 'Реапер представља врхунац војног инжењерства опште класе. Овај тешко наоружани брод је дизајниран за команданте који цене и борбену снагу и тактичку флексибилност. Док је његова примарна улога борба, Реапер има ојачана складишта за терет који му омогућавају да сакупља рушевине након битке. Његови напредни системи циљања и тешки оклоп чине га страшним противником, док његов дизајн двоструке намене значи да може да ствара и профитира од покоља на бојном пољу. Брод је опремљен најсавременијом технологијом оружја и може се издржати против много већих пловила.',
+        'description_long' => 'Brod klase Žetelac je moćan instrument uništenja, koji može opljačkati polja ruševina odmah nakon bitke.',
     ],
     'rocket_launcher' => [
-        'title' => 'Događanja',
+        'title' => 'Raketobacaci',
         'description' => 'The rocket launcher is a simple, cost-effective defensive option.',
-        'description_long' => 'Ваша прва основна линија одбране. Ово су једноставна лансирна постројења са земље која испаљују конвенционалне ракете са бојевим главама у нападу на непријатељске циљеве. Пошто су јефтини за изградњу и није потребно истраживање, они су веома погодни за одбрану од напада, али губе ефикасност у одбрани од напада већих размера. Једном када почнете да градите напредније одбрамбене системе оружја, ракетни бацачи постају једноставна храна која омогућава вашем штетнијем оружју да нанесе већу штету током дужег временског периода. 
-
-Након битке, постоји до 70% шансе да се покварени одбрамбени објекти могу вратити у употребу.',
+        'description_long' => 'Raketobacaci su jednostavan ali ekonomican sistem za obranu.',
     ],
     'light_laser' => [
-        'title' => 'Događanja',
+        'title' => 'Mali laser',
         'description' => 'Concentrated firing at a target with photons can produce significantly greater damage than standard ballistic weapons.',
-        'description_long' => 'Како се технологија развијала и стварали софистициранији бродови, утврђено је да је потребна јача линија одбране за супротстављање нападима. Како је ласерска технологија напредовала, ново оружје је дизајнирано да обезбеди следећи ниво одбране. Светлосни ласери су једноставно оружје на земљи које користи посебне системе циљања за праћење непријатеља и испаљивање ласера ​​високог интензитета дизајнираног да пресече труп мете. Да би били исплативи, били су опремљени побољшаним системом заштите, међутим структурни интегритет је исти као код ракетног бацача. 
-
-Након битке, постоји до 70% шансе да се покварени одбрамбени објекти могу вратити у употребу.',
+        'description_long' => 'Kroz koncentrisano gadjanje jednog cilja sa fotonima moguce je nanijeti mnogo vecu stetu nego sto moze jednostavno balisticko oruzje.',
     ],
     'heavy_laser' => [
-        'title' => 'Događanja',
+        'title' => 'Veliki laser',
         'description' => 'The heavy laser is the logical development of the light laser.',
-        'description_long' => 'Хеави Ласер је практична, побољшана верзија светлосног ласера. Будући да је уравнотеженији од светлосног ласера ​​са побољшаном композицијом легуре, користи јаче, гушће збијене зраке и још боље уграђене системе циљања. 
-
-Након битке, постоји до 70% шансе да се покварени одбрамбени објекти могу вратити у употребу.',
+        'description_long' => 'Veliki laser je cista evolucija malog lasera, u toj mjeri da je strukturalni integritet znatno povecan i da su dodane nove vrste materijala.',
     ],
     'gauss_cannon' => [
-        'title' => 'Događanja',
+        'title' => 'Gausov top',
         'description' => 'The Gauss Cannon fires projectiles weighing tons at high speeds.',
-        'description_long' => 'Дуго времена се пројектилно оружје сматрало застарелим у светлу модерне термонуклеарне и енергетске технологије и због развоја хиперпогона и побољшаног оклопа. То је било све док му тачна енергетска технологија која га је некада остарила није помогла да поново постигне своју успостављену позицију. 
-Гаусов топ је велика верзија акцелератора честица. Екстремно тешке ракете се убрзавају огромном електромагнетном силом и имају њушке брзине које чине да прљавштина која окружује пројектил гори на небу. Ово оружје је толико моћно када се испали да ствара звучни бум. Савремени оклоп и штитови једва издржавају силу, често је мета потпуно пробијена снагом пројектила. Одбрамбене структуре се деактивирају чим су превише оштећене. 
-
-Након битке, постоји до 70% шансе да се покварени одбрамбени објекти могу вратити у употребу.',
+        'description_long' => 'Gausov top nije nista drugo nego vrlo veliki akcelerator cestica ciji projektili, koji teze po par tona bivaju ubrzani pomocu ogromnih elektromagnetskih zavojnica cime nanose veliku stetu.',
     ],
     'ion_cannon' => [
-        'title' => 'Događanja',
+        'title' => 'Ionski top',
         'description' => 'The Ion Cannon fires a continuous beam of accelerating ions, causing considerable damage to objects it strikes.',
-        'description_long' => 'Јонски топ је оружје које испаљује снопове јона (позитивно или негативно наелектрисане честице). Јонски топ је заправо врста топа честица; јонизоване су само честице које се користе. Због свог електричног набоја, они такође имају потенцијал да онеспособе електронске уређаје и све остало што има електрични или сличан извор напајања, користећи феномен познат као електромагетички пулс (ЕМП ефекат). Због високо побољшаног система заштите топова, овај топ пружа побољшану заштиту за ваше веће, разорније одбрамбено оружје. 
-
-Након битке, постоји до 70% шансе да се покварени одбрамбени објекти могу вратити у употребу.',
+        'description_long' => 'Ionski topovi bacaju talase iona na cilj, koji destabilizuju stitove i ostecuju elektroniku.',
     ],
     'plasma_turret' => [
-        'title' => 'Događanja',
+        'title' => 'Plazma top',
         'description' => 'Plasma Turrets release the energy of a solar flare and surpass even the destroyer in destructive effect.',
-        'description_long' => 'Један од најнапреднијих одбрамбених система наоружања икада развијених, Плазма купола користи велику гориву ћелију нуклеарног реактора за напајање електромагнетног акцелератора који испаљује импулс, или тороид, плазме. Током рада, плазма купола се прво закључава на мету и почиње процес пуцања. Плазма сфера се ствара у језгру купола супер загревањем и компресијом гасова, одузимајући им јоне. Када се гас прегреје, компримује и створи плазма сфера, онда се убацује у електромагнетни акцелератор који се напаја. Једном када се напуни енергијом, активира се акцелератор, што доводи до тога да се плазма сфера лансира изузетно великом брзином до жељене мете. Из перспективе мете, плавичаста кугла плазме која се приближава је импресивна, али када једном удари, изазива тренутно уништење. 
-
-Одбрамбени објекти се деактивирају чим су превише оштећени. Након битке, постоји до 70% шансе да се покварени одбрамбени објекти могу вратити у употребу.',
+        'description_long' => 'Plazmeni topovi oslobadjaju snagu erupcije sunca i imaju toliku snagu da cak unistavaju i Razarace.',
     ],
     'small_shield_dome' => [
-        'title' => 'Događanja',
+        'title' => 'Mala stitna kupola',
         'description' => 'The small shield dome covers an entire planet with a field which can absorb a tremendous amount of energy.',
-        'description_long' => 'Колонизација нових светова донела је нову опасност, свемирски отпад. Велики астероид би лако могао да збрише свет и све становнике. Напредак у технологији заштите омогућио је научницима начин да развију штит за заштиту целе планете не само од свемирског отпада, већ, како се сазнало, и од непријатељског напада. Стварањем великог електромагнетног поља око планете, свемирски отпад који би иначе уништио планету је одбијен, а напади непријатељских империја су спречени. Први генератори су били велики и штит је пружао умерену заштиту, али је касније откривено да мали штитови нису пружали заштиту од напада већих размера. Мала купола са штитом била је увод у јачи, напреднији планетарни систем заштите који ће доћи. 
-
-Након битке, постоји до 70% шансе да се покварени одбрамбени објекти могу вратити у употребу.',
+        'description_long' => 'Mala stitna kupola umotava cijelu planetu sa poljem, koje moze ogromne kolicine energije absorbirat.',
     ],
     'large_shield_dome' => [
-        'title' => 'Događanja',
+        'title' => 'Velika stitna kupola',
         'description' => 'The evolution of the small shield dome can employ significantly more energy to withstand attacks.',
-        'description_long' => 'Велика штитна купола је следећи корак у унапређењу планетарних штитова, резултат је вишегодишњег рада на побољшању Мале куполе штита. Направљене да издрже већу салву непријатељске ватре обезбеђујући електромагнетно поље веће енергије, велике куполе пружају дужи период заштите пре него што се уруше. 
-
-Након битке, постоји до 70% шансе да се покварени одбрамбени објекти могу вратити у употребу.',
+        'description_long' => 'Ovo je naprednija verzija male stitne kupole, koja je u stanju da koristi mnogo vise energije za obranu od protivnickih napada.',
     ],
     'anti_ballistic_missile' => [
-        'title' => 'Događanja',
+        'title' => 'Anti-balisticke rakete',
         'description' => 'Anti-Ballistic Missiles destroy attacking interplanetary missiles.',
-        'description_long' => 'Анти балистичке ракете (АБМ) су ваша једина линија одбране када вас нападну међупланетарне ракете (ИПМ) на вашој планети или месецу. Када се открије лансирање ИПМ-а, ови пројектили се аутоматски активирају, обрађују код за лансирање у својим рачунарима за летење, циљају улазни ИПМ и покрећу се за пресретање. Током лета, циљни ИПМ се стално прати и примењују се корекције курса све док АБМ не стигне до циља и уништи нападачки ИПМ. Сваки АБМ уништава један долазни ИПМ.',
+        'description_long' => 'Anti-balisticke rakete unistavaju napadacke interplanetarne rakete',
     ],
     'interplanetary_missile' => [
-        'title' => 'Događanja',
+        'title' => 'Interplanetarne rakete',
         'description' => 'Међупланетарне ракете уништавају одбрану непријатеља.',
-        'description_long' => 'Међупланетарне ракете (ИПМ) су ваше офанзивно оружје за уништавање одбране вашег циља. Користећи најсавременију технологију праћења, сваки пројектил циља одређени број одбрамбених средстава за уништење. Прекривени бомбом против материје, они испоручују разорну силу толико јаку да се уништени штитови и одбрамбени системи не могу поправити. Једини начин да се супротставимо овим пројектилима је АБМ.',
+        'description_long' => 'Interplanetarne rakete unistavaju protivnicku obranu. Vase interplanetarne rakete imaju pokrivenost 0 sistema.',
     ],
     'kraken' => [
         'title' => 'КРАКЕН',

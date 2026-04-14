@@ -12,387 +12,312 @@ return [
     'metal_mine' => [
         'title' => 'Mina de Metal',
         'description' => 'Folosite in extractia minereului de fier, minele de metal sunt prioritare tuturor imperiilor in crestere.',
-        'description_long' => 'Metalul este resursa principala pentru constructia navelor si cladirilor. Deoarece metalul este cea mai intalnita resursa dintre toate, valoarea sa de schimb este cea mai mica. Productia se mareste odata cu atingerea unor adancimi mai mari, dar la acele adancimi este nevoie de mai multa energie.',
+        'description_long' => 'Folosite in extractia minereului de fier, minele de metal sunt prioritare tuturor imperiilor in crestere.',
     ],
     'crystal_mine' => [
         'title' => 'Mina de Cristal',
         'description' => 'Cristalele sunt materia principala pentru producerea circuitelor electronice si a unor aliaje.',
-        'description_long' => 'Minele de cristal furnizeaza resursele principale folosite la producerea circuitelor electronice si formarea anumitor aliaje. Extragerea cristalului consuma odata si jumatate mai multa energie decat extragerea metalului, facand cristalul mai valoros. Aproape toate navele si toate cladirile au nevoie de cristal, dar cristalul necesar este rar si este gasit la adancimi mari. Asadar, construind minele mai adanc va creste cantitatea de cristal produsa.',
+        'description_long' => 'Cristalele sunt materia principala pentru producerea circuitelor electronice si a unor aliaje.',
     ],
     'deuterium_synthesizer' => [
         'title' => 'Sintetizator de Deuteriu',
         'description' => 'Deuteriul, gasit in adancurile marii, este folosit drept combustibil pentru nave. Fiind o substanta rara, este de asemenea destul de scumpa.',
-        'description_long' => 'Deuteriul este cunoscut si ca hidrogen greu. Este un izotop stabil al hidrogenului, disponibil din abundenta in oceane. Pentru a putea fi prelucrat sunt necesare sintetizatoare care pot separa apa de deuteriu prin folosirea procesului de centrifugare. Imbunatatirea sintetizatorului permite prelucrarea unor cantitati mai mari de deuteriu. Deuteriul este folosit pentru scanari cu senzorul phalanx sau vederea galaxiilor, ca resursa principala in productia anumitor nave sau cercetari, si mai ales drept combustibil pentru toate navele.',
+        'description_long' => 'Deuteriul, gasit in adancurile marii, este folosit drept combustibil pentru nave. Fiind o substanta rara, este de asemenea destul de scumpa.',
     ],
     'solar_plant' => [
         'title' => 'Uzina Solara',
         'description' => 'Uzinele solare absorb energia radiatiilor solare. Toate minele au nevoie de energie pentru a functiona.',
-        'description_long' => 'Panouri solare gigantice sunt folosite pentru a genera energie pentru Mine si Sintetizatorul de Deuteriu. Odata cu dezvoltarea Uzinei, suprafata acoperita cu celule fotovoltaice creste, ducand astfel la o crestere a energiei generate. Uzina Solara reprezinta baza unei planete in privinta energiei.',
+        'description_long' => 'Uzinele solare absorb energia radiatiilor solare. Toate minele au nevoie de energie pentru a functiona.',
     ],
     'fusion_plant' => [
         'title' => 'Reactor de Fuziune',
         'description' => 'Reactorul de fuziune foloseste deuteriu pentru a produce energie.',
-        'description_long' => 'În centralele de fuziune, nucleele de hidrogen sunt topite în nuclee de heliu la temperaturi și presiuni enorme, eliberând cantități uriașe de energie. Pentru fiecare gram de deuteriu consumat, se pot produce până la 41,32*10^-13 Joule de energie; cu 1 g poți produce 172 MWh energie. 
-
-Complexele de reactoare mai mari folosesc mai mult deuteriu și pot produce mai multă energie pe oră. Efectul energetic ar putea fi sporit prin cercetarea tehnologiei energetice. 
-
-Producția de energie a instalației de fuziune se calculează astfel: 
-30 * [Level Fusion Plant] * (1,05 + [Level Energy Technology] * 0,01) ^ [Level Fusion Plant]',
+        'description_long' => 'Reactorul de fuziune foloseste deuteriu pentru a produce energie.',
     ],
     'metal_store' => [
         'title' => 'Depozit de Metal',
         'description' => 'Ofera spatiu de depozitare pentru metalul in exces.',
-        'description_long' => 'Această unitate de depozitare uriașă este folosită pentru a stoca minereu metalic. Fiecare nivel de îmbunătățire crește cantitatea de minereu metalic care poate fi stocat. Dacă magazinele sunt pline, nu se va mai extrage metal. 
-
-Depozitul de metale protejează un anumit procent din producția zilnică a minei (max. 10 la sută).',
+        'description_long' => 'Ofera spatiu de depozitare pentru metalul in exces.',
     ],
     'crystal_store' => [
         'title' => 'Depozit de Cristal',
         'description' => 'Ofera spatiu de depozitare pentru cristalul in exces.',
-        'description_long' => 'Cristalul neprocesat va fi depozitat între timp în aceste hale de depozitare uriașe. Cu fiecare nivel de upgrade, crește cantitatea de cristal care poate fi stocată. Dacă depozitele de cristale sunt pline, nu vor mai fi extrase cristale. 
-
-Depozitul de cristal protejează un anumit procent din producția zilnică a minei (max. 10 la sută).',
+        'description_long' => 'Ofera spatiu de depozitare pentru cristalul in exces.',
     ],
     'deuterium_store' => [
         'title' => 'Bazin de Deuteriu',
         'description' => 'Bazine uriase pentru depozitarea deuteriului proaspat extras.',
-        'description_long' => 'Rezervorul de deuteriu este pentru depozitarea deuteriului nou sintetizat. Odată ce este procesat de sintetizator, este introdus în acest rezervor pentru utilizare ulterioară. Cu fiecare modernizare a rezervorului, capacitatea totală de stocare crește. Odată ce capacitatea este atinsă, nu se va mai sintetiza deuteriu. 
-
-Rezervorul de deuteriu protejează un anumit procent din producția zilnică a sintetizatorului (max. 10 la sută).',
+        'description_long' => 'Bazine uriase pentru depozitarea deuteriului proaspat extras.',
     ],
     'robot_factory' => [
         'title' => 'Uzina de Roboti',
         'description' => 'Fabricile de roboti ajuta la constructia cladirilor. Fiecare nivel imbunatateste viteza de constructie a cladirilor.',
-        'description_long' => 'Uzinele de roboti produc roboti care sunt folositi in construirea si imbunatatirea cladirilor. Fiecare imbunatatire a uzinei mareste numarul si eficienta robotilor folositi la constructia cladirilor.',
+        'description_long' => 'Fabricile de roboti ajuta la constructia cladirilor. Fiecare nivel imbunatateste viteza de constructie a cladirilor.',
     ],
     'shipyard' => [
         'title' => 'Santier Naval',
         'description' => 'Toate tipurile de nave si unitati defensive pot fi construite in Santierul Naval.',
-        'description_long' => 'Santierul naval este folosit pentru construirea navelor si a unitatilor defensive. Odata ce santierul este imbunatatit, poate produce o gama variata de nave intr-un timp mai scurt. O uzina de naniti injumatateste timpul de productie.',
+        'description_long' => 'Toate tipurile de nave si unitati defensive pot fi construite in Santierul Naval.',
     ],
     'research_lab' => [
         'title' => 'Laborator de Cercetari',
         'description' => 'Dezvoltarea Laboratorului de Cercetari permite accesul la tehnologii noi precum si micsorarea timpului necesar pentru cercetare.',
-        'description_long' => 'Pentru a putea descoperi noi tipuri de tehnologie, s-a dezvoltat un laborator de cercetari. Imbunatatirea laboratorului creste viteza cu care tehnologiile sunt cercetate, dar si deschide domenii noi de cercetare. Pentru ca cercetarile sa fie facute in cel mai scurt timp posibil, toti cercetatorii sunt trimisi pe planeta unde cercetarea tehnologiei respective a fost demarata. In momentul in care cercetarea e terminata, cercetatorii se intorc la planetele lor de origine, aducand tehnologia odata cu ei. Astfel, noi tehnologii se pot transmite in foarte scurt timp in intregul imperiu.',
+        'description_long' => 'Dezvoltarea Laboratorului de Cercetari permite accesul la tehnologii noi precum si micsorarea timpului necesar pentru cercetare.',
     ],
     'alliance_depot' => [
         'title' => 'Hangarul Aliantei',
         'description' => 'Hangarul Aliantei alimenteaza combustibil flotelor din orbita care ajuta cu apararea.',
-        'description_long' => 'Hangarul Aliantei alimenteaza cu combustibil flotele pasnice din orbita care ajuta la aparare. Pentru fiecare nivel se mareste cantitatea de deuteriu care poate fi trimisa catre o flota din orbita, la fiecare ora.',
+        'description_long' => 'Hangarul Aliantei alimenteaza combustibil flotelor din orbita care ajuta cu apararea.',
     ],
     'missile_silo' => [
         'title' => 'Siloz de Rachete',
         'description' => 'Silozul de rachete este folosit pentru a depozita rachete.',
-        'description_long' => 'Silozul de rachete este folosit pentru a crea, depozita si lansa rachete. 5 rachete interplanetare sau 10 rachete anti-balistice pot fi depozitate in plus cu fiecare nivel al silozului. O racheta interplanetara necesita spatiul a 2 rachete anti-balistice. Pot fi depozitate ambele tipuri de rachete in acelasi timp.',
+        'description_long' => 'Silozul de rachete este folosit pentru a depozita rachete.',
     ],
     'nano_factory' => [
         'title' => 'Uzina de Naniti',
         'description' => 'Aceasta este ultima noutate în robotică. Fiecare nivel micşorează timpul de construcţie a navelor, apărării şi clădirilor.',
-        'description_long' => 'Aceasta uzina produce unitati considerate ultima treapta a evolutiei in tehnologia robotica. Nanitii sunt roboti de marime nanometrica, capabili de performante extraordinare prin intermediul conexiunilor dintre ei. Odata dezvoltati, ei maresc productivitatea in aproape toate domeniile si datorita acestui fapt fabrica de naniti injumatateste cu fiecare nivel timpul de contructie a cladirilor, navelor si structurilor de aparare.',
+        'description_long' => 'Aceasta este ultima noutate în robotică. Fiecare nivel micşorează timpul de construcţie a navelor, apărării şi clădirilor.',
     ],
     'terraformer' => [
         'title' => 'Formator de Sol',
         'description' => 'Formatorul de sol mareste suprafata utilizabila de pe planeta.',
-        'description_long' => 'Odată cu creșterea construcției pe planete, chiar și spațiul de locuit pentru colonie devine din ce în ce mai limitat. Metodele tradiționale, cum ar fi construcțiile înalte și subterane, devin din ce în ce mai insuficiente. Un grup mic de fizicieni de înaltă energie și nanoingineri a ajuns în cele din urmă la soluție: terraformarea. 
-Folosind cantități uriașe de energie, terraformatorul poate face arabile întinderi întregi de pământ sau chiar continente. Această clădire găzduiește producția de naniți create special pentru acest scop, care asigură o calitate constantă a solului pe tot parcursul. 
-
-Fiecare nivel de terraformer permite cultivarea a 5 câmpuri. Cu fiecare nivel, terraformatorul ocupă un câmp însuși. La fiecare 2 niveluri de terraformer vei primi 1 câmp bonus. 
-
-Odată construit, terraformerul nu poate fi demontat.',
+        'description_long' => 'Formatorul de sol mareste suprafata utilizabila de pe planeta.',
     ],
     'space_dock' => [
         'title' => 'Doc Spațial',
         'description' => 'Epavele pot fi reparate în Docul Spațial',
-        'description_long' => 'Space Dock oferă posibilitatea de a repara navele distruse în luptă care au lăsat în urmă epave. Timpul de reparație durează maxim 12 ore, dar durează cel puțin 30 de minute până când navele pot fi repuse în funcțiune. 
-
-Reparațiile trebuie să înceapă în termen de 3 zile de la crearea epavei. Navele reparate trebuie readuse la serviciu manual după finalizarea reparațiilor. Dacă nu se face acest lucru, navele individuale de orice tip vor fi repuse în serviciu după 3 zile. 
-
-Epavele apar doar dacă au fost distruse mai mult de 150.000 de unități, inclusiv navele proprii care au luat parte la luptă cu o valoare de cel puțin 5% din punctele navei. 
-
-Deoarece Space Dock plutește pe orbită, nu necesită un câmp de planetă.',
+        'description_long' => 'Epavele pot fi reparate în Docul Spațial',
     ],
     'lunar_base' => [
         'title' => 'Baza Lunara',
         'description' => 'Deoarece Luna nu are atmosferă, este necesară o bază lunară pentru a genera spațiu locuibil.',
-        'description_long' => 'O lună nu are atmosferă, așa că o bază lunară trebuie mai întâi construită înainte de a putea fi înființată o așezare. Aceasta oferă apoi oxigen, încălzire și gravitație. Cu fiecare nivel construit, o zonă mai mare de locuit și dezvoltare este oferită în biosfere. Fiecare nivel construit permite trei câmpuri pentru alte clădiri. Cu fiecare nivel, baza lunară ocupă un câmp în sine. 
-Odată construită, baza lunară nu poate fi dărâmată.',
+        'description_long' => 'Din moment ce o luna nu are atmosfera , o baza lunara este necesara pentru a genera un spatiu locuibil.',
     ],
     'sensor_phalanx' => [
         'title' => 'Senzor Phalanx',
         'description' => 'Folosind falangea senzorului, flotele altor imperii pot fi descoperite și observate. Cu cât matricea de falange a senzorilor este mai mare, cu atât intervalul pe care îl poate scana este mai mare.',
-        'description_long' => 'Folosind senzori de înaltă rezoluție, Sensor Phalanx scanează mai întâi spectrul luminii, compoziția gazelor și emisiile de radiații dintr-o lume îndepărtată și transmite datele către un supercomputer pentru procesare. Odată ce informațiile sunt obținute, supercomputerul compară modificările spectrului, compoziția gazului și emisiile de radiații, cu o diagramă de bază a modificărilor cunoscute ale spectrului create de diferite mișcări ale navei. Datele rezultate afișează apoi activitatea oricărei flote din raza de acțiune a falangei. Pentru a preveni supraîncălzirea supercomputerului în timpul procesului, acesta este răcit utilizând 5k de deuteriu procesat. 
-Pentru a folosi Phalanx, faceți clic pe orice planetă din Galaxy View din raza senzorilor dvs.',
+        'description_long' => 'Folosind un senzor phalanx, flotele altor imperii pot fi descoperite si supravegheate. Cu cat este mai mare senzorul cu atat mai mare este raza de actiune.',
     ],
     'jump_gate' => [
         'title' => 'Portal de Teleportare',
         'description' => 'Porțile de săritură sunt transceiver-uri uriașe capabile să trimită chiar și cea mai mare flotă în cel mai scurt timp către o poartă îndepărtată.',
-        'description_long' => 'Un Jump Gate este un sistem de transceiver-uri gigantice capabile să trimită chiar și cele mai mari flote către o Poartă de primire oriunde în univers, fără pierderi de timp. Folosind o tehnologie similară cu cea a unei găuri de vierme pentru a realiza saltul, deuteriul nu este necesar. Între salturi trebuie să treacă o perioadă de reîncărcare de câteva minute pentru a permite regenerarea. Nici transportul resurselor prin Poartă nu este posibil. Cu fiecare nivel de upgrade, timpul de răcire al porții de salt poate fi redus.',
+        'description_long' => 'Portalele de teleportare sunt emitatori-receptori gigantici capabili sa trimita si cele mai mari flota intr-o clipa catre un alt portal.',
     ],
     'energy_technology' => [
         'title' => 'Tehnologia Energiei',
         'description' => 'Controlarea diferitelor tipuri de energie este necesara pentru tehnologii noi.',
-        'description_long' => 'Pe măsură ce diferite domenii de cercetare au avansat, s-a descoperit că tehnologia actuală de distribuție a energiei nu era suficientă pentru a începe anumite cercetări de specialitate. Cu fiecare actualizare a tehnologiei energetice, pot fi efectuate noi cercetări care deblochează dezvoltarea unor nave și apărări mai sofisticate.',
+        'description_long' => 'Controlarea diferitelor tipuri de energie este necesara pentru tehnologii noi.',
     ],
     'laser_technology' => [
         'title' => 'Tehnologia Laserelor',
         'description' => 'Focalizarea luminii genereaza o raza care produce pagube la atingerea unui obiect.',
-        'description_long' => 'Laserele (amplificarea luminii prin emisie stimulată de radiații) produc o emisie intensă, bogată în energie, de lumină coerentă. Aceste dispozitive pot fi folosite în tot felul de domenii, de la calculatoare optice la arme cu laser grele, care trec fără efort prin tehnologia armurii. Tehnologia laser oferă o bază importantă pentru cercetarea altor tehnologii de arme.',
+        'description_long' => 'Focalizarea luminii genereaza o raza care produce pagube la atingerea unui obiect.',
     ],
     'ion_technology' => [
         'title' => 'Tehnologia Ionilor',
         'description' => 'Tehnologie prin care materiale ionizate sunt concentrate intr-un fascicul, cu aplicatii in domeniul militar. Fiecare nivel ofera un bonus de (4}% pentru demolari.',
-        'description_long' => 'Ionii pot fi concentrați și accelerați într-un fascicul mortal. Aceste grinzi pot provoca apoi daune enorme. Oamenii noștri de știință au dezvoltat, de asemenea, o tehnică care va reduce în mod clar costurile de deconstrucție pentru clădiri și sisteme. Pentru fiecare nivel de cercetare, costurile de deconstrucție vor scădea cu 4%.',
+        'description_long' => 'Tehnologie prin care materiale ionizate sunt concentrate intr-un fascicul, cu aplicatii in domeniul militar. Fiecare nivel ofera un bonus de (4}% pentru demolari.',
     ],
     'hyperspace_technology' => [
         'title' => 'Tehnologia Hiperspatiala',
         'description' => 'Prin integrarea dimensiunilor a 4-a și a 5-a este acum posibil să se cerceteze un nou tip de acționare care este mai economică și mai eficientă.',
-        'description_long' => 'În teorie, ideea călătoriei în hiperspațiu se bazează pe existența unei dimensiuni separate și adiacente. Când este activată, o unitate hiperspațială devia nava în această cealaltă dimensiune, unde poate acoperi distanțe mari într-un interval de timp mult redus față de timpul necesar în spațiul „normal”. Odată ce atinge punctul din hiperspațiu care corespunde destinației sale în spațiul real, reapare. 
-Odată ce este cercetat un nivel suficient de tehnologie Hyperspace, Hyperspace Drive nu mai este doar o teorie. Fiecare îmbunătățire a acestei unități crește capacitatea de încărcare a navelor dvs. cu 5% din valoarea de bază.',
+        'description_long' => 'Integrand a patra si a cincea dimensiune, acum este posibila cercetarea unui nou tip de motor mai economic si mai eficient. Utilizând a patra și a cincea dimensiune, este acum posibil să pliezi compartimentele de încărcare ale navelor pentru a mări capacitatea de depozitare.',
     ],
     'plasma_technology' => [
         'title' => 'Tehnologia Plasmei',
         'description' => 'O dezvoltare mai mare a Tehnlogiei Ionilor care accelerează plasma de mare energie şi care apoi poate produce efecte devastatoare, în plus optimizează producţia de metal, cristal și deuteriu (1%/0.66%/0.33%pe nivel).',
-        'description_long' => 'O dezvoltare ulterioară a tehnologiei ionice care nu accelerează ionii, ci plasmă de înaltă energie, care poate provoca apoi daune devastatoare la impactul cu un obiect. Oamenii noștri de știință au găsit, de asemenea, o modalitate de a îmbunătăți considerabil exploatarea metalului și a cristalului folosind această tehnologie. 
-
-Producția de metal crește cu 1%, producția de cristale cu 0,66% și producția de deuteriu cu 0,33% per nivel de construcție al tehnologiei cu plasmă.',
+        'description_long' => 'O dezvoltare mai mare a Tehnlogiei Ionilor care accelerează plasma de mare energie şi care apoi poate produce efecte devastatoare, în plus optimizează producţia de metal, cristal și deuteriu (1%/0.66%/0.33%pe nivel).',
     ],
     'combustion_drive' => [
         'title' => 'Motor pe Combustie',
         'description' => 'Dezvoltarea acestui motor face navele mai rapide, totusi fiecare nivel creste viteza cu doar 10% din valoarea de baza.',
-        'description_long' => 'Combustion Drive este cea mai veche dintre tehnologii, dar este încă în uz. Cu Combustion Drive, evacuarea este formată din propulsoarele transportate în interiorul navei înainte de utilizare. Într-o cameră închisă, presiunile sunt egale în fiecare direcție și nu are loc nicio accelerație. Dacă este prevăzută o deschidere în partea inferioară a camerei, atunci presiunea nu mai este opusă pe acea parte. Presiunea rămasă dă o împingere rezultată în partea opusă deschiderii, care propulsează nava înainte prin expulzarea evacuarii în spate la viteză extrem de mare. 
-
-Odată cu dezvoltarea fiecărui nivel al Combustion Drive, viteza navelor de marfă mici și mari, a luptătorilor ușoare, a reciclatorilor și a sondelor de spionaj crește cu 10%.',
+        'description_long' => 'Dezvoltarea acestui motor face navele mai rapide, totusi fiecare nivel creste viteza cu doar 10% din valoarea de baza.',
     ],
     'impulse_drive' => [
         'title' => 'Motor cu Impuls',
         'description' => 'Motorul cu impuls este bazat pe principiul reactiunii. Dezvoltarile ulterioare ale tehnologiei fac navele mai rapide, totusi fiecare nivel creste viteza doar cu 20% din valoarea de baza.',
-        'description_long' => 'Acționarea cu impuls se bazează pe principiul recul, prin care emisia stimulată de radiații este produsă în principal ca produs rezidual din fuziunea miezului pentru a obține energie. În plus, pot fi injectate și alte mase. Odată cu dezvoltarea fiecărui nivel al Impulse Drive, viteza bombardierelor, crucișătoarelor, avioanelor grele și a navelor colonie crește cu 20% din valoarea de bază. În plus, transportoarele mici sunt echipate cu unități de impuls de îndată ce nivelul lor de cercetare ajunge la 5. De îndată ce cercetarea Impulse Drive a atins nivelul 17, reciclatorii sunt reinstalați cu unități de impuls. 
-
-De asemenea, rachetele interplanetare călătoresc mai departe cu fiecare nivel.',
+        'description_long' => 'Motorul cu impuls este bazat pe principiul reactiunii. Dezvoltarile ulterioare ale tehnologiei fac navele mai rapide, totusi fiecare nivel creste viteza doar cu 20% din valoarea de baza.',
     ],
     'hyperspace_drive' => [
         'title' => 'Motor Hiperspatial',
         'description' => 'Motorul hiperspatial deviaza spatiul din preajma unei nave. Dezvoltarea acestui motor ajuta navele sa devina mai rapide. Totusi, fiecare nivel creste viteza cu 30% fata de viteza de baza.',
-        'description_long' => 'În imediata vecinătate a navei, spațiul este deformat astfel încât distanțe lungi pot fi parcurse foarte repede. Cu cât Hyperspace Drive este mai dezvoltată, cu atât este mai puternică natura deformată a spațiului, prin care viteza navelor echipate cu acesta (Battlecruisers, Battleships, Distroyers, Deathstars, Pathfinders și Reapers) crește cu 30% pe nivel. În plus, bombardierul este construit cu un Hyperspace Drive de îndată ce cercetarea atinge nivelul 8. De îndată ce cercetarea Hyperspace Drive atinge nivelul 15, Recycler-ul este reamenajat cu un Hyperspace Drive.',
+        'description_long' => 'Motorul hiperspatial deviaza spatiul din preajma unei nave. Dezvoltarea acestui motor ajuta navele sa devina mai rapide. Totusi, fiecare nivel creste viteza cu 30% fata de viteza de baza.',
     ],
     'espionage_technology' => [
         'title' => 'Tehnologia Spionajului',
         'description' => 'Informatii despre alte planete sau luni pot fi obtinute folosind aceasta tehnologie.',
-        'description_long' => 'Tehnologia Spionajului necesita dezvoltarea unor senzori mai eficienti. Cu cat sunt mai dezvoltati, cu atat informatiile oferite despre activitatile inconjuratoare sunt mai detaliate. Diferenta dintre nivelul tehnologiei tale si cea a adversarului este cruciala. Cu cat tehnologia este mai dezvoltata cu atat mai mare va deveni cantitatea de informatii primite si va scadea sansa de fi descoperita proba de spionaj in timpul misiunii. Cu cat mai multe probe sunt trimise, cu atat mai multe detalii sunt primite despre adversar, dar in acelasi timp, pericolul de a fi descoperit creste. Tehnologia Spionajului imbunatateste si datele primite despre flotele in drum spre imperiul tau. In acest caz doar nivelul tehnologiei tale este important.
-
-- Nivelul 2 va arata numarul navelor, alaturi de un simplu avertisment.
-- Nivelul 4 va arata si tipul navelor si totalul lor.
-- Nivelul 8 va arata cu precizie numarul si tipul navelor. 
-
-Pentru raideri, aceasta tehnologie este indispensabila, pentru ca ofera informatii despre flota victimei si/sau apararea de pe planeta. Aceasta tehnologie ar trebui dezvoltata foarte rapid, chiar dupa construirea Transportoarelor Mici.',
+        'description_long' => 'Informatii despre alte planete sau luni pot fi obtinute folosind aceasta tehnologie.',
     ],
     'computer_technology' => [
         'title' => 'Tehnologia Calculatoarelor',
         'description' => 'Mai multe flote pot fi manevrate marind performantele calculatoarelor. Fiecare nivel de tehnologie a calculatoarelor mareste cu unu numarul maxim de flote.',
-        'description_long' => 'Tehnologia calculatoarelor implica amplificarea performantelor realizate pana in prezent. Sunt dezvoltate sisteme din ce in ce mai puternice si din ce in ce mai eficiente. Puterea de calcul creste incontinuu, iar viteza cu care ruleaza procesele calculatoarelor este deasemenea sporita. Tot mai multe flote pot fi manevrate simultan odata cu marirea nivelului acestei tehnologii.Fiecare nivel de tehnologie a calculatoarelor mareste cu unu numarul maxim de flote. Cu cat poti trimite mai multe flote in acelasi timp, cu atat poti face mai multe raiduri si poti captura mai multe resurse. Desigur, aceasta tehnologie este foarte utila comerciantilor care deasemenea pot trimite in acelasi timp mai multe flote comerciale. Din acest motiv tehnologia calculatoarelor ar trebui dezvoltata incontinuu pe parcursul jocului.',
+        'description_long' => 'Mai multe flote pot fi manevrate marind performantele calculatoarelor. Fiecare nivel de tehnologie a calculatoarelor mareste cu unu numarul maxim de flote.',
     ],
     'astrophysics' => [
         'title' => 'Astrofizica',
         'description' => 'Cu ajutorul unui modul de cercetare in Astrofizica, navele pot efectua expeditii lungi. Fiecare al 2-lea nivel al acestei tehnologii iti va permite colonizarea unei noi planete.',
-        'description_long' => 'Descoperirile ulterioare din domeniul astrofizicii permit construirea de laboratoare care pot fi montate pe tot mai multe nave. Acest lucru face posibile expediții lungi departe în zone neexplorate ale spațiului. În plus, aceste progrese pot fi folosite pentru a coloniza în continuare universul. Pentru fiecare două niveluri ale acestei tehnologii, o planetă suplimentară poate fi făcută utilizabilă.',
+        'description_long' => 'Cu ajutorul unui modul de cercetare in Astrofizica, navele pot efectua expeditii lungi. Fiecare al 2-lea nivel al acestei tehnologii iti va permite colonizarea unei noi planete.',
     ],
     'intergalactic_research_network' => [
         'title' => 'Reteaua de Cercetare Intergalactica',
         'description' => 'Cercetătorii situați pe diferite planete comunică prin intermediul acestei rețele.',
-        'description_long' => 'Aceasta este rețeaua voastră de spațiu adânc pentru a comunica rezultatele cercetării coloniilor voastre. Cu IRN, timpi de cercetare mai rapid pot fi atinși prin conectarea laboratoarelor de cercetare de cel mai înalt nivel egal cu nivelul IRN dezvoltat. 
-Pentru a funcționa, fiecare colonie trebuie să poată efectua cercetarea în mod independent.',
+        'description_long' => 'Cercetătorii situați pe diferite planete comunică prin intermediul acestei rețele.',
     ],
     'graviton_technology' => [
         'title' => 'Tehnologia Graviton',
         'description' => 'Lansand un flux concentrat de gravitoni se creeaza un camp gravitational artificial, care poate distruge nave sau luni.',
-        'description_long' => 'Un graviton este o particulă elementară care nu are masă și nu are încărcătură. Determină puterea gravitațională. Prin tragerea unei sarcini concentrate de gravitoni, se poate construi un câmp gravitațional artificial. Nu spre deosebire de o gaură neagră, ea atrage masă în sine. Astfel, poate distruge nave și chiar luni întregi. Pentru a produce o cantitate suficientă de gravitoni, sunt necesare cantități uriașe de energie. Graviton Research este necesară pentru a construi un Deathstar distructiv.',
+        'description_long' => 'Lansand un flux concentrat de gravitoni se creeaza un camp gravitational artificial, care poate distruge nave sau luni.',
     ],
     'weapon_technology' => [
-        'title' => 'Tehnologia armelor',
+        'title' => 'Tehnologia Armelor',
         'description' => 'Tehnologia Armelor imbunatateste eficienta lor. Fiecare nivel mareste puterea focului cu 10% din valoarea de baza.',
-        'description_long' => 'Tehnologia armelor implica o dezvoltare a armamentului. Se pune accent pe marirea si canalizarea precisa a energiei. In acest fel armele devin mai eficiente si provoaca pagube mai mari. Fiecare nivel al tehnologiei mareste puterea de atac a armei cu 10% din valoarea de baza. Tehnologia este importanta pentru a avea navele puternice. Asa ca ar trebui sa fie dezvoltata pe tot parcursul jocului.',
+        'description_long' => 'Tehnologia Armelor imbunatateste eficienta lor. Fiecare nivel mareste puterea focului cu 10% din valoarea de baza.',
     ],
     'shielding_technology' => [
-        'title' => 'Tehnologia scutului',
+        'title' => 'Tehnologia Scutului',
         'description' => 'Tehnologia scutului face scuturile de pe nave și instalațiile defensive mai eficiente. Fiecare nivel de tehnologie de scut crește rezistența scuturilor cu 10 % din valoarea de bază.',
-        'description_long' => 'Tehnologia scutului presupune noi metode de a genera un scut energetic si de a-l face mai eficient si mai rezistent. Fiecare nivel cercetat imbunatateste eficienta scuturilor cu 10% din valoarea de baza.',
+        'description_long' => 'Tehnologia scuturilor face ca scuturile din jurul navelor si a apararii sa fie eficiente. Fiecare nivel a tehnologiei creste puterea scuturilor cu 10% din valoarea de baza.',
     ],
     'armor_technology' => [
         'title' => 'Tehnologia Armurilor',
         'description' => 'Aliaje speciale imbunatatesc armura navelor si a unitatilor defensive. Eficienta unei armuri este imbunatatita cu 10% per nivel.',
-        'description_long' => 'Mediul spațiului adânc este dur. Piloții și echipajul din diferite misiuni nu doar că s-au confruntat cu radiații solare intense, ci și cu perspectiva de a fi loviți de resturile spațiale sau distruși de focul inamic într-un atac. Odată cu descoperirea unui aliaj de carbură de titan și aluminiu, care sa dovedit a fi atât ușor, cât și durabil, acest lucru a oferit echipajului un anumit grad de protecție. Odată cu fiecare nivel de Tehnologie Armor dezvoltat, se produce un aliaj de calitate superioară, care crește rezistența armurilor cu 10%.',
+        'description_long' => 'Aliaje speciale imbunatatesc armura navelor si a unitatilor defensive. Eficienta unei armuri este imbunatatita cu 10% per nivel.',
     ],
     'small_cargo' => [
         'title' => 'Transportor mic',
         'description' => 'Transportorul mic este o nava agila care poate transporta rapid resurse catre alte planete.',
-        'description_long' => 'Transportatorii sunt aproximativ la fel de mari ca și luptătorii, dar renunță la unitățile de înaltă performanță și la armamentul de la bord pentru a câștiga capacitatea de transport de marfă. Ca rezultat, un transportor ar trebui trimis la lupte numai atunci când este însoțit de nave pregătite pentru luptă. 
-
-De îndată ce Impulse Drive atinge nivelul de cercetare 5, micul transportator călătorește cu o viteză de bază crescută și este echipat cu un Impulse Drive.',
+        'description_long' => 'Transportorul mic este o nava agila care poate transporta rapid resurse catre alte planete.',
     ],
     'large_cargo' => [
         'title' => 'Transportor mare',
         'description' => 'Acest transportor are o capacitate mult mai mare decat transportorul mic si este mai rapid in fazele initiale de dezvoltare ale imperiului, multumita motoarelor mai puternice.',
-        'description_long' => 'Pe măsură ce timpul a evoluat, raidurile asupra coloniilor au dus la capturarea unor cantități din ce în ce mai mari de resurse. Drept urmare, Cargourile Mici au fost trimise în număr de masă pentru a compensa capturile mai mari. S-a aflat rapid că era necesară o nouă clasă de nave pentru a maximiza resursele capturate în raiduri, dar și pentru a fi rentabil. După multă dezvoltare, s-a născut Large Cargo. 
-
-Pentru a maximiza resursele care pot fi stocate în cale, această navă are puține arme sau armuri. Datorită motorului cu ardere foarte dezvoltat instalat, acesta servește drept cel mai economic furnizor de resurse între planete și cel mai eficient în raidurile în lumi ostile.',
+        'description_long' => 'Acest transportor are o capacitate mult mai mare decat transportorul mic si este mai rapid in fazele initiale de dezvoltare ale imperiului, multumita motoarelor mai puternice.',
     ],
     'colony_ship' => [
         'title' => 'Nava de Colonizare',
         'description' => 'Planetele nelocuite pot fi colonizate cu acest tip de nava.',
-        'description_long' => 'În secolul al XX-lea, Man a decis să meargă după stele. Mai întâi, a aterizat pe Lună. După aceea, a fost construită o stație spațială. Marte a fost colonizat la scurt timp după aceea. Curând s-a stabilit că creșterea noastră depindea de colonizarea altor lumi. Oameni de știință și ingineri din întreaga lume s-au adunat pentru a dezvolta cea mai mare realizare a omului vreodată. Se naște nava coloniei. 
-
-Această navă este folosită pentru a pregăti o planetă nou descoperită pentru colonizare. Odată ce ajunge la destinație, nava este transformată instantaneu într-un spațiu de locuit obișnuit pentru a ajuta la popularea și exploatarea noii lumi. Numărul maxim de planete este astfel determinat de progresul cercetării în astrofizică. Două noi niveluri de Astrotehnologie permit colonizarea unei planete suplimentare.',
+        'description_long' => 'Planetele nelocuite pot fi colonizate cu acest tip de nava.',
     ],
     'recycler' => [
         'title' => 'Reciclator',
         'description' => 'Reciclatorii sunt singurele nave capabile să recolteze câmpuri de resturi care plutesc pe orbita unei planete după luptă.',
-        'description_long' => 'Lupta în spațiu a luat amploare din ce în ce mai mare. Mii de nave au fost distruse, iar resursele rămășițelor lor păreau să fie pierdute pentru totdeauna în câmpurile de moloz. Navele de marfă normale nu se puteau apropia suficient de aceste câmpuri fără a risca pagube substanțiale. 
-O dezvoltare recentă a tehnologiilor de scut a ocolit eficient această problemă. A fost creată o nouă clasă de nave care erau similare cu Transportatorii: Reciclatorii. Eforturile lor au ajutat la adunarea resurselor pierdute pe gânduri și apoi la salvarea lor. Resturile nu mai reprezentau niciun pericol real datorită noilor scuturi. 
-
-De îndată ce cercetarea Impulse Drive a atins nivelul 17, reciclatorii sunt reinstalați cu Impulse Drives. De îndată ce cercetarea Hyperspace Drive a atins nivelul 15, reciclatorii sunt reinstalați cu Hyperspace Drives.',
+        'description_long' => 'Reciclatoarele sunt singurele nave care au abilitatea de a culege campurile de ramasite din orbita unei planete.',
     ],
     'espionage_probe' => [
         'title' => 'Proba de spionaj',
         'description' => 'Probele de spionaj sunt roboti mici si agili care ofera informatii despre flotele si planetele indepartate.',
-        'description_long' => 'Sondele de spionaj sunt drone mici, agile, care oferă date despre flote și planete. Echipat cu motoare special concepute, le permite să parcurgă distanțe mari în doar câteva minute. Odată ce sunt pe orbită în jurul planetei țintă, ei colectează rapid date și transmit raportul înapoi prin Rețeaua de spațiu adânc pentru evaluare. Dar există un risc pentru aspectul adunării inteligente. În timpul în care raportul este transmis înapoi în rețeaua dvs., semnalul poate fi detectat de țintă și sondele pot fi distruse.',
+        'description_long' => 'Probele de spionaj sunt roboti mici si agili care ofera informatii despre flotele si planetele indepartate.',
     ],
     'solar_satellite' => [
         'title' => 'Satelit solar',
         'description' => 'Sateliții solari sunt simple platforme de celule solare, situate pe o orbită înaltă, staționară. Ei adună lumina soarelui și o transmit stației terestre prin laser.',
-        'description_long' => 'Oamenii de știință au descoperit o metodă de transmitere a energiei electrice către colonie folosind sateliți special proiectați pe o orbită geosincronă. Sateliții solari adună energia solară și o transmit unei stații terestre folosind tehnologia laser avansată. Eficiența unui satelit solar depinde de puterea radiației solare pe care o primește. În principiu, producția de energie pe orbite mai apropiate de Soare este mai mare decât pentru planetele aflate pe orbite îndepărtate de Soare. 
-Datorită raportului lor bun cost/performanță, sateliții solari pot rezolva o mulțime de probleme energetice. Dar atenție: sateliții solari pot fi ușor distruși în luptă.',
+        'description_long' => 'Satelitii solari sunt simple platforme de celule solare, localizate pe orbita. Ei aduna lumina Soarelui si o transmit pe sol printr-un fascicul laser.<br> Un satelit solar produce 35 energie pe aceasta planeta.',
     ],
     'crawler' => [
         'title' => 'Crawler',
         'description' => 'Navele Crawler măresc producția de metal, cristal și deuteriu pe planetele unde sunt instalate, fiecare cu 0.02%, 0.02% și respectiv 0.02% . Pentru un jucător de tip colecționar, producția crește și ea. Bonusul maxim depinde de nivelul general al minelor tale.',
-        'description_long' => 'Nava Crawler este un vehicul care se deplasează în șanțuri de mari dimensiuni și mărește producția minelor și a sintetizatoarelor. Este mai agilă decât pare dar nu este deosebit de robustă. Fiecare Crawler mărește producția de metal cu 0.02%, producția de cristal cu 0.02% și producția de Deuteriu cu0.02%. Pentru un jucător de tip colecționar, producția crește și ea. Bonusul maxim depinde de nivelul general al minelor tale.',
+        'description_long' => 'Navele Crawler măresc producția de metal, cristal și deuteriu pe planetele unde sunt instalate, fiecare cu 0.02%, 0.02% și respectiv 0.02% . Pentru un jucător de tip colecționar, producția crește și ea. Bonusul maxim depinde de nivelul general al minelor tale.',
     ],
     'pathfinder' => [
         'title' => 'Pathfinder',
         'description' => 'Pathfinder este o navă rapidă și agilă, construită special pentru expediții în sectoare necunoscute ale spațiului.',
-        'description_long' => 'Pathfinder este cea mai recentă dezvoltare în tehnologia de explorare. Această navă a fost special concepută pentru membrii clasei Discoverer pentru a-și maximiza potențialul. Echipat cu sisteme avansate de scanare și o cală mare de marfă pentru salvarea resurselor, Pathfinder excelează la expediții. Senzorii săi sofisticați pot detecta resurse valoroase și anomalii care ar trece neobservate de alte nave. Nava combină o viteză mare cu o capacitate bună de încărcare, făcând-o perfectă pentru misiuni rapide de explorare și strângere de resurse din sectoare îndepărtate.',
+        'description_long' => 'Navele Pathfider sunt rapide, spațioase și pot recolta câmpurile de rămășițe din expediții. Cantitatea totală crește de asemenea.',
     ],
     'light_fighter' => [
         'title' => 'Vanator usor',
         'description' => 'Vanatorul usor este prima nava de atac care poate fi construita.',
-        'description_long' => 'Aceasta este prima navă de luptă pe care o vor construi toți împărații. Luptătorul ușor este o navă agilă, dar vulnerabilă atunci când este pe cont propriu. În număr de masă, ele pot deveni o mare amenințare pentru orice imperiu. Ei sunt primii care însoțesc încărcăturile mici și mari pe planete ostile cu apărare minoră.',
+        'description_long' => 'Vanatorul usor este prima nava de atac care poate fi construita.',
     ],
     'heavy_fighter' => [
         'title' => 'Vanator greu',
         'description' => 'Vanatorul greu are scuturi si putere de foc mai mari in comparatie cu vanatorul usor.',
-        'description_long' => 'În dezvoltarea avionului de luptă greu, cercetătorii au ajuns la un punct în care unitățile convenționale nu mai oferă performanțe suficiente. Pentru a deplasa nava în mod optim, a fost folosit pentru prima dată propulsorul cu impuls. Acest lucru a crescut costurile, dar a deschis și noi posibilități. Folosind această unitate, a rămas mai multă energie pentru arme și scuturi; în plus, pentru această nouă familie de luptători au fost folosite materiale de înaltă calitate. Odată cu aceste schimbări, avionul de luptă greu reprezintă o nouă eră în tehnologia navelor și stă la baza tehnologiei crucișătoarelor. 
-
-Puțin mai mare decât vânătorul ușor, luptătorul greu are carcase mai groase, oferind mai multă protecție și armament mai puternic.',
+        'description_long' => 'Vanatorul greu are scuturi si putere de foc mai mari in comparatie cu vanatorul usor.',
     ],
     'cruiser' => [
         'title' => 'Crucisator',
         'description' => 'Crucisatoarele sunt nave de aproape trei ori mai bune decat vanatorii grei si sunt de doua ori mai puternice. In plus sunt foarte rapide.',
-        'description_long' => 'Odată cu dezvoltarea laserului greu și a tunului cu ioni, luptătorii ușoare și grei au întâlnit un număr alarmant de mare de înfrângeri, care a crescut cu fiecare raid. În ciuda multor modificări, a puterii armelor și a modificărilor de armură, aceasta nu a putut fi crescută suficient de repede pentru a contracara eficient aceste noi măsuri defensive. Prin urmare, s-a decis să se construiască o nouă clasă de navă care să combine mai multă armură și mai multă putere de foc. Ca rezultat al anilor de cercetare și dezvoltare, s-a născut Cruiser. 
-
-Crusătoarele sunt blindate de aproape trei ori față de cele ale luptătorilor grei și posedă o putere de foc de peste două ori mai mare decât orice navă de luptă existentă. De asemenea, au viteze care au depășit cu mult orice navă spațială realizată vreodată. Timp de aproape un secol, crucișătoarele au dominat universul. Cu toate acestea, odată cu dezvoltarea tunurilor Gauss și a turnulelor cu plasmă, predominanța lor a încetat. Ele sunt încă folosite astăzi împotriva grupărilor de luptători, dar nu la fel de predominant ca înainte.',
+        'description_long' => 'Crucisatoarele sunt nave de aproape trei ori mai bune decat vanatorii grei si sunt de doua ori mai puternice. In plus sunt foarte rapide.',
     ],
     'battle_ship' => [
         'title' => 'Nava de razboi',
         'description' => 'Navele de razboi reprezinta coloana vertebrala a flotei. Tunurile mari, viteza mare si capacitatea mare de transport le face adversari demni de luat in serios.',
-        'description_long' => 'Odată ce a devenit evident că crucișătorul pierde teren în fața numărului tot mai mare de structuri de apărare cu care se confrunta și, odată cu pierderea navelor aflate în misiuni la niveluri inacceptabile, s-a decis construirea unei nave care să poată face față aceluiași tip de structuri de apărare cu pierderi cât mai mici posibil. După o dezvoltare extinsă, sa născut Battleship. Construit pentru a rezista celei mai mari bătălii, Battleship are spații mari de marfă, tunuri grele și viteză mare de hipermotor. Odată dezvoltat, s-a dovedit în cele din urmă a fi coloana vertebrală a fiecărei flote de raid a Împăraților.',
+        'description_long' => 'Navele de razboi reprezinta coloana vertebrala a flotei. Tunurile mari, viteza mare si capacitatea mare de transport le face adversari demni de luat in serios.',
     ],
     'battlecruiser' => [
         'title' => 'Interceptor',
         'description' => 'Interceptorul este specializat in distrugerea flotelor inamice.',
-        'description_long' => 'Această navă este una dintre cele mai avansate nave de luptă care au fost dezvoltate vreodată și este deosebit de mortală atunci când vine vorba de distrugerea flotelor atacatoare. Cu tunurile sale laser îmbunătățite la bord și motorul Hyperspace avansat, Battlecruiserul este o forță serioasă de care trebuie tratată în orice atac. Datorită designului navei și a sistemului său mare de arme, calele de marfă au trebuit să fie tăiate, dar acest lucru este compensat de consumul redus de combustibil.',
+        'description_long' => 'Interceptorul este specializat in distrugerea flotelor inamice.',
     ],
     'bomber' => [
         'title' => 'Bombardier',
         'description' => 'Bombardierul a fost special facut pentru a distruge apararea de pe planete.',
-        'description_long' => 'De-a lungul secolelor, pe măsură ce apărarea începea să devină mai mare și mai sofisticată, flotele au început să fie distruse într-un ritm alarmant. S-a decis că este nevoie de o nouă navă pentru a sparge apărările pentru a asigura rezultate maxime. După ani de cercetare și dezvoltare, Bomber a fost creat. 
-
-Folosind echipamente de țintire ghidate cu laser și bombe cu plasmă, bombardierul caută și distruge orice mecanism de apărare pe care îl poate găsi. De îndată ce unitatea hiperspațială este dezvoltată la nivelul 8, bombardierul este echipat cu motorul hiperspațial și poate zbura la viteze mai mari.',
+        'description_long' => 'Bombardierul a fost special facut pentru a distruge apararea de pe planete.',
     ],
     'destroyer' => [
         'title' => 'Distrugator',
         'description' => 'Distrugatorul este nava de razboi suprema.',
-        'description_long' => 'Distrugătorul este rezultatul anilor de muncă și dezvoltare. Odată cu dezvoltarea Deathstars, s-a decis că era nevoie de o clasă de navă pentru a se apăra împotriva unei astfel de arme masive. Datorită senzorilor săi de orientare îmbunătățiți, tunurilor cu ioni multi-falangă, tunurilor Gauss și turnulelor cu plasmă, Distrugatorul s-a dovedit a fi una dintre cele mai înfricoșătoare nave create. 
-
-Deoarece distrugătorul este foarte mare, manevrabilitatea lui este sever limitată, ceea ce îl face mai mult o stație de luptă decât o navă de luptă. Lipsa de manevrabilitate este compensată de puterea sa de foc, dar costă și cantități semnificative de deuteriu pentru a construi și a opera.',
+        'description_long' => 'Distrugatorul este nava de razboi suprema.',
     ],
     'deathstar' => [
         'title' => 'RIP',
         'description' => 'Puterea de distrugere a unui RIP este superioara tuturor navelor. Cu ajutorul gravitonul, nava poate distruge o luna.',
-        'description_long' => 'Deathstar este cea mai puternică navă creată vreodată. Această navă de mărimea unei luni este singura navă care poate fi văzută cu ochiul liber pe pământ. Până când îl vezi, din păcate, este prea târziu să faci ceva. 
-
-Înarmată cu un gigantic tun graviton, cel mai avansat sistem de arme creat vreodată în Univers, această navă masivă are nu numai capacitatea de a distruge flote și apărări întregi, ci are și capacitatea de a distruge luni întregi. Doar cele mai avansate imperii au capacitatea de a construi o navă de această dimensiune mamut.',
+        'description_long' => 'Puterea de distrugere a unui RIP este superioara tuturor navelor. Cu ajutorul gravitonul, nava poate distruge o luna.',
     ],
     'reaper' => [
         'title' => 'Reaper',
         'description' => 'Reaper este o navă de luptă puternică specializată în raiduri agresive și recoltarea de moloz.',
-        'description_long' => 'Secerătorul reprezintă punctul culminant al ingineriei militare de clasă generală. Această navă puternic înarmată a fost concepută pentru comandanții care apreciază atât priceperea în luptă, cât și flexibilitatea tactică. În timp ce rolul său principal este lupta, Reaper dispune de cale de marfă întărite care îi permit să recolteze câmpuri de moloz după luptă. Sistemele sale avansate de țintire și armura grea îl fac un adversar formidabil, în timp ce designul său cu dublu scop înseamnă că poate crea și profita de pe urma măcelului pe câmpul de luptă. Nava este echipată cu tehnologie de ultimă oră și poate rezista împotriva navelor mult mai mari.',
+        'description_long' => 'O navă din clasa Reaper este un puternic intrument distructiv, care poate culege câmpurile de rămășițe imediat după bătălie.',
     ],
     'rocket_launcher' => [
         'title' => 'Lansator de Rachete',
         'description' => 'Lansatorul de Rachete este o optiune defensiva simpla si ieftina.',
-        'description_long' => 'Prima ta linie de bază de apărare. Acestea sunt simple instalații de lansare la sol care trag rachete convenționale cu focoase în atacul țintelor inamice. Deoarece sunt ieftine de construit și nu este necesară nicio cercetare, sunt potrivite pentru apărarea raidurilor, dar își pierd eficiența apărând împotriva atacurilor la scară mai mare. Odată ce începeți construirea unor sisteme de arme de apărare mai avansate, lansatoarele de rachete devin un simplu hrană pentru a permite armelor dumneavoastră mai dăunătoare să provoace daune mai mari pentru o perioadă mai lungă de timp. 
-
-După o luptă, există o șansă de până la 70% ca instalațiile defensive nereușite să poată fi redate pentru utilizare.',
+        'description_long' => 'Lansatorul de Rachete este o optiune defensiva simpla si ieftina.',
     ],
     'light_laser' => [
         'title' => 'Laser Usor',
         'description' => 'Tragand o raza de fotoni catre o tinta, poate produce pagube mai mari decat armele balistice standard.',
-        'description_long' => 'Pe măsură ce tehnologia s-a dezvoltat și au fost create nave mai sofisticate, s-a stabilit că era necesară o linie de apărare mai puternică pentru a contracara atacurile. Pe măsură ce Tehnologia Laser a avansat, o nouă armă a fost concepută pentru a oferi următorul nivel de apărare. Laserele ușoare sunt arme simple bazate pe sol care utilizează sisteme speciale de țintire pentru a urmări inamicul și a trage un laser de mare intensitate conceput pentru a tăia corpul țintei. Pentru a fi menținute rentabile, au fost echipate cu un sistem de ecranare îmbunătățit, cu toate acestea, integritatea structurală este aceeași cu cea a Lansatorului de rachete. 
-
-După o luptă, există o șansă de până la 70% ca instalațiile defensive nereușite să poată fi redate pentru utilizare.',
+        'description_long' => 'Tragand o raza de fotoni catre o tinta, poate produce pagube mai mari decat armele balistice standard.',
     ],
     'heavy_laser' => [
         'title' => 'Laser Greu',
         'description' => 'Laserul greu este o dezvoltare fireasca a laserului usor.',
-        'description_long' => 'Heavy Laser este o versiune practică, îmbunătățită a Light Laser. Fiind mai echilibrat decât Light Laser cu o compoziție îmbunătățită a aliajului, utilizează fascicule mai puternice, mai dens și sisteme de țintire chiar mai bune. 
-
-După o luptă, există o șansă de până la 70% ca instalațiile defensive nereușite să poată fi redate pentru utilizare.',
+        'description_long' => 'Laserul greu este o dezvoltare fireasca a laserului usor.',
     ],
     'gauss_cannon' => [
         'title' => 'Tun Gauss',
         'description' => 'Tunul Gauss trage la viteze mari cu proiectile care cantaresc cateva tone.',
-        'description_long' => 'Multă vreme armele cu proiectile au fost considerate ca fiind învechite în urma tehnologiei termonucleare și energetice moderne și datorită dezvoltării hipermotorului și armurii îmbunătățite. Asta până când tehnologia energetică exactă care o îmbătrânise cândva, l-a ajutat să-și reatingă poziția stabilită. 
-Un tun Gauss este o versiune mare a acceleratorului de particule. Rachetele extrem de grele sunt accelerate cu o forță electromagnetică uriașă și au viteze de deschidere care fac murdăria din jurul rachetei să ardă în cer. Această armă este atât de puternică când este trasă, încât creează un bum sonic. Armura și scuturile moderne abia pot rezista forței, adesea ținta este complet pătrunsă de puterea rachetei. Structurile de apărare se dezactivează de îndată ce au fost avariate prea grav. 
-
-După o luptă, există o șansă de până la 70% ca instalațiile defensive nereușite să poată fi redate pentru utilizare.',
+        'description_long' => 'Tunul Gauss trage la viteze mari cu proiectile care cantaresc cateva tone.',
     ],
     'ion_cannon' => [
         'title' => 'Tun Magnetic',
         'description' => 'Tunul Magnetic trage cu o raza continua de ioni accelerati, cauzand pagube considerabile obiectelor atinse.',
-        'description_long' => 'Un tun ionic este o armă care trage fascicule de ioni (particule încărcate pozitiv sau negativ). Canonul cu ioni este de fapt un tip de tun cu particule; numai particulele folosite sunt ionizate. Datorită sarcinilor lor electrice, ei au, de asemenea, potențialul de a dezactiva dispozitivele electronice și orice altceva care are o sursă de energie electrică sau similară, utilizând un fenomen cunoscut sub numele de Pulsul Electromagetic (efectul EMP). Datorită sistemului de ecranare foarte îmbunătățit al tunurilor, acest tun oferă o protecție îmbunătățită pentru armele tale de apărare mai mari și mai distructive. 
-
-După o luptă, există o șansă de până la 70% ca instalațiile defensive nereușite să poată fi redate pentru utilizare.',
+        'description_long' => 'Tunul Magnetic trage cu o raza continua de ioni accelerati, cauzand pagube considerabile obiectelor atinse.',
     ],
     'plasma_turret' => [
         'title' => 'Turela cu Plasma',
         'description' => 'Turelele cu plasma elibereaza energia unei flacari solare si intrec chiar si distrugatoarele ca putere combinata de distrugere.',
-        'description_long' => 'Unul dintre cele mai avansate sisteme de arme de apărare dezvoltate vreodată, turela cu plasmă folosește o celulă de combustibil mare a unui reactor nuclear pentru a alimenta un accelerator electromagnetic care trage un impuls, sau toroid, de plasmă. În timpul funcționării, turela cu plasmă se blochează mai întâi pe o țintă și începe procesul de tragere. O sferă de plasmă este creată în miezul turnulelor prin supraîncălzire și comprimare a gazelor, eliminându-le de ioni. Odată ce gazul este supraîncălzit, comprimat și este creată o sferă de plasmă, acesta este apoi încărcat în acceleratorul electromagnetic care este alimentat. Odată alimentat complet, acceleratorul este activat, ceea ce duce la lansarea sferei de plasmă cu o viteză extrem de mare către ținta dorită. Din perspectiva țintelor, bila albăstruie de plasmă care se apropie este impresionantă, dar odată ce lovește, provoacă distrugere instantanee. 
-
-Instalațiile defensive se dezactivează de îndată ce sunt prea puternic deteriorate. După o luptă, există o șansă de până la 70% ca instalațiile defensive nereușite să poată fi redate pentru utilizare.',
+        'description_long' => 'Turelele cu plasma elibereaza energia unei flacari solare si intrec chiar si distrugatoarele ca putere combinata de distrugere.',
     ],
     'small_shield_dome' => [
         'title' => 'Scut Planetar Mic',
         'description' => 'Scutul planetar mic acopera intreaga planeta intr-o sfera care absoarbe o cantitate imensa de energie.',
-        'description_long' => 'Colonizarea unor lumi noi a adus un nou pericol, resturile spațiale. Un asteroid mare ar putea șterge cu ușurință lumea și toți locuitorii. Progresele în tehnologia de ecranare au oferit oamenilor de știință o modalitate de a dezvolta un scut pentru a proteja o întreagă planetă nu numai de resturile spațiale, ci, după cum s-a aflat, de un atac inamic. Prin crearea unui câmp electromagnetic mare în jurul planetei, resturile spațiale care ar fi distrus planeta în mod normal au fost deviate, iar atacurile din partea imperiilor inamice au fost dejucate. Primele generatoare erau mari, iar scutul asigura o protecție moderată, dar s-a descoperit mai târziu că scuturile mici nu oferă protecție împotriva atacurilor la scară mai mare. Micul cupol de scut a fost preludiul unui sistem de ecranare planetară mai puternic și mai avansat. 
-
-După o luptă, există o șansă de până la 70% ca instalațiile defensive nereușite să poată fi redate pentru utilizare.',
+        'description_long' => 'Scutul planetar mic acopera intreaga planeta intr-o sfera care absoarbe o cantitate imensa de energie.',
     ],
     'large_shield_dome' => [
         'title' => 'Scut Planetar Mare',
         'description' => 'Dezvoltare a scutului planetar mic care implica mai multa energie pentru a face fata atacurilor.',
-        'description_long' => 'The Large Shield Dome este următorul pas în avansarea scuturilor planetare, este rezultatul anilor de muncă pentru îmbunătățirea Small Shield Dome. Construite pentru a rezista la un baraj mai mare de foc inamic, oferind un câmp electromagnetic cu energie mai mare, cupolele mari oferă o perioadă mai lungă de protecție înainte de a se prăbuși. 
-
-După o luptă, există o șansă de până la 70% ca instalațiile defensive nereușite să poată fi redate pentru utilizare.',
+        'description_long' => 'Dezvoltare a scutului planetar mic care implica mai multa energie pentru a face fata atacurilor.',
     ],
     'anti_ballistic_missile' => [
         'title' => 'Racheta Anti-Balistica',
         'description' => 'Rachetele anti-balistice distrug rachetele interplanetare.',
-        'description_long' => 'Rachetele antibalistice (ABM) sunt singura ta linie de apărare atunci când sunt atacate de rachete interplanetare (IPM) pe planeta ta sau pe lună. Când este detectată o lansare de IPM, aceste rachete se armează automat, procesează un cod de lansare în computerele lor de zbor, țintesc IPM-ul de intrare și se lansează pentru a intercepta. În timpul zborului, IPM-ul țintă este urmărit în mod constant și se aplică corecții de curs până când ABM ajunge la țintă și distruge IPM-ul atacator. Fiecare ABM distruge un IPM primit.',
+        'description_long' => 'Rachetele anti-balistice distrug rachetele interplanetare.',
     ],
     'interplanetary_missile' => [
         'title' => 'Rachete Interplanetare',
         'description' => 'Rachetele interplanetare distrug apărarea inamicului.',
-        'description_long' => 'Rachetele interplanetare (IPM) sunt arma ta ofensivă pentru a distruge apărarea țintei tale. Folosind tehnologie de urmărire de ultimă oră, fiecare rachetă vizează un anumit număr de apărări pentru distrugere. Dotate cu o bombă antimaterie, ei livrează o forță distructivă atât de severă încât scuturile și apărările distruse nu pot fi reparate. Singura modalitate de a contracara aceste rachete este cu ABM-uri.',
+        'description_long' => 'Rachetele Interplanetare distrug apararea inamicului. Rachetele Interplanetare acopera 0 sisteme conform formulei: nivel Motor cu Impuls * 5 - 1.',
     ],
     'kraken' => [
         'title' => 'KRAKEN',

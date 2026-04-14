@@ -112,13 +112,13 @@ Hylyt näkyvät vain, jos yli 150 000 yksikköä on tuhottu mukaan lukien omat t
 Koska Space Dock kelluu kiertoradalla, se ei vaadi planeettakenttää.',
     ],
     'lunar_base' => [
-        'title' => 'Lunar Base',
+        'title' => 'Kuutukikohta',
         'description' => 'Koska kuussa ei ole ilmakehää, asumiskelpoisen tilan luomiseen tarvitaan kuun tukikohta.',
         'description_long' => 'Kuulla ei ole ilmakehää, joten kuun tukikohta on ensin rakennettava ennen kuin siirtokunta voidaan perustaa. Tämä tuottaa sitten happea, lämpöä ja painovoimaa. Jokaisen tason rakentamisen yhteydessä biosfääriin tarjotaan suurempi asuin- ja kehitysalue. Jokainen rakennettu taso sallii kolme kenttää muille rakennuksille. Jokaisella tasolla Kuun tukikohta miehittää yhden kentän. 
 Kun kuun tukikohta on rakennettu, sitä ei voi purkaa.',
     ],
     'sensor_phalanx' => [
-        'title' => 'Sensor Phalanx',
+        'title' => 'Anturifaalanks',
         'description' => 'Anturifalangin avulla voidaan löytää ja tarkkailla muiden imperiumien laivastoja. Mitä suurempi anturin phalanx-ryhmä, sitä suuremman alueen se voi skannata.',
         'description_long' => 'Korkearesoluutioisia antureita hyödyntäen Sensor Phalanx skannaa ensin valon spektrin, kaasujen koostumuksen ja säteilypäästöt kaukaisesta maailmasta ja lähettää tiedot supertietokoneeseen käsittelyä varten. Kun tiedot on saatu, supertietokone vertaa spektrin, kaasun koostumuksen ja säteilypäästöjen muutoksia perusviivakaavioon tunnetuista spektrin muutoksista, jotka ovat aiheutuneet eri laivojen liikkeistä. Tuloksena saadut tiedot näyttävät sitten minkä tahansa phalanxin alueella olevan laivaston toiminnan. Jotta supertietokone ei ylikuumene prosessin aikana, se jäähdytetään käyttämällä 5k prosessoitua deuteriumia. 
 Jos haluat käyttää Phalanxia, ​​napsauta mitä tahansa planeettaa Galaxy View\'ssa anturien kantaman sisällä.',
@@ -205,12 +205,12 @@ Toimiakseen jokaisen pesäkkeen on kyettävä suorittamaan tutkimusta itsenäise
         'description_long' => 'Gravitoni on alkuainehiukkanen, joka on massaton ja jolla ei ole lastia. Se määrittää painovoiman. Polttamalla tiivistettyä gravitonikuormaa voidaan rakentaa keinotekoinen gravitaatiokenttä. Ei toisin kuin musta aukko, se vetää massaa itseensä. Siten se voi tuhota laivoja ja jopa kokonaisia ​​kuita. Riittävän määrän gravitonien tuottaminen vaatii valtavia määriä energiaa. Graviton-tutkimusta tarvitaan tuhoavan Kuolemantähden rakentamiseen.',
     ],
     'weapon_technology' => [
-        'title' => 'Asetekniikka',
+        'title' => 'Weapons Technology',
         'description' => 'Weapons technology makes weapons systems more efficient. Each level of weapons technology increases the weapon strength of units by 10 % of the base value.',
         'description_long' => 'Weapons Technology is a key research technology and is critical to your survival against enemy Empires. With each level of Weapons Technology researched, the weapons systems on ships and your defence mechanisms become increasingly more efficient. Each level increases the base strength of your weapons by 10% of the base value.',
     ],
     'shielding_technology' => [
-        'title' => 'Shield Technology',
+        'title' => 'Shielding Technology',
         'description' => 'Kilpiteknologia tekee laivojen ja puolustuslaitosten suojat tehokkaampia. Jokainen suojateknologian taso lisää suojusten lujuutta 10 % perusarvosta.',
         'description_long' => 'With the invention of the magnetosphere generator, scientists learned that an artificial shield could be produced to protect the crew in space ships not only from the harsh solar radiation environment in deep space, but also provide protection from enemy fire during an attack. Once scientists finally perfected the technology, a magnetosphere generator was installed on all ships and defence systems. As the technology is advanced to each level, the magnetosphere generator is upgraded which provides an additional 10% strength to the shields base value.',
     ],
@@ -267,7 +267,7 @@ Hyvän kustannus/suorituskykysuhteensa ansiosta aurinkosatelliitit voivat ratkai
     'pathfinder' => [
         'title' => 'Pathfinder',
         'description' => 'Pathfinder on nopea ja ketterä alus, joka on suunniteltu tutkimusmatkoja varten tuntemattomille avaruuden sektoreille.',
-        'description_long' => 'Pathfinder on tutkimusteknologian viimeisin kehitys. Tämä alus on suunniteltu erityisesti Discoverer-luokan jäsenille heidän potentiaalinsa maksimoimiseksi. Pathfinder on varustettu edistyneillä skannausjärjestelmillä ja suurella lastiruumalla resurssien säästämiseksi. Sen kehittyneet anturit voivat havaita arvokkaita resursseja ja poikkeavuuksia, joita muut alukset eivät huomaa. Aluksessa yhdistyy suuri nopeus ja hyvä lastikapasiteetti, mikä tekee siitä täydellisen nopeisiin tutkimustehtäviin ja resurssien keräämiseen kaukaisilta sektoreilta.',
+        'description_long' => 'Pathfinders are fast and spacious. Their construction method is optimised for pushing into unknown territory. They are capable of discovering and mining debris fields during expeditions. Additionally they can find items out on expeditions. Total yield also increases.',
     ],
     'light_fighter' => [
         'title' => 'Light Fighter',
@@ -322,7 +322,7 @@ Tämä massiivinen alus on aseistettu jättimäisellä gravitonitykillä, kehitt
     'reaper' => [
         'title' => 'Reaper',
         'description' => 'Reaper on tehokas taistelualus, joka on erikoistunut aggressiiviseen hyökkäykseen ja roskien korjuuseen.',
-        'description_long' => 'Reaper edustaa yleisluokan sotilastekniikan huippua. Tämä raskaasti aseistettu alus on suunniteltu komentajille, jotka arvostavat sekä taistelukykyä että taktista joustavuutta. Vaikka sen ensisijainen tehtävä on taistelu, Reaperissa on vahvistetut lastitilat, joiden avulla se voi korjata roskakentät taistelun jälkeen. Sen edistyneet kohdistusjärjestelmät ja raskaat panssarit tekevät siitä mahtavan vastustajan, kun taas sen kaksikäyttöinen muotoilu tarkoittaa, että se voi sekä luoda taistelukentän verilöylyjä että hyötyä niistä. Alus on varustettu huippuluokan aseteknologialla ja se kestää paljon suurempia aluksia vastaan.',
+        'description_long' => 'There’s hardly anything more destructive than a ship of the Reaper class. These vessels combine fire power, strong shields, speed and capacity along with the unique ability to mine a portion of the created debris field directly after a battle. However this ability doesn’t apply to combat against pirates or aliens.',
     ],
     'rocket_launcher' => [
         'title' => 'Rocket Launcher',

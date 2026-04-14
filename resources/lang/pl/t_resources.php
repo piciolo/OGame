@@ -12,54 +12,42 @@ return [
     'metal_mine' => [
         'title' => 'Kopalnia metalu',
         'description' => 'Dostawca głównego surowca do budowy konstrukcji nośnych budynków i statków kosmicznych.',
-        'description_long' => 'Dostawca głównego surowca do budowy konstrukcji nośnych budynków i statków kosmicznych. Metal jest najtańszym surowcem mineralnym, dlatego jest częściej wykorzystywany niż inne. Do wydobycia metalu potrzeba najmniej energii. Im bardziej kopalnie są rozbudowywane, tym głębiej się znajdują. Na większości planet metal znajduje się na dużej głębokości, dzięki głębszym kopalniom więcej metali może zostać wydobytych, a produkcja rośnie. Jednocześnie dla większych kopalni metalu musi być dostarczona większa ilość energii.',
+        'description_long' => 'Dostawca głównego surowca do budowy konstrukcji nośnych budynków i statków kosmicznych.',
     ],
     'crystal_mine' => [
         'title' => 'Kopalnia kryształu',
         'description' => 'Dostawca głównego surowca do budowy elementów elektronicznych i stopów metali.',
-        'description_long' => 'Kopalnia kryształu jest dostawcą głównego surowca do budowy elementów elektronicznych i stopów metali. Zużywa ona podczas wydobywania około półtora razy więcej energii niż kopalnia metalu, co sprawia, że kryształy są tak drogocenne. Kryształy wykorzystywane są we wszystkich statkach kosmicznych i budynkach. Najczęściej używane w przemyśle stoczniowym kryształy są jednak bardzo rzadkie i podobnie jak metale znajdują się w większych ilościach w głębokich warstwach. Dlatego także rozbudowa kopalni w głębokich pokładach zwiększa ilość wydobywanego kryształu.',
+        'description_long' => 'Dostawca głównego surowca do budowy elementów elektronicznych i stopów metali.',
     ],
     'deuterium_synthesizer' => [
         'title' => 'Ekstraktor deuteru',
         'description' => 'Oddziela atomy deuteru (ciężkiego izotopu wodoru) od atomów lekkiego wodoru z wody znajdującej się na planecie.',
-        'description_long' => 'Deuter jest izotopem wodoru. Jego separacja z wody jest procesem zużywającym duże ilości energii. Rozbudowa instalacji zwiększa produkcję deuteru, wymaga jednak dalszych nakładów energii.
-Deuter jest wykorzystywany jako paliwo dla statków kosmicznych, dla prawie wszystkich badań naukowych, do podglądu galaktyki jak i skanowania z wykorzystaniem falangi czujników.',
+        'description_long' => 'Oddziela atomy deuteru (ciężkiego izotopu wodoru) od atomów lekkiego wodoru z wody znajdującej się na planecie.',
     ],
     'solar_plant' => [
         'title' => 'Elektrownia słoneczna',
         'description' => 'Elektrownia słoneczna pozyskuje energię z promieniowania słonecznego. Prawie wszystkie budynki potrzebują energii do ich eksploatacji.',
-        'description_long' => 'Aby zapewnić zaopatrzenie kopalń i ekstraktorów w energię, konieczne są ogromne elektrownie słoneczne. Im bardziej rozbudowane są elektrownie, tym większa powierzchnia musi zostać pokryta komórkami fotowoltaicznymi, które przetwarzają energię świetlną na elektryczną. Elektrownie słoneczne są podstawą zaopatrzenia planety w energię.',
+        'description_long' => 'Elektrownia słoneczna pozyskuje energię z promieniowania słonecznego. Prawie wszystkie budynki potrzebują energii do ich eksploatacji.',
     ],
     'fusion_plant' => [
         'title' => 'Elektrownia fuzyjna',
         'description' => 'Elektrownia fuzyjna otrzymuje energię z połączenia 2 atomów deuteru w jeden atom helu.',
-        'description_long' => 'W elektrowniach termojądrowych jądra wodoru łączą się z jądrami helu pod ogromną temperaturą i ciśnieniem, uwalniając ogromne ilości energii. Z każdego grama zużytego deuteru można wytworzyć do 41,32*10^-13 dżuli energii; z 1 g jesteś w stanie wyprodukować 172 MWh energii. 
-
-Większe kompleksy reaktorów zużywają więcej deuteru i mogą wytwarzać więcej energii na godzinę. Efekt energetyczny można zwiększyć poprzez badania nad technologią energetyczną. 
-
-Produkcja energii w elektrowni termojądrowej jest obliczana w następujący sposób: 
-30 * [Poziom instalacji termojądrowej] * (1,05 + [Poziom technologii energetycznej] * 0,01) ^ [Poziom instalacji termojądrowej]',
+        'description_long' => 'Elektrownia fuzyjna otrzymuje energię z połączenia 2 atomów deuteru w jeden atom helu.',
     ],
     'metal_store' => [
         'title' => 'Magazyn metalu',
         'description' => 'Jest to miejsce składowania świeżo wydobytej rudy metalu, przed jej dalszą obróbką.',
-        'description_long' => 'Ten gigantyczny magazyn służy do przechowywania rudy metali. Każdy poziom ulepszenia zwiększa ilość rudy metalu, którą można zmagazynować. Jeżeli magazyny się zapełnią, wydobycie metalu nie będzie już możliwe. 
-
-Magazyn Metali chroni określony procent dziennej produkcji kopalni (maks. 10 procent).',
+        'description_long' => 'Jest to miejsce składowania świeżo wydobytej rudy metalu, przed jej dalszą obróbką.',
     ],
     'crystal_store' => [
         'title' => 'Magazyn kryształu',
         'description' => 'Miejsce składowania świeżo wydobytych kryształów przed ich dalszą obróbką.',
-        'description_long' => 'W międzyczasie nieprzetworzony kryształ będzie przechowywany w tych gigantycznych halach magazynowych. Z każdym poziomem ulepszenia zwiększa się ilość kryształów, które można przechowywać. Jeśli zapasy kryształów się zapełnią, dalsze wydobywanie kryształów nie będzie możliwe. 
-
-Magazyn Kryształów zabezpiecza określony procent dziennej produkcji kopalni (maks. 10 procent).',
+        'description_long' => 'Miejsce składowania świeżo wydobytych kryształów przed ich dalszą obróbką.',
     ],
     'deuterium_store' => [
         'title' => 'Zbiornik deuteru',
         'description' => 'Są to ogromne zbiorniki służące do przechowywania świeżo wytworzonego deuteru.',
-        'description_long' => 'Zbiornik deuteru służy do przechowywania nowo zsyntetyzowanego deuteru. Po przetworzeniu przez syntezator jest przesyłany rurami do tego zbiornika w celu późniejszego wykorzystania. Z każdą modernizacją zbiornika zwiększa się jego całkowita pojemność. Po osiągnięciu tej pojemności deuter nie będzie już syntetyzowany. 
-
-Zbiornik deuteru chroni pewien procent dziennej produkcji syntezatora (maks. 10 procent).',
+        'description_long' => 'Są to ogromne zbiorniki służące do przechowywania świeżo wytworzonego deuteru.',
     ],
     'robot_factory' => [
         'title' => 'Fabryka robotów',
@@ -69,330 +57,267 @@ Zbiornik deuteru chroni pewien procent dziennej produkcji syntezatora (maks. 10 
     'shipyard' => [
         'title' => 'Stocznia',
         'description' => 'W stoczni budowane są wszelkiego rodzaju statki i systemy obronne.',
-        'description_long' => 'W stoczni budowane są wszelkiego rodzaju statki i systemy obronne. Im większa jest stocznia, tym szybciej mogą być budowane bardziej zaawansowane i większe statki oraz systemy obronne. Poprzez rozbudowę fabryki nanitów powstają w niej jeszcze drobniejsze roboty, które zwiększają produktywność pracowników.',
+        'description_long' => 'W stoczni budowane są wszelkiego rodzaju statki i systemy obronne.',
     ],
     'research_lab' => [
         'title' => 'Laboratorium badawcze',
         'description' => 'Aby odkrywać nowe technologie, konieczne jest laboratorium badawcze.',
-        'description_long' => 'Aby odkrywać nowe technologie, konieczne jest laboratorium badawcze. Poziom rozbudowy Laboratorium badawczego decyduje o szybkości odkrywania nowych technologii. Im wyższy jest poziom rozbudowania Laboratorium, tym więcej nowych technologii może zostać odkrytych i zbadanych. Aby prace badawcze na danej planecie mogły zostać jak najszybciej zakończone, wszyscy dostępni naukowcy zostają automatycznie wysłani do tej stacji i dlatego nie są dostępni na innych planetach.',
+        'description_long' => 'Aby odkrywać nowe technologie, konieczne jest laboratorium badawcze.',
     ],
     'alliance_depot' => [
         'title' => 'Depozyt sojuszniczy',
         'description' => 'Depozyt sojuszniczy oferuje możliwość zaopatrywania w paliwo napędowe zaprzyjaźnionych flot, które podczas działań obronnych pomagają lub stacjonują na orbicie',
-        'description_long' => 'Depozyt sojuszniczy oferuje możliwość zaopatrywania w paliwo napędowe zaprzyjaźnionych flot, które podczas działań obronnych pomagają lub stacjonują na orbicie. Na każdy poziom rozbudowy depozytu 10.000 jednostek deuteru na godzinę może zostać wysłanych do flot znajdujących się na orbicie.',
+        'description_long' => 'Depozyt sojuszniczy oferuje możliwość zaopatrywania w paliwo napędowe zaprzyjaźnionych flot, które podczas działań obronnych pomagają lub stacjonują na orbicie',
     ],
     'missile_silo' => [
         'title' => 'Silos rakietowy',
         'description' => 'Silos rakietowy pełni rolę magazynu i wyrzutni dla rakiet międzyplanetarnych oraz przeciwrakiet.',
-        'description_long' => 'Silos rakietowy pełni rolę magazynu i wyrzutni dla rakiet międzyplanetarnych oraz przeciwrakiet. Każdy jego poziom pozwala na zmagazynowanie 10-ciu przeciwrakiet, lub 5-ciu rakiet międzyplanetarnych, które zajmują dwukrotnie więcej miejsca. W jednym silosie można przechowywać obydwa typy rakiet.',
+        'description_long' => 'Silos rakietowy pełni rolę magazynu i wyrzutni dla rakiet międzyplanetarnych oraz przeciwrakiet.',
     ],
     'nano_factory' => [
         'title' => 'Fabryka nanitów',
         'description' => 'Przedstawia ukoronowanie prac w dziedzinie robotyki. Każdy kolejny poziom skraca o połowę czas budowy budynków, statków i zabezpieczeń obronnych.',
-        'description_long' => 'Fabryka nanitów jest ukoronowaniem prac w dziedzinie robotyki. Nanity są robotami wielkości rzędu nanometrów, które poprzez łączenie się są zdolne do niezwykłych działań. Raz wytworzone zwiększają produktywność w prawie wszystkich dziedzinach. Kolejny poziom fabryki nanitów skraca o połowę czas budowy budynków, statków i zabezpieczeń obronnych.',
+        'description_long' => 'Przedstawia ukoronowanie prac w dziedzinie robotyki. Każdy kolejny poziom skraca o połowę czas budowy budynków, statków i zabezpieczeń obronnych.',
     ],
     'terraformer' => [
         'title' => 'Terraformer',
         'description' => 'Terraformer jest niezbędny aby przygotować niedostępne tereny pod zabudowę',
-        'description_long' => 'Wraz ze wzrostem zabudowy na planetach, nawet przestrzeń życiowa kolonii staje się coraz bardziej ograniczona. Tradycyjne metody, takie jak budowa wieżowców i podziemi, stają się coraz bardziej niewystarczające. Niewielka grupa fizyków wysokich energii i nanoinżynierów w końcu znalazła rozwiązanie: terraformowanie. 
-Wykorzystując ogromne ilości energii, terraformator może zamienić w uprawę całe połacie ziemi, a nawet kontynenty. W budynku tym odbywa się produkcja nanitów stworzonych specjalnie w tym celu, które zapewniają stałą jakość gruntu w całym procesie. 
-
-Każdy poziom terraformera pozwala na uprawę 5 pól. Z każdym poziomem terraformator sam zajmuje jedno pole. Co 2 poziomy terraformera otrzymasz 1 pole bonusowe. 
-
-Raz zbudowanego terraformera nie można zdemontować.',
+        'description_long' => 'Terraformer jest niezbędny aby przygotować niedostępne tereny pod zabudowę',
     ],
     'space_dock' => [
         'title' => 'Dok kosmiczny',
         'description' => 'W doku kosmicznym można naprawiać pola wrakowe.',
-        'description_long' => 'Space Dock oferuje możliwość naprawy statków zniszczonych w bitwie, które pozostawiły po sobie wrak. Czas naprawy wynosi maksymalnie 12 godzin, ale zanim statki będą mogły zostać ponownie oddane do użytku, minie co najmniej 30 minut. 
-
-Naprawa musi rozpocząć się w ciągu 3 dni od powstania wraku. Naprawione statki muszą zostać ręcznie przywrócone do służby po zakończeniu napraw. Jeśli nie zostanie to zrobione, poszczególne statki dowolnego typu zostaną przywrócone do służby po 3 dniach. 
-
-Wrak pojawia się tylko wtedy, gdy zniszczonych zostało ponad 150 000 jednostek, łącznie z własnymi statkami, które wzięły udział w walce, o wartości co najmniej 5% punktów statku. 
-
-Ponieważ Stacja Kosmiczna unosi się na orbicie, nie wymaga pola planetarnego.',
+        'description_long' => 'W doku kosmicznym można naprawiać pola wrakowe.',
     ],
     'lunar_base' => [
         'title' => 'Stacja księżycowa',
         'description' => 'Ponieważ Księżyc nie ma atmosfery, do wytworzenia przestrzeni nadającej się do zamieszkania wymagana jest baza księżycowa.',
-        'description_long' => 'Księżyc nie ma atmosfery, dlatego przed założeniem osady należy najpierw zbudować bazę księżycową. To następnie zapewnia tlen, ogrzewanie i grawitację. Z każdym zbudowanym poziomem w biosferze powstaje większa powierzchnia do życia i rozwoju. Każdy zbudowany poziom udostępnia trzy pola dla innych budynków. Z każdym poziomem baza Księżycowa zajmuje jedno pole. 
-Raz zbudowanej bazy księżycowej nie da się zburzyć.',
+        'description_long' => 'Na księżycu nie ma atmosfery, dlatego przed jego zasiedleniem musi zostać zbudowana stacja księżycowa.',
     ],
     'sensor_phalanx' => [
         'title' => 'Falanga czujników',
         'description' => 'Za pomocą falangi czujników można odkrywać i obserwować floty innych imperiów. Im większy układ falangi czujnika, tym większy zasięg może skanować.',
-        'description_long' => 'Wykorzystując czujniki o wysokiej rozdzielczości, Sensor Phalanx najpierw skanuje widmo światła, skład gazów i emisję promieniowania z odległego świata, a następnie przesyła dane do superkomputera w celu przetworzenia. Po uzyskaniu informacji superkomputer porównuje zmiany w widmie, składzie gazu i emisji promieniowania z bazowym wykresem znanych zmian widma spowodowanych różnymi ruchami statków. Uzyskane dane wyświetlają następnie aktywność dowolnej floty w zasięgu falangi. Aby zapobiec przegrzaniu superkomputera w trakcie procesu, jest on chłodzony za pomocą 5 tys. przetworzonego deuteru. 
-Aby skorzystać z Falangi, kliknij dowolną planetę w widoku galaktyki znajdującą się w zasięgu twoich czujników.',
+        'description_long' => 'Falanga czujników pozwala obserwować poruszanie się flot. Im bardziej jest rozbudowana, tym większy jest jej zasięg.',
     ],
     'jump_gate' => [
         'title' => 'Teleporter',
         'description' => 'Bramy skokowe to ogromne urządzenia nadawczo-odbiorcze, które mogą w mgnieniu oka wysłać nawet największą flotę do odległej bramki skokowej.',
-        'description_long' => 'Jump Gate to system gigantycznych urządzeń nadawczo-odbiorczych zdolnych do wysyłania nawet największych flot do bramy odbiorczej w dowolne miejsce we wszechświecie bez straty czasu. Wykorzystując technologię podobną do tej stosowanej w tunelu czasoprzestrzennym, aby osiągnąć skok, deuter nie jest wymagany. Pomiędzy skokami musi upłynąć kilka minut, aby umożliwić regenerację. Transport zasobów przez Bramę również nie jest możliwy. Z każdym poziomem ulepszenia czas odnowienia bramy skoku może zostać skrócony.',
+        'description_long' => 'Teleporter to ogromny przekaźnik, który jest w stanie przesyłać floty między galaktykami bez strat czasowych.',
     ],
     'energy_technology' => [
         'title' => 'Technologia energetyczna',
         'description' => 'Opanowanie różnych rodzajów energii jest konieczne dla wielu nowych technologii.',
-        'description_long' => 'W miarę postępu różnych dziedzin badań odkryto, że obecna technologia dystrybucji energii nie jest wystarczająca, aby rozpocząć pewne specjalistyczne badania. Z każdym ulepszeniem Twojej Technologii Energetycznej można przeprowadzić nowe badania, które odblokują rozwój bardziej wyrafinowanych statków i systemów obronnych.',
+        'description_long' => 'Opanowanie różnych rodzajów energii jest konieczne dla wielu nowych technologii.',
     ],
     'laser_technology' => [
         'title' => 'Technologia laserowa',
         'description' => 'Uzyskana wiązka światła powoduje znaczące zniszczenia wybranego dla niej celu.',
-        'description_long' => 'Lasery (wzmocnienie światła poprzez wymuszoną emisję promieniowania) wytwarzają intensywną, bogatą w energię emisję spójnego światła. Urządzenia te można stosować we wszystkich obszarach, od komputerów optycznych po ciężką broń laserową, która bez wysiłku przebija się przez technologię pancerną. Technologia laserowa stanowi ważną podstawę do badań nad innymi technologiami uzbrojenia.',
+        'description_long' => 'Uzyskana wiązka światła powoduje znaczące zniszczenia wybranego dla niej celu.',
     ],
     'ion_technology' => [
         'title' => 'Technologia jonowa',
         'description' => 'Koncentracja jonów umożliwia konstrukcję dział zadających znaczne obrażenia i obniżających koszty wyburzania budynków o 4% na poziom.',
-        'description_long' => 'Jony można skoncentrować i przyspieszyć w śmiercionośną wiązkę. Promienie te mogą następnie wyrządzić ogromne szkody. Nasi naukowcy opracowali także technikę, która wyraźnie obniży koszty rozbiórki budynków i instalacji. Na każdy poziom badań koszty rozbiórki spadną o 4%.',
+        'description_long' => 'Koncentracja jonów umożliwia konstrukcję dział zadających znaczne obrażenia i obniżających koszty wyburzania budynków o 4% na poziom.',
     ],
     'hyperspace_technology' => [
         'title' => 'Technologia nadprzestrzenna',
         'description' => 'Integrując czwarty i piąty wymiar, możliwe jest teraz zbadanie nowego rodzaju napędu, który jest bardziej ekonomiczny i wydajny.',
-        'description_long' => 'Teoretycznie idea podróży nadprzestrzennych opiera się na istnieniu odrębnego i sąsiadującego wymiaru. Po aktywacji napęd nadprzestrzenny przenosi statek kosmiczny do innego wymiaru, gdzie może pokonać ogromne odległości w czasie znacznie krótszym niż w „normalnej” przestrzeni. Kiedy osiągnie punkt w hiperprzestrzeni, który odpowiada jego celowi w przestrzeni rzeczywistej, pojawia się ponownie. 
-Po zbadaniu wystarczającego poziomu Technologii Nadprzestrzennej, Napęd Nadprzestrzenny nie jest już tylko teorią. Każde ulepszenie tego napędu zwiększa nośność twoich statków o 5% wartości bazowej.',
+        'description_long' => 'Przez połączenie 4-tego i 5-tego wymiaru jest teraz możliwe zbudowanie nowatorskiego napędu, który jest oszczędniejszy i wydajniejszy. Przez użycie 4-tego i 5-tego wymiaru jest teraz możliwe skurczenie przestrzeni ładunkowej Twoich statków, tak by zaoszczędzić miejsce.',
     ],
     'plasma_technology' => [
         'title' => 'Technologia plazmowa',
         'description' => 'Taka plazma posiada niszczycielską moc podczas atakowania wyznaczonych obiektów. Ponadto może optymalizować również produkcję metalu, kryształu oraz deuteru (1%/0,66%/0,33% na poziom).',
-        'description_long' => 'Dalszy rozwój technologii jonowej, która nie przyspiesza jonów, ale zamiast tego przyspiesza plazmę o wysokiej energii, która może następnie zadać niszczycielskie obrażenia po uderzeniu w przedmiot. Nasi naukowcy znaleźli także sposób na zauważalne usprawnienie wydobycia metalu i kryształu przy użyciu tej technologii. 
-
-Produkcja metalu wzrasta o 1%, produkcja kryształów o 0,66%, a produkcja deuteru o 0,33% na każdy poziom konstrukcyjny technologii plazmowej.',
+        'description_long' => 'Taka plazma posiada niszczycielską moc podczas atakowania wyznaczonych obiektów. Ponadto może optymalizować również produkcję metalu, kryształu oraz deuteru (1%/0,66%/0,33% na poziom).',
     ],
     'combustion_drive' => [
         'title' => 'Napęd spalinowy',
         'description' => 'Dalszy rozwój tego napędu sprawia, że niektóre statki poruszają się szybciej, przede wszystkim każdy poziom podwyższa prędkość o 10% wartości podstawowej.',
-        'description_long' => 'Napęd spalinowy jest najstarszą technologią, ale nadal jest w użyciu. W przypadku napędu spalinowego spaliny powstają z paliw przewożonych na statku przed użyciem. W zamkniętej komorze ciśnienia są równe w każdym kierunku i nie występuje żadne przyspieszenie. Jeżeli na dnie komory znajduje się otwór, wówczas po tej stronie nie występuje już przeciwne ciśnienie. Pozostałe ciśnienie powoduje ciąg w stronę przeciwną do otworu, który napędza statek do przodu, wyrzucając spaliny do tyłu z ekstremalnie dużą prędkością. 
-
-Z każdym rozwiniętym poziomem Napędu Spalania prędkość małych i dużych statków towarowych, lekkich myśliwców, recyklerów i sond szpiegowskich wzrasta o 10%.',
+        'description_long' => 'Dalszy rozwój tego napędu sprawia, że niektóre statki poruszają się szybciej, przede wszystkim każdy poziom podwyższa prędkość o 10% wartości podstawowej.',
     ],
     'impulse_drive' => [
         'title' => 'Napęd impulsowy',
         'description' => 'Napęd impulsowy bazuje na zasadzie odrzutu. Dalszy rozwój tego napędu sprawia, że niektóre statki poruszają się szybciej, przede wszystkim każdy poziom podwyższa ich prędkość o 20% wartości podstawowej.',
-        'description_long' => 'Napęd impulsowy opiera się na zasadzie odrzutu, zgodnie z którą wymuszona emisja promieniowania powstaje głównie jako produkt odpadowy fuzji rdzenia w celu uzyskania energii. Dodatkowo można wstrzykiwać inne masy. Z każdym poziomem Napędu Impulsowego prędkość bombowców, krążowników, myśliwców ciężkich i statków kolonizacyjnych wzrasta o 20% wartości bazowej. Dodatkowo, małe transportery są wyposażane w napędy impulsowe, gdy tylko ich poziom badań osiągnie 5. Gdy badania w zakresie Napędu Impulsowego osiągną poziom 17, Recyklerzy są wyposażani w Napędy Impulsowe. 
-
-Pociski międzyplanetarne również przemieszczają się dalej na każdym poziomie.',
+        'description_long' => 'Napęd impulsowy bazuje na zasadzie odrzutu. Dalszy rozwój tego napędu sprawia, że niektóre statki poruszają się szybciej, przede wszystkim każdy poziom podwyższa ich prędkość o 20% wartości podstawowej.',
     ],
     'hyperspace_drive' => [
         'title' => 'Napęd nadprzestrzenny',
         'description' => 'Zakrzywia przestrzeń wokół statku. Dalszy rozwój tego napędu sprawnie podwyższa prędkość niektórych statków o 30% wartości podstawowej.',
-        'description_long' => 'W bezpośrednim sąsiedztwie statku przestrzeń jest zakrzywiona, dzięki czemu można bardzo szybko pokonywać duże odległości. Im bardziej rozwinięty jest Napęd Nadprzestrzenny, tym silniejszy jest wypaczony charakter przestrzeni, w wyniku czego prędkość wyposażonych w niego statków (krążowników liniowych, pancerników, niszczycieli, Gwiazd Śmierci, Pathfinderów i Żniwiarzy) wzrasta o 30% na poziom. Dodatkowo, bombowiec zostaje wyposażony w Napęd Nadprzestrzenny, gdy tylko badania osiągną poziom 8. Gdy badania Napędu Nadprzestrzennego osiągną poziom 15, Recykler zostaje ponownie wyposażony w Napęd Nadprzestrzenny.',
+        'description_long' => 'Zakrzywia przestrzeń wokół statku. Dalszy rozwój tego napędu sprawnie podwyższa prędkość niektórych statków o 30% wartości podstawowej.',
     ],
     'espionage_technology' => [
         'title' => 'Technologia szpiegowska',
         'description' => 'Przy pomocy tej technologii można zdobywać informacje o innych planetach.',
-        'description_long' => 'Technologia szpiegowska zajmuje się w pierwszej linii odkrywaniem nowych i bardziej efektywnych czujników. Im bardziej jest rozwinięta ta technologia, tym więcej informacji o procesach zachodzących w okolicy użytkownika jest mu dostępnych.
-Dla sond decydująca jest różnica między poziomem rozwoju własnej, a technologii szpiegowskiej nieprzyjaciela. Im bardziej jest rozwinięta własna technologia szpiegowska, tym więcej informacji zawiera raport i tym mniejsza jest szansa, że szpiegowanie zostanie wykryte. Im więcej sond zostaje wysyłanych, tym więcej szczegółów o przeciwniku zostaje dostarczonych. Tym samym wzrasta jednak także ryzyko wykrycia.
-Technologia szpiegowska polepsza także lokalizację obcych flot. O tym decyduje tylko poziom własnej technologii. Od poziomu 2 oprócz samego meldunku o ataku nieprzyjaciela wskazywana jest ilość atakujących statków. Od poziomu 4 widać rodzaj atakujących statków oraz całkowitą ich liczbę, a od poziomu 8 - dokładną liczbę różnych typów statków.
-Dla pilotów ta technologia jest nieoceniona, bo daje informacje, czy ofiara ma obronę i/lub flotę stacjonującą na planecie czy też nie. Dlatego ta technologia powinna zostać odkryta jak najwcześniej. Najlepiej od razu po wynalezieniu małego transportera.',
+        'description_long' => 'Przy pomocy tej technologii można zdobywać informacje o innych planetach.',
     ],
     'computer_technology' => [
         'title' => 'Technologia komputerowa',
         'description' => 'Wraz ze zwiększaniem wydajności komputerów można sterować większą ilością flot. Zwiększenie poziomu technologii komputerowej o 1 zwiększa maksymalną ilość flot o 1.',
-        'description_long' => 'Technologia komputerowa zajmuje się podwyższaniem dostępnej wydajności komputerów. Tylko wydajne i efektywne systemy komputerowe są budowane. Ich moc obliczeniowa, a więc i prędkość, z jaką obliczenia są przeprowadzane, wzrasta. Wraz ze wzrostem wydajności komputerów można sterować jednocześnie coraz większa ilością flot. Zwiększenie poziomu technologii komputerowej o 1 zwiększa maksymalną ilość flot o 1. Im więcej flot jednocześnie można wysłać, tym więcej nalotów można wykonywać, i tym więcej surowców konfiskować. Naturalnie używają tej technologii także handlarze, ponieważ mogą wtedy także wysyłać jednocześnie więcej flot handlowych. Z tego powodu technologia komputerowa powinna być przez całą grę ciągle rozwijana.',
+        'description_long' => 'Wraz ze zwiększaniem wydajności komputerów można sterować większą ilością flot. Zwiększenie poziomu technologii komputerowej o 1 zwiększa maksymalną ilość flot o 1.',
     ],
     'astrophysics' => [
         'title' => 'Astrofizyka',
         'description' => 'Statki wyposażone w moduł badawczy mogą odbywać dalekie wyprawy badawcze. Za dwa nowe poziomy tej technologi może być kolonizowana kolejna planeta.',
-        'description_long' => 'Dalsze odkrycia w dziedzinie astrofizyki pozwalają na budowę laboratoriów, które można instalować na coraz większej liczbie statków. Dzięki temu możliwe są długie wyprawy w niezbadane rejony kosmosu. Ponadto postępy te można wykorzystać do dalszej kolonizacji wszechświata. Na każde dwa poziomy tej technologii można udostępnić dodatkową planetę.',
+        'description_long' => 'Statki wyposażone w moduł badawczy mogą odbywać dalekie wyprawy badawcze. Za dwa nowe poziomy tej technologi może być kolonizowana kolejna planeta.',
     ],
     'intergalactic_research_network' => [
         'title' => 'Międzygalaktyczna Sieć Badań Naukowych',
         'description' => 'Naukowcy z różnych planet komunikują się ze sobą przez tę sieć.',
-        'description_long' => 'To jest Twoja sieć kosmiczna służąca do przekazywania wyników badań Twoim koloniom. Dzięki IRN można osiągnąć szybszy czas badań poprzez połączenie laboratoriów badawczych najwyższego poziomu, równego poziomowi opracowanego IRN. 
-Aby każda kolonia mogła funkcjonować, musi mieć możliwość samodzielnego prowadzenia badań.',
+        'description_long' => 'Naukowcy z różnych planet komunikują się ze sobą przez tę sieć.',
     ],
     'graviton_technology' => [
         'title' => 'Rozwój grawitonów',
         'description' => 'Przez wystrzał skoncentrowanego ładunku cząstek grawitonów może zostać wytworzone sztuczne pole grawitacyjne, które może niszczyć statki i księżyce.',
-        'description_long' => 'Grawiton to cząstka elementarna, która jest bezmasowa i nie posiada ładunku. Określa siłę grawitacji. Wystrzeliwując skoncentrowany ładunek grawitonów, można skonstruować sztuczne pole grawitacyjne. Podobnie jak czarna dziura, przyciąga masę do siebie. W ten sposób może zniszczyć statki, a nawet całe księżyce. Aby wytworzyć wystarczającą ilość grawitonów, potrzebne są ogromne ilości energii. Do skonstruowania niszczycielskiej Gwiazdy Śmierci wymagane są badania grawitonowe.',
+        'description_long' => 'Przez wystrzał skoncentrowanego ładunku cząstek grawitonów może zostać wytworzone sztuczne pole grawitacyjne, które może niszczyć statki i księżyce.',
     ],
     'weapon_technology' => [
-        'title' => 'Technologia broni',
+        'title' => 'Technologia bojowa',
         'description' => 'Każdy poziom technologii bojowej podwyższa moc bojową jednostek o 10% wartości początkowej.',
-        'description_long' => 'Technologia bojowa zajmuje się przede wszystkim dalszym rozwojem istniejących już systemów obronnych. Podczas rozwoju szczególny nacisk będzie kładziony na to, aby dostępne systemy wyposażyć w większą moc i dokładniej nią sterować.
-Przez to systemy bojowe będą bardziej efektywne, a broń będzie powodować większe straty. Każdy poziom technologii bojowej podwyższa moc bojową jednostek o 10% wartości początkowej.
-Technologia bojowa jest ważna, aby później utrzymywać własne jednostki jako konkurencyjne. Dlatego powinna ona być rozwijana przez całą grę.',
+        'description_long' => 'Każdy poziom technologii bojowej podwyższa moc bojową jednostek o 10% wartości początkowej.',
     ],
     'shielding_technology' => [
-        'title' => 'Technologia Tarczy',
+        'title' => 'Technologia ochronna',
         'description' => 'Technologia tarcz sprawia, że ​​tarcze na statkach i obiektach obronnych są bardziej wydajne. Każdy poziom technologii tarcz zwiększa siłę tarcz o 10% wartości bazowej.',
-        'description_long' => 'Technologia ochronna zajmuje się odkrywaniem coraz nowszych możliwości, aby powłoki zaopatrywać w coraz więcej energii, usprawniać je i sprawiać bardziej wytrzymałymi. Każdy poziom technologii ochronnej podwyższa efektywność powłok o 10% wartości podstawowej.',
+        'description_long' => 'Technologia ochronna usprawnia powłoki ochronne wokół statków i systemów obronnych. Każdy poziom technologii ochronnej podwyższa efektywność powłok o 10% wartości podstawowej.',
     ],
     'armor_technology' => [
         'title' => 'Opancerzenie',
         'description' => 'Specjalny stop metali polepsza właściwości opancerzenia. Skuteczność opancerzenia wzrasta o 10% wartości początkowej.',
-        'description_long' => 'Środowisko głębokiego kosmosu jest trudne. Piloci i załoga wykonujący różne misje byli nie tylko narażeni na intensywne promieniowanie słoneczne, ale także na ryzyko uderzenia śmieciami kosmicznymi lub zniszczenia przez ogień wroga podczas ataku. Wraz z odkryciem stopu aluminium i litu z węglika tytanu, który okazał się zarówno lekki, jak i trwały, zapewniło to załodze pewien stopień ochrony. Z każdym poziomem rozwiniętej Technologii Pancerza wytwarzany jest stop wyższej jakości, który zwiększa wytrzymałość pancerza o 10%.',
+        'description_long' => 'Specjalny stop metali polepsza właściwości opancerzenia. Skuteczność opancerzenia wzrasta o 10% wartości początkowej.',
     ],
     'small_cargo' => [
         'title' => 'Mały transporter',
         'description' => 'Mały transporter to zwrotny statek, który może szybko transportować surowce na inne planety.',
-        'description_long' => 'Transportowce są mniej więcej tak duże jak myśliwce, a jednak rezygnują z wydajnych napędów i uzbrojenia pokładowego, aby zyskać większą zdolność przewozową. W rezultacie transporter powinien być wysyłany do bitew tylko wtedy, gdy towarzyszą mu statki gotowe do walki. 
-
-Gdy tylko Napęd Impulsowy osiągnie poziom badawczy 5, mały transporter porusza się ze zwiększoną prędkością podstawową i jest wyposażony w Napęd Impulsowy.',
+        'description_long' => 'Mały transporter to zwrotny statek, który może szybko transportować surowce na inne planety.',
     ],
     'large_cargo' => [
         'title' => 'Duży transporter',
         'description' => 'Dalszy rozwój małego transportera zwiększył ładowność i dzięki nowym napędom umożliwił jeszcze szybsze poruszanie się.',
-        'description_long' => 'W miarę upływu czasu najazdy na kolonie skutkowały przejmowaniem coraz większych ilości zasobów. W rezultacie małe ładunki były wysyłane masowo, aby zrekompensować większe przechwytywania. Szybko okazało się, że potrzebna jest nowa klasa statku, aby zmaksymalizować zasoby przechwytywane podczas nalotów, a jednocześnie być opłacalnym. Po wielu pracach narodził się Large Cargo. 
-
-Aby zmaksymalizować zasoby, które można przechowywać w ładowniach, statek ten ma niewiele broni i opancerzenia. Dzięki zainstalowanemu wysoko rozwiniętemu silnikowi spalinowemu służy jako najbardziej ekonomiczny dostawca zasobów pomiędzy planetami i najskuteczniejszy w najazdach na wrogie światy.',
+        'description_long' => 'Dalszy rozwój małego transportera zwiększył ładowność i dzięki nowym napędom umożliwił jeszcze szybsze poruszanie się.',
     ],
     'colony_ship' => [
         'title' => 'Statek kolonizacyjny',
         'description' => 'Niezamieszkałe planety mogą być kolonizowane przy pomocy tych statków.',
-        'description_long' => 'W XX wieku człowiek zdecydował się sięgnąć do gwiazd. Najpierw wylądował na Księżycu. Następnie zbudowano stację kosmiczną. Wkrótce potem Mars został skolonizowany. Wkrótce ustalono, że nasz rozwój zależy od kolonizacji innych światów. Naukowcy i inżynierowie z całego świata zebrali się, aby opracować największe osiągnięcie człowieka w historii. Narodziny statku kolonizacyjnego. 
-
-Statek ten służy do przygotowania nowo odkrytej planety do kolonizacji. Po dotarciu na miejsce statek natychmiast przekształca się w zwykłą przestrzeń życiową, która pomaga w zaludnianiu i wydobywaniu nowego świata. Maksymalna liczba planet jest zatem wyznaczana przez postęp badań astrofizycznych. Dwa nowe poziomy Astrotechnologii pozwalają na kolonizację jednej dodatkowej planety.',
+        'description_long' => 'Niezamieszkałe planety mogą być kolonizowane przy pomocy tych statków.',
     ],
     'recycler' => [
         'title' => 'Recykler',
         'description' => 'Recyklery to jedyne statki, które po walce potrafią zbierać pola gruzu unoszące się na orbicie planety.',
-        'description_long' => 'Walka w kosmosie przybierała coraz większą skalę. Tysiące statków zostało zniszczonych, a zasoby ich szczątków zdawały się na zawsze utracone na polach gruzu. Zwykłe statki towarowe nie mogły zbliżyć się wystarczająco blisko tych pól bez ryzyka znacznych uszkodzeń. 
-Niedawny rozwój technologii tarcz skutecznie ominął ten problem. Stworzono nową klasę statków, podobną do Transporterów: Recyklery. Ich wysiłki pomogły zebrać utracone w myślach zasoby, a następnie je uratować. Dzięki nowym tarczom gruz nie stanowił już realnego zagrożenia. 
-
-Gdy tylko badania dotyczące Napędu Impulsowego osiągną poziom 17, Recyklerzy zostaną ponownie wyposażeni w Napędy Impulsowe. Gdy tylko badania Napędu Nadprzestrzennego osiągną poziom 15, Recyklerzy zostaną wyposażeni w Napędy Nadprzestrzenne.',
+        'description_long' => 'Za pomocą recyklerów można odzyskać surowce z pól zniszczeń.',
     ],
     'espionage_probe' => [
         'title' => 'Sonda szpiegowska',
         'description' => 'Sondy szpiegowskie to małe, zwrotne statki bezzałogowe, które przez oddalenie się na duże odległości dostarczają informacji o obcych flotach i planetach.',
-        'description_long' => 'Sondy szpiegowskie to małe, zwinne drony, które dostarczają danych o flotach i planetach. Wyposażony w specjalnie zaprojektowane silniki, pozwala im pokonywać ogromne odległości w zaledwie kilka minut. Gdy znajdą się na orbicie wokół docelowej planety, szybko zbierają dane i przesyłają raport z powrotem za pośrednictwem sieci Deep Space Network w celu oceny. Istnieje jednak ryzyko związane z aspektem inteligentnego gromadzenia się. W czasie przesyłania raportu z powrotem do sieci cel może wykryć sygnał, a sondy mogą zostać zniszczone.',
+        'description_long' => 'Sondy szpiegowskie to małe, zwrotne statki bezzałogowe, które przez oddalenie się na duże odległości dostarczają informacji o obcych flotach i planetach.',
     ],
     'solar_satellite' => [
         'title' => 'Satelita słoneczny',
         'description' => 'Satelity słoneczne to proste platformy ogniw słonecznych, umieszczone na wysokiej, stacjonarnej orbicie. Zbierają światło słoneczne i przesyłają je do stacji naziemnej za pomocą lasera.',
-        'description_long' => 'Naukowcy odkryli metodę przesyłania energii elektrycznej do kolonii za pomocą specjalnie zaprojektowanych satelitów na orbicie geosynchronicznej. Satelity słoneczne gromadzą energię słoneczną i przesyłają ją do stacji naziemnej za pomocą zaawansowanej technologii laserowej. Wydajność satelity słonecznego zależy od siły promieniowania słonecznego, które otrzymuje. W zasadzie produkcja energii na orbitach bliższych Słońca jest większa niż w przypadku planet na orbitach odległych od Słońca. 
-Ze względu na dobry stosunek kosztów do wydajności, satelity słoneczne mogą rozwiązać wiele problemów energetycznych. Ale uważaj: satelity słoneczne można łatwo zniszczyć w bitwie.',
+        'description_long' => 'Satelity słoneczne to proste platformy pokryte ogniwami słonecznymi, które znajdują się wysoko na stałej orbicie. Gromadzą światło słoneczne i przekazują je dalej przez laser do stacji naziemnej. Satelity słoneczne produkują 35 energii na tej planecie.',
     ],
     'crawler' => [
         'title' => 'Pełzacz',
         'description' => 'Pełzacze podnoszą produkcję metalu, kryształu i deuteru na danej planecie o 0,02%, 0,02% i 0,02% na każdą maszynę. W przypadku Zbieracza wzrasta dodatkowo produkcja. Maks. bonus łączny zależy od łącznego poziomu twoich kopalni.',
-        'description_long' => 'Pełzacz to duży pojazd kopiący, który potrafi usprawnić produkcję kopalni i ekstraktorów. Jest bardziej zwrotny, niż mogłoby się wydawać, ale niezbyt wytrzymały. Każdy Pełzacz podnosi produkcję metalu o 0,02%, produkcję kryształu o 0,02% i produkcję deuteru o 0,02%. W przypadku Zbieracza wzrasta dodatkowo produkcja. Maks. bonus łączny zależy od łącznego poziomu twoich kopalni.',
+        'description_long' => 'Pełzacze podnoszą produkcję metalu, kryształu i deuteru na danej planecie o 0,02%, 0,02% i 0,02% na każdą maszynę. W przypadku Zbieracza wzrasta dodatkowo produkcja. Maks. bonus łączny zależy od łącznego poziomu twoich kopalni.',
     ],
     'pathfinder' => [
         'title' => 'Pionier',
         'description' => 'Pathfinder to szybki i zwinny statek, zbudowany specjalnie do wypraw w nieznane sektory kosmosu.',
-        'description_long' => 'Pathfinder to najnowsze osiągnięcie w technologii eksploracji. Statek ten został specjalnie zaprojektowany dla członków klasy Discoverer, aby zmaksymalizować ich potencjał. Wyposażony w zaawansowane systemy skanowania i dużą ładownię do ratowania zasobów, Pathfinder doskonale sprawdza się podczas wypraw. Jego wyrafinowane czujniki potrafią wykryć cenne zasoby i anomalie, które pozostałyby niezauważone przez inne statki. Statek łączy dużą prędkość z dobrą ładownością, dzięki czemu idealnie nadaje się do szybkich misji eksploracyjnych i gromadzenia zasobów z odległych sektorów.',
+        'description_long' => 'Pioniery są szybkie, obszerne i potrafią recyklować pola zniszczeń na ekspedycjach. Wzrasta zysk łączny.',
     ],
     'light_fighter' => [
         'title' => 'Lekki myśliwiec',
         'description' => 'Lekki myśliwiec to zwrotny statek, który można zastać na prawie każdej planecie. Jego koszty nie są zbyt wysokie, jednakże jego pole ochronne i ładowność są bardzo małe.',
-        'description_long' => 'To pierwszy statek bojowy, który zbudują wszyscy cesarze. Lekki myśliwiec jest zwinnym statkiem, ale jest bezbronny, gdy jest sam. W masowych ilościach mogą stać się wielkim zagrożeniem dla każdego imperium. Jako pierwsi towarzyszą małym i dużym ładunkom na wrogie planety z słabszą obroną.',
+        'description_long' => 'Lekki myśliwiec to zwrotny statek, który można zastać na prawie każdej planecie. Jego koszty nie są zbyt wysokie, jednakże jego pole ochronne i ładowność są bardzo małe.',
     ],
     'heavy_fighter' => [
         'title' => 'Ciężki myśliwiec',
         'description' => 'Ten typ myśliwca, to udoskonalona wersja lekkiego myśliwca, która jest wyposażona w lepsze opancerzenie i broń.',
-        'description_long' => 'Opracowując ciężki myśliwiec, badacze doszli do punktu, w którym konwencjonalne napędy nie zapewniały już wystarczających osiągów. Aby optymalnie poruszać statkiem, po raz pierwszy zastosowano napęd impulsowy. Zwiększyło to koszty, ale także otworzyło nowe możliwości. Używając tego napędu, pozostało więcej energii na broń i tarcze; ponadto w tej nowej rodzinie myśliwców zastosowano materiały wysokiej jakości. Dzięki tym zmianom ciężki myśliwiec reprezentuje nową erę w technologii okrętowej i stanowi podstawę technologii krążowników. 
-
-Nieco większy od lekkiego myśliwca, ciężki myśliwiec ma grubsze kadłuby, zapewniające lepszą ochronę i mocniejsze uzbrojenie.',
+        'description_long' => 'Ten typ myśliwca, to udoskonalona wersja lekkiego myśliwca, która jest wyposażona w lepsze opancerzenie i broń.',
     ],
     'cruiser' => [
         'title' => 'Krążownik',
         'description' => 'Krążownik jest prawie trzy razy lepiej opancerzony niż ciężki myśliwiec i dysponuje ponad dwa razy większą siłą ognia. W dodatku jest bardzo szybki.',
-        'description_long' => 'Wraz z rozwojem ciężkiego lasera i działa jonowego lekkie i ciężkie myśliwce poniosły niepokojąco dużą liczbę porażek, która rosła z każdym najazdem. Pomimo wielu modyfikacji, zmian w sile broni i pancerzu, nie udało się go zwiększyć na tyle szybko, aby skutecznie przeciwstawić się nowym środkom obronnym. Dlatego zdecydowano się zbudować nową klasę okrętów, która łączyłaby w sobie większy pancerz i większą siłę ognia. W wyniku lat badań i rozwoju narodził się Cruiser. 
-
-Krążowniki są opancerzone prawie trzykrotnie mocniej niż ciężkie myśliwce i posiadają ponad dwukrotnie większą siłę ognia niż jakikolwiek istniejący okręt bojowy. Osiągają także prędkości znacznie przekraczające prędkość jakiegokolwiek statku kosmicznego, jaki kiedykolwiek wyprodukowano. Przez prawie sto lat krążowniki dominowały we wszechświecie. Jednak wraz z rozwojem dział Gaussa i wież plazmowych ich dominacja skończyła się. Są nadal używane przeciwko grupom myśliwskim, ale nie tak dominująco jak wcześniej.',
+        'description_long' => 'Krążownik jest prawie trzy razy lepiej opancerzony niż ciężki myśliwiec i dysponuje ponad dwa razy większą siłą ognia. W dodatku jest bardzo szybki.',
     ],
     'battle_ship' => [
         'title' => 'Okręt wojenny',
         'description' => 'Okręty wojenne tworzą trzon floty. Ich ciężkie działa, duża prędkość i pojemność ładunkowa robią z nich naprawdę groźnych przeciwników.',
-        'description_long' => 'Kiedy stało się jasne, że krążownik traci pozycję w obliczu rosnącej liczby struktur obronnych, przed którymi stoi, a straty statków podczas misji były na niedopuszczalnym poziomie, zdecydowano się zbudować okręt, który byłby w stanie stawić czoła tego samego rodzaju strukturom obronnym przy możliwie najmniejszych stratach. Po intensywnym rozwoju narodził się pancernik. Zbudowany, aby wytrzymać największe bitwy, pancernik ma duże przestrzenie ładunkowe, ciężkie działa i dużą prędkość hipernapędu. Po opracowaniu ostatecznie okazało się, że jest to kręgosłup każdej najeżdżającej floty Imperatorów.',
+        'description_long' => 'Okręty wojenne tworzą trzon floty. Ich ciężkie działa, duża prędkość i pojemność ładunkowa robią z nich naprawdę groźnych przeciwników.',
     ],
     'battlecruiser' => [
         'title' => 'Pancernik',
         'description' => 'Pancernik jest wyspecjalizowaną jednostką do przechwytywania (niszczenia) wrogich flot.',
-        'description_long' => 'Ten statek jest jednym z najbardziej zaawansowanych okrętów bojowych, jakie kiedykolwiek opracowano i jest szczególnie zabójczy, jeśli chodzi o niszczenie atakujących flot. Dzięki ulepszonym działom laserowym na pokładzie i zaawansowanemu silnikowi nadprzestrzennemu, krążownik liniowy stanowi poważną siłę, z którą należy sobie poradzić w każdym ataku. Ze względu na konstrukcję statku i jego duży system uzbrojenia ładownie musiały zostać przecięte, ale rekompensowało to zmniejszone zużycie paliwa.',
+        'description_long' => 'Pancernik jest wyspecjalizowaną jednostką do przechwytywania (niszczenia) wrogich flot.',
     ],
     'bomber' => [
         'title' => 'Bombowiec',
         'description' => 'Bombowiec został stworzony, aby niszczyć systemy obronne innych planet.',
-        'description_long' => 'Na przestrzeni wieków, gdy systemy obronne stawały się coraz większe i bardziej wyrafinowane, floty zaczęły być niszczone w zastraszającym tempie. Zdecydowano, że do przełamania obrony i zapewnienia maksymalnych wyników potrzebny jest nowy statek. Po latach badań i rozwoju powstał Bomber. 
-
-Używając naprowadzanego laserowo sprzętu celowniczego i bomb plazmowych, Bombowiec wyszukuje i niszczy każdy mechanizm obronny, jaki tylko znajdzie. Gdy tylko napęd nadprzestrzenny zostanie rozwinięty do poziomu 8, Bombowiec zostaje doposażony w silnik nadprzestrzenny i może latać z większą prędkością.',
+        'description_long' => 'Bombowiec został stworzony, aby niszczyć systemy obronne innych planet.',
     ],
     'destroyer' => [
         'title' => 'Niszczyciel',
         'description' => 'Niszczyciel to król wśród statków wojennych.',
-        'description_long' => 'Destroyer jest wynikiem lat pracy i rozwoju. Wraz z rozwojem Gwiazd Śmierci zdecydowano, że do obrony przed tak potężną bronią potrzebna jest klasa statku. Dzięki ulepszonym czujnikom naprowadzania, wielofalangowym działom jonowym, działom Gaussa i wieżom plazmowym, Destroyer okazał się jednym z najbardziej przerażających statków, jakie kiedykolwiek stworzono. 
-
-Ponieważ niszczyciel jest bardzo duży, jego manewrowość jest poważnie ograniczona, co czyni go bardziej stacją bojową niż okrętem bojowym. Brak manewrowości rekompensuje sama siła ognia, ale jego budowa i obsługa kosztuje również znaczne ilości deuteru.',
+        'description_long' => 'Niszczyciel to król wśród statków wojennych.',
     ],
     'deathstar' => [
         'title' => 'Gwiazda Śmierci',
         'description' => 'Niszczycielska siła Gwiazdy Śmierci jest niezrównana.',
-        'description_long' => 'Gwiazda Śmierci to najpotężniejszy statek, jaki kiedykolwiek stworzono. Ten statek wielkości księżyca jest jedynym statkiem, który można zobaczyć gołym okiem z ziemi. Niestety, kiedy to zauważysz, jest już za późno, aby cokolwiek zrobić. 
-
-Uzbrojony w gigantyczne działo grawitonowe, najbardziej zaawansowany system broni, jaki kiedykolwiek stworzono we Wszechświecie, ten ogromny statek ma nie tylko zdolność niszczenia całych flot i systemów obronnych, ale także ma zdolność niszczenia całych księżyców. Tylko najbardziej zaawansowane imperia są w stanie zbudować statek tak gigantycznych rozmiarów.',
+        'description_long' => 'Niszczycielska siła Gwiazdy Śmierci jest niezrównana.',
     ],
     'reaper' => [
         'title' => 'Rozpruwacz',
         'description' => 'Reaper to potężny statek bojowy specjalizujący się w agresywnych najazdach i zbieraniu gruzu.',
-        'description_long' => 'Reaper reprezentuje szczyt inżynierii wojskowej klasy General. Ten ciężko uzbrojony okręt został zaprojektowany z myślą o dowódcach ceniących zarówno sprawność bojową, jak i elastyczność taktyczną. Chociaż jego główną rolą jest walka, Żniwiarz ma wzmocnione ładownie, które pozwalają mu zbierać pola gruzu po bitwie. Jego zaawansowane systemy celowania i ciężki pancerz czynią go potężnym przeciwnikiem, a jego dwufunkcyjna konstrukcja oznacza, że ​​może zarówno tworzyć, jak i czerpać korzyści z rzezi na polu bitwy. Statek jest wyposażony w najnowocześniejszą technologię uzbrojenia i może stawić czoła znacznie większym statkom.',
+        'description_long' => 'Statek klasy Rozpruwacz jest potężnym instrumentem destrukcji, który ponadto może plądrować pola zniszczeń bezpośrednio po bitwie.',
     ],
     'rocket_launcher' => [
         'title' => 'Wyrzutnia rakiet',
         'description' => 'Wyrzutnia rakiet to prosta i korzystna cenowo możliwość obrony.',
-        'description_long' => 'Twoja pierwsza podstawowa linia obrony. Są to proste naziemne urządzenia startowe, które wystrzeliwują konwencjonalne rakiety zakończone głowicami bojowymi w celu ataku na wrogie cele. Ponieważ są tanie w budowie i nie wymagają badań, dobrze nadają się do obrony przed najazdami, ale tracą skuteczność w obronie przed atakami na większą skalę. Gdy zaczniesz budować bardziej zaawansowane systemy broni obronnej, wyrzutnie rakiet staną się prostym pożywieniem, dzięki któremu bardziej niszczycielska broń będzie mogła zadawać większe obrażenia przez dłuższy czas. 
-
-Po bitwie istnieje aż do 70% szans, że uszkodzone obiekty obronne zostaną przywrócone do użytku.',
+        'description_long' => 'Wyrzutnia rakiet to prosta i korzystna cenowo możliwość obrony.',
     ],
     'light_laser' => [
         'title' => 'Lekkie działo laserowe',
         'description' => 'Przez skoncentrowany ostrzał wybranego celu fotonami można wyrządzić znacznie większe szkody niż przy pomocy zwykłej broni balistycznej.',
-        'description_long' => 'W miarę rozwoju technologii i tworzenia bardziej wyrafinowanych statków zdecydowano, że aby odeprzeć ataki, konieczna jest silniejsza linia obrony. Wraz z rozwojem technologii laserowej zaprojektowano nową broń, która miała zapewnić wyższy poziom obrony. Lekkie lasery to prosta broń naziemna, która wykorzystuje specjalne systemy celownicze do śledzenia wroga i strzela laserem o dużej intensywności, zaprojektowanym do przecięcia kadłuba celu. Aby zachować opłacalność, wyposażono je w ulepszony system osłon, jednakże integralność strukturalna jest taka sama jak w przypadku wyrzutni rakiet. 
-
-Po bitwie istnieje aż do 70% szans, że uszkodzone obiekty obronne zostaną przywrócone do użytku.',
+        'description_long' => 'Przez skoncentrowany ostrzał wybranego celu fotonami można wyrządzić znacznie większe szkody niż przy pomocy zwykłej broni balistycznej.',
     ],
     'heavy_laser' => [
         'title' => 'Ciężkie działo laserowe',
         'description' => 'Ciężkie działo laserowe to następca lekkiego lasera.',
-        'description_long' => 'Ciężki Laser to praktyczna, ulepszona wersja Lekkiego Lasera. Jest bardziej zrównoważony niż laser świetlny i ma ulepszony skład stopu, wykorzystuje mocniejsze, gęstsze wiązki i jeszcze lepsze pokładowe systemy celownicze. 
-
-Po bitwie istnieje aż do 70% szans, że uszkodzone obiekty obronne zostaną przywrócone do użytku.',
+        'description_long' => 'Ciężkie działo laserowe to następca lekkiego lasera.',
     ],
     'gauss_cannon' => [
         'title' => 'Działo Gaussa',
         'description' => 'Działo Gaussa przyspiesza kilkutonowe pociski, wykorzystując przy tym gigantyczną ilość energii.',
-        'description_long' => 'Przez długi czas broń pociskową uważano za przestarzałą w związku z nowoczesną technologią termojądrową i energetyczną oraz rozwojem hipernapędu i ulepszonym pancerzem. Tak było do czasu, gdy technologia energetyczna, która kiedyś go postarzała, pomogła mu ponownie osiągnąć ugruntowaną pozycję. 
-Działo Gaussa to duża wersja akceleratora cząstek. Niezwykle ciężkie rakiety są przyspieszane za pomocą ogromnej siły elektromagnetycznej i mają prędkości wylotowe, które sprawiają, że otaczający pocisk płonie w powietrzu. Broń ta jest tak potężna po wystrzale, że tworzy huk dźwiękowy. Nowoczesne zbroje i tarcze ledwo wytrzymują tę siłę, często cel zostaje całkowicie przebity przez siłę pocisku. Struktury obronne dezaktywują się, gdy tylko zostaną zbyt poważnie uszkodzone. 
-
-Po bitwie istnieje aż do 70% szans, że uszkodzone obiekty obronne zostaną przywrócone do użytku.',
+        'description_long' => 'Działo Gaussa przyspiesza kilkutonowe pociski, wykorzystując przy tym gigantyczną ilość energii.',
     ],
     'ion_cannon' => [
         'title' => 'Działo jonowe',
         'description' => 'Działo jonowe przyśpiesza jony skierowane na cel ataku. Destabilizują one powłokę ochronną i w skutek zmian elektromagnetycznych uszkadzają elektronikę.',
-        'description_long' => 'Działo jonowe to broń wystrzeliwująca wiązki jonów (cząstek naładowanych dodatnio lub ujemnie). Działo jonowe jest właściwie rodzajem działa cząsteczkowego; tylko użyte cząstki są zjonizowane. Ze względu na swoje ładunki elektryczne mogą również unieszkodliwiać urządzenia elektroniczne i wszystko inne, co ma elektryczne lub podobne źródło zasilania, wykorzystując zjawisko znane jako impuls elektromagnetyczny (efekt EMP). Dzięki ulepszonemu systemowi osłon armaty, ta armata zapewnia lepszą ochronę większej, bardziej niszczycielskiej broni obronnej. 
-
-Po bitwie istnieje aż do 70% szans, że uszkodzone obiekty obronne zostaną przywrócone do użytku.',
+        'description_long' => 'Działo jonowe przyśpiesza jony skierowane na cel ataku. Destabilizują one powłokę ochronną i w skutek zmian elektromagnetycznych uszkadzają elektronikę.',
     ],
     'plasma_turret' => [
         'title' => 'Wyrzutnia plazmy',
         'description' => 'Wyrzutnia plazmy uwalnia energię odpowiadającą erupcji słońca i przerasta w działaniu nawet niszczyciela.',
-        'description_long' => 'Jeden z najbardziej zaawansowanych systemów broni obronnej, jaki kiedykolwiek opracowano, Wieżyczka Plazmowa wykorzystuje duże ogniwo paliwowe reaktora jądrowego do zasilania akceleratora elektromagnetycznego, który wystrzeliwuje impuls, czyli toroid, plazmy. Podczas działania wieżyczka plazmowa najpierw namierza cel i rozpoczyna proces strzelania. W rdzeniu wieży powstaje kula plazmowa w wyniku przegrzania i sprężania gazów, pozbawiając je jonów. Gdy gaz zostanie przegrzany, skompresowany i utworzy się kula plazmy, zostanie on następnie załadowany do akceleratora elektromagnetycznego, który zostanie zasilony. Po całkowitym naładowaniu przyspieszacz zostaje aktywowany, co powoduje wystrzelenie kuli plazmowej z niezwykle dużą prędkością w kierunku zamierzonego celu. Z perspektywy celu zbliżająca się niebieskawa kula plazmy robi wrażenie, ale gdy uderzy, powoduje natychmiastową zagładę. 
-
-Obiekty obronne dezaktywują się, gdy tylko zostaną zbyt mocno uszkodzone. Po bitwie istnieje aż do 70% szans, że uszkodzone obiekty obronne zostaną przywrócone do użytku.',
+        'description_long' => 'Wyrzutnia plazmy uwalnia energię odpowiadającą erupcji słońca i przerasta w działaniu nawet niszczyciela.',
     ],
     'small_shield_dome' => [
         'title' => 'Mała Osłona Ochronna',
         'description' => 'Mała osłona ochronna osłania całą planetę polem, które może absorbować znaczne ilości energii.',
-        'description_long' => 'Kolonizacja nowych światów przyniosła nowe niebezpieczeństwo – śmieci kosmiczne. Duża asteroida mogłaby z łatwością zniszczyć świat i wszystkich jego mieszkańców. Postęp w technologii osłon umożliwił naukowcom opracowanie tarczy chroniącej całą planetę nie tylko przed śmieciami kosmicznymi, ale, jak się okazało, przed atakiem wroga. Tworząc wokół planety duże pole elektromagnetyczne, śmieci kosmiczne, które normalnie zniszczyłyby planetę, zostały odbite, a ataki wrogich imperiów zostały udaremnione. Pierwsze generatory były duże, a tarcza zapewniała umiarkowaną ochronę, ale później odkryto, że małe tarcze nie zapewniały ochrony przed atakami na większą skalę. Mała kopuła tarczy była wstępem do nadchodzącego silniejszego, bardziej zaawansowanego systemu osłon planetarnych. 
-
-Po bitwie istnieje aż do 70% szans, że uszkodzone obiekty obronne zostaną przywrócone do użytku.',
+        'description_long' => 'Mała osłona ochronna osłania całą planetę polem, które może absorbować znaczne ilości energii.',
     ],
     'large_shield_dome' => [
         'title' => 'Duża Osłona Ochronna',
         'description' => 'Stanowi dalszy rozwój małej powłoki ochronnej i może pochłonąć znacznie większe ilości energii.',
-        'description_long' => 'Duża Kopuła Tarczy to kolejny krok w rozwoju tarcz planetarnych, jest efektem lat pracy nad udoskonalaniem Małej Kopuły Tarczy. Zbudowane tak, aby wytrzymać większy ostrzał wroga poprzez zapewnienie pola elektromagnetycznego o wyższym napięciu, duże kopuły zapewniają dłuższy okres ochrony przed zawaleniem. 
-
-Po bitwie istnieje aż do 70% szans, że uszkodzone obiekty obronne zostaną przywrócone do użytku.',
+        'description_long' => 'Stanowi dalszy rozwój małej powłoki ochronnej i może pochłonąć znacznie większe ilości energii.',
     ],
     'anti_ballistic_missile' => [
         'title' => 'Przeciwrakieta',
         'description' => 'Przeciwrakiety niszczą atakujące międzyplanetarne rakiety przeciwnika.',
-        'description_long' => 'Pociski antybalistyczne (ABM) to Twoja jedyna linia obrony, gdy zostaną zaatakowane przez rakiety międzyplanetarne (IPM) na twojej planecie lub księżycu. Po wykryciu wystrzelenia IPM, rakiety te automatycznie się uzbrajają, przetwarzają kod startowy w swoich komputerach pokładowych, celują w nadlatujący IPM i wystrzeliwują w celu przechwycenia. Podczas lotu docelowy IPM jest stale śledzony i wprowadzane są korekty kursu, dopóki ABM nie dotrze do celu i nie zniszczy atakującego IPM. Każdy ABM niszczy jeden przychodzący IPM.',
+        'description_long' => 'Przeciwrakiety niszczą atakujące międzyplanetarne rakiety przeciwnika.',
     ],
     'interplanetary_missile' => [
         'title' => 'Rakieta międzyplanetarna',
         'description' => 'Pociski międzyplanetarne niszczą obronę wroga.',
-        'description_long' => 'Pociski międzyplanetarne (IPM) to broń ofensywna, która może zniszczyć obronę celu. Korzystając z najnowocześniejszej technologii śledzenia, każdy pocisk celuje w określoną liczbę systemów obronnych w celu zniszczenia. Wyładowane bombą antymaterii dostarczają niszczycielską siłę tak potężną, że zniszczonych tarcz i systemów obronnych nie da się naprawić. Jedynym sposobem na przeciwstawienie się tym rakietom jest użycie ABM.',
+        'description_long' => 'Rakiety międzyplanetarne niszczą systemy obronne przeciwnika. Obecny zasięg systemów twoich rakiet międzyplanetarnych: 0.',
     ],
     'kraken' => [
         'title' => 'KRAKEN',

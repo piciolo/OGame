@@ -12,55 +12,42 @@ return [
     'metal_mine' => [
         'title' => 'Metal Madeni',
         'description' => 'Gemi ve  bina insaatinda kullanilan, olmazsa olmaz hammaddelerin en önemli kaynagi.',
-        'description_long' => 'Gemi ve  bina inşaatında kullanılan olmazsa olmaz ham maddelerin en önemli kaynağı. Metal en ucuz ham madde olduğu için aynı zamanda en çok kullanılanı da. Metal üretimi için fazla enerji harcamak gerekmiyor.
-Madenler büyüdükçe yüzeyden derine iner. Daha derin ve de büyük madenler sayesinde daha fazla metal çıkarılabilir ve böylece üretim de artar. Yalnız daha büyük madenlere daha fazla enerji ayırmak gerekir.',
+        'description_long' => 'Gemi ve  bina insaatinda kullanilan, olmazsa olmaz hammaddelerin en önemli kaynagi.',
     ],
     'crystal_mine' => [
         'title' => 'Kristal Madeni',
         'description' => 'Elektronik insaat malzemesi ve alasim için gereken hammaddelerin en önemli kaynagi.',
-        'description_long' => 'Kristal maden ocağı, elektronik inşaat malzemesi ve alaşım için gerekli olan en önemli ham madde kaynağıdır. Kristal işlenirken hemen hemen metal maden ocağından 1 buçuk kat daha fazla enerji harcar. Bu da kristali daha değerli hale getirir. Neredeyse tüm uzay gemilerin ve tüm binaların kristale ihtiyacı vardır. Gemi yapımı için gerekli olan bu değerli kristaller çok ender ve metal gibi ancak daha derinlere indikçe büyük miktarlarda çıkartılabilir. Maden ocaklarını daha derinlere yerleştirmek daha fazla saf kristale ulaşma olasılığını artırır.',
+        'description_long' => 'Elektronik insaat malzemesi ve alasim için gereken hammaddelerin en önemli kaynagi.',
     ],
     'deuterium_synthesizer' => [
         'title' => 'Deuterium Sentezleyicisi',
         'description' => 'Bir gezegende bulunan su kütlesinden sadece suyun içinde az miktarda bulunan Deuterium elementini çıkarır.',
-        'description_long' => 'Deuterium bir çeşit ağır sudur. Bu sebeple madenler gibi daha derinlerde daha fazla miktarda bulunmaktadır. Daha derinlere ulaşabilmek icin sentezleyicinin geliştirilmesi ve kademelerinin artırılması şarttır.
-Deuterium neredeyse tüm gemilerde, tüm araştırmalarda, galaksinin incelenmesinde ayrıca radar istasyonu taramasının çalışmasında çok önemli bir rol oynar.',
+        'description_long' => 'Bir gezegende bulunan su kütlesinden sadece suyun içinde az miktarda bulunan Deuterium elementini çıkarır.',
     ],
     'solar_plant' => [
         'title' => 'Solar Enerji Santrali',
         'description' => 'Solar Enerji güneş ışınlarından elde edilir. Neredeyse tüm binaların, üretim icin enerjiye ihtiyaçları var.',
-        'description_long' => 'Madenlerin ve sentezleyicinin enerji ihtiyaçlarını karşılayabilmek için çok büyük solar enerji santrallerine ihtiyaç duyulur. Fabrikalar büyüdükçe, ışık enerjisini elektrik enerjisine çeviren  fotovoltaj hücreyle kaplı yüzey alanı büyür. Solar enerji santralleri gezegenin enerji ihtiyacını karşılamak için gerekli olan en önemli binalardır.',
+        'description_long' => 'Solar Enerji güneş ışınlarından elde edilir. Neredeyse tüm binaların, üretim icin enerjiye ihtiyaçları var.',
     ],
     'fusion_plant' => [
         'title' => 'Füzyoenerji Santrali',
         'description' => 'Füzyoenerji santrali, iki hidrojen atomunun helyum atomuna füzyonundan enerji kazanır.',
-        'description_long' => 'Füzyon enerji santrallerinde, hidrojen çekirdekleri muazzam sıcaklık ve basınç altında helyum çekirdeklerine dönüştürülür ve muazzam miktarda enerji açığa çıkar. Tüketilen her gram Döteryum için 41,32*10^-13 Joule\'e kadar enerji üretilebilmektedir; 1 gramla 172 MWh enerji üretebiliyorsunuz. 
-
-Daha büyük reaktör kompleksleri daha fazla döteryum kullanır ve saatte daha fazla enerji üretebilir. Enerji teknolojisi araştırılarak enerji etkisi artırılabilir. 
-
-Füzyon tesisinin enerji üretimi şu şekilde hesaplanır: 
-30 * [Seviye Füzyon Tesisi] * (1,05 + [Seviye Enerji Teknolojisi] * 0,01) ^ [Seviye Füzyon Tesisi]',
+        'description_long' => 'Füzyoenerji santrali, iki hidrojen atomunun helyum atomuna füzyonundan enerji kazanır.',
     ],
     'metal_store' => [
         'title' => 'Metal Deposu',
         'description' => 'Daha islenmemis ama islenmeye hazir metallerin içinde tutulabilecegi depo.',
-        'description_long' => 'Bu dev depolama tesisi metal cevheri depolamak için kullanılıyor. Her yükseltme seviyesi depolanabilecek metal cevheri miktarını artırır. Depolar dolarsa daha fazla metal çıkarılmayacak. 
-
-Metal Deposu, madenin günlük üretiminin belirli bir yüzdesini (en fazla yüzde 10) korur.',
+        'description_long' => 'Daha islenmemis ama islenmeye hazir metallerin içinde tutulabilecegi depo.',
     ],
     'crystal_store' => [
         'title' => 'Kristal Deposu',
         'description' => 'Daha islenmemis ama islenmeye hazir kristallerin içinde tutulabilecegi depo.',
-        'description_long' => 'İşlenmemiş kristal bu arada bu dev depolarda saklanacak. Her yükseltme seviyesinde depolanabilecek kristal miktarı artar. Kristal depoları doluysa başka kristal çıkarılmayacaktır. 
-
-Kristal Depo, madenin günlük üretiminin belirli bir yüzdesini (en fazla yüzde 10) korur.',
+        'description_long' => 'Daha islenmemis ama islenmeye hazir kristallerin içinde tutulabilecegi depo.',
     ],
     'deuterium_store' => [
         'title' => 'Deuterium Tankeri',
         'description' => 'Yeni elde edilen deuteriumun depolanabileceği dev tankerler.',
-        'description_long' => 'Döteryum tankı yeni sentezlenen döteryumun depolanması içindir. Sentezleyici tarafından işlendikten sonra daha sonra kullanılmak üzere bu tanka borularla bağlanır. Tankın her yükseltilmesiyle toplam depolama kapasitesi artar. Kapasiteye ulaşıldığında artık Döteryum sentezlenmeyecektir. 
-
-Döteryum Tankı, sentezleyicinin günlük üretiminin belirli bir yüzdesini (maks. yüzde 10) korur.',
+        'description_long' => 'Yeni elde edilen deuteriumun depolanabileceği dev tankerler.',
     ],
     'robot_factory' => [
         'title' => 'Robot Fabrikası',
@@ -70,330 +57,267 @@ Döteryum Tankı, sentezleyicinin günlük üretiminin belirli bir yüzdesini (m
     'shipyard' => [
         'title' => 'Uzay  Tersanesi',
         'description' => 'Gezegen tersanesinde her çesit gemi ve  savunma sanayi binalari insa edilir.',
-        'description_long' => 'Gezegen tersanesinde her çesit gemi ve  savunma sanayi binalari insa edilir.Tersane büyüdükçe daha büyük ve komplike gemi ve de  savunma sanayi binalari yapilabilir .Nanit fabrikasinda üretilen minik robotlar sayesinde isçilerin daha hizli çalismalari saglanir.',
+        'description_long' => 'Gezegen tersanesinde her çesit gemi ve  savunma sanayi binalari insa edilir.',
     ],
     'research_lab' => [
-        'title' => 'Laboratório de Pesquisas',
+        'title' => 'Bilimsel Araştırma Laboratuvarı',
         'description' => 'O laboratório de pesquisas é necessário para pesquisar novas tecnologias.',
-        'description_long' => 'Yeni teknolojileri kesfedebilmek için bilimsel arastirma istasyonu gerekli .Bu istasyonlardaki ilerlemelerin kademesi yeni teknolojilerin gelistirilme hizini direkt olarak etkiliyor.Gelisme kademesi ne kadar yükselirse, yeni teknolojileri kesfetme hizi da o kadar artar.Bir gezegendeki bilimsel arastirmalari mümkün oldugunca hizli bitirebilmek için tüm bilim adamlarinin bu gezegende kurulan yeni arastirma istasyonuna gönderilmesi gerekir, bu yüzden de diger gezegenlerde baska bilim adami kalmaz. Eger yeni bir teknoloji kesfedilirse bilim adamlari bu yeni teknoloji ile birlikte kendi vatanlari olan geldikleri anagezegene geri dönerler. Böylece bu teknoloji bütün gezegenlerde kullanilabilir .',
+        'description_long' => 'Yeni teknolojileri kesfedebilmek için bilimsel arastirma istasyonu gerekli .',
     ],
     'alliance_depot' => [
-        'title' => 'Depósito da Aliança',
+        'title' => 'Ittifak Deposu',
         'description' => 'O depósito da aliança permite ás frotas da aliança a possibilidade de se reabastecer.',
-        'description_long' => 'İttifak Deposu, savunmaya yardım eden ve yörüngede bulunan dost ittifak filolarına yakıt aktarılmasını sağlar. İttifak Deposunun geliştirilen her bir kademesi için, yörüngedeki filolara belirli miktarda deuterium aktarılır.',
+        'description_long' => 'İttifak Deposu, savunmaya yardım eden ve yörüngede bulunan dost ittifak filolarına yakıt aktarılmasını sağlar.',
     ],
     'missile_silo' => [
-        'title' => 'Silo de Mísseis',
+        'title' => 'Roket Silosu',
         'description' => 'O silo de mísseis é a estrutura de lançamento e armazenamento dos mísseis.',
-        'description_long' => 'Roket silolarinda roketler konuslandirilir.Gelistirdigin her kademe icin 5 gezegenlerarasi ya da 10 yakalayici roket konuslandirabilirsin. Gezegenlerarasi roket iki tane yakalayici roketin kapladigi kadar yer kaplar. Farkli roket tiplerini istedigin gibi kombine edebilirsin.',
+        'description_long' => 'Roket silolarinda roketler konuslandirilir.',
     ],
     'nano_factory' => [
         'title' => 'Nanit Fabrikasi',
         'description' => 'Robot tekniginin taçlandirilmasi, çok önemli bir rolü var.Her kademe gemi,bina ve de savunma bina ve yapilari yapimi için gereken süreyi yari yariya azaltiyor.',
-        'description_long' => 'Nanit fabrikasi robot tekniginin taçlandirilmasi. Nanitler iyi bir iletisim agi sonucu inanilmaz ve de alisilmadik isler yapabilen nanometre büyüklügünde robotlar .Neredeyse tüm branslardaki üretimi artiriyorlar. Her seviye gemi,bina ve de savunma bina ve yapilari için gereken süreyi yari yariya azaltiyor  .',
+        'description_long' => 'Robot tekniginin taçlandirilmasi, çok önemli bir rolü var.Her kademe gemi,bina ve de savunma bina ve yapilari yapimi için gereken süreyi yari yariya azaltiyor.',
     ],
     'terraformer' => [
-        'title' => 'Terra-Formador',
+        'title' => 'Terraformer',
         'description' => 'O Terra-Formador permite aumentar o número de áreas disponíveis para construção do planeta.',
-        'description_long' => 'Gezegenlerdeki artan yapılaşmayla birlikte koloninin yaşam alanı bile giderek daha sınırlı hale geliyor. Yüksek katlı ve yer altı inşaatları gibi geleneksel yöntemler giderek yetersiz kalıyor. Küçük bir grup yüksek enerjili fizikçi ve nano mühendis sonunda çözüme ulaştı: dünyalaştırma. 
-Muazzam miktarda enerji kullanan dünyalaştırıcı, geniş arazileri ve hatta kıtaları ekilebilir hale getirebilir. Bu bina, bu amaç için özel olarak oluşturulan ve genelinde tutarlı bir zemin kalitesi sağlayan nanitlerin üretimini barındırıyor. 
-
-Her terraformer seviyesi 5 tarlanın işlenmesine izin verir. Terraformer her seviyede bir alanı kaplar. Her 2 terraformer seviyesinde 1 bonus alan alacaksınız. 
-
-Terraformer inşa edildikten sonra sökülemez.',
+        'description_long' => 'Gezegenin gereksiz alanlarini altyapi binalarinin yapimi icin kullanisli hale getirmeye yarar.',
     ],
     'space_dock' => [
-        'title' => 'Estaleiro Espacial',
+        'title' => 'Uzay İskelesi',
         'description' => 'Destroços podem ser reparados no Estaleiro Espacial.',
-        'description_long' => 'Space Dock, savaşta yok edilen ve geride enkaz bırakan gemileri onarma olanağı sunuyor. Onarım süresi maksimum 12 saat sürüyor ancak gemilerin tekrar hizmete girebilmesi için en az 30 dakika gerekiyor. 
-
-Enkazın oluşmasından itibaren 3 gün içinde onarımlara başlanmalıdır. Tamir edilen gemiler, onarımlar tamamlandıktan sonra manuel olarak göreve döndürülmelidir. Bunun yapılmaması halinde, her türdeki gemiler 3 gün sonra hizmete geri dönecektir. 
-
-Enkaz yalnızca, gemi puanının en az %5\'i değerinde savaşta yer alan kendi gemileri de dahil olmak üzere 150.000\'den fazla birim yok edildiğinde ortaya çıkar. 
-
-Space Dock yörüngede yüzdüğü için bir gezegen alanına ihtiyaç duymaz.',
+        'description_long' => 'Uzay İskelesi`nde enkaz alanları tamir edilebilir.',
     ],
     'lunar_base' => [
         'title' => 'Ay Merkez Istasyonu',
         'description' => 'Ay\'ın atmosferi olmadığı için yaşanabilir alan yaratmak için bir Ay tabanına ihtiyaç vardır.',
-        'description_long' => 'Ayın atmosferi yoktur, dolayısıyla bir yerleşim kurulmadan önce bir ay üssünün inşa edilmesi gerekir. Bu daha sonra oksijen, ısıtma ve yerçekimi sağlar. İnşa edilen her kat ile biyosfer içerisinde daha geniş bir yaşam ve gelişim alanı sağlanmaktadır. Her inşa edilmiş seviye, diğer binalar için üç alana izin verir. Her seviyede Ay üssü bir alanı kaplar. 
-Ay üssü bir kez inşa edildikten sonra yıkılamaz.',
+        'description_long' => 'Ayda atmosfer olmadigi için, iskana açilmadan önce mutlaka bir ay merkez istasyonu kurulmasi gerekir.',
     ],
     'sensor_phalanx' => [
         'title' => 'Radar Istasyonu',
         'description' => 'Sensör falanksını kullanarak diğer imparatorlukların filoları keşfedilebilir ve gözlemlenebilir. Sensör falanks dizisi ne kadar büyük olursa, tarayabileceği aralık da o kadar büyük olur.',
-        'description_long' => 'Yüksek çözünürlüklü sensörler kullanan Sensor Phalanx, önce ışık spektrumunu, gazların bileşimini ve uzak bir dünyadan gelen radyasyon emisyonlarını tarar ve verileri işlenmek üzere bir süper bilgisayara aktarır. Bilgi elde edildikten sonra süper bilgisayar, spektrumdaki, gaz bileşimindeki ve radyasyon emisyonlarındaki değişiklikleri, çeşitli gemi hareketleri tarafından oluşturulan spektrumda bilinen değişikliklerin temel çizgi grafiğiyle karşılaştırır. Ortaya çıkan veriler daha sonra falanksın menzili içindeki herhangi bir filonun etkinliğini görüntüler. Süper bilgisayarın işlem sırasında aşırı ısınmasını önlemek için 5k işlenmiş Döteryum kullanılarak soğutuluyor. 
-Phalanx\'ı kullanmak için Galaxy View\'da sensörlerinizin menzilindeki herhangi bir gezegene tıklayın.',
+        'description_long' => 'Radar Istasyonu filolarin haraketlerini takip edebilmeyi saglar.Kademesi yükseldikce takip edilebilecek mesafe de artar.',
     ],
     'jump_gate' => [
         'title' => 'Siçrama Geçidi',
         'description' => 'Atlama kapıları, en büyük filoyu bile anında uzaktaki bir atlama kapısına gönderebilen devasa alıcı-vericilerdir.',
-        'description_long' => 'Bir Atlama Kapısı, en büyük filoları bile evrenin herhangi bir yerindeki bir alıcı Geçide zaman kaybı olmadan gönderebilen dev alıcı-vericilerden oluşan bir sistemdir. Atlamayı gerçekleştirmek için Solucan Deliği teknolojisine benzer bir teknoloji kullanan döteryum gerekli değildir. Yenilenmeye izin vermek için atlamalar arasında birkaç dakikalık bir yeniden şarj süresi geçmelidir. Kaynakların Geçit üzerinden taşınması da mümkün değildir. Her yükseltme seviyesinde atlama kapısının bekleme süresi azaltılabilir.',
+        'description_long' => 'Siçrama Geçitleri Galaksi içinde filolari zaman kaybetmeden bir yerden baska yere göndermeyi saglayabilen dev Ileticiler.Yalniz bu iletim ancak iki gecit arasinda olabilir, tek bir gecit yeterli degildir.',
     ],
     'energy_technology' => [
-        'title' => 'Tecnologia de Energia',
+        'title' => 'Enerji tekniği',
         'description' => 'Compreendendo a tecnologia de tipos diferentes de energia, muitas novas e avançadas tecnologias podem ser adaptadas. A tecnologia de energia é de grande importância para um laboratório de pesquisas moderno.',
-        'description_long' => 'Çeşitli araştırma alanları ilerledikçe, mevcut enerji dağıtım teknolojisinin belirli özel araştırmalara başlamak için yeterli olmadığı keşfedildi. Enerji Teknolojinizin her yükseltilmesiyle, daha karmaşık gemilerin ve savunmaların geliştirilmesinin önünü açan yeni araştırmalar yapılabilir.',
+        'description_long' => 'Birçok yeni teknoloji için farklı enerji türlerine hakim olmak gerekir.',
     ],
     'laser_technology' => [
-        'title' => 'Tecnologia Laser',
+        'title' => 'Lazer tekniği',
         'description' => 'Um feixe de luz concentrado que causa dano a um objeto quando o atinge.',
-        'description_long' => 'Lazerler (radyasyonun uyarılmış emisyonu yoluyla ışık amplifikasyonu), yoğun, enerji açısından zengin tutarlı bir ışık emisyonu üretir. Bu cihazlar, optik bilgisayarlardan, zırh teknolojisini zahmetsizce kesen ağır lazer silahlara kadar her türlü alanda kullanılabiliyor. Lazer teknolojisi diğer silah teknolojilerinin araştırılması için önemli bir temel oluşturmaktadır.',
+        'description_long' => 'Işığın demetlenmesi sonucu oluşan ışın, çarptığı maddeye hasar verir.',
     ],
     'ion_technology' => [
-        'title' => 'Tecnologia de Íons',
+        'title' => 'İyon Tekniği',
         'description' => 'A concentração de iões permite a construção de canhões capazes de infligir enormes danos e reduz os custos de demolição em 4%.',
-        'description_long' => 'İyonlar yoğunlaşabilir ve ölümcül bir ışın halinde hızlandırılabilir. Bu ışınlar daha sonra çok büyük hasara neden olabilir. Bilim adamlarımız ayrıca binaların ve sistemlerin yıkım maliyetlerini açıkça azaltacak bir teknik geliştirdiler. Her araştırma seviyesi için, yıkım maliyetleri %4 oranında azalacaktır.',
+        'description_long' => 'İyonların yoğunlaşması, ağır hasara yol açabilen ve binaların yıkım masraflarını seviye başı %4 düşüren topların inşa edilmesini sağlar.',
     ],
     'hyperspace_technology' => [
-        'title' => 'Tecnologia de Hiperespaço',
+        'title' => 'Hiperuzay tekniği',
         'description' => '4\'üncü ve 5\'inci boyutları entegre ederek artık daha ekonomik ve verimli yeni bir tahrik türünü araştırmak mümkün.',
-        'description_long' => 'Teorik olarak hiperuzay yolculuğu fikri, ayrı ve bitişik bir boyutun varlığına dayanır. Etkinleştirildiğinde, bir hiperuzay sürücüsü yıldız gemisini bu diğer boyuta yönlendirir; burada "normal" uzayda harcayacağı süreden çok daha kısa bir sürede çok büyük mesafeler kat edebilir. Gerçek uzaydaki varış noktasına karşılık gelen hiperuzaydaki noktaya ulaştığında yeniden ortaya çıkar. 
-Yeterli düzeyde Hiperuzay Teknolojisi araştırıldığında, Hiperuzay Sürücüsü artık sadece bir teori olmaktan çıkar. Bu tahrikte yapılan her iyileştirme, gemilerinizin yük kapasitesini temel değerin %5\'i kadar artırır.',
+        'description_long' => 'Dördüncü ve beşinci boyutları birleştirerek, artık daha ekonomik ve daha güçlü olan yeni bir iticiyi keşfetmek mümkün. Dördüncü ve beşinci boyutları kullanarak, artık gemilerinin ambarını yerden tasarruf edecek şekilde bükmek mümkün.',
     ],
     'plasma_technology' => [
-        'title' => 'Tecnologia de Plasma',
+        'title' => 'Plazma tekniği',
         'description' => 'Uma evolução da Tecnologia de íons que acelera plasma de alta-energia, causando danos devastadores e otimizando adicionalmente a produção de Metal, Cristal e Deutério (1%/0.66%/0.33% por nível).',
-        'description_long' => 'İyonları hızlandırmayan, bunun yerine yüksek enerjili plazmayı kullanan ve daha sonra bir nesneye çarpıldığında yıkıcı hasara yol açabilen iyon teknolojisinin daha da geliştirilmesi. Bilim adamlarımız ayrıca bu teknolojiyi kullanarak metal ve kristal madenciliğini gözle görülür şekilde iyileştirmenin bir yolunu da buldular. 
-
-Plazma teknolojisinin yapı seviyesi başına metal üretimi %1, kristal üretimi %0,66 ve döteryum üretimi %0,33 artar.',
+        'description_long' => 'Büyük hasarlar verebilen, yüksek enerjiye sahip plazmayı hızlandıran ve ayrıca metal, kristal ve deuterium üretimini (seviye başına %1/%0.66/%0.33) optimize eden iyon tekiniğinin geliştirilmesi.',
     ],
     'combustion_drive' => [
-        'title' => 'Motor de Combustão',
+        'title' => 'Yanma motoru',
         'description' => 'Pesquisar e evoluir esta tecnologia aumenta a velocidade de combustão dos motores e assim a Velocidade das naves espaciais mais leves como por exemplo o caça ligeiro e o cargueiro pequeno.',
-        'description_long' => 'Yanma Tahrik teknolojisi en eski teknolojidir ancak halen kullanılmaktadır. Yanmalı Tahrik ile kullanım öncesinde gemi içerisinde taşınan itici gazlardan egzoz oluşturulur. Kapalı bir odada basınçlar her yönde eşittir ve ivme oluşmaz. Eğer bölmenin alt kısmında bir açıklık sağlanırsa, bu durumda artık o taraftaki basınca karşı çıkılmaz. Kalan basınç, açıklığın karşı tarafında sonuçta ortaya çıkan bir itme kuvveti oluşturur ve bu da egzozu aşırı yüksek hızda arkaya doğru dışarı atarak gemiyi ileri doğru iter. 
-
-Geliştirilen Combustion Drive\'ın her seviyesiyle birlikte küçük ve büyük kargo gemilerinin, hafif avcı uçaklarının, geri dönüşümcülerin ve casusluk sondalarının hızı %10 artar.',
+        'description_long' => 'Bu motorların geliştirilmesi bazı gemileri daha hızlı yapar. Her seviye, hızı temel değerinin %10`u kadar artırır.',
     ],
     'impulse_drive' => [
-        'title' => 'Motor de Impulsão',
+        'title' => 'İtki motoru',
         'description' => 'Uma grande parte de matéria repulsada resulta em restos e lixo, criados pela fusão nuclear. Cada evolução desta tecnologia aumenta em 20% a velocidade das naves mais pesadas como o cruzador, bombardeiro, caça pesado e nave de colonização.',
-        'description_long' => 'İmpuls tahriki, uyarılmış radyasyon emisyonunun esas olarak enerji elde etmek için çekirdek füzyonundan atık ürün olarak üretildiği geri tepme prensibine dayanmaktadır. Ayrıca başka kitleler de enjekte edilebilir. Impulse Drive\'ın geliştirildiği her seviyede bombardıman uçaklarının, kruvazörlerin, ağır avcı uçaklarının ve koloni gemilerinin hızı temel değerin %20\'si kadar artar. Ek olarak, küçük taşıyıcılara, araştırma seviyeleri 5\'e ulaştığında itici güçler takılır. Impulse Drive araştırması 17. seviyeye ulaşır ulaşmaz, Geri Dönüşümcüler, Impulse Drives ile yeniden donatılır. 
-
-Gezegenlerarası füzeler de her seviyede daha uzağa gider.',
+        'description_long' => 'İtki motoru geri itme prensibine dayanır. Bu motorların geliştirilmesi, bazı gemilerin hızını temel değerin %20`si oranında artırır.',
     ],
     'hyperspace_drive' => [
-        'title' => 'Motor Propulsor de Hiperespaço',
+        'title' => 'Hiperuzay iticisi',
         'description' => 'Os motores de Hiperespaço permitem entrar no hiperespaço graças a uma janela no espaço, de maneira a diminuir a duração dos voos espaciais. O hiperespaço é um espaço alternativo com mais de 3 dimensões.',
-        'description_long' => 'Geminin yakın çevresinde, uzun mesafelerin çok hızlı bir şekilde katedilebilmesi için alan bükülmüştür. Hyperspace Drive ne kadar geliştirilirse, uzayın çarpık doğası o kadar güçlü olur ve onunla donatılmış gemilerin (Battlecruiser\'lar, Battleship\'ler, Destroyer\'lar, Deathstar\'lar, Pathfinder\'lar ve Reaper\'lar) hızı seviye başına %30 artar. Ek olarak, araştırma 8. seviyeye ulaşır ulaşmaz bombardıman uçağı bir Hiperuzay Sürücüsü ile inşa edilir. Hiperuzay Sürücüsü araştırması 15. seviyeye ulaşır ulaşmaz, Recycler bir Hiperuzay Sürücüsü ile yeniden donatılır.',
+        'description_long' => 'Hiperuzay teknolojisi, dördüncü ve beşinci boyutların entegrasyonu aracılığıyla uzayın hedeflenen eğilmesidir. Bu teknolojinin her seviyesi, gemilerini temel değerin %30`u oranında hızlandırır.',
     ],
     'espionage_technology' => [
-        'title' => 'Tecnologia de Espionagem',
+        'title' => 'Casusluk tekniği',
         'description' => 'Com esta tecnologia podes obter informações sobre jogadores.',
-        'description_long' => 'Casusluk tekniği ilk aşamada sensör teknolojisinin geliştirilmesidir. Bu teknik geliştikçe, kullanıcı çevresi ile ilgili işlemler hakkında daha fazla bilgi edinir.
-Sondalar için bireysel ve rakibin casus seviyesi arasındaki fark çok önemlidir. Casusuluk tekniğiniz ne kadar gelişirse, rapor o kadar fazla bilgi içerir ve casusluk eyleminin tespit edilme ihtimali de o kadar az olur. Bir göreve ne kadar çok sonda gönderilirse, hedef gezegenden o kadar fazla bilgi aktarabilir. Aynı zamanda tespit edilme tehlikesi de artar.
-Casusluk tekniği ayrıca yabancı filoların yerini tespit etme şansını da artırır. Burada sadece kendi casusluk seviyeniz belirleyicidir. Seviye 2`den sonra saldırıların yanı sıra saldıran gemi sayısı da görüntülenir. Seviye 4`ten itibaren saldıran gemilerin türü ve toplam sayıları; seviye 8`den itibaren de çeşitli gemi tiplerinin toplam sayısı görüntülenir.
-Bu teknik, bir filosu ve/veya savunması olup olmadığı hakkında bilgi verdiği için, yaklaşan bir saldırı için vazgeçilmezdir. Bu nedenle, bu teknik öncesinde araştırılmalıdır.',
+        'description_long' => 'Diğer gezegenler ve aylardan bu teknoloji sayesinde bilgiler elde edilebilir',
     ],
     'computer_technology' => [
-        'title' => 'Tecnologia de Computadores',
+        'title' => 'Bilgisayar Tekniği',
         'description' => 'A tecnologia de computadores permite controlar e dirigir as frotas. Cada evolução aumenta em 1 o número de frotas possíveis de controlar ao mesmo tempo.',
-        'description_long' => 'Bilgisayar kapasitesinin genişletilmesi bilgisayar tekniği alanında araştırılmaktadır. Daha verimli ve daha etkili bilgisayar sistemleri geliştirilmektedir. İşlem gücü ve işlem süreçlerinin hızı artar. Böylece, daha fazla filo aynı anda yönetilebilir. Bu durumda her bilgisayar teknolojisi seviyesi, maksimum filo sayısını bir oranında artırır. Bu, daha fazla saldırı ve ticarete olanak tanır ve kazançları veya edinilen kaynakları artırır. Bu nedenle, bilgisayar tekniği oyun boyunca gelişitirilmelidir.',
+        'description_long' => 'Bilgisayar kapasitesinin artırılması ile daha fazla filo komuta edilebilir. Her bilgisayar tekniği seviyesi, maksimum filo sayısını bir oranında artırır.',
     ],
     'astrophysics' => [
-        'title' => 'Astrofísica',
+        'title' => 'Astrofizik',
         'description' => 'Com o módulo de pesquisa de astrofísica, as naves poderão ingressar em longas expedições. Poderá também colonizar um planeta extra a cada dois níveis evoluídos desta tecnologia.',
-        'description_long' => 'Astrofizik alanındaki daha ileri bulgular, giderek daha fazla gemiye yerleştirilebilecek laboratuvarların inşasına olanak tanıyor. Bu, uzayın keşfedilmemiş bölgelerine uzun yolculukları mümkün kılar. Ayrıca bu gelişmeler evreni daha da kolonileştirmek için kullanılabilir. Bu teknolojinin her iki seviyesi için ek bir gezegen kullanılabilir hale getirilebilir.',
+        'description_long' => 'Araştırma modülü olan gemiler yeni keşiflere çıkabilir. Bu teknolojinin iki yeni seviyesi için başka bir gezegen kolonileştirilebilir.',
     ],
     'intergalactic_research_network' => [
-        'title' => 'Rede Intergaláctica de Pesquisas',
+        'title' => 'Galaksiler arasi arastirma agi',
         'description' => 'Os cientistas dos seus planetas podem comunicar uns com os outros graças a esta rede.',
-        'description_long' => 'Bu, araştırma sonuçlarını kolonilerinize iletmek için kullandığınız derin uzay ağınızdır. IRN ile, geliştirilen IRN seviyesine eşit en üst düzey araştırma laboratuvarları birbirine bağlanarak daha hızlı araştırma süreleri elde edilebilir. 
-İşleyebilmesi için her koloninin araştırmayı bağımsız olarak yürütebilmesi gerekir.',
+        'description_long' => 'Farklı gezegenlerden araştırmacılar birbirleriyle bu ağ üzerinden iletişim kurarlar.',
     ],
     'graviton_technology' => [
-        'title' => 'Tecnologia de Gravitação',
+        'title' => 'Graviton araştırması',
         'description' => 'Com o aceleramento de partículas gravitacionais, um campo gravitacional artificial é criado com uma força atrativa que pode não só destruir naves mas também luas inteiras.',
-        'description_long' => 'Graviton kütlesiz ve kargosu olmayan temel bir parçacıktır. Yer çekimi gücünü belirler. Yoğunlaştırılmış bir graviton yükünü ateşleyerek yapay bir yerçekimi alanı oluşturulabilir. Kara delikten farklı olarak kütleyi kendi içine çeker. Böylece gemileri ve hatta uyduları bile yok edebilir. Yeterli miktarda graviton üretmek için çok büyük miktarda enerji gerekir. Yıkıcı bir Ölüm Yıldızı inşa etmek için Graviton Araştırması gereklidir.',
+        'description_long' => 'Yoğun graviton parçacıkları yüklü saldırılar sayesinde yapay bir yer çekimi alanı oluşturulabilir. Büyük gemileri veya ayları bile yok etme potansiyeline sahiptir.',
     ],
     'weapon_technology' => [
-        'title' => 'Silah Teknolojisi',
+        'title' => 'Silah tekniği',
         'description' => 'Este tipo de tecnologia aumenta a eficiência de seus sistemas de armas. Cada evolução do nível da tecnologia de armas adiciona 10% do poder de fogo do sistema de armas.',
-        'description_long' => 'Silah tekniğinde öncelikle mevcut silah sistemleri geliştirilir. Buradaki odak, mevcut sistemleri daha fazla enerji ile donatmak ve onları daha hassas bir şekilde kanalize etmektir.
-Böylece silah sistemlerini daha verimli hale gelir ve daha fazla zarar verir. Silah tekniğinin her silah seviyesi, birimlerin silah gücünü temel değerinin %10`u kadar artırır.
-Silah tekniği ileride kendi birimlerinizi rekabetçi kalmasını sağlamak için önemlidir. Bu yüzden de oyun boyunca geliştirilmeli.',
+        'description_long' => 'Silah tekniği, tüm silah sistemlerinin performansını artırır ve böylece seviye başına her bir birimin atış gücü, temel değerinin %10`u oranında artar.',
     ],
     'shielding_technology' => [
-        'title' => 'Kalkan Teknolojisi',
+        'title' => 'Kalkan tekniği',
         'description' => 'Kalkan teknolojisi, gemilerdeki ve savunma tesislerindeki kalkanları daha verimli hale getirir. Kalkan teknolojisinin her seviyesi, kalkanların gücünü temel değerin %10\'u kadar artırır.',
-        'description_long' => 'Kalkanlara daha fazla enerji sağlayarak onları daha verimli ve dayanıklı hale getirmek için kalkan tekniği ile yeni imkanlar araştırılıyor. Bu, kalkanların verimliliğini, araştırılan her seviye ile temel değerin %10`u kadar artırır.',
+        'description_long' => 'Kalkan teknigi gemilerin ve savunma binalarının kalkanlarını daha verimli hale getirir. Her seviye, verimliliği temel değerinin %10`u kadar artırır.',
     ],
     'armor_technology' => [
-        'title' => 'Tecnologia de Blindagem',
+        'title' => 'Uzay gemisi zırhı',
         'description' => 'As ligas altamente sofisticadas ajudam a aumentar a proteção de uma nave adicionando 10% a blindagem, a cada nível.',
-        'description_long' => 'Derin uzayın ortamı serttir. Çeşitli görevlerdeki pilotlar ve mürettebat, yalnızca yoğun güneş radyasyonuyla karşı karşıya kalmakla kalmadı, aynı zamanda bir saldırı sırasında uzay enkazının çarpması veya düşman ateşiyle yok edilmesi ihtimaliyle de karşı karşıya kaldı. Hem hafif hem de dayanıklı olduğu tespit edilen alüminyum-lityum titanyum karbür alaşımının keşfiyle bu, mürettebata belirli bir düzeyde koruma sağladı. Geliştirilen her seviyedeki Zırh Teknolojisi ile daha kaliteli bir alaşım üretilir ve bu da zırhın mukavemetini %10 artırır.',
+        'description_long' => 'Özel alaşımlar uzay gemilerinin zırhını sürekli geliştirir. Zırhın etkinliği, seviye başına %10 artırılabilir.',
     ],
     'small_cargo' => [
-        'title' => 'Cargueiro Pequeno',
+        'title' => 'Küçük Nakliye Gemisi',
         'description' => 'O cargueiro pequeno é uma nave muito ágil usada para transportar recursos de um planeta para outro.',
-        'description_long' => 'Nakliyeciler yaklaşık olarak savaş uçakları kadar büyüktür, ancak nakliye kapasitelerini artırmak için yüksek performanslı tahriklerden ve araç içi silahlardan vazgeçerler. Sonuç olarak, bir taşıyıcı yalnızca savaşa hazır gemiler eşliğinde savaşa gönderilmelidir. 
-
-Impulse Drive araştırma seviyesi 5\'e ulaştığında, küçük taşıyıcı artırılmış temel hızda hareket eder ve bir Impulse Drive ile donatılır.',
+        'description_long' => 'Küçük nakliye gemisi hammaddeleri hizlica baska gezegenlere tasiyabilen çevik gemidir.',
     ],
     'large_cargo' => [
-        'title' => 'Cargueiro Grande',
+        'title' => 'Büyük Nakliye Gemisi',
         'description' => 'O cargueiro grande é uma versão melhorada do cargueiro pequeno, tem um espaço maior para os recursos a transportar e é mais rápido.',
-        'description_long' => 'Zaman ilerledikçe kolonilere yapılan baskınlar giderek daha fazla miktarda kaynağın ele geçirilmesiyle sonuçlandı. Sonuç olarak, daha büyük yakalamaları telafi etmek için Küçük Kargolar toplu olarak gönderiliyordu. Baskınlarda ele geçirilen kaynakları en üst düzeye çıkarmak ve aynı zamanda uygun maliyetli olmak için yeni bir gemi sınıfına ihtiyaç duyulduğu kısa sürede öğrenildi. Pek çok gelişmenin ardından Büyük Kargo doğdu. 
-
-Ambarlarda depolanabilecek kaynakları en üst düzeye çıkarmak için bu gemide çok az silah veya zırh bulunmaktadır. Kurulan son derece gelişmiş içten yanmalı motor sayesinde, gezegenler arasında en ekonomik kaynak tedarikçisi olarak hizmet vermekte ve düşman dünyalara yapılan baskınlarda en etkili şekilde hizmet vermektedir.',
+        'description_long' => 'Küçük Nakliye gemisinin gelistirilmis halidir. Hem daha fazla yük tasir hem de modern ve güçlü itme sistemi sayesinde küçük nakliyeye göre çok daha hizli hareket eder.',
     ],
     'colony_ship' => [
-        'title' => 'Nave Colonizadora',
+        'title' => 'Koloni Gemisi',
         'description' => 'Planetas vagos podem ser colonizados com esta nave.',
-        'description_long' => '20. yüzyılda İnsan yıldızların peşine düşmeye karar verdi. İlk olarak Ay\'a iniş yapıldı. Daha sonra uzay istasyonu inşa edildi. Mars kısa süre sonra kolonileştirildi. Çok geçmeden büyümemizin diğer dünyaları kolonileştirmeye bağlı olduğu belirlendi. Dünyanın her yerindeki bilim adamları ve mühendisler, insanın şimdiye kadarki en büyük başarısını geliştirmek için bir araya geldi. Koloni Gemisi doğdu. 
-
-Bu gemi yeni keşfedilen bir gezegeni kolonizasyona hazırlamak için kullanılıyor. Hedefe ulaştığında gemi, yeni dünyada nüfus oluşmasına ve madencilik yapılmasına yardımcı olmak için anında alışılmış bir yaşam alanına dönüştürülüyor. Maksimum gezegen sayısı astrofizik araştırmalarındaki ilerlemeye göre belirlenir. İki yeni Astroteknoloji seviyesi, ek bir gezegenin kolonileştirilmesine olanak tanıyor.',
+        'description_long' => 'Boş gezegenler bu gemi ile kolonileştirilebilir.',
     ],
     'recycler' => [
-        'title' => 'Reciclador',
+        'title' => 'Geri Dönüsümcü',
         'description' => 'Geri dönüşümcüler, savaştan sonra bir gezegenin yörüngesinde yüzen enkaz alanlarını toplayabilen tek gemilerdir.',
-        'description_long' => 'Uzaydaki mücadele giderek daha büyük ölçeklere ulaştı. Binlerce gemi yok edildi ve kalıntılarının kaynakları, enkaz alanlarında sonsuza kadar kaybolmuş gibi görünüyordu. Normal kargo gemileri ciddi hasar riski olmadan bu alanlara yeterince yaklaşamadı. 
-Kalkan teknolojilerindeki son gelişmeler bu sorunu etkili bir şekilde atlattı. Taşıyıcılara benzeyen yeni bir gemi sınıfı oluşturuldu: Geri Dönüşümcüler. Onların çabaları, düşünce olarak kaybedilen kaynakların toplanmasına ve daha sonra kurtarılmasına yardımcı oldu. Yeni kalkanlar sayesinde enkaz artık gerçek bir tehlike oluşturmuyordu. 
-
-Impulse Drive araştırması 17. seviyeye ulaşır ulaşmaz, Geri Dönüşümcüler Impulse Drive\'larla yeniden donatılır. Hyperspace Drive araştırması 15. seviyeye ulaşır ulaşmaz, Geri Dönüşümcüler Hyperspace Drive\'larla yeniden donatılır.',
+        'description_long' => 'Dönüşüm sayesinde enkazlardan yeniden kullanılmaya uygun ham madde kazanılır.',
     ],
     'espionage_probe' => [
-        'title' => 'Sonda de Espionagem',
+        'title' => 'Casus Sondasi',
         'description' => 'As sondas de espionagem são drones com uma rapidez impressionante de propulsão utilizados para espiar os inimigos.',
-        'description_long' => 'Casusluk sondaları, filolar ve gezegenler hakkında veri sağlayan küçük, çevik dronlardır. Özel olarak tasarlanmış motorlarla donatılmış olup, yalnızca birkaç dakika içinde geniş mesafeleri kat etmelerine olanak tanır. Hedef gezegenin yörüngesine girdikten sonra hızla veri toplar ve raporu, değerlendirme için Derin Uzay Ağınız aracılığıyla geri iletirler. Ancak akıllı toplanma yönünün bir riski var. Raporun ağınıza geri iletilmesi sırasında sinyal hedef tarafından tespit edilebilir ve problar imha edilebilir.',
+        'description_long' => 'Çok küçük ve haraketli, uzaklardaki filo ve gezegenler hakkinda bilgi saglayan cisimler.',
     ],
     'solar_satellite' => [
-        'title' => 'Satélite Solar',
+        'title' => 'Solar Uydu',
         'description' => 'Güneş uyduları, yüksek, sabit bir yörüngede bulunan güneş pillerinden oluşan basit platformlardır. Güneş ışığını toplayıp lazer aracılığıyla yer istasyonuna iletiyor.',
-        'description_long' => 'Bilim adamları, jeosenkronize bir yörüngede özel olarak tasarlanmış uydular kullanarak elektrik enerjisini koloniye aktarmanın bir yöntemini keşfettiler. Güneş Uyduları güneş enerjisini toplar ve gelişmiş lazer teknolojisini kullanarak yer istasyonuna iletir. Bir güneş uydusunun verimliliği, aldığı güneş ışınımının gücüne bağlıdır. Prensip olarak, Güneş\'e yakın yörüngelerdeki enerji üretimi, Güneş\'ten uzak yörüngelerdeki gezegenlere göre daha fazladır. 
-İyi maliyet/performans oranları nedeniyle güneş uyduları birçok enerji sorununu çözebilir. Ancak dikkatli olun: Güneş uyduları savaşta kolayca yok edilebilir.',
+        'description_long' => 'Solar Uydular solar hücrelerden olusan yüksek yörüngede konuslandirilmis  platformlardir. Günes isigini toplar ve de lazer araciligi ile yüzeydeki istasyona iletirler. Bu gezegen üzerinde bir solar uydu 35 enerji üretiyor.',
     ],
     'crawler' => [
-        'title' => 'Rastejador',
+        'title' => 'Paletli',
         'description' => 'Rastejador de poço aumenta a produção de metal, cristal e Deutério em seu planeta, cada um 0.02%, 0.02% e 0.02% respectivamente. Como o Coletor, a produção também aumenta. O bônus total máximo varia de acordo com o nível geral das suas minas.',
-        'description_long' => 'Paletli, mayın ve sentezleyicinin üretimini artıran büyük bir traktördür. Göründüğünden daha çevik olsa da pek sağlam değildir. Her Paletli, metal üretimini %0.02, kristal üretimini %0.02 ve deuterium üretimini %0.02 artırır. Koleksiyoncu olarak üretim de artar. Maksimum toplam bonus, maden ocaklarının toplam seviyesine bağlıdır.',
+        'description_long' => 'Paletli, görev gezegenlerinde metal, kristal ve deuterium üretimini parça başına %0.02, %0.02 ve %0.02 artırır. Koleksiyoncu olarak üretim de artar. Maksimum toplam bonus, maden ocaklarının toplam seviyesine bağlıdır.',
     ],
     'pathfinder' => [
-        'title' => 'Explorador',
+        'title' => 'Rehber',
         'description' => 'Pathfinder, uzayın bilinmeyen sektörlerine yapılacak keşif gezileri için özel olarak inşa edilmiş, hızlı ve çevik bir gemidir.',
-        'description_long' => 'Pathfinder, keşif teknolojisindeki en son gelişmedir. Bu gemi, Discoverer sınıfı üyelerinin potansiyellerini en üst düzeye çıkarmaları için özel olarak tasarlandı. Kaynakların kurtarılması için gelişmiş tarama sistemleri ve büyük bir kargo ambarıyla donatılan Pathfinder, keşif gezilerinde mükemmeldir. Gelişmiş sensörleri, diğer gemilerin fark edemeyeceği değerli kaynakları ve anormallikleri tespit edebilir. Gemi, yüksek hızı iyi kargo kapasitesiyle birleştirerek hızlı keşif görevleri ve uzak sektörlerden kaynak toplama için mükemmel hale getiriyor.',
+        'description_long' => 'Rehberler hızlı ve geniştir ve keşiflerde enkaz alanlarını sökebilirler. Ayrıca toplam kazanç da artar.',
     ],
     'light_fighter' => [
-        'title' => 'Caça Ligeiro',
+        'title' => 'Hafif Avcı',
         'description' => 'O caça ligeiro é uma nave facilmente manobrável. O custo desta nave não é elevado, mas a capacidade de resistência e o sistema de armas do caça ligeiro não lhe permitem confrontar com sistemas de defesa sofisticados.',
-        'description_long' => 'Bu, tüm imparatorların inşa edeceği ilk savaş gemisi. Hafif avcı uçağı çevik bir gemidir ancak tek başınayken savunmasızdır. Kitlesel sayıları her imparatorluk için büyük bir tehdit haline gelebilir. Küçük ve büyük kargolara küçük savunmalarla düşman gezegenlere eşlik eden ilk kişiler onlardır.',
+        'description_long' => 'Neredeyse her gezegende karşına çıkabilecek çevik bir gemidir. Avantajı çok ucuz olması, dezavantajı ise yük taşıma kapasitesinin düşük ve de koruyucu kalkanın fazla güçlü olmaması.',
     ],
     'heavy_fighter' => [
-        'title' => 'Caça Pesado',
+        'title' => 'Ağır Avcı',
         'description' => 'O caça pesado é uma evolução do caça ligeiro, que oferece um sistema de armas e uma resistência evoluída.',
-        'description_long' => 'Ağır avcı uçağını geliştirirken araştırmacılar, geleneksel tahriklerin artık yeterli performansı sağlayamadığı bir noktaya ulaştı. Gemiyi en iyi şekilde hareket ettirmek için ilk kez itme tahriki kullanıldı. Bu maliyetleri artırdı ama aynı zamanda yeni olasılıkların da kapısını açtı. Bu sürücüyü kullanarak silahlar ve kalkanlar için daha fazla enerji kaldı; Ayrıca bu yeni savaşçı ailesi için yüksek kaliteli malzemeler kullanıldı. Bu değişikliklerle birlikte ağır avcı uçağı, gemi teknolojisinde yeni bir dönemi temsil ediyor ve kruvazör teknolojisinin temelini oluşturuyor. 
-
-Hafif avcı uçağından biraz daha büyük olan ağır avcı uçağının daha kalın gövdeleri vardır, daha fazla koruma sağlar ve daha güçlü silahlara sahiptir.',
+        'description_long' => 'Hafif avcıya göre hem saldırı gücü daha yüksek hem de kalkanı daha güçlü.',
     ],
     'cruiser' => [
-        'title' => 'Cruzador',
+        'title' => 'Kruvazör',
         'description' => 'Os cruzadores possuem um sistema de armas três vezes mais poderoso que o encontrado no caça pesado e uma velocidade de tiro maior. A velocidade do cruzador é a mais rápida já vista.',
-        'description_long' => 'Ağır lazerin ve iyon topunun gelişmesiyle birlikte hafif ve ağır savaşçılar, her baskında artan, endişe verici derecede yüksek sayıda yenilgiyle karşılaştı. Pek çok değişikliğe, silah gücüne ve zırh değişikliklerine rağmen, bu yeni savunma önlemlerine etkili bir şekilde karşı koyabilecek kadar hızlı artırılamadı. Bu nedenle, daha fazla zırh ve daha fazla ateş gücünü birleştiren yeni bir gemi sınıfı inşa etmeye karar verildi. Yıllar süren araştırma ve geliştirmeler sonucunda Cruiser doğdu. 
-
-Kruvazörler, ağır avcı uçaklarının neredeyse üç katı zırha sahiptir ve mevcut herhangi bir savaş gemisinin iki katından fazla ateş gücüne sahiptir. Ayrıca şimdiye kadar yapılmış herhangi bir uzay aracını çok aşan hızlara sahiptirler. Neredeyse bir yüzyıl boyunca kruvazörler evrene hakim oldu. Ancak Gauss toplarının ve plazma taretlerinin geliştirilmesiyle üstünlükleri sona erdi. Bugün hala savaşçı gruplara karşı kullanılıyorlar, ancak eskisi kadar baskın değiller.',
+        'description_long' => 'Kruvazör ağır avcıya göre 3 kat daha güçlü bir zırha, 2 kat daha güçlü vuruş gücüne sahip. Aynı zamanda çok hızlı.',
     ],
     'battle_ship' => [
-        'title' => 'Nave de Batalha',
+        'title' => 'Komuta Gemisi',
         'description' => 'As naves de batalha constituem a espinha dorsal de qualquer frota militar. Os sistemas de armas poderosos e a resistência inigualável da nave de batalha adicionados a alta velocidade e a grande capacidade de carga, fazem desta nave um perigo constante.',
-        'description_long' => 'Kruvazörün karşı karşıya olduğu artan sayıda savunma yapısı nedeniyle zemin kaybettiği ve görevlerde kabul edilemez seviyelerde gemi kaybının olduğu anlaşıldığında, aynı tür savunma yapılarıyla mümkün olduğunca az kayıpla yüzleşebilecek bir gemi inşa edilmesine karar verildi. Kapsamlı bir geliştirmenin ardından Savaş Gemisi doğdu. En büyük savaşlara dayanacak şekilde inşa edilen Battleship, geniş kargo alanlarına, ağır toplara ve yüksek hipersürücü hızına sahiptir. Bir kez geliştirildiğinde, sonunda her baskın İmparatoru filosunun omurgası haline geldi.',
+        'description_long' => 'Bir filonun sirtini dayadigi gemiler. Güçlü ve uzun menzilli silahlari, çok hizli olmasi ve de büyük ambarlari ile bu gemi düsman için çok büyük bir sorundur.',
     ],
     'battlecruiser' => [
-        'title' => 'Interceptador',
+        'title' => 'Firkateyn',
         'description' => 'Tal como o nome diz, o Interceptador é uma nave especializada para interceptar frotas hostis.',
-        'description_long' => 'Bu gemi şimdiye kadar geliştirilmiş en gelişmiş savaş gemilerinden biridir ve konu saldıran filoları yok etmeye geldiğinde özellikle ölümcüldür. Gemideki geliştirilmiş lazer topları ve gelişmiş Hyperspace motoruyla Battlecruiser, her türlü saldırıda başa çıkılması gereken ciddi bir güçtür. Geminin tasarımı ve büyük silah sistemi nedeniyle kargo ambarlarının kesilmesi gerekti, ancak bu, yakıt tüketiminin azalmasıyla telafi edildi.',
+        'description_long' => 'En büyük özelligi düsman filolara karsi cok güclü olmasidir.',
     ],
     'bomber' => [
-        'title' => 'Bombardeiro',
+        'title' => 'Bombardıman Gemisi',
         'description' => 'O bombardeiro é uma nave espacial desenvolvida para destruir os sistemas de defesa planetários mais recentes e poderosos.',
-        'description_long' => 'Yüzyıllar geçtikçe savunmalar büyüyüp karmaşıklaştıkça filolar endişe verici bir hızla yok edilmeye başlandı. Maksimum sonuçları elde etmek için savunmaları kıracak yeni bir gemiye ihtiyaç duyulduğuna karar verildi. Yıllar süren araştırma ve geliştirmenin ardından Bomber yaratıldı. 
-
-Lazer güdümlü hedefleme ekipmanı ve Plazma Bombaları kullanan Bombacı, bulabildiği her türlü savunma mekanizmasını arar ve yok eder. Hiperuzay sürücüsü Seviye 8\'e geliştirildiğinde, Bombacı hiperuzay motoruyla donatılır ve daha yüksek hızlarda uçabilir.',
+        'description_long' => 'Bir gezegenin tüm savunma sistemini yoketmek için özellikle gelistirildiler.',
     ],
     'destroyer' => [
-        'title' => 'Destruidor',
+        'title' => 'Muhrip',
         'description' => 'O destruidor é o rei das naves espaciais.',
-        'description_long' => 'Destroyer yıllar süren çalışmanın ve geliştirmenin sonucudur. Deathstars\'ın geliştirilmesiyle birlikte, böylesine devasa bir silaha karşı savunma yapmak için bir gemi sınıfına ihtiyaç duyulduğuna karar verildi. Geliştirilmiş güdümlü sensörleri, çoklu falanks İyon topları, Gauss Topları ve Plazma Taretleri sayesinde Destroyer, yaratılmış en korkunç gemilerden biri haline geldi. 
-
-Muhrip çok büyük olduğu için manevra kabiliyeti oldukça sınırlıdır, bu da onu bir savaş gemisinden çok bir savaş istasyonu haline getirir. Manevra kabiliyeti eksikliği, saf ateş gücüyle telafi ediliyor, ancak aynı zamanda inşa edilmesi ve işletilmesi de önemli miktarda döteryuma mal oluyor.',
+        'description_long' => 'Muhrip tüm savas gemilerinin kralidir.',
     ],
     'deathstar' => [
-        'title' => 'Estrela da Morte',
+        'title' => 'Ölüm Yildizi',
         'description' => 'Nada é mais perigoso que ver uma estrela da morte a aproximar.',
-        'description_long' => 'Deathstar şimdiye kadar yaratılmış en güçlü gemidir. Ay büyüklüğündeki bu gemi, yerde çıplak gözle görülebilen tek gemidir. Bunu fark ettiğinizde ne yazık ki bir şeyler yapmak için çok geçtir. 
-
-Evrende şimdiye kadar yaratılmış en gelişmiş silah sistemi olan devasa bir graviton topuyla donanmış olan bu devasa gemi, yalnızca tüm filoları ve savunmaları yok etme kapasitesine sahip değil, aynı zamanda tüm ayları da yok etme kapasitesine sahip. Yalnızca en gelişmiş imparatorluklar bu devasa büyüklükte bir gemi inşa etme kapasitesine sahiptir.',
+        'description_long' => 'Ölüm Yildizinin yoketme gücü  baska bir mekanizmada kesinlikle yoktur.',
     ],
     'reaper' => [
-        'title' => 'Ceifeira',
+        'title' => 'Azrail',
         'description' => 'Reaper, agresif baskınlar ve enkaz tarlası toplama konusunda uzmanlaşmış güçlü bir savaş gemisidir.',
-        'description_long' => 'Reaper, Genel sınıf askeri mühendisliğin zirvesini temsil ediyor. Bu ağır silahlı gemi, hem savaş becerisine hem de taktiksel esnekliğe değer veren komutanlar için tasarlandı. Ana görevi savaş olsa da Reaper, savaştan sonra enkaz alanlarını toplamasına olanak tanıyan güçlendirilmiş kargo ambarlarına sahiptir. Gelişmiş hedefleme sistemleri ve ağır zırhı, onu zorlu bir rakip haline getirirken, çift amaçlı tasarımı, savaş alanında katliam yaratabileceği ve bundan kâr elde edebileceği anlamına geliyor. Gemi, en son silah teknolojisiyle donatılmış ve çok daha büyük gemilere karşı kendini koruyabiliyor.',
+        'description_long' => 'Bir Azrail sınıfı gemisi, savaştan hemen sonra enkaz alanlarını yağmalayabilen güçlü bir imha silahıdır.',
     ],
     'rocket_launcher' => [
-        'title' => 'Lançador de Mísseis',
+        'title' => 'Roketatar',
         'description' => 'O lançador de mísseis é um sistema de defesa simples e barato.',
-        'description_long' => 'İlk temel savunma hattınız. Bunlar, düşman hedeflerine saldırmak için geleneksel savaş başlığı uçlu füzeleri ateşleyen basit, yer tabanlı fırlatma tesisleridir. Yapımları ucuz olduğundan ve hiçbir araştırma gerektirmediğinden, baskınları savunmak için çok uygundurlar, ancak daha büyük ölçekli saldırılara karşı savunma etkinliğini kaybederler. Daha gelişmiş savunma silah sistemleri inşa etmeye başladığınızda, Roketatarlar, daha fazla zarar veren silahlarınızın daha uzun süre daha fazla hasar vermesini sağlayan basit bir yem haline gelir. 
-
-Bir savaştan sonra, arızalı savunma tesislerinin tekrar kullanıma sunulma şansı %70\'e kadardır.',
+        'description_long' => 'Roketatar hem ucuz hem de çok basit bir savunma mekanizmasidir.',
     ],
     'light_laser' => [
-        'title' => 'Laser Ligeiro',
+        'title' => 'Hafif Lazer Topu',
         'description' => 'Graças a um feixe de laser concentrado podem ser criados mais danos do que através das armas de balísticas normais.',
-        'description_long' => 'Teknoloji geliştikçe ve daha karmaşık gemiler yaratıldıkça, saldırılara karşı koymak için daha güçlü bir savunma hattına ihtiyaç duyulduğu belirlendi. Lazer Teknolojisi ilerledikçe, bir sonraki savunma seviyesini sağlayacak yeni bir silah tasarlandı. Işık Lazerleri, düşmanı takip etmek için özel hedefleme sistemlerini kullanan ve hedefin gövdesini kesmek üzere tasarlanmış yüksek yoğunluklu bir lazeri ateşleyen basit, yer tabanlı silahlardır. Maliyet etkinliğini korumak için geliştirilmiş bir koruma sistemi ile donatıldılar, ancak yapısal bütünlük Roketatar\'ınkiyle aynı. 
-
-Bir savaştan sonra, arızalı savunma tesislerinin tekrar kullanıma sunulma şansı %70\'e kadardır.',
+        'description_long' => 'Hedefin alisila geldik balistik silahlar yerine güdümlenmis olarak, fotonlar ile vurulmasi çok daha agir darbeler verir.',
     ],
     'heavy_laser' => [
-        'title' => 'Laser Pesado',
+        'title' => 'Ağır Lazer Topu',
         'description' => 'Os laseres pesados tem um poder de saída e uma integridade estrutural mais importantes do que os lasers ligeiros.',
-        'description_long' => 'Ağır Lazer, Hafif Lazerin pratik ve geliştirilmiş bir versiyonudur. Geliştirilmiş alaşım bileşimiyle Işık Lazerinden daha dengeli olduğundan daha güçlü, daha yoğun ışınlar ve hatta daha iyi yerleşik hedefleme sistemleri kullanır. 
-
-Bir savaştan sonra, arızalı savunma tesislerinin tekrar kullanıma sunulma şansı %70\'e kadardır.',
+        'description_long' => 'Hafif Lazer Topunun tutarli ve kararli bir çalisma sonucu ortaya çikan devami.',
     ],
     'gauss_cannon' => [
-        'title' => 'Canhão de Gauss',
+        'title' => 'Gaus Topu',
         'description' => 'Utilizando uma aceleração eletromagnética enorme, o canhão de gauss acelera projéteis pesados.',
-        'description_long' => 'Modern termonükleer ve enerji teknolojisinin ardından ve hipersürücülerin gelişmesi ve zırhın iyileştirilmesi nedeniyle, uzun bir süre boyunca mermi silahlarının modası geçmiş olduğu düşünülüyordu. Bu, bir zamanlar onu yaşlandıran enerji teknolojisinin, kurulu konumunu yeniden kazanmasına yardımcı olana kadardı. 
-Gauss topu parçacık hızlandırıcının büyük bir versiyonudur. Son derece ağır füzeler, devasa bir elektromanyetik kuvvetle hızlandırılır ve füzeyi çevreleyen toprağın gökyüzünde yanmasına neden olan namlu çıkış hızlarına sahiptir. Bu silah ateşlendiğinde o kadar güçlüdür ki ses patlaması yaratır. Modern zırh ve kalkanlar bu kuvvete zar zor dayanabiliyor; çoğu zaman füzenin gücü hedefin tamamını delip geçiyor. Savunma yapıları çok ağır hasar gördükleri anda devre dışı kalır. 
-
-Bir savaştan sonra, arızalı savunma tesislerinin tekrar kullanıma sunulma şansı %70\'e kadardır.',
+        'description_long' => 'Gaus topu tonlarca ağırlıktaki top mermilerini muazzam bir elektrik harcaması ile hızlandırır.',
     ],
     'ion_cannon' => [
-        'title' => 'Canhão de Íons',
+        'title' => 'Iyon Topu',
         'description' => 'O canhão de íons atira ondas de íons contra o objeto, desestabilizando desta maneira as proteções e a eletrônica.',
-        'description_long' => 'İyon topu, iyon ışınlarını (pozitif veya negatif yüklü parçacıklar) ateşleyen bir silahtır. İyon Topu aslında bir tür Parçacık Topudur; yalnızca kullanılan parçacıklar iyonize edilir. Elektrik yükleri nedeniyle, Elektromanyetik Darbe (EMP etkisi) olarak bilinen bir olguyu kullanarak elektronik cihazları ve elektrik veya benzeri bir güç kaynağına sahip diğer her şeyi devre dışı bırakma potansiyeline de sahiptirler. Topun son derece gelişmiş koruma sistemi sayesinde bu top, daha büyük, daha yıkıcı savunma silahlarınız için gelişmiş koruma sağlar. 
-
-Bir savaştan sonra, arızalı savunma tesislerinin tekrar kullanıma sunulma şansı %70\'e kadardır.',
+        'description_long' => 'Iyon Topu elektronige zarar veren ve koruyucu kalkanlari destabilize eden iyon dalgalarini hizlandirir.',
     ],
     'plasma_turret' => [
-        'title' => 'Canhão de Plasma',
+        'title' => 'Plazma Atıcı',
         'description' => 'Os canhões de plasma tem o poder de uma erupção  solar e são desta maneira mais destrutivos do que as próprias naves destruidoras.',
-        'description_long' => 'Şimdiye kadar geliştirilen en gelişmiş savunma silah sistemlerinden biri olan Plazma Taret, plazma darbesini veya toroidini ateşleyen bir elektromanyetik hızlandırıcıya güç sağlamak için büyük bir nükleer reaktör yakıt hücresi kullanıyor. Operasyon sırasında Plazma tareti öncelikle hedefe kilitlenir ve atış sürecini başlatır. Taretin çekirdeğinde, gazların süper ısıtılması ve sıkıştırılmasıyla iyonlarından arındırılarak bir plazma küresi oluşturulur. Gaz aşırı ısıtılıp sıkıştırıldıktan ve bir plazma küresi oluşturulduktan sonra, enerji verilen elektromanyetik hızlandırıcıya yüklenir. Tamamen enerji verildiğinde hızlandırıcı etkinleştirilir ve bu da plazma küresinin amaçlanan hedefe son derece yüksek bir hızda fırlatılmasıyla sonuçlanır. Hedefin bakış açısına göre yaklaşan mavimsi plazma topu etkileyicidir, ancak bir kez çarptığında anında yıkıma neden olur. 
-
-Savunma tesisleri çok ağır hasar aldıkları anda devre dışı kalır. Bir savaştan sonra, arızalı savunma tesislerinin tekrar kullanıma sunulma şansı %70\'e kadardır.',
+        'description_long' => 'Plazma toplari günes püskürmesi gücünü açiga çikarirlar ve bu toplarin yok edici gücü Muhriplerinkinden  bile fazladir.',
     ],
     'small_shield_dome' => [
-        'title' => 'Pequeno Escudo Planetário',
+        'title' => 'Küçük Kalkan Kubbesi',
         'description' => 'O escudo planetário cobre o planeta para absorver quantidades enormes de tiros.',
-        'description_long' => 'Yeni dünyaları kolonileştirmek yeni bir tehlikeyi, uzay enkazını beraberinde getirdi. Büyük bir asteroit dünyayı ve tüm canlıları kolaylıkla yok edebilir. Kalkanlama teknolojisindeki ilerlemeler, bilim adamlarına tüm gezegeni yalnızca uzay enkazından değil, aynı zamanda düşman saldırısından da koruyacak bir kalkan geliştirmenin bir yolunu sağladı. Gezegenin etrafında büyük bir elektromanyetik alan yaratılarak, normalde gezegeni yok edecek olan uzay enkazı saptırıldı ve düşman İmparatorlukların saldırıları engellendi. İlk jeneratörler büyüktü ve kalkan orta düzeyde koruma sağlıyordu ancak daha sonra küçük kalkanların daha büyük ölçekli saldırılara karşı koruma sağlayamadığı keşfedildi. Küçük kalkan kubbesi, gelecek daha güçlü, daha gelişmiş bir gezegensel koruma sisteminin başlangıcıydı. 
-
-Bir savaştan sonra, arızalı savunma tesislerinin tekrar kullanıma sunulma şansı %70\'e kadardır.',
+        'description_long' => 'Küçük kalkan kubbesi gezegenin çevresini, inanılmaz miktarlarda enerji emebilen bir alanla kaplar.',
     ],
     'large_shield_dome' => [
-        'title' => 'Grande Escudo Planetário',
+        'title' => 'Büyük Kalkan Kubbesi',
         'description' => 'O grande escudo planetário cobre o planeta para absorver quantidades enormes de tiros. A sua resistência é muito maior daquela encontrada no pequeno escudo planetário.',
-        'description_long' => 'Büyük Kalkan Kubbesi, gezegensel kalkanların geliştirilmesinde bir sonraki adımdır; Küçük Kalkan Kubbesini geliştirmek için yıllar süren çalışmanın sonucudur. Daha yüksek enerjili bir elektromanyetik alan sağlayarak daha büyük bir düşman ateşi barajına dayanacak şekilde inşa edilen büyük kubbeler, çökmeden önce daha uzun bir koruma süresi sağlar. 
-
-Bir savaştan sonra, arızalı savunma tesislerinin tekrar kullanıma sunulma şansı %70\'e kadardır.',
+        'description_long' => 'Büyük kalkan kubbesi saldırılara karşı koyabilmek için daha fazla enerji kullanabilir.',
     ],
     'anti_ballistic_missile' => [
-        'title' => 'Míssil de Interceptação',
+        'title' => 'Yakalıyıcı Roketler',
         'description' => 'Os mísseis de interceptação destroem  os mísseis interplanetários atacantes.',
-        'description_long' => 'Anti Balistik Füzeler (ABM), gezegeninizde veya ayınızda Gezegenlerarası Füzeler (IPM) tarafından saldırıya uğradığında tek savunma hattınızdır. Bir IPM fırlatılması tespit edildiğinde, bu füzeler otomatik olarak devreye girer, uçuş bilgisayarlarında bir fırlatma kodunu işler, gelen IPM\'yi hedef alır ve müdahale etmek için fırlatılır. Uçuş sırasında hedef IPM sürekli takip edilir ve ABM hedefe ulaşıp saldıran IPM\'yi yok edene kadar rota düzeltmeleri uygulanır. Her ABM gelen bir IPM\'yi yok eder.',
+        'description_long' => 'Yakalayıcı roketler saldırıya geçen gezegenler arası roketleri yok eder.',
     ],
     'interplanetary_missile' => [
-        'title' => 'Míssil Interplanetário',
+        'title' => 'Gezegenlerarasi Roketler',
         'description' => 'Gezegenlerarası Füzeler düşman savunmasını yok eder.',
-        'description_long' => 'Gezegenlerarası Füzeler (IPM), hedefinizin savunmasını yok etmeye yönelik saldırı silahınızdır. En son teknolojiye sahip takip teknolojisini kullanan her füze, belirli sayıda savunmayı hedef alarak yok ediyor. Anti-madde bombasıyla donatılmış bu silahlar o kadar şiddetli bir yıkıcı güç salar ki, yok edilen kalkanlar ve savunmalar onarılamaz. Bu füzelere karşı koymanın tek yolu ABM\'lerdir.',
+        'description_long' => 'Gezegenlerarasi Roketler rakip savunmayi yokederler. Gezegenler-arası sistemlerinizin 0 menzil alanına sahiptir.',
     ],
     'kraken' => [
         'title' => 'KRAKEN',

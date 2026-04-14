@@ -32,33 +32,22 @@ return [
     'fusion_plant' => [
         'title' => 'Planta de Fusão',
         'description' => 'A planta de fusão é um reactor de fusão nuclear que produz um átomo de hélio para dois átomos de deutério usando extremamente altas temperaturas e pressão.',
-        'description_long' => 'Nas usinas de fusão, os núcleos de hidrogênio são fundidos em núcleos de hélio sob enormes temperaturas e pressões, liberando enormes quantidades de energia. Para cada grama de Deutério consumido, podem ser produzidos até 41,32*10^-13 Joule de energia; com 1 g você consegue produzir 172 MWh de energia. 
-
-Complexos de reatores maiores usam mais deutério e podem produzir mais energia por hora. O efeito energético poderia ser aumentado através da pesquisa de tecnologia energética. 
-
-A produção de energia da usina de fusão é calculada assim: 
-30 * [Planta de fusão de nível] * (1,05 + [Tecnologia de energia de nível] * 0,01) ^ [Planta de fusão de nível]',
+        'description_long' => 'Em plantas de fusão, os núcleos de hidrogénio são fundidos em núcleos de hélio sobre uma enorme temperatura e pressão, libertando uma quantidade enorme de energia. Para cada grama de Deutério consumido, pode ser produzido até 41,32*10^-13 joules de energia; Com 1g és capaz de produzir 172MWh de energia.Maiores reactores usam mais deutério e podem produzir mais energia por hora. O efeito da energia pode ser aumentado pesquisando a tecnologia de energia.A produção de energia da planta de fusão é calculada da seguinte forma:30 * [Nível da planta de fusão] * (1,05 + [Nível da tecnologia de energia] * 0,01) ^ [Nível da planta de fusão]',
     ],
     'metal_store' => [
         'title' => 'Armazém de Metal',
         'description' => 'Armazenamento de Metal.',
-        'description_long' => 'Esta gigantesca instalação de armazenamento é usada para armazenar minério metálico. Cada nível de atualização aumenta a quantidade de minério metálico que pode ser armazenado. Se os depósitos estiverem cheios, nenhum outro metal será extraído. 
-
-O Metal Storage protege uma certa porcentagem da produção diária da mina (máx. 10%).',
+        'description_long' => 'Este gigantesco edifício de armazenamento é utilizado para armazenar Metal. Cada nível de melhoramento aumenta a quantidade de Metal que pode ser armazenada. Se os armazéns estiverem cheios, não será minerado mais Metal. O Armazém de Metal protege uma certa percentagem da produção diária da mina (máx. 10 porcento).',
     ],
     'crystal_store' => [
         'title' => 'Armazém de Cristal',
         'description' => 'Armazenamento de Cristal.',
-        'description_long' => 'Enquanto isso, o cristal não processado será armazenado nesses gigantescos depósitos. A cada nível de atualização, aumenta a quantidade de cristal que pode ser armazenada. Se os estoques de cristais estiverem cheios, nenhum outro cristal será extraído. 
-
-O Crystal Storage protege uma certa porcentagem da produção diária da mina (máx. 10%).',
+        'description_long' => 'O Cristal por processar será entretanto armazenado nestas divisões de armazenamento gigantes. Com cada nível de melhoramento, a quantidade de Cristal que pode ser armazenada é aumentada. Se os armazéns de Cristal estiverem cheios, não será minerado mais Cristal. O Armazém de Cristal protege uma certa percentagem da produção diária da mina (máx. 10 porcento).',
     ],
     'deuterium_store' => [
         'title' => 'Tanque de Deutério',
         'description' => 'Os tanques de armazenamento de deutério podem conservar o deutério recentemente produzido para um uso futuro.',
-        'description_long' => 'O tanque de deutério serve para armazenar deutério recém-sintetizado. Uma vez processado pelo sintetizador, ele é canalizado para este tanque para uso posterior. A cada atualização do tanque, a capacidade total de armazenamento aumenta. Uma vez atingida a capacidade, nenhum outro Deutério será sintetizado. 
-
-O Deuterium Tank protege uma certa porcentagem da produção diária do sintetizador (máx. 10%).',
+        'description_long' => 'O Tanque de Deutério serve para armazenar Deutério recém-sintetizado. Assim que é processado pelo sintetizador, ele é transferido para este tanque através de tubos para posterior uso. Com cada melhoramento do tanque, a capacidade de armazenamento total é aumentada. Assim que a capacidade máxima for atingida, não será produzido mais Deutério. O Tanque de Deutério protege uma certa percentagem da produção diária da mina (máx. 10 porcento).',
     ],
     'robot_factory' => [
         'title' => 'Fábrica de Robots',
@@ -76,7 +65,7 @@ O Deuterium Tank protege uma certa porcentagem da produção diária do sintetiz
         'description_long' => 'Para ser capaz de pesquisar e evoluir na área das tecnologias, é necessária a construção de um laboratório de pesquisas. A evolução do nível do laboratório aumenta a velocidade de aprendizagem das tecnologias, mas abre também ao ensino e pesquisa de novas tecnologias. De maneira a poder realizar a pesquisa o mais rapidamente possível, os científicos escolhem o planeta mais evoluído e regressam depois ao planeta de origem com o conhecimento. De esta forma, é possível introduzir as novas tecnologias em todos os planetas do império e oferece novas pesquisas.',
     ],
     'alliance_depot' => [
-        'title' => 'Depósito da Aliança',
+        'title' => 'Depósito de Aliança',
         'description' => 'O depósito da aliança permite reabastecer frotas amigáveis em órbita defensiva.',
         'description_long' => 'O depósito da aliança fornece combustível às frotas amigas que estejam em órbita e em defesa. Por cada melhoramento do Depósito de Aliança, uma quantidade poderá ser enviada a cada hora à frota em órbita.',
     ],
@@ -91,94 +80,74 @@ O Deuterium Tank protege uma certa porcentagem da produção diária do sintetiz
         'description_long' => 'Os nanites são unidades robóticas minúsculas com um tamanho médio apenas de alguns nanómetros. Estes micróbios mecânicos são ligados entre si e programados para uma tarefa da construção, oferecendo assim uma velocidade de construção única. Os nanites operam a nível molecular, cada evolução reduz para metade o tempo de construção dos edifícios, das naves espaciais e das estruturas planetárias de defesa.',
     ],
     'terraformer' => [
-        'title' => 'Terra-Formador',
+        'title' => 'Terraformador',
         'description' => 'O Terra-Formador permite aumentar o número de áreas disponíveis para construção do planeta.',
-        'description_long' => 'Com a crescente construção nos planetas, até mesmo o espaço vital para a colônia está se tornando cada vez mais limitado. Os métodos tradicionais, como a construção em arranha-céus e a construção subterrânea, estão a tornar-se cada vez mais insuficientes. Um pequeno grupo de físicos de alta energia e nanoengenheiros finalmente chegou à solução: terraformação. 
-Fazendo uso de enormes quantidades de energia, o terraformador pode tornar aráveis ​​extensões inteiras de terra ou mesmo continentes. Este edifício alberga a produção de nanites criadas especificamente para este fim, que garantem uma qualidade consistente do solo em todo o edifício. 
-
-Cada nível do terraformador permite o cultivo de 5 campos. A cada nível, o terraformador ocupa um campo. A cada 2 níveis do terraformer você receberá 1 campo de bônus. 
-
-Uma vez construído, o terraformador não pode ser desmontado.',
+        'description_long' => 'Com a crescente construção em planetas, até mesmo o espaço habitável da colónia se está a tornar cada vez mais limitado. Métodos tradicionais como construção na vertical ou subterrânea estão a tornar-se cada vez mais ineficazes. Um pequeno grupo de físicos de alta-energia e nano-engenheiros eventualmente chegaram à solução: terraformismo.Utilizando tremendas quantidades de energia, o Terra-Formador é capaz de transformar grandes pedaços de terra, ou até mesmo continentes, em terreno arável. Este edifício abriga a produção de nanites criadas especificamente para esse fim, as quais asseguram uma qualidade de solo consistente. Cada Terra-Formador permite que 5 campos sejam cultivados. Com cada nível, o Terra-Formador ocupa um campo ele mesmo. A cada 2 níveis de Terra-Formador recebes 1 campo de bónus.Uma vez construído, o Terra-Formador não pode ser desmantelado.',
     ],
     'space_dock' => [
         'title' => 'Estaleiro Espacial',
         'description' => 'Destroços de frota podem ser reparados no Estaleiro Espacial.',
-        'description_long' => 'A Doca Espacial oferece a possibilidade de reparar naves destruídas em batalha que deixaram destroços. O tempo de reparo leva no máximo 12 horas, mas leva pelo menos 30 minutos até que os navios possam voltar a funcionar. 
-
-Os reparos devem começar dentro de 3 dias após a criação dos destroços. Os navios reparados deverão retornar ao serviço manualmente após a conclusão dos reparos. Se isso não for feito, navios individuais de qualquer tipo retornarão ao serviço após 3 dias. 
-
-Os destroços só aparecem se mais de 150.000 unidades tiverem sido destruídas, incluindo os próprios navios que participaram do combate com um valor de pelo menos 5% dos pontos do navio. 
-
-Como a Doca Espacial flutua em órbita, não requer um campo planetário.',
+        'description_long' => 'O Estaleiro Espacial permite a reparação das naves destruídas em batalha e deixadas para trás como destroços de frota. O tempo máximo de reparação são 12 horas, mas será preciso um mínimo de 30 minutos até que as naves possam regressar ao serviço. As reparações devem ser iniciadas no prazo de 3 dias após a criação dos destroços de frota. As naves reparadas precisam de regressar manualmente ao serviço após a conclusão das reparações. Caso isso não seja feito, naves individuais de qualquer tipo regressarão ao serviço após 3 dias. Os destroços de frota só aparecem se tiverem sido destruídas mais de 150.000 unidades. Como o Estaleiro Espacial está em órbita, não é necessário um campo no planeta.',
     ],
     'lunar_base' => [
         'title' => 'Base Lunar',
         'description' => 'Como a Lua não tem atmosfera, é necessária uma base lunar para gerar espaço habitável.',
-        'description_long' => 'Uma lua não tem atmosfera, então uma base lunar deve primeiro ser construída antes que um assentamento possa ser estabelecido. Isso então fornece oxigênio, aquecimento e gravidade. Com cada nível construído, uma área maior de vida e desenvolvimento é fornecida dentro da biosfera. Cada nível construído permite três campos para outros edifícios. A cada nível, a base lunar ocupa um campo. 
-Uma vez construída, a base lunar não pode ser demolida.',
+        'description_long' => 'Como uma lua não possui atmosfera, é necessário construir uma Base Lunar antes de ser habitável. Esta proporciona oxigénio, aquecimento e gravidade. Cada nível de construção garante uma maior área habitacional e de desenvolvimento dentro da biosfera. Cada nível da Base disponibiliza três espaços de construção para outros edifícios. A cada nível de construção, a Base Lunar ocupa um espaço ela mesma. Assim que construída, a Base Lunar não pode ser destruída.',
     ],
     'sensor_phalanx' => [
         'title' => 'Sensor Phalanx',
         'description' => 'Usando a falange de sensores, frotas de outros impérios podem ser descobertas e observadas. Quanto maior o conjunto de falanges do sensor, maior será o alcance que ele pode varrer.',
-        'description_long' => 'Utilizando sensores de alta resolução, o Sensor Phalanx primeiro varre o espectro de luz, a composição dos gases e as emissões de radiação de um mundo distante e transmite os dados para um supercomputador para processamento. Uma vez obtida a informação, o supercomputador compara as mudanças no espectro, na composição do gás e nas emissões de radiação, com um gráfico de linha de base de mudanças conhecidas no espectro criado por vários movimentos de navios. Os dados resultantes exibem a atividade de qualquer frota dentro do alcance da falange. Para evitar o superaquecimento do supercomputador durante o processo, ele é resfriado utilizando 5k de deutério processado. 
-Para usar o Phalanx, clique em qualquer planeta no Galaxy View dentro do alcance dos seus sensores.',
+        'description_long' => 'Um dispositivo de alta resolução do sensor é utilizado para espiar um espectro de frequência. As variações de energia mostram informações sobre o movimento de frotas. Para realizar uma varredura é necessária uma quantidade de energia sob forma de deutério disponível na lua.',
     ],
     'jump_gate' => [
-        'title' => 'Portal de Salto Quântico',
+        'title' => 'Portal de Salto',
         'description' => 'Os portões de salto são enormes transceptores capazes de enviar até mesmo a maior frota em pouco tempo para um portão de salto distante.',
-        'description_long' => 'Um Jump Gate é um sistema de transceptores gigantes capazes de enviar até mesmo as maiores frotas para um Portão receptor em qualquer lugar do universo sem perda de tempo. Utilizando tecnologia semelhante à de um Buraco de Minhoca para realizar o salto, não é necessário deutério. Um período de recarga de alguns minutos deve passar entre os saltos para permitir a regeneração. Transportar recursos através do Portal também não é possível. A cada nível de atualização, o tempo de espera do portão de salto pode ser reduzido.',
+        'description_long' => 'O Portal de Salto Quântico é um sistema de transmissores gigantes capaz de enviar até mesmo as maiores frotas para um Portal receptor em qualquer parte do Universo, e sem qualquer perda de tempo. Usando tecnologia semelhante à de um Buraco de Verme para conseguir o salto, não é necessário usar Deutério. Um período de recarga de alguns minutos tem de ser aguardado entre saltos para permitir a recuperação. Também não é possível transportar recursos através do Portal. O tempo de espera do Portal de Salto é reduzido com cada nível de melhoramento, até um máximo de 9.',
     ],
     'energy_technology' => [
-        'title' => 'Tecnologia de Energia',
+        'title' => 'Tecnologia Energética',
         'description' => 'Compreendendo a tecnologia de tipos diferentes de energia, muitas novas e avançadas tecnologias podem ser adoptadas. A tecnologia de energia é de grande importância para um laboratório de pesquisas moderno.',
-        'description_long' => 'À medida que vários campos de pesquisa avançavam, descobriu-se que a tecnologia atual de distribuição de energia não era suficiente para iniciar certas pesquisas especializadas. Com cada atualização da sua Tecnologia Energética, novas pesquisas podem ser realizadas que desbloqueiam o desenvolvimento de naves e defesas mais sofisticadas.',
+        'description_long' => 'A tecnologia da energia trata do conhecimento das fontes de energia, das soluções de armazenamento e das tecnologias que fornecem o que é mais básico: Energia. São necessários determinados níveis de evolução desta tecnologia para permitir o acesso a novas tecnologias que confiam no conhecimento da energia.',
     ],
     'laser_technology' => [
         'title' => 'Tecnologia Laser',
         'description' => 'Um feixe de luz concentrado que causa dano a um objecto quando o atinge.',
-        'description_long' => 'Lasers (amplificação de luz por emissão estimulada de radiação) produzem uma emissão intensa e rica em energia de luz coerente. Esses dispositivos podem ser usados ​​em todos os tipos de áreas, desde computadores ópticos até armas pesadas a laser, que cortam facilmente a tecnologia de armaduras. A tecnologia laser fornece uma base importante para a pesquisa de outras tecnologias de armas.',
+        'description_long' => 'Laser proporciona uma importante base para a investigação de outras tecnologias de armamento.',
     ],
     'ion_technology' => [
-        'title' => 'Tecnologia de Iões',
+        'title' => 'Tecnologia Iónica',
         'description' => 'A concentração de iões permite a construção de canhões capazes de infligir enormes danos e reduz os custos de demolição em 4%.',
-        'description_long' => 'Os íons podem ser concentrados e acelerados em um feixe mortal. Esses feixes podem então causar danos enormes. Os nossos cientistas também desenvolveram uma técnica que reduzirá claramente os custos de desconstrução de edifícios e sistemas. Para cada nível de pesquisa, os custos de desconstrução cairão 4%.',
+        'description_long' => 'Os iões podem ser concentrados e acelerados num raio mortífero. Estes raios são capazes de infligir enormes danos. Os nossos cientistas também desenvolveram um método que irá claramente reduzir os custos de demolição de edifícios e sistemas. Por cada nível da pesquisa, os custos de demolição serão reduzidos em 4%.',
     ],
     'hyperspace_technology' => [
         'title' => 'Tecnologia de Hiperespaço',
         'description' => 'Ao integrar a 4ª e a 5ª dimensões é agora possível pesquisar um novo tipo de acionamento mais económico e eficiente.',
-        'description_long' => 'Em teoria, a ideia de viagem no hiperespaço depende da existência de uma dimensão separada e adjacente. Quando ativado, um impulso hiperespacial desvia a nave para esta outra dimensão, onde ela pode cobrir vastas distâncias em um período de tempo bastante reduzido em relação ao tempo que levaria no espaço "normal". Ao atingir o ponto no hiperespaço que corresponde ao seu destino no espaço real, ele ressurge. 
-Uma vez pesquisado um nível suficiente de Tecnologia do Hiperespaço, a Unidade do Hiperespaço não é mais apenas uma teoria. Cada melhoria neste drive aumenta a capacidade de carga de seus navios em 5% do valor base.',
+        'description_long' => 'A tecnologia de hiperespaço fornece o conhecimento para as viagens no hiperespaço utilizadas por muitas naves de guerra. É uma nova e complicada espécie de tecnologia que requer um equipamento caro de laboratório e facilidades de testes. Cada melhoramento deste motor aumenta a capacidade de carregamento das tuas naves em 5% do valor base.',
     ],
     'plasma_technology' => [
         'title' => 'Tecnologia de Plasma',
         'description' => 'Uma evolução da Tecnologia de Iões, onde Plasma de alta-energia é acelerado, infligindo dano massivo e, adicionalmente, optimizando a produção de Metal, Cristal e Deutério (1%/0,66%/0,33% por nível).',
-        'description_long' => 'Um desenvolvimento adicional da tecnologia de íons que não acelera os íons, mas sim o plasma de alta energia, que pode então infligir danos devastadores no impacto com um objeto. Nossos cientistas também encontraram uma maneira de melhorar visivelmente a mineração de metais e cristais usando esta tecnologia. 
-
-A produção de metal aumenta 1%, a produção de cristais 0,66% e a produção de deutério 0,33% por nível de construção da tecnologia de plasma.',
+        'description_long' => 'de Iões, onde Plasma de alta-energia, em vez de iões, é acelerado, infligindo dano massivo no impacto contra um objecto. Os nossos cientistas encontraram também uma forma de aumentar notoriamente a produção de Metal e Cristal com esta tecnologia. de Plasma.',
     ],
     'combustion_drive' => [
         'title' => 'Motor de Combustão',
         'description' => 'O desenvolvimento deste motor torna algumas naves mais rápidas, embora cada nível aumente a velocidade em apenas 10% do valor base.',
-        'description_long' => 'O Combustion Drive é a tecnologia mais antiga, mas ainda está em uso. Com o Combustion Drive, a exaustão é formada a partir de propulsores transportados dentro do navio antes do uso. Numa câmara fechada, as pressões são iguais em cada direção e não ocorre aceleração. Se for proporcionada uma abertura no fundo da câmara então a pressão já não será oposta nesse lado. A pressão restante dá um impulso resultante no lado oposto à abertura, que impulsiona o navio para frente, expelindo o escapamento para trás em velocidade extremamente alta. 
-
-Com cada nível do Combustion Drive desenvolvido, a velocidade de navios de carga pequenos e grandes, caças leves, recicladores e sondas de espionagem aumenta em 10%.',
+        'description_long' => 'O Motor de Combustão é uma das tecnologias mais velhas, mas ainda é usado. Com o Motor de Combustão, pressão de escape é formada a partir de propulsores transportados no navio antes do uso. Numa câmara fechada, as pressões são iguais em ambas as direcções, e não ocorre qualquer aceleração. Se existir uma abertura no fundo da câmara, então a pressão deixa de ter oposição desse lado. A pressão restante cria uma resultante propulsão no lado oposto ao da abertura, empurrando a nave em frente através da expulsão do escape a uma velocidade extremamente alta. Com cada nível desenvolvido do Motor de Combustão, a velocidade de Cargueiros Pequenos e Grandes, Caças Ligeiros, Recicladores e Sondas de Espionagem é aumentada em 10%.',
     ],
     'impulse_drive' => [
-        'title' => 'Motor de Impulsão',
+        'title' => 'Motor de Impulso',
         'description' => 'O Motor de Impulsão é baseado no princípio da repulsão. Desenvolvimentos posteriores deste motor tornarão algumas naves mais rápidas, embora cada nível aumente a velocidade em apenas 20% do valor base.',
-        'description_long' => 'O impulso é baseado no princípio de recuo, pelo qual a emissão estimulada de radiação é produzida principalmente como um produto residual da fusão do núcleo para ganhar energia. Além disso, outras massas podem ser injetadas. Com cada nível do Impulse Drive desenvolvido, a velocidade dos bombardeiros, cruzadores, caças pesados ​​e navios coloniais aumenta em 20% do valor base. Além disso, os pequenos transportadores são equipados com unidades de impulso assim que seu nível de pesquisa atinge o nível 5. Assim que a pesquisa da Unidade de Impulso atinge o nível 17, os Recicladores são reequipados com Unidades de Impulso. 
-
-Os mísseis interplanetários também viajam mais longe em cada nível.',
+        'description_long' => 'O Motor de Impulsão baseia-se no princípio da repulsão, pelo qual a estimulação por emissão de radiação é maioritariamente criada como um produto residual da obtenção de energia da fusão do núcleo. Adicionalmente, podem ser injectadas outras massas. Com cada nível de desenvolvimento do Motor de Impulsão, a velocidade dos Bombardeiros, Cruzadores, Caças Pesados e Naves de Colonização é aumentada em 20% do seu valor base. Adicionalmente, os cargueiros pequenos são remodelados com Motores de Impulsão assim que a sua pesquisa atingir o nível 5. Assim que a pesquisa de Motor de Impulsão tiver atingido o nível 17, os Recicladores serão remodelados com Motores de Impulsão. Mísseis Interplanetários também têm um maior alcance com cada nível.',
     ],
     'hyperspace_drive' => [
-        'title' => 'Motor Propulsor de Hiperespaço',
+        'title' => 'Propulsão Hiperespaço',
         'description' => 'Os motores de Hiperespaço permitem entrar em hiperespaço graças a uma janela no espaço, de maneira a diminuir a duração dos voos espaciais. O hiperespaço é um espaço alternativo com mais de 3 dimensões.',
-        'description_long' => 'Nas imediações do navio, o espaço é deformado para que longas distâncias possam ser percorridas muito rapidamente. Quanto mais o Hyperspace Drive é desenvolvido, mais forte é a natureza distorcida do espaço, fazendo com que a velocidade das naves equipadas com ele (Battlecruisers, Battleships, Destroyers, Deathstars, Pathfinders e Reapers) aumente em 30% por nível. Além disso, o bombardeiro é construído com um Hyperspace Drive assim que a pesquisa atinge o nível 8. Assim que a pesquisa do Hyperspace Drive atinge o nível 15, o Recycler é reformado com um Hyperspace Drive.',
+        'description_long' => 'Nas imediações da nave, o espaço é distorcido para que grandes distâncias possam ser cobertas muito rapidamente. Quanto mais desenvolvido for o Motor Propulsor de Hiperespaço, mais forte será a distorção espacial, pelo que a velocidade das naves que com ele se encontram equipadas (Interceptores, Naves de Batalha, Destruidores, Estrelas da Morte, Exploradoras e Ceifeiras) aumenta em 30% por nível. Adicionalmente, o Bombardeiro é construído com um Motor Propulsor de Hiperespaço assim que a pesquisa atinge o nível 8. Assim que a pesquisa de Motor Propulsor de Hiperespaço atinge o nível 15, o Reciclador é remodelado com um Motor Propulsor de Hiperespaço.',
     ],
     'espionage_technology' => [
         'title' => 'Tecnologia de Espionagem',
         'description' => 'Com esta tecnologia podes obter informações sobre jogadores.',
-        'description_long' => 'A Tecnologia de Espionagem é uma importante ferramenta de reconhecimento dos teus inimigos. Esta tecnologia permite-te observar os recursos, frota, edifícios e níveis de pesquisa dos teus adversários, recorrendo a sondas construídas especialmente para este efeito. Quando no planeta do teu adversário, estas sondas transmitem informações encriptadas para o teu planeta onde serão processadas num computador. Depois de processada, a informação acerca do alvo espiado é-te revelada onde poderás então avaliar o estado do teu inimigo. O nível da tua tecnologia de espionagem é extremamente importante. Se o teu alvo apresentar um nível superior ao teu terás de enviar mais sondas para recolher toda a informação de que necessitas. Contudo, aumenta igualmente o risco de detecção das mesmas, levando a uma possível destruição. Mas se enviares poucas sondas podes não conseguir obter as informações mais importantes acerca do teu alvo o que, caso ataques o mesmo, poderá levar à destruição da tua frota.  Em determinados níveis serão colocados novos sistemas no que toca a avisos sobre ataques: No nível 2, o número total de naves ofensivas será apresentado juntamente com um simples aviso de ataque. No nível 4 aparece o tipo e número de naves que vão atacar. No nível 8 é mostrado o número exacto de cada tipo de nave enviada.',
+        'description_long' => 'de Espionagem é uma importante ferramenta de reconhecimento dos teus inimigos. Esta tecnologia permite-te observar os recursos, frota, edifícios e níveis de pesquisa dos teus adversários, recorrendo a sondas construídas especialmente para este efeito. Quando no planeta do teu adversário, estas sondas transmitem informações encriptadas para o teu planeta onde serão processadas num computador. Depois de processada, a informação acerca do alvo espiado é-te revelada onde poderás então avaliar o estado do teu inimigo. O nível da tua tecnologia de espionagem é extremamente importante. Se o teu alvo apresentar um nível superior ao teu terás de enviar mais sondas para recolher toda a informação de que necessitas. Contudo, aumenta igualmente o risco de detecção das mesmas, levando a uma possível destruição. Mas se enviares poucas sondas podes não conseguir obter as informações mais importantes acerca do teu alvo o que, caso ataques o mesmo, poderá levar à destruição da tua frota. Em determinados níveis serão colocados novos sistemas no que toca a avisos sobre ataques: No nível 2, o número total de naves ofensivas será apresentado juntamente com um simples aviso de ataque. No nível 4 aparece o tipo e número de naves que vão atacar. No nível 8 é mostrado o número exacto de cada tipo de nave enviada.',
     ],
     'computer_technology' => [
         'title' => 'Tecnologia de Computadores',
@@ -188,18 +157,17 @@ Os mísseis interplanetários também viajam mais longe em cada nível.',
     'astrophysics' => [
         'title' => 'Astrofísica',
         'description' => 'Com o módulo de pesquisa de astrofísica, as naves poderão ingressar em longas expedições. Poderás também colonizar um planeta extra a cada dois desenvolvimentos desta tecnologia.',
-        'description_long' => 'Outras descobertas no campo da astrofísica permitem a construção de laboratórios que podem ser instalados em cada vez mais navios. Isso torna possíveis longas expedições em áreas inexploradas do espaço. Além disso, esses avanços podem ser usados ​​para colonizar ainda mais o universo. Para cada dois níveis desta tecnologia, um planeta adicional pode ser utilizado.',
+        'description_long' => 'Mais desenvolvimentos no campo da astrofísica permite-te a a construção de laboratórios que por sua vez poderão ser adaptados a um maior número de naves. Isto permite-nos fazer expedições a áreas remotas do espaço possíveis. Esta tecnologia permite-te ainda colonizar as galáxias. Por cada 2 níveis desta tecnologia poderás colonizar um planeta extra.',
     ],
     'intergalactic_research_network' => [
-        'title' => 'Rede Intergaláctica de Pesquisas',
+        'title' => 'Rede Intergaláctica de Pesquisa',
         'description' => 'Os cientistas dos teus planetas podem comunicar uns com os outros graças a esta rede.',
-        'description_long' => 'Esta é a sua rede no espaço profundo para comunicar os resultados da pesquisa às suas colônias. Com o IRN, podem ser alcançados tempos de investigação mais rápidos através da ligação de laboratórios de investigação de nível mais elevado, iguais ao nível do IRN desenvolvido. 
-Para funcionar, cada colônia deve ser capaz de conduzir a pesquisa de forma independente.',
+        'description_long' => 'Os cientistas dos teus planetas podem comunicar uns com os outros graças a esta rede.No nível 0, terás apenas o benefício de ligar o satélite ao teu laboratório de pesquisas mais evoluído. Com o nível 1, ligarás os 2 laboratórios mais evoluídos. Cada nível acrescenta mais um laboratório. Desta maneira, as pesquisas serão efectuadas com a máxima velocidade.',
     ],
     'graviton_technology' => [
-        'title' => 'Tecnologia de Gravitação',
+        'title' => 'Tecnologia Gravitão',
         'description' => 'Com o aceleramento de partículas gravitacionais, um campo gravitacional artificial é criado com uma força atractiva que pode não só destruir naves mas também luas inteiras.',
-        'description_long' => 'Um gráviton é uma partícula elementar sem massa e sem carga. Ele determina o poder gravitacional. Ao disparar uma carga concentrada de grávitons, um campo gravitacional artificial pode ser construído. Não muito diferente de um buraco negro, ele atrai massa para si. Assim, pode destruir naves e até luas inteiras. Para produzir uma quantidade suficiente de grávitons, são necessárias enormes quantidades de energia. A Pesquisa Graviton é necessária para construir uma Estrela da Morte destrutiva.',
+        'description_long' => 'Um gravitão é uma partícula elementar sem massa e sem carga. Esta partícula determina o poder gravitacional. Disparando uma carga concentrada de gravitões, pode ser construído um campo gravitacional artificial. Não muito diferente de um buraco negro, ele atrai para si toda a massa. Dessa forma, é capaz de destruir naves e até mesmo Luas inteiras. Para produzir uma quantidade suficiente de gravitões, são necessárias grandes quantidades de energia. A pesquisa de Gravitação é necessária para a construção de uma Estrela da Morte destrutiva.',
     ],
     'weapon_technology' => [
         'title' => 'Tecnologia de Armas',
@@ -207,54 +175,44 @@ Para funcionar, cada colônia deve ser capaz de conduzir a pesquisa de forma ind
         'description_long' => 'A tecnologia de armas trata do desenvolvimento dos sistemas de armas existentes. É focalizada principalmente no aumento do poder e da eficiência das armas.Com esta tecnologia, e aumentando o seu nível, a mesma arma tem mais poder e causa mais danos - cada nível aumenta o poder de fogo em 10%.A tecnologia de armas é importante permanecer a um nível elevado, para não facilitar a tarefa dos inimigos.',
     ],
     'shielding_technology' => [
-        'title' => 'Tecnologia de Escudo',
+        'title' => 'Tecnologia de Escudos',
         'description' => 'A tecnologia de escudo torna os escudos dos navios e instalações defensivas mais eficientes. Cada nível de tecnologia de escudo aumenta a força dos escudos em 10% do valor base.',
         'description_long' => 'A tecnologia de escudo é utilizada para criar um escudo protector. Cada evolução do nível desta tecnologia aumenta a protecção em 10%. O nível do melhoramento aumenta basicamente a quantidade de energia que o escudo pode absorver antes de ser destruido. Esta tecnologia não só aumenta a qualidade dos escudos das naves, como também do escudo protector planetário.',
     ],
     'armor_technology' => [
         'title' => 'Tecnologia de Blindagem',
         'description' => 'As ligas altamente sofisticadas ajudam a aumentar a proteção de uma nave adicionando 10% à blindagem, a cada nível.',
-        'description_long' => 'O ambiente do espaço profundo é hostil. Os pilotos e a tripulação em diversas missões não só enfrentaram intensa radiação solar, como também enfrentaram a perspectiva de serem atingidos por detritos espaciais ou destruídos pelo fogo inimigo num ataque. Com a descoberta de uma liga de carboneto de alumínio-lítio e titânio, que foi considerada leve e durável, isso proporcionou à tripulação um certo grau de proteção. Com cada nível de Tecnologia de Armadura desenvolvido, uma liga de maior qualidade é produzida, o que aumenta a resistência da armadura em 10%.',
+        'description_long' => 'Para uma dada liga que provou ser eficaz, a estrutura molecular pode ser alterada de maneira a manipular o seu comportamento numa situação de combate e incorporar as realizações tecnológicas. Cada evolução do nível desta tecnologia aumenta a blindagem em 10%.',
     ],
     'small_cargo' => [
         'title' => 'Cargueiro Pequeno',
         'description' => 'O cargueiro pequeno é uma nave muito ágil usada para transportar recursos de um planeta para outro.',
-        'description_long' => 'Os transportadores são quase tão grandes como os caças, mas renunciam a unidades de alto desempenho e armamento a bordo para obterem ganhos na sua capacidade de carga. Como resultado, um transportador só deve ser enviado para batalhas quando estiver acompanhado por navios prontos para o combate. 
-
-Assim que o Impulse Drive atinge o nível de pesquisa 5, o pequeno transportador viaja com velocidade base aumentada e é equipado com um Impulse Drive.',
+        'description_long' => 'Cargueiros são aproximadamente do tamanho de Caças, mas trocam motores de alto-desempenho e armamento por capacidade de transporte de carga. Como resultado, um Cargueiro só deve ser enviado para batalhas quando acompanhado de naves de combate.Assim que a investigação de Motor de Impulsão tiver atingido o nível 5, os Cargueiros Pequenos terão acesso a uma velocidade base mais alta e estarão equipados com um Motor de Impulsão.',
     ],
     'large_cargo' => [
         'title' => 'Cargueiro Grande',
         'description' => 'O cargueiro grande é uma versão melhorada do cargueiro pequeno, tem um espaço maior para os recursos a transportar mas é mais lento.',
-        'description_long' => 'Com o passar do tempo, os ataques às colônias resultaram na captura de quantidades cada vez maiores de recursos. Como resultado, pequenas cargas eram enviadas em massa para compensar as capturas maiores. Rapidamente se descobriu que uma nova classe de navio era necessária para maximizar os recursos capturados em ataques, mas também para ser rentável. Depois de muito desenvolvimento, nasceu o Large Cargo. 
-
-Para maximizar os recursos que podem ser armazenados nos porões, este navio tem poucas armas ou armaduras. Graças ao motor de combustão altamente desenvolvido instalado, serve como o fornecedor de recursos mais económico entre planetas e mais eficaz em ataques a mundos hostis.',
+        'description_long' => 'Esta nave não deve atacar sozinha, pois a sua estrutura não lhe permite resistir muito tempo aos sistemas de defesa. O seu motor de combustão altamente sofisticado permite-lhe ser um fornecedor rápido do recursos. Normalmente, acompanha as frotas em invasões a planetas para capturar e roubar recursos ao inimigo.',
     ],
     'colony_ship' => [
-        'title' => 'Nave de Colonização',
+        'title' => 'Nave Colonizadora',
         'description' => 'Poderás colonizar planetas vazios com esta nave.',
-        'description_long' => 'No século XX, o Homem decidiu partir para as estrelas. Primeiro, estava pousando na Lua. Depois disso, uma estação espacial foi construída. Marte foi colonizado logo depois. Logo foi determinado que o nosso crescimento dependia da colonização de outros mundos. Cientistas e engenheiros de todo o mundo reuniram-se para desenvolver a maior conquista de sempre do homem. Nasce o Navio Colônia. 
-
-Esta nave é usada para preparar um planeta recém-descoberto para colonização. Assim que chega ao destino, o navio é instantaneamente transformado em espaço habitual para auxiliar no povoamento e mineração do novo mundo. O número máximo de planetas é assim determinado pelo progresso na pesquisa astrofísica. Dois novos níveis de Astrotecnologia permitem a colonização de um planeta adicional.',
+        'description_long' => 'No século XX, a humanidade decidiu viajar em direção às estrelas. Para começar, aterrou na Lua. Depois, construiu uma estação espacial. Pouco depois, colonizou Marte. Depressa se determinou que a nossa expansão dependia da colonização de outros mundos. Cientistas e engenheiros de todo o mundo reuniram-se para desenvolver o maior feito de sempre da humanidade. Foi então que nasceu a Nave de Colonização. Esta nave é utilizada para preparar um planeta recentemente descoberto para a colonização. Assim que chega ao destino, a nave é instantaneamente transformada num espaço de habitação para garantir a sobrevivência da população e a extração de recursos do novo mundo. Como tal, o número máximo de planetas é determinado pelo progresso da pesquisa de Astrofísica. Dois níveis adicionais de Astrofísica permitem colonizar mais um planeta.',
     ],
     'recycler' => [
         'title' => 'Reciclador',
         'description' => 'Os recicladores são as únicas naves capazes de coletar campos de detritos flutuando na órbita de um planeta após o combate.',
-        'description_long' => 'O combate no espaço assumiu escalas cada vez maiores. Milhares de navios foram destruídos e os recursos de seus restos pareciam ter sido perdidos para sempre nos campos de destroços. Os navios de carga normais não conseguiam aproximar-se o suficiente destes campos sem correr o risco de danos substanciais. 
-Um desenvolvimento recente em tecnologias de blindagem contornou esse problema com eficiência. Foi criada uma nova classe de navios semelhantes aos Transportadores: os Recicladores. Seus esforços ajudaram a reunir os recursos perdidos e depois salvá-los. Os destroços não representavam mais nenhum perigo real graças aos novos escudos. 
-
-Assim que a pesquisa do Impulse Drive atingir o nível 17, os Recicladores serão reequipados com Impulse Drives. Assim que a pesquisa da Unidade Hiperespacial atingir o nível 15, os Recicladores serão reequipados com Unidades Hiperespaciais.',
+        'description_long' => 'O combate espacial entrou numa escala ainda maior. Milhares de naves foram destruídas e os recursos nelas usadas pareciam estar para sempre perdidos em campos de destroços. Naves de transporte de carga normais não eram capazes de se aproximar suficientemente destes campos sem arriscarem sofrer dano substancial. Um desenvolvimento recente na área das tecnologias de escudo foi capaz de ultrapassar este problema de forma eficiente. Foi criada uma nova classe de naves semelhante aos Cargueiros: os Recicladores. Os seus esforços ajudaram a recuperar e reutilizar os recursos que se pensavam perdidos. Os destroços deixaram de ser um perigo graças aos novos escudos. Assim que a investigação do Motor de Impulsão tiver atingido o nível 17, os Recicladores serão remodelados com Motores de Impulsão. Assim que a investigação de Motor Propulsor de Hiperespaço tiver atingido o nível 15, os Recicladores serão remodelados com Motores Propulsores de Hiperespaço.',
     ],
     'espionage_probe' => [
         'title' => 'Sonda de Espionagem',
         'description' => 'As sondas de espionagem são drones com uma rapidez impressionante de propulsão utilizados para espiar os inimigos.',
-        'description_long' => 'As sondas de espionagem são drones pequenos e ágeis que fornecem dados sobre frotas e planetas. Equipado com motores especialmente projetados, permite cobrir grandes distâncias em apenas alguns minutos. Uma vez em órbita ao redor do planeta alvo, eles rapidamente coletam dados e transmitem o relatório através da sua Deep Space Network para avaliação. Mas existe um risco para o aspecto da recolha inteligente. Durante o tempo em que o relatório é transmitido de volta à sua rede, o sinal pode ser detectado pelo alvo e as sondas podem ser destruídas.',
+        'description_long' => 'de Espionagem bem desenvolvida.',
     ],
     'solar_satellite' => [
         'title' => 'Satélite Solar',
         'description' => 'Os satélites solares são plataformas simples de células solares, localizadas em uma órbita alta e estacionária. Eles coletam a luz solar e a transmitem para a estação terrestre via laser.',
-        'description_long' => 'Os cientistas descobriram um método de transmissão de energia elétrica para a colônia usando satélites especialmente projetados em órbita geossíncrona. Os satélites solares coletam energia solar e a transmitem para uma estação terrestre usando tecnologia laser avançada. A eficiência de um satélite solar depende da intensidade da radiação solar que recebe. Em princípio, a produção de energia em órbitas mais próximas do Sol é maior do que para planetas em órbitas distantes do Sol. 
-Devido à sua boa relação custo/desempenho, os satélites solares podem resolver muitos problemas energéticos. Mas cuidado: os satélites solares podem ser facilmente destruídos em batalha.',
+        'description_long' => 'Os cientistas descobriram um método de transferir energia eléctrica para a colónia recorrendo a satélites, em órbitas geossíncronas, especialmente desenhados para o efeito. Os satélites solares recolhem a energia solar e transferem-na para uma estação terrestre utilizando avançada tecnologia laser. A eficiência do satélite solar depende da intensidade da radiação solar recebida. Em princípio, a energia produzida em planetas em órbitas próximas do sol é maior à produzida em órbitas distantes deste. Devido à boa razão custo/desempenho, os satélites solares podem resolver muitos problemas energéticos. Mas atenção: os satélites solares podem ser facilmente destruídos em combate.',
     ],
     'crawler' => [
         'title' => 'Rastejador',
@@ -262,131 +220,104 @@ Devido à sua boa relação custo/desempenho, os satélites solares podem resolv
         'description_long' => 'O Rastejador é um enorme veículo que aumenta a produção de minas e sintetizadores. É mais ágil do que aparenta, mas não é particularmente robusto. Cada Rastejador aumenta a produção de Metal em 0,02%, a produção de Cristal em 0,02% e a produção de Deutério em 0,02%. Como coletor, a produção também aumenta. O bónus total máximo depende do nível global das tuas minas.',
     ],
     'pathfinder' => [
-        'title' => 'Exploradora',
+        'title' => 'Explorador',
         'description' => 'A Pathfinder é uma nave rápida e ágil, construída especificamente para expedições em setores desconhecidos do espaço.',
-        'description_long' => 'O Pathfinder é o mais recente desenvolvimento em tecnologia de exploração. Este navio foi especialmente projetado para membros da classe Discoverer para maximizar seu potencial. Equipado com sistemas avançados de digitalização e um grande compartimento de carga para recuperação de recursos, o Pathfinder é excelente em expedições. Seus sensores sofisticados podem detectar recursos valiosos e anomalias que passariam despercebidas por outras naves. O navio combina alta velocidade com boa capacidade de carga, tornando-o perfeito para missões rápidas de exploração e coleta de recursos em setores distantes.',
+        'description_long' => 'As Exploradoras são rápidas e espaçosas. O seu método de construção foi otimizado para avançarem por territórios desconhecidos. São capazes de descobrir e minerar Campos de Destroços durante expedições. Adicionalmente, podem encontrar itens durante expedições. O rendimento total também é aumentado.',
     ],
     'light_fighter' => [
         'title' => 'Caça Ligeiro',
         'description' => 'O caça ligeiro é uma nave facilmente manobrável. O custo desta nave não é particularmente elevado, mas a capacidade de resistência e o sistema de armas do caça ligeiro não lhe permitem rivalizar com sistemas de defesa sofisticados.',
-        'description_long' => 'Este é o primeiro navio de combate que todos os imperadores construirão. O caça leve é ​​uma nave ágil, mas vulnerável quando está sozinho. Em grande número, podem tornar-se uma grande ameaça para qualquer império. Eles são os primeiros a acompanhar cargas pequenas e grandes para planetas hostis com defesas menores.',
+        'description_long' => 'Considerando a sua estrutura, agilidade e alta velocidade, o caça ligeiro pode ser definido como uma boa arma no principio do jogo, e um bom acompanhante para as naves mais sofisticadas e poderosas.',
     ],
     'heavy_fighter' => [
         'title' => 'Caça Pesado',
         'description' => 'O caça pesado é uma evolução do caça ligeiro, oferece um sistema de armas e uma resistência aumentados.',
-        'description_long' => 'Ao desenvolver o caça pesado, os pesquisadores chegaram a um ponto em que os acionamentos convencionais não ofereciam mais desempenho suficiente. Para movimentar o navio de maneira ideal, o acionamento por impulso foi usado pela primeira vez. Isto aumentou os custos, mas também abriu novas possibilidades. Ao usar esse impulso, sobrou mais energia para armas e escudos; além disso, foram utilizados materiais de alta qualidade para esta nova família de caças. Com essas mudanças, o caça pesado representa uma nova era na tecnologia naval e é a base da tecnologia dos cruzadores. 
-
-Um pouco maior que o caça leve, o caça pesado possui cascos mais grossos, proporcionando mais proteção e armamento mais forte.',
+        'description_long' => 'Durante a evolução do caça ligeiro os investigadores chegaram ao ponto onde a tecnologia convencional alcança os seus limites. De maneira a fornecer agilidade ao novo caça, um poderoso motor de impulsão foi usado pela primeira vez. Apesar dos custos e da complexidade adicionais, novas possibilidades tornaram-se disponíveis. Com o uso da tecnologia de impulsão e a integridade estrutural aumentada, foi possível dar ao caça pesado um sistema de armas e uma resistência necessitando mais energia transformando a nave numa verdadeira ameaça para o inimigo.',
     ],
     'cruiser' => [
         'title' => 'Cruzador',
         'description' => 'Os cruzadores possuem um sistema de armas três vezes mais poderoso que aquele encontrado no caça pesado e uma velocidade de tiro aumentada. A velocidade do cruzador é a mais rápida já vista.',
-        'description_long' => 'Com o desenvolvimento do laser pesado e do canhão de íons, os caças leves e pesados ​​encontraram um número alarmante de derrotas que aumentava a cada ataque. Apesar de muitas modificações, da força das armas e das mudanças nas armaduras, não foi possível aumentá-la com rapidez suficiente para contrariar eficazmente estas novas medidas defensivas. Portanto, decidiu-se construir uma nova classe de navio que combinasse mais blindagem e mais poder de fogo. Como resultado de anos de pesquisa e desenvolvimento, nasceu o Cruiser. 
-
-Os cruzadores são blindados quase três vezes mais que os caças pesados ​​e possuem mais que o dobro do poder de fogo de qualquer navio de combate existente. Eles também possuem velocidades que superam em muito qualquer espaçonave já feita. Por quase um século, os cruzadores dominaram o universo. Porém, com o desenvolvimento dos canhões Gauss e das torres de plasma, seu predomínio acabou. Eles ainda são usados ​​hoje contra grupos de combatentes, mas não tão predominantemente como antes.',
+        'description_long' => 'Com os lasers pesados e os canhões do iões que emergem nos campos de batalha, as naves básicas de combate encontravam cada vez mais em dificuldade. Apesar de muitas modificações nos sistemas de arma estas naves não podiam ser aumentadas ou evoluidas bastante para poder rivalizar com os novos sistemas de defesa. Por esta razão, foi decidido desenvolver uma nova nave, poderosa e com sistemas de armas devastadores. Nasceu então o cruzador.Os cruzadores possuem um sistema de armas três vezes mais poderoso do que aquele encontrado no caça pesado e uma velocidade de tiro aumentada. A velocidade do cruzador é a mais rápida já vista. Infelizmente, com o aparecimento mais tarde dos novos e mais fortes sistemas de defesa como os canhões de Gauss e os lançadores de plasma, o domínio dos cruzadores acabou. O cruzador tem RapidFire(10) contra os lançadores de mísseis e contra os caças ligeiros, isso quer dizer que um cruzador destrói sempre mais de um míssil ou caça ligeiro a cada round.',
     ],
     'battle_ship' => [
         'title' => 'Nave de Batalha',
         'description' => 'As naves de batalha constituem a espinha dorsal de qualquer frota militar. Os sistemas de armas poderosos e a resistência inigualável da nave de batalha adicionados à alta velocidade e à capacidade de carga importante fazem desta nave um perigo constante.',
-        'description_long' => 'Uma vez que se tornou evidente que o cruzador estava a perder terreno face ao crescente número de estruturas de defesa que enfrentava, e com a perda de navios em missões a níveis inaceitáveis, decidiu-se construir um navio que pudesse enfrentar esse mesmo tipo de estruturas de defesa com o mínimo de perdas possível. Após extenso desenvolvimento, nasceu o Battleship. Construído para resistir às maiores batalhas, o Battleship apresenta grandes espaços de carga, canhões pesados ​​e alta velocidade de hiperdrive. Uma vez desenvolvido, acabou se tornando a espinha dorsal de toda frota invasora do Imperador.',
+        'description_long' => 'As naves de batalha constituem a espinha dorsal de qualquer frota militar. Os sistemas de armas poderosos e a resistência inigualável da nave de batalha adicionados à alta velocidade e à capacidade de carga importante fazem desta nave um perigo constante, em qualquer situação e contra qualquer oponente.',
     ],
     'battlecruiser' => [
         'title' => 'Interceptor',
         'description' => 'O Interceptor é altamente especializado na intercepção de frotas hostis.',
-        'description_long' => 'Este navio é um dos navios de combate mais avançados já desenvolvidos e é particularmente mortal quando se trata de destruir frotas de ataque. Com seus canhões laser aprimorados a bordo e seu motor hiperespacial avançado, o Battlecruiser é uma força séria a ser combatida em qualquer ataque. Devido ao design do navio e ao seu grande sistema de armas, os porões de carga tiveram que ser cortados, mas isso é compensado pelo menor consumo de combustível.',
+        'description_long' => 'Esta é uma das naves de batalha mais avançadas desenvolvidas, e é particularmente mortal se o alvo são outras naves. Com os seus canhões laser melhorados e Motor de Hiperespaço avançado, o Interceptor é uma força a temer. Devido ao design da nave e ao seu grande sistema de armas, o espaço de carga é reduzido, mas tal é compensado pelo consumo relativamente baixo de combustível.',
     ],
     'bomber' => [
         'title' => 'Bombardeiro',
         'description' => 'O bombardeiro é uma nave espacial desenvolvida para destruir os sistemas de defesa planetários mais recentes e poderosos.',
-        'description_long' => 'Ao longo dos séculos, à medida que as defesas começaram a ficar maiores e mais sofisticadas, as frotas começaram a ser destruídas a um ritmo alarmante. Foi decidido que um novo navio seria necessário para quebrar as defesas e garantir o máximo de resultados. Após anos de pesquisa e desenvolvimento, o Bomber foi criado. 
-
-Usando equipamento de mira guiado por laser e bombas de plasma, o Bomber procura e destrói qualquer mecanismo de defesa que encontrar. Assim que o propulsor do hiperespaço for desenvolvido até o nível 8, o Bomber será equipado com o motor do hiperespaço e poderá voar em velocidades mais altas.',
+        'description_long' => 'O bombardeiro é uma nave espacial desenvolvida para destruir os sistemas de defesa planetários mais recentes e poderosos. Dotado de um sistema de escolha de alvo guiado ao laser, e de bombas de plasma, o bombardeiro é uma arma destrutivaA velocidade básica dos teus bombardeiros é aumentada assim que seja pesquisado o motor de hiperespaço nível 8, já que ficam equipadas com o motor de hiperespaço.',
     ],
     'destroyer' => [
         'title' => 'Destruidor',
         'description' => 'O destruidor é a nave espacial mais pesada e poderosa do jogo.',
-        'description_long' => 'O Destruidor é o resultado de anos de trabalho e desenvolvimento. Com o desenvolvimento de Deathstars, foi decidido que uma classe de nave era necessária para se defender contra uma arma tão grande. Graças aos seus sensores de retorno aprimorados, canhões de íons multi-falange, canhões Gauss e torres de plasma, o Destroyer acabou por ser um dos navios mais temíveis já criados. 
-
-Como o contratorpedeiro é muito grande, sua manobrabilidade é severamente limitada, o que o torna mais uma estação de batalha do que um navio de combate. A falta de manobrabilidade é compensada pelo seu poder de fogo, mas também custa quantidades significativas de deutério para construir e operar.',
+        'description_long' => 'Com o destruidor, a mãe de todas as naves entra na arena. O sistema de armas desta nave é constituído por canhões de ion-plasma e canhões de Gauss, adicionando um sistema de detecção e escolha de alvo, a nave pode destruir caças ligeiros voando em plena velocidade com 99% de probabilidade. A agilidade deste monstro de guerra é evidentemente embora a velocidade seja um grande ponto negativo, mas o destruidor pode ser considerado mais como uma estação de combate do que uma nave, com uma capacidade de transporte importante, acompanha as naves de batalha e dá uma ajudinha decisiva',
     ],
     'deathstar' => [
         'title' => 'Estrela da Morte',
         'description' => 'Nada é mais perigoso que ver uma estrela da morte a aproximar.',
-        'description_long' => 'A Deathstar é a nave mais poderosa já criada. Este navio do tamanho da lua é o único navio que pode ser visto a olho nu no solo. Quando você percebe isso, infelizmente, é tarde demais para fazer qualquer coisa. 
-
-Armada com um gigantesco canhão graviton, o sistema de armas mais avançado já criado no Universo, esta enorme nave não só tem a capacidade de destruir frotas e defesas inteiras, mas também tem a capacidade de destruir luas inteiras. Apenas os impérios mais avançados têm a capacidade de construir um navio deste tamanho gigantesco.',
+        'description_long' => 'Uma embarcação deste tamanho e deste poder necessita uma quantidade gigantesca de recursos e mão de obra que podem ser fornecidos somente pelos impérios mais importantes de todo o universo..',
     ],
     'reaper' => [
         'title' => 'Ceifeira',
         'description' => 'O Reaper é um poderoso navio de combate especializado em ataques agressivos e coleta de destroços.',
-        'description_long' => 'O Reaper representa o auge da engenharia militar de classe General. Esta embarcação fortemente armada foi projetada para comandantes que valorizam tanto a capacidade de combate quanto a flexibilidade tática. Embora sua função principal seja o combate, o Reaper possui porões de carga reforçados que permitem coletar detritos após a batalha. Seus avançados sistemas de mira e armadura pesada fazem dele um oponente formidável, enquanto seu design de duplo propósito significa que ele pode criar e lucrar com a carnificina no campo de batalha. O navio está equipado com tecnologia de armamento de ponta e pode resistir a navios muito maiores.',
+        'description_long' => 'Dificilmente existe algo mais destrutivo que uma nave da classe Ceifeira. Estas naves combinam poder de fogo, escudos fortes, rapidez e capacidade com a habilidade única de recolher, diretamente após uma batalha, uma porção do campo de destroços criado. No entanto, esta habilidade não se aplica a combates contra piratas ou extraterrestres.',
     ],
     'rocket_launcher' => [
         'title' => 'Lançador de Mísseis',
         'description' => 'O lançador de mísseis é um sistema de defesa simples e barato.',
-        'description_long' => 'Sua primeira linha básica de defesa. Estas são instalações de lançamento terrestres simples que disparam mísseis convencionais com ponta de ogiva contra alvos inimigos. Como são baratos de construir e não requerem investigação, são adequados para defender ataques, mas perdem eficácia na defesa contra ataques de maior escala. Depois que você começa a construir sistemas de armas de defesa mais avançados, os lançadores de foguetes se tornam um simples alimento para permitir que suas armas mais prejudiciais causem danos maiores por um longo período de tempo. 
-
-Após uma batalha, há até 70% de chance de que instalações defensivas que falharam possam voltar a ser usadas.',
+        'description_long' => 'O lançador de mísseis é um sistema de defesa simples e barato. Tornam-se muito eficazes em número e podem ser construídos sem pesquisa específica porque é uma arma de balística simples. Os custos de fabricação baixos fazem desta arma defensiva um adversário apropriado para frotas pequenas.Em geral, os sistemas de defesa desactivam-se ao alcançar parâmetros operacionais críticos de maneira a fornecer uma possibilidade de reparação. 70% da defesa planetária destruída pode ser reparada depois dum combate.',
     ],
     'light_laser' => [
         'title' => 'Laser Ligeiro',
         'description' => 'Graças a um feixe de laser concentrado podem ser criados mais danos do que através das armas de balísticas normais.',
-        'description_long' => 'À medida que a tecnologia se desenvolveu e navios mais sofisticados foram criados, determinou-se que era necessária uma linha de defesa mais forte para conter os ataques. À medida que a tecnologia Laser avançava, uma nova arma foi projetada para fornecer o próximo nível de defesa. Lasers leves são armas terrestres simples que utilizam sistemas de mira especiais para rastrear o inimigo e disparar um laser de alta intensidade projetado para cortar o casco do alvo. Para manter a boa relação custo-benefício, eles foram equipados com um sistema de blindagem aprimorado, porém a integridade estrutural é a mesma do Lançador de Foguetes. 
-
-Após uma batalha, há até 70% de chance de que instalações defensivas fracassadas possam voltar a ser usadas.',
+        'description_long' => 'Para acompanhar o ritmo com a velocidade sempre crescente do desenvolvimento das tecnologias de naves espaciais, os cientistas tiveram que criar um tipo novo de sistema da defesa capaz de destruír as naves mais fortes.Rapidamente, o laser ligeiro foi inventado, este pode disparar um feixe de laser altamente concentrado no alvo e criar danos muito mais elevados do que o impacto de mísseis balísticos. Um preço baixo da unidade era um objetivo essencial do projeto, por isso a estrutura basica não foi melhorada comparada ao lançador de mísseis.',
     ],
     'heavy_laser' => [
         'title' => 'Laser Pesado',
         'description' => 'Os lasers pesados têm um poder de saída e uma integridade estrutural mais importantes do que os lasers ligeiros..',
-        'description_long' => 'O Heavy Laser é uma versão prática e aprimorada do Light Laser. Sendo mais equilibrado que o Light Laser com composição de liga aprimorada, ele utiliza feixes mais fortes e mais densos e sistemas de mira integrados ainda melhores. 
-
-Após uma batalha, há até 70% de chance de que instalações defensivas fracassadas possam voltar a ser usadas.',
+        'description_long' => 'O laser pesado é uma evolução directa do laser ligeiro, a integridade estrutural foi evoluída e aumentada e materiais novos foram adoptados. Com os novos sistemas de energia e novos computadores, muito mais energia pode ser utilizada e dirigida para disparar fogo sobre o inimigo.',
     ],
     'gauss_cannon' => [
         'title' => 'Canhão de Gauss',
         'description' => 'Utilizando uma aceleração eletromagnética enorme, o canhão de gauss acelera projécteis pesados.',
-        'description_long' => 'Durante muito tempo, as armas de projécteis foram consideradas antiquadas devido à moderna tecnologia termonuclear e energética e devido ao desenvolvimento do hiperpropulsor e da blindagem melhorada. Isso foi até que a exata tecnologia energética que outrora a envelheceu a ajudou a recuperar a sua posição estabelecida. 
-Um canhão gauss é uma versão grande do acelerador de partículas. Mísseis extremamente pesados ​​são acelerados com uma enorme força eletromagnética e têm velocidades iniciais que fazem a sujeira ao redor do míssil queimar nos céus. Esta arma é tão poderosa quando disparada que cria um estrondo sônico. Armaduras e escudos modernos mal conseguem suportar a força, muitas vezes o alvo é completamente penetrado pelo poder do míssil. As estruturas de defesa são desativadas assim que são muito danificadas. 
-
-Após uma batalha, há até 70% de chance de que instalações defensivas fracassadas possam voltar a ser usadas.',
+        'description_long' => 'Durante muito tempo pensou-se que as armas de projécteis iam ser como a tecnologia de fusão e de energia, o desenvolvimento da propulsão de hiperespaço e o desenvolvimento de protecções melhoradas ficando antigas até que a tecnologia de energia, que a tinha posta de lado naquele tempo, as fez renascer. O princípio já era conhecido no século XX - o princípio de aceleração de partículas. Um canhão de gauss (canhão eletromagnético) não é nada mais que um acelerador de partículas, onde os projécteis com um peso de várias toneladas começam a ser acelerados. Mesmo as protecções modernas, a blindagem ou os escudos têm dificuldades em resistir a esta força, acabando um projéctil por atravessar completamente o objecto. Os sistemas de defesa desactivam-se quando estão demasiado estragados. Depois de uma batalha, 70% dos sistemas danificados podem ser reparados.',
     ],
     'ion_cannon' => [
-        'title' => 'Canhão de Iões',
+        'title' => 'Canhão Iónico',
         'description' => 'O canhão de iões atira ondas de iões contra um alvo, destabilizando-lhe desta maneira as protecções e a electrónica.',
-        'description_long' => 'Um canhão de íons é uma arma que dispara feixes de íons (partículas carregadas positiva ou negativamente). O Canhão de Íons é na verdade um tipo de Canhão de Partículas; apenas as partículas usadas são ionizadas. Devido às suas cargas elétricas, eles também têm o potencial de desativar dispositivos eletrônicos e qualquer outra coisa que possua uma fonte de energia elétrica ou similar, utilizando um fenômeno conhecido como Pulso Eletromagético (efeito EMP). Devido ao sistema de blindagem altamente aprimorado dos canhões, este canhão fornece proteção aprimorada para suas armas de defesa maiores e mais destrutivas. 
-
-Após uma batalha, há até 70% de chance de que instalações defensivas fracassadas possam voltar a ser usadas.',
+        'description_long' => 'No século XXI existiu algo com o nome de PEM. O PEM era um pulso eletromagnético que causava uma tensão adicional em cada circuito, o que provocava muitos incidentes de obstrução nos instrumentos mais sensíveis. O PEM foi baseado em mísseis e bombas, e também em relação às bombas atómicas. O PEM foi depois evoluído para fazer objectos incapazes de agir sem serem destruidos. Hoje, o canhão de iões é a versão mais moderna do PEM que lança uma onda de iões contra um objecto (naves), destabilizando-lhe desta maneira as protecções e a electrónica. A força cinética não é significativa. Os cruzadores também utilizam esta tecnologia. É interessante não destruir uma embarcação mas paralizá-la. Depois de uma batalha 70% dos sistemas danificados podem ser reparados.',
     ],
     'plasma_turret' => [
         'title' => 'Canhão de Plasma',
         'description' => 'Os canhões de plasma têm o poder de uma erupção solar e são desta maneira mais destruidores do que a maioria das naves.',
-        'description_long' => 'Um dos sistemas de armas de defesa mais avançados já desenvolvidos, a Torre de Plasma usa uma grande célula de combustível de reator nuclear para alimentar um acelerador eletromagnético que dispara um pulso, ou toróide, de plasma. Durante a operação, a torre de plasma primeiro trava em um alvo e inicia o processo de disparo. Uma esfera de plasma é criada no núcleo da torre por superaquecimento e compressão de gases, retirando-lhes seus íons. Uma vez que o gás é superaquecido, comprimido e uma esfera de plasma é criada, ele é então carregado no acelerador eletromagnético que é energizado. Uma vez totalmente energizado, o acelerador é ativado, o que resulta no lançamento da esfera de plasma a uma velocidade extremamente alta em direção ao alvo pretendido. Do ponto de vista dos alvos, a bola de plasma azulada que se aproxima é impressionante, mas uma vez atingida, causa destruição instantânea. 
-
-As instalações defensivas são desativadas assim que são muito danificadas. Após uma batalha, há até 70% de chance de que instalações defensivas fracassadas possam voltar a ser usadas.',
+        'description_long' => 'A tecnologia de laser foi melhorada, a tecnologia de iões alcançou a sua fase final. Pensou-se que seria impossível criar sistemas de armas mais eficazes. A possibilidade de combinar os dois sistemas mudou este pensamento. Sabia-se já que a tecnologia de fusão, das partículas dos lasers (geralmente deutério) faz aumentar a temperatura até milhões de graus. A tecnologia de iões permite o carregamento elétrico das partículas, a ligação em redes de estabilidade e a aceleração das partículas. Assim nasce o plasma. A esfera de plasma é azul e visualmente atractiva, mas é difícil pensar que um grupo de embarcações fique muito feliz de a ver. O canhão de plasma é uma das armas mais poderosas, embora seja uma tecnologia é muito cara. Depois de uma batalha, 70% dos sistemas danificados podem ser reparados.',
     ],
     'small_shield_dome' => [
         'title' => 'Pequeno Escudo Planetário',
         'description' => 'O escudo planetário cobre o planeta para absorver quantidades enormes de tiros.',
-        'description_long' => 'A colonização de novos mundos trouxe um novo perigo, o lixo espacial. Um grande asteróide poderia facilmente destruir o mundo e todos os habitantes. Os avanços na tecnologia de blindagem forneceram aos cientistas uma forma de desenvolver um escudo para proteger um planeta inteiro, não apenas de detritos espaciais, mas, como se aprendeu, de um ataque inimigo. Ao criar um grande campo eletromagnético ao redor do planeta, os detritos espaciais que normalmente teriam destruído o planeta foram desviados e os ataques dos Impérios inimigos foram frustrados. Os primeiros geradores eram grandes e o escudo fornecia proteção moderada, mas mais tarde descobriu-se que escudos pequenos não ofereciam proteção contra ataques de maior escala. A pequena cúpula de escudo foi o prelúdio para um sistema de blindagem planetária mais forte e avançado que estava por vir. 
-
-Após uma batalha, há até 70% de chance de que instalações defensivas que falharam possam voltar a ser usadas.',
+        'description_long' => 'Muito tempo antes da instalação dos escudos em embarcações, os geradores já existiam na superfície dos planetas. Cobriam os planetas e eram capazes de absorver quantidades enormes de danos antes de serem destruídos. Os ataques com frotas ligeiras falhavam frequentemente quando se encontravam com estes geradores. Mais tarde, foi imaginado a criação de um enorme escudo planetário. Para cada planeta um escudo planetário.',
     ],
     'large_shield_dome' => [
         'title' => 'Grande Escudo Planetário',
         'description' => 'O grande escudo planetário cobre o planeta para absorver quantidades enormes de tiros. A sua resistência é muito maior daquela encontrada no pequeno escudo planetário.',
-        'description_long' => 'O Large Shield Dome é o próximo passo no avanço dos escudos planetários, é o resultado de anos de trabalho melhorando o Small Shield Dome. Construídas para resistir a uma barragem maior de fogo inimigo, fornecendo um campo eletromagnético de maior energia, as grandes cúpulas proporcionam um período mais longo de proteção antes de entrarem em colapso. 
-
-Após uma batalha, há até 70% de chance de que instalações defensivas fracassadas possam voltar a ser usadas.',
+        'description_long' => 'O grande escudo planetário cobre o planeta para absorver quantidades enormes de tiros. A sua resistência é muito maior daquela encontrada no pequeno escudo planetário e francamente resistente contra o RapidFire das naves de combate.',
     ],
     'anti_ballistic_missile' => [
-        'title' => 'Míssil de Intercepção',
+        'title' => 'Mísseis de Intercepção',
         'description' => 'O míssil de intercepção destrói os mísseis interplanetários atacantes.',
-        'description_long' => 'Mísseis Antibalísticos (ABM) são sua única linha de defesa quando atacados por Mísseis Interplanetários (IPM) em seu planeta ou lua. Quando um lançamento de IPMs é detectado, esses mísseis armam-se automaticamente, processam um código de lançamento em seus computadores de voo, direcionam o IPM de entrada e lançam para interceptar. Durante o vôo, o IPM alvo é constantemente rastreado e correções de curso são aplicadas até que o ABM atinja o alvo e destrua o IPM atacante. Cada ABM destrói um IPM recebido.',
+        'description_long' => 'O míssil de intercepção destrói os mísseis interplanetários atacantes. Cada míssil de intercepção pode destruir um míssil interplanetário lançado em ataque.',
     ],
     'interplanetary_missile' => [
-        'title' => 'Míssil Interplanetário',
+        'title' => 'Mísseis Interplanetários',
         'description' => 'Mísseis interplanetários destroem as defesas inimigas.',
-        'description_long' => 'Mísseis Interplanetários (IPM) são sua arma ofensiva para destruir as defesas do seu alvo. Usando tecnologia de rastreamento de última geração, cada míssil tem como alvo um certo número de defesas para destruição. Equipados com uma bomba antimatéria, eles fornecem uma força destrutiva tão severa que escudos e defesas destruídos não podem ser reparados. A única maneira de combater esses mísseis é com ABMs.',
+        'description_long' => 'O míssil interplanetário destrói os sistemas de defesa do inimigo. Os sistemas destruidos desta maneira não podem ser reparados.',
     ],
     'kraken' => [
         'title' => 'KRAKEN',

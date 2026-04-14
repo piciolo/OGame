@@ -12,386 +12,312 @@ return [
     'metal_mine' => [
         'title' => 'Ťažobný komplex - kovy',
         'description' => 'Tento ťažobný komplex dobýva rudy rozličných kovov. Získané kovy sa následne ďalej spracovávajú a zušľachťujú na materiály, ktoré sú najdôležitejšími surovinami, slúžiacimi ako základ rozvoja impérií.',
-        'description_long' => 'Kovy sú primárnou surovinou, využívanou na konštrukciu lodí a budov. Pretože sú najhojnejší zo všetkých surovín, ich obchodná cena je považovaná za najnižšiu. Produkcia stúpa, keď bane dosiahnu väčšiu hĺbku, avšak práca v týchto obrovských hĺbkach si vyžaduje veľké množstvo energie.',
+        'description_long' => 'Tento ťažobný komplex dobýva rudy rozličných kovov. Získané kovy sa následne ďalej spracovávajú a zušľachťujú na materiály, ktoré sú najdôležitejšími surovinami, slúžiacimi ako základ rozvoja impérií.',
     ],
     'crystal_mine' => [
         'title' => 'Ťažobný komplex - kryštály',
         'description' => 'Kryštály sú hlavnou surovinou, používanou pri výrobe elektrických obvodov a tvorbe presných zliatinových zmesí.',
-        'description_long' => 'Kryštály sú hlavnou surovinou používanou na výrobu elektrických obvodov a tvorbe presných zliatinových zmesí. V porovnaní s procesom produkcie kovov, pretvorenie surového kryštálu na priemyselný kryštál vyžaduje osobitné spracovanie. Kvôli tomu je na spracovanie krištálov potrebné väčšie množstvo energie než u kovov. Kryštály sa využívajú pri stavbe lodí, budov a aj pri niektorých výskumoch.',
+        'description_long' => 'Kryštály sú hlavnou surovinou, používanou pri výrobe elektrických obvodov a tvorbe presných zliatinových zmesí.',
     ],
     'deuterium_synthesizer' => [
         'title' => 'Syntetizéry deutéria',
         'description' => 'Deutérium sa používa ako palivo vesmírnych lodí. Získava sa z morských hĺbok. Ide o vzácnu látku, preto je relatívne drahá.',
-        'description_long' => 'Deutériu sa tiež hovorí ťažký vodík. Jedná sa o stabilný izotop vodíka, ktorý sa vyskytuje v oceánoch, približne jeden atóm na 6500 atómov vodíka (~154 PPM). Deutérium teda tvorí asi 0,015% (podľa hmotnosti 0,030%) všetkého vodíka. Vyrába sa v špeciálnych syntetizéroch, kde sa oddeľuje od vody v upravených odstredivkách. Každé vylepšenie syntetizérov zvyšuje množstvo získaného deutéria. Využíva sa pri skenovaní parabolickými teleskopmi, prezeraní galaxií, slúži ako palivo pre lode a umožňuje špeciálne vedecké objavy.',
+        'description_long' => 'Deutérium sa používa ako palivo vesmírnych lodí. Získava sa z morských hĺbok. Ide o vzácnu látku, preto je relatívne drahá.',
     ],
     'solar_plant' => [
         'title' => 'Solárne elektrárne',
         'description' => 'Solárne elektrárne využívajú energiu zo slnečného žiarenia. Dostatok energie je predpokladom rozvoja technickej civilizácie. Väčšina budov je energeticky sebestačná, ale najmä ťažba a výroba vyžaduje pre efektívne fungovanie dodávky energie.',
-        'description_long' => 'Gigantické solárne elektárne zabezpečujú zásobovanie ťažobných komplexov a syntetizátorov deutéria energiou. Pri každom vylepšení solárnych elektrární sa zvýši účinnosť fotočlánkov, čo sa prejaví zvýšením výkonu. Solárne elektrárne predstavujú základ planetárneho zásobovania energiou.',
+        'description_long' => 'Solárne elektrárne využívajú energiu zo slnečného žiarenia. Dostatok energie je predpokladom rozvoja technickej civilizácie. Väčšina budov je energeticky sebestačná, ale najmä ťažba a výroba vyžaduje pre efektívne fungovanie dodávky energie.',
     ],
     'fusion_plant' => [
         'title' => 'Fúzne elektrárne',
         'description' => 'Fúzne elektrárne vyrábajú v reaktoroch energiu fúziou deutéria na hélium.',
-        'description_long' => 'Vo fúznych elektrárňach sa jadrá vodíka pri obrovskej teplote a tlaku spájajú do jadier hélia, pričom sa uvoľňuje obrovské množstvo energie. Na každý gram spotrebovaného deutéria možno vyrobiť až 41,32*10^-13 joulov energie; s 1 g ste schopní vyrobiť 172 MWh energie. 
-
-Väčšie komplexy reaktorov využívajú viac deutéria a môžu produkovať viac energie za hodinu. Energetický efekt by sa mohol zvýšiť výskumom energetických technológií. 
-
-Výroba energie v fúznom zariadení sa vypočíta takto: 
-30 * [Level Fusion Plant] * (1,05 + [Level Energy Technology] * 0,01) ^ [Level Fusion Plant]',
+        'description_long' => 'Fúzne elektrárne vyrábajú v reaktoroch energiu fúziou deutéria na hélium.',
     ],
     'metal_store' => [
         'title' => 'Sklady kovov',
         'description' => 'Miesta, kde sa uskladňujú nespracované kovy pred ďalším použitím.',
-        'description_long' => 'Tento obrovský sklad slúži na skladovanie kovovej rudy. Každá úroveň modernizácie zvyšuje množstvo kovovej rudy, ktorú je možné skladovať. Ak budú obchody plné, ďalší kov sa už ťažiť nebude. 
-
-Zásobník kovov chráni určité percento dennej produkcie bane (max. 10 percent).',
+        'description_long' => 'Miesta, kde sa uskladňujú nespracované kovy pred ďalším použitím.',
     ],
     'crystal_store' => [
         'title' => 'Sklady kryštálov',
         'description' => 'Miesta, kde sa uskladňujú nespracované kryštály pred ďalším použitím.',
-        'description_long' => 'Nespracovaný kryštál bude medzitým uskladnený v týchto obrovských skladovacích halách. S každou úrovňou upgradu sa zvyšuje množstvo kryštálov, ktoré je možné uložiť. Ak sú zásoby kryštálov plné, nebude sa ťažiť žiadny ďalší kryštál. 
-
-Kryštálový zásobník chráni určité percento dennej produkcie bane (max. 10 percent).',
+        'description_long' => 'Miesta, kde sa uskladňujú nespracované kryštály pred ďalším použitím.',
     ],
     'deuterium_store' => [
         'title' => 'Nádrže na deutérium',
         'description' => 'Obrovské nádrže na skladovanie čerstvo syntetizovaného deutéria.',
-        'description_long' => 'Nádrž na deutérium je určená na skladovanie novo syntetizovaného deutéria. Akonáhle je spracovaný syntetizátorom, je privedený do tejto nádrže na neskoršie použitie. S každou modernizáciou nádrže sa celková skladovacia kapacita zvyšuje. Po dosiahnutí kapacity sa už nebude syntetizovať žiadne ďalšie deutérium. 
-
-Deuterium Tank chráni určité percento dennej produkcie syntetizátora (max. 10 percent).',
+        'description_long' => 'Obrovské nádrže na skladovanie čerstvo syntetizovaného deutéria.',
     ],
     'robot_factory' => [
         'title' => 'Robotické továrne',
         'description' => 'Továreň na robotov produkuje robokonštruktérov, ktorí zefektívňujú výstavbu budov. Každá úroveň zvyšuje rýchlosť vylepšovania stavieb.',
-        'description_long' => 'Produktom tovární na výrobu robotov sú roboti, využívaní pri stavbe a vylepšovaní budov. Každé vylepšenie týchto tovární zvyšuje počet a výkonnosť jednotiek robotov, čo zvyšuje ich efektivitu a tým skracuje čas, potrebný na realizáciu stavieb.',
+        'description_long' => 'Továreň na robotov produkuje robokonštruktérov, ktorí zefektívňujú výstavbu budov. Každá úroveň zvyšuje rýchlosť vylepšovania stavieb.',
     ],
     'shipyard' => [
         'title' => 'Lodenice',
         'description' => 'V lodeniciach sú stavané všetky typy lodí a obranných zariadení.',
-        'description_long' => 'Planetárne lodenice zabezpečujú výstavbu vesmírnych lodí a obranných systémov. Postupným vylepšovaním umožňujú čoraz rýchlejšiu produkciu širšieho výberu lodí. Pokiaľ sú na planéte vybudované aj nanotechnologické továrne, výroba sa výrazne zrýchli .',
+        'description_long' => 'V lodeniciach sú stavané všetky typy lodí a obranných zariadení.',
     ],
     'research_lab' => [
         'title' => 'Výskumné laboratóriá',
         'description' => 'Výskumné laboratóriá sú nutné pre objavovanie nových technólogií.',
-        'description_long' => 'Výskumné laboratóriá sú nutné pre výskum a vývoj nových technológií. Každá úroveň vylepšenia laboratórií zvyšuje ich efektivitu, čím skracuje čas, potrebný na objavovanie nových technológií a zároveň otvára nové horizonty v oblasti výskumu. Aby výskum prebehol čo najrýchlejšie, po zadaní výskumnej úlohy na niektorej z planét, sú na túto planétu stiahnutí všetci významní vedci, takže výskum na iných planétach nie je možný. Akonáhle je úloha splnená a výskum ukončený, vedci sa vracajú na svoje domovské svety a prinášajú nové technológie, ktoré tam implementujú. Týmto spôsobom sa nové znalosti rýchlo rozširujú po celej ríši.',
+        'description_long' => 'Výskumné laboratóriá sú nutné pre objavovanie nových technólogií.',
     ],
     'alliance_depot' => [
         'title' => 'Aliančný sklad',
         'description' => 'Aliančný sklad dodáva palivo spriateleným flotilám na obežnej dráhe, pomáhajúc im pri obrane.',
-        'description_long' => 'Aliančný sklad umožňuje zásobovať spriatelené flotily, pomáhajúce pri obrane alebo parkujúce na obežnej dráhe. Každá úroveň vylepšenia skladu dokáže dopraviť na obežnú dráhu viac jednotiek deutéria za hodinu.',
+        'description_long' => 'Aliančný sklad dodáva palivo spriateleným flotilám na obežnej dráhe, pomáhajúc im pri obrane.',
     ],
     'missile_silo' => [
         'title' => 'Raketové silo',
         'description' => 'Raketové silá slúžia ako skladiská a palebné postavenia rakiet.',
-        'description_long' => 'Raketové silá sú miestami konštrukcie a uskladnenia rakiet. Sú tiež vybavené odpaľovacím zariadením a výkonným navádzacím systémom. Každé silo disponuje základným priestorom pre 20 protiraketových striel alebo 10 medziplanetárnych rakiet, resp. pre ich ľubovoľnú kombináciu. Každá úroveň vylepšenia prináša zvýšenie kapacity sila.',
+        'description_long' => 'Raketové silá slúžia ako skladiská a palebné postavenia rakiet.',
     ],
     'nano_factory' => [
         'title' => 'Nanotechnologické továrne',
         'description' => 'Nanotechnologické továrne predstavujú vrchol robotických technológií. Každou úrovňou sa skracujú konštrukčné časy budov, lodí a obranných zariadení.',
-        'description_long' => 'Nanotechnologické továrne produkujú jednotky, ktoré sú považované za vrchol vývoja robototechnológie. Nanoboty sú roboty v rozmere nanometrov, schopné neskutočných výkonov svojim prepojením. Ich vynájdením prudko stúpne produktivita prakticky v každej oblasti. Z toho dôvodu nanotechnologické továrene skrátia konštrukčné časy budov, lodí a obranných štruktúr na všetkých úrovniach na polovicu.',
+        'description_long' => 'Nanotechnologické továrne predstavujú vrchol robotických technológií. Každou úrovňou sa skracujú konštrukčné časy budov, lodí a obranných zariadení.',
     ],
     'terraformer' => [
         'title' => 'Terraformer',
         'description' => 'Terraformer zväčšuje výmeru použiteľného povrchu planéty.',
-        'description_long' => 'S pribúdajúcou výstavbou na planétach je aj životný priestor pre kolóniu stále viac a viac obmedzený. Tradičné metódy, ako sú výškové a podzemné stavby, sú čoraz viac nedostatočné. Malá skupina vysokoenergetických fyzikov a nano inžinierov nakoniec dospela k riešeniu: terraforming. 
-Terraformer s využitím obrovského množstva energie dokáže obrábať celé územia alebo dokonca kontinenty. V tejto budove sa nachádza výroba nanitov vytvorených špeciálne na tento účel, ktoré zabezpečujú konzistentnú kvalitu pôdy. 
-
-Každá úroveň terraformeru umožňuje obrábať 5 polí. S každou úrovňou terraformer zaberá jedno pole sám. Každé 2 úrovne terraformerov získate 1 bonusové pole. 
-
-Po postavení sa terraformer nedá rozobrať.',
+        'description_long' => 'Terraformer zväčšuje výmeru použiteľného povrchu planéty.',
     ],
     'space_dock' => [
         'title' => 'Vesmírne doky',
         'description' => 'Vo vesmírnych dokoch je možné opravovať vraky lodí.',
-        'description_long' => 'Space Dock ponúka možnosť opraviť lode zničené v boji, ktoré po sebe zanechali trosky. Oprava trvá maximálne 12 hodín, ale kým sa lode podarí opäť uviesť do prevádzky, trvá to minimálne 30 minút. 
-
-Opravy musia začať do 3 dní od vytvorenia vraku. Opravené lode sa musia po dokončení opráv vrátiť do služby ručne. Ak tak neurobíte, jednotlivé lode akéhokoľvek typu budú vrátené do prevádzky po 3 dňoch. 
-
-Vrak sa objaví iba vtedy, ak bolo zničených viac ako 150 000 jednotiek vrátane vlastných lodí, ktoré sa zúčastnili boja s hodnotou aspoň 5 % lodných bodov. 
-
-Keďže Space Dock pláva na obežnej dráhe, nevyžaduje planétové pole.',
+        'description_long' => 'Vo vesmírnych dokoch je možné opravovať vraky lodí.',
     ],
     'lunar_base' => [
         'title' => 'Mesačná základňa',
         'description' => 'Keďže Mesiac nemá atmosféru, na vytvorenie obývateľného priestoru je potrebná lunárna základňa.',
-        'description_long' => 'Mesiac nemá atmosféru, takže pred založením osady musí byť najprv postavená lunárna základňa. To potom poskytuje kyslík, zahrievanie a gravitáciu. S každou vybudovanou úrovňou sa v rámci biosféry poskytuje väčšia obytná a rozvojová oblasť. Každá postavená úroveň umožňuje tri polia pre ďalšie budovy. S každou úrovňou zaberá lunárna základňa jedno pole. 
-Po vybudovaní lunárnu základňu nemožno zbúrať.',
+        'description_long' => 'Vzhľadom na to, že mesiac nemá žiadnu atmosféru, je pre získanie osídliteľného priestoru nutné vybudovať Mesačnú základňu.',
     ],
     'sensor_phalanx' => [
         'title' => 'Parabolické teleskopy',
         'description' => 'Pomocou senzorovej falangy možno objaviť a pozorovať flotily iných impérií. Čím väčšie je pole senzorovej falangy, tým väčší rozsah dokáže skenovať.',
-        'description_long' => 'Pomocou senzorov s vysokým rozlíšením Sensor Phalanx najprv skenuje spektrum svetla, zloženie plynov a emisie žiarenia zo vzdialeného sveta a prenáša údaje do superpočítača na spracovanie. Po získaní informácií superpočítač porovná zmeny v spektre, zložení plynu a emisiách žiarenia so základným grafom známych zmien spektra vytvorených rôznymi pohybmi lodí. Výsledné údaje potom zobrazujú aktivitu akejkoľvek flotily v dosahu falangy. Aby sa zabránilo prehriatiu superpočítača počas procesu, je chladený použitím 5k spracovaného deutéria. 
-Ak chcete použiť Phalanx, kliknite na ľubovoľnú planétu v zobrazení galaxie v dosahu vašich senzorov.',
+        'description_long' => 'Použitím parabolických teleskopov môžu byť odhalené a pozorované planéty alebo flotily. S ich  úrovňou rastie aj rozsah skenovania.',
     ],
     'jump_gate' => [
         'title' => 'Hyperpriestorová brána',
         'description' => 'Skokové brány sú obrovské transceivery schopné poslať aj tú najväčšiu flotilu v krátkom čase do vzdialenej skokovej brány.',
-        'description_long' => 'Skoková brána je systém obrovských transceiverov schopných poslať aj tie najväčšie flotily k prijímacej bráne kdekoľvek vo vesmíre bez straty času. Využitím technológie podobnej technológii Worm Hole na dosiahnutie skoku nie je potrebné deutérium. Medzi skokmi musí uplynúť niekoľkominútová doba nabíjania, aby sa umožnila regenerácia. Preprava zdrojov cez Bránu tiež nie je možná. S každou úrovňou upgradu je možné skrátiť čas ochladzovania skokovej brány.',
+        'description_long' => 'Medzipriestorové brány sú vlastne veľké prevodníky, ktoré dokážu v nulovom čase premiestniť aj tú najväčšiu flotilu na svoj opačný koniec.',
     ],
     'energy_technology' => [
         'title' => 'Energetické technológie',
         'description' => 'Ovládnutie rôznych druhov energií je nevyhnutné pre rozvoj nových technológií.',
-        'description_long' => 'Ako pokročili rôzne oblasti výskumu, zistilo sa, že súčasná technológia distribúcie energie nestačí na začatie určitého špecializovaného výskumu. S každým vylepšením vašej energetickej technológie možno vykonať nový výskum, ktorý odomkne vývoj sofistikovanejších lodí a obrany.',
+        'description_long' => 'Ovládnutie rôznych druhov energií je nevyhnutné pre rozvoj nových technológií.',
     ],
     'laser_technology' => [
         'title' => 'Laserové technológie',
         'description' => 'Koncentráciou a zaostrením svetla sa získava lúč vysokej energie, ktorý spôsobuje poškodenie, pri dopade na objekty.',
-        'description_long' => 'Lasery (zosilnenie svetla stimulovanou emisiou žiarenia) produkujú intenzívnu, energeticky bohatú emisiu koherentného svetla. Tieto zariadenia je možné použiť vo všetkých oblastiach, od optických počítačov až po ťažké laserové zbrane, ktoré bez námahy presekajú technológiu brnenia. Laserová technológia poskytuje dôležitý základ pre výskum ďalších zbraňových technológií.',
+        'description_long' => 'Koncentráciou a zaostrením svetla sa získava lúč vysokej energie, ktorý spôsobuje poškodenie, pri dopade na objekty.',
     ],
     'ion_technology' => [
         'title' => 'Iónové technológie',
         'description' => 'Zbrane, využívajúce technológiu koncentrácie iónov, spôsobujú obrovské poškodenie cieľa. Každá úroveň vývoja tejto technológie navyše zníži náklady na demontáž budov o 4%.',
-        'description_long' => 'Ióny sa môžu koncentrovať a urýchľovať do smrtiaceho lúča. Tieto lúče potom môžu spôsobiť obrovské škody. Naši vedci tiež vyvinuli techniku, ktorá jednoznačne zníži náklady na dekonštrukciu budov a systémov. Pre každú úroveň výskumu klesnú náklady na dekonštrukciu o 4 %.',
+        'description_long' => 'Zbrane, využívajúce technológiu koncentrácie iónov, spôsobujú obrovské poškodenie cieľa. Každá úroveň vývoja tejto technológie navyše zníži náklady na demontáž budov o 4%.',
     ],
     'hyperspace_technology' => [
         'title' => 'Hyperpriestorové technológie',
         'description' => 'Integráciou 4. a 5. dimenzie je teraz možné skúmať nový druh pohonu, ktorý je hospodárnejší a efektívnejší.',
-        'description_long' => 'Teoreticky sa myšlienka cestovania hyperpriestorom spolieha na existenciu oddelenej a susednej dimenzie. Keď je aktivovaný, hyperpriestorový pohon posunie hviezdnu loď do tejto inej dimenzie, kde môže prekonať obrovské vzdialenosti za množstvo času, ktoré je výrazne skrátené v porovnaní s časom, ktorý by potreboval v "normálnom" priestore. Akonáhle dosiahne bod v hyperpriestore, ktorý zodpovedá jeho cieľu v reálnom priestore, znovu sa objaví. 
-Po preskúmaní dostatočnej úrovne Hyperpriestorovej technológie už Hyperpriestorový pohon nie je len teóriou. Každé zlepšenie tohto pohonu zvyšuje nosnosť vašich lodí o 5 % základnej hodnoty.',
+        'description_long' => 'Integráciou 4. a 5. dimenzie je teraz možné skúmať nový druh pohonu, ktorý je ekonomickejší a najmä efektívnejší. Využitím štvrtého a piateho rozmeru je teraz možné optimalizovať úložné priestory lodí a získať tak nový priestor.',
     ],
     'plasma_technology' => [
         'title' => 'Plazmové technológie',
         'description' => 'Ďalší vývojový stupeň iónových technológií, kde dochádza k urýchľovaniu vysokoenergetickej plazmy. Výsledkom je mimoriadne devastujúci účinok na zasahovaný objekt a tiež zvýšenie produkcie kovov, kryštálov a deutéria (o 1%/0,66%/0,33% za úroveň).',
-        'description_long' => 'Ďalší vývoj iónovej technológie, ktorá nezrýchľuje ióny, ale namiesto toho vysokoenergetickú plazmu, ktorá potom môže spôsobiť zničujúce poškodenie pri náraze na predmet. Naši vedci tiež našli spôsob, ako pomocou tejto technológie výrazne zlepšiť ťažbu kovu a kryštálu. 
-
-Produkcia kovov sa zvyšuje o 1 %, produkcia kryštálov o 0,66 % a produkcia deutéria o 0,33 % na konštrukčnú úroveň plazmovej technológie.',
+        'description_long' => 'Ďalší vývojový stupeň iónových technológií, kde dochádza k urýchľovaniu vysokoenergetickej plazmy. Výsledkom je mimoriadne devastujúci účinok na zasahovaný objekt a tiež zvýšenie produkcie kovov, kryštálov a deutéria (o 1%/0,66%/0,33% za úroveň).',
     ],
     'combustion_drive' => [
         'title' => 'Spaľovací pohon',
         'description' => 'Základná pohonná jednotka. Ďalší vývoj vedie k zrýchleniu lodí. Každá úroveň zdokonalenia zvyšuje rýchlosť o 10% zo základnej hodnoty.',
-        'description_long' => 'Combustion Drive je najstaršia z technológií, ale stále sa používa. Pri spaľovacom pohone sa výfukové plyny tvoria z pohonných látok nesených v lodi pred použitím. V uzavretej komore sú tlaky rovnaké v každom smere a nedochádza k žiadnemu zrýchleniu. Ak je v spodnej časti komory vytvorený otvor, tlak na tejto strane už nepôsobí. Zostávajúci tlak dáva výsledný ťah na strane protiľahlej k otvoru, ktorý poháňa loď dopredu tým, že výfukové plyny sú extrémne vysokou rýchlosťou vytláčané dozadu. 
-
-S každou úrovňou vyvinutého spaľovacieho pohonu sa rýchlosť malých a veľkých nákladných lodí, ľahkých stíhačiek, recyklátorov a špionážnych sond zvyšuje o 10 %.',
+        'description_long' => 'Základná pohonná jednotka. Ďalší vývoj vedie k zrýchleniu lodí. Každá úroveň zdokonalenia zvyšuje rýchlosť o 10% zo základnej hodnoty.',
     ],
     'impulse_drive' => [
         'title' => 'Impulzný pohon',
         'description' => 'Impulzný pohon vychádza zo spaľovacieho a je tiež založený na princípe akcie a reakcie. Ďalší rozvoj tohoto pohonu umožňuje lietať lodiam rýchlejšie. Každá úroveň zdokonalenia zvyšuje rýchlosť o 20% zo základnej hodnoty.',
-        'description_long' => 'Impulzný pohon je založený na princípe spätného rázu, pri ktorom sa stimulovaná emisia žiarenia vytvára hlavne ako odpadový produkt jadrovej fúzie na získanie energie. Okrem toho sa môžu vstrekovať iné hmoty. S každou úrovňou vyvinutého Impulse Drive sa rýchlosť bombardérov, krížnikov, ťažkých stíhačiek a kolóniových lodí zvyšuje o 20 % základnej hodnoty. Okrem toho sú malé transportéry vybavené impulznými pohonmi, akonáhle ich úroveň výskumu dosiahne 5. Len čo výskum impulzného pohonu dosiahne úroveň 17, Recyclery sú nanovo vybavené impulznými pohonmi. 
-
-Medziplanetárne rakety tiež cestujú ďalej s každou úrovňou.',
+        'description_long' => 'Impulzný pohon vychádza zo spaľovacieho a je tiež založený na princípe akcie a reakcie. Ďalší rozvoj tohoto pohonu umožňuje lietať lodiam rýchlejšie. Každá úroveň zdokonalenia zvyšuje rýchlosť o 20% zo základnej hodnoty.',
     ],
     'hyperspace_drive' => [
         'title' => 'Hyperpriestorový pohon',
         'description' => 'Hyperpriestorový pohon ohýba priestor okolo lode. Objavenie tohoto princípu pohonu výrazne zrýchlilo cestovanie vesmírom. Každým stupňom vylepšenia stúpa rýchlosť o 30% základnej hodnoty.',
-        'description_long' => 'V bezprostrednej blízkosti lode je priestor pokrivený, aby sa dali veľmi rýchlo prekonať veľké vzdialenosti. Čím viac je Hyperspace Drive vyvinutý, tým silnejšia je deformovaná povaha priestoru, pričom rýchlosť ním vybavených lodí (Bojové krížniky, Bojové lode, Torpédoborce, Hviezdy smrti, Pathfinders a Reapery) sa zvyšuje o 30 % na úroveň. Bombardér je navyše skonštruovaný s Hyperpriestorovým pohonom, akonáhle výskum dosiahne úroveň 8. Akonáhle výskum Hyperpriestorového pohonu dosiahne úroveň 15, Recycler je znovu vybavený Hyperpriestorovým pohonom.',
+        'description_long' => 'Hyperpriestorový pohon ohýba priestor okolo lode. Objavenie tohoto princípu pohonu výrazne zrýchlilo cestovanie vesmírom. Každým stupňom vylepšenia stúpa rýchlosť o 30% základnej hodnoty.',
     ],
     'espionage_technology' => [
         'title' => 'Špionážne technológie',
         'description' => 'Použitím tejto technológie môžeš získať informácie o ostatných planétach a mesiacoch.',
-        'description_long' => 'Špionážne technológie sú zamerané na vývoj nových, efektívnejších senzorov. Čim je táto technológia vyspelejšia, tým detailnejšie informácie poskytuje o aktivite v okolitom vesmíre. Rozdiel medzi úrovňou Tvojich špionážnych technológií a úrovňou Tvojho protivníka je rozhodujúci. Čím rozvinutejšie sú tieto technológie, tým viac dôležitých informácií je zahrnutých v špionážnej správe a je menšia šanca, že špionáž bude odhalená. Vyslaním väčšieho počtu sond získaš viac informácii o svojom protivníkovi, ale súčasne stúpa riziko odhalenia.Špionážne technológie taktiež ovplyvňujú informácie o približujúcich sa flotilách. V tomto prípade je dôležitá iba úroveň špionáže.
-Od druhej úrovne sa k bežnému upozornenie o útoku zobrazí aj celkový počet útočiacich lodí.
-Od štvrtej úrovne uvidíš okrem celkového počtu aj typy lodí.
-Od ôsmej úrovne sú k dispozícii presné počty jednotlivých typov útočiacich lodí.
-Tieto technológie sú nenahraditeľné vo fáze prípravy útoku - poskytujú informácie o flotile nepriateľa a tiež o pozemných obranných zariadeniach. Technológia by mala byť vyvinutá čo najskôr.',
+        'description_long' => 'Použitím tejto technológie môžeš získať informácie o ostatných planétach a mesiacoch.',
     ],
     'computer_technology' => [
         'title' => 'Počítačové technológie',
         'description' => 'Zvyšovaním kapacity počítačov máš možnosť veliť viacerým flotilám. Každá ďalšia úroveň počítačových  technológií zvyšuje maximálny počet flotíl o jednu.',
-        'description_long' => 'Počítačové technológie zahŕňajú rozširovanie existujúcich počítačových kapacít. Vyvíjané sú výkonnejšie a efektívnejšie pracujúce počítačove systémy. Výpočtová sila neustále stúpa a skracuje tak čas, potrebný na spracovanie úloh. Jedine zvýšenie výpočtovej kapacity umožní súčasne riadiť viac flotíl.Každá úroveň počítačových technológií zvyšuje maximálny počet flotíl o jednu. Čím viac flotíl dokážeš súčasne vyslať do vesmíru, tým väčší môže byť Tvoj zisk. Tieto technológie samozrejme podporujú aj obchodníkov, ktorí môžu mať väčší počet obchodných flotíl na trasách. Z tohoto dôvodu je rozumné, rozvíjať počítačové technológie nepretržite, počas celej hry.',
+        'description_long' => 'Zvyšovaním kapacity počítačov máš možnosť veliť viacerým flotilám. Každá ďalšia úroveň počítačových  technológií zvyšuje maximálny počet flotíl o jednu.',
     ],
     'astrophysics' => [
         'title' => 'Astrofyzika',
         'description' => 'Lode sú vybavené prieskumnými modulmi a môžu podnikať výpravy do hlbokého vesmíru. Každé dve vyskúmané úrovne tejto technológie umožňujú kolonizovať ďalšiu planétu.',
-        'description_long' => 'Ďalšie poznatky v oblasti astrofyziky umožňujú výstavbu laboratórií, ktoré je možné umiestniť na čoraz viac lodí. To umožňuje dlhé expedície ďaleko do nepreskúmaných oblastí vesmíru. Navyše tieto pokroky môžu byť použité na ďalšiu kolonizáciu vesmíru. Pre každé dve úrovne tejto technológie je možné použiť ďalšiu planétu.',
+        'description_long' => 'Lode sú vybavené prieskumnými modulmi a môžu podnikať výpravy do hlbokého vesmíru. Každé dve vyskúmané úrovne tejto technológie umožňujú kolonizovať ďalšiu planétu.',
     ],
     'intergalactic_research_network' => [
         'title' => 'Intergalaktická výskumná sieť',
         'description' => 'Prostredníctvom tejto vysokorýchlostnej siete komunikujú výskumníci z rôznych planét.',
-        'description_long' => 'Toto je vaša sieť hlbokého vesmíru na oznamovanie výsledkov výskumu vašim kolóniám. S IRN je možné dosiahnuť rýchlejšie výskumné časy prepojením výskumných laboratórií najvyššej úrovne na úrovni vyvinutej IRN. 
-Aby každá kolónia fungovala, musí byť schopná vykonávať výskum nezávisle.',
+        'description_long' => 'Prostredníctvom tejto vysokorýchlostnej siete komunikujú výskumníci z rôznych planét.',
     ],
     'graviton_technology' => [
         'title' => 'Gravitonové technológie',
         'description' => 'Vypálenie koncentrovaného paprsku gravitónových častíc môže vytvoriť umelé gravitačné pole, ktoré dokáže zničiť lode alebo dokonca aj mesiace.',
-        'description_long' => 'Gravitón je elementárna častica, ktorá je bez hmotnosti a nemá žiadny náklad. Určuje gravitačnú silu. Vystreľovaním koncentrovanej záťaže gravitónov možno zostrojiť umelé gravitačné pole. Nie na rozdiel od čiernej diery, vťahuje do seba hmotu. Takto dokáže zničiť lode a dokonca aj celé mesiace. Na výrobu dostatočného množstva gravitónov je potrebné obrovské množstvo energie. Na vytvorenie ničivej hviezdy smrti je potrebný výskum Graviton.',
+        'description_long' => 'Vypálenie koncentrovaného paprsku gravitónových častíc môže vytvoriť umelé gravitačné pole, ktoré dokáže zničiť lode alebo dokonca aj mesiace.',
     ],
     'weapon_technology' => [
-        'title' => 'Technológia zbraní',
+        'title' => 'Zbrojárske technológie',
         'description' => 'Zbrojárske technológie zefektívňujú prácu zbraňových systémov. Každá úroveň zbrojárskej technológie zvyšuje sílu zbraní jednotiek o 10% zo základnej hodnoty.',
-        'description_long' => 'Zbrojárske technológie sú zamerané na vylepšovanie zbraňových systémov. Osobitný dôraz sa kladie na efektívne využitie čo najväčšieho množstva energie v existujúcich systémoch a jej precíznejšie usmernenie. Tým sa zbrane stávajú výkonnejšími a spôsobujú rozsiahlejšie poškodenia. Každá úroveň týchto technológií zvyšuje účinnosť zbraňových systémov o 10% ich základnej hodnoty.
-Výkonné zbraňové systémy udržujú konkurencieschopnosť armády, preto by mali byť rozvíjané priebežne počas celej hry.',
+        'description_long' => 'Zbrojárske technológie zefektívňujú prácu zbraňových systémov. Každá úroveň zbrojárskej technológie zvyšuje sílu zbraní jednotiek o 10% zo základnej hodnoty.',
     ],
     'shielding_technology' => [
-        'title' => 'Technológia štítu',
+        'title' => 'Technológie štítov',
         'description' => 'Technológia štítov robí štíty na lodiach a obranných zariadeniach efektívnejšie. Každá úroveň technológie štítov zvyšuje pevnosť štítov o 10 % základnej hodnoty.',
-        'description_long' => 'Technológie štítu zahŕňajú výskum nových spôsobov vytvárania mohutných silových polí. Výsledkom je schopnosť pohlcovať veľké dávky energií a odolávať zaťaženiu bez poškodenia. Každá ďalšia úroveň zvyšuje efektívnosť štítov o 10% z ich základnej hodnoty.',
+        'description_long' => 'Technológie štítu zefektívňujú činnosť štítov na lodiach a obranných zariadeniach. Každá úroveň týchto technológií zvyšuje silu štítov o 10% zo základnej hodnoty.',
     ],
     'armor_technology' => [
         'title' => 'Pancierovanie',
         'description' => 'Špeciálne zliatiny zdokonaľujú pancierovanie na lodiach a obranných zariadeniach. Účinnosť obrnenia stúpa o 10% pri každom zvýšení úrovne.',
-        'description_long' => 'Prostredie hlbokého vesmíru je drsné. Piloti a posádka na rôznych misiách čelili nielen intenzívnemu slnečnému žiareniu, ale čelili aj vyhliadke, že budú zasiahnutí vesmírnym odpadom alebo zničení nepriateľskou paľbou pri útoku. Vďaka objavu zliatiny karbidu hliníka a titánu, o ktorej sa zistilo, že je ľahká a zároveň odolná, to posádke poskytlo určitý stupeň ochrany. S každou úrovňou vyvinutej technológie Armor sa vyrába zliatina vyššej kvality, ktorá zvyšuje pevnosť panciera o 10%.',
+        'description_long' => 'Špeciálne zliatiny zdokonaľujú pancierovanie na lodiach a obranných zariadeniach. Účinnosť obrnenia stúpa o 10% pri každom zvýšení úrovne.',
     ],
     'small_cargo' => [
         'title' => 'Malý transportér',
         'description' => 'Malý transportér je obratná loď, ktorá dokáže rýchlo prevážať zdroje na iné planéty.',
-        'description_long' => 'Transportéry sú veľké asi ako stíhačky, ale vzdávajú sa vysokovýkonných pohonov a palubných zbraní, aby zvýšili svoju nákladnú kapacitu. Výsledkom je, že transportér by mal byť vyslaný do bojov len vtedy, keď ho sprevádzajú bojuschopné lode. 
-
-Hneď ako Impulzný pohon dosiahne úroveň výskumu 5, malý transportér cestuje so zvýšenou základnou rýchlosťou a je vybavený impulzným pohonom.',
+        'description_long' => 'Malý transportér je obratná loď, ktorá dokáže rýchlo prevážať zdroje na iné planéty.',
     ],
     'large_cargo' => [
         'title' => 'Veľký transportér',
         'description' => 'Zdokonalenie malého transportéra sa vyznačuje podstatne väčšou nákladovou kapacitou a vďaka výkonnejšiemu pohonu aj vyššou rýchlosťou.',
-        'description_long' => 'Ako sa čas vyvíjal, nájazdy na kolónie viedli k zachyteniu čoraz väčšieho množstva zdrojov. V dôsledku toho boli malé náklady posielané v hromadných počtoch, aby kompenzovali väčšie zajatia. Rýchlo sa zistilo, že je potrebná nová trieda lodí, aby sa maximalizovali zdroje zachytené pri nájazdoch, ale zároveň boli nákladovo efektívne. Po dlhom vývoji sa zrodil Large Cargo. 
-
-Aby sa maximalizovali zdroje, ktoré môžu byť uložené v nákladných priestoroch, táto loď má málo zbraní alebo brnení. Vďaka nainštalovanému vysoko vyvinutému spaľovaciemu motoru slúži ako najúspornejší dodávateľ zdrojov medzi planétami a najúčinnejší pri nájazdoch na nepriateľské svety.',
+        'description_long' => 'Zdokonalenie malého transportéra sa vyznačuje podstatne väčšou nákladovou kapacitou a vďaka výkonnejšiemu pohonu aj vyššou rýchlosťou.',
     ],
     'colony_ship' => [
         'title' => 'Kolonizačná loď',
         'description' => 'Pomocou tejto lode je možné kolonizovať neznáme planéty.',
-        'description_long' => 'V 20. storočí sa Man rozhodol ísť ku hviezdam. Najprv to bolo pristátie na Mesiaci. Potom bola postavená vesmírna stanica. Mars bol kolonizovaný čoskoro potom. Čoskoro sa zistilo, že náš rast závisí od kolonizácie iných svetov. Vedci a inžinieri z celého sveta sa stretli, aby vyvinuli najväčší úspech ľudstva. Zrodila sa kolóniová loď. 
-
-Táto loď sa používa na prípravu novoobjavenej planéty na kolonizáciu. Keď loď dorazí do cieľa, okamžite sa premení na obvyklý životný priestor, ktorý pomáha pri zaľudňovaní a ťažbe nového sveta. Maximálny počet planét je teda určený pokrokom v astrofyzickom výskume. Dve nové úrovne astrotechnológie umožňujú kolonizáciu jednej ďalšej planéty.',
+        'description_long' => 'Pomocou tejto lode je možné kolonizovať neznáme planéty.',
     ],
     'recycler' => [
-        'title' => 'Reciclador',
+        'title' => 'Recyklátor',
         'description' => 'Recyklátory sú jediné lode, ktoré dokážu po boji zbierať polia s troskami plávajúcimi na obežnej dráhe planéty.',
-        'description_long' => 'Boje vo vesmíre nadobúdali čoraz väčšie rozmery. Tisíce lodí boli zničené a zdroje ich pozostatkov sa zdalo byť navždy stratené v poliach trosiek. Normálne nákladné lode sa nemohli dostať dostatočne blízko k týmto poliam bez toho, aby riskovali značné škody. 
-Nedávny vývoj technológií štítov tento problém efektívne obišiel. Bola vytvorená nová trieda lodí, ktoré boli podobné transportérom: Recyclers. Ich úsilie pomohlo zhromaždiť stratené zdroje a potom ich zachrániť. Trosky už vďaka novým štítom nepredstavovali žiadne reálne nebezpečenstvo. 
-
-Hneď ako výskum Impulzného pohonu dosiahne úroveň 17, Recyclers sú premontované Impulznými pohonmi. Hneď, ako výskum Hyperpriestorového pohonu dosiahne úroveň 15, Recyclery sú nanovo vybavené Hyperpriestorovými pohonmi.',
+        'description_long' => 'Recyklátory sú jediné lode, schopné zozbierať trosky, ktoré sa vznášajú po bojoch na obežných dráhach planét.',
     ],
     'espionage_probe' => [
-        'title' => 'Sonda de espionaje',
+        'title' => 'Špionážna sonda',
         'description' => 'Las sondas de espionaje son pequeños droides no tripulados con un sistema de propulsión excepcionalmente rápido usado para espiar en planetas enemigos.',
-        'description_long' => 'Špionážne sondy sú malé agilné drony, ktoré poskytujú údaje o flotilách a planétach. Vybavený špeciálne navrhnutými motormi im umožňuje prekonať obrovské vzdialenosti len za pár minút. Keď sú na obežnej dráhe okolo cieľovej planéty, rýchlo zbierajú údaje a odosielajú správu späť cez vašu sieť Deep Space Network na vyhodnotenie. Existuje však riziko pre aspekt inteligentného zhromažďovania. Počas prenosu správy späť do vašej siete môže cieľ detekovať signál a sondy môžu byť zničené.',
+        'description_long' => 'Špionážne sondy sú malé, obratné stroje, zisťujúce údaje o flotilách a planétach a zasielajúce ich na veľké vzdialenosti.',
     ],
     'solar_satellite' => [
-        'title' => 'Satélite solar',
+        'title' => 'Solárny satelit',
         'description' => 'Solárne satelity sú jednoduché platformy solárnych článkov, ktoré sa nachádzajú na vysokej, stacionárnej obežnej dráhe. Zhromažďujú slnečné svetlo a prenášajú ho na pozemnú stanicu pomocou lasera.',
-        'description_long' => 'Vedci objavili spôsob prenosu elektrickej energie do kolónie pomocou špeciálne navrhnutých satelitov na geosynchrónnej obežnej dráhe. Solárne satelity zhromažďujú slnečnú energiu a prenášajú ju na pozemnú stanicu pomocou pokročilej laserovej technológie. Účinnosť solárneho satelitu závisí od intenzity slnečného žiarenia, ktoré dostáva. V zásade je produkcia energie na obežných dráhach bližšie k Slnku väčšia ako na planétach na obežných dráhach vzdialených od Slnka. 
-Vďaka svojmu dobrému pomeru cena/výkon môžu solárne satelity vyriešiť množstvo energetických problémov. Ale pozor: Slnečné satelity môžu byť v boji ľahko zničené.',
+        'description_long' => 'Solárne satelity sú jednoduché základne, zostavené zo solárnych panelov. Sú umiestnené na vysokej geostacionárnej obežnej dráhe. Zachytávajú energiu slnečného žiarenia a prenášajú ju pomocou lasera do pozemných staníc. Solárne satelity na tejto planéte produkujú 35 j. energie.',
     ],
     'crawler' => [
-        'title' => 'Taladrador',
+        'title' => 'Vrták',
         'description' => 'Los Taladradores aumentan la producción de metal, cristal y deuterio en el planeta en el que se utilicen en un 0.02 %, un 0.02 % y un 0.02 % respectivamente. Un Recolector también disfruta de un aumento de la producción. La bonificación total máxima depende del nivel total de tus minas.',
-        'description_long' => 'Hĺbkový vrták je veľký zemný stroj, zvyšujúci produkciu ťažobných komplexov a syntetizérov. Je pohyblivejší, než sa zdá, pri svojich rozmeroch. Každý vrták zvyšuje produkciu kovov o 0,02%, kryštálov o 0,02% a deutéria o 0,02%. Ako zberateľ máš tiež vyššiu produkciu. Maximálny celkový bonus závisí od úrovne rozšírenia ťažobných komplexov.',
+        'description_long' => 'Hĺbkové vrtáky zvyšujú produkciu kovov, kryštálov a deutéria na planéte nasadenia o 0,02%, 0,02% a 0,02%. Ako zberateľ máš tiež vyššiu produkciu. Maximálny celkový bonus závisí od úrovne rozšírenia ťažobných komplexov.',
     ],
     'pathfinder' => [
-        'title' => 'Explorador',
+        'title' => 'Prieskumník',
         'description' => 'Pathfinder je rýchla a obratná loď, určená na výpravy do neznámych sektorov vesmíru.',
-        'description_long' => 'Pathfinder je najnovší vývoj v technológii prieskumu. Táto loď bola špeciálne navrhnutá pre členov triedy Discoverer s cieľom maximalizovať ich potenciál. Vybavený pokročilými skenovacími systémami a veľkým nákladným priestorom na záchranu zdrojov, Pathfinder vyniká pri expedíciách. Jeho sofistikované senzory dokážu odhaliť cenné zdroje a anomálie, ktoré by ostatné lode nepostrehli. Loď kombinuje vysokú rýchlosť s dobrou kapacitou nákladu, vďaka čomu je ideálna pre rýchle prieskumné misie a zhromažďovanie zdrojov zo vzdialených sektorov.',
+        'description_long' => 'Prieskumné lode sú rýchle, priestranné a dokážu na výpravách ťažiť troskové polia. Celkový výnos je tiež zvýšený.',
     ],
     'light_fighter' => [
         'title' => 'Ľahký stíhač',
         'description' => 'Ľahký stíhač je prvá loď, ktorú dokáže vybudovať každé impérium. Vyznačuje sa obratnosťou, no je ľahko zraniteľná. Vo veľkých počtoch môže predstavovať vážne nebezpečenstvo. Používa sa najmä ako doprovod pre malé a veľké transporty, pri misiách na planéty so slabou obranou.',
-        'description_long' => 'Toto je prvá bojová loď, ktorú postavia všetci cisári. Ľahká stíhačka je agilná loď, ale zraniteľná, keď je sama. V masovom počte sa môžu stať veľkou hrozbou pre každú ríšu. Sú prví, ktorí sprevádzajú malé a veľké náklady na nepriateľské planéty s menšou obranou.',
+        'description_long' => 'Ľahký stíhač je prvá loď, ktorú dokáže vybudovať každé impérium. Vyznačuje sa obratnosťou, no je ľahko zraniteľná. Vo veľkých počtoch môže predstavovať vážne nebezpečenstvo. Používa sa najmä ako doprovod pre malé a veľké transporty, pri misiách na planéty so slabou obranou.',
     ],
     'heavy_fighter' => [
         'title' => 'Ťažký stíhač',
         'description' => 'Toto zdokonalenie ľahkého stíhača sa vyznačuje výkonnejšou pohonnou jednotkou, lepším pancierovaním a väčšou palebnou silou ako jeho predchodca.',
-        'description_long' => 'Pri vývoji ťažkého stíhača sa výskumníci dostali do bodu, v ktorom konvenčné pohony už neposkytovali dostatočný výkon. Pre optimálny pohyb lode bol prvýkrát použitý impulzný pohon. To zvýšilo náklady, no zároveň otvorilo nové možnosti. Použitím tohto pohonu zostalo viac energie na zbrane a štíty; okrem toho boli na túto novú rodinu stíhačiek použité vysokokvalitné materiály. S týmito zmenami predstavuje ťažký stíhač novú éru v lodnej technike a je základom pre technológiu krížnikov. 
-
-Ťažký stíhač, o niečo väčší ako ľahký bojovník, má hrubšie trupy, ktoré poskytujú väčšiu ochranu a silnejšie zbrane.',
+        'description_long' => 'Toto zdokonalenie ľahkého stíhača sa vyznačuje výkonnejšou pohonnou jednotkou, lepším pancierovaním a väčšou palebnou silou ako jeho predchodca.',
     ],
     'cruiser' => [
         'title' => 'Krížnik',
         'description' => 'Krížniky majú približne trikrát mohutnejšie pancierovanie, v porovnaní s ťažkými stíhačmi a disponujú viac než dvojnásobnou palebnou silou. Navyše, sú tiež veľmi rýchle.',
-        'description_long' => 'S vývojom ťažkého lasera a iónového dela sa ľahké a ťažké stíhačky stretli s alarmujúco vysokým počtom porážok, ktoré sa s každým náletom zvyšovali. Napriek mnohým úpravám, sile zbraní a zmenám pancierovania sa nepodarilo zvýšiť dostatočne rýchlo, aby účinne čelilo týmto novým obranným opatreniam. Preto bolo rozhodnuté postaviť novú triedu lodí, ktoré kombinovali viac pancierovania a väčšiu palebnú silu. Ako výsledok rokov výskumu a vývoja sa zrodil Cruiser. 
-
-Krížniky sú pancierované takmer trikrát ako ťažké stíhačky a majú viac ako dvojnásobok palebnej sily akejkoľvek existujúcej bojovej lode. Majú tiež rýchlosti, ktoré ďaleko prevyšujú akúkoľvek kozmickú loď, ktorá bola kedy vyrobená. Takmer storočie dominovali vesmíru krížniky. S vývojom Gaussových kanónov a plazmových veží sa však ich prevaha skončila. Používajú sa aj dnes proti bojovým skupinám, ale už nie tak prevažne ako predtým.',
+        'description_long' => 'Krížniky majú približne trikrát mohutnejšie pancierovanie, v porovnaní s ťažkými stíhačmi a disponujú viac než dvojnásobnou palebnou silou. Navyše, sú tiež veľmi rýchle.',
     ],
     'battle_ship' => [
         'title' => 'Bojová loď',
         'description' => 'Bojové lode tvoria obvykle chrbticu flotily. Ich ťažké kanóny, vysoká rýchlosť a veľký nákladový priestor z nich robia vážnych protivníkov.',
-        'description_long' => 'Akonáhle sa ukázalo, že krížnik stráca pôdu pod nohami kvôli zvyšujúcemu sa počtu obranných štruktúr, ktorým čelil, a so stratou lodí na misiách na neprijateľných úrovniach, bolo rozhodnuté postaviť loď, ktorá by mohla čeliť rovnakému typu obranných štruktúr s čo najmenšími stratami. Po rozsiahlom vývoji sa zrodila Bojová loď. Bojová loď, postavená tak, aby odolala aj tým najväčším bitkám, má veľké nákladné priestory, ťažké delá a vysokú rýchlosť hyperpohonu. Po vyvinutí sa nakoniec ukázalo, že je chrbtovou kosťou každej nájazdnej flotily cisárov.',
+        'description_long' => 'Bojové lode tvoria obvykle chrbticu flotily. Ich ťažké kanóny, vysoká rýchlosť a veľký nákladový priestor z nich robia vážnych protivníkov.',
     ],
     'battlecruiser' => [
-        'title' => 'Acorazado',
+        'title' => 'Bojový krížnik',
         'description' => 'El Acorazado es una nave altamente especializada en la intercepción de flotas hostiles.',
-        'description_long' => 'Táto loď je jednou z najpokročilejších bojových lodí, aké kedy boli vyvinuté, a je obzvlášť smrteľná, pokiaľ ide o ničenie útočiacich flotíl. So svojimi vylepšenými laserovými delami na palube a pokročilým Hyperpriestorovým motorom je Battlecruiser vážnou silou, s ktorou sa treba vysporiadať pri akomkoľvek útoku. Kvôli konštrukcii lode a jej veľkému zbraňovému systému bolo potrebné prerezať nákladné priestory, čo je však kompenzované zníženou spotrebou paliva.',
+        'description_long' => 'Bojový krížnik je úzko špecializovaný na prenasledovanie nepriateľských flotíl.',
     ],
     'bomber' => [
-        'title' => 'Bombardero',
+        'title' => 'Bombardér',
         'description' => 'El Bombardero es una nave de propósito especial, desarrollado para atravesar las defensas planetarias más pesadas.',
-        'description_long' => 'V priebehu storočí, keď sa obrana začínala zväčšovať a dômyselnejšie, flotily sa začali ničiť alarmujúcou rýchlosťou. Bolo rozhodnuté, že je potrebná nová loď na prelomenie obrany, aby sa zabezpečili maximálne výsledky. Po rokoch výskumu a vývoja vznikol Bomber. 
-
-Pomocou laserom navádzaného zameriavacieho zariadenia a plazmových bômb, bombardér vyhľadá a zničí akýkoľvek obranný mechanizmus, ktorý nájde. Akonáhle je hyperpriestorový pohon vyvinutý na úroveň 8, Bomber je dodatočne vybavený hyperpriestorovým motorom a môže lietať vyššími rýchlosťami.',
+        'description_long' => 'Bombardér bol primárne vyvinutý na zničenie planetárnej obrany protivníka.',
     ],
     'destroyer' => [
-        'title' => 'Destructor',
+        'title' => 'Devastátor',
         'description' => 'El destructor es la nave más pesada jamás vista y posee un potencial de ataque sin precedentes.',
-        'description_long' => 'Destroyer je výsledkom rokov práce a vývoja. S vývojom Deathstars sa rozhodlo, že na obranu pred takouto masívnou zbraňou je potrebná trieda lodí. Vďaka vylepšeným navádzacím senzorom, multifalangovým iónovým kanónom, Gaussovým kanónom a plazmovým vežičkám sa Destroyer ukázal ako jedna z najobávanejších lodí. 
-
-Pretože je torpédoborec veľmi veľký, jeho manévrovateľnosť je značne obmedzená, čo z neho robí skôr bojovú stanicu ako bojovú loď. Nedostatočnú manévrovateľnosť kompenzuje jeho samotná palebná sila, ale jeho výstavba a prevádzka tiež stojí značné množstvo deutéria.',
+        'description_long' => 'Devastátor je kráľom vojnových lodí.',
     ],
     'deathstar' => [
-        'title' => 'Estrella de la muerte',
+        'title' => 'Hviezda smrti',
         'description' => 'No hay nada tan grande y peligroso como una estrella de la muerte aproximándose.',
-        'description_long' => 'Hviezda smrti je najmocnejšia loď, aká bola kedy vytvorená. Táto loď veľkosti mesiaca je jedinou loďou, ktorú je možné vidieť voľným okom na zemi. Kým si to všimnete, je už nanešťastie neskoro čokoľvek robiť. 
-
-Táto masívna loď, vyzbrojená gigantickým gravitónovým kanónom, najpokročilejším zbraňovým systémom, aký bol kedy vytvorený vo vesmíre, má nielen schopnosť ničiť celé flotily a obranu, ale má aj schopnosť ničiť celé mesiace. Len tie najvyspelejšie impériá majú schopnosť postaviť loď takejto veľkosti.',
+        'description_long' => 'Zničujúca sila Hviezdy smrti je neprekonateľná.',
     ],
     'reaper' => [
-        'title' => 'Segador',
+        'title' => 'Kosa',
         'description' => 'Reaper je výkonná bojová loď špecializovaná na agresívne nájazdy a zber trosiek na poli.',
-        'description_long' => 'Reaper predstavuje vrchol vojenského inžinierstva triedy General. Toto ťažko vyzbrojené plavidlo bolo navrhnuté pre veliteľov, ktorí oceňujú bojovú zdatnosť a taktickú flexibilitu. Zatiaľ čo jeho primárnou úlohou je boj, Reaper má zosilnené nákladné priestory, ktoré mu umožňujú zbierať polia s troskami po bitke. Jeho pokročilé zameriavacie systémy a ťažké brnenie z neho robia impozantného protivníka, zatiaľ čo jeho dvojúčelový dizajn znamená, že dokáže vytvárať aj profitovať z krviprelievania na bojisku. Loď je vybavená najmodernejšou zbraňovou technológiou a dokáže obstáť aj proti oveľa väčším plavidlám.',
+        'description_long' => 'Loď triedy Kosa je mohutným prostriedkom deštrukcie, ktorý dokáže vyťažiť troskové pole ihneď po bitke.',
     ],
     'rocket_launcher' => [
-        'title' => 'Lanzamisiles',
+        'title' => 'Raketový komplet',
         'description' => 'El lanzamisiles es un sistema de defensa sencillo, pero barato.',
-        'description_long' => 'Vaša prvá základná obranná línia. Ide o jednoduché pozemné odpaľovacie zariadenia, ktoré vystreľujú rakety s konvenčnými hlavicami na útočiace nepriateľské ciele. Keďže ich konštrukcia je lacná a nie je potrebný žiadny výskum, dobre sa hodia na obranu pri nájazdoch, ale strácajú účinnosť pri obrane pred väčšími útokmi. Akonáhle začnete stavať na pokročilejších obranných zbraňových systémoch, raketomety sa stanú jednoduchou potravou, ktorá umožní vašim škodlivejším zbraniam spôsobovať väčšie škody na dlhší čas. 
-
-Po bitke je až 70 % šanca, že zlyhané obranné zariadenia možno vrátiť do používania.',
+        'description_long' => 'Raketový komplet je jednoduchá a cenovo efektívna voľba obrany.',
     ],
     'light_laser' => [
-        'title' => 'Láser pequeño',
+        'title' => 'Ľahký laser',
         'description' => 'Por medio de un rayo láser concentrado, se puede provocar más daño que con las armas balísticas normales.',
-        'description_long' => 'S vývojom technológie a vytvorením sofistikovanejších lodí sa zistilo, že na odvrátenie útokov je potrebná silnejšia obranná línia. S pokrokom laserovej technológie bola navrhnutá nová zbraň, ktorá poskytuje ďalšiu úroveň obrany. Svetelné lasery sú jednoduché pozemné zbrane, ktoré využívajú špeciálne zameriavacie systémy na sledovanie nepriateľa a vystreľujú vysoko intenzívny laser určený na prerezanie trupu cieľa. Aby boli nákladovo efektívne, boli vybavené vylepšeným systémom tienenia, avšak štrukturálna integrita je rovnaká ako u raketometu. 
-
-Po bitke je až 70 % šanca, že zlyhané obranné zariadenia možno vrátiť do používania.',
+        'description_long' => 'Koncentrované ostreľovanie objektu fotónmi môže spôsobiť výrazne väčšie poškodenie než konvenčné strelné zbrane.',
     ],
     'heavy_laser' => [
-        'title' => 'Láser grande',
+        'title' => 'Ťažký laser',
         'description' => 'Los lásers grandes poseen una mejor producción de energía y una mayor integridad estructural que los lásers pequeños.',
-        'description_long' => 'Ťažký laser je praktická, vylepšená verzia ľahkého lasera. Je vyváženejší ako svetelný laser s vylepšeným zložením zliatiny, využíva silnejšie, hustejšie zabalené lúče a ešte lepšie palubné zameriavacie systémy. 
-
-Po bitke je až 70 % šanca, že zlyhané obranné zariadenia možno vrátiť do používania.',
+        'description_long' => 'Ťažký laser je logickým vyústením vývoja ľahkých laserov.',
     ],
     'gauss_cannon' => [
-        'title' => 'Cañón Gauss',
+        'title' => 'Gaussov kanón',
         'description' => 'Usando una inmensa aceleración electromagnética, los cañones gauss aceleran proyectiles pesados.',
-        'description_long' => 'Projektilové zbrane boli dlho považované za zastarané v dôsledku moderných termonukleárnych a energetických technológií a vďaka vývoju hyperpohonu a zlepšenému pancierovaniu. To bolo dovtedy, kým jej práve energetická technológia, ktorá ju kedysi zostarla, pomohla znovu dosiahnuť svoje zavedené postavenie. 
-Gaussovo delo je veľká verzia urýchľovača častíc. Extrémne ťažké strely sú urýchľované obrovskou elektromagnetickou silou a majú úsťovú rýchlosť, vďaka ktorej špina obklopujúca strelu horí na oblohe. Táto zbraň je pri streľbe taká silná, že vytvára sonický tresk. Moderné brnenie a štíty sotva vydržia silu, často je cieľ úplne preniknutý silou rakety. Obranné štruktúry sa deaktivujú, akonáhle sú príliš vážne poškodené. 
-
-Po bitke je až 70 % šanca, že zlyhané obranné zariadenia možno vrátiť do používania.',
+        'description_long' => 'Gaussov kanón vystreľuje extrémne urýchlené projektily obrovskej hmotnosti.',
     ],
     'ion_cannon' => [
-        'title' => 'Cañón iónico',
+        'title' => 'Iónový kanón',
         'description' => 'Los cañones iónicos disparan rayos de iones altamente energizados contra su objetivo, desestabilizando los escudos y destruyendo los componentes electrónicos.',
-        'description_long' => 'Iónové delo je zbraň, ktorá vystreľuje lúče iónov (kladne alebo záporne nabité častice). Iónové delo je vlastne typ časticového dela; ionizované sú len použité častice. Vďaka svojim elektrickým nábojom majú tiež potenciál deaktivovať elektronické zariadenia a čokoľvek iné, čo má elektrický alebo podobný zdroj energie, pomocou javu známeho ako elektromagnetický impulz (EMP efekt). Vďaka vysoko vylepšenému systému tienenia kanónov poskytuje toto delo vylepšenú ochranu pre vaše väčšie, ničivejšie obranné zbrane. 
-
-Po bitke je až 70 % šanca, že zlyhané obranné zariadenia možno vrátiť do používania.',
+        'description_long' => 'Iónový kanón emituje nepretržitý lúč zrýchlených iónov vysokej energie, ktoré spôsobujú značné poškodenie objektov, na ktoré dopadajú.',
     ],
     'plasma_turret' => [
-        'title' => 'Cañón de plasma',
+        'title' => 'Plazmová veža',
         'description' => 'Los cañones de plasma liberan la energía de una pequeña erupción solar en una bala de plasma. La energía destructiva es incluso superior a la del Destructor.',
-        'description_long' => 'Plazmová veža, jeden z najpokročilejších obranných zbraňových systémov, aký bol kedy vyvinutý, využíva veľký palivový článok jadrového reaktora na napájanie elektromagnetického urýchľovača, ktorý vyžaruje pulz alebo toroid plazmy. Počas prevádzky sa plazmová veža najskôr zablokuje na cieľ a začne proces streľby. V jadre vežičiek sa vytvára plazmová guľa prehrievaním a stláčaním plynov, čím sa z nich zbavujú iónov. Akonáhle sa plyn prehreje, stlačí a vytvorí sa plazmová guľa, potom sa vloží do elektromagnetického urýchľovača, ktorý je nabudený. Po úplnom nabití sa aktivuje urýchľovač, čo vedie k tomu, že plazmová guľa je vypustená extrémne vysokou rýchlosťou k zamýšľanému cieľu. Z pohľadu cieľa je približujúca sa modrastá guľa plazmy pôsobivá, no akonáhle zasiahne, spôsobí okamžitú deštrukciu. 
-
-Obranné zariadenia sa deaktivujú, akonáhle sú príliš ťažko poškodené. Po bitke je až 70 % šanca, že zlyhané obranné zariadenia možno vrátiť do používania.',
+        'description_long' => 'Plazmové veže vystreľujú hmotu o teplote porovnateľnej so slnečnými erupciami a ničivým účinkom prekonávajú aj najvyššie triedy lodí.',
     ],
     'small_shield_dome' => [
-        'title' => 'Cúpula pequeña de defensa',
+        'title' => 'Malý planetárny štít',
         'description' => 'La cúpula pequeña de defensa cubre el planeta con un delgado campo protector que puede absorber inmensas cantidades de energía.',
-        'description_long' => 'Kolonizácia nových svetov priniesla nové nebezpečenstvo, vesmírny odpad. Veľký asteroid by mohol ľahko zničiť svet a všetkých obyvateľov. Pokrok v technológii tienenia poskytol vedcom spôsob, ako vyvinúť štít na ochranu celej planéty nielen pred vesmírnym odpadom, ale, ako sa zistilo, aj pred nepriateľským útokom. Vytvorením veľkého elektromagnetického poľa okolo planéty sa odklonil vesmírny odpad, ktorý by za normálnych okolností planétu zničil, a útoky nepriateľských Impérií boli zmarené. Prvé generátory boli veľké a štít poskytoval miernu ochranu, ale neskôr sa zistilo, že malé štíty neposkytovali ochranu pred útokmi väčšieho rozsahu. Malá štítová kupola bola predohrou k silnejšiemu a vyspelejšiemu planetárnemu ochrannému systému, ktorý príde. 
-
-Po bitke je až 70 % šanca, že zlyhané obranné zariadenia možno vrátiť do používania.',
+        'description_long' => 'Malý planetárny štít chráni celú planétu silovým poľom, ktoré dokáže pohltiť obrovské množstvo energie.',
     ],
     'large_shield_dome' => [
-        'title' => 'Cúpula grande de defensa',
+        'title' => 'Veľký planetárny štít',
         'description' => 'La cúpula grande de protección proviene de una tecnología de defensa mejorada que absorbe incluso más energía antes de colapsar.',
-        'description_long' => 'Veľký štítový dóm je ďalším krokom v rozvoji planetárnych štítov, je výsledkom rokov práce na vylepšení Malého štítového dómu. Veľké kupoly sú skonštruované tak, aby odolali väčšej paľbe nepriateľa tým, že poskytujú elektromagnetické pole s vyššou energiou, a poskytujú dlhšiu dobu ochrany pred zrútením. 
-
-Po bitke je až 70 % šanca, že zlyhané obranné zariadenia môžu byť vrátené do používania.',
+        'description_long' => 'Pokračovaním vývoja malého štítu je tento štít, ktorý dokáže pohltiť významne väčšie energie a odolávať tak útokom.',
     ],
     'anti_ballistic_missile' => [
-        'title' => 'Misil de intercepción',
+        'title' => 'Protiraketové strely',
         'description' => 'Los misiles de intercepción destruyen los misiles interplanetarios.',
-        'description_long' => 'Antibalistické strely (ABM) sú vašou jedinou obrannou líniou, keď na vašu planétu alebo mesiac zaútočia medziplanetárne rakety (IPM). Keď sa zistí spustenie IPM, tieto rakety sa automaticky aktivujú, spracujú štartovací kód vo svojich letových počítačoch, zacielia prichádzajúce IPM a vypustia, aby zasiahli. Počas letu je cieľový IPM neustále sledovaný a aplikujú sa korekcie kurzu, kým ABM nedosiahne cieľ a nezničí útočiaci IPM. Každý ABM zničí jeden prichádzajúci IPM.',
+        'description_long' => 'Protiraketové strely dokážu zničiť útočiace medziplanetárne rakety.',
     ],
     'interplanetary_missile' => [
-        'title' => 'Misil interplanetario',
+        'title' => 'Medziplanetárne rakety',
         'description' => 'Medziplanetárne rakety ničia nepriateľskú obranu.',
-        'description_long' => 'Medziplanetárne rakety (IPM) sú vašou útočnou zbraňou na zničenie obrany vášho cieľa. Pomocou najmodernejšej sledovacej technológie každá strela zacieli na určitý počet obranných zariadení na zničenie. Osadené protihmotovou bombou dodávajú ničivú silu takú silnú, že zničené štíty a obranu nemožno opraviť. Jediný spôsob, ako čeliť týmto raketám, sú ABM.',
+        'description_long' => 'Medziplanetárne rakety ničia nepriateľskú obranu. Medziplanetárne rakety majú aktuálny dosah 0.',
     ],
     'kraken' => [
         'title' => 'KRAKEN',

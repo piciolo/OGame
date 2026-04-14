@@ -12,53 +12,42 @@ return [
     'metal_mine' => [
         'title' => 'Fém bánya',
         'description' => 'A fém bánya olyan alapvető nyersanyagot biztosít egy feltörekvő birodalomnak, amely nélkülözhetetlen az épületek és hajók építéséhez. A fém olcsó nyersanyag, kevés energiával kitermelhető, de rengetegre lesz szükséged, és egyre gyakrabban kell majd használni, mint egyéb nyersanyagokat. A fém mélyen a felszín alatt található meg, de  minnél mélyebbről bányásszák, annál több energia kell a kitermeléséhez.',
-        'description_long' => 'A Fém az elsődleges nyersanyag, Birodalmad alapja. Nagyobb mélységekben a bányák képesek többet kitermelni az épületek, hajók, védelmi rendszerek építéséhez és a kutatáshoz szükséges éltető fémet. Minél mélyebbre fúr le a bánya, annál több energia szükséges a maximális termeléshez. Mivel a fém a leggyakrabban előforduló nyersanyag az összes közül, kereskedéskor ennek az árát kell tekinteni a legalacsonyabbnak.',
+        'description_long' => 'A fém bánya olyan alapvető nyersanyagot biztosít egy feltörekvő birodalomnak, amely nélkülözhetetlen az épületek és hajók építéséhez. A fém olcsó nyersanyag, kevés energiával kitermelhető, de rengetegre lesz szükséged, és egyre gyakrabban kell majd használni, mint egyéb nyersanyagokat. A fém mélyen a felszín alatt található meg, de  minnél mélyebbről bányásszák, annál több energia kell a kitermeléséhez.',
     ],
     'crystal_mine' => [
         'title' => 'Kristály bánya',
         'description' => 'Kristályok az alap erőforrások része, minden épülethez szükség van rá.',
-        'description_long' => 'A kristály bányák az elektronikus áramkörökhöz és bizonyos anyag ötvözetekhez elengedhetetlen nyersanyagot termelnek. A kristály bányászása több energiát fogyaszt mint a fém bányászása, ezzel megnövelve a kristály értékét is. Szinte minden hajónak és épületnek szüksége van kristályra. A legtöbb kristály a hajók építéséhez szükséges, de a kristály ritka és nehezebben bányászható. Tehát a bányákat bővítva mélyebb bolygó-kéreg rétegekbe lehet behatolni és azokból több kristályt bányászni.',
+        'description_long' => 'Kristályok az alap erőforrások része, minden épülethez szükség van rá.',
     ],
     'deuterium_synthesizer' => [
         'title' => 'Deutérium Szűrőállomás',
         'description' => 'Deutérium az űrhajók üzemanyaga és a tenger mélyén található.',
-        'description_long' => 'Az épület fejlesztésével mélyebb rétegekhez juthatsz, így nagyobb mennyiséget tudsz kitermelni belőle.',
+        'description_long' => 'Deutérium az űrhajók üzemanyaga és a tenger mélyén található.',
     ],
     'solar_plant' => [
         'title' => 'Naperőmű',
         'description' => 'A Naperőmű energiát nyer ki a napsugárzásból. Minden bányának szüksége van energiára.',
-        'description_long' => 'A hatalmas Naperőmű energiát állít elő a bányáknak és Deutérium előállítónak. Mivel a Naperőmű fejleszthető, a bolygót fedő napelemek felülete növekszik, mely nagyobb mennyiségű energiatermelést eredményez bolygód áramellátásához.',
+        'description_long' => 'A Naperőmű energiát nyer ki a napsugárzásból. Minden bányának szüksége van energiára.',
     ],
     'fusion_plant' => [
         'title' => 'Fúziós erőmű',
         'description' => 'A fúziós reaktór Deutériumból állít elő energiát.',
-        'description_long' => 'A fúziós erőművekben a hidrogénatommagokat héliummagokká olvasztják össze hatalmas hőmérsékleten és nyomáson, óriási mennyiségű energia szabadul fel. Minden elfogyasztott deutérium grammonként akár 41,32*10^-13 Joule energia állítható elő; 1 g-mal 172 MWh energiát tudsz előállítani. 
-
-A nagyobb reaktorkomplexumok több deutériumot használnak fel, és óránként több energiát tudnak termelni. Az energetikai hatást az energiatechnológia kutatásával lehetne fokozni. 
-
-A fúziós erőmű energiatermelését a következőképpen számítják ki: 
-30 * [Level Fusion Plant] * (1,05 + [Level Energy Technology] * 0,01) ^ [Level Fusion Plant]',
+        'description_long' => 'A fúziós reaktor Deutériumból állít elő energiát.',
     ],
     'metal_store' => [
         'title' => 'Fém raktár',
         'description' => 'Fém tárolására használandó.',
-        'description_long' => 'Ezt az óriási tárolót fémérc tárolására használják. A korszerűsítés minden szintje növeli a tárolható fémérc mennyiségét. Ha megtelnek a boltok, nem bányásznak tovább fémet. 
-
-A Fémtároló a bánya napi termelésének egy bizonyos százalékát (max. 10 százalék) védi.',
+        'description_long' => 'Fém tárolására használandó.',
     ],
     'crystal_store' => [
         'title' => 'Kristályraktár',
         'description' => 'Kristály tárolására alkalmas',
-        'description_long' => 'A feldolgozatlan kristályt addig is ezekben az óriási raktárcsarnokokban tárolják majd. Minden frissítési szinttel növeli a tárolható kristály mennyiségét. Ha a kristályraktárak megtelnek, nem bányásznak tovább kristályt. 
-
-A Crystal Storage a bánya napi termelésének egy bizonyos százalékát (max. 10 százalék) védi.',
+        'description_long' => 'Kristály tárolására alkalmas',
     ],
     'deuterium_store' => [
         'title' => 'Deutérium Tartály',
         'description' => 'Hatalmas tartályok tárolják az új kitermelt Deutériumot.',
-        'description_long' => 'A Deutérium tartály az újonnan szintetizált deutérium tárolására szolgál. Miután a szintetizátor feldolgozta, ebbe a tartályba kerül későbbi felhasználásra. A tartály minden egyes frissítésével a teljes tárolókapacitás növekszik. A kapacitás elérése után a deutérium már nem szintetizálódik. 
-
-A deutériumtartály a szintetizátor napi termelésének bizonyos százalékát (max. 10 százalék) védi.',
+        'description_long' => 'Hatalmas tartályok tárolják az új kitermelt Deutériumot.',
     ],
     'robot_factory' => [
         'title' => 'Robot Gyár',
@@ -68,328 +57,267 @@ A deutériumtartály a szintetizátor napi termelésének bizonyos százalékát
     'shipyard' => [
         'title' => 'Hajógyár',
         'description' => 'Minden típusa a hajóknak és védelmi eszközöknek a Hajógyárban készülnek.',
-        'description_long' => 'Minden típusa a hajóknak és védelmi eszközöknek a Hajógyárban készülnek. A hajógyár fejlesztésével egyre többféle hajó építhető egyre gyorsabban.',
+        'description_long' => 'Minden típusa a hajóknak és védelmi eszközöknek a Hajógyárban készülnek.',
     ],
     'research_lab' => [
         'title' => 'Kutató laboratórium',
         'description' => 'A Kutató laboratórium szükséges a kutatásokhoz és új technológiák kifejlesztéséhez.',
-        'description_long' => 'A Kutatólaboratórium segítségével új technológiákat lehet kifejleszteni. Minél előbb meg kell építeni, hogy elkezdhess új technológiákat kifejleszteni.',
+        'description_long' => 'A Kutató laboratórium szükséges a kutatásokhoz és új technológiák kifejlesztéséhez.',
     ],
     'alliance_depot' => [
         'title' => 'Szövetségi Állomás',
         'description' => 'A Szövetségi állomás üzemanyagot ad a barátságos flotta hajóinak.',
-        'description_long' => 'Üzemanyagot és védelmet ad a szövetség hajóinak. Minél nagyobb szinten van, annál több Deutériumot tud küldeni a köröző hajóknak.',
+        'description_long' => 'A Szövetségi állomás üzemanyagot ad a barátságos flotta hajóinak.',
     ],
     'missile_silo' => [
         'title' => 'Rakéta Siló',
         'description' => 'Rakéta silók a rakéták tárolására használhatóak.',
-        'description_long' => 'Rakéta silók a rakéták tárolására használhatóak. 5 Bolygóközi vagy 10 anti-ballasztikus rakéta tárolható fejlettségi szintenként. 1 bolygóközi rakétának annyi helyre van szüksége, mint 2 anti-ballaszikus rakánának.',
+        'description_long' => 'Rakéta silók a rakéták tárolására használhatóak.',
     ],
     'nano_factory' => [
         'title' => 'Nanite Gyár',
         'description' => 'Ez a végső a robot technológiában. Minden szinttel csökken az épületek, hajók és védelmi egységek építési ideje',
-        'description_long' => 'Ez a gyár a végső generáció a robot technológiában.  A nano technológia segítségével egyre jobb teljesítményű dolgokat lehet előállítani. A gyártás idő rövidebb lesz minden szint növeléssel.',
+        'description_long' => 'Ez a végső a robot technológiában. Minden szinttel csökken az épületek, hajók és védelmi egységek építési ideje',
     ],
     'terraformer' => [
         'title' => 'Terraformer',
         'description' => 'A Terraformer élhetővé teszi a bolygók felszínét',
-        'description_long' => 'A bolygókon való növekvő építkezéssel még a kolónia élettere is egyre korlátozottabb. A hagyományos módszerek, mint például a magas- és földalatti építés, egyre elégtelenebbek. Nagy energiájú fizikusok és nanomérnökök kis csoportja végül eljutott a megoldáshoz: a terraformáláshoz. 
-Óriási mennyiségű energiát felhasználva a terraformátor egész földterületet vagy akár kontinenseket is szántóvá tehet. Ebben az épületben kifejezetten erre a célra létrehozott nanitok gyártására kerül sor, amelyek végig egyenletes talajminőséget biztosítanak. 
-
-Minden terraformáló szint 5 tábla művelését teszi lehetővé. A terraformer minden szinten egy mezőt foglal el. Minden 2 terraformáló szinten kapsz 1 bónuszmezőt. 
-
-Miután megépült, a terraformátort nem lehet szétszedni.',
+        'description_long' => 'A Terraformer élhetővé teszi a bolygók felszínét',
     ],
     'space_dock' => [
         'title' => 'Űrdokk',
         'description' => 'A roncsok megjavíthatók az Űrdokkban.',
-        'description_long' => 'A Space Dock lehetőséget kínál a csatában elpusztult, roncsokat hagyó hajók javítására. A javítási idő maximum 12 órát vesz igénybe, de legalább 30 percet vesz igénybe, amíg a hajókat újra üzembe lehet helyezni. 
-
-A javítást a roncs keletkezését követő 3 napon belül el kell kezdeni. A megjavított hajókat a javítás befejezése után manuálisan vissza kell helyezni a szolgálatba. Ha ez nem történik meg, bármilyen típusú hajót 3 nap elteltével újra szolgálatba állítanak. 
-
-A roncsok csak akkor jelennek meg, ha több mint 150 000 egység semmisült meg, beleértve a harcban részt vevő saját hajókat is, a hajópontok legalább 5%-ával. 
-
-Mivel a Space Dock pályán lebeg, nincs szükség bolygómezőre.',
+        'description_long' => 'A roncsok megjavíthatók az Űrdokkban.',
     ],
     'lunar_base' => [
         'title' => 'Holdbázis',
         'description' => 'Mivel a Holdnak nincs légköre, holdbázisra van szükség a lakható tér létrehozásához.',
-        'description_long' => 'A holdnak nincs atmoszférája, ezért először holdbázist kell építeni, mielőtt települést lehetne felállítani. Ez oxigént, fűtést és gravitációt biztosít. Minden egyes szint megépítésével nagyobb lakó- és fejlesztési területet biztosítanak a bioszférán belül. Minden épített szint három mezőt tesz lehetővé más épületek számára. A Holdbázis minden szinten egy mezőt foglal el. 
-Miután megépült, a holdbázist nem lehet lebontani.',
+        'description_long' => 'Mivel a holdon nincs légkör, Holdbázisra van szükség lakható környezet létrehozásához.',
     ],
     'sensor_phalanx' => [
         'title' => 'Érzékelő Phalanx',
         'description' => 'A szenzorfalanx segítségével más birodalmak flottái is felfedezhetők és megfigyelhetők. Minél nagyobb az érzékelő falanx tömbje, annál nagyobb tartományt tud beolvasni.',
-        'description_long' => 'A nagy felbontású érzékelők segítségével a Sensor Phalanx először a fény spektrumát, a gázok összetételét és a távoli világ sugárzási kibocsátását pásztázza, majd az adatokat egy szuperszámítógépre továbbítja feldolgozás céljából. Az információ megszerzése után a szuperszámítógép összehasonlítja a spektrumban, a gázösszetételben és a sugárzási kibocsátásban bekövetkezett változásokat a spektrum különböző hajómozgások által létrehozott alapvonali diagramjával. A kapott adatok ezután a falanx hatósugarán belül bármely flotta tevékenységét jelenítik meg. Annak érdekében, hogy a szuperszámítógép ne melegedjen túl a folyamat során, 5k feldolgozott deutérium felhasználásával hűtik. 
-A Phalanx használatához kattintson a Galaxy View bármely bolygójára az érzékelők hatótávolságán belül.',
+        'description_long' => 'az érzékelő phalanx használatával a más birodalom flottái felderíthetők és megfigyelhetők. A nagyobb phalanx nagyobb területet tud vizsgálni.',
     ],
     'jump_gate' => [
         'title' => 'Ugró Kapu',
         'description' => 'A Jump Gates egy hatalmas adó-vevő, amely még a legnagyobb flottát is pillanatok alatt egy távoli ugrókapuhoz tudja küldeni.',
-        'description_long' => 'A Jump Gate egy óriási adó-vevő rendszer, amely a legnagyobb flottákat is képes időveszteség nélkül egy fogadó kapuhoz küldeni az univerzum bármely pontján. A Worm Hole-hoz hasonló technológiát használva az ugrás eléréséhez nincs szükség deutériumra. Az ugrások között néhány perces újratöltési időszaknak kell eltelnie, hogy lehetővé tegye a regenerációt. Az erőforrások átszállítása a Kapun sem lehetséges. Minden frissítési szinttel csökkenthető az ugrókapu lehűtési ideje.',
+        'description_long' => 'Ugró kapuk nagyobb szállítási kapacitással rendelkeznek, nagyobb flották küldésére alkalmasak.',
     ],
     'energy_technology' => [
         'title' => 'Energia Technológia',
         'description' => 'Ez lehetőséget nyújt új energia Technológiákra',
-        'description_long' => 'A különböző kutatási területek előrehaladtával kiderült, hogy az energiaelosztás jelenlegi technológiája nem elegendő bizonyos speciális kutatások megkezdéséhez. Az energiatechnológia minden egyes frissítésével új kutatások végezhetők, amelyek kifinomultabb hajók és védelmi rendszerek fejlesztését teszik lehetővé.',
+        'description_long' => 'Ez lehetőséget nyújt új energia Technológiákra',
     ],
     'laser_technology' => [
         'title' => 'Lézer Technológia',
         'description' => 'Fókuszált fény nyaláb, ami sérülést okoz a megcélzott objektumnak.',
-        'description_long' => 'A lézerek (fényerősítés stimulált sugárzás kibocsátásával) intenzív, energiában gazdag koherens fényt bocsátanak ki. Ezek az eszközök mindenféle területen használhatók, az optikai számítógépektől a nehéz lézerfegyverekig, amelyek könnyedén átvágják a páncéltechnológiát. A lézertechnológia fontos alapot biztosít más fegyvertechnológiák kutatásához.',
+        'description_long' => 'Fókuszált fény nyaláb, ami sérülést okoz a megcélzott objektumnak.',
     ],
     'ion_technology' => [
         'title' => 'Ion technológia',
         'description' => 'Az ionok koncentrálása lehetővé teszi nagy károkozásra képes ágyúk építését és csökkenteni tudja a bontási költségeket szintenként 4%-kal.',
-        'description_long' => 'Az ionok koncentrálhatók és halálos sugárrá gyorsíthatók. Ezek a gerendák óriási károkat okozhatnak. Tudósaink olyan technikát is kifejlesztettek, amely egyértelműen csökkenti az épületek és rendszerek bontási költségeit. Minden kutatási szinten a dekonstrukciós költségek 4%-kal csökkennek.',
+        'description_long' => 'Az ionok koncentrálása lehetővé teszi nagy károkozásra képes ágyúk építését és csökkenteni tudja a bontási költségeket szintenként 4%-kal.',
     ],
     'hyperspace_technology' => [
         'title' => 'Hiperűr Technológia',
         'description' => 'A 4. és 5. dimenzió integrálásával most lehetőség nyílik egy újfajta, gazdaságosabb és hatékonyabb hajtás kutatására.',
-        'description_long' => 'Elméletileg a hipertéri utazás gondolata egy különálló és szomszédos dimenzió létezésén alapul. Amikor aktiválódik, egy hiperűr-meghajtó söntöli a csillaghajót ebbe a másik dimenzióba, ahol hatalmas távolságokat képes megtenni a "normál" térhez képest jelentősen rövidebb idő alatt. Amint eléri azt a pontot a hipertérben, amely megfelel a valós térben lévő céljának, újra előbukkan. 
-Ha a hiperűrtechnológia megfelelő szintjét kutatják, a Hyperspace Drive már nem csupán elmélet. Ennek a meghajtónak minden egyes fejlesztése az alapérték 5%-ával növeli hajói terhelhetőségét.',
+        'description_long' => 'beleértve a 4. és 5. dimenziót lehetőség van a gazdaság új változatainak kidolgozására A negyedik és ötödik dimenziók használatával a hajóid rakodótereit mostantól meg lehet hajlítani, hogy több helyhez juss.',
     ],
     'plasma_technology' => [
         'title' => 'Plazma Technológia',
         'description' => 'Az ion technológia továbbfejlesztése, mely felgyorsítja a magas energiájú plazmát, pusztító sérülést képes okozni, valamint optimalizálja a fém-, kristály- és deutérium-termelést (1%/0.66%/0.33% szintenként).',
-        'description_long' => 'Az iontechnológia továbbfejlesztése, amely nem gyorsítja az ionokat, hanem a nagy energiájú plazmát, amely aztán pusztító károkat okozhat egy tárggyal való ütközéskor. Tudósaink arra is módot találtak, hogy ezzel a technológiával észrevehetően javítsák a fém- és kristálybányászatot. 
-
-A plazmatechnológia konstrukciós szintjénként a fémgyártás 1%-kal, a kristálygyártás 0,66%-kal, a deutériumtermelés 0,33%-kal nő.',
+        'description_long' => 'Az ion technológia továbbfejlesztése, mely felgyorsítja a magas energiájú plazmát, pusztító sérülést képes okozni, valamint optimalizálja a fém-, kristály- és deutérium-termelést (1%/0.66%/0.33% szintenként).',
     ],
     'combustion_drive' => [
         'title' => 'Nagyégésű Hajtómű technológia',
         'description' => 'Ez a fejlesztés 10%-al növeli a hajók és szondák sebességét.',
-        'description_long' => 'A Combustion Drive a legrégebbi technológia, de még mindig használatban van. A Combustion Drive-nál a kipufogógáz a hajóban szállított hajtóanyagokból keletkezik használat előtt. Zárt kamrában a nyomások mindkét irányban egyenlőek, és nem történik gyorsulás. Ha a kamra alján nyílás van kialakítva, akkor ezen az oldalon a nyomás már nem ellentétes. A fennmaradó nyomás egy eredő tolóerőt ad a nyílással ellentétes oldalon, amely a kipufogót extrém nagy sebességgel hátrafelé lökve hajtja előre a hajót. 
-
-A Combustion Drive minden egyes kifejlesztett szintjével a kis és nagy teherhajók, könnyű vadászgépek, újrahasznosítók és kémszondák sebessége 10%-kal nő.',
+        'description_long' => 'Ez a fejlesztés 10%-al növeli a hajók és szondák sebességét.',
     ],
     'impulse_drive' => [
         'title' => 'Impulzus meghajtás',
         'description' => 'Az Impulzus meghajtás az újrahasznosításon alapul. A Jövőben ez a fejlesztés a hajóidat gyorsabbá teszi, minden szint növeléskor 20%-al nő az értéke',
-        'description_long' => 'Az impulzushajtás a visszarúgás elvén alapul, melynek révén a stimulált sugárzáskibocsátás főként a magfúzió hulladéktermékeként termelődik, hogy energiát nyerjen. Ezenkívül más tömegek is beadhatók. Az Impulse Drive minden egyes fejlesztési szintjével a bombázók, cirkálók, nehéz vadászrepülőgépek és kolóniahajók sebessége az alapérték 20%-ával nő. Ezenkívül a kis transzportereket impulzushajtásokkal látják el, amint kutatási szintjük eléri az 5-ös szintet. Amint az Impulse Drive kutatás elérte a 17. szintet, az újrahasznosítókat Impulzus meghajtókkal szerelik fel. 
-
-A bolygóközi rakéták is messzebbre utaznak minden szinten.',
+        'description_long' => 'Az Impulzus meghajtás az újrahasznosításon alapul. A Jövőben ez a fejlesztés a hajóidat gyorsabbá teszi, minden szint növeléskor 20%-al nő az értéke',
     ],
     'hyperspace_drive' => [
         'title' => 'Hiperűr meghajtás',
         'description' => 'Hiperűr meghajtás sokkal gyorsabbá teszi a hajóidat. Szintenként 30%-al növekedik az értéke',
-        'description_long' => 'A hajó közvetlen közelében a tér elvetemült, így nagy távolságokat nagyon gyorsan meg lehet tenni. Minél tovább fejlesztik a Hyperspace Drive-ot, annál erősebb a tér elvetemültsége, ami által a vele felszerelt hajók (csatacirkálók, csatahajók, pusztítók, halálcsillagok, ösvénykeresők és kaszások) sebessége szintenként 30%-kal nő. Ezenkívül a bombázó egy Hyperspace Drive-val készül, amint a kutatás eléri a 8. szintet. Amint a Hyperspace Drive kutatása eléri a 15. szintet, az Újrahasznosítót egy hiperűrmeghajtóval szerelik fel.',
+        'description_long' => 'Hiperűr meghajtás sokkal gyorsabbá teszi a hajóidat. Szintenként 30%-al növekedik az értéke',
     ],
     'espionage_technology' => [
         'title' => 'Kém technológia',
         'description' => 'Információ más bolygókról és holdakról szerezhető ennek a technológiának használatával.',
-        'description_long' => 'A Kém Technológia elsősorban a szenzor technológia fejlesztése. Minél fejlettebb ez a technológia, annál több információt kap a felhasználó a környezetében történő eseményekről. 
-A különbség a te és az ellenséged kém szintje között fontos a kémszondáknál. Minél fejlettebb a kém technologiád, annál több információt tud a jelentés szolgáltatni és annál kevesebb az esélye hogy felfedezik a kém tevékenységedet. Minél több kémszondát küldessz a küldetésre, annál több részletet tudnak kideríteni a célpontról. De ugyanakkor növeli a lebukás esélyét is. 
-A kém technológia szintén növeli az esélyt más flották észlelésére. A Kém Technologia nagyon fontos ebből a szempontból. Kettes szinttől fölfele a támadó hajók pontos száma van kiírva és a sima támadás figyelmeztetés. Négyes szinttől az összes hajó száma és tipusuk is jelezve van és 8-as szinttől pedig a hajó tipusok és számuk van jelezve.
-Ez a technológia elengedhetetlen egy bejövő támadásnál, mivel ezzel megtudhatod hogy a célpontnak van-e védelmi flottája vagy nincs. Ezért jó ha ezt a technologiát korán elkezded fejleszteni.',
+        'description_long' => 'Információ más bolygókról és holdakról szerezhető ennek a technológiának használatával.',
     ],
     'computer_technology' => [
         'title' => 'Számítógép technológia',
         'description' => 'Több flottát tudsz irányítani a számítógép kapacitásától függően. A szint növelésével 1-el növekszik az irányítható flották száma.',
-        'description_long' => 'A számítógép technológia növeli a számítástechnikai kapacitásokat. több és több használható és kíváló számítógépes rendszert fejlesztenek. A számítástechnika energiája folyamatosan növeli a számítógépes folyamatok végrehajtásának sebességét. több és több flotta lesz irányítható parancsokkal, amíg be nem telik a számítógép kapacitása.  Minden szintje a számítógép technológiának eggyel növeli az egyszerre irányítható flották számát. Ez a módszer használható a kereskedőknek, akik el tudnak küldeni több flottát kereskedésként egyidőben. Ezért a számítógép technológia folyamatosan fejlődik a játékban.',
+        'description_long' => 'Több flottát tudsz irányítani a számítógép kapacitásától függően. A szint növelésével 1-el növekszik az irányítható flották száma.',
     ],
     'astrophysics' => [
         'title' => 'Asztrofizika',
         'description' => 'Az asztrofizikai kutató modullal a hajók hosszabb expedíciókra képesek. Minden második szintje a technológiának egy plusz bolygó kolonizálását engedélyezi.',
-        'description_long' => 'Az asztrofizika területén szerzett további eredmények lehetővé teszik olyan laboratóriumok építését, amelyek egyre több hajóra szerelhetők fel. Ez lehetővé teszi a hosszú expedíciókat a világűr feltáratlan területeire. Ezenkívül ezek a fejlesztések felhasználhatók az univerzum további kolonizálására. Ennek a technológiának minden két szintjéhez egy további bolygó is használhatóvá tehető.',
+        'description_long' => 'Az asztrofizikai kutató modullal a hajók hosszabb expedíciókra képesek. Minden második szintje a technológiának egy plusz bolygó kolonizálását engedélyezi.',
     ],
     'intergalactic_research_network' => [
         'title' => 'Bolygóközi kutatóhálózat',
         'description' => 'Kutatók tudnak egymással kommunikálni különböző bolygókról ezzel a hálózattal.',
-        'description_long' => 'Ez az Ön mélyűrhálózata, amely a kutatási eredményeket a kolóniáival kommunikálja. Az IRN segítségével gyorsabb kutatási idő érhető el, ha a legmagasabb szintű kutatólaboratóriumokat összekapcsolják a kifejlesztett IRN szintjével. 
-A működéshez minden telepnek képesnek kell lennie a kutatás önálló lefolytatására.',
+        'description_long' => 'Kutatók tudnak egymással kommunikálni különböző bolygókról ezzel a hálózattal.',
     ],
     'graviton_technology' => [
         'title' => 'Graviton Technológia',
         'description' => 'Gravition mező létrehozásával semmisít meg hajókat vagy holdakat.',
-        'description_long' => 'A graviton egy tömeg nélküli elemi részecske, amelynek nincs rakománya. Ez határozza meg a gravitációs erőt. Egy koncentrált gravitonterhelés kiégetésével mesterséges gravitációs mezőt lehet létrehozni. Nem úgy, mint a fekete lyuk, tömeget von magába. Így hajókat és akár egész holdakat is elpusztíthat. Elegendő mennyiségű graviton előállításához hatalmas mennyiségű energiára van szükség. Graviton kutatásra van szükség egy pusztító Halálcsillag megalkotásához.',
+        'description_long' => 'Gravition mező létrehozásával semmisít meg hajókat vagy holdakat.',
     ],
     'weapon_technology' => [
         'title' => 'Fegyver technológia',
         'description' => 'A Fegyver technológia a fegyvereket erősebbé teszi. Minden szint emeléssel 10%-al növekszik a fegyverek ereje.',
-        'description_long' => 'Fegyver technológia fejleszti a fegyvereket. Egyre erősebb és jobb fegyvereket tudsz majd használni, amikkel sikeresebb leszel a csatákban. Ez a technológia elengedhetetlen, hogy mindíg fejlett fegyverzeted legyen. Az egész játék során szükséges fejleszteni őket.',
+        'description_long' => 'A Fegyver technológia a fegyvereket erősebbé teszi. Minden szint emeléssel 10%-al növekszik a fegyverek ereje.',
     ],
     'shielding_technology' => [
-        'title' => 'Pajzs technológia',
+        'title' => 'Pajzs Technológia',
         'description' => 'A pajzstechnológia hatékonyabbá teszi a pajzsokat a hajókon és a védelmi létesítményeken. Az árnyékolástechnika minden szintje az alapérték 10%-ával növeli a pajzsok szilárdságát.',
-        'description_long' => 'Pajzs technológia fejleszti a védőpajzs hatékonyságát. Minden fejlesztéssel 10%-al nő az alap védelmi érték.',
+        'description_long' => 'Pajzs Technológia növeli a pajzs védelmi erejét fejlesztésenként 10%-al.',
     ],
     'armor_technology' => [
         'title' => 'Páncél technológia',
         'description' => 'Minden szintnöveléssel 10% -al nő ez az érték.',
-        'description_long' => 'A mélyűr környezete zord. A különféle küldetések során a pilóták és a legénység nemcsak intenzív napsugárzással szembesült, hanem azzal is szembesültek, hogy űrszemét éri őket, vagy egy támadás során ellenséges tűz pusztítja el őket. Az alumínium-lítium-titán-karbid ötvözet felfedezésével, amelyről kiderült, hogy könnyű és tartós is, ez bizonyos fokú védelmet biztosított a személyzet számára. Az Armor Technology minden egyes kifejlesztett szintjével jobb minőségű ötvözet készül, ami 10%-kal növeli a páncélok szilárdságát.',
+        'description_long' => 'Minden szintnöveléssel 10% -al nő ez az érték.',
     ],
     'small_cargo' => [
         'title' => 'Kis szállító',
         'description' => 'A kis szállító segítségével gyorsan lehet erőforrásokat szállítani más bolygókra.',
-        'description_long' => 'A transzporterek körülbelül akkorák, mint a vadászgépek, mégis lemondanak a nagy teljesítményű meghajtókról és a fedélzeti fegyverekről, hogy növeljék fuvarozási kapacitásukat. Ennek eredményeként egy transzportert csak akkor szabad csatába küldeni, ha harcképes hajók kísérik. 
-
-Amint az Impulse Drive eléri az 5. kutatási szintet, a kis transzporter megnövelt alapsebességgel halad, és Impulse Drive-val van felszerelve.',
+        'description_long' => 'A kis szállító segítségével gyorsan lehet erőforrásokat szállítani más bolygókra.',
     ],
     'large_cargo' => [
         'title' => 'Nagy Szállító',
         'description' => 'Ez a szállítóhajó nagyobb mennyiséget tud szállítani, mint a kis szállító. és gyorsabb köszönhetően a fejlesztett hajtóműnek.',
-        'description_long' => 'Az idő előrehaladtával a kolóniák elleni razziák egyre nagyobb mennyiségű erőforrást zsákmányoltak. Ennek eredményeként a kis rakományokat tömegesen küldték ki, hogy kompenzálják a nagyobb elfogásokat. Gyorsan kiderült, hogy új hajóosztályra van szükség a rajtaütések során elfoglalt erőforrások maximalizálásához, ugyanakkor költséghatékonynak kell lenniük. Sok fejlesztés után megszületett a Large Cargo. 
-
-A rakterekben tárolható erőforrások maximalizálása érdekében ez a hajó kevés fegyverrel vagy páncélzattal rendelkezik. A beépített magasan fejlett belsőégésű motornak köszönhetően a leggazdaságosabb erőforrás-ellátó a bolygók között, és a leghatékonyabb az ellenséges világok elleni rajtaütéseknél.',
+        'description_long' => 'Ez a szállítóhajó nagyobb mennyiséget tud szállítani, mint a kis szállító. és gyorsabb köszönhetően a fejlesztett hajtóműnek.',
     ],
     'colony_ship' => [
         'title' => 'Kolóniahajó',
         'description' => 'Betelepítetlen bolygók kolonizálhatók ezzel a hajóval.',
-        'description_long' => 'A 20. században az Ember úgy döntött, hogy a csillagokért megy. Először is a Holdra szállt. Ezt követően űrállomást építettek. A Marsot nem sokkal ezután gyarmatosították. Hamar megállapították, hogy növekedésünk más világok gyarmatosításától függ. Tudósok és mérnökök a világ minden tájáról összegyűltek, hogy kidolgozzák az ember valaha volt legnagyobb teljesítményét. Megszületik a Colony Ship. 
-
-Ezt a hajót egy újonnan felfedezett bolygó gyarmatosításra való előkészítésére használják. Amint megérkezik a célállomásra, a hajó azonnal megszokott élettérré változik, hogy segítse az új világ benépesítését és bányászatát. A bolygók maximális számát tehát az asztrofizikai kutatás előrehaladása határozza meg. Az asztrotechnológia két új szintje egy további bolygó gyarmatosítását teszi lehetővé.',
+        'description_long' => 'Betelepítetlen bolygók kolonizálhatók ezzel a hajóval.',
     ],
     'recycler' => [
         'title' => 'Szemetesek',
         'description' => 'Az újrahasznosítók az egyetlen hajók, amelyek a bolygó pályáján lebegő törmelékmezőket képesek betakarítani a harc után.',
-        'description_long' => 'Az űrben folyó harc egyre nagyobb léptéket öltött. Hajók ezrei pusztultak el, és maradványaik erőforrásai úgy tűnt, örökre elvesztek a törmelékmezőkben. A normál teherhajók nem tudtak elég közel jutni ezekhez a mezőkhöz anélkül, hogy ne kockáztassanak jelentős károkat. 
-A pajzstechnológiák közelmúltbeli fejlesztése hatékonyan megkerülte ezt a problémát. Létrehoztak egy új hajóosztályt, amelyek hasonlóak voltak a Transportershez: az Újrahasznosítókat. Erőfeszítéseik segítettek összegyűjteni az elveszett gondolatokat, majd megmenteni azokat. A törmelék az új pajzsoknak köszönhetően már nem jelentett valódi veszélyt. 
-
-Amint az Impulse Drive kutatás elérte a 17. szintet, az újrahasznosítókat újra felszerelik Impulse Drive-okkal. Amint a Hyperspace Drive-kutatás elérte a 15. szintet, az újrahasznosítókat felszerelik Hyperspace meghajtókkal.',
+        'description_long' => 'A szemetesek be tudják takarítani a csaták során keletkező törmelékmezők törmelékét.',
     ],
     'espionage_probe' => [
         'title' => 'Kémszonda',
         'description' => 'Kémszondák kicsik, és adatokat szolgáltatnak flottákról és bolygókról remek távolságokból is.',
-        'description_long' => 'A kémszondák kicsi, agilis drónok, amelyek flottákról és bolygókról szolgáltatnak adatokat. Speciálisan tervezett motorokkal felszerelt, így mindössze néhány perc alatt megtehetik a hatalmas távolságokat. A célbolygó körüli pályára kerülve gyorsan adatokat gyűjtenek, és a jelentést a Deep Space Networkön keresztül továbbítják értékelés céljából. Az intelligens gyűjtés kockázata azonban fennáll. Amíg a jelentés visszaküldésre kerül a hálózatra, a célpont észlelheti a jelet, és a szondák megsemmisülhetnek.',
+        'description_long' => 'Kémszondák kicsik, és adatokat szolgáltatnak flottákról és bolygókról remek távolságokból is.',
     ],
     'solar_satellite' => [
         'title' => 'Napműhold',
         'description' => 'A napelemes műholdak egyszerű napelemplatformok, amelyek magas, álló pályán helyezkednek el. Összegyűjtik a napfényt, és lézeren keresztül továbbítják a földi állomásra.',
-        'description_long' => 'A tudósok felfedeztek egy módszert elektromos energia átvitelére a kolóniára speciálisan erre a célra tervezett műholdak segítségével, geoszinkron pályán. A napelemes műholdak napenergiát gyűjtenek, és fejlett lézertechnológia segítségével továbbítják egy földi állomásra. A szoláris műhold hatékonysága a kapott napsugárzás erősségétől függ. Elvileg a Naphoz közelebbi pályákon az energiatermelés nagyobb, mint a Naptól távoli pályákon. 
-Jó költség/teljesítmény arányuknak köszönhetően a napelemes műholdak sok energiaproblémát képesek megoldani. De vigyázat: A napműholdak könnyen megsemmisülhetnek a csatában.',
+        'description_long' => 'Napműholdak egyszerű nap cellákból állnak, és a bolygó körül lebegnek. A Nap fényéből nyert energiát egy lézernyalábbal továbbítják a talajon található Állomásra. A napműholdak 35 energiát termelnek a bolygón.',
     ],
     'crawler' => [
         'title' => 'Crawler',
         'description' => 'A Crawlerek 0.02%-kal, 0.02%-kal és 0.02%-kal növelik a feladatba állított bolygón a fém-, kristály- és Deutérium-termelést. Gyűjtőként nő a termelés is. A maximális teljes bónusz a bányáid általános szintjétől függ.',
-        'description_long' => 'A Crawler egy nagy árokásó jármű, amely növeli a bányák és szintetizálók termelését. Sokkal mozgékonyabb, mint amilyennek kinéz, de nem különösebben erős. Minden Crawler 0.02%-kal növeli a fémtermelést, 0.02%-kal a kristálytermelést és 0.02%-kal a Deutérium-termelést. Gyűjtőként nő a termelés is. A maximális teljes bónusz a bányáid általános szintjétől függ.',
+        'description_long' => 'A Crawlerek 0.02%-kal, 0.02%-kal és 0.02%-kal növelik a feladatba állított bolygón a fém-, kristály- és Deutérium-termelést. Gyűjtőként nő a termelés is. A maximális teljes bónusz a bányáid általános szintjétől függ.',
     ],
     'pathfinder' => [
         'title' => 'Felderítő',
         'description' => 'A Pathfinder egy gyors és mozgékony hajó, amelyet az űr ismeretlen szektoraiba történő expedíciókhoz terveztek.',
-        'description_long' => 'A Pathfinder a kutatási technológia legújabb fejlesztése. Ezt a hajót kifejezetten a Discoverer osztály tagjainak tervezték, hogy maximalizálják potenciáljukat. A fejlett letapogató rendszerekkel és az erőforrások megmentésére szolgáló nagy raktérrel felszerelt Pathfinder kiválóan teljesít az expedíciókon. Kifinomult szenzorai olyan értékes erőforrásokat és anomáliákat észlelnek, amelyeket más hajók nem vesznek észre. A hajó a nagy sebességet a jó rakománykapacitással ötvözi, így tökéletes a gyors feltáró küldetésekhez és a távoli szektorokból származó erőforrások gyűjtéséhez.',
+        'description_long' => 'A Felderítők gyorsak, tágasak és ki tudják aknázni az expedíciókon talált törmelékmezőket. A teljes hozam is nő.',
     ],
     'light_fighter' => [
         'title' => 'Könnyű Harcos',
         'description' => 'A könnyű Harcos a legálltalánosabb hajó a bolygón. Előállítási költsége alacsony, pajzs és szállítmány kapacitása nagyon alacsony',
-        'description_long' => 'Ez az első harci hajó, amit minden császár épít. A könnyű vadászgép egy mozgékony hajó, de sebezhető, ha egyedül van. Tömeges számban nagy fenyegetést jelenthetnek bármely birodalom számára. Ők az elsők, akik kisebb-nagyobb védelemmel kis és nagy rakományokat kísérnek ellenséges bolygókra.',
+        'description_long' => 'A könnyű Harcos a legálltalánosabb hajó a bolygón. Előállítási költsége alacsony, pajzs és szállítmány kapacitása nagyon alacsony',
     ],
     'heavy_fighter' => [
         'title' => 'Nehéz Harcos',
         'description' => 'A Harcos jobban felfegyverzett és nagyobb erejű támadásra képes, mint a könnyű harcos',
-        'description_long' => 'A nehéz vadászgép fejlesztése során a kutatók elérték azt a pontot, ahol a hagyományos hajtások már nem nyújtottak elegendő teljesítményt. A hajó optimális mozgatása érdekében először az impulzushajtást alkalmazták. Ez növelte a költségeket, de új lehetőségeket is nyitott. Ennek a meghajtónak a használatával több energia maradt a fegyverekre és a pajzsokra; emellett kiváló minőségű anyagokat használtak ehhez az új vadászgépcsaládhoz. Ezekkel a változtatásokkal a nehéz vadászgép egy új korszakot képvisel a hajótechnológiában, és a cirkáló technológia alapja. 
-
-Valamivel nagyobb, mint a könnyű vadászgép, a nehéz vadászgépnek vastagabb a törzse, nagyobb védelmet és erősebb fegyverzetet biztosít.',
+        'description_long' => 'A Harcos jobban felfegyverzett és nagyobb erejű támadásra képes, mint a könnyű harcos',
     ],
     'cruiser' => [
         'title' => 'Cirkáló',
         'description' => 'A cirkálónak háromszor több a páncélja és kétszer több a támadóereje, mint a nehéz harcosnak. Ezen kívül még nagyon gyorsak is.',
-        'description_long' => 'A nehézlézer és az ionágyú kifejlesztésével a könnyű és nehéz vadászgépek riasztóan sok vereséget szenvedtek el, amely minden egyes rajtaütéssel növekedett. A sok módosítás, a fegyverek erőssége és a páncélzat változása ellenére nem lehetett elég gyorsan növelni, hogy hatékonyan leküzdje ezeket az új védelmi intézkedéseket. Ezért úgy döntöttek, hogy új hajóosztályt építenek, amely több páncélt és több tűzerőt kombinált. Több éves kutatás és fejlesztés eredményeként megszületett a Cruiser. 
-
-A cirkálók csaknem háromszor páncélozottak, mint a nehéz vadászgépeké, és több mint kétszer akkora tűzerővel rendelkeznek, mint bármely létező harci hajó. Olyan sebességgel is rendelkeznek, amely messze meghaladja a valaha készült űrhajókat. Majdnem egy évszázadon át a cirkálók uralták az univerzumot. A Gauss-ágyúk és a plazma tornyok fejlődésével azonban túlsúlyuk megszűnt. Még ma is használják őket vadászcsoportok ellen, de nem olyan túlnyomóan, mint korábban.',
+        'description_long' => 'A cirkálónak háromszor több a páncélja és kétszer több a támadóereje, mint a nehéz harcosnak. Ezen kívül még nagyon gyorsak is.',
     ],
     'battle_ship' => [
         'title' => 'Csatahajó',
         'description' => 'Csatahajó a flotta hátvéde. Nehézfegyverzete, nagy sebessége nagy rakománya feltartja az ellenséget.',
-        'description_long' => 'Miután nyilvánvalóvá vált, hogy a cirkáló egyre nagyobb számú védelmi szerkezetet veszít, amivel szembe kellett néznie, és mivel a küldetések során elfogadhatatlan mértékben veszítettek hajókat, úgy döntöttek, hogy olyan hajót építenek, amely a lehető legkevesebb veszteséggel tud szembeszállni az azonos típusú védelmi szerkezetekkel. Kiterjedt fejlesztés után megszületett a Battleship. A legnagyobb csaták kibírására készült csatahajó nagy rakterekkel, nehéz ágyúkkal és nagy hiperhajtási sebességgel rendelkezik. Miután kifejlesztették, végül kiderült, hogy minden portyázó császárflotta gerincét képezi.',
+        'description_long' => 'Csatahajó a flotta hátvéde. Nehézfegyverzete, nagy sebessége nagy rakománya feltartja az ellenséget.',
     ],
     'battlecruiser' => [
         'title' => 'Csatacirkáló',
         'description' => 'A csatacirkáló  egy nagyon specializált eszköz a flottában.',
-        'description_long' => 'Ez a hajó az egyik legfejlettebb harci hajó, amelyet valaha fejlesztettek, és különösen halálos, ha a támadó flották megsemmisítéséről van szó. A fedélzeten lévő továbbfejlesztett lézerágyúkkal és a fejlett Hyperspace motorral a Battlecruiser komoly erő, amellyel minden támadásban meg kell küzdeni. A hajók kialakítása és nagy fegyverrendszere miatt a raktereket le kellett vágni, de ezt kompenzálja az alacsonyabb üzemanyag-fogyasztás.',
+        'description_long' => 'A csatacirkáló  egy nagyon specializált eszköz a flottában.',
     ],
     'bomber' => [
         'title' => 'Bombázó',
         'description' => 'a Bombázók a bolygók bombázására lettek kifejlesztve',
-        'description_long' => 'Az évszázadok során, ahogy a védelem egyre nagyobb és kifinomultabb lett, a flották riasztó ütemben pusztultak. Úgy döntöttek, hogy új hajóra van szükség a védelem megtöréséhez a maximális eredmény érdekében. Évekig tartó kutatás és fejlesztés után jött létre a Bomber. 
-
-Lézervezérelt célzóberendezések és plazmabombák segítségével a bombázó felkutat és megsemmisít minden védelmi mechanizmust, amit talál. Amint a hipertér-meghajtót 8-as szintre fejlesztették, a Bombert utólag felszerelik a hiperűrmotorral, és nagyobb sebességgel tud repülni.',
+        'description_long' => 'a Bombázók a bolygók bombázására lettek kifejlesztve',
     ],
     'destroyer' => [
         'title' => 'Romboló',
         'description' => 'A Romboló a hadihajók királya.',
-        'description_long' => 'A Destroyer több éves munka és fejlesztés eredménye. A Deathstars fejlesztésével úgy döntöttek, hogy egy hajóosztályra van szükség az ilyen hatalmas fegyverek elleni védekezéshez. A továbbfejlesztett irányító érzékelőknek, a több falanxos ionágyúknak, a Gauss ágyúknak és a plazma tornyoknak köszönhetően a Destroyer az egyik legfélelmetesebb hajónak bizonyult. 
-
-Mivel a romboló nagyon nagy, a manőverezőképessége erősen korlátozott, ami miatt inkább harci állomás, mint harci hajó. A manőverezhetőség hiányát a puszta tűzereje pótolja, de jelentős mennyiségű deutériumba is kerül felépítése és működtetése.',
+        'description_long' => 'A Romboló a hadihajók királya.',
     ],
     'deathstar' => [
         'title' => 'Halálcsillag',
         'description' => 'A Halálcsillag pusztító ereje felbecsülhetetlen.',
-        'description_long' => 'A Deathstar a valaha készült legerősebb hajó. Ez a hold méretű hajó az egyetlen hajó, amely szabad szemmel is látható a földön. Mire észreveszi, sajnos már késő bármit is tenni. 
-
-Egy gigantikus graviton ágyúval, az Univerzumban valaha készült legfejlettebb fegyverrendszerrel felfegyverkezve ez a hatalmas hajó nemcsak teljes flottát és védelmet képes elpusztítani, hanem egész holdakat is képes elpusztítani. Csak a legfejlettebb birodalmak képesek ekkora méretű hajót építeni.',
+        'description_long' => 'A Halálcsillag pusztító ereje felbecsülhetetlen.',
     ],
     'reaper' => [
         'title' => 'Kaszás',
         'description' => 'A Reaper egy erős harci hajó, amely az agresszív portyázásra és a törmelék betakarítására specializálódott.',
-        'description_long' => 'A Reaper az általános kategóriájú haditechnika csúcsát képviseli. Ezt az erősen felfegyverzett hajót olyan parancsnokok számára tervezték, akik nagyra értékelik a harci képességeket és a taktikai rugalmasságot. Noha elsődleges szerepe a harc, a Reaper megerősített rakterekkel rendelkezik, amelyek lehetővé teszik a törmelék mezők betakarítását a csata után. Fejlett célzási rendszerei és nehéz páncélzata félelmetes ellenféllé teszi, míg kettős célú kialakítása azt jelenti, hogy képes csatatéri mészárlást létrehozni és profitálni belőle. A hajó a legmodernebb fegyvertechnológiával van felszerelve, és sokkal nagyobb hajókkal szemben is megállja a helyét.',
+        'description_long' => 'A Kaszás osztályú hajó hatalmas pusztító eszköz, amely a csata után azonnal ki tudja zsákmányolni a törmelékmezőket.',
     ],
     'rocket_launcher' => [
         'title' => 'Rakéta kilövő',
         'description' => 'A Rakéta kilövő egy egyszerű védelmi fegyver.',
-        'description_long' => 'Az első alapvető védelmi vonalad. Ezek egyszerű földi indító létesítmények, amelyek hagyományos robbanófejes rakétákat lőnek ki ellenséges célpontokra. Mivel olcsó a gyártás, és nincs szükség kutatásra, kiválóan alkalmasak raidek védelmére, de elvesztik hatékonyságukat a nagyobb léptékű támadásokkal szemben. Amint elkezded a fejlettebb védelmi fegyverrendszerek építését, a rakétavetők egyszerű takarmányokká válnak, amelyek lehetővé teszik, hogy a károsabb fegyvereid hosszabb ideig nagyobb sebzést okozzanak. 
-
-Egy csata után akár 70% az esélye annak, hogy a meghibásodott védelmi létesítményeket vissza lehet használni.',
+        'description_long' => 'A Rakéta kilövő egy egyszerű védelmi fegyver.',
     ],
     'light_laser' => [
         'title' => 'Könnyű lézer',
         'description' => 'Koncentrált tüzelés a célpontra a fotonokkal nagyobb sérülést vált ki, mint az általános ballaszikus fegyverek',
-        'description_long' => 'A technológia fejlődésével és a kifinomultabb hajók létrehozásával megállapították, hogy erősebb védelmi vonalra van szükség a támadások ellen. A lézertechnológia fejlődésével egy új fegyvert terveztek a védelem következő szintjére. A fénylézerek egyszerű földi fegyverek, amelyek speciális célzórendszereket használnak az ellenség nyomon követésére, és egy nagy intenzitású lézerrel lőnek, amelyet arra terveztek, hogy átvágja a célpont testét. A költséghatékonyság érdekében továbbfejlesztett árnyékoló rendszerrel látták el őket, azonban szerkezeti integritásuk megegyezik a rakétavetőével. 
-
-Egy csata után akár 70% az esélye annak, hogy a meghibásodott védelmi létesítményeket vissza lehet használni.',
+        'description_long' => 'Koncentrált tüzelés a célpontra a fotonokkal nagyobb sérülést vált ki, mint az általános ballaszikus fegyverek',
     ],
     'heavy_laser' => [
         'title' => 'Nehéz lézer',
         'description' => 'A Nehéz lézer a Könnyű lézer továbbfejlesztett változata',
-        'description_long' => 'A Heavy Laser a Light Laser praktikus, továbbfejlesztett változata. Mivel kiegyensúlyozottabb, mint a javított ötvözet-összetételű Light Laser, erősebb, sűrűbben tömörített nyalábokat és még jobb fedélzeti célzási rendszereket használ. 
-
-Egy csata után akár 70% az esélye annak, hogy a meghibásodott védelmi létesítményeket vissza lehet használni.',
+        'description_long' => 'A Nehéz lézer a Könnyű lézer továbbfejlesztett változata',
     ],
     'gauss_cannon' => [
         'title' => 'Gauss ágyú',
         'description' => 'A Gauss ágyú több tonnányi lőszert lő ki nagy sebességgel.',
-        'description_long' => 'A lövedékfegyvereket a modern termonukleáris és energiatechnológia, valamint a hiperhajtómű és a továbbfejlesztett páncélzat fejlődése nyomán sokáig elavultnak tekintették. Ez egészen addig így volt, amíg a pontos energiatechnológia, amely egykor megöregítette, nem segítette vissza a kialakult pozíciót. 
-A Gauss ágyú a részecskegyorsító nagy változata. A rendkívül nehéz rakétákat hatalmas elektromágneses erővel gyorsítják fel, és olyan torkolati sebességük van, amely miatt a rakétát körülvevő szennyeződés az egekben ég. Ez a fegyver olyan erős, amikor elsütik, hogy hangrobbanást kelt. A modern páncélok és pajzsok alig bírják az erőt, gyakran a célpontot teljesen áthatolja a rakéta ereje. A védelmi szerkezetek deaktiválódnak, amint túlságosan súlyosan megsérültek. 
-
-Egy csata után akár 70% az esélye annak, hogy a meghibásodott védelmi létesítményeket vissza lehet használni.',
+        'description_long' => 'A Gauss ágyú több tonnányi lőszert lő ki nagy sebességgel.',
     ],
     'ion_cannon' => [
         'title' => 'Ion ágyú',
         'description' => 'Az Ion fegyver tűzereje a gyorsan mozgó ionokban rejlik. Ennek köszönhetően hatalmas sérülést okoz a célponton.',
-        'description_long' => 'Az ionágyú olyan fegyver, amely ionsugarat (pozitív vagy negatív töltésű részecskék) bocsát ki. Az Ion Cannon valójában egyfajta részecskeágyú; csak a felhasznált részecskék ionizáltak. Elektromos töltéseik miatt az elektromágneses impulzus (EMP effektus) néven ismert jelenségek segítségével letilthatják az elektronikus eszközöket és bármi mást, ami elektromos vagy hasonló áramforrással rendelkezik. Az ágyúk továbbfejlesztett árnyékolási rendszerének köszönhetően ez az ágyú jobb védelmet nyújt nagyobb, pusztítóbb védelmi fegyverei számára. 
-
-Egy csata után akár 70% az esélye annak, hogy a meghibásodott védelmi létesítményeket vissza lehet használni.',
+        'description_long' => 'Az Ion fegyver tűzereje a gyorsan mozgó ionokban rejlik. Ennek köszönhetően hatalmas sérülést okoz a célponton.',
     ],
     'plasma_turret' => [
         'title' => 'Plazmatorony',
         'description' => 'Plazma torony egy napkitörésnek megfelelő energiát bocsájt ki, és romboló hatása felülmúlja a Romboló erejét is.',
-        'description_long' => 'A valaha kifejlesztett egyik legfejlettebb védelmi fegyverrendszer, a Plasma Turret egy nagy nukleáris reaktor üzemanyagcelláját használja egy elektromágneses gyorsító meghajtására, amely plazmaimpulzust vagy toroidot bocsát ki. Működés közben a plazma torony először egy célpontra rögzül, és megkezdi a tüzelési folyamatot. A toronymagban plazmagömb jön létre a gázok szuperhevítésével és kompressziójával, megfosztva azokat az ionoktól. Miután a gáz túlhevült, összenyomódott, és egy plazmagömb jön létre, az elektromágneses gyorsítóba kerül, amely feszültség alá kerül. A teljes feszültség után a gyorsító aktiválódik, ami azt eredményezi, hogy a plazmagömb rendkívül nagy sebességgel indul el a tervezett cél felé. A célpontok szempontjából a közeledő kékes plazmagömb lenyűgöző, de ha egyszer lecsap, azonnali pusztulást okoz. 
-
-A védelmi létesítmények azonnal deaktiválódnak, amint túlságosan súlyosan megsérülnek. Egy csata után akár 70% az esélye annak, hogy a meghibásodott védelmi létesítményeket vissza lehet használni.',
+        'description_long' => 'Plazma torony egy napkitörésnek megfelelő energiát bocsájt ki, és romboló hatása felülmúlja a Romboló erejét is.',
     ],
     'small_shield_dome' => [
         'title' => 'Kis pajzskupola',
         'description' => 'A Kis pajzskupola beborítja az egész bolygót egy védőfallal.',
-        'description_long' => 'Az új világok gyarmatosítása új veszélyt, űrszemétet hozott. Egy nagy aszteroida könnyen elpusztíthatja a világot és minden lakóját. Az árnyékolástechnika fejlődése lehetővé tette a tudósok számára, hogy olyan pajzsot fejlesszenek ki, amely nemcsak az űrszeméttől védi meg az egész bolygót, hanem – mint kiderült – egy ellenséges támadástól is. A bolygó körül nagy elektromágneses mező létrehozásával az űrszemét, amely normális esetben elpusztította volna a bolygót, eltérítette, és az ellenséges birodalmak támadásait meghiúsították. Az első generátorok nagyok voltak, és a pajzs közepes védelmet nyújtott, de később kiderült, hogy a kis pajzsok nem nyújtanak védelmet a nagyobb léptékű támadásokkal szemben. A kis pajzskupola egy erősebb, fejlettebb bolygóvédő rendszer előjátéka volt. 
-
-Egy csata után akár 70% az esélye annak, hogy a meghibásodott védelmi létesítményeket vissza lehet használni.',
+        'description_long' => 'A Kis pajzskupola beborítja az egész bolygót egy védőfallal.',
     ],
     'large_shield_dome' => [
         'title' => 'Nagy pajzskupola',
         'description' => 'A Pajzs kifejlesztése több erőt ad támadáskor .',
-        'description_long' => 'A Large Shield Dome a következő lépés a bolygópajzsok fejlesztésében, a Small Shield Dome fejlesztésén végzett több éves munka eredménye. A nagyobb feszültségű elektromágneses mező biztosításával az ellenséges tűz nagyobb záporának ellenálló nagy kupolák hosszabb védelmet biztosítanak az összeomlás előtt. 
-
-Egy csata után akár 70% az esélye annak, hogy a meghibásodott védelmi létesítményeket vissza lehet használni.',
+        'description_long' => 'A Pajzs kifejlesztése több erőt ad támadáskor .',
     ],
     'anti_ballistic_missile' => [
         'title' => 'Anti-Ballasztikus rakéták',
         'description' => 'Anti-ballasztikus rakéták megsemmisítő támadást mérnek a bolygóközi rakétákra.',
-        'description_long' => 'Az anti ballisztikus rakéták (ABM) jelentik az egyetlen védelmi vonalat, amikor bolygóközi rakéták (IPM) támadják őket bolygóján vagy holdján. Amikor IPM-ek indítását észlelik, ezek a rakéták automatikusan élesítenek, feldolgozzák az indítási kódot a repülési számítógépükben, megcélozzák a bejövő IPM-et, és elindulnak, hogy elfogják. A repülés során a cél IPM-et folyamatosan nyomon követik, és iránykorrekciókat alkalmaznak mindaddig, amíg az ABM el nem éri a célt és megsemmisíti a támadó IPM-et. Minden ABM megsemmisít egy bejövő IPM-et.',
+        'description_long' => 'Anti-ballasztikus rakéták megsemmisítő támadást mérnek a bolygóközi rakétákra.',
     ],
     'interplanetary_missile' => [
         'title' => 'Bolygóközi rakéták',
         'description' => 'A bolygóközi rakéták megsemmisítik az ellenség védelmét.',
-        'description_long' => 'A bolygóközi rakéták (IPM) a támadó fegyvered, amellyel megsemmisítheted célpontod védelmét. A legkorszerűbb nyomkövetési technológiát alkalmazva minden rakéta bizonyos számú védelmet céloz meg megsemmisítés céljából. Egy antianyag-bombával megdöntve olyan súlyos pusztító erőt bocsátanak ki, hogy a megsemmisült pajzsokat és védelmet nem lehet megjavítani. Ezekkel a rakétákkal az egyetlen módja az ABM-ek.',
+        'description_long' => 'Bolygóközi rakéták megsemmisítik a védelmet. A bolygóközi rakétáid 0 rendszer távolságban hatásosak.',
     ],
     'kraken' => [
         'title' => 'KRAKEN',

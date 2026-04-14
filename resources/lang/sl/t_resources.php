@@ -12,385 +12,312 @@ return [
     'metal_mine' => [
         'title' => 'Rudnik metala',
         'description' => 'Uporablja se za pridobivanje metala, rudniki metala so primarni za vse nastajajoče in ustanovljene imperije.',
-        'description_long' => 'Metal je ena najosnovnejših surovin pri ustanavljanju imperija. Z večjo globino narašča količina izkopanega metala vendar, vzajemno tudi količina potrebne energije. Je osnovni material za gradnjo zgradb, ladjevja, tako obrambnih sistemov kot tudi za razvoj. Zaradi dostopnosti in pogostosti nahajališč na planetih je njegova tržna vrednost nizka.',
+        'description_long' => 'Uporablja se za pridobivanje metala, rudniki metala so primarni za vse nastajajoče in ustanovljene imperije.',
     ],
     'crystal_mine' => [
         'title' => 'Rudnik kristala',
         'description' => 'Kristal je glavna surovina pri gradnji električnih omrežij in oblikovanju nekaterih zlitin.',
-        'description_long' => 'Rudnik kristala zahteva dvojno energijo kot rudnik metala, zato je tudi dragocenejši. Vsaka ladja zahteva tudi določeno količino kristala. Tako kot pri metalu je tudi pri kristalu večja produkcija z vsako stopnjo, saj je vse več in več kristala v notranjosti planeta.',
+        'description_long' => 'Kristal je glavna surovina pri gradnji električnih omrežij in oblikovanju nekaterih zlitin.',
     ],
     'deuterium_synthesizer' => [
         'title' => 'Rafinerija Deuteriuma',
         'description' => 'Deuterium se uporablja kot gorivo za vesoljske ladje in se pridobiva globoko v morju. Ker je tako redka surovina je razlog za njegovo visoko ceno jasen.',
-        'description_long' => 'Deuterium je izotop vodika katerega atomska masa je sestavljena iz enega protona in enega nevtrona. Večje količine so najdene v globinah morja. Izgradnja rafinerije zahteva tudi izgradnjo rezervoarjev. Največ se uporablja kot gorivo za ladje, prav tako pa se uporablja pri raziskavah, premikanju po galaksiji in za skeniranje preko falange.',
+        'description_long' => 'Deuterium se uporablja kot gorivo za vesoljske ladje in se pridobiva globoko v morju. Ker je tako redka surovina je razlog za njegovo visoko ceno jasen.',
     ],
     'solar_plant' => [
         'title' => 'Sončna Elektrarna',
         'description' => 'Solarna elektrarna absorbira energijo iz sončnega sevanja. Vsi rudniki jo potrebujejo za pravilno delovanje.',
-        'description_long' => 'Sončna elektrarna je eden izmed načinov proizvodnje energije. Foto celice pretvarjajo sončno energijo v energijo, ki jo rudniki potrebujejo za pravilno delovanje.',
+        'description_long' => 'Solarna elektrarna absorbira energijo iz sončnega sevanja. Vsi rudniki jo potrebujejo za pravilno delovanje.',
     ],
     'fusion_plant' => [
         'title' => 'Fuzijska elektrarna',
         'description' => 'Fuzijski reaktor potrebuje deuterium za proizvodnjo energije.',
-        'description_long' => 'V fuzijskih elektrarnah se vodikova jedra zlijejo v helijeva jedra pod ogromno temperaturo in pritiskom, pri čemer se sprostijo ogromne količine energije. Za vsak porabljen gram devterija je mogoče proizvesti do 41,32*10^-13 joulov energije; z 1 g lahko proizvedete 172 MWh energije. 
-
-Večji reaktorski kompleksi porabijo več devterija in lahko proizvedejo več energije na uro. Energetski učinek bi lahko povečali z raziskovanjem energetske tehnologije. 
-
-Proizvodnja energije fuzijske naprave se izračuna takole: 
-30 * [Raven fuzijskega obrata] * (1,05 + [Raven energetske tehnologije] * 0,01) ^ [Raven fuzijskega obrata]',
+        'description_long' => 'Fuzijski reaktor potrebuje deuterium za proizvodnjo energije.',
     ],
     'metal_store' => [
         'title' => 'Skladišče Metala',
         'description' => 'Nudi skladišče za dodaten metal.',
-        'description_long' => 'To velikansko skladišče se uporablja za shranjevanje kovinske rude. Vsaka stopnja nadgradnje poveča količino kovinske rude, ki jo je mogoče shraniti. Če so zaloge polne, se kovina ne bo več izkopavala. 
-
-Metal Storage varuje določen odstotek dnevne proizvodnje rudnika (največ 10 odstotkov).',
+        'description_long' => 'Nudi skladišče za dodaten metal.',
     ],
     'crystal_store' => [
         'title' => 'Skladišče Kristala',
         'description' => 'Nudi skladišče za dodaten kristal.',
-        'description_long' => 'Neobdelan kristal bo medtem shranjen v teh ogromnih skladiščih. Z vsako stopnjo nadgradnje poveča količino kristalov, ki jih je mogoče shraniti. Če so zaloge kristalov polne, se kristal ne bo več izkopaval. 
-
-Crystal Storage ščiti določen odstotek dnevne proizvodnje rudnika (največ 10 odstotkov).',
+        'description_long' => 'Nudi skladišče za dodaten kristal.',
     ],
     'deuterium_store' => [
         'title' => 'Rezervoarji Deuteriuma',
         'description' => 'Ogromni rezervoarji nudijo skladišče za dodaten deuterium.',
-        'description_long' => 'Rezervoar za devterij je namenjen shranjevanju na novo sintetiziranega devterija. Ko ga sintetizator obdela, se po cevi prenese v ta rezervoar za kasnejšo uporabo. Z vsako nadgradnjo rezervoarja se skupna skladiščna kapaciteta poveča. Ko je zmogljivost dosežena, devterij ne bo več sintetiziran. 
-
-Rezervoar za devterij ščiti določen odstotek dnevne proizvodnje sintetizatorja (največ 10 odstotkov).',
+        'description_long' => 'Ogromni rezervoarji nudijo skladišče za dodaten deuterium.',
     ],
     'robot_factory' => [
         'title' => 'Tovarna Robotov',
         'description' => 'Tovarna robotov proizvaja enostavne robote, ki kasneje sodelujejo pri gradnji infrastrukture na planetu.',
-        'description_long' => 'Tovarna robotov proizvaja nove robote, ki kasneje sodelujejo pri gradnji novih struktur na planetu. Večja kot je stopnja tovarne, hitreje se bodo ostale zgradbe gradile.',
+        'description_long' => 'Tovarna robotov proizvaja enostavne robote, ki kasneje sodelujejo pri gradnji infrastrukture na planetu.',
     ],
     'shipyard' => [
         'title' => 'Ladjedelnica',
         'description' => 'Ladje vseh vrst so zgrajene v ladjedelnici planeta.',
-        'description_long' => 'Čim večja je tovarno hitreje se gradijo zgradbe, ladje in obramba. Po izgradnji tovarne nanorobotov tudi ti pomagajo pri gradnji tako da je čas gradnje še manjši.',
+        'description_long' => 'Ladje vseh vrst so zgrajene v ladjedelnici planeta.',
     ],
     'research_lab' => [
         'title' => 'Laboratorij',
         'description' => 'Laboratorij je potreben za raziskave novih tehnologij.',
-        'description_long' => 'Stopnja razvitosti laboratorija je najbolj pomembna za hitrost in količino novih raziskav. Da bi se raziskovanje pospešilo, se vsi delavci pošiljajo v laboratorij in tako niso dostopni na ostalih planetih. Ko je raziskava končana, se delavci vrnejo na domače planete z izsledki raziskave in se tako lahko raziskava koristi na vseh planetih.',
+        'description_long' => 'Laboratorij je potreben za raziskave novih tehnologij.',
     ],
     'alliance_depot' => [
         'title' => 'Zavezniško skladišče',
         'description' => 'Zavezniško skladišče dobavlja deuterium prijateljskim flotam v orbiti.',
-        'description_long' => 'Zavezniško skladišče omogoča, da se flote v orbiti tvojega planeta katere ti pomagajo pri obrambi oskrbujejo z gorivom. Z vsako stopnjo zavezniškega skladišča jim lahko zagotoviš določeno število enot deuteriuma na uro.',
+        'description_long' => 'Zavezniško skladišče dobavlja deuterium prijateljskim flotam v orbiti.',
     ],
     'missile_silo' => [
         'title' => 'Izstrelišče',
         'description' => 'Izstrelišče je skladišče za shranjevanje in lansiranje raket.',
-        'description_long' => 'Za vsako stopnjo skladišča je namenjen prostor za 5 medplanetarnih in 10 protibalističnih raket. Mešanje različnih vrst raket je mogoče, pri tem se uporablja formula, ki je enaka 1 medplanetarna raketa zavzema prostor enak 2 protibalističnim raketam.',
+        'description_long' => 'Izstrelišče je skladišče za shranjevanje in lansiranje raket.',
     ],
     'nano_factory' => [
         'title' => 'Tovarna Nanorobotov',
         'description' => 'Predstavlja nadgradnjo tovarne robotov. Vsaka stopnja prepolovi čas gradnje zgradb, ladij in obrambe.',
-        'description_long' => 'Nanoroboti so pravzaprav navadni roboti, le da so veliki par nanometrov. Ti mikroskopski mehanizmi so med seboj povezani, tako da delujejo zelo hitro.Ta tovarna proizvaja robote ki predstavljajo ultimat navadnim robotom. Enkrat zgrajen povzroči prepolovitev časa gradnje za zgradbe, ladje in obrambne mehanizme.',
+        'description_long' => 'Predstavlja nadgradnjo tovarne robotov. Vsaka stopnja prepolovi čas gradnje zgradb, ladij in obrambe.',
     ],
     'terraformer' => [
         'title' => 'Terraformer',
         'description' => 'Terraformer doda dodatna polja za gradnjo na površini planeta.',
-        'description_long' => 'Z vse večjo gradnjo planetov postaja tudi življenjski prostor za kolonijo vse bolj omejen. Tradicionalne metode, kot so visoke in podzemne gradnje, postajajo vse bolj nezadostne. Majhna skupina visokoenergijskih fizikov in nano inženirjev je sčasoma prišla do rešitve: teraformiranje. 
-Z uporabo ogromnih količin energije lahko teraformer predela cele kose zemlje ali celo celine. V tej stavbi je proizvodnja nanitov, ustvarjenih posebej za ta namen, ki zagotavljajo dosledno kakovost tal v celotnem prostoru. 
-
-Vsaka stopnja terraformerja omogoča obdelavo 5 polj. Z vsako stopnjo zasede terraformer eno polje. Vsaki 2 stopnji terraformerja boste prejeli 1 bonus polje. 
-
-Ko je teraformer zgrajen, ga ni več mogoče razstaviti.',
+        'description_long' => 'Terraformer doda dodatna polja za gradnjo na površini planeta.',
     ],
     'space_dock' => [
         'title' => 'Vesoljski dok',
         'description' => 'Razbitine so lahko popravljene v vesoljskem doku.',
-        'description_long' => 'Space Dock ponuja možnost popravila v bitki uničenih ladij, ki so za seboj pustile razbitine. Čas popravila traja največ 12 ur, vendar traja vsaj 30 minut, dokler se ladje ne da ponovno v obratovanje. 
-
-Popravila se morajo začeti v 3 dneh po nastanku razbitine. Popravljene ladje je treba po zaključku popravil ročno vrniti v službo. Če tega ne storite, bodo posamezne ladje katere koli vrste vrnjene v uporabo po 3 dneh. 
-
-Razbitine se prikažejo le, če je bilo uničenih več kot 150.000 enot, vključno z lastnimi ladjami, ki so sodelovale v boju z vrednostjo vsaj 5 % točk ladje. 
-
-Ker Space Dock lebdi v orbiti, ne potrebuje polja planeta.',
+        'description_long' => 'Razbitine so lahko popravljene v vesoljskem doku.',
     ],
     'lunar_base' => [
         'title' => 'Lunarna baza',
         'description' => 'Ker luna nima atmosfere, je za ustvarjanje bivalnega prostora potrebna lunarna baza.',
-        'description_long' => 'Luna nima atmosfere, zato je treba najprej zgraditi lunarno bazo, preden se lahko postavi naselje. To nato zagotavlja kisik, ogrevanje in gravitacijo. Z vsako zgrajeno stopnjo je v biosferi zagotovljeno večje bivalno in razvojno območje. Vsak zgrajen nivo omogoča tri polja za druge zgradbe. Z vsako stopnjo Lunarna baza zasede eno polje. 
-Ko je lunarna baza zgrajena, je ni več mogoče podreti.',
+        'description_long' => 'Ker luna nima atmosfere, je lunarna baza zahtevana za nadaljno gradnjo zgradb.',
     ],
     'sensor_phalanx' => [
         'title' => 'Senzorska Falanga',
         'description' => 'Z uporabo senzorske falange je mogoče odkriti in opazovati flote drugih imperijev. Večji kot je senzorski niz falange, večji obseg lahko skenira.',
-        'description_long' => 'S senzorji visoke ločljivosti Sensor Phalanx najprej skenira spekter svetlobe, sestavo plinov in emisije sevanja iz oddaljenega sveta ter podatke prenese v superračunalnik za obdelavo. Ko so informacije pridobljene, superračunalnik primerja spremembe v spektru, sestavi plina in emisijah sevanja z osnovnim črtnim grafikonom znanih sprememb spektra, ki jih povzročajo različna gibanja ladij. Dobljeni podatki nato prikažejo aktivnost katere koli flote v dosegu falange. Da preprečimo pregrevanje superračunalnika med procesom, ga ohladimo z uporabo 5k predelanega devterija. 
-Če želite uporabiti Phalango, kliknite kateri koli planet v pogledu Galaxy v dosegu vaših senzorjev.',
+        'description_long' => 'Z uporabo falange lahko opazujemo premike flot ostalih igralcev. Večja stopnja falange nam zagotavlja večji razpon kje lahko skeniramo.',
     ],
     'jump_gate' => [
         'title' => 'Odskočna Vrata',
         'description' => 'Vrata za skoke so ogromni oddajniki-sprejemniki, ki lahko v hipu pošljejo tudi največjo floto do oddaljenih vrat za skok.',
-        'description_long' => 'Jump Gate je sistem velikanskih oddajnikov, ki lahko brez izgube časa pošljejo celo največje flote do sprejemnih vrat kamor koli v vesolju. Za doseganje skoka se uporablja tehnologija, podobna tehnologiji črvine luknje, devterij ni potreben. Med skoki mora preteči nekajminutno obdobje polnjenja, da se omogoči regeneracija. Tudi transport virov skozi Vrata ni mogoč. Z vsako stopnjo nadgradnje se lahko čas ohlajanja vrat za skok skrajša.',
+        'description_long' => 'Zvezdna vrata je ogromna platforma, ki je v stanju transformacije flot med lunami brez izgube časa.',
     ],
     'energy_technology' => [
         'title' => 'Energijska tehnologija',
         'description' => 'Različne vrste energije so potrebne za nove raziskave.',
-        'description_long' => 'Z napredovanjem različnih področij raziskav se je ugotovilo, da trenutna tehnologija distribucije energije ne zadostuje za začetek določenih specializiranih raziskav. Z vsako nadgradnjo vaše energetske tehnologije je mogoče izvesti nove raziskave, ki odklenejo razvoj bolj sofisticiranih ladij in obrambe.',
+        'description_long' => 'Različne vrste energije so potrebne za nove raziskave.',
     ],
     'laser_technology' => [
         'title' => 'Laserska tehnologija',
         'description' => 'Žarek usmerjene svetlobe ob stiku s predmetom povzroči uničenje.',
-        'description_long' => 'Laserji (ojačitev svetlobe s stimulirano emisijo sevanja) proizvajajo intenzivno, energijsko bogato emisijo koherentne svetlobe. Te naprave je mogoče uporabiti na vseh mogočih področjih, od optičnih računalnikov do težkega laserskega orožja, ki brez težav prereže oklepno tehnologijo. Laserska tehnologija je pomembna podlaga za raziskave drugih orožarskih tehnologij.',
+        'description_long' => 'Žarek usmerjene svetlobe ob stiku s predmetom povzroči uničenje.',
     ],
     'ion_technology' => [
         'title' => 'Ionska tehnologija',
         'description' => 'Koncentracija ionov omogoča gradnjo topov, ki lahko povzročijo ogromno škodo in lahko zmanjšajo stroške dekonstrukcije na stopnjo za 4%.',
-        'description_long' => 'Ione je mogoče koncentrirati in pospešiti v smrtonosni žarek. Ti žarki lahko nato povzročijo ogromno škodo. Naši znanstveniki so razvili tudi tehniko, ki bo jasno zmanjšala stroške razgradnje zgradb in sistemov. Za vsako raven raziskav se bodo stroški razgradnje znižali za 4 %.',
+        'description_long' => 'Koncentracija ionov omogoča gradnjo topov, ki lahko povzročijo ogromno škodo in lahko zmanjšajo stroške dekonstrukcije na stopnjo za 4%.',
     ],
     'hyperspace_technology' => [
         'title' => 'Hiperprostorska tehnologija',
         'description' => 'Z integracijo 4. in 5. dimenzije je zdaj mogoče raziskati novo vrsto pogona, ki je bolj ekonomičen in učinkovit.',
-        'description_long' => 'V teoriji se zamisel o hiperprostorskem potovanju opira na obstoj ločene in sosednje dimenzije. Ko je aktiviran, hipervesoljski pogon premakne zvezdno ladjo v to drugo dimenzijo, kjer lahko premaga ogromne razdalje v času, ki je močno krajši od časa, ki bi ga potreboval v "normalnem" vesolju. Ko enkrat doseže točko v hiperprostoru, ki ustreza njegovemu cilju v realnem prostoru, se ponovno pojavi. 
-Ko je raziskana zadostna raven tehnologije Hyperspace, Hyperspace Drive ni več le teorija. Vsaka izboljšava tega pogona poveča nosilnost vaših ladij za 5 % osnovne vrednosti.',
+        'description_long' => 'Z integracijo 4. in 5. dimenzije je zdaj mogoče raziskati pogon, ki je veliko hitrejši in učinkovitejši. Z uporabo četrte in pete dimenzije je zdaj mogoče zmečkati doke za nalaganje, da prihranimo prostor.',
     ],
     'plasma_technology' => [
         'title' => 'Plazemska tehnologija',
         'description' => 'Nadaljnji razvoj ionske tehnologije, ki pospešuje visoko energijsko plazmo, ki potem povzroči ogromno škodo in dodatno optimizira proizvodnjo metala, kristala in deuteriuma (1%/0.66%/0.33% na stopnjo).',
-        'description_long' => 'Nadaljnji razvoj ionske tehnologije, ki ne pospeši ionov, temveč visokoenergijsko plazmo, ki lahko nato povzroči uničujočo škodo ob trku s predmetom. Naši znanstveniki so našli tudi način za opazno izboljšanje pridobivanja kovin in kristalov s to tehnologijo. 
-
-Proizvodnja kovin se poveča za 1 %, proizvodnja kristalov za 0,66 % in proizvodnja devterija za 0,33 % na konstrukcijsko stopnjo plazemske tehnologije.',
+        'description_long' => 'Nadaljnji razvoj ionske tehnologije, ki pospešuje visoko energijsko plazmo, ki potem povzroči ogromno škodo in dodatno optimizira proizvodnjo metala, kristala in deuteriuma (1%/0.66%/0.33% na stopnjo).',
     ],
     'combustion_drive' => [
         'title' => 'Pogon izgorevanja',
         'description' => 'Razvoj pogona doda hitrost nekaterim ladjam, vendar le 10% osnovne vrednosti.',
-        'description_long' => 'Zgorevalni pogon je najstarejša tehnologija, vendar je še vedno v uporabi. Pri zgorevalnem pogonu se izpušni plini tvorijo iz pogonskih plinov, ki jih prevaža ladja pred uporabo. V zaprti komori so tlaki enaki v obe smeri in ne pride do pospeška. Če je na dnu komore odprtina, potem tlak na tej strani ni več nasproten. Preostali tlak daje posledični potisk na stran nasproti odprtine, ki požene ladjo naprej z izločanjem izpuha nazaj pri izjemno visoki hitrosti. 
-
-Z vsako razvito stopnjo zgorevalnega pogona se hitrost majhnih in velikih tovornih ladij, lahkih lovcev, reciklatorjev in vohunskih sond poveča za 10 %.',
+        'description_long' => 'Razvoj pogona doda hitrost nekaterim ladjam, vendar le 10% osnovne vrednosti.',
     ],
     'impulse_drive' => [
         'title' => 'Impulzni pogon',
         'description' => 'Impulzni pogon temelji na principu reakcije. Razvoj vsake stopnje pogona doda 20% osnovne hitrosti nekaterim ladjam.',
-        'description_long' => 'Impulzni pogon temelji na principu povratnega udarca, pri katerem se stimulirana emisija sevanja v glavnem proizvaja kot odpadni produkt fuzije jedra za pridobivanje energije. Poleg tega se lahko vbrizgajo druge mase. Z vsako razvito stopnjo impulznega pogona se hitrost bombnikov, križark, težkih lovcev in kolonialnih ladij poveča za 20 % osnovne vrednosti. Poleg tega so mali transporterji opremljeni z impulznimi pogoni, takoj ko njihova raziskovalna stopnja doseže 5. Takoj, ko raziskave Impulse Drive dosežejo raven 17, so Recyclerji ponovno opremljeni z impulznimi pogoni. 
-
-Tudi medplanetarne rakete z vsako stopnjo potujejo dlje.',
+        'description_long' => 'Impulzni pogon temelji na principu reakcije. Razvoj vsake stopnje pogona doda 20% osnovne hitrosti nekaterim ladjam.',
     ],
     'hyperspace_drive' => [
         'title' => 'Hiperprostorski pogon',
         'description' => 'Hiper pogon poganja ladje po vesolju. Razvoj vsake stopnje doda 30% osnovne hitrosti nekaterim ladjam.',
-        'description_long' => 'V neposredni bližini ladje je prostor zvit tako, da se velike razdalje premagujejo zelo hitro. Bolj kot je Hyperspace Drive razvit, močnejša je izkrivljena narava vesolja, pri čemer se hitrost ladij, ki so opremljene z njim (bojne križarke, bojne ladje, rušilci, Deathstars, Pathfinders in Reapers), poveča za 30 % na stopnjo. Poleg tega je bombnik zgrajen s Hyperspace Drive takoj, ko raziskave dosežejo stopnjo 8. Takoj ko raziskave Hyperspace Drive dosežejo raven 15, je Recycler ponovno opremljen s Hyperspace Drive.',
+        'description_long' => 'Hiper pogon poganja ladje po vesolju. Razvoj vsake stopnje doda 30% osnovne hitrosti nekaterim ladjam.',
     ],
     'espionage_technology' => [
         'title' => 'Vohunska tehnologija',
         'description' => 'S pomočjo te tehnologije lahko pridobiš informacije o ostalih planetih in lunah.',
-        'description_long' => 'Tehnologija vohunjenja je tvoje orodje za zbiranje informacij. Tehnologija ti omogoča, da vidiš žrtvine surovine, floto, zgradbe in raziskovanja s pomočjo posebnih sond. Po dosegu izbranega planeta sonde pošljejo kodirano sporočilo nazaj in po dešifriranju le-tega vidiš vse informacije.  Tehnologija vohunjenja je vedno odvisna od stopnje. Če ima tarča višjo stopnjo kot ti, boš potreboval več sond, da zbereš vse podatke. To se pozna tudi pri opažnji sond in s tem na njihovem preživetju. Premalo sond se lahko konča s popolnim uničenjem tvoje flote, saj ne dobiš celotnega poročila kaj napadaš. 
-Tehnologija vohunjenja deluje po stopnjah:
-Na stopnji 2 se prikaže preprosto opozorilo koliko ladij te napada. 
-Na stopnji 4 se prikaže opozorilo koliko ladij te napada in katerega tipa so te ladje. 
-Na stopnji 8 se prikaže točno število ladij posameznega tipa ladij, ki te napadajo.',
+        'description_long' => 'S pomočjo te tehnologije lahko pridobiš informacije o ostalih planetih in lunah.',
     ],
     'computer_technology' => [
         'title' => 'Računalniška tehnologija',
         'description' => 'Z višanjem računalniške tehnologije lahko upravljaš več flot hkrati. Vsaka stopnja ti prinese dodaten slot.',
-        'description_long' => 'Ko je flota poslana, je upravljena s strani računalnikov na planetu izvora. Ti ogromni stroji izračunajo čas prihoda, kontrolirajo popravke in regulirajo hitrost. Z vsako nadgradnjo dobiš dodaten slot za pošiljanje flote. Računalniška tehnologija naj bi se nadgrajevala skozi celotno igro.',
+        'description_long' => 'Z višanjem računalniške tehnologije lahko upravljaš več flot hkrati. Vsaka stopnja ti prinese dodaten slot.',
     ],
     'astrophysics' => [
         'title' => 'Astrofizika',
         'description' => 'Z astrofizikalnim raziskovalnim modelom lahko ladje potujejo globoko v vesolje na ekspedicije. Vsaka druga stopnja te raziskave ti omogoča kolonizacijo novega planeta.',
-        'description_long' => 'Nadaljnja dognanja na področju astrofizike omogočajo gradnjo laboratorijev, ki jih je mogoče namestiti na vedno več ladij. To omogoča dolge odprave daleč v neraziskana področja vesolja. Poleg tega se lahko ta napredek uporabi za nadaljnjo kolonizacijo vesolja. Za vsaki dve ravni te tehnologije je mogoče uporabiti dodaten planet.',
+        'description_long' => 'Z astrofizikalnim raziskovalnim modelom lahko ladje potujejo globoko v vesolje na ekspedicije. Vsaka druga stopnja te raziskave ti omogoča kolonizacijo novega planeta.',
     ],
     'intergalactic_research_network' => [
         'title' => 'Medgalaktična raziskovalna mreža',
         'description' => 'Raziskovalci na različnih planetih komunicirajo preko tega omrežja.',
-        'description_long' => 'To je vaše globoko vesoljsko omrežje za sporočanje rezultatov raziskav vašim kolonijam. Z IRN je mogoče doseči hitrejše raziskovalne čase s povezovanjem raziskovalnih laboratorijev na najvišji ravni, ki je enaka ravni razvitega IRN. 
-Da lahko vsaka kolonija deluje, mora biti sposobna samostojno izvajati raziskave.',
+        'description_long' => 'Raziskovalci na različnih planetih komunicirajo preko tega omrežja.',
     ],
     'graviton_technology' => [
         'title' => 'Gravitonska tehnologija',
         'description' => 'Sprožitev koncentriranih gravitonskih delcev lahko povzroči umetno gravitacijo, kar lahko uniči ladje ali celo lune.',
-        'description_long' => 'Graviton je osnovni delec, ki je brez mase in tovora. Določa gravitacijsko moč. Z izstrelitvijo koncentrirane obremenitve gravitonov je mogoče zgraditi umetno gravitacijsko polje. V nasprotju s črno luknjo vase potegne maso. Tako lahko uniči ladje in celo cele lune. Za proizvodnjo zadostne količine gravitonov so potrebne ogromne količine energije. Graviton Research je potrebna za izdelavo uničujoče Deathstar.',
+        'description_long' => 'Sprožitev koncentriranih gravitonskih delcev lahko povzroči umetno gravitacijo, kar lahko uniči ladje ali celo lune.',
     ],
     'weapon_technology' => [
         'title' => 'Tehnologija orožja',
         'description' => 'Tehnologija orožja poskrbi za boljše delovanje orožja na tvojih ladjah in obrambi. Vsaka stopnja ti doda 10% osnovne vrednosti.',
-        'description_long' => 'Tehnologija orožja je ključna tehnologija za preživetje proti sovražniku. Z vsako stopnjo se zviša moč orožja tvojih ladij in obrambnih struktur za 10% osnovne vrednosti.',
+        'description_long' => 'Tehnologija orožja poskrbi za boljše delovanje orožja na tvojih ladjah in obrambi. Vsaka stopnja ti doda 10% osnovne vrednosti.',
     ],
     'shielding_technology' => [
-        'title' => 'Ščitna tehnologija',
+        'title' => 'Tehnologija ščita',
         'description' => 'Tehnologija ščitov naredi ščite na ladjah in obrambnih objektih učinkovitejše. Vsaka stopnja tehnologije ščitov poveča moč ščitov za 10 % osnovne vrednosti.',
-        'description_long' => 'Z izumom magnetnosfernega generatorja so se znanstveniki naučili, da se umeten ščit okoli planeta lahko uporablja ne le za zaščito posadke v vesolju pred sončnim sevanjem, ampak tudi pred sovražnimi napadi. Po tem, ko so znanstveniki končno izpopolnili tehnologijo je bil magnetnosferni generator implementiran na vse ladje in obrambne sisteme. Ko tehnologija napreduje z vsako stopnjo je tudi magnetnosferski generator nadgrajen, kar povzroča 10% dodatek osnovne vrednosti na moč ščita.',
+        'description_long' => 'Tehnologija ščita naredi ščit na ladjah in obrambi bolj učinkovit. Vsaka stopnja mu doda 10% osnovne vrednosti.',
     ],
     'armor_technology' => [
         'title' => 'Tehnologija oklepa',
         'description' => 'Posebna zlitina izboljša oklep na ladjah in obrambnih strukturah. Vsaka stopnja doprinese 10% osnovne vrednosti.',
-        'description_long' => 'Okolje globokega vesolja je surovo. Piloti in posadke na različnih misijah se niso soočili le z intenzivnim sončnim sevanjem, soočili so se tudi z možnostjo, da jih zadenejo vesoljski odpadki ali uniči sovražnikov ogenj v napadu. Z odkritjem zlitine aluminij-litij-titanov karbid, za katero je bilo ugotovljeno, da je lahka in trpežna, je to posadki omogočilo določeno stopnjo zaščite. Z vsako razvito stopnjo oklepne tehnologije se proizvede kakovostnejša zlitina, ki poveča trdnost oklepa za 10 %.',
+        'description_long' => 'Posebna zlitina izboljša oklep na ladjah in obrambnih strukturah. Vsaka stopnja doprinese 10% osnovne vrednosti.',
     ],
     'small_cargo' => [
         'title' => 'Majhna tovorna ladja',
         'description' => 'Majhna tovorna ladja je enostavna ladja za prevoz surovin med planeti.',
-        'description_long' => 'Transporterji so približno tako veliki kot lovci, vendar se odrekajo visoko zmogljivim pogonom in orožju na krovu zaradi povečanja njihove tovorne zmogljivosti. Posledično je treba transporter poslati v bitke le, če ga spremljajo za boj pripravljene ladje. 
-
-Takoj, ko impulzni pogon doseže raziskovalno stopnjo 5, mali transporter potuje s povečano osnovno hitrostjo in je opremljen z impulznim pogonom.',
+        'description_long' => 'Majhna tovorna ladja je enostavna ladja za prevoz surovin med planeti.',
     ],
     'large_cargo' => [
         'title' => 'Velika tovorna ladja',
         'description' => 'Ta tovorna ladja ima veliko več prostora kot majhna tovorna ladja in je v normalnih pogojih hitrejša kot majhna tovorna ladja zahvaljujoč naprednemu pogonu.',
-        'description_long' => 'Sčasoma so napadi na kolonije privedli do vedno večjih zajetih virov. Posledično so bili majhni tovori poslani v množičnem številu, da bi nadomestili večja zajetja. Hitro se je ugotovilo, da je potreben nov razred ladij, da bi čim bolj izkoristili vire, zajete v napadih, hkrati pa bili tudi stroškovno učinkoviti. Po dolgem razvoju se je rodil Large Cargo. 
-
-Da bi povečali vire, ki jih je mogoče shraniti v skladiščih, ima ta ladja malo orožja ali oklepov. Zahvaljujoč vgrajenemu visoko razvitemu motorju z notranjim izgorevanjem služi kot najbolj ekonomičen dobavitelj virov med planeti in najbolj učinkovit pri napadih na sovražne svetove.',
+        'description_long' => 'Ta tovorna ladja ima veliko več prostora kot majhna tovorna ladja in je v normalnih pogojih hitrejša kot majhna tovorna ladja zahvaljujoč naprednemu pogonu.',
     ],
     'colony_ship' => [
         'title' => 'Kolonizacijska ladja',
         'description' => 'S to ladjo se lahko kolonizira prazne planete.',
-        'description_long' => 'V 20. stoletju se je človek odločil za zvezde. Najprej je bil pristanek na Luni. Po tem je bila zgrajena vesoljska postaja. Mars je bil kmalu zatem koloniziran. Kmalu je bilo ugotovljeno, da je naša rast odvisna od kolonizacije drugih svetov. Znanstveniki in inženirji po vsem svetu so se zbrali, da bi razvili največji dosežek človeka doslej. Rojena je Colony Ship. 
-
-Ta ladja se uporablja za pripravo na novo odkritega planeta za kolonizacijo. Ko prispe na cilj, se ladja takoj spremeni v običajen življenjski prostor, ki pomaga pri naselitvi in ​​rudarjenju novega sveta. Največje število planetov je tako določeno z napredkom astrofizičnih raziskav. Dve novi ravni astrotehnologije omogočata kolonizacijo enega dodatnega planeta.',
+        'description_long' => 'S to ladjo se lahko kolonizira prazne planete.',
     ],
     'recycler' => [
         'title' => 'Recikler',
         'description' => 'Reciklatorji so edine ladje, ki lahko po boju poberejo polja odpadkov, ki lebdijo v orbiti planeta.',
-        'description_long' => 'Boji v vesolju so dobivali vse večje razsežnosti. Uničenih je bilo na tisoče ladij in zdelo se je, da so viri njihovih ostankov za vedno izgubljeni med polji ruševin. Običajne tovorne ladje se ne bi mogle dovolj približati tem poljem, ne da bi tvegale znatno škodo. 
-Nedavni razvoj tehnologij ščitov je to težavo učinkovito zaobšel. Ustvarjen je bil nov razred ladij, ki je bil podoben transporterjem: Reciklerji. Njihova prizadevanja so pomagala zbrati izgubljene vire in jih nato rešiti. Odpadki zaradi novih ščitov niso več predstavljali prave nevarnosti. 
-
-Takoj, ko raziskave Impulse Drive dosežejo raven 17, so Recyclerji ponovno opremljeni z Impulse Drives. Takoj, ko raziskave Hyperspace Drive dosežejo raven 15, so Recyclerji ponovno opremljeni s Hyperspace Drives.',
+        'description_long' => 'Reciklerji so edina ladja, ki lahko pobere ruševine v orbitah planetov.',
     ],
     'espionage_probe' => [
         'title' => 'Vohunska sonda',
         'description' => 'Vohunske sonde so majhne, gibčne ladje, ki te oskrbujejo z informacijami o drugih planetih.',
-        'description_long' => 'Vohunske sonde so majhna, okretna brezpilotna letala, ki zagotavljajo podatke o flotah in planetih. Opremljen s posebej zasnovanimi motorji jim omogoča, da premagajo velike razdalje v le nekaj minutah. Ko so v orbiti okoli ciljnega planeta, hitro zberejo podatke in pošljejo poročilo nazaj prek vašega omrežja Deep Space Network za oceno. Vendar obstaja tveganje za vidik inteligentnega zbiranja. V času, ko se poročilo prenaša nazaj v vaše omrežje, lahko cilj zazna signal in sonde uniči.',
+        'description_long' => 'Vohunske sonde so majhne, gibčne ladje, ki te oskrbujejo z informacijami o drugih planetih.',
     ],
     'solar_satellite' => [
         'title' => 'Sončni satelit',
         'description' => 'Solarni sateliti so preproste platforme sončnih celic, ki se nahajajo v visoki stacionarni orbiti. Zbirajo sončno svetlobo in jo z laserjem prenašajo na zemeljsko postajo.',
-        'description_long' => 'Znanstveniki so odkrili način prenosa električne energije v kolonijo s pomočjo posebej zasnovanih satelitov v geosinhroni orbiti. Sončni sateliti zbirajo sončno energijo in jo prenašajo na zemeljsko postajo z uporabo napredne laserske tehnologije. Učinkovitost sončnega satelita je odvisna od moči sončnega sevanja, ki ga prejme. Načeloma je proizvodnja energije v orbitah bližje soncu večja kot pri planetih v orbitah, ki so oddaljene od sonca. 
-Zaradi dobrega razmerja med ceno in zmogljivostjo lahko solarni sateliti rešijo veliko energetskih težav. Toda pozor: sončne satelite je mogoče zlahka uničiti v bitki.',
+        'description_long' => 'Sončni sateliti so enostavne plošče iz sončnih celic, ki so vedno v orbiti. Zbirajo sončno svetlobo in jo pretvarjajo v energijo. Sončni satelit proizvaja 35 energije na tem planetu.',
     ],
     'crawler' => [
         'title' => 'Plazilec',
         'description' => 'Plazilci povečajo proizvodnjo metala, kristala in Deuteriuma na določenem planetu za 0.02%, 0.02% in 0.02%. Kot pri zbiralcu se poveča tudi proizvodnja. Najvišji možen bonus je odvisen od splošne stopnje tvojih rudnikov.',
-        'description_long' => 'Plazilec je veliko vozilo za jarke, ki poveča proizvodnjo rudnikov in sintetizatorjev. Je bolj okreten, kot zgleda, a ni robusten. Vsak plazilec poveča proizvodnjo metala za 0.02%, proizvodnjo kristala za 0.02% in proizvodnjo deuteriuma za 0.02%. Kot pri zbiralcu se poveča tudi proizvodnja. Najvišji možen bonus je odvisen od splošne stopnje tvojih rudnikov.',
+        'description_long' => 'Plazilci povečajo proizvodnjo metala, kristala in Deuteriuma na določenem planetu za 0.02%, 0.02% in 0.02%. Kot pri zbiralcu se poveča tudi proizvodnja. Najvišji možen bonus je odvisen od splošne stopnje tvojih rudnikov.',
     ],
     'pathfinder' => [
         'title' => 'Iskalec sledi',
         'description' => 'Pathfinder je hitra in okretna ladja, namensko zgrajena za odprave v neznane sektorje vesolja.',
-        'description_long' => 'Pathfinder je najnovejši razvoj raziskovalne tehnologije. Ta ladja je bila zasnovana posebej za člane razreda Discoverer, da bi povečali svoj potencial. Opremljen z naprednimi sistemi skeniranja in velikim prtljažnim prostorom za reševanje virov, je Pathfinder odličen na ekspedicijah. Njegovi sofisticirani senzorji lahko zaznajo dragocene vire in anomalije, ki bi ostale ladje neopažene. Ladja združuje visoko hitrost z dobro nosilnostjo, zaradi česar je popolna za hitre raziskovalne misije in zbiranje virov iz oddaljenih sektorjev.',
+        'description_long' => 'Iskalci sledi so hitri, prostorni in lahko odkrivajo in rudarijo polja razbitin med ekspedicijami. Skupni pridelek se poveča.',
     ],
     'light_fighter' => [
         'title' => 'Lahek lovec',
         'description' => 'Lahki lovec je okretna ladja, ki je prisotna na skoraj vsakem planetu. Stroški niso posebej veliki, moč ščita in tovorna kapaciteta pa sta zelo majhni.',
-        'description_long' => 'To je prva bojna ladja, ki jo bodo zgradili vsi cesarji. Lahki lovec je okretna ladja, a ranljiva, ko je sama. V množičnem številu lahko postanejo velika grožnja vsakemu imperiju. So prvi, ki z manjšo obrambo spremljajo majhne in velike tovore na sovražne planete.',
+        'description_long' => 'Lahki lovec je okretna ladja, ki je prisotna na skoraj vsakem planetu. Stroški niso posebej veliki, moč ščita in tovorna kapaciteta pa sta zelo majhni.',
     ],
     'heavy_fighter' => [
         'title' => 'Težki lovec',
         'description' => 'Ta lovec je bolje oborožen in ima večjo moč kot lahki lovec.',
-        'description_long' => 'Pri razvoju težkega lovca so raziskovalci dosegli točko, ko običajni pogoni niso več zagotavljali zadostne zmogljivosti. Za optimalno premikanje ladje je bil prvič uporabljen impulzni pogon. To je povečalo stroške, a odprlo tudi nove možnosti. Z uporabo tega pogona je ostalo več energije za orožje in ščite; poleg tega so bili za to novo družino borcev uporabljeni visokokakovostni materiali. S temi spremembami težki lovec predstavlja novo dobo v ladijski tehnologiji in je osnova za tehnologijo križark. 
-
-Težki lovec je nekoliko večji od lahkega lovca in ima debelejši trup, ki zagotavlja večjo zaščito in močnejše oborožitev.',
+        'description_long' => 'Ta lovec je bolje oborožen in ima večjo moč kot lahki lovec.',
     ],
     'cruiser' => [
         'title' => 'Križarka',
         'description' => 'Križarke imajo skoraj trikrat boljši oklep kot težki lovci in skoraj dvakratno strelno moč. Kot dodatek, so tudi zelo hitre.',
-        'description_long' => 'Z razvojem težkega laserja in ionskega topa so lahki in težki lovci naleteli na zaskrbljujoče veliko število porazov, ki se je z vsakim napadom povečalo. Kljub številnim modifikacijam, moči orožja in spremembam oklepov ga ni bilo mogoče povečati dovolj hitro, da bi se učinkovito zoperstavil tem novim obrambnim ukrepom. Zato je bilo odločeno zgraditi nov razred ladje, ki je združevala več oklepov in večjo ognjeno moč. Kot rezultat dolgoletnih raziskav in razvoja se je rodil Cruiser. 
-
-Križarke so oklepljene skoraj trikrat bolj kot težki lovci in imajo več kot dvakrat večjo ognjeno moč kot katera koli obstoječa bojna ladja. Imajo tudi hitrosti, ki daleč presegajo katero koli vesoljsko plovilo, ki je bilo kdaj izdelano. Skoraj stoletje so križarke prevladovale v vesolju. Z razvojem Gaussovih topov in plazemskih kupol pa se je njihova prevlada končala. Še danes se uporabljajo proti bojevniškim skupinam, vendar ne tako pretežno kot prej.',
+        'description_long' => 'Križarke imajo skoraj trikrat boljši oklep kot težki lovci in skoraj dvakratno strelno moč. Kot dodatek, so tudi zelo hitre.',
     ],
     'battle_ship' => [
         'title' => 'Bojna ladja',
         'description' => 'Bojne ladje predstavljajo hrbtenico tvoje flote. Težki kanoni, velika hitrost in veliko skladišče jih naredijo resne nasprotnike.',
-        'description_long' => 'Ko je postalo očitno, da križarka izgublja tla zaradi vse večjega števila obrambnih struktur, s katerimi se je soočala, in z izgubami ladij na misijah na nesprejemljivih ravneh, je bilo odločeno, da se zgradi ladja, ki bi se lahko soočila s to isto vrsto obrambnih struktur s čim manjšimi izgubami. Po obsežnem razvoju se je rodila bojna ladja. Bojna ladja, zgrajena tako, da zdrži največje bitke, ima velike tovorne prostore, težke topove in visoko hitrost hiperpogona. Ko je bil enkrat razvit, se je sčasoma izkazalo, da je hrbtenica vsake cesarske flote za napade.',
+        'description_long' => 'Bojne ladje predstavljajo hrbtenico tvoje flote. Težki kanoni, velika hitrost in veliko skladišče jih naredijo resne nasprotnike.',
     ],
     'battlecruiser' => [
         'title' => 'Bojna križarka',
         'description' => 'Bojne križarke so specializirane za prestrezanje sovražnih flot.',
-        'description_long' => 'Ta ladja je ena najnaprednejših bojnih ladij, kar jih je bilo kdaj razvitih, in je še posebej smrtonosna, ko gre za uničenje napadalnih flot. Z izboljšanimi laserskimi topovi na krovu in naprednim Hyperspace motorjem je Battlecruiser resna sila, s katero se je treba spopasti v vsakem napadu. Zaradi zasnove ladje in njenega velikega oborožitvenega sistema je bilo treba zmanjšati tovorne prostore, vendar se to kompenzira z manjšo porabo goriva.',
+        'description_long' => 'Bojne križarke so specializirane za prestrezanje sovražnih flot.',
     ],
     'bomber' => [
         'title' => 'Bombnik',
         'description' => 'Bombnik je bil izumljen posebno za uničevanje obrambe nekega planeta.',
-        'description_long' => 'Skozi stoletja, ko je obramba postajala večja in bolj izpopolnjena, so se flote začele uničevati z alarmantno hitrostjo. Odločeno je bilo, da je potrebna nova ladja za prekinitev obrambe in zagotovitev največjih rezultatov. Po letih raziskav in razvoja je nastal Bomber. 
-
-Z uporabo lasersko vodene ciljne opreme in plazemskih bomb bombnik poišče in uniči vse obrambne mehanizme, ki jih najde. Takoj, ko je hipervesoljski pogon razvit do stopnje 8, je bombnik naknadno opremljen s hipervesoljskim motorjem in lahko leti z višjimi hitrostmi.',
+        'description_long' => 'Bombnik je bil izumljen posebno za uničevanje obrambe nekega planeta.',
     ],
     'destroyer' => [
         'title' => 'Uničevalec',
         'description' => 'Uničevalec je kralj bojnih ladij.',
-        'description_long' => 'Destroyer je rezultat dolgoletnega dela in razvoja. Z razvojem Deathstars je bilo odločeno, da je potreben razred ladje za obrambo pred tako ogromnim orožjem. Zahvaljujoč izboljšanim senzorjem za navajanje, ionskim topom z več falangami, Gaussovim topom in plazemskim kupolam se je Destroyer izkazal za eno najstrašnejših ladij. 
-
-Ker je rušilec zelo velik, so njegove manevrske sposobnosti močno omejene, zaradi česar je bolj bojna kot bojna ladja. Pomanjkanje manevriranja nadomešča njegova gola ognjena moč, vendar tudi njegova izdelava in delovanje stane znatne količine devterija.',
+        'description_long' => 'Uničevalec je kralj bojnih ladij.',
     ],
     'deathstar' => [
         'title' => 'Zvezda smrti',
         'description' => 'Uničujoča moč zvezd smrti se ne more primerjati z ničemer.',
-        'description_long' => 'Deathstar je najmočnejša ladja, kar jih je bilo ustvarjeno. Ta ladja v velikosti meseca je edina ladja, ki jo je mogoče videti s prostim očesom na tleh. Ko ga opazite, je na žalost že prepozno, da bi karkoli naredili. 
-
-Ta ogromna ladja, oborožena z ogromnim gravitonskim topom, najnaprednejšim sistemom orožja, kar jih je bilo kdaj ustvarjeno v vesolju, ne more le uničiti celotne flote in obrambe, ampak ima tudi zmožnost uničiti celotne lune. Samo najnaprednejši imperiji so sposobni zgraditi ladjo te ogromne velikosti.',
+        'description_long' => 'Uničujoča moč zvezd smrti se ne more primerjati z ničemer.',
     ],
     'reaper' => [
         'title' => 'Kombajn',
         'description' => 'Reaper je zmogljiva bojna ladja, specializirana za agresivne napade in žetev odpadkov.',
-        'description_long' => 'Reaper predstavlja vrhunec vojaškega inženirstva splošnega razreda. To močno oboroženo plovilo je bilo zasnovano za poveljnike, ki cenijo bojno moč in taktično prilagodljivost. Medtem ko je njegova primarna vloga boj, ima Reaper okrepljena skladišča za tovor, ki mu omogočajo, da po bitki pobira polja ruševin. Njegovi napredni ciljni sistemi in težki oklepi ga naredijo za mogočnega nasprotnika, medtem ko njegova zasnova z dvojnim namenom pomeni, da lahko ustvari poboje na bojnem polju in izkoristi iz njih. Ladja je opremljena z najsodobnejšo tehnologijo orožja in se lahko zoperstavi veliko večjim plovilom.',
+        'description_long' => 'Ladja razreda Kombajn je mogočen uničujoč instrument, ki lahko pleni polja razbitin po bitki.',
     ],
     'rocket_launcher' => [
         'title' => 'Raketnik',
         'description' => 'Raketnik je najpreprostejša in najcenejša obrambna struktura.',
-        'description_long' => 'Vaša prva osnovna obrambna linija. To so preproste zemeljske naprave za izstrelitev, ki izstreljujejo konvencionalne rakete s konico bojne glave na sovražne cilje. Ker so poceni za izdelavo in niso potrebne nobene raziskave, so zelo primerni za obrambo pred napadi, vendar izgubijo učinkovitost pri obrambi pred napadi večjega obsega. Ko začnete graditi naprednejše sisteme obrambnega orožja, raketni izstrelki postanejo preprosta krma, ki vašemu bolj škodljivemu orožju omogoča, da povzroči večjo škodo za daljše časovno obdobje. 
-
-Po bitki obstaja do 70-odstotna možnost, da se neuspeli obrambni objekti vrnejo v uporabo.',
+        'description_long' => 'Raketnik je najpreprostejša in najcenejša obrambna struktura.',
     ],
     'light_laser' => [
         'title' => 'Lahki laser',
         'description' => 'Usmerjeno streljanje fotonov povzroči veliko večjo škodo kot normalno balistično orožje.',
-        'description_long' => 'Ko se je tehnologija razvijala in so bile ustvarjene bolj sofisticirane ladje, je bilo ugotovljeno, da je za boj proti napadom potrebna močnejša obrambna linija. Ko je laserska tehnologija napredovala, je bilo zasnovano novo orožje, ki zagotavlja naslednjo raven obrambe. Svetlobni laserji so preprosto zemeljsko orožje, ki uporablja posebne ciljne sisteme za sledenje sovražniku in sproži visoko intenziven laser, ki je namenjen prerezu trupa tarče. Da bi bili stroškovno učinkoviti, so bili opremljeni z izboljšanim sistemom zaščite, vendar je strukturna celovitost enaka tisti iz raketometra. 
-
-Po bitki obstaja do 70-odstotna možnost, da se neuspeli obrambni objekti vrnejo v uporabo.',
+        'description_long' => 'Usmerjeno streljanje fotonov povzroči veliko večjo škodo kot normalno balistično orožje.',
     ],
     'heavy_laser' => [
         'title' => 'Težek laser',
         'description' => 'Težki laser je logičen razvoj lahkega laserja.',
-        'description_long' => 'Težki laser je praktična, izboljšana različica svetlobnega laserja. Ker je bolj uravnotežen od svetlobnega laserja z izboljšano sestavo zlitine, uporablja močnejše, bolj gosto zapakirane žarke in še boljše vgrajene ciljne sisteme. 
-
-Po bitki obstaja do 70-odstotna možnost, da se neuspeli obrambni objekti vrnejo v uporabo.',
+        'description_long' => 'Težki laser je logičen razvoj lahkega laserja.',
     ],
     'gauss_cannon' => [
         'title' => 'Gaussov top',
         'description' => 'Gaussov top ima nekaj tonske izstrelke, ki jih izstreli z veliko hitrostjo.',
-        'description_long' => 'Dolgo je veljalo, da je projektilno orožje zastarelo zaradi sodobne termonuklearne in energetske tehnologije ter zaradi razvoja hiperpogona in izboljšanega oklepa. To je bilo, dokler mu natančna energetska tehnologija, ki ga je nekoč postarala, ni pomagala ponovno doseči uveljavljenega položaja. 
-Gaussov top je velika različica pospeševalnika delcev. Izjemno težke izstrelke pospešuje ogromna elektromagnetna sila in imajo hitrosti izstrelka, zaradi katerih umazanija, ki obdaja izstrelke, gori na nebu. To orožje je ob strelu tako močno, da ustvari zvočni bum. Sodobni oklepi in ščiti komaj zdržijo silo, pogosto je tarča popolnoma prebita z močjo izstrelka. Obrambne strukture se deaktivirajo takoj, ko so premočno poškodovane. 
-
-Po bitki obstaja do 70-odstotna možnost, da se neuspeli obrambni objekti vrnejo v uporabo.',
+        'description_long' => 'Gaussov top ima nekaj tonske izstrelke, ki jih izstreli z veliko hitrostjo.',
     ],
     'ion_cannon' => [
-        'title' => 'Ion Cannon',
+        'title' => 'Ionski top',
         'description' => 'The Ion Cannon fires a continuous beam of accelerating ions, causing considerable damage to objects it strikes.',
-        'description_long' => 'Ionski top je orožje, ki izstreljuje žarke ionov (pozitivno ali negativno nabitih delcev). Ionski top je pravzaprav vrsta topa delcev; samo uporabljeni delci so ionizirani. Zaradi svojih električnih nabojev imajo tudi možnost, da onesposobijo elektronske naprave in kar koli drugega, kar ima električni ali podoben vir energije, z uporabo pojava, znanega kot elektromagnetni impulz (EMP učinek). Zaradi zelo izboljšanega zaščitnega sistema topov ta top zagotavlja izboljšano zaščito za vaše večje, bolj uničujoče obrambno orožje. 
-
-Po bitki obstaja do 70-odstotna možnost, da se neuspeli obrambni objekti vrnejo v uporabo.',
+        'description_long' => 'Ionski top ustreli konstanten curek pospešujočih se ionov, kar povzroča ogromno škodo na tarčah.',
     ],
     'plasma_turret' => [
-        'title' => 'Plasma Turret',
+        'title' => 'Plazemski top',
         'description' => 'Plasma Turrets release the energy of a solar flare and surpass even the destroyer in destructive effect.',
-        'description_long' => 'Eden najnaprednejših sistemov obrambnega orožja, kar jih je bilo kdaj razvito, Plasma Turret uporablja veliko gorivno celico jedrskega reaktorja za napajanje elektromagnetnega pospeševalnika, ki sproži impulz ali toroid plazme. Med delovanjem plazemska kupola najprej zaskoči tarčo in začne postopek streljanja. Plazemska krogla se ustvari v jedru kupole s super segrevanjem in stiskanjem plinov, pri čemer se iz njih odstranijo ioni. Ko je plin pregret, stisnjen in se ustvari plazemska krogla, se nato naloži v elektromagnetni pospeševalnik, ki se napaja. Ko je v celoti napolnjen, se aktivira pospeševalnik, zaradi česar se plazemska krogla izstreli z izjemno visoko hitrostjo do predvidene tarče. Z vidika ciljev je bližajoča se modrikasta krogla plazme impresivna, a ko enkrat udari, povzroči takojšnje uničenje. 
-
-Obrambni objekti se deaktivirajo takoj, ko so premočno poškodovani. Po bitki obstaja do 70-odstotna možnost, da se neuspeli obrambni objekti vrnejo v uporabo.',
+        'description_long' => 'Plazemski top sprošča sončno energijo in tako uniči vse pred seboj.',
     ],
     'small_shield_dome' => [
-        'title' => 'Small Shield Dome',
+        'title' => 'Majhen ščit',
         'description' => 'The small shield dome covers an entire planet with a field which can absorb a tremendous amount of energy.',
-        'description_long' => 'Kolonizacija novih svetov je prinesla novo nevarnost, vesoljske odpadke. Velik asteroid bi zlahka izbrisal svet in vse prebivalce. Napredek v tehnologiji zaščite je znanstvenikom omogočil razvoj ščita za zaščito celotnega planeta ne le pred vesoljskimi odpadki, temveč, kot je bilo ugotovljeno, pred napadom sovražnika. Z ustvarjanjem velikega elektromagnetnega polja okoli planeta so se vesoljski odpadki, ki bi običajno uničili planet, odvrnili, napadi sovražnih imperijev pa so bili onemogočeni. Prvi generatorji so bili veliki in ščit je zagotavljal zmerno zaščito, kasneje pa je bilo ugotovljeno, da majhni ščiti niso nudili zaščite pred večjimi napadi. Majhna ščitna kupola je bila uvod v prihodnji močnejši, naprednejši planetarni ščitni sistem. 
-
-Po bitki obstaja do 70-odstotna možnost, da se neuspeli obrambni objekti vrnejo v uporabo.',
+        'description_long' => 'Majhen ščit obdaja celoten planeta, kar pomeni da absorbira ogromno energijo.',
     ],
     'large_shield_dome' => [
-        'title' => 'Large Shield Dome',
+        'title' => 'Velik ščit',
         'description' => 'The evolution of the small shield dome can employ significantly more energy to withstand attacks.',
-        'description_long' => 'Large Shield Dome je naslednji korak pri napredku planetarnih ščitov, je rezultat dolgoletnega dela pri izboljševanju Small Shield Dome. Velike kupole, izdelane tako, da prenesejo večji naboj sovražnega ognja z zagotavljanjem elektromagnetnega polja z večjo energijo, zagotavljajo daljše obdobje zaščite, preden se zrušijo. 
-
-Po bitki obstaja do 70-odstotna možnost, da se neuspeli obrambni objekti vrnejo v uporabo.',
+        'description_long' => 'Evolucija majhnega ščita nam s svojo energijo lahko zelo pomaga pri obrambi.',
     ],
     'anti_ballistic_missile' => [
-        'title' => 'Anti-Ballistic Missiles',
+        'title' => 'Protibalistične rakete',
         'description' => 'Anti-Ballistic Missiles destroy attacking interplanetary missiles',
-        'description_long' => 'Protibalistični izstrelki (ABM) so vaša edina obrambna linija, ko vas napadejo medplanetarni izstrelki (IPM) na vašem planetu ali luni. Ko je zaznana izstrelitev IPM, se te rakete samodejno oborožijo, obdelajo kodo za izstrelitev v svojih letalskih računalnikih, ciljajo na dohodno IPM in se izstrelijo za prestrezanje. Med letom se ciljni IPM nenehno spremlja in izvajajo popravki smeri, dokler ABM ne doseže cilja in uniči napadajočega IPM. Vsak ABM uniči en dohodni IPM.',
+        'description_long' => 'Protibalistične rakete uničujejo nasprotnikove medplanetarne rakete.',
     ],
     'interplanetary_missile' => [
-        'title' => 'Interplanetary Missiles',
+        'title' => 'Medplanetarne rakete',
         'description' => 'Medplanetarne rakete uničijo sovražnikovo obrambo.',
-        'description_long' => 'Medplanetarne rakete (IPM) so vaše ofenzivno orožje za uničenje obrambe vašega cilja. Z uporabo najsodobnejše tehnologije sledenja vsaka raketa cilja na določeno število obrambnih mehanizmov za uničenje. Opremljeni z bombo proti materiji zagotavljajo tako močno uničevalno silo, da uničenih ščitov in obrambe ni mogoče popraviti. Edini način za boj proti tem izstrelkom je ABM.',
+        'description_long' => 'Medplanetarne rakete uničujejo sovražno obrambo. Tvoje rakete imajo domet v obsegu 0 sistemov.',
     ],
     'kraken' => [
         'title' => 'KRAKEN',
