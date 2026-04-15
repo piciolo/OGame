@@ -15,7 +15,6 @@ use OGame\Services\ChatService;
 use OGame\Services\FleetMissionService;
 use OGame\Services\HighscoreService;
 use OGame\Services\MessageService;
-use OGame\Services\OfficerService;
 use OGame\Services\PlayerService;
 use OGame\Services\SettingsService;
 
@@ -42,7 +41,7 @@ class IngameMainComposer
      * @param HighscoreService $highscoreService
      * @param BuddyService $buddyService
      */
-    public function __construct(private Request $request, private PlayerService $player, private MessageService $messageService, private SettingsService $settingsService, private FleetMissionService $fleetMissionService, private HighscoreService $highscoreService, private BuddyService $buddyService, private ChatService $chatService, private OfficerService $officerService)
+    public function __construct(private Request $request, private PlayerService $player, private MessageService $messageService, private SettingsService $settingsService, private FleetMissionService $fleetMissionService, private HighscoreService $highscoreService, private BuddyService $buddyService, private ChatService $chatService)
     {
     }
 
@@ -136,7 +135,6 @@ class IngameMainComposer
             'locale' => $locale,
             'isImpersonating' => $isImpersonating,
             'impersonateLeaveUrl' => $isImpersonating ? route('impersonate.leave') : null,
-            'currentOfficer' => $this->officerService->getOfficer($this->player->getUser()),
         ]);
     }
 
