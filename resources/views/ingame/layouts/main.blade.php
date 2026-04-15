@@ -35,7 +35,7 @@
     <meta name="ogame-donut-galaxy" content="1"/>
     <meta name="ogame-donut-system" content="1"/>
     <meta name="ogame-player-id" content="{{ $currentPlayer->getId() }}"/>
-    <meta name="ogame-player-name" content="{{ $currentPlayer->getUsername(false) }}"/>
+    <meta name="ogame-player-name" content="{{ $currentPlayer->getUsername() }}"/>
     <meta name="ogame-alliance-id" content=""/>
     <meta name="ogame-alliance-name" content=""/>
     <meta name="ogame-alliance-tag" content=""/>
@@ -453,10 +453,10 @@
                                     $shipTooltipContent .= $shipName . ': ' . $quantity . '<br/>';
                                 }
                             } else {
-                                $shipTooltipContent .= 'No ships in wreck field';
+                                $shipTooltipContent .= __('t_ingame.layout.no_ships_in_wreck');
                             }
                         } else {
-                            $shipTooltipContent .= 'No wreck field available';
+                            $shipTooltipContent .= __('t_ingame.layout.no_wreck_available');
                         }
                     @endphp
                     @php
@@ -740,10 +740,10 @@
                 }
 
                 var playerId = "{{ $currentPlayer->getId() }}";
-                var playerName = "{{ $currentPlayer->getUsername(false) }}";
+                var playerName = "{{ $currentPlayer->getUsername() }}";
                 var player = {
                     "playerId": {{ $currentPlayer->getId() }},
-                    "name": "{{ $currentPlayer->getUsername(false) }}",
+                    "name": "{{ $currentPlayer->getUsername() }}",
                     "hasCommander": false,
                     "hasAPassword": true
                 };
@@ -1410,7 +1410,7 @@ However, the Space Dock's engineers think that some of the remains can be salvag
 
                 function openPlanetRenameGiveupBox() {
                     openOverlay("{{ route('planetabandon.overlay') }}", {
-                        title: "Abandon\/Rename {{ $currentPlanet->getPlanetName() }}",
+                        title: "{{ __('t_ingame.overview.abandon_rename_modal', ['planet_name' => $currentPlanet->getPlanetName()]) }}",
                         'class': "planetRenameOverlay"
                     });
                 }

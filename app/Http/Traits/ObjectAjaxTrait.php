@@ -128,8 +128,7 @@ trait ObjectAjaxTrait
             $energy_difference = floor($energyConsumption);
         }
 
-        $useProductionEnergy = in_array($object->machine_name, ['terraformer', 'space_dock']);
-        $enough_resources = $planet->hasResources($price, $useProductionEnergy);
+        $enough_resources = $planet->hasResources($price);
 
         // Storage capacity bar
         // TODO: implement storage in new structure.
@@ -314,7 +313,6 @@ trait ObjectAjaxTrait
             'current_missiles' => $current_missiles,
             'max_missiles' => $max_missiles,
             'fields_exceeded' => $fields_exceeded,
-            'use_production_energy' => $useProductionEnergy,
         ]);
 
         return response()->json([

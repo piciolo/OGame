@@ -140,39 +140,9 @@ class MerchantController extends OGameController
     public function executeTrade(Request $request, PlayerService $player): JsonResponse
     {
         $giveResource = $request->input('give_resource');
-        $receiveResources = $request->input('receive_resources', []);
+        $receiveResource = $request->input('receive_resource');
         // Remove commas and spaces from input before converting to int
         $giveAmount = (int)str_replace([',', ' '], '', $request->input('give_amount'));
-
-        // Sanitize receive_resources: ensure all amounts are positive integers
-        if (!is_array($receiveResources)) {
-            $receiveResources = [];
-        }
-        $sanitizedReceiveResources = [];
-        foreach ($receiveResources as $resource => $amount) {
-            $sanitizedAmount = (int)str_replace([',', ' '], '', (string)$amount);
-            if ($sanitizedAmount > 0) {
-                $sanitizedReceiveResources[(string)$resource] = $sanitizedAmount;
-            }
-        }
-
-        // Backward compatibility: convert legacy single receive_resource + give_amount format
-        // Old format: receive_resource='crystal', give_amount=3000  → get floor(3000 * rate) crystal
-        if (empty($sanitizedReceiveResources) && $request->has('receive_resource')) {
-            $singleResource = (string)$request->input('receive_resource');
-            $validLegacyResources = ['metal', 'crystal', 'deuterium'];
-            if (in_array($singleResource, $validLegacyResources)) {
-                $activeMerchant = cache()->get('active_merchant_' . $player->getId());
-                if ($activeMerchant && isset($activeMerchant['trade_rates']['receive'][$singleResource])) {
-                    $receiveRate = (float)$activeMerchant['trade_rates']['receive'][$singleResource]['rate'];
-                    $giveRate = MerchantService::getBaseRate((string)$giveResource);
-                    $receiveAmount = (int)floor($giveAmount * ($receiveRate / $giveRate));
-                    if ($receiveAmount > 0) {
-                        $sanitizedReceiveResources[$singleResource] = $receiveAmount;
-                    }
-                }
-            }
-        }
 
         try {
             // Get current planet (resources will be deducted from current planet)
@@ -183,7 +153,7 @@ class MerchantController extends OGameController
                 $player,
                 $planet,
                 $giveResource,
-                $sanitizedReceiveResources,
+                $receiveResource,
                 $giveAmount
             );
 
