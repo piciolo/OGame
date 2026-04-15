@@ -261,6 +261,98 @@ abstract class BattleEngine
     abstract protected function fightBattleRounds(BattleResult $result): array;
 
     /**
+     * Distribute the battle loot and surviving cargo among all attacking fleets.
+     *
+     * Each fleet's survivingCargo is calculated proportionally to how many of its
+     * ships survived (e.g. a fleet that lost half its ships keeps half its cargo).
+     * The total loot is then split among surviving fleets by surviving cargo capacity;
+     * any integer remainder goes to the initiator fleet.
+     *
+     * @param BattleResult $result
+     * @return void
+     */
+    protected function distributeResources(BattleResult $result): void
+    {
+        // Build a lookup map: fleetMissionId → AttackerFleet
+        $attackerMap = [];
+        foreach ($this->attackers as $attacker) {
+            $attackerMap[$attacker->fleetMissionId] = $attacker;
+        }
+
+        // Step 1: Calculate surviving cargo per fleet (resources already being carried).
+        foreach ($result->attackerFleetResults as $fleetResult) {
+            $attackerFleet = $attackerMap[$fleetResult->fleetMissionId] ?? null;
+            if ($attackerFleet === null) {
+                continue;
+            }
+
+            $startCount = $fleetResult->getStartCount();
+            if ($startCount > 0) {
+                $ratio = $fleetResult->getSurvivorCount() / $startCount;
+                $fleetResult->survivingCargo = new Resources(
+                    (int) floor($attackerFleet->cargoResources->metal->get() * $ratio),
+                    (int) floor($attackerFleet->cargoResources->crystal->get() * $ratio),
+                    (int) floor($attackerFleet->cargoResources->deuterium->get() * $ratio),
+                    0
+                );
+            }
+        }
+
+        // Step 2: Distribute loot by surviving cargo capacity.
+        $fleetCapacities = [];
+        $totalCapacity = 0;
+        $initiatorIndex = 0;
+
+        foreach ($result->attackerFleetResults as $index => $fleetResult) {
+            $attackerFleet = $attackerMap[$fleetResult->fleetMissionId] ?? null;
+            $capacity = ($attackerFleet !== null && !$fleetResult->completelyDestroyed)
+                ? $attackerFleet->getSurvivingCargoCapacity($fleetResult->unitsResult)
+                : 0;
+
+            $fleetCapacities[$index] = $capacity;
+            $totalCapacity += $capacity;
+
+            if ($attackerFleet !== null && $attackerFleet->isInitiator) {
+                $initiatorIndex = $index;
+            }
+        }
+
+        if ($totalCapacity === 0) {
+            return;
+        }
+
+        // Distribute each resource type; integer remainder goes to initiator.
+        foreach (['metal', 'crystal', 'deuterium'] as $resource) {
+            $total = (int) $result->loot->{$resource}->get();
+            $distributed = 0;
+
+            foreach ($result->attackerFleetResults as $index => $fleetResult) {
+                if ($index === $initiatorIndex) {
+                    continue; // Handled last to absorb remainder.
+                }
+
+                $share = (int) floor($total * $fleetCapacities[$index] / $totalCapacity);
+                $fleetResult->lootShare = new Resources(
+                    $resource === 'metal' ? $share : (int) $fleetResult->lootShare->metal->get(),
+                    $resource === 'crystal' ? $share : (int) $fleetResult->lootShare->crystal->get(),
+                    $resource === 'deuterium' ? $share : (int) $fleetResult->lootShare->deuterium->get(),
+                    0
+                );
+                $distributed += $share;
+            }
+
+            $initiatorShare = $total - $distributed;
+            $initiatorResult = $result->attackerFleetResults[$initiatorIndex];
+            $initiatorResult->lootShare = new Resources(
+                $resource === 'metal' ? $initiatorShare : (int) $initiatorResult->lootShare->metal->get(),
+                $resource === 'crystal' ? $initiatorShare : (int) $initiatorResult->lootShare->crystal->get(),
+                $resource === 'deuterium' ? $initiatorShare : (int) $initiatorResult->lootShare->deuterium->get(),
+                0
+            );
+        }
+    }
+
+    /**
      * Calculate the debris field based on the units lost in the battle.
      *
      * @param UnitCollection $attackerUnitsLost
