@@ -643,14 +643,19 @@ abstract class AccountTestCase extends TestCase
 
     protected function assertEmptyBuildingQueue(TestResponse $response, string $error_message = ''): void
     {
-        // Check if "no buildings being built" text is present on page.
+        // Check if the idle queue marker is present (more stable than translated text).
         try {
-            $responseContent = $response->getContent();
-            if (!$responseContent) {
-                $responseContent = '';
-            }
-            $condition = str_contains($responseContent, 'no building being built');
-            $this->assertTrue($condition, 'expected text was not found in the response.');
+            $responseContent = $response->getContent() ?: '';
+
+            $this->assertTrue(
+                str_contains($responseContent, 'class="idle"'),
+                'expected idle queue marker was not found in the response.'
+            );
+
+            $this->assertFalse(
+                str_contains($responseContent, 'cancelbuilding('),
+                'cancelbuilding() was found but queue should be empty.'
+            );
         } catch (Exception $e) {
             if (!empty($error_message)) {
                 $this->fail($error_message . '. Error: ' . $e->getMessage());
@@ -662,14 +667,19 @@ abstract class AccountTestCase extends TestCase
 
     protected function assertEmptyResearchQueue(TestResponse $response, string $error_message = ''): void
     {
-        // Check if "no research done" text is present on page.
+        // Check if the idle queue marker is present (more stable than translated text).
         try {
-            $responseContent = $response->getContent();
-            if (!$responseContent) {
-                $responseContent = '';
-            }
-            $condition = str_contains($responseContent, 'no research done');
-            $this->assertTrue($condition, 'expected text was not found in the response.');
+            $responseContent = $response->getContent() ?: '';
+
+            $this->assertTrue(
+                str_contains($responseContent, 'class="idle"'),
+                'expected idle queue marker was not found in the response.'
+            );
+
+            $this->assertFalse(
+                str_contains($responseContent, 'cancelResearch('),
+                'cancelResearch() was found but queue should be empty.'
+            );
         } catch (Exception $e) {
             if (!empty($error_message)) {
                 $this->fail($error_message . '. Error: ' . $e->getMessage());
