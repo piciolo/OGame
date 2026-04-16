@@ -27,6 +27,7 @@ return [
         'abandon_rename_modal' => ':planet_name を放棄/名前変更',
         'homeworld' => '母星',
         'colony' => 'コロニー',
+        'moon'   => '月',
     ],
     'planet_move' => [
         'resettle_title' => 'リセット プラネット',

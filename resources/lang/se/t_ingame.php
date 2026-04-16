@@ -27,6 +27,7 @@ return [
         'abandon_rename_modal' => 'Överge/Döp om :planet_name',
         'homeworld' => 'Hemplanet',
         'colony' => 'Koloni',
+        'moon'   => 'Måne',
     ],
     'planet_move' => [
         'resettle_title' => 'Återbosätta planeten',

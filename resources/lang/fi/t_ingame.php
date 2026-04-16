@@ -27,6 +27,7 @@ return [
         'abandon_rename_modal' => 'Hylkää/Nimeä uudelleen :planet_name',
         'homeworld' => 'Kotimaailma',
         'colony' => 'Siirtokunta',
+        'moon'   => 'Kuu',
     ],
     'planet_move' => [
         'resettle_title' => 'Aseta planeetta uudelleen',

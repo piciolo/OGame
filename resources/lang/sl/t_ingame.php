@@ -27,6 +27,7 @@ return [
         'abandon_rename_modal' => 'Zapusti/Preimenuj :planet_name',
         'homeworld' => 'Matični planet',
         'colony' => 'Kolonija',
+        'moon'   => 'Luna',
     ],
     'planet_move' => [
         'resettle_title' => 'Ponovno naselitev planeta',

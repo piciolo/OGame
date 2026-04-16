@@ -27,6 +27,7 @@ return [
         'abandon_rename_modal' => ':planet_name elhagyása/átnevezése',
         'homeworld' => 'Anyabolygó',
         'colony' => 'Kolónia',
+        'moon'   => 'Hold',
     ],
     'planet_move' => [
         'resettle_title' => 'Resettle Planet',

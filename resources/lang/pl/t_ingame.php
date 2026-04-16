@@ -27,6 +27,7 @@ return [
         'abandon_rename_modal' => 'Porzuć/Zmień nazwę :planet_name',
         'homeworld' => 'Planeta macierzysta',
         'colony' => 'Kolonia',
+        'moon'   => 'Księżyc',
     ],
     'planet_move' => [
         'resettle_title' => 'Zresetuj planetę',

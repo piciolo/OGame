@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 use OGame\Http\Middleware\Locale;
+use OGame\Services\PlanetNameLocalizationService;
 use OGame\Services\PlayerService;
 
 class OptionsController extends OGameController
@@ -214,6 +215,13 @@ class OptionsController extends OGameController
         App::setLocale($requested);
         session()->put('locale', $requested);
         session()->save();
+
+        // Auto-translate the user's planets/moons that still carry a "default"
+        // name (Homeworld / Colony / Moon in any supported language) into the new
+        // locale. Custom names chosen by the player are preserved untouched.
+        /** @var PlanetNameLocalizationService $planetNameLocalization */
+        $planetNameLocalization = app(PlanetNameLocalizationService::class);
+        $planetNameLocalization->retranslateDefaultNamesForUser((int) $user->id, $requested);
 
         return array('success' => __('t_ingame.options.msg_language_changed'));
     }

@@ -27,6 +27,7 @@ return [
         'abandon_rename_modal' => ':planet_name Terk Et/Yeniden Adlandır',
         'homeworld' => 'Ana Gezegen',
         'colony' => 'Koloni',
+        'moon'   => 'Ay',
     ],
     'planet_move' => [
         'resettle_title' => 'Yeniden Yerleşim Gezegeni',

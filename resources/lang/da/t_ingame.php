@@ -27,6 +27,7 @@ return [
         'abandon_rename_modal' => 'Forlad/Omdøb :planet_name',
         'homeworld' => 'Hjemplanet',
         'colony' => 'Koloni',
+        'moon'   => 'Måne',
     ],
     'planet_move' => [
         'resettle_title' => 'Genbosætte Planet',

@@ -27,6 +27,7 @@ return [
         'abandon_rename_modal' => 'Opustit/Přejmenovat :planet_name',
         'homeworld' => 'Domovská planeta',
         'colony' => 'Kolonie',
+        'moon'   => 'Měsíc',
     ],
     'planet_move' => [
         'resettle_title' => 'Znovu osídlovat planetu',

@@ -30,6 +30,7 @@ return [
         // Default planet names (used at registration)
         'homeworld'            => 'Hoofdplaneet',
         'colony'               => 'Kolonie',
+        'moon'                 => 'Maan',
     ],
 
     // -------------------------------------------------------------------------

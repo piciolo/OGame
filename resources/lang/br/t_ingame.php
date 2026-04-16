@@ -27,6 +27,7 @@ return [
         'abandon_rename_modal' => 'Abandonar/Renomear :planet_name',
         'homeworld' => 'Planeta natal',
         'colony' => 'Colónia',
+        'moon'   => 'Lua',
     ],
     'planet_move' => [
         'resettle_title' => 'Reassentar Planeta',

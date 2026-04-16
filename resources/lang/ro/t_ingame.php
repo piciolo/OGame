@@ -27,6 +27,7 @@ return [
         'abandon_rename_modal' => 'Abandonează/Redenumește :planet_name',
         'homeworld' => 'Planeta mamă',
         'colony' => 'Colonie',
+        'moon'   => 'Luna',
     ],
     'planet_move' => [
         'resettle_title' => 'Reinstalați planeta',

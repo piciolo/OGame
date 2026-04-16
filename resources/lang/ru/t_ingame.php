@@ -27,6 +27,7 @@ return [
         'abandon_rename_modal' => 'Покинуть/Переименовать :planet_name',
         'homeworld' => 'Родная планета',
         'colony' => 'Колония',
+        'moon'   => 'Луна',
     ],
     'planet_move' => [
         'resettle_title' => 'Переселить планету',

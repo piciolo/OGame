@@ -27,6 +27,7 @@ return [
         'abandon_rename_modal' => 'Εγκατάλειψη/Μετονομασία :planet_name',
         'homeworld' => 'Μητρικός Πλανήτης',
         'colony' => 'Αποικία',
+        'moon'   => 'Φεγγάρι',
     ],
     'planet_move' => [
         'resettle_title' => 'Επανεγκατάσταση Πλανήτη',

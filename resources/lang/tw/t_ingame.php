@@ -27,6 +27,7 @@ return [
         'abandon_rename_modal' => '放棄/重新命名 :planet_name',
         'homeworld' => '母星',
         'colony' => '殖民地',
+        'moon'   => '月球',
     ],
     'planet_move' => [
         'resettle_title' => '重新安置星球',
