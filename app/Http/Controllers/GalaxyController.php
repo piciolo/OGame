@@ -295,11 +295,12 @@ class GalaxyController extends OGameController
         ];
 
         if ($planet->getPlayer()->getId() !== $this->playerService->getId()) {
-            // Skip aggressive missions (Espionage, Attack) against Legor
-            $isLegor = $planet->getPlayer()->getUsername(false) === 'Legor';
+            // Aggressive missions (Espionage, Attack, Moon destruction) are never offered
+            // against administrator-owned planets/moons.
+            $isAdmin = $planet->getPlayer()->getUser()->hasRole('admin');
 
-            if (!$isLegor) {
-                // Espionage (only if foreign planet and not Legor).
+            if (!$isAdmin) {
+                // Espionage (only if foreign planet and not admin).
                 $availableMissions[] = [
                     'missionType' => 6,
                     'canSpy' => true,
@@ -309,7 +310,7 @@ class GalaxyController extends OGameController
                     'name' => __('Espionage'),
                 ];
 
-                // Attack (only if foreign planet and not Legor).
+                // Attack (only if foreign planet and not admin).
                 $availableMissions[] = [
                     'missionType' => 1,
                     'link' => route('fleet.index', ['galaxy' => $galaxy, 'system' => $system, 'position' => $position, 'type' => $planet->getPlanetType()->value, 'mission' => 1]),
@@ -332,8 +333,8 @@ class GalaxyController extends OGameController
                 ];
             }
 
-            // Moon destruction (only if planet is a moon).
-            if ($planet->isMoon()) {
+            // Moon destruction (only if planet is a moon and target is not admin).
+            if ($planet->isMoon() && !$isAdmin) {
                 $availableMissions[] = [
                     'missionType' => 10,
                     'link' => route('fleet.index', ['galaxy' => $galaxy, 'system' => $system, 'position' => $position, 'type' => $planet->getPlanetType()->value, 'mission' => 10]),
