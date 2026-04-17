@@ -448,7 +448,7 @@ class AttackMission extends GameMission
             $reaperCargoCapacity = $reaperObject->properties->capacity->calculate($attackerPlayer)->totalValue * $reaperCount;
 
             $this->messageService->sendSystemMessageToPlayer($attackerPlayer, DebrisFieldHarvest::class, [
-                'from' => '[planet]' . $mission->planet_id_from . '[/planet]',
+                'from' => $this->formatOriginDescriptor($mission),
                 'to' => '[debrisfield]' . $defenderPlanet->getPlanetCoordinates()->asString(). '[/debrisfield]',
                 'coordinates' => '[coordinates]' . $defenderPlanet->getPlanetCoordinates()->asString() . '[/coordinates]',
                 'ship_name' => $reaperObject->title,
