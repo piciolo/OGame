@@ -115,7 +115,7 @@
                     @endif
                     @if (!empty($price->energy->get()))
                             <li class="resource energy icon sufficient tooltip js_hideTipOnMobile
-                        @if (($use_production_energy ? $planet->energyProduction()->get() : $planet->energy()->get()) < $price->energy->get())
+                        @if ($planet->energyProduction()->get() < $price->energy->get())
                         insufficient
                         @else
                         sufficient
@@ -247,13 +247,7 @@
                                 if ($is_in_vacation_mode) {
                                     $tooltip = __('t_ingame.ajax_object.vacation_mode');
                                 } elseif (!$character_class_met) {
-                                    $wrongClassKey = match (strtolower($object->machine_name)) {
-                                        'reaper'     => 't_ingame.buildings.wrong_class_general',
-                                        'crawler'    => 't_ingame.buildings.wrong_class_collector',
-                                        'pathfinder' => 't_ingame.buildings.wrong_class_discoverer',
-                                        default      => 't_ingame.buildings.wrong_class',
-                                    };
-                                    $tooltip = __($wrongClassKey);
+                                    $tooltip = __('t_ingame.ajax_object.wrong_character_class');
                                 } elseif ($disabled_shipyard_upgrading) {
                                     $tooltip = __('t_ingame.ajax_object.shipyard_upgrading');
                                 } elseif ($ships_being_built) {

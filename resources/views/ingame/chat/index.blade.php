@@ -82,9 +82,6 @@
                 return pad(d.getDate()) + '.' + pad(d.getMonth() + 1) + '.' + d.getFullYear() + ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds());
             }
 
-            var $container = $chatList.closest('.largeChatContainer');
-            $container.mCustomScrollbar({theme: "ogame"});
-
             function appendMessage(id, senderName, text, date, isOwn) {
                 var $msg = $('<li class="chat_msg' + (isOwn ? ' odd' : '') + '" data-chat-id="' + id + '">' +
                     '<div class="msg_head">' +
@@ -100,12 +97,15 @@
                 $chatList.append($msg);
 
                 // Scroll to bottom
-                $container.mCustomScrollbar("update");
-                $container.mCustomScrollbar("scrollTo", "bottom", {scrollInertia: 0});
+                var $container = $chatList.closest('.largeChatContainer');
+                $container.scrollTop($container[0].scrollHeight);
             }
 
-            // Scroll to bottom on load
-            $container.mCustomScrollbar("scrollTo", "bottom", {scrollInertia: 0});
+            // Scroll to bottom on load (only if content overflows)
+            var $container = $chatList.closest('.largeChatContainer');
+            if ($container[0].scrollHeight > $container[0].clientHeight) {
+                $container.scrollTop($container[0].scrollHeight);
+            }
 
             // Send message
             $('.send_new_msg').on('click', function(e) {
@@ -250,9 +250,6 @@
                 return pad(d.getDate()) + '.' + pad(d.getMonth() + 1) + '.' + d.getFullYear() + ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds());
             }
 
-            var $container = $chatList.closest('.largeChatContainer');
-            $container.mCustomScrollbar({theme: "ogame"});
-
             function appendMessage(id, senderName, text, date, isOwn) {
                 var $msg = $('<li class="chat_msg' + (isOwn ? ' odd' : '') + '" data-chat-id="' + id + '">' +
                     '<div class="msg_head">' +
@@ -266,13 +263,15 @@
                 $chatList.find('.chat_msg:not([data-chat-id])').remove();
                 $chatList.append($msg);
 
-                // Scroll to bottom
-                $container.mCustomScrollbar("update");
-                $container.mCustomScrollbar("scrollTo", "bottom", {scrollInertia: 0});
+                var $container = $chatList.closest('.largeChatContainer');
+                $container.scrollTop($container[0].scrollHeight);
             }
 
-            // Scroll to bottom on load
-            $container.mCustomScrollbar("scrollTo", "bottom", {scrollInertia: 0});
+            // Scroll to bottom on load (only if content overflows)
+            var $container = $chatList.closest('.largeChatContainer');
+            if ($container[0].scrollHeight > $container[0].clientHeight) {
+                $container.scrollTop($container[0].scrollHeight);
+            }
 
             // Send message
             $('.send_new_msg').on('click', function(e) {
