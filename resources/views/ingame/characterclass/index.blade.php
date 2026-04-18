@@ -2,6 +2,15 @@
 
 @section('content')
 
+    <style>
+        /* Prevent the fleet event widget (#eventboxFilled) from clipping into
+           the Class Selection header when multiple fleet missions are active.
+           Bug #1004. */
+        #characterclassselectioncomponent {
+            margin-top: 40px;
+        }
+    </style>
+
     <div id="characterclassselectioncomponent" class="maincontent">
         <div id="characterclassselection">
             <div id="inhalt">
