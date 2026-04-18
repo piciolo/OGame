@@ -5,6 +5,7 @@ namespace OGame\Services;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\DB;
 use OGame\Enums\FleetSpeedType;
 use OGame\Factories\GameMissionFactory;
 use OGame\Factories\PlanetServiceFactory;
@@ -584,7 +585,25 @@ class FleetMissionService
             'fleetMissionService' => $this,
             'messageService' => $this->messageService,
         ]);
-        $missionObject->process($mission);
+
+        // Guard against concurrent processing of the same mission. If two
+        // workers (scheduler tick + request middleware, two web requests,
+        // etc.) both reach this point for the same FleetMission row, they
+        // can each pass the processed=0 check above and then each credit
+        // resources/units to the destination, duplicating them (#895).
+        //
+        // Re-load the row inside a transaction with a row-level lock so the
+        // second caller blocks until the first commits, then observes
+        // processed=1 or canceled=1 and bails out safely.
+        DB::transaction(function () use ($mission, $missionObject): void {
+            /** @var FleetMission|null $locked */
+            $locked = FleetMission::where('id', $mission->id)->lockForUpdate()->first();
+            if ($locked === null || (int)$locked->processed === 1 || (int)$locked->canceled === 1) {
+                return;
+            }
+
+            $missionObject->process($locked);
+        });
     }
 
     /**
