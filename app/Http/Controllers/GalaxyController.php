@@ -9,6 +9,7 @@ use Illuminate\View\View;
 use Log;
 use OGame\Facades\AppUtil;
 use OGame\Factories\PlanetServiceFactory;
+use OGame\GameConstants\UniverseConstants;
 use OGame\Models\Alliance;
 use OGame\Models\Enums\PlanetType;
 use OGame\Models\FleetMission;
@@ -209,6 +210,14 @@ class GalaxyController extends OGameController
     {
         $debrisResources = $debrisField->getResources();
 
+        // Expedition debris at position 16 is harvested by Pathfinders, which
+        // have half the cargo capacity of Recyclers. Using recycler capacity
+        // here would under-estimate the required ship count and leave half the
+        // field uncollected (#1350).
+        $harvesterShip = $debrisField->getCoordinates()->position === UniverseConstants::EXPEDITION_POSITION
+            ? 'pathfinder'
+            : 'recycler';
+
         return [
             'planetId' => 0,
             'planetName' => 'debris_field',
@@ -219,7 +228,7 @@ class GalaxyController extends OGameController
                     'name' => __('t_ingame.fleet.mission_recycle'),
                 ],
             ],
-            'requiredShips' => $debrisField->calculateRequiredRecyclers(),
+            'requiredShips' => $debrisField->calculateRequiredShips($harvesterShip),
             'planetType' => 2,
             'resources' => [
                 'metal' => [
