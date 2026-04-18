@@ -560,21 +560,8 @@ abstract class GameMission
     {
         $return_resources = $this->fleetMissionService->getResources($mission);
 
-        // Define from string based on whether the planet is available or not.
-        $from = "[coordinates]{$mission->galaxy_from}:{$mission->system_from}:{$mission->position_from}[/coordinates]";
-        switch ($mission->type_from) {
-            case PlanetType::Planet->value:
-            case PlanetType::Moon->value:
-                if ($mission->planet_id_from !== null) {
-                    $from = __('planet') . " [planet]{$mission->planet_id_from}[/planet]";
-                }
-                break;
-            case PlanetType::DebrisField->value:
-                $from = "[debrisfield]{$mission->galaxy_from}:{$mission->system_from}:{$mission->position_from}[/debrisfield]";
-                break;
-        }
-
-        $to = __('planet') . " [planet]{$mission->planet_id_to}[/planet]";
+        $from = $this->formatOriginDescriptor($mission);
+        $to = $this->formatDestinationDescriptor($mission);
 
         if ($return_resources->any()) {
             $params = [
@@ -594,6 +581,45 @@ abstract class GameMission
 
             $this->messageService->sendSystemMessageToPlayer($targetPlayer, ReturnOfFleet::class, $params);
         }
+    }
+
+    /**
+     * Build the BBCode-like descriptor for the origin of a fleet mission.
+     *
+     * When the origin planet or moon has been destroyed/abandoned after the
+     * mission departed, planet_id_from is nulled out by abandonPlanet(), and
+     * emitting `[planet][/planet]` with an empty id would leave the tag
+     * unrendered in the message (bug #1341). Fall back to coordinates instead.
+     */
+    protected function formatOriginDescriptor(FleetMission $mission): string
+    {
+        $fallback = "[coordinates]{$mission->galaxy_from}:{$mission->system_from}:{$mission->position_from}[/coordinates]";
+
+        switch ($mission->type_from) {
+            case PlanetType::Planet->value:
+            case PlanetType::Moon->value:
+                if ($mission->planet_id_from !== null) {
+                    return __('planet') . " [planet]{$mission->planet_id_from}[/planet]";
+                }
+                return $fallback;
+            case PlanetType::DebrisField->value:
+                return "[debrisfield]{$mission->galaxy_from}:{$mission->system_from}:{$mission->position_from}[/debrisfield]";
+        }
+
+        return $fallback;
+    }
+
+    /**
+     * Build the BBCode-like descriptor for the destination of a fleet mission,
+     * falling back to coordinates when planet_id_to has been cleared (bug #1341).
+     */
+    protected function formatDestinationDescriptor(FleetMission $mission): string
+    {
+        if ($mission->planet_id_to !== null) {
+            return __('planet') . " [planet]{$mission->planet_id_to}[/planet]";
+        }
+
+        return "[coordinates]{$mission->galaxy_to}:{$mission->system_to}:{$mission->position_to}[/coordinates]";
     }
 
     /**

@@ -66,19 +66,22 @@ class DeploymentMission extends GameMission
         // Add units to the target planet
         $target_planet->addUnits($this->fleetMissionService->getFleetUnits($mission));
 
+        $fromDescriptor = $this->formatOriginDescriptor($mission);
+        $toDescriptor = $this->formatDestinationDescriptor($mission);
+
         // Send a message to the player that the mission has arrived
         if ($resources->any()) {
             $this->messageService->sendSystemMessageToPlayer($target_planet->getPlayer(), FleetDeploymentWithResources::class, [
-                'from' => '[planet]' . $mission->planet_id_from . '[/planet]',
-                'to' => '[planet]' . $mission->planet_id_to . '[/planet]',
+                'from' => $fromDescriptor,
+                'to' => $toDescriptor,
                 'metal' => (string)$mission->metal,
                 'crystal' => (string)$mission->crystal,
                 'deuterium' => (string)($mission->deuterium +  ($mission->deuterium_consumption / 2)), //if mission deployment: Add half of the consumed deuterium
             ]);
         } else {
             $this->messageService->sendSystemMessageToPlayer($target_planet->getPlayer(), FleetDeployment::class, [
-                'from' => '[planet]' . $mission->planet_id_from . '[/planet]',
-                'to' => '[planet]' . $mission->planet_id_to . '[/planet]',
+                'from' => $fromDescriptor,
+                'to' => $toDescriptor,
             ]);
         }
 
