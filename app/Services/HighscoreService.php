@@ -38,6 +38,7 @@ class HighscoreService
      */
     public function __construct(private PlayerServiceFactory $playerServiceFactory, private SettingsService $settingsService)
     {
+        $this->highscoreType = HighscoreTypeEnum::general;
     }
 
     /**
@@ -390,8 +391,8 @@ class HighscoreService
      */
     public function getHighscorePlayerRank(PlayerService $player): int
     {
-        // Find the player in the highscore list to determine its rank.
-        return Highscore::where('player_id', $player->getId())->first()->general_rank ?? 0;
+        $rankColumn = $this->highscoreType->name . '_rank';
+        return Highscore::where('player_id', $player->getId())->first()->{$rankColumn} ?? 0;
     }
 
     /**
