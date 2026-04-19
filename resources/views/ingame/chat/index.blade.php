@@ -3,34 +3,48 @@
 @section('content')
 
     <style>
-        /* Issue #1374: report icon rendered inside each incoming chat message. */
-        .chat_msg .chat_report_icon {
-            position: absolute;
-            top: 6px;
-            right: 24px;
+        /* Issue #1374: header laid out as a single flex row so sender/date/report icon stay on one line. */
+        .chat_msg .msg_head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+        .chat_msg .msg_head .msg_title,
+        .chat_msg .msg_head .msg_date {
+            width: auto;
+            float: none;
+            margin: 0;
+            white-space: nowrap;
+        }
+        .chat_msg .msg_head .msg_title {
+            flex: 1 1 auto;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .chat_msg .msg_head .msg_date {
+            flex: 0 0 auto;
+            display: inline-flex;
+            align-items: center;
+        }
+        /* Issue #1374: report icon rendered next to the message timestamp (official OGame warning sprite). */
+        .chat_msg .msg_date .chat_report_icon {
+            display: inline-block;
             width: 16px;
             height: 16px;
-            line-height: 16px;
-            text-align: center;
-            color: #b02020;
-            background: #f5d2d2;
-            border: 1px solid #a03030;
-            border-radius: 50%;
-            font-size: 11px;
-            font-weight: bold;
-            text-decoration: none;
+            margin-left: 6px;
+            background: url("/img/icons/91ad13c8f9a7e9390085d12adde508.png") no-repeat 0 -208px;
             cursor: pointer;
             opacity: 0.75;
+            transition: opacity 0.15s ease;
+            text-decoration: none;
         }
-        .chat_msg .chat_report_icon:hover { opacity: 1; }
-        .chat_msg .chat_report_icon.reported {
-            color: #fff;
-            background: #707070;
-            border-color: #505050;
+        .chat_msg .msg_date .chat_report_icon:hover { opacity: 1; }
+        .chat_msg .msg_date .chat_report_icon.reported {
             cursor: default;
-            opacity: 0.9;
+            opacity: 0.35;
         }
-        .chat_msg { position: relative; }
     </style>
 
     <div id="planet" class="shortHeader">
@@ -71,12 +85,9 @@
                                     <span class="msg_title blue_txt">
                                         {{ $message->sender->username }}
                                     </span>
-                                    <span class="msg_date fright">{{ $message->created_at->format('d.m.Y H:i:s') }}</span>
+                                    <span class="msg_date fright">{{ $message->created_at->format('d.m.Y H:i:s') }}@if(!$isOwn)<a href="javascript:void(0);" class="chat_report_icon tooltip js_hideTipOnMobile" data-chat-report-id="{{ $message->id }}" title="Report that message to a game operator?" aria-label="Report message"></a>@endif</span>
                                 </div>
                                 <span class="msg_content">{!! nl2br(e($message->message)) !!}</span>
-                                @if(!$isOwn)
-                                    <a href="javascript:void(0);" class="chat_report_icon tooltip js_hideTipOnMobile" data-chat-report-id="{{ $message->id }}" title="Report that message to a game operator?" aria-label="Report message">!</a>
-                                @endif
                                 <div class="speechbubble_arrow"></div>
                             </li>
                         @endforeach
@@ -119,14 +130,13 @@
             $container.mCustomScrollbar({theme: "ogame"});
 
             function appendMessage(id, senderName, text, date, isOwn) {
-                var reportIcon = isOwn ? '' : '<a href="javascript:void(0);" class="chat_report_icon tooltip js_hideTipOnMobile" data-chat-report-id="' + id + '" title="Report that message to a game operator?" aria-label="Report message">!</a>';
+                var reportIcon = isOwn ? '' : '<a href="javascript:void(0);" class="chat_report_icon tooltip js_hideTipOnMobile" data-chat-report-id="' + id + '" title="Report that message to a game operator?" aria-label="Report message"></a>';
                 var $msg = $('<li class="chat_msg' + (isOwn ? ' odd' : '') + '" data-chat-id="' + id + '">' +
                     '<div class="msg_head">' +
                         '<span class="msg_title blue_txt">' + $('<span>').text(senderName).html() + '</span>' +
-                        '<span class="msg_date fright">' + formatDate(date) + '</span>' +
+                        '<span class="msg_date fright">' + formatDate(date) + reportIcon + '</span>' +
                     '</div>' +
                     '<span class="msg_content">' + text.replace(/\n/g, '<br>') + '</span>' +
-                    reportIcon +
                     '<div class="speechbubble_arrow"></div>' +
                 '</li>');
 
@@ -263,12 +273,9 @@
                                     <span class="msg_title blue_txt">
                                         {{ $message->sender->username }}
                                     </span>
-                                    <span class="msg_date fright">{{ $message->created_at->format('d.m.Y H:i:s') }}</span>
+                                    <span class="msg_date fright">{{ $message->created_at->format('d.m.Y H:i:s') }}@if(!$isOwn)<a href="javascript:void(0);" class="chat_report_icon tooltip js_hideTipOnMobile" data-chat-report-id="{{ $message->id }}" title="Report that message to a game operator?" aria-label="Report message"></a>@endif</span>
                                 </div>
                                 <span class="msg_content">{!! nl2br(e($message->message)) !!}</span>
-                                @if(!$isOwn)
-                                    <a href="javascript:void(0);" class="chat_report_icon tooltip js_hideTipOnMobile" data-chat-report-id="{{ $message->id }}" title="Report that message to a game operator?" aria-label="Report message">!</a>
-                                @endif
                                 <div class="speechbubble_arrow"></div>
                             </li>
                         @endforeach
@@ -311,14 +318,13 @@
             $container.mCustomScrollbar({theme: "ogame"});
 
             function appendMessage(id, senderName, text, date, isOwn) {
-                var reportIcon = isOwn ? '' : '<a href="javascript:void(0);" class="chat_report_icon tooltip js_hideTipOnMobile" data-chat-report-id="' + id + '" title="Report that message to a game operator?" aria-label="Report message">!</a>';
+                var reportIcon = isOwn ? '' : '<a href="javascript:void(0);" class="chat_report_icon tooltip js_hideTipOnMobile" data-chat-report-id="' + id + '" title="Report that message to a game operator?" aria-label="Report message"></a>';
                 var $msg = $('<li class="chat_msg' + (isOwn ? ' odd' : '') + '" data-chat-id="' + id + '">' +
                     '<div class="msg_head">' +
                         '<span class="msg_title blue_txt">' + $('<span>').text(senderName).html() + '</span>' +
-                        '<span class="msg_date fright">' + formatDate(date) + '</span>' +
+                        '<span class="msg_date fright">' + formatDate(date) + reportIcon + '</span>' +
                     '</div>' +
                     '<span class="msg_content">' + text.replace(/\n/g, '<br>') + '</span>' +
-                    reportIcon +
                     '<div class="speechbubble_arrow"></div>' +
                 '</li>');
 
