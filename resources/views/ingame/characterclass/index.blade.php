@@ -131,10 +131,13 @@
             );
         }
 
+        @php
+            $deactivateConfirmMsg = __('t_ingame.characterclass.deactivate_confirm_msg', ['price' => number_format($changeCost, 0, ',', '.')]);
+        @endphp
         function deselectCharacterClass() {
             errorBoxDecision(
                 @json(__('t_ingame.characterclass.deactivate_title')),
-                @json(__('t_ingame.characterclass.deactivate_confirm_msg', ['price' => number_format($changeCost, 0, ',', '.')])),
+                @json($deactivateConfirmMsg),
                 @json(__('t_ingame.characterclass.deactivate')),
                 @json(__('t_ingame.characterclass.cancel')),
                 function() {
