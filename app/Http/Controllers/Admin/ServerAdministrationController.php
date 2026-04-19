@@ -11,6 +11,7 @@ use Illuminate\View\View;
 use OGame\Factories\PlayerServiceFactory;
 use OGame\Http\Controllers\OGameController;
 use OGame\Models\Ban;
+use OGame\Models\ChatReport;
 use OGame\Models\User;
 use OGame\Services\SettingsService;
 use stdClass;
@@ -130,6 +131,29 @@ class ServerAdministrationController extends OGameController
 
         $botSuspects = $allSuspects->reject(fn ($s) => in_array($s['user']->id, $dismissedUserIds, true))->values();
 
+        // --- Reported chat messages (issue #1374) ---
+        // One row per reported chat message, with counts and all reporter usernames.
+        $reportedMessages = ChatReport::with(['chatMessage.sender', 'reporter'])
+            ->whereNull('reviewed_at')
+            ->whereHas('chatMessage')
+            ->get()
+            ->groupBy('chat_message_id')
+            ->map(function ($reports) {
+                /** @var ChatReport $first */
+                $first = $reports->first();
+                return [
+                    'chat_message_id' => $first->chat_message_id,
+                    'message'         => $first->chatMessage,
+                    'sender'          => $first->chatMessage->sender,
+                    'report_count'    => $reports->count(),
+                    'reporters'       => $reports->pluck('reporter.username')->filter()->unique()->values(),
+                    'first_reported'  => $reports->min('created_at'),
+                    'last_reported'   => $reports->max('created_at'),
+                ];
+            })
+            ->sortByDesc('last_reported')
+            ->values();
+
         return view('ingame.admin.server-administration', [
             'sharedIpGroups'        => $sharedIpGroups,
             'botSuspects'           => $botSuspects,
@@ -138,7 +162,26 @@ class ServerAdministrationController extends OGameController
             'detectionSettings'     => $settings,
             'dismissedIpCount'      => count($dismissedIps),
             'dismissedSuspectCount' => $allSuspects->filter(fn ($s) => in_array($s['user']->id, $dismissedUserIds, true))->count(),
+            'reportedMessages'      => $reportedMessages,
         ]);
+    }
+
+    /**
+     * Marks all reports for a chat message as reviewed (dismiss-from-queue action).
+     * The ChatMessage itself is left intact — the admin can ban the sender separately.
+     */
+    public function dismissChatReport(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'chat_message_id' => ['required', 'integer', 'exists:chat_messages,id'],
+        ]);
+
+        ChatReport::where('chat_message_id', $request->input('chat_message_id'))
+            ->whereNull('reviewed_at')
+            ->update(['reviewed_at' => now()]);
+
+        return redirect()->route('admin.server-administration.index')
+            ->with('status', 'Chat message report dismissed.');
     }
 
     /**
