@@ -78,8 +78,21 @@ class TechtreeController extends OGameController
                 'astrophysics_table' => $this->getAstrophysicsTable($object, $player),
             ]);
         } elseif ($tab === 3) {
+            $planet = $player->planets->current();
+            $requirements = [];
+            foreach ($object->requirements as $requirement) {
+                $required_object = ObjectService::getObjectByMachineName($requirement->object_machine_name);
+                if ($required_object->type === GameObjectType::Research) {
+                    $current_level = $player->getResearchLevel($required_object->machine_name);
+                } else {
+                    $current_level = $planet->getObjectLevel($required_object->machine_name);
+                }
+                $requirements[] = new TechtreeRequirement(1, 0, null, $required_object, $requirement->level, $current_level);
+            }
+
             return view('ingame.techtree.technology')->with([
                 'object' => $object,
+                'requirements' => $requirements,
             ]);
         } elseif ($tab === 4) {
             return view('ingame.techtree.applications')->with([
