@@ -2,6 +2,37 @@
 
 @section('content')
 
+    <style>
+        /* Issue #1374: report icon rendered inside each incoming chat message. */
+        .chat_msg .chat_report_icon {
+            position: absolute;
+            top: 6px;
+            right: 24px;
+            width: 16px;
+            height: 16px;
+            line-height: 16px;
+            text-align: center;
+            color: #b02020;
+            background: #f5d2d2;
+            border: 1px solid #a03030;
+            border-radius: 50%;
+            font-size: 11px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            opacity: 0.75;
+        }
+        .chat_msg .chat_report_icon:hover { opacity: 1; }
+        .chat_msg .chat_report_icon.reported {
+            color: #fff;
+            background: #707070;
+            border-color: #505050;
+            cursor: default;
+            opacity: 0.9;
+        }
+        .chat_msg { position: relative; }
+    </style>
+
     <div id="planet" class="shortHeader">
         <div id="header_text">
             <h2>Chat</h2>
@@ -36,7 +67,8 @@
                 <div class="largeChatContainer chat_bar_list">
                     <ul class="chat clearfix largeChat" data-playerid="{{ $chatPartner->id }}">
                         @foreach($chatMessages as $message)
-                            <li class="chat_msg @if($message->sender_id === (int) auth()->id()) odd @endif" data-chat-id="{{ $message->id }}">
+                            @php($isOwn = $message->sender_id === (int) auth()->id())
+                            <li class="chat_msg @if($isOwn) odd @endif" data-chat-id="{{ $message->id }}">
                                 <div class="msg_head">
                                     <span class="msg_title blue_txt">
                                         {{ $message->sender->username }}
@@ -44,6 +76,9 @@
                                     <span class="msg_date fright">{{ $message->created_at->format('d.m.Y H:i:s') }}</span>
                                 </div>
                                 <span class="msg_content">{!! nl2br(e($message->message)) !!}</span>
+                                @if(!$isOwn)
+                                    <a href="javascript:void(0);" class="chat_report_icon tooltip js_hideTipOnMobile" data-chat-report-id="{{ $message->id }}" title="Report that message to a game operator?" aria-label="Report message">!</a>
+                                @endif
                                 <div class="speechbubble_arrow"></div>
                             </li>
                         @endforeach
@@ -83,12 +118,14 @@
             }
 
             function appendMessage(id, senderName, text, date, isOwn) {
+                var reportIcon = isOwn ? '' : '<a href="javascript:void(0);" class="chat_report_icon tooltip js_hideTipOnMobile" data-chat-report-id="' + id + '" title="Report that message to a game operator?" aria-label="Report message">!</a>';
                 var $msg = $('<li class="chat_msg' + (isOwn ? ' odd' : '') + '" data-chat-id="' + id + '">' +
                     '<div class="msg_head">' +
                         '<span class="msg_title blue_txt">' + $('<span>').text(senderName).html() + '</span>' +
                         '<span class="msg_date fright">' + formatDate(date) + '</span>' +
                     '</div>' +
                     '<span class="msg_content">' + text.replace(/\n/g, '<br>') + '</span>' +
+                    reportIcon +
                     '<div class="speechbubble_arrow"></div>' +
                 '</li>');
 
@@ -106,6 +143,24 @@
             if ($container[0].scrollHeight > $container[0].clientHeight) {
                 $container.scrollTop($container[0].scrollHeight);
             }
+
+            // Report message handler (delegated so it works on dynamically added icons)
+            $chatList.on('click', '.chat_report_icon', function(e) {
+                e.preventDefault();
+                var $icon = $(this);
+                if ($icon.hasClass('reported')) return;
+                if (!confirm('Report this message to a game operator?')) return;
+
+                var messageId = $icon.data('chat-report-id');
+                $.ajax({
+                    url: '/chat/report/' + messageId,
+                    type: 'POST',
+                    data: {_token: '{{ csrf_token() }}'},
+                    success: function() {
+                        $icon.addClass('reported').attr('title', 'Message reported');
+                    }
+                });
+            });
 
             // Send message
             $('.send_new_msg').on('click', function(e) {
@@ -204,7 +259,8 @@
                 <div class="largeChatContainer chat_bar_list">
                     <ul class="chat clearfix largeChat" data-associationid="{{ $chatAllianceId }}">
                         @foreach($chatAllianceMessages as $message)
-                            <li class="chat_msg @if($message->sender_id === (int) auth()->id()) odd @endif" data-chat-id="{{ $message->id }}">
+                            @php($isOwn = $message->sender_id === (int) auth()->id())
+                            <li class="chat_msg @if($isOwn) odd @endif" data-chat-id="{{ $message->id }}">
                                 <div class="msg_head">
                                     <span class="msg_title blue_txt">
                                         {{ $message->sender->username }}
@@ -212,6 +268,9 @@
                                     <span class="msg_date fright">{{ $message->created_at->format('d.m.Y H:i:s') }}</span>
                                 </div>
                                 <span class="msg_content">{!! nl2br(e($message->message)) !!}</span>
+                                @if(!$isOwn)
+                                    <a href="javascript:void(0);" class="chat_report_icon tooltip js_hideTipOnMobile" data-chat-report-id="{{ $message->id }}" title="Report that message to a game operator?" aria-label="Report message">!</a>
+                                @endif
                                 <div class="speechbubble_arrow"></div>
                             </li>
                         @endforeach
@@ -251,12 +310,14 @@
             }
 
             function appendMessage(id, senderName, text, date, isOwn) {
+                var reportIcon = isOwn ? '' : '<a href="javascript:void(0);" class="chat_report_icon tooltip js_hideTipOnMobile" data-chat-report-id="' + id + '" title="Report that message to a game operator?" aria-label="Report message">!</a>';
                 var $msg = $('<li class="chat_msg' + (isOwn ? ' odd' : '') + '" data-chat-id="' + id + '">' +
                     '<div class="msg_head">' +
                         '<span class="msg_title blue_txt">' + $('<span>').text(senderName).html() + '</span>' +
                         '<span class="msg_date fright">' + formatDate(date) + '</span>' +
                     '</div>' +
                     '<span class="msg_content">' + text.replace(/\n/g, '<br>') + '</span>' +
+                    reportIcon +
                     '<div class="speechbubble_arrow"></div>' +
                 '</li>');
 
@@ -272,6 +333,24 @@
             if ($container[0].scrollHeight > $container[0].clientHeight) {
                 $container.scrollTop($container[0].scrollHeight);
             }
+
+            // Report message handler (delegated so it works on dynamically added icons)
+            $chatList.on('click', '.chat_report_icon', function(e) {
+                e.preventDefault();
+                var $icon = $(this);
+                if ($icon.hasClass('reported')) return;
+                if (!confirm('Report this message to a game operator?')) return;
+
+                var messageId = $icon.data('chat-report-id');
+                $.ajax({
+                    url: '/chat/report/' + messageId,
+                    type: 'POST',
+                    data: {_token: '{{ csrf_token() }}'},
+                    success: function() {
+                        $icon.addClass('reported').attr('title', 'Message reported');
+                    }
+                });
+            });
 
             // Send message
             $('.send_new_msg').on('click', function(e) {
