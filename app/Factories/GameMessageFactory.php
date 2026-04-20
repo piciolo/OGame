@@ -7,6 +7,7 @@ use OGame\GameMessages\Abstracts\GameMessage;
 use OGame\GameMessages\AcsDefendArrivalHost;
 use OGame\GameMessages\AcsDefendArrivalSender;
 use OGame\GameMessages\AllianceApplicationReceived;
+use OGame\GameMessages\AdminBroadcast;
 use OGame\GameMessages\AllianceBroadcast;
 use OGame\GameMessages\BattleReport;
 use OGame\GameMessages\BuddyRemoved;
@@ -100,6 +101,9 @@ class GameMessageFactory
         // Missile attack messages
         'missile_attack_report' => MissileAttackReport::class,
         'missile_defense_report' => MissileDefenseReport::class,
+
+        // Admin messages
+        'admin_broadcast' => AdminBroadcast::class,
 
         // Alliance messages
         'alliance_broadcast' => AllianceBroadcast::class,
