@@ -14,16 +14,6 @@ class AdminBroadcast extends GameMessage
         $this->subtab = 'messages';
     }
 
-    public function getSubject(): string
-    {
-        return $this->message->params['subject'] ?? '';
-    }
-
-    public function getBody(): string
-    {
-        return nl2br(e($this->message->params['body'] ?? ''));
-    }
-
     public function getFrom(): string
     {
         return __('t_messages.admin_broadcast.from');
