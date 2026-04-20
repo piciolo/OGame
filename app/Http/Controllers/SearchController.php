@@ -77,22 +77,22 @@ class SearchController extends OGameController
 
         $results = [];
         foreach ($users as $user) {
-            /** @var \OGame\Models\Planet|null $homePlanet */
+            /** @var Planet|null $homePlanet */
             $homePlanet = $homePlanets->get($user->id);
-            /** @var \OGame\Models\Alliance|null $alliance */
+            /** @var Alliance|null $alliance */
             $alliance = $user->alliance;
-            /** @var \OGame\Models\Highscore|null $highscore */
+            /** @var Highscore|null $highscore */
             $highscore = $user->highscore;
             $results[] = [
                 'id' => $user->id,
                 'name' => $user->username,
                 'type' => 'player',
-                'alliance_tag' => $alliance?->alliance_tag ?? '',
+                'alliance_tag' => $alliance !== null ? $alliance->alliance_tag : '',
                 'alliance_id' => $user->alliance_id,
                 'home_planet' => $homePlanet !== null ? '[' . $homePlanet->galaxy . ':' . $homePlanet->system . ':' . $homePlanet->planet . ']' : '',
                 'home_galaxy' => $homePlanet !== null ? $homePlanet->galaxy : 0,
                 'home_system' => $homePlanet !== null ? $homePlanet->system : 0,
-                'highscore_rank' => $highscore?->general_rank ?? 0,
+                'highscore_rank' => $highscore !== null ? $highscore->general_rank : 0,
             ];
         }
 
