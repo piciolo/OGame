@@ -486,7 +486,7 @@ class HalvingService
             $queueItem->time_end = $originalTimeEnd - $timeReduction;
             $queueItem->object_amount_progress = (int)$queueItem->object_amount_progress + $unitsToAward;
             $queueItem->time_progress = $currentTime;
-            $queueItem->dm_halved = true;
+            $queueItem->dm_halved = 1;
 
             $newTimeEnd = (int)$queueItem->time_end;
             $newRemainingTime = $newTimeEnd - $currentTime;

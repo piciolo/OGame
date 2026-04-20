@@ -8,6 +8,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use OGame\Factories\PlanetServiceFactory;
 use OGame\Factories\PlayerServiceFactory;
 use OGame\Http\Controllers\OGameController;
 use OGame\GameMessages\AdminBroadcast;
@@ -208,7 +209,7 @@ class ServerAdministrationController extends OGameController
                 ->with('error', 'No players found to send the broadcast to.');
         }
 
-        $key    = (new AdminBroadcast(new Message(), resolve(\OGame\Factories\PlanetServiceFactory::class), resolve(\OGame\Factories\PlayerServiceFactory::class)))->getKey();
+        $key    = (new AdminBroadcast(new Message(), resolve(PlanetServiceFactory::class), resolve(PlayerServiceFactory::class)))->getKey();
         $params = json_encode(['subject' => $subject, 'body' => $body]);
 
         $rows = array_map(fn ($id) => [

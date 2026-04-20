@@ -182,7 +182,7 @@ class User extends Authenticatable
     /**
      * Get the highscore record associated with the user.
      *
-     * @return HasOne<Highscore, User>
+     * @return HasOne
      */
     public function highscore(): HasOne
     {
@@ -192,7 +192,7 @@ class User extends Authenticatable
     /**
      * Get the alliance that the user belongs to.
      *
-     * @return BelongsTo<Alliance, User>
+     * @return BelongsTo
      */
     public function alliance(): BelongsTo
     {
