@@ -12,11 +12,8 @@ use OGame\Factories\PlayerServiceFactory;
 use OGame\Http\Controllers\OGameController;
 use OGame\GameMessages\AdminBroadcast;
 use OGame\Models\Ban;
-<<<<<<< HEAD
-=======
 use OGame\Models\ChatReport;
 use OGame\Models\Message;
->>>>>>> 6c46b0df (feat(1210): add admin broadcast message system)
 use OGame\Models\User;
 use OGame\Services\SettingsService;
 use stdClass;
@@ -148,8 +145,6 @@ class ServerAdministrationController extends OGameController
     }
 
     /**
-<<<<<<< HEAD
-=======
      * Marks all reports for a chat message as reviewed (dismiss-from-queue action).
      * The ChatMessage itself is left intact — the admin can ban the sender separately.
      */
@@ -210,7 +205,6 @@ class ServerAdministrationController extends OGameController
     }
 
     /**
->>>>>>> 6c46b0df (feat(1210): add admin broadcast message system)
      * Saves bot detection threshold settings.
      */
     public function saveDetectionSettings(Request $request): RedirectResponse

@@ -522,8 +522,6 @@
                         </div>
                     @endif
 
-<<<<<<< HEAD
-=======
                     {{-- ===== BROADCAST MESSAGE (issue #1210) ===== --}}
                     <p class="box_highlight textCenter no_buddies">@lang('Broadcast Message to All Players')</p>
                     <div class="group bborder" style="display: block; margin-bottom: 30px;">
@@ -605,7 +603,6 @@
                         </div>
                     @endif
 
->>>>>>> 6c46b0df (feat(1210): add admin broadcast message system)
                 </div>
             </div>
         </div>

@@ -16,8 +16,6 @@ Deuterium: :deuterium',
     'return_of_fleet_no_goods_body' => 'Je vloot keert terug van planeet :from naar planeet :to.
         
 De vloot levert geen grondstoffen af.',
-<<<<<<< HEAD
-=======
 
     // ------------------------
     'missile_attack_report' => [
@@ -65,5 +63,4 @@ Verwoeste verdedigingen: :defenses_destroyed',
         'subject' => ':subject',
         'body' => ':body',
     ],
->>>>>>> 24a324ed (fix(1210): add subject and body placeholder keys to admin_broadcast translations)
 ];
