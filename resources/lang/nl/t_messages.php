@@ -55,4 +55,12 @@ Verwoeste verdedigingen: :defenses_destroyed',
         'defenses_hit_label' => 'Verdedigingen Geraakt',
         'none'               => 'Geen',
     ],
+
+    // ------------------------
+    // Admin Broadcast (issue #1210)
+    'admin_broadcast' => [
+        'from' => 'Speloperator',
+        'subject' => ':subject',
+        'body' => ':body',
+    ],
 ];

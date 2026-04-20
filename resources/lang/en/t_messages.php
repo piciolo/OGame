@@ -400,6 +400,14 @@ Defenses destroyed: :defenses_destroyed',
     ],
 
     // ------------------------
+    // Admin Broadcast (issue #1210)
+    'admin_broadcast' => [
+        'from' => 'Game Operator',
+        'subject' => ':subject',
+        'body' => ':body',
+    ],
+
+    // ------------------------
     // Alliance Broadcast
     'alliance_broadcast' => [
         'from' => ':sender_name',
