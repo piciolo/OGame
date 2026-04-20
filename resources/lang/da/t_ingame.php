@@ -779,6 +779,12 @@ return [
         'no_requirements' => 'Ingen krav tilgængelige',
         'is_requirement_for' => 'er et krav til',
         'level' => 'Niveau',
+
+        // Technology tab (tab 3) — global list categories
+        'technology_category_construction'      => 'Construction',
+        'technology_category_research'          => 'Research',
+        'technology_category_ships'             => 'Ships',
+        'technology_category_defense'           => 'Defense',
         'col_level' => 'Niveau',
         'col_difference' => 'Forskel',
         'col_diff_per_level' => 'Forskel/level',

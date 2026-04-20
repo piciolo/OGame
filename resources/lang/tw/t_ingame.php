@@ -779,6 +779,12 @@ return [
         'no_requirements' => '沒有任何要求',
         'is_requirement_for' => '是一個要求',
         'level' => '等級',
+
+        // Technology tab (tab 3) — global list categories
+        'technology_category_construction'      => 'Construction',
+        'technology_category_research'          => 'Research',
+        'technology_category_ships'             => 'Ships',
+        'technology_category_defense'           => 'Defense',
         'col_level' => '等級',
         'col_difference' => '差距',
         'col_diff_per_level' => '差異／等級',

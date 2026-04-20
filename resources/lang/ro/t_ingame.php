@@ -779,6 +779,12 @@ return [
         'no_requirements' => 'Nici o cerinta disponibila',
         'is_requirement_for' => 'este o cerinţă pentru',
         'level' => 'Nivel',
+
+        // Technology tab (tab 3) — global list categories
+        'technology_category_construction'      => 'Construction',
+        'technology_category_research'          => 'Research',
+        'technology_category_ships'             => 'Ships',
+        'technology_category_defense'           => 'Defense',
         'col_level' => 'Nivel',
         'col_difference' => 'Diferenta',
         'col_diff_per_level' => 'Diferența/nivelul',

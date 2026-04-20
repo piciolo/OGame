@@ -779,6 +779,12 @@ return [
         'no_requirements' => 'Ön koşul bulunmuyor',
         'is_requirement_for' => 'için bir gerekliliktir',
         'level' => 'Kademe',
+
+        // Technology tab (tab 3) — global list categories
+        'technology_category_construction'      => 'Construction',
+        'technology_category_research'          => 'Research',
+        'technology_category_ships'             => 'Ships',
+        'technology_category_defense'           => 'Defense',
         'col_level' => 'Kademe',
         'col_difference' => 'Fark',
         'col_diff_per_level' => 'Fark/Seviye',

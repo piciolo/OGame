@@ -779,6 +779,12 @@ return [
         'no_requirements' => 'Нет требований',
         'is_requirement_for' => 'является требованием для',
         'level' => 'Уровень',
+
+        // Technology tab (tab 3) — global list categories
+        'technology_category_construction'      => 'Construction',
+        'technology_category_research'          => 'Research',
+        'technology_category_ships'             => 'Ships',
+        'technology_category_defense'           => 'Defense',
         'col_level' => 'Уровень',
         'col_difference' => 'Разница',
         'col_diff_per_level' => 'Разница / уровень',
