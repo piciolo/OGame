@@ -10,8 +10,10 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use OGame\Factories\PlayerServiceFactory;
 use OGame\Http\Controllers\OGameController;
+use OGame\GameMessages\AdminBroadcast;
 use OGame\Models\Ban;
 use OGame\Models\ChatReport;
+use OGame\Models\Message;
 use OGame\Models\User;
 use OGame\Services\SettingsService;
 use stdClass;
@@ -182,6 +184,48 @@ class ServerAdministrationController extends OGameController
 
         return redirect()->route('admin.server-administration.index')
             ->with('status', 'Chat message report dismissed.');
+    }
+
+    /**
+     * Sends a broadcast message to all registered players.
+     * Message appears in each player's communication/messages inbox as "Game Operator".
+     */
+    public function sendBroadcast(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'subject' => ['required', 'string', 'max:255'],
+            'body'    => ['required', 'string', 'max:5000'],
+        ]);
+
+        $subject = $request->input('subject');
+        $body    = $request->input('body');
+        $now     = now()->toDateTimeString();
+
+        $userIds = User::pluck('id')->toArray();
+
+        if (empty($userIds)) {
+            return redirect()->route('admin.server-administration.index')
+                ->with('error', 'No players found to send the broadcast to.');
+        }
+
+        $key    = (new AdminBroadcast(new Message(), resolve(\OGame\Factories\PlanetServiceFactory::class), resolve(\OGame\Factories\PlayerServiceFactory::class)))->getKey();
+        $params = json_encode(['subject' => $subject, 'body' => $body]);
+
+        $rows = array_map(fn ($id) => [
+            'user_id'    => $id,
+            'key'        => $key,
+            'params'     => $params,
+            'viewed'     => 0,
+            'created_at' => $now,
+            'updated_at' => $now,
+        ], $userIds);
+
+        foreach (array_chunk($rows, 500) as $chunk) {
+            Message::insert($chunk);
+        }
+
+        return redirect()->route('admin.server-administration.index')
+            ->with('status', 'Broadcast sent to ' . count($userIds) . ' player(s).');
     }
 
     /**

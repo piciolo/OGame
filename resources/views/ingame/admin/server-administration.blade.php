@@ -522,6 +522,36 @@
                         </div>
                     @endif
 
+                    {{-- ===== BROADCAST MESSAGE (issue #1210) ===== --}}
+                    <p class="box_highlight textCenter no_buddies">@lang('Broadcast Message to All Players')</p>
+                    <div class="group bborder" style="display: block; margin-bottom: 30px;">
+                        @if (session('status') && str_contains(session('status'), 'Broadcast'))
+                            <div style="background: #0d2a0d; border: 1px solid #2a5a2a; border-radius: 3px; padding: 8px 12px; margin-bottom: 10px; color: #6cbe6c; font-size: 12px;">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                        <form action="{{ route('admin.server-administration.broadcast') }}" method="post" style="padding: 10px 0;">
+                            {{ csrf_field() }}
+                            <div style="margin-bottom: 10px;">
+                                <label style="display: block; font-size: 11px; color: #aaa; margin-bottom: 4px;">Subject</label>
+                                <input type="text" name="subject" maxlength="255" required
+                                    style="width: 100%; box-sizing: border-box; background: #0d1014; border: 1px solid #333; border-radius: 3px; color: #fff; padding: 6px 8px; font-size: 12px;"
+                                    placeholder="Message subject…"
+                                    value="{{ old('subject') }}">
+                            </div>
+                            <div style="margin-bottom: 10px;">
+                                <label style="display: block; font-size: 11px; color: #aaa; margin-bottom: 4px;">Body</label>
+                                <textarea name="body" maxlength="5000" required rows="5"
+                                    style="width: 100%; box-sizing: border-box; background: #0d1014; border: 1px solid #333; border-radius: 3px; color: #fff; padding: 6px 8px; font-size: 12px; resize: vertical;"
+                                    placeholder="Message body…">{{ old('body') }}</textarea>
+                            </div>
+                            <div style="text-align: right;">
+                                <input type="submit" class="btn_blue" value="Send to all players"
+                                    onclick="return confirm('Send this broadcast to ALL players? This cannot be undone.');">
+                            </div>
+                        </form>
+                    </div>
+
                     {{-- ===== REPORTED CHAT MESSAGES (issue #1374) ===== --}}
                     <p class="box_highlight textCenter no_buddies">@lang('Reported Chat Messages')</p>
 

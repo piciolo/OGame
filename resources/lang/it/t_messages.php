@@ -139,6 +139,11 @@ Difese distrutte: :defenses_destroyed',
     ],
 
     // ------------------------
+    // Admin Broadcast (issue #1210)
+    'admin_broadcast' => [
+        'from' => 'Operatore di Gioco',
+    ],
+
     // Missile Defense Report (Difensore)
     'missile_defense_report' => [
         'from' => 'Comando Difesa',
