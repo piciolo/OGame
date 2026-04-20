@@ -9,6 +9,36 @@
 <div id="technologytree" data-title="{{ __('t_ingame.techtree.page_title') }} - {{ $object->title }}">
     @include('ingame.techtree.partials.nav', ['currentAction' => 'technologies', 'objectId' => $object->id])
 
+    <style>
+        #technologytree .content.technologies a.technology .techicon,
+        #technologytree .content.technologies a.prerequisites .techicon {
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            width: 28px;
+            height: 28px;
+            margin-top: -14px;
+            background-size: 28px 28px;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        #technologytree .content.technologies a.technology::before,
+        #technologytree .content.technologies a.prerequisites::before {
+            display: none !important;
+        }
+        #technologytree .content.technologies > ul > li .prerequisites-list {
+            display: flex;
+            flex-direction: column;
+            width: calc(50% - 5px);
+            gap: 4px;
+            margin: 5px 0;
+        }
+        #technologytree .content.technologies > ul > li .prerequisites-list a.prerequisites {
+            width: 100%;
+            margin: 0;
+        }
+    </style>
+
     <div class="content technologies">
         @foreach ($categories as $categoryKey => $category)
             @php
@@ -26,29 +56,31 @@
                     @php($isOpen = $categoryObject->id === $object->id)
                     <li class="{{ $categoryObject->class_name }}{{ $isOpen ? ' open' : '' }}">
                         <a href="{{ route('techtree.ajax', ['tab' => 3, 'object_id' => $categoryObject->id]) }}"
-                           class="technology sprite sprite_small small overlay {{ $categoryObject->class_name }} tooltipHTML"
+                           class="technology overlay tooltipHTML"
                            data-overlay-same="true"
                            title="{{ $categoryObject->title }}|{{ $categoryObject->description }}">
-                            {{ $categoryObject->title }}
+                            <span class="techicon sprite sprite_small {{ $categoryObject->class_name }}"></span>{{ $categoryObject->title }}
                         </a>
                         @if ($isOpen)
                             @if (empty($open_requirements))
-                                <a class="prerequisites"><span class="hint">{{ __('t_ingame.techtree.no_requirements') }}</span></a>
+                                <span class="hint">{{ __('t_ingame.techtree.no_requirements') }}</span>
                             @else
-                                @foreach ($open_requirements as $requirement)
-                                    <a href="{{ route('techtree.ajax', ['tab' => 3, 'object_id' => $requirement->gameObject->id]) }}"
-                                       class="prerequisites overlay sprite_small small {{ $requirement->gameObject->class_name }} {{ $requirement->levelCurrent >= $requirement->levelRequired ? 'fulfilled' : 'unfulfilled' }}"
-                                       data-overlay-same="true">
-                                        {{ $requirement->gameObject->title }}
-                                        ({{ __('t_ingame.techtree.level') }}
-                                        @if ($requirement->levelCurrent >= $requirement->levelRequired)
-                                            {{ $requirement->levelRequired }}
-                                        @else
-                                            {{ $requirement->levelCurrent }}/{{ $requirement->levelRequired }}
-                                        @endif
-                                        )
-                                    </a>
-                                @endforeach
+                                <div class="prerequisites-list">
+                                    @foreach ($open_requirements as $requirement)
+                                        <a href="{{ route('techtree.ajax', ['tab' => 3, 'object_id' => $requirement->gameObject->id]) }}"
+                                           class="prerequisites overlay {{ $requirement->levelCurrent >= $requirement->levelRequired ? 'fulfilled' : 'unfulfilled' }}"
+                                           data-overlay-same="true">
+                                            <span class="techicon sprite sprite_small {{ $requirement->gameObject->class_name }}"></span>{{ $requirement->gameObject->title }}
+                                            ({{ __('t_ingame.techtree.level') }}
+                                            @if ($requirement->levelCurrent >= $requirement->levelRequired)
+                                                {{ $requirement->levelRequired }}
+                                            @else
+                                                {{ $requirement->levelCurrent }}/{{ $requirement->levelRequired }}
+                                            @endif
+                                            )
+                                        </a>
+                                    @endforeach
+                                </div>
                             @endif
                         @endif
                     </li>
