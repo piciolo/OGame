@@ -785,6 +785,7 @@ return [
         'technology_category_research'          => 'Research',
         'technology_category_ships'             => 'Ships',
         'technology_category_defense'           => 'Defense',
+        'technology_category_rockets'           => 'Rockets',
         'col_level' => 'Stopnja',
         'col_difference' => 'Razlika',
         'col_diff_per_level' => 'Razlika/stopnja',

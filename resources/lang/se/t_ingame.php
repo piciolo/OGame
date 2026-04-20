@@ -786,6 +786,7 @@ nivå. En Interplanetär missil tar upp lika mycket plats som två Anti-ballisti
         'technology_category_research'          => 'Research',
         'technology_category_ships'             => 'Ships',
         'technology_category_defense'           => 'Defense',
+        'technology_category_rockets'           => 'Rockets',
         'col_level' => 'Nivå',
         'col_difference' => 'Skillnad',
         'col_diff_per_level' => 'Skillnad/nivå',
