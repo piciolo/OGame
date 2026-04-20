@@ -278,7 +278,6 @@ Route::middleware(['auth', 'globalgame', 'locale', 'admin'])->group(function () 
     Route::post('/admin/server-administration/detection-settings', [ServerAdministrationController::class, 'saveDetectionSettings'])->name('admin.server-administration.detection-settings');
     Route::post('/admin/server-administration/dismiss', [ServerAdministrationController::class, 'dismiss'])->name('admin.server-administration.dismiss');
     Route::post('/admin/server-administration/clear-cache', [ServerAdministrationController::class, 'clearCache'])->name('admin.server-administration.clear-cache');
-    Route::post('/admin/server-administration/chat-report/dismiss', [ServerAdministrationController::class, 'dismissChatReport'])->name('admin.server-administration.chat-report.dismiss');
     Route::post('/admin/server-administration/broadcast', [ServerAdministrationController::class, 'sendBroadcast'])->name('admin.server-administration.broadcast');
 
     // Developer shortcuts

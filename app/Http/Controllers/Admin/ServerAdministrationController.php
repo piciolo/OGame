@@ -8,11 +8,11 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use OGame\Factories\PlanetServiceFactory;
 use OGame\Factories\PlayerServiceFactory;
-use OGame\Http\Controllers\OGameController;
 use OGame\GameMessages\AdminBroadcast;
+use OGame\Http\Controllers\OGameController;
 use OGame\Models\Ban;
-use OGame\Models\ChatReport;
 use OGame\Models\Message;
 use OGame\Models\User;
 use OGame\Services\SettingsService;
@@ -145,24 +145,6 @@ class ServerAdministrationController extends OGameController
     }
 
     /**
-     * Marks all reports for a chat message as reviewed (dismiss-from-queue action).
-     * The ChatMessage itself is left intact — the admin can ban the sender separately.
-     */
-    public function dismissChatReport(Request $request): RedirectResponse
-    {
-        $request->validate([
-            'chat_message_id' => ['required', 'integer', 'exists:chat_messages,id'],
-        ]);
-
-        ChatReport::where('chat_message_id', $request->input('chat_message_id'))
-            ->whereNull('reviewed_at')
-            ->update(['reviewed_at' => now()]);
-
-        return redirect()->route('admin.server-administration.index')
-            ->with('status', 'Chat message report dismissed.');
-    }
-
-    /**
      * Sends a broadcast message to all registered players.
      * Message appears in each player's communication/messages inbox as "Game Operator".
      */
@@ -184,7 +166,7 @@ class ServerAdministrationController extends OGameController
                 ->with('error', 'No players found to send the broadcast to.');
         }
 
-        $key    = (new AdminBroadcast(new Message(), resolve(\OGame\Factories\PlanetServiceFactory::class), resolve(\OGame\Factories\PlayerServiceFactory::class)))->getKey();
+        $key    = (new AdminBroadcast(new Message(), resolve(PlanetServiceFactory::class), resolve(PlayerServiceFactory::class)))->getKey();
         $params = json_encode(['subject' => $subject, 'body' => $body]);
 
         $rows = array_map(fn ($id) => [
