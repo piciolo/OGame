@@ -985,6 +985,7 @@ return [
         'technology_category_research'          => 'Research',
         'technology_category_ships'             => 'Ships',
         'technology_category_defense'           => 'Defense',
+        'technology_category_rockets'           => 'Rockets',
 
         // Shared table columns
         'col_level'                             => 'Stufe',
