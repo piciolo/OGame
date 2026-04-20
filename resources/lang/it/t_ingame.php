@@ -914,6 +914,7 @@ return [
         'technology_category_research'          => 'Ricerca',
         'technology_category_ships'             => 'Navi',
         'technology_category_defense'           => 'Difesa',
+        'technology_category_rockets'           => 'Razzi',
 
         // Colonne tabella condivise
         'col_level'                             => 'Livello',

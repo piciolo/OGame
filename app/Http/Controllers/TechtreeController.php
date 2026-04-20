@@ -80,8 +80,12 @@ class TechtreeController extends OGameController
         } elseif ($tab === 3) {
             $planet = $player->planets->current();
 
+            $defenseAll = ObjectService::getDefenseObjects();
+            $missiles = array_values(array_filter($defenseAll, fn ($d) => str_ends_with($d->machine_name, '_missile')));
+            $defenseOnly = array_values(array_filter($defenseAll, fn ($d) => !str_ends_with($d->machine_name, '_missile')));
+
             $categories = [
-                'construction' => [
+                'building' => [
                     'label_key' => 't_ingame.techtree.technology_category_construction',
                     'objects' => [...ObjectService::getBuildingObjects(), ...ObjectService::getStationObjects()],
                 ],
@@ -89,13 +93,17 @@ class TechtreeController extends OGameController
                     'label_key' => 't_ingame.techtree.technology_category_research',
                     'objects' => ObjectService::getResearchObjects(),
                 ],
-                'ships' => [
+                'ship' => [
                     'label_key' => 't_ingame.techtree.technology_category_ships',
                     'objects' => ObjectService::getShipObjects(),
                 ],
                 'defense' => [
                     'label_key' => 't_ingame.techtree.technology_category_defense',
-                    'objects' => ObjectService::getDefenseObjects(),
+                    'objects' => $defenseOnly,
+                ],
+                'missile' => [
+                    'label_key' => 't_ingame.techtree.technology_category_rockets',
+                    'objects' => $missiles,
                 ],
             ];
 
