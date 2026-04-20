@@ -85,8 +85,8 @@ class SearchController extends OGameController
                 'alliance_tag' => $user->alliance?->alliance_tag ?? '',
                 'alliance_id' => $user->alliance_id,
                 'home_planet' => $homePlanet ? '[' . $homePlanet->galaxy . ':' . $homePlanet->system . ':' . $homePlanet->planet . ']' : '',
-                'home_galaxy' => $homePlanet?->galaxy ?? 0,
-                'home_system' => $homePlanet?->system ?? 0,
+                'home_galaxy' => $homePlanet !== null ? $homePlanet->galaxy : 0,
+                'home_system' => $homePlanet !== null ? $homePlanet->system : 0,
                 'highscore_rank' => $user->highscore?->general_rank ?? 0,
             ];
         }

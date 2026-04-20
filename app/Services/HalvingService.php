@@ -205,7 +205,7 @@ class HalvingService
 
             // Update queue item time_end and mark as halved
             $queueItem->time_end = $timeValues['new_time_end'];
-            $queueItem->dm_halved = 1;
+            $queueItem->dm_halved = true;
             $queueItem->save();
 
             return [
@@ -486,7 +486,7 @@ class HalvingService
             $queueItem->time_end = $originalTimeEnd - $timeReduction;
             $queueItem->object_amount_progress = (int)$queueItem->object_amount_progress + $unitsToAward;
             $queueItem->time_progress = $currentTime;
-            $queueItem->dm_halved = 1;
+            $queueItem->dm_halved = true;
 
             $newTimeEnd = (int)$queueItem->time_end;
             $newRemainingTime = $newTimeEnd - $currentTime;
