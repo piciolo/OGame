@@ -107,22 +107,32 @@ class TechtreeController extends OGameController
                 ],
             ];
 
-            // Pre-compute direct requirements (with current level) for the currently open object.
-            $open_requirements = [];
-            foreach ($object->requirements as $requirement) {
-                $required_object = ObjectService::getObjectByMachineName($requirement->object_machine_name);
-                if ($required_object->type === GameObjectType::Research) {
-                    $current_level = $player->getResearchLevel($required_object->machine_name);
-                } else {
-                    $current_level = $planet->getObjectLevel($required_object->machine_name);
+            // Pre-compute direct requirements (with current level) for EVERY object that has requirements.
+            // Indexed by object id.
+            $requirements_by_object = [];
+            foreach ($categories as $category) {
+                foreach ($category['objects'] as $cat_object) {
+                    if (empty($cat_object->requirements)) {
+                        continue;
+                    }
+                    $reqs = [];
+                    foreach ($cat_object->requirements as $requirement) {
+                        $required_object = ObjectService::getObjectByMachineName($requirement->object_machine_name);
+                        if ($required_object->type === GameObjectType::Research) {
+                            $current_level = $player->getResearchLevel($required_object->machine_name);
+                        } else {
+                            $current_level = $planet->getObjectLevel($required_object->machine_name);
+                        }
+                        $reqs[] = new TechtreeRequirement(1, 0, null, $required_object, $requirement->level, $current_level);
+                    }
+                    $requirements_by_object[$cat_object->id] = $reqs;
                 }
-                $open_requirements[] = new TechtreeRequirement(1, 0, null, $required_object, $requirement->level, $current_level);
             }
 
             return view('ingame.techtree.technology')->with([
                 'object' => $object,
                 'categories' => $categories,
-                'open_requirements' => $open_requirements,
+                'requirements_by_object' => $requirements_by_object,
             ]);
         } elseif ($tab === 4) {
             return view('ingame.techtree.applications')->with([
