@@ -930,6 +930,12 @@ return [
         'is_requirement_for'                    => 'is a requirement for',
         'level'                                 => 'Level',
 
+        // Technology tab (tab 3) — global list categories
+        'technology_category_construction'      => 'Construction',
+        'technology_category_research'          => 'Research',
+        'technology_category_ships'             => 'Ships',
+        'technology_category_defense'           => 'Defense',
+
         // Shared table columns
         'col_level'                             => 'Level',
         'col_difference'                        => 'Difference',

@@ -909,6 +909,12 @@ return [
         'is_requirement_for'                    => 'è un requisito per',
         'level'                                 => 'Livello',
 
+        // Tab Tecnologia (tab 3) — categorie lista globale
+        'technology_category_construction'      => 'Costruzione',
+        'technology_category_research'          => 'Ricerca',
+        'technology_category_ships'             => 'Navi',
+        'technology_category_defense'           => 'Difesa',
+
         // Colonne tabella condivise
         'col_level'                             => 'Livello',
         'col_difference'                        => 'Differenza',
