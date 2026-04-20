@@ -779,6 +779,12 @@ return [
         'no_requirements' => 'Δεν υπάρχουν απαιτήσεις',
         'is_requirement_for' => 'είναι απαίτηση για',
         'level' => 'Επίπεδο',
+
+        // Technology tab (tab 3) — global list categories
+        'technology_category_construction'      => 'Construction',
+        'technology_category_research'          => 'Research',
+        'technology_category_ships'             => 'Ships',
+        'technology_category_defense'           => 'Defense',
         'col_level' => 'Επίπεδο',
         'col_difference' => 'Διαφορά',
         'col_diff_per_level' => 'Διαφορά/Επίπεδο',

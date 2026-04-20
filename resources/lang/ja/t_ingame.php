@@ -779,6 +779,12 @@ return [
         'no_requirements' => '要件を満たしていません',
         'is_requirement_for' => 'の要件です',
         'level' => 'レベル',
+
+        // Technology tab (tab 3) — global list categories
+        'technology_category_construction'      => 'Construction',
+        'technology_category_research'          => 'Research',
+        'technology_category_ships'             => 'Ships',
+        'technology_category_defense'           => 'Defense',
         'col_level' => 'レベル',
         'col_difference' => '差分',
         'col_diff_per_level' => '差/レベル',

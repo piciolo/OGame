@@ -779,6 +779,12 @@ return [
         'no_requirements' => 'Aucune condition requise',
         'is_requirement_for' => 'est une exigence pour',
         'level' => 'Niveau',
+
+        // Technology tab (tab 3) — global list categories
+        'technology_category_construction'      => 'Construction',
+        'technology_category_research'          => 'Research',
+        'technology_category_ships'             => 'Ships',
+        'technology_category_defense'           => 'Defense',
         'col_level' => 'Niveau',
         'col_difference' => 'Différence',
         'col_diff_per_level' => 'Différence/niveau',
