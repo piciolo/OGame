@@ -74,12 +74,37 @@
             const wrapper = document.getElementById('contentWrapper');
             if (!wrapper) return;
 
+            // Slide in from left when returning from auctioneer
+            if (sessionStorage.getItem('auctioneer_back')) {
+                sessionStorage.removeItem('auctioneer_back');
+                wrapper.style.transition = 'none';
+                wrapper.style.transform = 'translateX(-50px)';
+                wrapper.style.opacity = '0';
+                requestAnimationFrame(() => requestAnimationFrame(() => {
+                    wrapper.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+                    wrapper.style.transform = '';
+                    wrapper.style.opacity = '';
+                }));
+            }
+
             async function ajaxSwap(url, pushUrl) {
+                // Slide current content out to the left
+                wrapper.style.transition = 'transform 0.25s ease, opacity 0.25s ease';
+                wrapper.style.transform = 'translateX(-50px)';
+                wrapper.style.opacity = '0';
+                await new Promise(r => setTimeout(r, 260));
+
                 try {
                     const r = await fetch(url, { headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'text/html' }, cache: 'no-store' });
                     if (!r.ok) { window.location.href = pushUrl; return; }
                     const html = await r.text();
+
+                    // Position new content off-screen to the right before inserting
+                    wrapper.style.transition = 'none';
+                    wrapper.style.transform = 'translateX(50px)';
+                    wrapper.style.opacity = '0';
                     wrapper.innerHTML = html;
+
                     wrapper.querySelectorAll('script').forEach(old => {
                         const s = document.createElement('script');
                         for (const a of old.attributes) s.setAttribute(a.name, a.value);
@@ -89,6 +114,14 @@
                     if (window.Tipped && typeof Tipped.delegate === 'function') {
                         try { Tipped.create('.tooltip, .tooltipHTML, .tooltipLeft, .tooltipRight'); } catch (e) {}
                     }
+
+                    // Slide new content in from the right
+                    requestAnimationFrame(() => requestAnimationFrame(() => {
+                        wrapper.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+                        wrapper.style.transform = '';
+                        wrapper.style.opacity = '';
+                    }));
+
                     if (pushUrl) history.pushState({ ajaxNav: true, url: pushUrl }, '', pushUrl);
                     window.scrollTo(0, 0);
                 } catch (e) {

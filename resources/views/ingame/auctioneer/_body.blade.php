@@ -667,5 +667,24 @@
             if (fb) { fb.className = 'bid_feedback error'; fb.textContent = T_NETERR; fb.style.display = ''; }
         } finally { delete btn.dataset.busy; }
     });
+
+    // Slide back to merchant overview
+    document.querySelectorAll('.js_backToOverview').forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (!href || href === 'javascript:void(0)' || href === '#') return;
+            e.preventDefault();
+            const wrapper = document.getElementById('contentWrapper');
+            if (wrapper) {
+                wrapper.style.transition = 'transform 0.25s ease, opacity 0.25s ease';
+                wrapper.style.transform = 'translateX(50px)';
+                wrapper.style.opacity = '0';
+                sessionStorage.setItem('auctioneer_back', '1');
+                setTimeout(function () { window.location.href = href; }, 260);
+            } else {
+                window.location.href = href;
+            }
+        });
+    });
 })();
 </script>
