@@ -178,6 +178,12 @@ Route::middleware(['auth', 'banned', 'globalgame', 'locale', 'firstlogin'])->gro
     Route::post('/merchant/scrap/bargain', [MerchantController::class, 'scrapBargain'])->name('merchant.scrap.bargain');
     Route::post('/merchant/scrap/execute', [MerchantController::class, 'scrapExecute'])->name('merchant.scrap.execute');
 
+    // Auctioneer
+    Route::get('/auctioneer', [\OGame\Http\Controllers\AuctioneerController::class, 'index'])->name('auctioneer.index');
+    Route::get('/ajax/auctioneer', [\OGame\Http\Controllers\AuctioneerController::class, 'partial'])->name('auctioneer.partial');
+    Route::get('/ajax/auctioneer/status', [\OGame\Http\Controllers\AuctioneerController::class, 'status'])->name('auctioneer.status');
+    Route::post('/ajax/auctioneer/bid', [\OGame\Http\Controllers\AuctioneerController::class, 'bid'])->name('auctioneer.bid');
+
     Route::get('/alliance', [AllianceController::class, 'index'])->name('alliance.index');
     Route::get('/alliance/apply/{alliance_id}', [AllianceController::class, 'showApplicationForm'])->name('alliance.application.form');
     Route::get('/alliance/info/{alliance_id}', [AllianceController::class, 'info'])->name('alliance.info');
