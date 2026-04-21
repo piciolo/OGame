@@ -165,39 +165,73 @@
                                         $lotTip = '';
                                         $lotRef = '';
                                         $lotSprite = null;
-                                        $descr = '';
                                         if ($hasAuction) {
-                                            $descr = trim((string) ($auction->lot_description ?? ''));
-                                            if ($descr === '') {
-                                                $p = (array) ($auction->lot_payload ?? []);
-                                                $lt = $auction->lot_type->value;
-                                                if ($lt === 'resources') {
-                                                    $parts = [];
-                                                    if (!empty($p['metal'])) $parts[] = number_format((int) $p['metal'], 0, ',', '.') . ' ' . __('t_auctioneer.metal');
-                                                    if (!empty($p['crystal'])) $parts[] = number_format((int) $p['crystal'], 0, ',', '.') . ' ' . __('t_auctioneer.crystal');
-                                                    if (!empty($p['deuterium'])) $parts[] = number_format((int) $p['deuterium'], 0, ',', '.') . ' ' . __('t_auctioneer.deuterium');
-                                                    $descr = 'Ricevi ' . implode(', ', $parts) . ' sul pianeta selezionato.';
-                                                } elseif ($lt === 'ship') {
-                                                    $descr = 'Ricevi ' . (int) ($p['amount'] ?? 1) . ' unità in consegna immediata sul pianeta selezionato.';
-                                                } elseif ($lt === 'dark_matter') {
-                                                    $descr = 'Ricevi ' . number_format((int) ($p['amount'] ?? 0), 0, ',', '.') . ' di Materia Oscura accreditata al tuo account.';
-                                                } elseif (str_starts_with($lt, 'booster_')) {
-                                                    $descr = 'Booster temporaneo: incremento di produzione su un pianeta.';
+                                            $lt = $auction->lot_type->value;
+                                            $p = (array) ($auction->lot_payload ?? []);
+
+                                            // Italian display title derived from payload
+                                            $displayTitle = $auction->lot_title;
+                                            if ($lt === 'resources') {
+                                                $tp = [];
+                                                if (!empty($p['metal']))     $tp[] = number_format((int)$p['metal'], 0, ',', '.') . ' ' . __('t_auctioneer.metal');
+                                                if (!empty($p['crystal']))   $tp[] = number_format((int)$p['crystal'], 0, ',', '.') . ' ' . __('t_auctioneer.crystal');
+                                                if (!empty($p['deuterium'])) $tp[] = number_format((int)$p['deuterium'], 0, ',', '.') . ' ' . __('t_auctioneer.deuterium');
+                                                if (!empty($tp)) $displayTitle = implode(' + ', $tp);
+                                            } elseif ($lt === 'dark_matter') {
+                                                $displayTitle = number_format((int)($p['amount'] ?? 0), 0, ',', '.') . ' ' . __('t_auctioneer.dark_matter');
+                                            } elseif (str_starts_with($lt, 'booster_') || $lt === 'resource_boost') {
+                                                $bn = ['booster_kraken' => 'Kraken', 'booster_newtron' => 'Newtron', 'booster_detroid' => 'Detroid', 'resource_boost' => 'Produzione'];
+                                                $tl = ['bronze' => 'Bronze', 'silver' => 'Silver', 'gold' => 'Gold', 'platinum' => 'Platinum'];
+                                                $displayTitle = ($bn[$lt] ?? ucfirst(str_replace('booster_', '', $lt))) . ' ' . ($tl[$auction->tier->value] ?? '');
+                                            }
+
+                                            // Description
+                                            $descr = '';
+                                            if ($lt === 'resources') {
+                                                $dp = [];
+                                                if (!empty($p['metal']))     $dp[] = number_format((int)$p['metal'], 0, ',', '.') . ' ' . __('t_auctioneer.metal');
+                                                if (!empty($p['crystal']))   $dp[] = number_format((int)$p['crystal'], 0, ',', '.') . ' ' . __('t_auctioneer.crystal');
+                                                if (!empty($p['deuterium'])) $dp[] = number_format((int)$p['deuterium'], 0, ',', '.') . ' ' . __('t_auctioneer.deuterium');
+                                                $descr = __('t_auctioneer.tooltip_receive') . ' ' . implode(', ', $dp) . ' ' . __('t_auctioneer.tooltip_on_planet');
+                                            } elseif ($lt === 'ship') {
+                                                $descr = __('t_auctioneer.tooltip_receive') . ' ' . (int)($p['amount'] ?? 1) . ' ' . __('t_auctioneer.tooltip_units_delivered');
+                                            } elseif ($lt === 'dark_matter') {
+                                                $descr = __('t_auctioneer.tooltip_receive') . ' ' . number_format((int)($p['amount'] ?? 0), 0, ',', '.') . ' ' . __('t_auctioneer.tooltip_dm_credited');
+                                            } elseif (str_starts_with($lt, 'booster_') || $lt === 'resource_boost') {
+                                                $bd = ['booster_kraken' => __('t_auctioneer.booster_kraken_desc'), 'booster_newtron' => __('t_auctioneer.booster_newtron_desc'), 'booster_detroid' => __('t_auctioneer.booster_detroid_desc'), 'resource_boost' => '+' . ($p['percent'] ?? 0) . '% ' . __('t_auctioneer.tooltip_production') . ' ' . ($p['resource'] ?? '')];
+                                                $descr = $bd[$lt] ?? __('t_auctioneer.booster_generic_desc');
+                                            }
+
+                                            // Duration from payload
+                                            $durLbl = '—';
+                                            if (!empty($p['duration_seconds'])) {
+                                                $secs = (int)$p['duration_seconds'];
+                                                if ($secs >= 86400)     $durLbl = floor($secs / 86400) . 'g';
+                                                elseif ($secs >= 3600)  $durLbl = floor($secs / 3600) . 'h';
+                                                elseif ($secs >= 60)    $durLbl = floor($secs / 60) . 'm';
+                                                else                    $durLbl = $secs . 's';
+                                            } elseif (in_array($lt, ['resources', 'dark_matter', 'ship'])) {
+                                                $durLbl = __('t_auctioneer.tooltip_instant');
+                                            }
+
+                                            $lotTip = $displayTitle . '|' . $descr
+                                                . '<br><br>' . __('t_auctioneer.tooltip_duration') . ': ' . $durLbl
+                                                . '<br>' . __('t_auctioneer.tooltip_price') . ': —'
+                                                . '<br>' . __('t_auctioneer.tooltip_inventory') . ': 0';
+
+                                            // Deterministic image key: same lot_type+title → same sprite
+                                            $lotRef = sha1($lt . '|' . $auction->lot_title);
+
+                                            // Boosters use lot_*.png; others use controller-derived lot_image
+                                            if (str_starts_with($lt, 'booster_') || $lt === 'resource_boost') {
+                                                $spriteFiles = glob(public_path('img/auctioneer/lot_*.png')) ?: [];
+                                                if (!empty($spriteFiles)) {
+                                                    $idx = (int) hexdec(substr($lotRef, 0, 8)) % count($spriteFiles);
+                                                    $lotSprite = '/img/auctioneer/' . basename($spriteFiles[$idx]);
                                                 }
                                             }
-                                            $durLbl = (string) ($auction->lot_duration_label ?? '');
-                                            $priceLbl = (string) ($auction->lot_price_label ?? '---');
-                                            $invCount = (int) ($auction->lot_inventory_count ?? 0);
-                                            $lotTip = $auction->lot_title . '|' . $descr
-                                                . '<br /><br />Durata: ' . ($durLbl ?: 'ora')
-                                                . '<br /><br />Prezzo: ' . $priceLbl
-                                                . ' <br />Nell`inventario: ' . $invCount;
-                                            $lotRef = sha1($auction->id . '|' . $auction->lot_title);
-
-                                            $spriteFiles = glob(public_path('img/auctioneer/lot_*.png')) ?: [];
-                                            if (!empty($spriteFiles)) {
-                                                $idx = (int) hexdec(substr($lotRef, 0, 8)) % count($spriteFiles);
-                                                $lotSprite = '/img/auctioneer/' . basename($spriteFiles[$idx]);
+                                            if ($lotSprite === null) {
+                                                $lotSprite = $auction->lot_image ?: null;
                                             }
                                         }
                                         $tierBorder = ['r_rare_140px' => '#FFD700', 'r_uncommon_140px' => '#C0C0C0', 'r_common_140px' => '#CD7F32', 'r_epic_140px' => '#B9F2FF'];
