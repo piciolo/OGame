@@ -222,16 +222,12 @@
                                             // Deterministic image key: same lot_type+title → same sprite
                                             $lotRef = sha1($lt . '|' . $auction->lot_title);
 
-                                            // Boosters use lot_*.png; others use controller-derived lot_image
-                                            if (str_starts_with($lt, 'booster_') || $lt === 'resource_boost') {
-                                                $spriteFiles = glob(public_path('img/auctioneer/lot_*.png')) ?: [];
-                                                if (!empty($spriteFiles)) {
-                                                    $idx = (int) hexdec(substr($lotRef, 0, 8)) % count($spriteFiles);
-                                                    $lotSprite = '/img/auctioneer/' . basename($spriteFiles[$idx]);
-                                                }
-                                            }
-                                            if ($lotSprite === null) {
-                                                $lotSprite = $auction->lot_image ?: null;
+                                            // Always use lot_*.png (200x200 → 140px sharp downscale).
+                                            // Object _small.jpg are only 40x40 and look blurry at 140px.
+                                            $spriteFiles = glob(public_path('img/auctioneer/lot_*.png')) ?: [];
+                                            if (!empty($spriteFiles)) {
+                                                $idx = (int) hexdec(substr($lotRef, 0, 8)) % count($spriteFiles);
+                                                $lotSprite = '/img/auctioneer/' . basename($spriteFiles[$idx]);
                                             }
                                         }
                                         $tierBorder = ['r_rare_140px' => '#FFD700', 'r_uncommon_140px' => '#C0C0C0', 'r_common_140px' => '#CD7F32', 'r_epic_140px' => '#B9F2FF'];
