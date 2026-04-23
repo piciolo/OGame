@@ -182,7 +182,9 @@ Route::middleware(['auth', 'banned', 'globalgame', 'locale', 'firstlogin'])->gro
     Route::get('/auctioneer', [\OGame\Http\Controllers\AuctioneerController::class, 'index'])->name('auctioneer.index');
     Route::get('/ajax/auctioneer', [\OGame\Http\Controllers\AuctioneerController::class, 'partial'])->name('auctioneer.partial');
     Route::get('/ajax/auctioneer/status', [\OGame\Http\Controllers\AuctioneerController::class, 'status'])->name('auctioneer.status');
-    Route::post('/ajax/auctioneer/bid', [\OGame\Http\Controllers\AuctioneerController::class, 'bid'])->name('auctioneer.bid');
+    Route::post('/ajax/auctioneer/bid', [\OGame\Http\Controllers\AuctioneerController::class, 'bid'])
+        ->middleware('throttle:30,1')
+        ->name('auctioneer.bid');
 
     Route::get('/alliance', [AllianceController::class, 'index'])->name('alliance.index');
     Route::get('/alliance/apply/{alliance_id}', [AllianceController::class, 'showApplicationForm'])->name('alliance.application.form');
@@ -226,6 +228,7 @@ Route::middleware(['auth', 'banned', 'globalgame', 'locale', 'firstlogin'])->gro
     Route::post('/chat/more', [ChatController::class, 'loadMore'])->name('chat.more');
     Route::post('/chat/read', [ChatController::class, 'markRead'])->name('chat.read');
     Route::post('/chat/visibility', [ChatController::class, 'toggleVisibility'])->name('chat.visibility');
+    Route::post('/chat/report/{id}', [ChatController::class, 'reportMessage'])->whereNumber('id')->name('chat.report');
 
     Route::get('/buddies', [BuddiesController::class, 'index'])->name('buddies.index');
     Route::post('/buddies', [BuddiesController::class, 'post'])->name('buddies.post');
@@ -284,6 +287,8 @@ Route::middleware(['auth', 'globalgame', 'locale', 'admin'])->group(function () 
     Route::post('/admin/server-administration/detection-settings', [ServerAdministrationController::class, 'saveDetectionSettings'])->name('admin.server-administration.detection-settings');
     Route::post('/admin/server-administration/dismiss', [ServerAdministrationController::class, 'dismiss'])->name('admin.server-administration.dismiss');
     Route::post('/admin/server-administration/clear-cache', [ServerAdministrationController::class, 'clearCache'])->name('admin.server-administration.clear-cache');
+    Route::post('/admin/server-administration/chat-report/dismiss', [ServerAdministrationController::class, 'dismissChatReport'])->name('admin.server-administration.chat-report.dismiss');
+    Route::post('/admin/server-administration/broadcast', [ServerAdministrationController::class, 'sendBroadcast'])->name('admin.server-administration.broadcast');
 
     // Developer shortcuts
     Route::get('/admin/developer-shortcuts', [DeveloperShortcutsController::class, 'index'])->name('admin.developershortcuts.index');
@@ -293,4 +298,12 @@ Route::middleware(['auth', 'globalgame', 'locale', 'admin'])->group(function () 
     Route::post('/admin/developershortcuts/create-at-coords', [DeveloperShortcutsController::class, 'createAtCoords'])->name('admin.developershortcuts.create-at-coords');
     Route::post('/admin/developershortcuts/create-debris', [DeveloperShortcutsController::class, 'createDebris'])->name('admin.developershortcuts.create-debris');
     Route::post('/admin/developershortcuts/update-dark-matter', [DeveloperShortcutsController::class, 'updateDarkMatter'])->name('admin.developershortcuts.update-dark-matter');
+
+    // Auctioneer test shortcuts
+    Route::post('/admin/developershortcuts/auctioneer/force-end', [DeveloperShortcutsController::class, 'auctioneerForceEnd'])->name('admin.developershortcuts.auctioneer.force-end');
+    Route::post('/admin/developershortcuts/auctioneer/force-start', [DeveloperShortcutsController::class, 'auctioneerForceStart'])->name('admin.developershortcuts.auctioneer.force-start');
+    Route::post('/admin/developershortcuts/auctioneer/spawn', [DeveloperShortcutsController::class, 'auctioneerSpawn'])->name('admin.developershortcuts.auctioneer.spawn');
+    Route::post('/admin/developershortcuts/auctioneer/spawn-specific', [DeveloperShortcutsController::class, 'auctioneerSpawnSpecific'])->name('admin.developershortcuts.auctioneer.spawn-specific');
+    Route::post('/admin/developershortcuts/auctioneer/cancel', [DeveloperShortcutsController::class, 'auctioneerCancel'])->name('admin.developershortcuts.auctioneer.cancel');
+    Route::post('/admin/developershortcuts/auctioneer/tick', [DeveloperShortcutsController::class, 'auctioneerTick'])->name('admin.developershortcuts.auctioneer.tick');
 });
