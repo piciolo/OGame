@@ -1685,7 +1685,9 @@ However, the Space Dock's engineers think that some of the remains can be salvag
                 });</script>            <!-- END JAVASCRIPT -->
 
 
-            @yield('content')
+            <div id="contentWrapper">
+                @yield('content')
+            </div>
         </div>
     </div>
     <div id="right">

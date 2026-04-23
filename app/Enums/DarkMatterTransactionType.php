@@ -15,4 +15,5 @@ enum DarkMatterTransactionType: string
     case ADMIN_ADJUSTMENT = 'admin_adjustment';
     case HALVING = 'halving';
     case OFFICER_PURCHASE = 'officer_purchase';
+    case AUCTIONEER = 'auctioneer';
 }
