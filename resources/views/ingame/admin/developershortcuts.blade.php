@@ -340,25 +340,22 @@
                                     <form action="{{ route('admin.developershortcuts.auctioneer.spawn-specific') }}" method="post" style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
                                         {{ csrf_field() }}
                                         <label style="white-space: nowrap;">@lang('Spawn specific lot:')</label>
-                                        <select name="template_id" style="flex: 1; min-width: 240px; max-width: 460px;">
+                                        <select name="template_id" style="flex: 1; min-width: 320px; max-width: 520px;">
                                             @foreach($lotTemplates as $familyKey => $group)
-                                                <optgroup label="{{ $familyLabels[$familyKey] ?? $familyKey }}">
+                                                <optgroup label="── {{ $familyLabels[$familyKey] ?? $familyKey }} ──">
                                                     @foreach($group as $tpl)
                                                         @php
-                                                            $tier = $tpl->tier->value;
-                                                            $p    = $tpl->lot_payload ?? [];
+                                                            $p = $tpl->lot_payload ?? [];
                                                             if ($tpl->lot_type->value === 'resource_boost') {
                                                                 $detail = '+' . ($p['percent'] ?? '?') . '%';
                                                             } else {
                                                                 $secs = $p['duration_seconds'] ?? 0;
                                                                 $detail = $secs >= 86400
-                                                                    ? '-' . round($secs/86400) . 'g'
+                                                                    ? '-' . round($secs/86400) . ' giorno'
                                                                     : ($secs >= 3600 ? '-' . round($secs/3600) . 'h' : '-' . round($secs/60) . 'm');
                                                             }
                                                         @endphp
-                                                        <option value="{{ $tpl->id }}">
-                                                            {{ $tierLabel[$tier] ?? ucfirst($tier) }} — {{ $detail }} (min {{ number_format($tpl->min_bid_points) }} pt)
-                                                        </option>
+                                                        <option value="{{ $tpl->id }}">{{ $tpl->lot_title }} {{ $detail }}</option>
                                                     @endforeach
                                                 </optgroup>
                                             @endforeach
