@@ -35,7 +35,7 @@ class InventoryService
     private function amplifierKey(Auction $auction): ?string
     {
         $payload = (array) $auction->lot_payload;
-        $family = $payload['amplifier_family'] ?? null; // metal | crystal | deuterium | energy
+        $family = $payload['resource'] ?? $payload['amplifier_family'] ?? null; // metal | crystal | deuterium | energy
         $tier = $auction->tier?->value;
         if ($family === null || $tier === null) {
             return null;
