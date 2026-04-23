@@ -164,6 +164,7 @@
                 // Nell'Inventario, default sulla categoria "tutto" (contiene tutti gli item)
                 const defaultCat = (tab === 'inventory') ? allCategoryRef : (@json($categories[0]['ref'] ?? null));
                 filterCategory(defaultCat);
+                updateCategoryCounts();
             }
 
             function filterCategory(catRef) {
@@ -273,9 +274,11 @@
 
             function updateCategoryCounts() {
                 const counts = {};
-                Object.values(inventoryItems).forEach(it => {
-                    (it.category || []).forEach(c => { counts[c] = (counts[c] || 0) + (it.amount || 0); });
-                });
+                if (currentTab === 'inventory') {
+                    Object.values(inventoryItems).forEach(it => {
+                        (it.category || []).forEach(c => { counts[c] = (counts[c] || 0) + (it.amount || 0); });
+                    });
+                }
                 $$('.js_catLink').forEach(a => {
                     const ref = a.dataset.categoryRef;
                     const amt = counts[ref] || 0;
