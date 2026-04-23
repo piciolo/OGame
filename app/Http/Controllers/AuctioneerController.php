@@ -8,6 +8,8 @@ use Illuminate\View\View;
 use OGame\Enums\AuctionStatus;
 use OGame\Exceptions\AuctionBidException;
 use OGame\Models\Auction;
+use OGame\Models\AuctionLotTemplate;
+use OGame\Models\Planet;
 use OGame\Services\AuctioneerService;
 use OGame\Services\ObjectService;
 use OGame\Services\PlayerService;
@@ -56,7 +58,19 @@ class AuctioneerController extends OGameController
             ],
             'minIncrement' => (int) $this->settingValue('auctioneer_min_increment_points', 1),
             'honorPoints' => (int) ($player->getUser()->honor_points ?? 0),
+            'dmPriceMap' => $this->buildDmPriceMap(),
         ];
+    }
+
+    /**
+     * @return array<string,int|null>
+     */
+    private function buildDmPriceMap(): array
+    {
+        return AuctionLotTemplate::query()
+            ->get(['lot_type', 'tier', 'dm_price'])
+            ->mapWithKeys(fn ($t) => [$t->lot_type->value . '|' . $t->tier->value => $t->dm_price !== null ? (int) $t->dm_price : null])
+            ->all();
     }
 
     public function status(): JsonResponse
@@ -99,23 +113,40 @@ class AuctioneerController extends OGameController
     {
         $limit = (int) $this->settingValue('auctioneer_history_size', 20);
 
-        return Auction::query()
+        $auctions = Auction::query()
             ->whereIn('status', [AuctionStatus::Closed->value, AuctionStatus::Assigned->value, AuctionStatus::Cancelled->value])
             ->orderByDesc('closed_at')
             ->limit($limit)
-            ->get()
-            ->map(fn (Auction $a) => [
+            ->get();
+
+        // Batch-load winner planet coordinates (galaxy/system) to avoid N+1 queries
+        $planetIds = $auctions->pluck('current_bidder_planet_id')->filter()->unique()->values()->all();
+        $planetCoords = $planetIds === []
+            ? []
+            : Planet::query()
+                ->whereIn('id', $planetIds)
+                ->get(['id', 'galaxy', 'system'])
+                ->mapWithKeys(fn ($p) => [(int) $p->id => ['galaxy' => (int) $p->galaxy, 'system' => (int) $p->system]])
+                ->all();
+
+        return $auctions->map(function (Auction $a) use ($planetCoords) {
+            $coords = $planetCoords[(int) $a->current_bidder_planet_id] ?? null;
+            return [
                 'id' => $a->id,
                 'tier' => $a->tier->value,
+                'lot_type' => $a->lot_type->value,
                 'lot_title' => $a->lot_title,
                 'lot_image' => !empty($a->lot_image) ? $a->lot_image : $this->deriveLotImage($a->lot_type->value, (array) $a->lot_payload),
+                'lot_payload' => (array) $a->lot_payload,
                 'winning_bid' => (int) $a->current_bid_points,
                 'winner_name' => $a->current_bidder_name,
                 'winner_user_id' => $a->current_bidder_user_id,
+                'winner_galaxy' => $coords['galaxy'] ?? null,
+                'winner_system' => $coords['system'] ?? null,
                 'closed_at' => $a->closed_at?->format('H:i:s'),
                 'sold' => $a->current_bidder_user_id !== null,
-            ])
-            ->all();
+            ];
+        })->all();
     }
 
     /**
