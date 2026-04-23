@@ -27,6 +27,7 @@ class AuctioneerService
     public function __construct(
         private readonly PlanetServiceFactory $planetServiceFactory,
         private readonly DarkMatterService $darkMatterService,
+        private readonly InventoryService $inventoryService,
     ) {
     }
 
@@ -484,13 +485,14 @@ class AuctioneerService
             case AuctionLotType::BoosterDetroid:
             case AuctionLotType::BoosterNewtron:
             case AuctionLotType::ResourceBoost:
-                // Booster system not yet implemented; log for manual handling.
-                Log::info('Auctioneer booster awarded (pending booster system)', [
-                    'auction_id' => $auction->id,
-                    'user_id' => $winnerId,
-                    'lot_type' => $auction->lot_type->value,
-                    'payload' => $payload,
-                ]);
+                $granted = $this->inventoryService->grantFromAuction($user, $auction);
+                if ($granted === null) {
+                    Log::warning('Auctioneer booster/amplifier not granted to inventory', [
+                        'auction_id' => $auction->id,
+                        'user_id' => $winnerId,
+                        'lot_type' => $auction->lot_type->value,
+                    ]);
+                }
                 break;
         }
     }

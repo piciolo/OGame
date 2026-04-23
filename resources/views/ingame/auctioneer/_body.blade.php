@@ -242,13 +242,15 @@
                                             // sanitizeTooltip() only strips <script>, so <br /> and spans pass through.
                                             // e() escapes user-provided text; structural HTML kept raw.
                                             // str_replace('"','&quot;') makes the value safe inside title="".
+                                            $curInvKey = resolve(\OGame\Services\InventoryService::class)->registryKeyForLot($lt, $auction->tier->value, $p);
+                                            $curInvCount = $curInvKey !== null ? (int) ($inventoryCounts[$curInvKey] ?? 0) : 0;
                                             $lotTipRaw =
                                                 e($displayTitle)
                                                 . '|'
                                                 . e($descr)
                                                 . '<br /><br />' . e(__('t_auctioneer.tooltip_duration')) . ': ' . e($durLbl)
                                                 . '<br /><br />' . e(__('t_auctioneer.tooltip_price')) . ': &#8212;'
-                                                . '<br />' . e(__('t_auctioneer.tooltip_inventory')) . ': 0';
+                                                . '<br />' . e(__('t_auctioneer.tooltip_inventory')) . ': ' . $curInvCount;
                                             $lotTip = str_replace(['"', "\n", "\r"], ['&quot;', '', ''], $lotTipRaw);
 
                                             // Deterministic ref for tooltip keying
@@ -330,6 +332,7 @@
                                            data-description="{{ $curDescr }}"
                                            data-description-ext="{{ $curDescrExt !== '' ? $curDescrExt : $curDescr }}"
                                            data-duration="{{ $curDur }}"
+                                           data-inventory-count="{{ $curInvCount ?? 0 }}"
                                            @if ($curDm !== null) data-dm-price="{{ $curDm }}" @endif
                                        @else title="" @endif>
                                         @if ($lotSprite)
@@ -550,11 +553,13 @@
                                             }
                                             // Hover tooltip in TITLE|BODY format (tipped.js via generateHTML)
                                             $hPriceLbl = $hDm !== null ? number_format((int) $hDm, 0, ',', '.') . ' ' . __('t_auctioneer.dark_matter') : '&#8212;';
+                                            $hInvKey = resolve(\OGame\Services\InventoryService::class)->registryKeyForLot($h['lot_type'], $h['tier'], $hP);
+                                            $hInvCount = $hInvKey !== null ? (int) ($inventoryCounts[$hInvKey] ?? 0) : 0;
                                             $hTipRaw = e($hTitle) . '|'
                                                 . e($hDescr)
                                                 . '<br /><br />' . e(__('t_auctioneer.tooltip_duration')) . ': ' . e($hDur)
                                                 . '<br /><br />' . e(__('t_auctioneer.tooltip_price')) . ': ' . $hPriceLbl
-                                                . '<br />' . e(__('t_auctioneer.tooltip_inventory')) . ': 0';
+                                                . '<br />' . e(__('t_auctioneer.tooltip_inventory')) . ': ' . $hInvCount;
                                             $hTip = str_replace(['"', "\n", "\r"], ['&quot;', '', ''], $hTipRaw);
                                             $galaxyHref = ($h['sold'] && $h['winner_galaxy'] !== null && $h['winner_system'] !== null)
                                                 ? route('galaxy.index', ['galaxy' => $h['winner_galaxy'], 'system' => $h['winner_system']])
@@ -597,6 +602,7 @@
                                                data-description="{{ $hDescr }}"
                                                data-description-ext="{{ $hDescrExt !== '' ? $hDescrExt : $hDescr }}"
                                                data-duration="{{ $hDur }}"
+                                               data-inventory-count="{{ $hInvCount }}"
                                                @if ($hDm !== null) data-dm-price="{{ $hDm }}" @endif
                                                title="{{ $hTitle }}">
                                                 <img height="30" width="30" alt="" src="{{ $hLargeSprite ?? $h['lot_image'] }}" class="item_img tooltipHTML tooltipLeft {{ $rClass }}" title="{!! $hTip !!}">
@@ -903,7 +909,7 @@
                         <div id="pic"><img src="${esc(img)}" alt="${esc(title)}"></div>
                         <div id="content">
                             <h2>${esc(title)}</h2>
-                            <span class="inventoryAmount">${esc(T_INVENTORY)}: <span class="amount">0</span></span>
+                            <span class="inventoryAmount">${esc(T_INVENTORY)}: <span class="amount">${esc(el.dataset.inventoryCount || '0')}</span></span>
                             <a class="close_details" id="close" href="javascript:void(0);"></a>
                             <br class="clearfloat">
                             <div id="wrapper">
