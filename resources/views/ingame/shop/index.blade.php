@@ -94,7 +94,7 @@
                                          data-ref="{{ $ref }}"
                                          data-categories="{{ $catsAttr }}"
                                          style="background-image: url({{ $imgUrl }}); cursor: pointer;">
-                                        <div class="item_img_box">
+                                        <div class="item_img_box" style="height:75px; background:none;">
                                             <div class="activation enabled"></div>
                                             @if ($durLabel !== '')
                                                 <span class="duration">{{ $durLabel }}</span>
