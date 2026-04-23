@@ -11,13 +11,16 @@ use OGame\Models\Auction;
 use OGame\Models\AuctionLotTemplate;
 use OGame\Models\Planet;
 use OGame\Services\AuctioneerService;
+use OGame\Services\InventoryService;
 use OGame\Services\ObjectService;
 use OGame\Services\PlayerService;
 
 class AuctioneerController extends OGameController
 {
-    public function __construct(private readonly AuctioneerService $auctioneer)
-    {
+    public function __construct(
+        private readonly AuctioneerService $auctioneer,
+        private readonly InventoryService $inventory,
+    ) {
     }
 
     public function index(PlayerService $player): View
@@ -59,6 +62,7 @@ class AuctioneerController extends OGameController
             'minIncrement' => (int) $this->settingValue('auctioneer_min_increment_points', 1),
             'honorPoints' => (int) ($player->getUser()->honor_points ?? 0),
             'dmPriceMap' => $this->buildDmPriceMap(),
+            'inventoryCounts' => $this->inventory->countsByRegistryKey($player->getUser()),
         ];
     }
 
