@@ -111,8 +111,11 @@
                         s.textContent = old.textContent;
                         old.replaceWith(s);
                     });
-                    if (window.Tipped && typeof Tipped.delegate === 'function') {
-                        try { Tipped.create('.tooltip, .tooltipHTML, .tooltipLeft, .tooltipRight'); } catch (e) {}
+                    if (typeof initTooltips === 'function') {
+                        try {
+                            const $tips = $(wrapper).find('.tooltip, .tooltipHTML, .tooltipLeft, .tooltipRight, .tooltipBottom');
+                            if ($tips.length) { initTooltips($tips); }
+                        } catch(e) {}
                     }
 
                     // Slide new content in from the right
