@@ -348,6 +348,19 @@ class ChatController extends OGameController
     }
 
     /**
+     * Report a chat message to game operators. Only messages sent by
+     * another player can be reported; self-reports and duplicates are
+     * silently treated as success so the UI stays idempotent.
+     */
+    public function reportMessage(Request $request, ChatService $chatService, int $id): JsonResponse
+    {
+        $userId = (int) auth()->id();
+        $chatService->reportMessage($id, $userId);
+
+        return response()->json(['status' => 'OK']);
+    }
+
+    /**
      * Toggle chat visibility state.
      * This is called when opening/closing chat windows in the chat bar.
      */
