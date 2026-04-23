@@ -241,19 +241,24 @@ class AuctioneerService
     public function devForceEndCurrent(): ?int
     {
         return DB::transaction(function () {
-            /** @var Auction|null $running */
-            $running = Auction::query()
-                ->where('status', AuctionStatus::Running->value)
+            /** @var Auction|null $auction */
+            $auction = Auction::query()
+                ->whereIn('status', [AuctionStatus::Running->value, AuctionStatus::Waiting->value])
                 ->orderByDesc('id')
                 ->lockForUpdate()
                 ->first();
-            if ($running === null) {
+            if ($auction === null) {
                 return null;
             }
-            $running->ends_at = now()->subSecond();
-            $running->save();
-            $this->closeAndAssign($running);
-            return (int) $running->id;
+            // Waiting auctions have never opened for bids → force-start first so the
+            // close flow can run uniformly (timestamps set, state machine honest).
+            if ($auction->status === AuctionStatus::Waiting) {
+                $this->startAuction($auction);
+            }
+            $auction->ends_at = now()->subSecond();
+            $auction->save();
+            $this->closeAndAssign($auction);
+            return (int) $auction->id;
         }, 3);
     }
 
