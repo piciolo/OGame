@@ -89,6 +89,9 @@
         vertical-align: middle;
         margin-right: 4px;
     }
+    /* detail overlay — hidden by default, populated by JS on history slideIn click */
+    #traderOverview #detail.detail_screen { display: none !important; }
+    #traderOverview #detail.detail_screen.active { display: block !important; }
     #div_traderAuctioneer #js_togglePanelAuctioneer li .option_source {
         display: inline-block !important;
         width: 165px !important;
@@ -142,7 +145,7 @@
                     </div>
                     <div class="content">
                         <p class="stimulus">
-                            <a class="tooltipHTML help rules" title="{{ __('t_auctioneer.title') }}|{{ __('t_auctioneer.description') }}"></a>
+                            <a class="tooltipHTML help rules" title="{{ __('t_auctioneer.rules_title') }}|{!! __('t_auctioneer.rules_body') !!}"></a>
                             {{ __('t_auctioneer.description_line1') }}<br>
                             {{ __('t_auctioneer.description_line2') }} <span style="font-weight:bold;"><span style="color:#99CC00;font-weight:bold;">{{ __('t_auctioneer.description_warning') }}</span></span>
                         </p>
@@ -285,15 +288,50 @@
                                         }
                                         $tierBorder = ['r_rare_140px' => '#FFD700', 'r_uncommon_140px' => '#C0C0C0', 'r_common_140px' => '#CD7F32', 'r_epic_140px' => '#B9F2FF'];
                                         $borderColor = $tierBorder[$tierLarge] ?? '#CD7F32';
+                                        // Data for detail overlay (current auction)
+                                        $curTitle = $hasAuction ? ($displayTitle ?? $auction->lot_title) : '';
+                                        $curDescr = '';
+                                        $curDescrExt = '';
+                                        $curDur = $hasAuction ? ($durLbl ?? '') : '';
+                                        $curDm = null;
+                                        if ($hasAuction) {
+                                            $lt2 = $auction->lot_type->value;
+                                            $p2 = (array) $auction->lot_payload;
+                                            if ($lt2 === 'resource_boost') {
+                                                $rk = $p2['resource'] ?? 'metal';
+                                                $curDescr = __('t_auctioneer.amplifier_' . $rk . '_desc', ['percent' => (int) ($p2['percent'] ?? 0)]);
+                                                $curDescrExt = __('t_auctioneer.amplifier_' . $rk . '_desc_ext', ['percent' => (int) ($p2['percent'] ?? 0)]);
+                                            } elseif (str_starts_with($lt2, 'booster_')) {
+                                                $sec2 = (int) ($p2['duration_seconds'] ?? 0);
+                                                $red2 = $sec2 >= 86400 ? '-' . intdiv($sec2, 86400) . ' ' . (intdiv($sec2, 86400) === 1 ? 'giorno' : 'giorni')
+                                                    : ($sec2 >= 3600 ? '-' . intdiv($sec2, 3600) . (intdiv($sec2, 3600) === 1 ? ' ora' : ' ore')
+                                                    : ($sec2 >= 60 ? '-' . intdiv($sec2, 60) . 'm' : '-' . $sec2 . 's'));
+                                                $curDescr = __('t_auctioneer.' . $lt2 . '_desc', ['reduction' => $red2]);
+                                                $curDescrExt = __('t_auctioneer.' . $lt2 . '_desc_ext');
+                                            }
+                                            $curDm = $dmPriceMap[$lt2 . '|' . $auction->tier->value] ?? null;
+                                        }
                                     @endphp
                                     @php
                                         $tierFrameOffsets = ['r_rare_140px' => '0px 0px', 'r_uncommon_140px' => '-141px 0px', 'r_common_140px' => '-282px 0px', 'r_epic_140px' => '-564px 0px'];
                                         $framePos = $tierFrameOffsets[$tierLarge] ?? '-282px 0px';
                                     @endphp
-                                    <a class="detail_button tooltipHTML js_hideTipOnMobile slideIn {{ $tierLarge }}"
+                                    <a class="detail_button tooltipHTML js_hideTipOnMobile js_currentSlideIn {{ $tierLarge }}"
                                        href="javascript:void(0);"
                                        style="position:relative;display:block;width:140px;height:140px;background:#000;box-sizing:border-box;"
-                                       @if ($hasAuction) ref="{{ $lotRef }}" title="{!! $lotTip !!}" @else title="" @endif>
+                                       @if ($hasAuction)
+                                           ref="{{ $lotRef }}"
+                                           title="{!! $lotTip !!}"
+                                           data-lot-title="{{ $curTitle }}"
+                                           data-lot-type="{{ $auction->lot_type->value }}"
+                                           data-tier="{{ $auction->tier->value }}"
+                                           data-rarity="{{ $tier }}"
+                                           data-lot-image="{{ $lotSprite }}"
+                                           data-description="{{ $curDescr }}"
+                                           data-description-ext="{{ $curDescrExt !== '' ? $curDescrExt : $curDescr }}"
+                                           data-duration="{{ $curDur }}"
+                                           @if ($curDm !== null) data-dm-price="{{ $curDm }}" @endif
+                                       @else title="" @endif>
                                         @if ($lotSprite)
                                             <img src="{{ $lotSprite }}" alt="{{ $auction->lot_title }}" style="position:absolute;top:0;left:0;width:140px;height:140px;z-index:1;object-fit:cover;">
                                         @endif
@@ -482,18 +520,96 @@
                                             $rClass = $tierMap[$h['tier']] ?? 'r_common';
                                             $parity = $i % 2 === 0 ? 'even' : 'odd';
                                             $moreClass = $i >= 3 ? ' more_auctions_li' : '';
+                                            $hDm = $dmPriceMap[$h['lot_type'] . '|' . $h['tier']] ?? null;
+                                            // Build description + duration from lot_type + payload (mirror live auction tooltip logic)
+                                            $hP = (array) ($h['lot_payload'] ?? []);
+                                            $hDescr = '';
+                                            $hDescrExt = '';
+                                            $hDur = __('t_auctioneer.tooltip_instant');
+                                            if ($h['lot_type'] === 'resource_boost') {
+                                                $rk = $hP['resource'] ?? 'metal';
+                                                $hDescr = __('t_auctioneer.amplifier_' . $rk . '_desc', ['percent' => (int) ($hP['percent'] ?? 0)]);
+                                                $hDescrExt = __('t_auctioneer.amplifier_' . $rk . '_desc_ext', ['percent' => (int) ($hP['percent'] ?? 0)]);
+                                                $hDur = __('t_auctioneer.duration_week');
+                                            } elseif (str_starts_with($h['lot_type'], 'booster_')) {
+                                                $sec = (int) ($hP['duration_seconds'] ?? 0);
+                                                $red = $sec >= 86400 ? '-' . intdiv($sec, 86400) . ' ' . (intdiv($sec, 86400) === 1 ? 'giorno' : 'giorni')
+                                                    : ($sec >= 3600 ? '-' . intdiv($sec, 3600) . (intdiv($sec, 3600) === 1 ? ' ora' : ' ore')
+                                                    : ($sec >= 60 ? '-' . intdiv($sec, 60) . 'm' : '-' . $sec . 's'));
+                                                $hDescr = __('t_auctioneer.' . $h['lot_type'] . '_desc', ['reduction' => $red]);
+                                                $hDescrExt = __('t_auctioneer.' . $h['lot_type'] . '_desc_ext');
+                                            }
+                                            // Italian title from payload (amplifiers + boosters) else fallback to stored lot_title
+                                            $hTitle = $h['lot_title'];
+                                            if ($h['lot_type'] === 'resource_boost') {
+                                                $rk = $hP['resource'] ?? 'metal';
+                                                $hTitle = __('t_auctioneer.item_amplifier_' . $rk) . ' ' . __('t_auctioneer.tier_' . $h['tier']);
+                                            } elseif (str_starts_with($h['lot_type'], 'booster_')) {
+                                                $bn = ['booster_kraken' => 'KRAKEN', 'booster_newtron' => 'NEWTRON', 'booster_detroid' => 'DETROID'];
+                                                $hTitle = ($bn[$h['lot_type']] ?? strtoupper(str_replace('booster_', '', $h['lot_type']))) . ' ' . __('t_auctioneer.tier_' . $h['tier']);
+                                            }
+                                            // Hover tooltip in TITLE|BODY format (tipped.js via generateHTML)
+                                            $hPriceLbl = $hDm !== null ? number_format((int) $hDm, 0, ',', '.') . ' ' . __('t_auctioneer.dark_matter') : '&#8212;';
+                                            $hTipRaw = e($hTitle) . '|'
+                                                . e($hDescr)
+                                                . '<br /><br />' . e(__('t_auctioneer.tooltip_duration')) . ': ' . e($hDur)
+                                                . '<br /><br />' . e(__('t_auctioneer.tooltip_price')) . ': ' . $hPriceLbl
+                                                . '<br />' . e(__('t_auctioneer.tooltip_inventory')) . ': 0';
+                                            $hTip = str_replace(['"', "\n", "\r"], ['&quot;', '', ''], $hTipRaw);
+                                            $galaxyHref = ($h['sold'] && $h['winner_galaxy'] !== null && $h['winner_system'] !== null)
+                                                ? route('galaxy.index', ['galaxy' => $h['winner_galaxy'], 'system' => $h['winner_system']])
+                                                : null;
+                                            // Resolve 140px sprite for slideIn preview (same logic as current auction)
+                                            $hFamily = null;
+                                            $hLt = $h['lot_type'];
+                                            $hPayload = (array) ($h['lot_payload'] ?? []);
+                                            if ($hLt === 'resource_boost') {
+                                                $hFamily = 'amplifier_' . ($hPayload['resource'] ?? 'metal');
+                                            } elseif (str_starts_with($hLt, 'booster_')) {
+                                                $hFamily = str_replace('booster_', '', $hLt);
+                                            }
+                                            $hLargeSprite = null;
+                                            if ($hFamily) {
+                                                $exactH = public_path('img/auctioneer/items/' . $hFamily . '_' . $h['tier'] . '.png');
+                                                if (is_file($exactH)) {
+                                                    $hLargeSprite = '/img/auctioneer/items/' . $hFamily . '_' . $h['tier'] . '.png';
+                                                } else {
+                                                    $famM = glob(public_path('img/auctioneer/items/' . $hFamily . '_*.png')) ?: [];
+                                                    if (!empty($famM)) $hLargeSprite = '/img/auctioneer/items/' . basename($famM[0]);
+                                                }
+                                            }
+                                            if (!$hLargeSprite) {
+                                                $pool = glob(public_path('img/auctioneer/lot_*.png')) ?: [];
+                                                if (!empty($pool)) {
+                                                    $idx = (int) hexdec(substr(sha1($hLt . '|' . $h['lot_title']), 0, 8)) % count($pool);
+                                                    $hLargeSprite = '/img/auctioneer/' . basename($pool[$idx]);
+                                                }
+                                            }
                                         @endphp
                                         <li class="{{ $parity }}{{ $moreClass }}" @if ($i >= 3) style="display:none" @endif>
-                                            <a class="slideIn" title="{{ $h['lot_title'] }}">
-                                                @if (!empty($h['lot_image']))
-                                                    <img height="30" width="30" alt="" src="{{ $h['lot_image'] }}" class="item_img tooltipHTML tooltipLeft {{ $rClass }}" title="{{ $h['lot_title'] }}">
-                                                @else
-                                                    <img height="30" width="30" alt="" src="/img/objects/units/crawler_small.jpg" class="item_img tooltipHTML tooltipLeft {{ $rClass }}" title="{{ $h['lot_title'] }}">
-                                                @endif
+                                            <a class="js_historySlideIn"
+                                               href="javascript:void(0);"
+                                               data-lot-title="{{ $hTitle }}"
+                                               data-lot-type="{{ $h['lot_type'] }}"
+                                               data-tier="{{ $h['tier'] }}"
+                                               data-rarity="{{ $rClass }}"
+                                               data-lot-image="{{ $hLargeSprite ?? $h['lot_image'] }}"
+                                               data-description="{{ $hDescr }}"
+                                               data-description-ext="{{ $hDescrExt !== '' ? $hDescrExt : $hDescr }}"
+                                               data-duration="{{ $hDur }}"
+                                               @if ($hDm !== null) data-dm-price="{{ $hDm }}" @endif
+                                               title="{{ $hTitle }}">
+                                                <img height="30" width="30" alt="" src="{{ $hLargeSprite ?? $h['lot_image'] }}" class="item_img tooltipHTML tooltipLeft {{ $rClass }}" title="{!! $hTip !!}">
                                             </a>
                                             @if ($h['sold'])
                                                 <span class="detail sum">{{ number_format($h['winning_bid'], 0, ',', '.') }}</span>
-                                                <span class="detail player"><a>{{ $h['winner_name'] }}</a></span>
+                                                <span class="detail player">
+                                                    @if ($galaxyHref)
+                                                        <a href="{{ $galaxyHref }}">{{ $h['winner_name'] }}</a>
+                                                    @else
+                                                        <a>{{ $h['winner_name'] }}</a>
+                                                    @endif
+                                                </span>
                                             @else
                                                 <span class="detail sum">{{ __('t_auctioneer.not_sold') }}</span>
                                                 <span class="detail player"></span>
@@ -750,6 +866,87 @@
             if (fb) { fb.className = 'bid_feedback error'; fb.textContent = T_NETERR; fb.style.display = ''; }
         } finally { delete btn.dataset.busy; }
     });
+
+    // History slideIn: click a past lot → render #itemDetails overlay (official OGame structure)
+    (function () {
+        const detailEl = document.getElementById('detail');
+        if (!detailEl) return;
+
+        const T_BUY_AT_COST = @json(__('t_auctioneer.buy_at_cost'));
+        const T_BUY_AND_ACTIVATE = @json(__('t_auctioneer.buy_and_activate'));
+        const T_ACTIVATE = @json(__('t_auctioneer.buy_activate_short'));
+        const T_DM_SHORT = @json(__('t_auctioneer.dm_short'));
+        const T_INVENTORY = @json(__('t_auctioneer.tooltip_inventory'));
+        const T_DURATION = @json(__('t_auctioneer.tooltip_duration'));
+        const T_NOT_AVAIL = @json(__('t_auctioneer.not_available_yet'));
+        const T_RULES_TITLE = @json(__('t_auctioneer.rules_title'));
+        const T_RULES_BODY = @json(__('t_auctioneer.rules_body'));
+
+        function esc(s) {
+            return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+        }
+
+        function render(el) {
+            const title = el.dataset.lotTitle || '';
+            const img = el.dataset.lotImage || '';
+            const descr = el.dataset.description || '';
+            const descrExt = el.dataset.descriptionExt || descr;
+            const duration = el.dataset.duration || '';
+            const dmPrice = el.dataset.dmPrice || null;
+            const priceLabel = dmPrice ? Number(dmPrice).toLocaleString('it-IT') : '---';
+            const rulesTooltip = esc(T_RULES_TITLE) + '|' + T_RULES_BODY.replace(/"/g, '&quot;');
+
+            // Structure mirrors official OGame auctioneer item detail overlay
+            detailEl.innerHTML = `
+                <div id="itemDetails">
+                    <div class="detailsHolder">
+                        <div id="pic"><img src="${esc(img)}" alt="${esc(title)}"></div>
+                        <div id="content">
+                            <h2>${esc(title)}</h2>
+                            <span class="inventoryAmount">${esc(T_INVENTORY)}: <span class="amount">0</span></span>
+                            <a class="close_details" id="close" href="javascript:void(0);"></a>
+                            <br class="clearfloat">
+                            <div id="wrapper">
+                                <div id="features">
+                                    <p class="extended_description">${esc(descrExt)} <span class="more_info blue_txt bold">${esc(T_DURATION)}: ${esc(duration)}</span></p>
+                                    <a class="build-it_disabled item tooltip js_hideTipOnMobile" title="${esc(T_NOT_AVAIL)}">
+                                        <span>${esc(T_BUY_AT_COST)} ${priceLabel} ${esc(T_DM_SHORT)}</span>
+                                    </a>
+                                    <a class="build-it_disabled buyAndActivate tooltip js_hideTipOnMobile" title="${esc(T_NOT_AVAIL)}">
+                                        <span>${esc(T_BUY_AND_ACTIVATE)}</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="description">
+                        <a class="tooltipHTML help" title="${rulesTooltip}"></a>
+                        <p><span>${esc(descr)}</span></p>
+                    </div>
+                </div>`;
+            detailEl.classList.add('active');
+            // Wire close button
+            const closeBtn = detailEl.querySelector('.close_details');
+            if (closeBtn) closeBtn.addEventListener('click', hide);
+            // Suppress clicks on disabled buttons
+            detailEl.querySelectorAll('a.build-it_disabled').forEach(b => {
+                b.addEventListener('click', e => e.preventDefault());
+            });
+        }
+
+        function hide() {
+            detailEl.classList.remove('active');
+            detailEl.innerHTML = '<div id="techDetailLoading"></div>';
+        }
+
+        document.querySelectorAll('.js_historySlideIn, .js_currentSlideIn').forEach(function (a) {
+            a.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                render(this);
+            }, true); // capture phase — runs before jQuery delegated handlers on document
+        });
+    })();
 
     // Slide back to merchant overview
     document.querySelectorAll('.js_backToOverview').forEach(function (btn) {

@@ -48,6 +48,18 @@ class AuctionLotTemplatesSeeder extends Seeder
         'platinum' => 60000,
     ];
 
+    /**
+     * Dark Matter price for direct buy (from official shop, 7-day amplifiers).
+     * Bronze and time-reduction boosters are NOT buyable via DM — obtainable only by winning the auction.
+     * Source: https://s272-it.ogame.gameforge.com shop catalog (Risorse, scraped 2026-04-23).
+     */
+    private const DM_PRICE_AMPLIFIER = [
+        'bronze' => null,
+        'silver' => 7500,
+        'gold' => 20000,
+        'platinum' => 30000,
+    ];
+
     private const WEIGHT_PER_TIER = [
         'bronze' => 30,
         'silver' => 15,
@@ -82,6 +94,7 @@ class AuctionLotTemplatesSeeder extends Seeder
                     ],
                     'weight' => self::WEIGHT_PER_TIER[$tier],
                     'min_bid_points' => self::MIN_BID_POINTS[$tier],
+                    'dm_price' => self::DM_PRICE_AMPLIFIER[$tier],
                 ];
             }
         }
@@ -105,6 +118,7 @@ class AuctionLotTemplatesSeeder extends Seeder
                     ],
                     'weight' => self::WEIGHT_PER_TIER[$tier],
                     'min_bid_points' => self::MIN_BID_POINTS[$tier],
+                    'dm_price' => null,
                 ];
             }
         }

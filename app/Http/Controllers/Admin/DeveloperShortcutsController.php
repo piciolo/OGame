@@ -513,7 +513,7 @@ class DeveloperShortcutsController extends OGameController
         }
         $msg = $id !== null
             ? "Auction #{$id} force-ended. Prize delivered (if any) and history updated."
-            : 'No running auction to end.';
+            : 'No open auction to end.';
         return redirect()->back()->with('success', $msg);
     }
 
