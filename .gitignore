@@ -5,6 +5,7 @@
 /vendor
 /.idea
 /.vagrant
+/Deploy
 Homestead.json
 Homestead.yaml
 npm-debug.log
@@ -19,3 +20,24 @@ yarn-error.log
 rust/*/target
 # Compiled rust apps (rust modules are recompiled during container start)
 storage/rust-libs/*.so
+ogame_OR/
+.claude/settings.local.json
+ogame/quizzical-elbakyan/
+docs/PROMPT_CLAUDE_CODE_SALA_UFFICIALI.md
+doc/
+_research/
+deploy/app/Http/Controllers/MerchantController.php
+deploy/tests/Unit/BuildingQueueServiceTest.php
+deploy/tests/Feature/MerchantTest.php
+deploy/resources/views/ingame/merchant/overlay.blade.php
+deploy/app/Services/MerchantService.php
+resources/lang/it/_future_lifeforms.php
+temp_debug_script.js
+temp_debug2.js
+temp_compare_script.js
+audit_keys.js
+app/Services/PlanetService.php
+app/Services/PlanetService.php
+app/Services/PlanetService.php
+app/Console/Commands/Admin/TranslateExistingPlanetNames.php
+PR_BODY_multilang_27.md
