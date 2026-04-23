@@ -33,10 +33,23 @@ class DeveloperShortcutsController extends OGameController
         // Get all unit objects
         $units = ObjectService::getUnitObjects();
 
+        $familyOrder = [
+            'resource_boost_metal', 'resource_boost_crystal',
+            'resource_boost_deuterium', 'resource_boost_energy',
+            'booster_kraken', 'booster_newtron', 'booster_detroid',
+        ];
+
         $lotTemplates = AuctionLotTemplate::query()
+            ->where('enabled', true)
             ->orderByRaw("FIELD(tier, 'bronze','silver','gold','platinum')")
-            ->orderBy('lot_type')
-            ->get();
+            ->get()
+            ->groupBy(function ($tpl) {
+                if ($tpl->lot_type->value === 'resource_boost') {
+                    return 'resource_boost_' . ($tpl->lot_payload['resource'] ?? 'unknown');
+                }
+                return $tpl->lot_type->value;
+            })
+            ->sortBy(fn ($_, $key) => array_search($key, $familyOrder));
 
         return view('ingame.admin.developershortcuts')->with([
             'units' => $units,
