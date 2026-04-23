@@ -352,13 +352,40 @@
                                 </div>
 
                                 {{-- Spawn specific lot template --}}
+                                @php
+                                $familyLabels = [
+                                    'resource_boost_metal'     => 'Amplificatore di metallo',
+                                    'resource_boost_crystal'   => 'Amplificatore di cristallo',
+                                    'resource_boost_deuterium' => 'Amplificatore di deuterio',
+                                    'resource_boost_energy'    => 'Amplificatore di energia',
+                                    'booster_kraken'           => 'KRAKEN',
+                                    'booster_newtron'          => 'NEWTRON',
+                                    'booster_detroid'          => 'DETROID',
+                                ];
+                                $tierLabel = ['bronze'=>'Bronzo','silver'=>'Argento','gold'=>'Oro','platinum'=>'Platino'];
+                                @endphp
                                 <div class="fieldwrapper" style="margin-top: 10px;">
                                     <form action="{{ route('admin.developershortcuts.auctioneer.spawn-specific') }}" method="post" style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
                                         {{ csrf_field() }}
                                         <label style="white-space: nowrap;">@lang('Spawn specific lot:')</label>
-                                        <select name="template_id" style="flex: 1; min-width: 200px; max-width: 420px;">
-                                            @foreach($lotTemplates as $tpl)
-                                                <option value="{{ $tpl->id }}">{{ $tpl->lot_title }} ({{ $tpl->tier->value }}, min {{ number_format($tpl->min_bid_points) }} pts)</option>
+                                        <select name="template_id" style="flex: 1; min-width: 320px; max-width: 520px;">
+                                            @foreach($lotTemplates as $familyKey => $group)
+                                                <optgroup label="── {{ $familyLabels[$familyKey] ?? $familyKey }} ──">
+                                                    @foreach($group as $tpl)
+                                                        @php
+                                                            $p = $tpl->lot_payload ?? [];
+                                                            if ($tpl->lot_type->value === 'resource_boost') {
+                                                                $detail = '+' . ($p['percent'] ?? '?') . '%';
+                                                            } else {
+                                                                $secs = $p['duration_seconds'] ?? 0;
+                                                                $detail = $secs >= 86400
+                                                                    ? '-' . round($secs/86400) . ' giorno'
+                                                                    : ($secs >= 3600 ? '-' . round($secs/3600) . 'h' : '-' . round($secs/60) . 'm');
+                                                            }
+                                                        @endphp
+                                                        <option value="{{ $tpl->id }}">{{ $tpl->lot_title }} {{ $detail }}</option>
+                                                    @endforeach
+                                                </optgroup>
                                             @endforeach
                                         </select>
                                         <input type="submit" class="btn_blue" value="@lang('Spawn')">

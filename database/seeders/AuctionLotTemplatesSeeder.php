@@ -12,7 +12,8 @@ use OGame\Models\AuctionLotTemplate;
  * See _research/auctioneer/official_lots_capture.md
  *
  * Catalog: 7 item families × 4 tiers = 28 lots.
- * - 4 resource boosters (metal/crystal/deuterium/energy) — 7-day buff, +10/+20/+30/+40%
+ * - metal/crystal/deuterium boosters — 7-day buff, +10/+20/+30/+40%
+ * - energy booster — 7-day buff, +20/+40/+60/+80% (confirmed live capture 2026-04-23)
  * - 3 time-reduction boosters (KRAKEN/NEWTRON/DETROID) — single use, -30m/-2h/-6h/-24h
  */
 class AuctionLotTemplatesSeeder extends Seeder
@@ -24,6 +25,13 @@ class AuctionLotTemplatesSeeder extends Seeder
         'silver' => 20,
         'gold' => 30,
         'platinum' => 40,
+    ];
+
+    private const BOOST_PERCENT_ENERGY = [
+        'bronze' => 20,
+        'silver' => 40,
+        'gold' => 60,
+        'platinum' => 80,
     ];
 
     private const TIME_REDUCTION_SECONDS = [
@@ -60,7 +68,8 @@ class AuctionLotTemplatesSeeder extends Seeder
         ];
 
         foreach ($resources as $resKey => $resLabelIt) {
-            foreach (self::BOOST_PERCENT as $tier => $percent) {
+            $percents = $resKey === 'energy' ? self::BOOST_PERCENT_ENERGY : self::BOOST_PERCENT;
+            foreach ($percents as $tier => $percent) {
                 $templates[] = [
                     'name' => ucfirst($resKey) . ' Booster ' . ucfirst($tier),
                     'tier' => $tier,
@@ -99,6 +108,11 @@ class AuctionLotTemplatesSeeder extends Seeder
                 ];
             }
         }
+
+        $validNames = array_column($templates, 'name');
+
+        // Disable any template not in the official 28-lot catalog.
+        AuctionLotTemplate::whereNotIn('name', $validNames)->update(['enabled' => false]);
 
         foreach ($templates as $t) {
             AuctionLotTemplate::updateOrCreate(
