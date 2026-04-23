@@ -291,6 +291,52 @@
                                     </div>
                                 </div>
                             </form>
+
+                            {{-- ===== AUCTIONEER TEST SHORTCUTS ===== --}}
+                            <p class="box_highlight textCenter no_buddies">@lang('Auctioneer test shortcuts')</p>
+                            <div class="group bborder" style="display: block;">
+                                <div class="fieldwrapper">
+                                    <div class="smallFont">@lang('Skip the natural Waiting/Running countdown to test a full auction cycle in seconds. Resources spent on bids are never refunded (matches OGame rules).')</div>
+                                </div>
+                                <div class="fieldwrapper" style="text-align: center;">
+                                    <form action="{{ route('admin.developershortcuts.auctioneer.spawn') }}" method="post" style="display: inline-block; margin: 2px;">
+                                        {{ csrf_field() }}
+                                        <input type="submit" class="btn_blue" value="@lang('Spawn new auction (Waiting)')">
+                                    </form>
+                                    <form action="{{ route('admin.developershortcuts.auctioneer.force-start') }}" method="post" style="display: inline-block; margin: 2px;">
+                                        {{ csrf_field() }}
+                                        <input type="submit" class="btn_blue" value="@lang('Force start (Waiting → Running)')">
+                                    </form>
+                                    <form action="{{ route('admin.developershortcuts.auctioneer.force-end') }}" method="post" style="display: inline-block; margin: 2px;"
+                                          onsubmit="return confirm('Force-end the running auction now? Prize will be assigned to the current highest bidder.');">
+                                        {{ csrf_field() }}
+                                        <input type="submit" class="btn_blue" value="@lang('Force end (assign prize now)')">
+                                    </form>
+                                    <form action="{{ route('admin.developershortcuts.auctioneer.tick') }}" method="post" style="display: inline-block; margin: 2px;">
+                                        {{ csrf_field() }}
+                                        <input type="submit" class="btn_blue" value="@lang('Run tick (state machine)')">
+                                    </form>
+                                    <form action="{{ route('admin.developershortcuts.auctioneer.cancel') }}" method="post" style="display: inline-block; margin: 2px;"
+                                          onsubmit="return confirm('Cancel the current auction without delivering any prize? This is for cleanup only.');">
+                                        {{ csrf_field() }}
+                                        <input type="submit" class="btn_blue" value="@lang('Cancel current auction')">
+                                    </form>
+                                </div>
+
+                                {{-- Spawn specific lot template --}}
+                                <div class="fieldwrapper" style="margin-top: 10px;">
+                                    <form action="{{ route('admin.developershortcuts.auctioneer.spawn-specific') }}" method="post" style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                                        {{ csrf_field() }}
+                                        <label style="white-space: nowrap;">@lang('Spawn specific lot:')</label>
+                                        <select name="template_id" style="flex: 1; min-width: 200px; max-width: 420px;">
+                                            @foreach($lotTemplates as $tpl)
+                                                <option value="{{ $tpl->id }}">{{ $tpl->lot_title }} ({{ $tpl->tier->value }}, min {{ number_format($tpl->min_bid_points) }} pts)</option>
+                                            @endforeach
+                                        </select>
+                                        <input type="submit" class="btn_blue" value="@lang('Spawn')">
+                                    </form>
+                                </div>
+                            </div>
                 </div>
             </div>
             </div>

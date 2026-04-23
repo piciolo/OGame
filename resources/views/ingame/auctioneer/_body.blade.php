@@ -179,11 +179,29 @@
                                                 if (!empty($tp)) $displayTitle = implode(' + ', $tp);
                                             } elseif ($lt === 'dark_matter') {
                                                 $displayTitle = number_format((int)($p['amount'] ?? 0), 0, ',', '.') . ' ' . __('t_auctioneer.dark_matter');
-                                            } elseif (str_starts_with($lt, 'booster_') || $lt === 'resource_boost') {
-                                                $bn = ['booster_kraken' => 'Kraken', 'booster_newtron' => 'Newtron', 'booster_detroid' => 'Detroid', 'resource_boost' => 'Produzione'];
-                                                $tl = ['bronze' => 'Bronze', 'silver' => 'Silver', 'gold' => 'Gold', 'platinum' => 'Platinum'];
-                                                $displayTitle = ($bn[$lt] ?? ucfirst(str_replace('booster_', '', $lt))) . ' ' . ($tl[$auction->tier->value] ?? '');
+                                            } elseif ($lt === 'resource_boost') {
+                                                $resKey = $p['resource'] ?? 'metal';
+                                                $displayTitle = __('t_auctioneer.item_amplifier_' . $resKey) . ' ' . __('t_auctioneer.tier_' . $auction->tier->value);
+                                            } elseif (str_starts_with($lt, 'booster_')) {
+                                                $bn = ['booster_kraken' => 'KRAKEN', 'booster_newtron' => 'NEWTRON', 'booster_detroid' => 'DETROID'];
+                                                $displayTitle = ($bn[$lt] ?? strtoupper(str_replace('booster_', '', $lt))) . ' ' . __('t_auctioneer.tier_' . $auction->tier->value);
                                             }
+
+                                            // Format a reduction label (e.g. "-30m", "-2 ore", "-1 giorno")
+                                            $fmtReduction = function (int $secs): string {
+                                                if ($secs >= 86400) {
+                                                    $d = intdiv($secs, 86400);
+                                                    return '-' . $d . ' ' . ($d === 1 ? 'giorno' : 'giorni');
+                                                }
+                                                if ($secs >= 3600) {
+                                                    $h = intdiv($secs, 3600);
+                                                    return '-' . $h . ($h === 1 ? ' ora' : ' ore');
+                                                }
+                                                if ($secs >= 60) {
+                                                    return '-' . intdiv($secs, 60) . 'm';
+                                                }
+                                                return '-' . $secs . 's';
+                                            };
 
                                             // Description
                                             $descr = '';
@@ -197,37 +215,72 @@
                                                 $descr = __('t_auctioneer.tooltip_receive') . ' ' . (int)($p['amount'] ?? 1) . ' ' . __('t_auctioneer.tooltip_units_delivered');
                                             } elseif ($lt === 'dark_matter') {
                                                 $descr = __('t_auctioneer.tooltip_receive') . ' ' . number_format((int)($p['amount'] ?? 0), 0, ',', '.') . ' ' . __('t_auctioneer.tooltip_dm_credited');
-                                            } elseif (str_starts_with($lt, 'booster_') || $lt === 'resource_boost') {
-                                                $bd = ['booster_kraken' => __('t_auctioneer.booster_kraken_desc'), 'booster_newtron' => __('t_auctioneer.booster_newtron_desc'), 'booster_detroid' => __('t_auctioneer.booster_detroid_desc'), 'resource_boost' => '+' . ($p['percent'] ?? 0) . '% ' . __('t_auctioneer.tooltip_production') . ' ' . ($p['resource'] ?? '')];
-                                                $descr = $bd[$lt] ?? __('t_auctioneer.booster_generic_desc');
+                                            } elseif ($lt === 'resource_boost') {
+                                                $resKey = $p['resource'] ?? 'metal';
+                                                $descr = __('t_auctioneer.amplifier_' . $resKey . '_desc', ['percent' => (int)($p['percent'] ?? 0)]);
+                                            } elseif (str_starts_with($lt, 'booster_')) {
+                                                $reductionLbl = !empty($p['duration_seconds']) ? $fmtReduction((int)$p['duration_seconds']) : '';
+                                                $descr = __('t_auctioneer.' . $lt . '_desc', ['reduction' => $reductionLbl]);
                                             }
 
-                                            // Duration from payload
+                                            // Duration: amplifiers show "1 settimana"; time-reduction boosters show "ora" (consumed instantly)
                                             $durLbl = '—';
-                                            if (!empty($p['duration_seconds'])) {
-                                                $secs = (int)$p['duration_seconds'];
-                                                if ($secs >= 86400)     $durLbl = floor($secs / 86400) . 'g';
-                                                elseif ($secs >= 3600)  $durLbl = floor($secs / 3600) . 'h';
-                                                elseif ($secs >= 60)    $durLbl = floor($secs / 60) . 'm';
-                                                else                    $durLbl = $secs . 's';
+                                            if ($lt === 'resource_boost') {
+                                                $durLbl = __('t_auctioneer.duration_week');
+                                            } elseif (str_starts_with($lt, 'booster_')) {
+                                                $durLbl = __('t_auctioneer.tooltip_instant');
                                             } elseif (in_array($lt, ['resources', 'dark_matter', 'ship'])) {
                                                 $durLbl = __('t_auctioneer.tooltip_instant');
                                             }
 
-                                            $lotTip = $displayTitle . '|' . $descr
-                                                . '<br><br>' . __('t_auctioneer.tooltip_duration') . ': ' . $durLbl
-                                                . '<br>' . __('t_auctioneer.tooltip_price') . ': —'
-                                                . '<br>' . __('t_auctioneer.tooltip_inventory') . ': 0';
+                                            // Build tooltip using the OGame JS format expected by generateHTML():
+                                            // "TITLE|BODY" — title becomes <h1>, body is appended as raw HTML.
+                                            // Double <br /><br /> = blank line between sections (matches official).
+                                            // sanitizeTooltip() only strips <script>, so <br /> and spans pass through.
+                                            // e() escapes user-provided text; structural HTML kept raw.
+                                            // str_replace('"','&quot;') makes the value safe inside title="".
+                                            $lotTipRaw =
+                                                e($displayTitle)
+                                                . '|'
+                                                . e($descr)
+                                                . '<br /><br />' . e(__('t_auctioneer.tooltip_duration')) . ': ' . e($durLbl)
+                                                . '<br /><br />' . e(__('t_auctioneer.tooltip_price')) . ': &#8212;'
+                                                . '<br />' . e(__('t_auctioneer.tooltip_inventory')) . ': 0';
+                                            $lotTip = str_replace(['"', "\n", "\r"], ['&quot;', '', ''], $lotTipRaw);
 
-                                            // Deterministic image key: same lot_type+title → same sprite
+                                            // Deterministic ref for tooltip keying
                                             $lotRef = sha1($lt . '|' . $auction->lot_title);
 
-                                            // Always use lot_*.png (200x200 → 140px sharp downscale).
-                                            // Object _small.jpg are only 40x40 and look blurry at 140px.
-                                            $spriteFiles = glob(public_path('img/auctioneer/lot_*.png')) ?: [];
-                                            if (!empty($spriteFiles)) {
-                                                $idx = (int) hexdec(substr($lotRef, 0, 8)) % count($spriteFiles);
-                                                $lotSprite = '/img/auctioneer/' . basename($spriteFiles[$idx]);
+                                            // Resolve the item-specific icon: items/{family}_{tier}.png.
+                                            // Fallback order: exact tier -> any tier of same family -> random lot_*.png pool.
+                                            $tierValue = $auction->tier->value;
+                                            $familyKey = null;
+                                            if ($lt === 'resource_boost') {
+                                                $familyKey = 'amplifier_' . ($p['resource'] ?? 'metal');
+                                            } elseif (str_starts_with($lt, 'booster_')) {
+                                                $familyKey = str_replace('booster_', '', $lt);
+                                            }
+
+                                            if ($familyKey) {
+                                                $exact = public_path('img/auctioneer/items/' . $familyKey . '_' . $tierValue . '.png');
+                                                if (is_file($exact)) {
+                                                    $lotSprite = '/img/auctioneer/items/' . $familyKey . '_' . $tierValue . '.png';
+                                                } else {
+                                                    // Family fallback: pick any available tier of same family
+                                                    $familyMatches = glob(public_path('img/auctioneer/items/' . $familyKey . '_*.png')) ?: [];
+                                                    if (!empty($familyMatches)) {
+                                                        $lotSprite = '/img/auctioneer/items/' . basename($familyMatches[0]);
+                                                    }
+                                                }
+                                            }
+
+                                            if (!$lotSprite) {
+                                                // Generic fallback for non-booster lot types or no icon found
+                                                $spriteFiles = glob(public_path('img/auctioneer/lot_*.png')) ?: [];
+                                                if (!empty($spriteFiles)) {
+                                                    $idx = (int) hexdec(substr($lotRef, 0, 8)) % count($spriteFiles);
+                                                    $lotSprite = '/img/auctioneer/' . basename($spriteFiles[$idx]);
+                                                }
                                             }
                                         }
                                         $tierBorder = ['r_rare_140px' => '#FFD700', 'r_uncommon_140px' => '#C0C0C0', 'r_common_140px' => '#CD7F32', 'r_epic_140px' => '#B9F2FF'];
@@ -240,7 +293,7 @@
                                     <a class="detail_button tooltipHTML js_hideTipOnMobile slideIn {{ $tierLarge }}"
                                        href="javascript:void(0);"
                                        style="position:relative;display:block;width:140px;height:140px;background:#000;box-sizing:border-box;"
-                                       @if ($hasAuction) ref="{{ $lotRef }}" title="{{ $lotTip }}" @else title="" @endif>
+                                       @if ($hasAuction) ref="{{ $lotRef }}" title="{!! $lotTip !!}" @else title="" @endif>
                                         @if ($lotSprite)
                                             <img src="{{ $lotSprite }}" alt="{{ $auction->lot_title }}" style="position:absolute;top:0;left:0;width:140px;height:140px;z-index:1;object-fit:cover;">
                                         @endif

@@ -5,33 +5,100 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use OGame\Models\AuctionLotTemplate;
 
+/**
+ * Aligned with official OGame Gameforge Auctioneer catalog.
+ * Source: direct capture from https://s272-it.ogame.gameforge.com (Quasi-Stellar IT, 2026-04-22)
+ * + wiki.ogame.org + board.en.ogame.gameforge.com
+ * See _research/auctioneer/official_lots_capture.md
+ *
+ * Catalog: 7 item families × 4 tiers = 28 lots.
+ * - 4 resource boosters (metal/crystal/deuterium/energy) — 7-day buff, +10/+20/+30/+40%
+ * - 3 time-reduction boosters (KRAKEN/NEWTRON/DETROID) — single use, -30m/-2h/-6h/-24h
+ */
 class AuctionLotTemplatesSeeder extends Seeder
 {
+    private const WEEK_SECONDS = 604800;
+
+    private const BOOST_PERCENT = [
+        'bronze' => 10,
+        'silver' => 20,
+        'gold' => 30,
+        'platinum' => 40,
+    ];
+
+    private const TIME_REDUCTION_SECONDS = [
+        'bronze' => 1800,    // 30 minutes
+        'silver' => 7200,    // 2 hours
+        'gold' => 21600,     // 6 hours
+        'platinum' => 86400, // 24 hours
+    ];
+
+    private const MIN_BID_POINTS = [
+        'bronze' => 1000,
+        'silver' => 5000,
+        'gold' => 20000,
+        'platinum' => 60000,
+    ];
+
+    private const WEIGHT_PER_TIER = [
+        'bronze' => 30,
+        'silver' => 15,
+        'gold' => 8,
+        'platinum' => 3,
+    ];
+
     public function run(): void
     {
-        $templates = [
-            // BRONZE — basic resources / small ships
-            ['name' => 'Bronze Resources S', 'tier' => 'bronze', 'lot_type' => 'resources', 'lot_title' => '200k Metal + 100k Crystal', 'lot_payload' => ['metal' => 200000, 'crystal' => 100000], 'weight' => 30, 'min_bid_points' => 1000],
-            ['name' => 'Bronze Light Fighters', 'tier' => 'bronze', 'lot_type' => 'ship', 'lot_title' => '100 Light Fighters', 'lot_payload' => ['unit_id' => 204, 'amount' => 100], 'weight' => 20, 'min_bid_points' => 1000],
-            ['name' => 'Bronze Kraken', 'tier' => 'bronze', 'lot_type' => 'booster_kraken', 'lot_title' => 'KRAKEN Bronze (30min build)', 'lot_payload' => ['duration_seconds' => 1800], 'weight' => 10, 'min_bid_points' => 2000],
+        $templates = [];
 
-            // SILVER
-            ['name' => 'Silver Resources', 'tier' => 'silver', 'lot_type' => 'resources', 'lot_title' => '500k Metal + 300k Crystal + 100k Deut', 'lot_payload' => ['metal' => 500000, 'crystal' => 300000, 'deuterium' => 100000], 'weight' => 25, 'min_bid_points' => 5000],
-            ['name' => 'Silver Cruisers', 'tier' => 'silver', 'lot_type' => 'ship', 'lot_title' => '50 Cruisers', 'lot_payload' => ['unit_id' => 206, 'amount' => 50], 'weight' => 15, 'min_bid_points' => 5000],
-            ['name' => 'Silver Detroid', 'tier' => 'silver', 'lot_type' => 'booster_detroid', 'lot_title' => 'DETROID Silver (2h shipyard)', 'lot_payload' => ['duration_seconds' => 7200], 'weight' => 10, 'min_bid_points' => 8000],
-            ['name' => 'Silver Newtron', 'tier' => 'silver', 'lot_type' => 'booster_newtron', 'lot_title' => 'NEWTRON Silver (2h research)', 'lot_payload' => ['duration_seconds' => 7200], 'weight' => 10, 'min_bid_points' => 8000],
-
-            // GOLD
-            ['name' => 'Gold Resources', 'tier' => 'gold', 'lot_type' => 'resources', 'lot_title' => '2M Metal + 1M Crystal + 500k Deut', 'lot_payload' => ['metal' => 2000000, 'crystal' => 1000000, 'deuterium' => 500000], 'weight' => 20, 'min_bid_points' => 20000],
-            ['name' => 'Gold Battleships', 'tier' => 'gold', 'lot_type' => 'ship', 'lot_title' => '30 Battleships', 'lot_payload' => ['unit_id' => 207, 'amount' => 30], 'weight' => 15, 'min_bid_points' => 20000],
-            ['name' => 'Gold Kraken 6h', 'tier' => 'gold', 'lot_type' => 'booster_kraken', 'lot_title' => 'KRAKEN Gold (6h build)', 'lot_payload' => ['duration_seconds' => 21600], 'weight' => 10, 'min_bid_points' => 30000],
-            ['name' => 'Gold Dark Matter', 'tier' => 'gold', 'lot_type' => 'dark_matter', 'lot_title' => '5000 Dark Matter', 'lot_payload' => ['amount' => 5000], 'weight' => 8, 'min_bid_points' => 30000],
-
-            // PLATINUM
-            ['name' => 'Platinum Bombers', 'tier' => 'platinum', 'lot_type' => 'ship', 'lot_title' => '20 Bombers', 'lot_payload' => ['unit_id' => 211, 'amount' => 20], 'weight' => 10, 'min_bid_points' => 100000],
-            ['name' => 'Platinum Dark Matter', 'tier' => 'platinum', 'lot_type' => 'dark_matter', 'lot_title' => '20000 Dark Matter', 'lot_payload' => ['amount' => 20000], 'weight' => 10, 'min_bid_points' => 100000],
-            ['name' => 'Platinum Resource Boost', 'tier' => 'platinum', 'lot_type' => 'resource_boost', 'lot_title' => 'Metal Booster +30% (7d)', 'lot_payload' => ['resource' => 'metal', 'percent' => 30, 'duration_seconds' => 604800], 'weight' => 8, 'min_bid_points' => 150000],
+        // ---- Resource production amplifiers (7-day buff) ----
+        $resources = [
+            'metal' => 'Amplificatore di metallo',
+            'crystal' => 'Amplificatore di cristallo',
+            'deuterium' => 'Amplificatore di deuterio',
+            'energy' => 'Amplificatore di energia',
         ];
+
+        foreach ($resources as $resKey => $resLabelIt) {
+            foreach (self::BOOST_PERCENT as $tier => $percent) {
+                $templates[] = [
+                    'name' => ucfirst($resKey) . ' Booster ' . ucfirst($tier),
+                    'tier' => $tier,
+                    'lot_type' => 'resource_boost',
+                    'lot_title' => $resLabelIt . ' ' . $this->tierNameIt($tier),
+                    'lot_payload' => [
+                        'resource' => $resKey,
+                        'percent' => $percent,
+                        'duration_seconds' => self::WEEK_SECONDS,
+                    ],
+                    'weight' => self::WEIGHT_PER_TIER[$tier],
+                    'min_bid_points' => self::MIN_BID_POINTS[$tier],
+                ];
+            }
+        }
+
+        // ---- Time-reduction boosters (single use) ----
+        $timeBoosters = [
+            'booster_kraken' => 'KRAKEN',
+            'booster_newtron' => 'NEWTRON',
+            'booster_detroid' => 'DETROID',
+        ];
+
+        foreach ($timeBoosters as $lotType => $boosterName) {
+            foreach (self::TIME_REDUCTION_SECONDS as $tier => $reductionSeconds) {
+                $templates[] = [
+                    'name' => $boosterName . ' ' . ucfirst($tier),
+                    'tier' => $tier,
+                    'lot_type' => $lotType,
+                    'lot_title' => $boosterName . ' ' . $this->tierNameIt($tier),
+                    'lot_payload' => [
+                        'duration_seconds' => $reductionSeconds,
+                    ],
+                    'weight' => self::WEIGHT_PER_TIER[$tier],
+                    'min_bid_points' => self::MIN_BID_POINTS[$tier],
+                ];
+            }
+        }
 
         foreach ($templates as $t) {
             AuctionLotTemplate::updateOrCreate(
@@ -39,5 +106,16 @@ class AuctionLotTemplatesSeeder extends Seeder
                 array_merge($t, ['enabled' => true])
             );
         }
+    }
+
+    private function tierNameIt(string $tier): string
+    {
+        return match ($tier) {
+            'bronze' => 'Bronzo',
+            'silver' => 'Argento',
+            'gold' => 'Oro',
+            'platinum' => 'Platino',
+            default => ucfirst($tier),
+        };
     }
 }

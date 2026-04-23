@@ -227,6 +227,125 @@ class AuctioneerService
         }, 3);
     }
 
+    // --- Developer / admin shortcuts ---------------------------------------
+    //
+    // These helpers let admins skip the natural Waiting/Running countdown for
+    // local testing. They mutate timestamps and re-run the state machine so
+    // the rest of the system (assignPrize, locks, transactions) stays honest.
+
+    /**
+     * Force-end the currently running auction immediately.
+     * If a bidder exists, the prize is assigned via the normal flow.
+     * Returns the auction id that was closed, or null if nothing was running.
+     */
+    public function devForceEndCurrent(): ?int
+    {
+        return DB::transaction(function () {
+            /** @var Auction|null $running */
+            $running = Auction::query()
+                ->where('status', AuctionStatus::Running->value)
+                ->orderByDesc('id')
+                ->lockForUpdate()
+                ->first();
+            if ($running === null) {
+                return null;
+            }
+            $running->ends_at = now()->subSecond();
+            $running->save();
+            $this->closeAndAssign($running);
+            return (int) $running->id;
+        }, 3);
+    }
+
+    /**
+     * Force-promote the current waiting auction to Running immediately.
+     * Returns the auction id promoted, or null if nothing was waiting.
+     */
+    public function devForceStartWaiting(): ?int
+    {
+        return DB::transaction(function () {
+            /** @var Auction|null $waiting */
+            $waiting = Auction::query()
+                ->where('status', AuctionStatus::Waiting->value)
+                ->orderByDesc('id')
+                ->lockForUpdate()
+                ->first();
+            if ($waiting === null) {
+                return null;
+            }
+            $this->startAuction($waiting);
+            return (int) $waiting->id;
+        }, 3);
+    }
+
+    /**
+     * Spawn a new Waiting auction immediately, regardless of whether one
+     * already exists. Returns the new auction id, or null if no template is
+     * available.
+     */
+    public function devSpawnAuction(): ?int
+    {
+        return DB::transaction(function () {
+            $before = Auction::query()->max('id');
+            $this->spawnNewAuction();
+            $after = Auction::query()->max('id');
+            return ($after !== null && $after !== $before) ? (int) $after : null;
+        }, 3);
+    }
+
+    /**
+     * Spawn a new Waiting auction for a specific lot template (by id).
+     * Ignores weight/enabled flag so any template can be tested directly.
+     * Returns the new auction id, or null if the template does not exist.
+     */
+    public function devSpawnAuctionForTemplate(int $templateId): ?int
+    {
+        return DB::transaction(function () use ($templateId) {
+            $template = AuctionLotTemplate::find($templateId);
+            if ($template === null) {
+                return null;
+            }
+            $waiting = (int) $this->setting('auctioneer_waiting_seconds', 3600);
+            $auction = new Auction();
+            $auction->status = AuctionStatus::Waiting;
+            $auction->tier = $template->tier;
+            $auction->lot_type = $template->lot_type;
+            $auction->lot_payload = $template->lot_payload;
+            $auction->lot_title = $template->lot_title;
+            $auction->lot_image = $template->lot_image;
+            $auction->min_bid_points = $template->min_bid_points;
+            $auction->current_bid_points = 0;
+            $auction->waiting_ends_at = now()->addSeconds($waiting);
+            $auction->save();
+            return (int) $auction->id;
+        }, 3);
+    }
+
+    /**
+     * Cancel the current Waiting/Running auction without delivering any
+     * prize. Useful to clean up a stuck test auction. Resources already
+     * spent on bids are NOT refunded (matches OGame rules).
+     * Returns the cancelled auction id, or null if none open.
+     */
+    public function devCancelCurrent(): ?int
+    {
+        return DB::transaction(function () {
+            /** @var Auction|null $auction */
+            $auction = Auction::query()
+                ->whereIn('status', [AuctionStatus::Waiting->value, AuctionStatus::Running->value])
+                ->orderByDesc('id')
+                ->lockForUpdate()
+                ->first();
+            if ($auction === null) {
+                return null;
+            }
+            $auction->status = AuctionStatus::Cancelled;
+            $auction->closed_at = now();
+            $auction->save();
+            return (int) $auction->id;
+        }, 3);
+    }
+
     private function startAuction(Auction $auction): void
     {
         $duration = (int) $this->setting('auctioneer_duration_seconds', 2700);
@@ -247,10 +366,20 @@ class AuctioneerService
                 $auction->status = AuctionStatus::Assigned;
                 $auction->assigned_at = now();
             } catch (\Throwable $e) {
-                Log::error('Auctioneer assign failed', [
+                // Log with full context then re-throw to rollback the outer
+                // DB::transaction in tick(). The auction stays Running and
+                // the next tick retries — this avoids silently losing prizes
+                // when transient failures occur (DB glitch, service down).
+                Log::error('Auctioneer assign failed — rolling back, will retry on next tick', [
                     'auction_id' => $auction->id,
+                    'winner_user_id' => $auction->current_bidder_user_id,
+                    'winner_planet_id' => $auction->current_bidder_planet_id,
+                    'lot_type' => $auction->lot_type->value,
+                    'lot_payload' => $auction->lot_payload,
                     'error' => $e->getMessage(),
+                    'trace' => $e->getTraceAsString(),
                 ]);
+                throw $e;
             }
         }
 
@@ -327,11 +456,11 @@ class AuctioneerService
 
         switch ($auction->lot_type) {
             case AuctionLotType::Resources:
-                $this->grantResources($planetId, (int) ($payload['metal'] ?? 0), (int) ($payload['crystal'] ?? 0), (int) ($payload['deuterium'] ?? 0));
+                $this->grantResources($planetId, $winnerId, (int) ($payload['metal'] ?? 0), (int) ($payload['crystal'] ?? 0), (int) ($payload['deuterium'] ?? 0));
                 break;
 
             case AuctionLotType::Ship:
-                $this->grantShip($planetId, (int) ($payload['unit_id'] ?? 0), (int) ($payload['amount'] ?? 0));
+                $this->grantShip($planetId, $winnerId, (int) ($payload['unit_id'] ?? 0), (int) ($payload['amount'] ?? 0));
                 break;
 
             case AuctionLotType::DarkMatter:
@@ -361,30 +490,79 @@ class AuctioneerService
         }
     }
 
-    private function grantResources(int $planetId, int $metal, int $crystal, int $deuterium): void
+    /**
+     * Resolve a deliverable planet service for the given winner. Falls back to
+     * the user's current/first planet if the original planet is gone.
+     * Throws if nothing usable is found (caller rolls back transaction).
+     */
+    private function resolvePlanetServiceForWinner(int $planetId, int $winnerUserId): PlanetService
     {
-        $service = $this->planetServiceFactory->make($planetId, true);
-        if ($service === null) {
-            return;
+        $service = $planetId > 0 ? $this->planetServiceFactory->make($planetId, true) : null;
+        if ($service !== null) {
+            return $service;
         }
+
+        $user = User::find($winnerUserId);
+        if ($user !== null) {
+            $fallbackId = (int) ($user->planet_current ?? 0);
+            if ($fallbackId > 0) {
+                $service = $this->planetServiceFactory->make($fallbackId, true);
+                if ($service !== null) {
+                    Log::warning('Auctioneer prize delivery: primary planet missing, using planet_current', [
+                        'user_id' => $winnerUserId,
+                        'requested_planet_id' => $planetId,
+                        'fallback_planet_id' => $fallbackId,
+                    ]);
+                    return $service;
+                }
+            }
+            $firstPlanet = Planet::query()->where('user_id', $winnerUserId)->orderBy('id')->first();
+            if ($firstPlanet !== null) {
+                $service = $this->planetServiceFactory->make((int) $firstPlanet->id, true);
+                if ($service !== null) {
+                    Log::warning('Auctioneer prize delivery: using first available planet as fallback', [
+                        'user_id' => $winnerUserId,
+                        'requested_planet_id' => $planetId,
+                        'fallback_planet_id' => (int) $firstPlanet->id,
+                    ]);
+                    return $service;
+                }
+            }
+        }
+
+        throw new \RuntimeException(
+            "Auctioneer prize undeliverable: no planet found for user {$winnerUserId} (requested planet {$planetId})"
+        );
+    }
+
+    private function grantResources(int $planetId, int $winnerUserId, int $metal, int $crystal, int $deuterium): void
+    {
+        $service = $this->resolvePlanetServiceForWinner($planetId, $winnerUserId);
         $service->addResources(new Resources($metal, $crystal, $deuterium, 0), true);
     }
 
-    private function grantShip(int $planetId, int $unitId, int $amount): void
+    private function grantShip(int $planetId, int $winnerUserId, int $unitId, int $amount): void
     {
         if ($unitId <= 0 || $amount <= 0) {
-            return;
-        }
-        $service = $this->planetServiceFactory->make($planetId, true);
-        if ($service === null) {
-            return;
+            Log::error('Auctioneer ship grant: invalid payload', [
+                'unit_id' => $unitId,
+                'amount' => $amount,
+                'planet_id' => $planetId,
+                'user_id' => $winnerUserId,
+            ]);
+            throw new \RuntimeException("Invalid ship prize payload (unit_id={$unitId}, amount={$amount})");
         }
         try {
             $object = \OGame\Services\ObjectService::getUnitObjectById($unitId);
         } catch (\Throwable $e) {
-            Log::warning('Auctioneer ship grant: invalid unit id', ['unit_id' => $unitId]);
-            return;
+            Log::error('Auctioneer ship grant: invalid unit id', [
+                'unit_id' => $unitId,
+                'user_id' => $winnerUserId,
+                'error' => $e->getMessage(),
+            ]);
+            throw $e;
         }
+        $service = $this->resolvePlanetServiceForWinner($planetId, $winnerUserId);
         $service->addUnit($object->machine_name, $amount, true);
     }
 }
