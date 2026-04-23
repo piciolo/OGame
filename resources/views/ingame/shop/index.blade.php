@@ -2,6 +2,16 @@
 
 @section('content')
 
+    <style>
+        /* PR1: suppress OGame native hover sprite on inventory items (we open detail panel instead) */
+        #shop #inhalt .js_invItem a.detail_button,
+        #shop #inhalt .js_invItem a.detail_button:hover,
+        .no-touch#shop .js_invItem a.detail_button:hover,
+        #shop .js_invItem .item_img_box a:hover {
+            background: none !important;
+        }
+    </style>
+
     @if (session('status'))
         <div class="alert alert-success">
             {{ session('status') }}
@@ -94,7 +104,7 @@
                                          data-ref="{{ $ref }}"
                                          data-categories="{{ $catsAttr }}"
                                          style="background-image: url({{ $imgUrl }}); cursor: pointer;">
-                                        <div class="item_img_box" style="height:75px; background:none;">
+                                        <div class="item_img_box">
                                             <div class="activation enabled"></div>
                                             @if ($durLabel !== '')
                                                 <span class="duration">{{ $durLabel }}</span>
