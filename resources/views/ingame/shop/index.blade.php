@@ -110,7 +110,8 @@
                                                 <span class="duration">{{ $durLabel }}</span>
                                             @endif
                                             <a href="javascript:void(0);" tabindex="1"
-                                               class="detail_button js_invSlideIn"
+                                               title="{{ $tipTitle }}|{{ $tipBody }}"
+                                               class="detail_button tooltipHTML js_hideTipOnMobile js_invSlideIn"
                                                data-ref="{{ $ref }}">
                                                 <span class="ecke"><span class="level amount">{{ $item['amount'] }}</span></span>
                                             </a>
