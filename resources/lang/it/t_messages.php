@@ -2,6 +2,15 @@
 
 return [
     // ------------------------
+    'auctioneer_won' => [
+        'from' => 'Battitore',
+        'subject' => 'Hai vinto un\'asta del Battitore',
+        'body' => 'Hai vinto l\'asta del Battitore con un\'offerta di :bid_points punti.
+Lotto: :lot_title
+Il premio è stato consegnato su :planet.',
+    ],
+
+    // ------------------------
     'return_of_fleet_with_resources' => [
         'from' => 'Comando Flotta',
         'subject' => 'Ritorno di una flotta',

@@ -9,6 +9,7 @@ use OGame\Enums\AuctionTier;
 use OGame\Exceptions\AuctionBidException;
 use OGame\Models\Auction;
 use OGame\Models\AuctionBid;
+use OGame\Models\Message;
 use OGame\Models\Resources;
 use OGame\Models\Setting;
 use OGame\Models\User;
@@ -33,8 +34,9 @@ class AuctioneerTest extends AccountTestCase
             'auctioneer_duration_seconds' => '2700',
             'auctioneer_waiting_seconds' => '3600',
             'auctioneer_extension_threshold_seconds' => '30',
-            'auctioneer_extension_min_seconds' => '10',
-            'auctioneer_extension_max_seconds' => '25',
+            // Disable spawn window restriction so tick()-based tests can spawn anytime.
+            'auctioneer_spawn_start_hour' => '-1',
+            'auctioneer_spawn_end_hour' => '-1',
         ];
         foreach ($defaults as $k => $v) {
             Setting::query()->updateOrCreate(['key' => $k], ['value' => $v]);
@@ -183,14 +185,33 @@ class AuctioneerTest extends AccountTestCase
     {
         $auction = $this->createRunningAuction(minBid: 100);
         // Force auction to end in 5 seconds (below extension threshold of 30).
+        // Bronze tier extends by 7-10s (per AuctionTier::lateBidExtensionRange).
         $auction->ends_at = now()->addSeconds(5);
         $auction->save();
 
         $user = User::find($this->currentUserId);
         $updated = $this->service->placeBid($user, $this->currentPlanetId, 1000, 0, 0);
 
-        $this->assertGreaterThan(5, (int) now()->diffInSeconds($updated->ends_at, false));
+        $remaining = (int) now()->diffInSeconds($updated->ends_at, false);
+        $this->assertGreaterThanOrEqual(11, $remaining, 'Bronze should extend by 7-10s minimum');
+        $this->assertLessThanOrEqual(15, $remaining, 'Bronze should extend by 7-10s maximum');
         $this->assertSame(1, (int) $updated->extension_count);
+    }
+
+    public function testLateBidExtensionRangeMatchesTier(): void
+    {
+        // Platinum extends by 2-3s; Bronze by 7-10s. Verify the tier window is honored.
+        $auction = $this->createRunningAuction(minBid: 100);
+        $auction->tier = AuctionTier::Platinum;
+        $auction->ends_at = now()->addSeconds(5);
+        $auction->save();
+
+        $user = User::find($this->currentUserId);
+        $updated = $this->service->placeBid($user, $this->currentPlanetId, 1000, 0, 0);
+
+        $remaining = (int) now()->diffInSeconds($updated->ends_at, false);
+        $this->assertGreaterThanOrEqual(6, $remaining, 'Platinum should extend by 2-3s minimum');
+        $this->assertLessThanOrEqual(8, $remaining, 'Platinum should extend by 2-3s maximum');
     }
 
     public function testExpiredAuctionRejectsBid(): void
@@ -272,6 +293,42 @@ class AuctioneerTest extends AccountTestCase
         $response = $this->get('/auctioneer');
         $response->assertStatus(200);
         $response->assertSee('div_traderAuctioneer', false);
+    }
+
+    public function testWinnerReceivesInGameMessage(): void
+    {
+        $auction = $this->createRunningAuction(minBid: 100);
+        $auction->lot_type = AuctionLotType::DarkMatter;
+        $auction->lot_payload = ['amount' => 1000];
+        $auction->save();
+
+        $user = User::find($this->currentUserId);
+        $this->service->placeBid($user, $this->currentPlanetId, 1000, 0, 0);
+        Auction::whereKey($auction->id)->update(['ends_at' => now()->subSecond()]);
+
+        $messagesBefore = Message::query()->where('user_id', $user->id)->where('key', 'auctioneer_won')->count();
+        $this->service->tick();
+        $messagesAfter = Message::query()->where('user_id', $user->id)->where('key', 'auctioneer_won')->count();
+
+        $this->assertSame($messagesBefore + 1, $messagesAfter, 'Winner must receive an auctioneer_won message');
+    }
+
+    public function testSpawnWindowBlocksOutsideHours(): void
+    {
+        // Set window to a single past hour so "now" is always outside.
+        $now = (int) now()->format('G');
+        $start = $now > 0 ? 0 : 1;
+        $end = $start; // 1-hour window in the past or future
+        Setting::query()->updateOrCreate(['key' => 'auctioneer_spawn_start_hour'], ['value' => (string) $start]);
+        Setting::query()->updateOrCreate(['key' => 'auctioneer_spawn_end_hour'], ['value' => (string) $end]);
+
+        // Force the service to re-read settings.
+        $service = resolve(AuctioneerService::class);
+
+        Auction::query()->delete();
+        $service->tick();
+
+        $this->assertSame(0, Auction::query()->count(), 'No auction should spawn outside the configured window');
     }
 
     public function testBidEndpointReturnsErrorOnNoRunningAuction(): void
