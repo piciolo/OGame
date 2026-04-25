@@ -48,6 +48,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <link rel="stylesheet" href="{{ mix('css/ingame.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/inventory-overlay.css') }}?v={{ @filemtime(public_path('css/inventory-overlay.css')) ?: time() }}">
     <style>
         .lang-flag {
             display:inline-block; width:16px; height:11px;

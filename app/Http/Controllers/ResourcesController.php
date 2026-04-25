@@ -177,6 +177,23 @@ class ResourcesController extends AbstractBuildingsController
 
         $production_factor = $this->planet->getResourceProductionFactor();
 
+        // Inventory item bonus row (PlanetBoost amplifiers active on this planet).
+        // Sum percent_bonus per resource and apply to mine production for display.
+        $activeBoosts = \OGame\Models\PlanetBoost::query()
+            ->where('planet_id', $this->planet->getPlanetId())
+            ->where('expires_at', '>', now())
+            ->get();
+        $boostSum = ['metal' => 0, 'crystal' => 0, 'deuterium' => 0, 'energy' => 0];
+        foreach ($activeBoosts as $b) {
+            if (isset($boostSum[$b->resource])) {
+                $boostSum[$b->resource] += (int) $b->percent_bonus;
+            }
+        }
+        $productionindex_total->items->metal->set($productionindex_total->mine->metal->get() * $boostSum['metal'] / 100);
+        $productionindex_total->items->crystal->set($productionindex_total->mine->crystal->get() * $boostSum['crystal'] / 100);
+        $productionindex_total->items->deuterium->set($productionindex_total->mine->deuterium->get() * $boostSum['deuterium'] / 100);
+        $productionindex_total->items->energy->set($productionindex_total->mine->energy->get() * $boostSum['energy'] / 100);
+
         $productionindex_total->total->metal->set($this->planet->getMetalProductionPerHour());
         $productionindex_total->total->crystal->set($this->planet->getCrystalProductionPerHour());
         $productionindex_total->total->deuterium->set($this->planet->getDeuteriumProductionPerHour());
