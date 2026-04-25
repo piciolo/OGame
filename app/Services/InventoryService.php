@@ -9,11 +9,115 @@ use Illuminate\Support\Facades\Log;
 use OGame\Enums\AuctionLotType;
 use OGame\Enums\InventoryCategory;
 use OGame\Models\Auction;
+use OGame\Models\PlanetBoost;
+use OGame\Models\ShopItem;
 use OGame\Models\User;
 use OGame\Models\UserItem;
 
 class InventoryService
 {
+    /**
+     * Active (non-expired) boosts on a planet, formatted for the Overview buffBar
+     * and Shop tab Inventario "Boost attivi" section.
+     *
+     * Each entry: { resource, percent, expires_at_ts, label, image, rarity }
+     *
+     * @return array<int, array<string, mixed>>
+     */
+    public function activeBoostsForPlanet(int $planetId): array
+    {
+        $rows = PlanetBoost::query()
+            ->where('planet_id', $planetId)
+            ->where('expires_at', '>', now())
+            ->orderBy('resource')
+            ->orderByDesc('percent_bonus')
+            ->get();
+
+        // Pre-load matching ShopItem rows by name to enrich each boost with
+        // description, price and inventory count (for tooltip/detail panel).
+        $names = $rows->map(function ($b) {
+            $tier = $this->tierFromPercent((int) $b->percent_bonus);
+            $resourceLabel = match ($b->resource) {
+                'metal'     => __('t_shop_items.amplifier_metal_title'),
+                'crystal'   => __('t_shop_items.amplifier_crystal_title'),
+                'deuterium' => __('t_shop_items.amplifier_deuterium_title'),
+                'energy'    => __('t_shop_items.amplifier_energy_title'),
+                default     => $b->resource,
+            };
+            return $resourceLabel . ' ' . __('t_shop_items.tier_' . $tier);
+        })->unique()->values()->all();
+
+        $shopItems = ShopItem::query()->whereIn('name', $names)->get()->keyBy('name');
+
+        $userId = $rows->first()?->user_id;
+        $invByItemTypeTier = $userId ? UserItem::query()
+            ->where('user_id', $userId)
+            ->where('status', 'available')
+            ->whereNull('consumed_at')
+            ->get()
+            ->groupBy(fn ($u) => $u->item_type . ':' . ($u->tier ?? ''))
+            ->map(fn ($g) => $g->count())
+            ->all() : [];
+
+        $result = [];
+        foreach ($rows as $b) {
+            $tier = $this->tierFromPercent((int) $b->percent_bonus);
+            $imageFamily = 'amplifier_' . $b->resource;
+            $imagePath = '/img/auctioneer/items/' . $imageFamily . '_' . $tier . '.png';
+            $resourceLabel = match ($b->resource) {
+                'metal'     => __('t_shop_items.amplifier_metal_title'),
+                'crystal'   => __('t_shop_items.amplifier_crystal_title'),
+                'deuterium' => __('t_shop_items.amplifier_deuterium_title'),
+                'energy'    => __('t_shop_items.amplifier_energy_title'),
+                default     => $b->resource,
+            };
+            $label = $resourceLabel . ' ' . __('t_shop_items.tier_' . $tier);
+
+            $shop = $shopItems[$label] ?? null;
+            $description = $shop?->description ?? '';
+            $priceLabel = $shop?->price_label ?? '—';
+            $durationLabel = $shop?->duration_label ?? '—';
+            $inventoryKey = 'amplifier_' . $b->resource . ':' . $tier;
+            $inventoryCount = (int) ($invByItemTypeTier[$inventoryKey] ?? 0);
+
+            $result[] = [
+                'id' => (int) $b->id,
+                'resource' => $b->resource,
+                'percent' => (int) $b->percent_bonus,
+                'expires_at_ts' => (int) $b->expires_at->timestamp,
+                'tier' => $tier,
+                'rarity' => $this->rarityFromTier($tier),
+                'label' => $label,
+                'image_url' => $imagePath,
+                'description' => $description,
+                'price_label' => $priceLabel,
+                'duration_label' => $durationLabel,
+                'inventory_count' => $inventoryCount,
+            ];
+        }
+        return $result;
+    }
+
+    private function tierFromPercent(int $percent): string
+    {
+        return match (true) {
+            $percent >= 40 => 'platinum',
+            $percent >= 30 => 'gold',
+            $percent >= 20 => 'silver',
+            default        => 'bronze',
+        };
+    }
+
+    private function rarityFromTier(string $tier): string
+    {
+        return match ($tier) {
+            'platinum' => 'epic',
+            'gold'     => 'rare',
+            'silver'   => 'uncommon',
+            default    => 'common',
+        };
+    }
+
     /**
      * Resolve the registry key for an auction lot.
      * Returns null for lots that should not go into inventory (dark matter, ships).
@@ -101,7 +205,52 @@ class InventoryService
         $result = [];
         $orders = [];
 
+        // Preload ShopItem rows for any shop_item UserItem (source_ref -> ShopItem)
+        $shopIds = $rows->where('item_type', 'shop_item')->pluck('source_ref')->filter()->unique()->values()->all();
+        $shopItems = [];
+        if (!empty($shopIds)) {
+            $shopItems = ShopItem::query()->whereIn('id', $shopIds)->get()->keyBy('id');
+        }
+
         foreach ($rows as $row) {
+            if ($row->item_type === 'shop_item') {
+                /** @var ShopItem|null $shop */
+                $shop = $shopItems[$row->source_ref] ?? null;
+                if ($shop === null) {
+                    continue;
+                }
+                $ref = UserItem::refFor('shop_item', $shop->ref);
+                if (!isset($result[$ref])) {
+                    $allRef = InventoryCategory::Items->ref();
+                    $durSec = (int) ($shop->duration_seconds ?? 0);
+                    $result[$ref] = [
+                        'ref' => $ref,
+                        'item_type' => 'shop_item',
+                        'tier' => $shop->ref,
+                        'category' => [$allRef],
+                        'amount' => 0,
+                        'rarity' => $shop->rarity,
+                        'imageLarge' => $shop->ref,
+                        'image_override_url' => '/img/shop/' . $shop->image,
+                        'title' => $shop->name . '|' . $this->cleanDescription($shop->description)
+                            . '<br /><br />'
+                            . __('t_shop_items.label_duration') . ': '
+                            . ($durSec > 0 ? $this->humanizeDuration($durSec) : ($shop->duration_label ?? __('t_shop_items.duration_instant'))),
+                        'description_ext' => null,
+                        'description_html' => $this->cleanDescription($shop->description),
+                        'canBeActivated' => true,
+                        'canBeBoughtAndActivated' => false,
+                        'activation_type' => 'instant',
+                        'duration_seconds' => $durSec,
+                        'payload' => $row->payload,
+                        'first_item_id' => (int) $row->id,
+                        'shop_image' => $shop->image,
+                    ];
+                }
+                $result[$ref]['amount']++;
+                continue;
+            }
+
             $key = $row->item_type . ':' . ($row->tier ?? '');
             $def = $registry[$key] ?? null;
             if ($def === null) {
@@ -134,8 +283,11 @@ class InventoryService
             $result[$ref]['amount']++;
         }
 
-        // Recompute tooltip with final amount
+        // Recompute tooltip with final amount for registry items only
         foreach ($result as $ref => &$item) {
+            if ($item['item_type'] === 'shop_item') {
+                continue;
+            }
             $key = $item['item_type'] . ':' . ($item['tier'] ?? '');
             $item['title'] = $this->composeTooltip($registry[$key], $item['payload'], $item['amount']);
         }
@@ -242,6 +394,83 @@ class InventoryService
         });
     }
 
+    /**
+     * Paginated catalog used by the Overview inventory overlay (#activeBuffDetails).
+     *
+     * Sourced from the full ShopItem catalog (130+ rows) ordered by sort_order
+     * to match OGame ufficiale (8 tiles per slide). Owned count merges:
+     *   - UserItem rows purchased from shop (source='shop', source_ref=shop_item.id)
+     *   - UserItem rows granted by auctioneer (matched via booster_type + tier_key)
+     *
+     * @return array{pages: array<int, array<int, array<string, mixed>>>}
+     */
+    public function catalogForPlanet(User $user): array
+    {
+        $itemsPerSlide = 8;
+        $imgDir = '/cdn/img/item-images/';
+
+        // Filter to match OGame ufficiale overlay (~64 items):
+        // exclude profile (avatar), class selection, and long-duration boosters
+        // (30g/90g) which are duplicates of the 7g amplifiers in Risorse.
+        // Also exclude Lifeform variants (mechanic not yet implemented).
+        $shopItems = ShopItem::query()
+            ->whereDoesntHave('categories', function ($q) {
+                $q->whereIn('key', ['booster_30', 'booster_90', 'profilo', 'seleziona_classe']);
+            })
+            ->where('name', 'not like', '%(Forme di vita)%')
+            ->orderBy('sort_order')
+            ->orderBy('id')
+            ->get();
+
+        // Build owned count maps from all available UserItem stacks
+        $userItems = UserItem::query()
+            ->where('user_id', $user->id)
+            ->where('status', 'available')
+            ->whereNull('consumed_at')
+            ->get();
+
+        $ownedByTypeTier = [];   // 'booster_kraken:gold' => N
+        $ownedByShopRef = [];    // shop_item.id => N
+        foreach ($userItems as $ui) {
+            $key = $ui->item_type . ':' . ($ui->tier ?? '');
+            $ownedByTypeTier[$key] = ($ownedByTypeTier[$key] ?? 0) + 1;
+            if ($ui->source === 'shop' && $ui->source_ref) {
+                $ownedByShopRef[(int) $ui->source_ref] = ($ownedByShopRef[(int) $ui->source_ref] ?? 0) + 1;
+            }
+        }
+
+        $tiles = [];
+        foreach ($shopItems as $si) {
+            // Compute owned: shop-purchased + auctioneer-granted matching family/tier
+            $owned = (int) ($ownedByShopRef[(int) $si->id] ?? 0);
+            if (!empty($si->booster_type) && !empty($si->tier_key)) {
+                $auctionKey = 'booster_' . $si->booster_type . ':' . $si->tier_key;
+                $owned += (int) ($ownedByTypeTier[$auctionKey] ?? 0);
+            }
+
+            $tiles[] = [
+                'ref'              => (string) $si->ref,
+                'item_type'        => 'shop_item',
+                'tier'             => (string) ($si->tier_key ?? ''),
+                'rarity'           => (string) ($si->rarity ?? 'common'),
+                'image'            => (string) ($si->image ?? ''),
+                'image_url'        => $imgDir . $si->image,
+                'owned'            => $owned,
+                'can_activate'     => $owned > 0,
+                'duration_label'   => (string) ($si->duration_label ?? __('t_shop_items.duration_instant')),
+                'duration_seconds' => (int) ($si->duration_seconds ?? 0),
+                'title'            => (string) $si->name,
+                'description_html' => (string) ($si->description ?? ''),
+            ];
+        }
+
+        $pages = array_values(array_map('array_values', array_chunk($tiles, $itemsPerSlide)));
+        if (empty($pages)) {
+            $pages = [[]];
+        }
+        return ['pages' => $pages];
+    }
+
     private function composeTooltip(array $def, ?array $payload, int $amount): string
     {
         $title = __('t_shop_items.' . $def['title_key']);
@@ -258,6 +487,11 @@ class InventoryService
               . __('t_shop_items.label_duration') . ': ' . $duration . '<br />'
               . __('t_shop_items.label_inventory') . ': ' . $amount;
         return $title . '|' . $body;
+    }
+
+    private function cleanDescription(?string $raw): string
+    {
+        return (string) ($raw ?? '');
     }
 
     private function humanizeDuration(int $seconds): string

@@ -33,7 +33,15 @@ return [
     // Labels
     'label_duration' => 'Durata',
     'label_inventory' => 'Nell\'inventario',
+    'label_inventory_short' => 'Inventario',
+    'label_time_left' => 'Durata rimanente',
+    'label_phase_in_use' => 'Fase attuale: In uso',
+    'btn_extend' => 'Prolunga',
     'label_price' => 'Prezzo',
+    'overlay_title' => 'Item attivabili',
+    'active_boosts_title' => 'Boost attivi',
+    'tooltip_rules_title' => 'Regole',
+    'shop_link' => 'Allo Shop/Inventario',
     'duration_instant' => 'ora',
     'duration_week' => '1 settimana',
     'unit_week' => 'settimana',
@@ -63,8 +71,17 @@ return [
     'activate_success' => 'Oggetto attivato.',
     'activate_not_found' => 'Oggetto non disponibile nell\'inventario.',
     'activate_not_supported' => 'Attivazione non ancora disponibile per questo oggetto.',
+    'activate_no_target' => 'Nessun obiettivo valido per l\'attivazione (coda vuota o pianeta non disponibile).',
 
     // Empty states
     'inventory_empty' => 'Il tuo inventario è vuoto.',
     'shop_coming_soon' => 'Il negozio di Materia Oscura sarà disponibile a breve.',
+
+    // Buy messages
+    'buy_success' => 'Acquisto completato. Trovi l\'oggetto nell\'inventario.',
+    'buy_insufficient_dm' => 'Materia Oscura insufficiente.',
+    'label_dark_matter' => 'Materia Oscura',
+    'btn_buy' => 'Compra',
+    'btn_confirm_buy' => 'Conferma acquisto',
+    'price' => 'Prezzo',
 ];

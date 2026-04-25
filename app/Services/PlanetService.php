@@ -2059,6 +2059,13 @@ class PlanetService
             }
         }
 
+        // Apply active inventory amplifier (energy) before computing production_factor,
+        // so the boosted energy ratio properly influences mine output.
+        $boostMultipliers = $this->getActiveBoostMultipliers();
+        if ($boostMultipliers['energy'] > 1.0) {
+            $energy_production_total = $energy_production_total * $boostMultipliers['energy'];
+        }
+
         $this->planet->energy_used = (int) min($energy_consumption_total, PHP_INT_MAX);
         $this->planet->energy_max  = (int) min($energy_production_total, PHP_INT_MAX);
 
@@ -2072,12 +2079,49 @@ class PlanetService
         // add to $total_production, which contains the basic income
         $production_total->add($building_production_total);
 
+        // Apply active inventory amplifiers (metal/crystal/deuterium). Same-tier
+        // same-resource stacks duration (handled at activation); different tiers
+        // stack additively (e.g. Bronze 10% + Gold 30% = 40%).
+        $metalAfterBoost     = $production_total->metal->get()     * $boostMultipliers['metal'];
+        $crystalAfterBoost   = $production_total->crystal->get()   * $boostMultipliers['crystal'];
+        $deuteriumAfterBoost = $production_total->deuterium->get() * $boostMultipliers['deuterium'];
+
         // Write values to planet.
         // Use ceil() for positive production to match getObjectProduction() rounding.
         // Cap at PHP_INT_MAX to prevent float-to-int overflow on high-level mines.
-        $this->planet->metal_production     = (int) min(ceil($production_total->metal->get()), PHP_INT_MAX);
-        $this->planet->crystal_production   = (int) min(ceil($production_total->crystal->get()), PHP_INT_MAX);
-        $this->planet->deuterium_production = (int) min(ceil($production_total->deuterium->get()), PHP_INT_MAX);
+        $this->planet->metal_production     = (int) min(ceil($metalAfterBoost), PHP_INT_MAX);
+        $this->planet->crystal_production   = (int) min(ceil($crystalAfterBoost), PHP_INT_MAX);
+        $this->planet->deuterium_production = (int) min(ceil($deuteriumAfterBoost), PHP_INT_MAX);
+    }
+
+    /**
+     * Sum of percent_bonus from active (non-expired) PlanetBoost rows for this planet,
+     * keyed by resource. Returned as multipliers (e.g. 30% bonus → 1.30).
+     *
+     * Boosts are activated by the InventoryActivationService when the user consumes
+     * an Amplifier (metal/crystal/deuterium/energy) from the Shop tab Inventario.
+     *
+     * @return array{metal:float,crystal:float,deuterium:float,energy:float}
+     */
+    private function getActiveBoostMultipliers(): array
+    {
+        $rows = \OGame\Models\PlanetBoost::query()
+            ->where('planet_id', $this->planet->id)
+            ->where('expires_at', '>', now())
+            ->get(['resource', 'percent_bonus']);
+
+        $sum = ['metal' => 0, 'crystal' => 0, 'deuterium' => 0, 'energy' => 0];
+        foreach ($rows as $r) {
+            if (isset($sum[$r->resource])) {
+                $sum[$r->resource] += (int) $r->percent_bonus;
+            }
+        }
+        return [
+            'metal'     => 1 + ($sum['metal']     / 100),
+            'crystal'   => 1 + ($sum['crystal']   / 100),
+            'deuterium' => 1 + ($sum['deuterium'] / 100),
+            'energy'    => 1 + ($sum['energy']    / 100),
+        ];
     }
 
     /**
