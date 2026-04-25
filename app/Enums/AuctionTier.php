@@ -18,4 +18,21 @@ enum AuctionTier: string
             self::Platinum => 5,
         };
     }
+
+    /**
+     * Late-bid extension window in seconds (min, max). Sourced from
+     * ogame-ninja/auction.go observations: smaller tiers extend less
+     * to keep premium auctions tighter / harder to snipe.
+     *
+     * @return array{0:int,1:int}
+     */
+    public function lateBidExtensionRange(): array
+    {
+        return match ($this) {
+            self::Bronze => [7, 10],
+            self::Silver => [5, 7],
+            self::Gold => [3, 5],
+            self::Platinum => [2, 3],
+        };
+    }
 }
