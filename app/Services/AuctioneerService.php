@@ -11,6 +11,8 @@ use OGame\Enums\AuctionTier;
 use OGame\Enums\DarkMatterTransactionType;
 use OGame\Exceptions\AuctionBidException;
 use OGame\Factories\PlanetServiceFactory;
+use OGame\Factories\PlayerServiceFactory;
+use OGame\GameMessages\AuctioneerWon;
 use OGame\Models\Auction;
 use OGame\Models\AuctionBid;
 use OGame\Models\AuctionLotTemplate;
@@ -26,6 +28,7 @@ class AuctioneerService
 
     public function __construct(
         private readonly PlanetServiceFactory $planetServiceFactory,
+        private readonly PlayerServiceFactory $playerServiceFactory,
         private readonly DarkMatterService $darkMatterService,
         private readonly InventoryService $inventoryService,
     ) {
@@ -112,10 +115,8 @@ class AuctioneerService
         $points = $this->calculatePoints($metal, $crystal, $deuterium, $honor);
         $minIncrement = (int) $this->setting('auctioneer_min_increment_points', 1000);
         $extThreshold = (int) $this->setting('auctioneer_extension_threshold_seconds', 30);
-        $extMin = (int) $this->setting('auctioneer_extension_min_seconds', 10);
-        $extMax = (int) $this->setting('auctioneer_extension_max_seconds', 25);
 
-        return DB::transaction(function () use ($user, $planetId, $planetService, $isHonorBid, $metal, $crystal, $deuterium, $honor, $points, $minIncrement, $extThreshold, $extMin, $extMax) {
+        return DB::transaction(function () use ($user, $planetId, $planetService, $isHonorBid, $metal, $crystal, $deuterium, $honor, $points, $minIncrement, $extThreshold) {
             // Lock the running auction
             /** @var Auction|null $auction */
             $auction = Auction::query()
@@ -173,10 +174,12 @@ class AuctioneerService
             $auction->current_bidder_name = $user->username ?? ('Player#' . $user->id);
             $auction->bid_count = (int) $auction->bid_count + 1;
 
-            // Late bid → extend timer (random in [extMin..extMax])
+            // Late bid → extend timer using tier-specific window.
+            // Source: ogame-ninja/auction.go observations of OGame live behavior.
             $remaining = (int) now()->diffInSeconds($auction->ends_at, false);
             if ($remaining <= $extThreshold) {
-                $extra = random_int($extMin, $extMax);
+                [$min, $max] = $auction->tier->lateBidExtensionRange();
+                $extra = random_int($min, $max);
                 $auction->ends_at = $auction->ends_at->copy()->addSeconds($extra);
                 $auction->extension_count = (int) $auction->extension_count + 1;
             }
@@ -355,9 +358,13 @@ class AuctioneerService
     private function startAuction(Auction $auction): void
     {
         $duration = (int) $this->setting('auctioneer_duration_seconds', 2700);
+        // Per-tier jitter: real OGame shows only "approximate time" to discourage
+        // pure sniping. The exact close time is randomized within the tier window.
+        [$min, $max] = $auction->tier->lateBidExtensionRange();
+        $jitter = random_int($min, $max);
         $auction->status = AuctionStatus::Running;
         $auction->started_at = now();
-        $auction->ends_at = now()->addSeconds($duration);
+        $auction->ends_at = now()->addSeconds($duration + $jitter);
         $auction->save();
     }
 
@@ -371,6 +378,7 @@ class AuctioneerService
                 $this->assignPrize($auction);
                 $auction->status = AuctionStatus::Assigned;
                 $auction->assigned_at = now();
+                $this->sendWinnerMessage($auction);
             } catch (\Throwable $e) {
                 // Log with full context then re-throw to rollback the outer
                 // DB::transaction in tick(). The auction stays Running and
@@ -394,6 +402,18 @@ class AuctioneerService
 
     private function spawnNewAuction(): void
     {
+        // OGame spawns one auction per hour from 06:00 to 23:00 (board.it Macro Guida).
+        // Outside this window, no new auction is spawned. Configurable via settings
+        // to support 24/7 testing or different server policies.
+        $startHour = (int) $this->setting('auctioneer_spawn_start_hour', 6);
+        $endHour = (int) $this->setting('auctioneer_spawn_end_hour', 23);
+        if ($startHour >= 0 && $endHour >= 0 && $startHour <= $endHour) {
+            $hour = (int) now()->format('G');
+            if ($hour < $startHour || $hour > $endHour) {
+                return;
+            }
+        }
+
         $template = $this->pickTemplate();
         if ($template === null) {
             return;
@@ -437,6 +457,38 @@ class AuctioneerService
     }
 
     // --- Prize assignment ---------------------------------------------------
+
+    private function sendWinnerMessage(Auction $auction): void
+    {
+        $winnerId = (int) $auction->current_bidder_user_id;
+        if ($winnerId <= 0) {
+            return;
+        }
+        try {
+            $playerService = $this->playerServiceFactory->make($winnerId);
+            if ($playerService->getId() <= 0) {
+                return;
+            }
+            $planetId = (int) ($auction->current_bidder_planet_id ?? 0);
+            if ($planetId <= 0) {
+                $planetId = (int) ($playerService->getUser()->planet_current ?? 0);
+            }
+            $planetTag = $planetId > 0 ? '[planet]' . $planetId . '[/planet]' : '-';
+
+            $messageService = resolve(MessageService::class, ['player' => $playerService]);
+            $messageService->sendSystemMessageToPlayer($playerService, AuctioneerWon::class, [
+                'lot_title' => (string) $auction->lot_title,
+                'planet' => $planetTag,
+                'bid_points' => (string) $auction->current_bid_points,
+            ]);
+        } catch (\Throwable $e) {
+            Log::warning('Auctioneer winner message not sent', [
+                'auction_id' => $auction->id,
+                'winner_user_id' => $winnerId,
+                'error' => $e->getMessage(),
+            ]);
+        }
+    }
 
     private function assignPrize(Auction $auction): void
     {
