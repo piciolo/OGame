@@ -217,6 +217,7 @@ Route::middleware(['auth', 'banned', 'globalgame', 'locale', 'firstlogin'])->gro
     Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
     Route::post('/ajax/shop/detail', [ShopController::class, 'detail'])->name('shop.detail');
     Route::post('/ajax/shop/activate', [ShopController::class, 'activate'])->name('shop.activate');
+    Route::post('/ajax/shop/buy', [ShopController::class, 'buy'])->name('shop.buy');
 
     // Character Class
     Route::get('/characterclass', [CharacterClassController::class, 'index'])->name('characterclass.index');
