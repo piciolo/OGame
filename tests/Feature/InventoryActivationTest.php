@@ -308,6 +308,95 @@ class InventoryActivationTest extends AccountTestCase
         $this->assertSame(2, (int) $boost->percent_bonus);
     }
 
+    public function testEnergyAmplifierRejectedOnMoon(): void
+    {
+        $factory = resolve(\OGame\Factories\PlanetServiceFactory::class);
+        $factory->createMoonForPlanet($this->planetService, 2000000, 100);
+        $moonId = (int) \OGame\Models\Planet::query()
+            ->where('user_id', $this->currentUserId)
+            ->where('planet_type', \OGame\Models\Enums\PlanetType::Moon->value)
+            ->value('id');
+        $this->assertGreaterThan(0, $moonId, 'moon must exist');
+
+        $item = $this->grantItem('amplifier_energy', 'gold', ['percent' => 30, 'duration_seconds' => 604800]);
+        $user = User::find($this->currentUserId);
+
+        $r = $this->service->activate($user, 'amplifier_energy', 'gold', $moonId);
+
+        $this->assertFalse($r['ok']);
+        $this->assertSame('requires_planet', $r['code']);
+
+        $item->refresh();
+        $this->assertSame('available', $item->status, 'item must NOT be consumed when target type is wrong');
+    }
+
+    public function testMetalAmplifierRejectedOnMoon(): void
+    {
+        $factory = resolve(\OGame\Factories\PlanetServiceFactory::class);
+        $factory->createMoonForPlanet($this->planetService, 2000000, 100);
+        $moonId = (int) \OGame\Models\Planet::query()
+            ->where('user_id', $this->currentUserId)
+            ->where('planet_type', \OGame\Models\Enums\PlanetType::Moon->value)
+            ->value('id');
+
+        $this->grantItem('amplifier_metal', 'gold', ['percent' => 30, 'duration_seconds' => 604800]);
+        $user = User::find($this->currentUserId);
+
+        $r = $this->service->activate($user, 'amplifier_metal', 'gold', $moonId);
+
+        $this->assertFalse($r['ok']);
+        $this->assertSame('requires_planet', $r['code']);
+    }
+
+    public function testMoonFieldsRejectedOnPlanet(): void
+    {
+        $item = $this->grantItem('moon_fields', 'gold', ['fields' => 6]);
+        $user = User::find($this->currentUserId);
+
+        $r = $this->service->activate($user, 'moon_fields', 'gold', $this->currentPlanetId);
+
+        $this->assertFalse($r['ok']);
+        $this->assertSame('requires_moon', $r['code']);
+
+        $item->refresh();
+        $this->assertSame('available', $item->status);
+    }
+
+    public function testPlanetFieldsRejectedOnMoon(): void
+    {
+        $factory = resolve(\OGame\Factories\PlanetServiceFactory::class);
+        $factory->createMoonForPlanet($this->planetService, 2000000, 100);
+        $moonId = (int) \OGame\Models\Planet::query()
+            ->where('user_id', $this->currentUserId)
+            ->where('planet_type', \OGame\Models\Enums\PlanetType::Moon->value)
+            ->value('id');
+
+        $this->grantItem('planet_fields', 'gold', ['fields' => 15]);
+        $user = User::find($this->currentUserId);
+
+        $r = $this->service->activate($user, 'planet_fields', 'gold', $moonId);
+
+        $this->assertFalse($r['ok']);
+        $this->assertSame('requires_planet', $r['code']);
+    }
+
+    public function testResourcesLotAllowedOnMoon(): void
+    {
+        $factory = resolve(\OGame\Factories\PlanetServiceFactory::class);
+        $factory->createMoonForPlanet($this->planetService, 2000000, 100);
+        $moonId = (int) \OGame\Models\Planet::query()
+            ->where('user_id', $this->currentUserId)
+            ->where('planet_type', \OGame\Models\Enums\PlanetType::Moon->value)
+            ->value('id');
+
+        $this->grantItem('resources_lot', 'gold', ['metal' => 50000, 'crystal' => 25000, 'deuterium' => 10000]);
+        $user = User::find($this->currentUserId);
+
+        $r = $this->service->activate($user, 'resources_lot', 'gold', $moonId);
+
+        $this->assertTrue($r['ok'], 'resources_lot must work on moon: ' . $r['code']);
+    }
+
     public function testFleetSlotBonusAffectsGetFleetSlotsMax(): void
     {
         $user = User::find($this->currentUserId);
