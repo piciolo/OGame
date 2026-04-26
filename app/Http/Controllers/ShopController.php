@@ -141,7 +141,8 @@ class ShopController extends OGameController
     public function buy(Request $request, PlayerService $player): JsonResponse
     {
         $ref = (string) $request->input('ref', '');
-        if ($ref === '') {
+        // Validate format: 40-char lowercase hex (sha1)
+        if (!preg_match('/^[a-f0-9]{40}$/', $ref)) {
             return response()->json(['error' => true, 'message' => __('t_shop_items.activate_not_found')], 400);
         }
 
@@ -150,10 +151,15 @@ class ShopController extends OGameController
             return response()->json(['error' => true, 'message' => __('t_shop_items.activate_not_found')], 404);
         }
 
+        // Reject items currently disabled in shop UI (e.g. Lifeform variants)
+        if (str_contains($shop->name, '(Forme di vita)')) {
+            return response()->json(['error' => true, 'message' => __('t_shop_items.activate_not_supported')], 422);
+        }
+
         $user = $player->getUser();
 
         try {
-            $this->shop->purchase($user, $shop);
+            $this->shop->purchase($user, $shop, $request->ip());
         } catch (RuntimeException $e) {
             if ($e->getMessage() === 'insufficient_dm') {
                 return response()->json(['error' => true, 'message' => __('t_shop_items.buy_insufficient_dm')], 422);
