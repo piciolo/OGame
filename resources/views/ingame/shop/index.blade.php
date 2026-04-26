@@ -331,16 +331,14 @@
                                         $tipBody = $tooltipParts[1] ?? '';
                                         $imgUrl = $item['image_override_url'] ?? ('/img/auctioneer/items/' . $item['imageLarge'] . '.png');
                                         $catsAttr = implode(',', $item['category']);
+                                        // Native OGame shows the duration badge only for long-running timed
+                                        // items (≥ 1 day). Short-instant items (1h packs, classes, etc.) get no badge.
                                         $durSec = (int) ($item['duration_seconds'] ?? 0);
                                         $durLabel = '';
                                         if ($durSec >= 86400 * 7) {
                                             $durLabel = (int) floor($durSec / (86400 * 7)) . 'w';
                                         } elseif ($durSec >= 86400) {
                                             $durLabel = (int) floor($durSec / 86400) . 'd';
-                                        } elseif ($durSec >= 3600) {
-                                            $durLabel = (int) floor($durSec / 3600) . 'h';
-                                        } elseif ($durSec > 0) {
-                                            $durLabel = (int) floor($durSec / 60) . 'm';
                                         }
                                     @endphp
                                     <div class="item_img r_{{ $item['rarity'] }} js_invItem"
