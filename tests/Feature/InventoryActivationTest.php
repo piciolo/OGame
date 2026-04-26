@@ -107,8 +107,11 @@ class InventoryActivationTest extends AccountTestCase
         $r1 = $this->service->activate($user, 'amplifier_crystal', 'silver', $this->currentPlanetId);
         $this->assertTrue($r1['ok']);
 
-        $boost = PlanetBoost::query()->where('resource', 'crystal')->first();
-        $expiresFirst = $boost->expires_at;
+        // Read raw timestamp via direct SQL to avoid Carbon mutation issues in test env
+        $expiresBefore = (int) \DB::table('planet_boosts')
+            ->where('planet_id', $this->currentPlanetId)
+            ->where('resource', 'crystal')
+            ->value(\DB::raw('UNIX_TIMESTAMP(expires_at)'));
 
         // Activate second time same tier same resource
         $this->grantItem('amplifier_crystal', 'silver', ['percent' => 20, 'duration_seconds' => 604800]);
@@ -121,10 +124,15 @@ class InventoryActivationTest extends AccountTestCase
             ->count();
         $this->assertSame(1, $count, 'same-tier same-resource should NOT duplicate (extends duration)');
 
-        $boost->refresh();
-        $this->assertTrue(
-            $boost->expires_at->greaterThan($expiresFirst->copy()->addDays(6)),
-            'duration must be extended by ~7 days'
+        $expiresAfter = (int) \DB::table('planet_boosts')
+            ->where('planet_id', $this->currentPlanetId)
+            ->where('resource', 'crystal')
+            ->value(\DB::raw('UNIX_TIMESTAMP(expires_at)'));
+
+        $this->assertGreaterThan(
+            $expiresBefore + (6 * 86400),
+            $expiresAfter,
+            'duration must be extended by ~7 days (raw timestamp diff: ' . ($expiresAfter - $expiresBefore) . 's)'
         );
     }
 
@@ -188,5 +196,56 @@ class InventoryActivationTest extends AccountTestCase
         $metalAfter = (int) floor($this->planetService->metal()->get());
         // Allow for storage cap; just verify some metal was credited
         $this->assertGreaterThan($metalBefore, $metalAfter, 'metal should increase after lot activation');
+    }
+
+    public function testActivateInvalidPlanetReturnsError(): void
+    {
+        $this->grantItem('amplifier_metal', 'gold', ['percent' => 30, 'duration_seconds' => 604800]);
+        $user = User::find($this->currentUserId);
+        // Use a planet ID that doesn't belong to the user
+        $foreignPlanet = \OGame\Models\Planet::query()->where('user_id', '!=', $user->id)->value('id');
+        if ($foreignPlanet === null) {
+            $this->markTestSkipped('No foreign planet available for this test');
+        }
+
+        $r = $this->service->activate($user, 'amplifier_metal', 'gold', (int) $foreignPlanet);
+
+        $this->assertFalse($r['ok']);
+        $this->assertSame('invalid_planet', $r['code']);
+    }
+
+    public function testActivateUnknownItemTypeReturnsError(): void
+    {
+        $user = User::find($this->currentUserId);
+        $r = $this->service->activate($user, 'totally_unknown_type', null, $this->currentPlanetId);
+
+        $this->assertFalse($r['ok']);
+        $this->assertSame('unknown_item', $r['code']);
+    }
+
+    public function testTwoConsecutiveActivationsConsumeTwoSeparateItems(): void
+    {
+        // Grant 2 items of the same type/tier
+        $i1 = $this->grantItem('amplifier_crystal', 'gold', ['percent' => 30, 'duration_seconds' => 604800]);
+        $i2 = $this->grantItem('amplifier_crystal', 'gold', ['percent' => 30, 'duration_seconds' => 604800]);
+        $user = User::find($this->currentUserId);
+
+        $r1 = $this->service->activate($user, 'amplifier_crystal', 'gold', $this->currentPlanetId);
+        $r2 = $this->service->activate($user, 'amplifier_crystal', 'gold', $this->currentPlanetId);
+
+        $this->assertTrue($r1['ok']);
+        $this->assertTrue($r2['ok']);
+
+        $i1->refresh();
+        $i2->refresh();
+        $this->assertSame('consumed', $i1->status);
+        $this->assertSame('consumed', $i2->status);
+
+        // Same-tier + same-resource → duration extended on a single PlanetBoost row
+        $boostCount = PlanetBoost::query()
+            ->where('planet_id', $this->currentPlanetId)
+            ->where('resource', 'crystal')
+            ->count();
+        $this->assertSame(1, $boostCount, '2 activations of same tier should extend duration on single row');
     }
 }
