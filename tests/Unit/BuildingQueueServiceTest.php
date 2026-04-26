@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use Exception;
+use OGame\Models\Planet;
 use OGame\Models\Resources;
 use OGame\Models\User;
 use OGame\Services\BuildingQueueService;
@@ -13,12 +14,6 @@ class BuildingQueueServiceTest extends UnitTestCase
 {
     protected BuildingQueueService $buildingQueueService;
 
-    /**
-     * Sequential counter to guarantee unique planet coordinates across tests.
-     * rand() is unreliable because the DB is shared and not reset between tests.
-     */
-    private static int $coordCounter = 0;
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -26,18 +21,32 @@ class BuildingQueueServiceTest extends UnitTestCase
     }
 
     /**
-     * Returns a unique (galaxy, system, planet) triple that will never collide within this class.
+     * Returns a (galaxy, system, planet) triple that is verified to be free in the
+     * database. The unique constraint on planets(galaxy, system, planet) caused the
+     * test to be flaky when rand() collided with an existing planet — see #1400.
      *
      * @return array{galaxy: int, system: int, planet: int}
      */
-    private function uniqueCoords(): array
+    private function uniquePlanetCoords(): array
     {
-        self::$coordCounter++;
-        return [
-            'galaxy' => 9,
-            'system' => 490 + self::$coordCounter,
-            'planet' => 1,
-        ];
+        for ($attempt = 0; $attempt < 100; $attempt++) {
+            $coords = [
+                'galaxy' => rand(1, 9),
+                'system' => rand(1, 499),
+                'planet' => rand(1, 15),
+            ];
+
+            $exists = Planet::where('galaxy', $coords['galaxy'])
+                ->where('system', $coords['system'])
+                ->where('planet', $coords['planet'])
+                ->exists();
+
+            if (! $exists) {
+                return $coords;
+            }
+        }
+
+        throw new \RuntimeException('Unable to find free planet coordinates after 100 attempts.');
     }
 
     /**
@@ -48,14 +57,15 @@ class BuildingQueueServiceTest extends UnitTestCase
         // Create user in database for foreign key constraints
         $user = User::factory()->create();
 
-        // Create planet in database for foreign key constraints (use unique coordinates to avoid conflicts)
-        $planet = \OGame\Models\Planet::factory()->create(array_merge($this->uniqueCoords(), [
+        // Create planet in database for foreign key constraints (use random coordinates to avoid conflicts)
+        $planet = \OGame\Models\Planet::factory()->create([
             'user_id' => $user->id,
+            ...$this->uniquePlanetCoords(),
             'metal_mine' => 5,
             'metal' => 1000000,
             'crystal' => 1000000,
             'deuterium' => 1000000,
-        ]));
+        ]);
         $this->planetService->setPlanet($planet);
         $this->planetService->updateResourceProductionStats(false);
 
@@ -105,16 +115,17 @@ class BuildingQueueServiceTest extends UnitTestCase
         // Create user in database for foreign key constraints
         $user = User::factory()->create();
 
-        // Create planet in database for foreign key constraints (use unique coordinates to avoid conflicts)
-        $planet = \OGame\Models\Planet::factory()->create(array_merge($this->uniqueCoords(), [
+        // Create planet in database for foreign key constraints (use random coordinates to avoid conflicts)
+        $planet = \OGame\Models\Planet::factory()->create([
             'user_id' => $user->id,
+            ...$this->uniquePlanetCoords(),
             'metal_mine' => 5,
             'metal' => 1000000,
             'crystal' => 1000000,
             'deuterium' => 1000000,
             'robot_factory' => 10,
             'nano_factory' => 5,
-        ]));
+        ]);
         $this->planetService->setPlanet($planet);
         $this->planetService->updateResourceProductionStats(false);
 
@@ -172,15 +183,16 @@ class BuildingQueueServiceTest extends UnitTestCase
     {
         // Create user and planet
         $user = User::factory()->create();
-        $planet = \OGame\Models\Planet::factory()->create(array_merge($this->uniqueCoords(), [
+        $planet = \OGame\Models\Planet::factory()->create([
             'user_id' => $user->id,
+            ...$this->uniquePlanetCoords(),
             'metal_mine' => 4,
             'metal' => 1000000,
             'crystal' => 1000000,
             'deuterium' => 1000000,
             'robot_factory' => 10,
             'nano_factory' => 5,
-        ]));
+        ]);
         $this->planetService->setPlanet($planet);
         $this->planetService->updateResourceProductionStats(false);
 
@@ -252,15 +264,16 @@ class BuildingQueueServiceTest extends UnitTestCase
     {
         // Create user and planet
         $user = User::factory()->create();
-        $planet = \OGame\Models\Planet::factory()->create(array_merge($this->uniqueCoords(), [
+        $planet = \OGame\Models\Planet::factory()->create([
             'user_id' => $user->id,
+            ...$this->uniquePlanetCoords(),
             'metal_mine' => 3,
             'metal' => 1000000,
             'crystal' => 1000000,
             'deuterium' => 1000000,
             'robot_factory' => 10,
             'nano_factory' => 5,
-        ]));
+        ]);
         $this->planetService->setPlanet($planet);
         $this->planetService->updateResourceProductionStats(false);
 
@@ -307,15 +320,16 @@ class BuildingQueueServiceTest extends UnitTestCase
     {
         // Create user and planet
         $user = User::factory()->create();
-        $planet = \OGame\Models\Planet::factory()->create(array_merge($this->uniqueCoords(), [
+        $planet = \OGame\Models\Planet::factory()->create([
             'user_id' => $user->id,
+            ...$this->uniquePlanetCoords(),
             'metal_mine' => 5,
             'metal' => 1000000,
             'crystal' => 1000000,
             'deuterium' => 1000000,
             'robot_factory' => 10,
             'nano_factory' => 5,
-        ]));
+        ]);
         $this->planetService->setPlanet($planet);
         $this->planetService->updateResourceProductionStats(false);
 
