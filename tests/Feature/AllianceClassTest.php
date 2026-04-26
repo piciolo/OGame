@@ -40,6 +40,9 @@ class AllianceClassTest extends AccountTestCase
         $name = 'AC Test ' . substr(md5(uniqid((string) mt_rand(), true)), 0, 6);
         $this->alliance = $this->allianceService->createAlliance($this->currentUserId, $tag, $name);
         $this->founder = User::find($this->currentUserId);
+        // Re-login so the auth session reflects the updated alliance_id
+        // (createAndLoginUser cached the user before they joined an alliance).
+        $this->be($this->founder);
     }
 
     public function testAllianceStartsWithoutClass(): void
@@ -243,5 +246,210 @@ class AllianceClassTest extends AccountTestCase
         $this->assertSame(1.0, $this->service->getMineProductionBonus($this->founder));
         $this->assertSame(0, $this->service->getAdditionalCombatResearchLevels($this->founder));
         $this->assertSame(1.0, $this->service->getPlanetSizeBonus($this->founder));
+    }
+
+    // ===========================================================================
+    //  Controller HTTP layer tests (POST /alliance/class/select)
+    // ===========================================================================
+
+    public function testHttpSelectClassRedirectsBackWithSuccessFlash(): void
+    {
+        $this->alliance->created_at = now()->subDays(15);
+        $this->alliance->save();
+
+        $response = $this->post(route('alliance.class.select'), [
+            'class_id' => AllianceClass::TRADER->value,
+        ]);
+
+        $response->assertRedirect(route('alliance.index'));
+        $response->assertSessionHas('success');
+
+        $this->alliance->refresh();
+        $this->assertSame(AllianceClass::TRADER->value, (int) $this->alliance->alliance_class);
+    }
+
+    public function testHttpSelectClassValidationRejectsInvalidId(): void
+    {
+        $this->alliance->created_at = now()->subDays(15);
+        $this->alliance->save();
+
+        $response = $this->post(route('alliance.class.select'), [
+            'class_id' => 99,
+        ]);
+
+        $response->assertSessionHasErrors(['class_id']);
+        $this->alliance->refresh();
+        $this->assertNull($this->alliance->alliance_class, 'invalid class_id must NOT change alliance state');
+    }
+
+    public function testHttpSelectClassRedirectsWithErrorWhenInsufficientDm(): void
+    {
+        $this->alliance->alliance_class_free_used = true;
+        $this->alliance->save();
+
+        $this->dmService->debit(
+            $this->founder,
+            $this->dmService->getBalance($this->founder),
+            'admin_adjustment',
+            'drain'
+        );
+
+        $response = $this->post(route('alliance.class.select'), [
+            'class_id' => AllianceClass::WARRIOR->value,
+        ]);
+
+        $response->assertRedirect(route('alliance.index'));
+        $response->assertSessionHas('error');
+        $this->alliance->refresh();
+        $this->assertNull($this->alliance->alliance_class);
+    }
+
+    public function testHttpSelectClassFailsWhenNotInAlliance(): void
+    {
+        \OGame\Models\AllianceMember::where('user_id', $this->founder->id)->delete();
+        $this->founder->alliance_id = null;
+        $this->founder->save();
+
+        $response = $this->post(route('alliance.class.select'), [
+            'class_id' => AllianceClass::TRADER->value,
+        ]);
+
+        $response->assertRedirect(route('alliance.index'));
+        $response->assertSessionHas('error');
+    }
+
+    // ===========================================================================
+    //  Permission tests (PERMISSION_MANAGE_CLASSES)
+    // ===========================================================================
+
+    public function testFounderHasManageClassesPermissionByDefault(): void
+    {
+        $this->assertTrue($this->service->userCanManage($this->alliance, $this->founder));
+    }
+
+    public function testNonMemberCannotManageClasses(): void
+    {
+        $otherUserId = $this->getSecondPlayerId();
+        $other = User::find($otherUserId);
+
+        $this->assertFalse($this->service->userCanManage($this->alliance, $other));
+    }
+
+    public function testMemberWithoutManageClassesPermissionIsRejected(): void
+    {
+        $otherUserId = $this->getSecondPlayerId();
+        $other = User::find($otherUserId);
+        $other->alliance_id = $this->alliance->id;
+        $other->save();
+        \OGame\Models\AllianceMember::create([
+            'alliance_id' => $this->alliance->id,
+            'user_id' => $other->id,
+            'rank_id' => null,
+            'joined_at' => now(),
+        ]);
+
+        $this->assertFalse(
+            $this->service->userCanManage($this->alliance, $other),
+            'Member without rank/MANAGE_CLASSES must NOT manage classes'
+        );
+
+        $this->alliance->created_at = now()->subDays(15);
+        $this->alliance->save();
+
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('alliance_class_no_permission');
+        $this->service->selectClass($this->alliance, $other, AllianceClass::TRADER);
+    }
+
+    public function testMemberWithManageClassesRankIsAccepted(): void
+    {
+        $otherUserId = $this->getSecondPlayerId();
+        $other = User::find($otherUserId);
+        $other->alliance_id = $this->alliance->id;
+        $other->save();
+
+        $rank = \OGame\Models\AllianceRank::create([
+            'alliance_id' => $this->alliance->id,
+            'rank_name' => 'Class Manager',
+            'permissions' => [\OGame\Models\AllianceRank::PERMISSION_MANAGE_CLASSES],
+            'sort_order' => 1,
+        ]);
+        \OGame\Models\AllianceMember::create([
+            'alliance_id' => $this->alliance->id,
+            'user_id' => $other->id,
+            'rank_id' => $rank->id,
+            'joined_at' => now(),
+        ]);
+
+        $this->assertTrue($this->service->userCanManage($this->alliance, $other));
+
+        $this->alliance->created_at = now()->subDays(15);
+        $this->alliance->save();
+        $this->service->selectClass($this->alliance, $other, AllianceClass::RESEARCHER);
+
+        $this->alliance->refresh();
+        $this->assertSame(AllianceClass::RESEARCHER->value, (int) $this->alliance->alliance_class);
+    }
+
+    // ===========================================================================
+    //  Leave-debuff (3 giorni) tests — verifica vs OGame ufficiale
+    // ===========================================================================
+
+    public function testLeaveDebuffActiveWhenLeftRecently(): void
+    {
+        $this->alliance->created_at = now()->subDays(15);
+        $this->alliance->save();
+        $this->service->selectClass($this->alliance, $this->founder, AllianceClass::TRADER);
+
+        // Simulate the founder having left another alliance 1 day ago
+        $this->founder->alliance_left_at = now()->subDay();
+        $this->founder->save();
+        $this->founder = User::find($this->currentUserId);
+
+        $this->assertTrue($this->service->isUnderLeaveDebuff($this->founder));
+        // Bonuses must be neutral despite Trader being active on the alliance
+        $this->assertSame(1.0, $this->service->getStorageBonus($this->founder));
+        $this->assertSame(1.0, $this->service->getMineProductionBonus($this->founder));
+        $this->assertSame(1.0, $this->service->getCargoSpeedBonus($this->founder));
+    }
+
+    public function testLeaveDebuffExpiresAfter3Days(): void
+    {
+        $this->alliance->created_at = now()->subDays(15);
+        $this->alliance->save();
+        $this->service->selectClass($this->alliance, $this->founder, AllianceClass::TRADER);
+
+        $this->founder->alliance_left_at = now()->subDays(4);
+        $this->founder->save();
+        $this->founder = User::find($this->currentUserId);
+
+        $this->assertFalse($this->service->isUnderLeaveDebuff($this->founder));
+        $this->assertNull($this->service->getLeaveDebuffExpiresAt($this->founder));
+        $this->assertEqualsWithDelta(1.10, $this->service->getStorageBonus($this->founder), 0.001);
+    }
+
+    public function testNoLeaveDebuffWhenNeverLeft(): void
+    {
+        $this->alliance->created_at = now()->subDays(15);
+        $this->alliance->save();
+        $this->service->selectClass($this->alliance, $this->founder, AllianceClass::WARRIOR);
+        $this->founder = User::find($this->currentUserId);
+
+        $this->assertNull($this->founder->alliance_left_at);
+        $this->assertFalse($this->service->isUnderLeaveDebuff($this->founder));
+        $this->assertSame(1, $this->service->getAdditionalCombatResearchLevels($this->founder));
+    }
+
+    public function testLeaveDebuffExpiresAtReturnsCorrectTimestamp(): void
+    {
+        $leftAt = now()->subDay()->setMicro(0);
+        $this->founder->alliance_left_at = $leftAt;
+        $this->founder->save();
+        $this->founder = User::find($this->currentUserId);
+
+        $expectedExpiry = $leftAt->copy()->addDays(3);
+        $actual = $this->service->getLeaveDebuffExpiresAt($this->founder);
+        $this->assertNotNull($actual);
+        $this->assertSame($expectedExpiry->timestamp, $actual->timestamp);
     }
 }

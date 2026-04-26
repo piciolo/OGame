@@ -28,6 +28,12 @@ class AllianceClassService
 {
     private const CHANGE_COOLDOWN_SECONDS = 300; // 5 minutes
 
+    /**
+     * Days a player must wait after leaving an alliance before being able to
+     * benefit from a new alliance class. Verified vs OGame ufficiale.
+     */
+    private const LEAVE_DEBUFF_DAYS = 3;
+
     public function __construct(
         private readonly DarkMatterService $darkMatterService,
     ) {
@@ -155,11 +161,40 @@ class AllianceClassService
         if ($user->alliance_id === null) {
             return null;
         }
+        // Leave-debuff: a player who left an alliance in the last 3 days does NOT
+        // benefit from any alliance class bonus, even if they joined a new one.
+        if ($this->isUnderLeaveDebuff($user)) {
+            return null;
+        }
         $alliance = Alliance::find($user->alliance_id);
         if ($alliance === null) {
             return null;
         }
         return $alliance->allianceClass();
+    }
+
+    /**
+     * True when the user left an alliance within the last LEAVE_DEBUFF_DAYS.
+     * Public so callers (UI tooltips) can show debuff status.
+     */
+    public function isUnderLeaveDebuff(User $user): bool
+    {
+        if ($user->alliance_left_at === null) {
+            return false;
+        }
+        return $user->alliance_left_at->copy()->addDays(self::LEAVE_DEBUFF_DAYS)->isFuture();
+    }
+
+    /**
+     * Returns the timestamp at which the leave-debuff expires, or null if no debuff.
+     */
+    public function getLeaveDebuffExpiresAt(User $user): ?\Illuminate\Support\Carbon
+    {
+        if ($user->alliance_left_at === null) {
+            return null;
+        }
+        $expires = $user->alliance_left_at->copy()->addDays(self::LEAVE_DEBUFF_DAYS);
+        return $expires->isFuture() ? $expires : null;
     }
 
     public function isWarrior(User $user): bool
