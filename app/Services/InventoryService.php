@@ -223,6 +223,10 @@ class InventoryService
                 if (!isset($result[$ref])) {
                     $allRef = InventoryCategory::Items->ref();
                     $durSec = (int) ($shop->duration_seconds ?? 0);
+                    // Prefer DB-scraped duration_label ("ora", "Permanente", "1 settimana") over auto-format.
+                    $durationLabel = $shop->duration_label ?: ($durSec > 0 ? $this->humanizeDuration($durSec) : __('t_shop_items.duration_instant'));
+                    // Prefer DB-scraped extended_description (full OGame native text with placeholders for amounts).
+                    $longDesc = !empty($shop->extended_description) ? $shop->extended_description : $this->cleanDescription($shop->description);
                     $result[$ref] = [
                         'ref' => $ref,
                         'item_type' => 'shop_item',
@@ -234,14 +238,14 @@ class InventoryService
                         'image_override_url' => '/img/shop/' . $shop->image,
                         'title' => $shop->name . '|' . $this->cleanDescription($shop->description)
                             . '<br /><br />'
-                            . __('t_shop_items.label_duration') . ': '
-                            . ($durSec > 0 ? $this->humanizeDuration($durSec) : ($shop->duration_label ?? __('t_shop_items.duration_instant'))),
-                        'description_ext' => null,
-                        'description_html' => $this->cleanDescription($shop->description),
+                            . __('t_shop_items.label_duration') . ': ' . $durationLabel,
+                        'description_ext' => $longDesc,
+                        'description_html' => $longDesc,
                         'canBeActivated' => true,
                         'canBeBoughtAndActivated' => false,
                         'activation_type' => 'instant',
                         'duration_seconds' => $durSec,
+                        'duration_label' => $durationLabel,
                         'payload' => $row->payload,
                         'first_item_id' => (int) $row->id,
                         'shop_image' => $shop->image,

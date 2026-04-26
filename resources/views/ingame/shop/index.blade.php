@@ -576,10 +576,11 @@
                 const detailEl = $('#detail');
                 const parts = (item.title || '').split('|');
                 const title = parts[0] || '';
-                const body = item.description_html || (parts[1] || '').split('<br')[0];
+                const body = item.description_ext || item.description_html || (parts[1] || '').split('<br')[0];
                 const imgUrl = item.image_override_url || ('/img/auctioneer/items/' + item.imageLarge + '.png');
                 const canActivate = item.canBeActivated && item.amount > 0;
-                const duration = humanizeDuration(item.duration_seconds);
+                // Prefer scraped duration_label ("ora", "Permanente"...) over auto-format.
+                const duration = item.duration_label || humanizeDuration(item.duration_seconds);
                 detailEl.innerHTML = `
                     <div id="itemDetails" data-uuid="${esc(ref)}">
                         <div class="detailsHolder">
