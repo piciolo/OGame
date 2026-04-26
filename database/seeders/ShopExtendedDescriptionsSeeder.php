@@ -18,7 +18,7 @@ class ShopExtendedDescriptionsSeeder extends Seeder
 {
     public function run(): void
     {
-        $path = base_path('_research/shop/extended_descriptions.json');
+        $path = database_path('seeders/data/extended_descriptions.json');
         if (!file_exists($path)) {
             $this->command->error("Missing: $path");
             return;
