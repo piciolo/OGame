@@ -296,7 +296,7 @@
         "duration": "Durata: Permanente"
     },
     "Pacchetto Risorse completo": {
-        "description": "Ricevi l`intera produzione giornaliera di tutte le risorse dei tuoi pianeti.",
+        "description": "Ricevi l`intera produzione giornaliera di tutte le risorse dei tuoi pianeti: :metal di Metallo, :crystal di Cristallo e :deuterium di Deuterio.:warning",
         "duration": "Durata: ora"
     }
 }

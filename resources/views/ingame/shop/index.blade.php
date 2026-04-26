@@ -96,6 +96,18 @@
         #shop #detail #itemDetails a.build-it .textlabel { color: #fff !important; }
         #shop #detail #itemDetails a.build-it_disabled .textlabel { color: #848484 !important; }
         #shop #detail #itemDetails .specialPrice em { color: #d43635; text-decoration: line-through; font-style: normal; font-weight: bold; }
+        /* Native OGame warning span — used in detail panel descriptions when an action cannot be performed
+           (e.g. storage full for Pacchetto Risorse completo). Icon is at left, red text on right. */
+        #shop #detail .warningSign,
+        #shop .extended_description .warningSign {
+            display: inline-block;
+            background: url('/img/icons/warning_sign.gif') 0 0 no-repeat;
+            padding: 0 0 0 25px;
+            min-height: 28px;
+            line-height: 14px;
+            color: #d43635;
+            font-weight: bold;
+        }
         #shop .btn_wrap { margin: 0 2px; padding: 0; border: 0; }
         #shop .btn_wrap .btn { display: block; margin-bottom: 4px; }
         /* Remove extra spacing under sidebar category list (caused buttons to drop too low) */

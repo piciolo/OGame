@@ -76,6 +76,7 @@ return [
     // Empty states
     'inventory_empty' => 'Il tuo inventario è vuoto.',
     'shop_coming_soon' => 'Il negozio di Materia Oscura sarà disponibile a breve.',
+    'warning_storage_full' => 'Attenzione: il Deposito è pieno. Non è possibile attivare il pacchetto!',
 
     // Buy messages
     'buy_success' => 'Acquisto completato. Trovi l\'oggetto nell\'inventario.',

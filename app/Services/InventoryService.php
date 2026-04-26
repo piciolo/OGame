@@ -227,6 +227,8 @@ class InventoryService
                     $durationLabel = $shop->duration_label ?: ($durSec > 0 ? $this->humanizeDuration($durSec) : __('t_shop_items.duration_instant'));
                     // Prefer DB-scraped extended_description (full OGame native text with placeholders for amounts).
                     $longDesc = !empty($shop->extended_description) ? $shop->extended_description : $this->cleanDescription($shop->description);
+                    // Runtime substitution for dynamic numeric placeholders (:metal/:crystal/:deuterium/:warning)
+                    $longDesc = $this->substituteResourcePlaceholders($longDesc, $user, $shop);
                     $result[$ref] = [
                         'ref' => $ref,
                         'item_type' => 'shop_item',
@@ -496,6 +498,57 @@ class InventoryService
     private function cleanDescription(?string $raw): string
     {
         return (string) ($raw ?? '');
+    }
+
+    /**
+     * Substitute runtime placeholders in OGame-native description templates:
+     *   :metal       → daily metal production summed across user's planets, capped by free storage on current planet
+     *   :crystal     → idem
+     *   :deuterium   → idem
+     *   :warning     → empty, OR the OGame `warningSign` span if any resource is at zero (storage full)
+     *
+     * Templates that don't contain these placeholders are returned unchanged.
+     */
+    private function substituteResourcePlaceholders(string $template, User $user, ShopItem $shop): string
+    {
+        if (!preg_match('/:metal|:crystal|:deuterium|:warning/', $template)) {
+            return $template;
+        }
+
+        $planets = \OGame\Models\Planet::query()->where('user_id', $user->id)->get();
+        if ($planets->isEmpty()) {
+            return $template;
+        }
+
+        $dailyMetal = 0; $dailyCrystal = 0; $dailyDeuterium = 0;
+        foreach ($planets as $p) {
+            $dailyMetal     += (int) ($p->metal_production ?? 0) * 24;
+            $dailyCrystal   += (int) ($p->crystal_production ?? 0) * 24;
+            $dailyDeuterium += (int) ($p->deuterium_production ?? 0) * 24;
+        }
+
+        // Cap by free storage on the user's current planet (the activation target)
+        $current = $planets->firstWhere('id', $user->planet_current) ?? $planets->first();
+        $freeMetal     = max(0, (int) $current->metal_max - (int) $current->metal);
+        $freeCrystal   = max(0, (int) $current->crystal_max - (int) $current->crystal);
+        $freeDeuterium = max(0, (int) $current->deuterium_max - (int) $current->deuterium);
+        $finalMetal     = min($dailyMetal,     $freeMetal);
+        $finalCrystal   = min($dailyCrystal,   $freeCrystal);
+        $finalDeuterium = min($dailyDeuterium, $freeDeuterium);
+
+        $fmt = fn (int $n) => number_format($n, 0, ',', '.');
+
+        $warning = '';
+        if ($finalMetal === 0 || $finalCrystal === 0 || $finalDeuterium === 0) {
+            $warning = '<br><span class="warningSign">' . __('t_shop_items.warning_storage_full') . '</span>';
+        }
+
+        return strtr($template, [
+            ':metal'     => $fmt($finalMetal),
+            ':crystal'   => $fmt($finalCrystal),
+            ':deuterium' => $fmt($finalDeuterium),
+            ':warning'   => $warning,
+        ]);
     }
 
     private function humanizeDuration(int $seconds): string
