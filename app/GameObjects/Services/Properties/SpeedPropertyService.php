@@ -7,6 +7,7 @@ use OGame\GameObjects\Models\Enums\GameObjectType;
 use OGame\GameObjects\Models\Fields\GameObjectPropertyDetails;
 use OGame\GameObjects\Models\Fields\GameObjectSpeedUpgrade;
 use OGame\GameObjects\Services\Properties\Abstracts\ObjectPropertyService;
+use OGame\Services\AllianceClassService;
 use OGame\Services\CharacterClassService;
 use OGame\Services\PlayerService;
 
@@ -54,6 +55,21 @@ class SpeedPropertyService extends ObjectPropertyService
                 'type' => 'Character class bonus',
                 'value' => $classBonusValue,
                 'percentage' => $classBonus,
+            ];
+            $breakdown['totalValue'] = $totalValue;
+        }
+
+        // Apply alliance class speed bonuses (Mercante: +10% Cargo speed).
+        // Computed on base speed (same convention as character class bonus).
+        $allyBonus = $this->getAllianceClassSpeedBonus($player);
+        if ($allyBonus > 0) {
+            $allyBonusValue = (($effectiveBase / 100) * $allyBonus);
+            $totalValue += $allyBonusValue;
+
+            $breakdown['bonuses'][] = [
+                'type' => 'Alliance class bonus',
+                'value' => $allyBonusValue,
+                'percentage' => $allyBonus,
             ];
             $breakdown['totalValue'] = $totalValue;
         }
@@ -188,6 +204,29 @@ class SpeedPropertyService extends ObjectPropertyService
             }
         }
 
+        return 0;
+    }
+
+    /**
+     * Alliance class speed bonus percentage.
+     *
+     * Mercante (Trader, Alliance): +10% Cargo speed for Small Cargo (id 202) and Large Cargo (id 203).
+     * Verified on official OGame UI s274-it: "Velocità Cargo: +10%".
+     *
+     * @return int Percentage bonus (0-100)
+     */
+    private function getAllianceClassSpeedBonus(PlayerService $player): int
+    {
+        $object = $this->parent_object;
+        if ($object->id !== 202 && $object->id !== 203) {
+            return 0;
+        }
+
+        $allianceClassService = app(AllianceClassService::class);
+        $multiplier = $allianceClassService->getCargoSpeedBonus($player->getUser());
+        if ($multiplier > 1.0) {
+            return (int) round(($multiplier - 1.0) * 100);
+        }
         return 0;
     }
 }

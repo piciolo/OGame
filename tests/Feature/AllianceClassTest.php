@@ -191,6 +191,50 @@ class AllianceClassTest extends AccountTestCase
         $this->assertEqualsWithDelta(1.10, $this->service->getExpeditionSpeedBonus($this->founder), 0.001);
     }
 
+    public function testTraderClassIncreasesCargoShipSpeed(): void
+    {
+        $this->alliance->created_at = now()->subDays(15);
+        $this->alliance->save();
+
+        // Snapshot Small Cargo speed BEFORE the alliance becomes Trader.
+        $smallCargo = \OGame\Services\ObjectService::getUnitObjectByMachineName('small_cargo');
+        $playerService = resolve(\OGame\Factories\PlayerServiceFactory::class)->make($this->founder->id);
+        $speedBefore = (int) $smallCargo->properties->speed->calculate($playerService)->totalValue;
+
+        // Activate Trader class
+        $this->service->selectClass($this->alliance, $this->founder, AllianceClass::TRADER);
+
+        // Re-resolve player to bust cached alliance state
+        $playerService = resolve(\OGame\Factories\PlayerServiceFactory::class)->make($this->founder->id, true);
+        $speedAfter = (int) $smallCargo->properties->speed->calculate($playerService)->totalValue;
+
+        $this->assertGreaterThan($speedBefore, $speedAfter, 'Trader class must increase Small Cargo speed');
+        // +10% of base 5000 = +500 (research bonuses unchanged), so delta should equal 10% of effective base.
+        $delta = $speedAfter - $speedBefore;
+        $this->assertGreaterThanOrEqual(
+            (int) floor($speedBefore * 0.05), // at least +5% to allow for rounding & research interaction
+            $delta,
+            'Cargo speed delta must be at least ~10% of pre-bonus speed'
+        );
+    }
+
+    public function testTraderBonusDoesNotApplyToCombatShips(): void
+    {
+        $this->alliance->created_at = now()->subDays(15);
+        $this->alliance->save();
+
+        $lightFighter = \OGame\Services\ObjectService::getUnitObjectByMachineName('light_fighter');
+        $playerBefore = resolve(\OGame\Factories\PlayerServiceFactory::class)->make($this->founder->id);
+        $speedBefore = (int) $lightFighter->properties->speed->calculate($playerBefore)->totalValue;
+
+        $this->service->selectClass($this->alliance, $this->founder, AllianceClass::TRADER);
+
+        $playerAfter = resolve(\OGame\Factories\PlayerServiceFactory::class)->make($this->founder->id, true);
+        $speedAfter = (int) $lightFighter->properties->speed->calculate($playerAfter)->totalValue;
+
+        $this->assertSame($speedBefore, $speedAfter, 'Trader cargo bonus must NOT touch combat ship speed');
+    }
+
     public function testNoBonusWhenNoAllianceClassSet(): void
     {
         // Founder belongs to alliance but no class is set → all bonuses neutral
