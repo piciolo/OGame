@@ -118,10 +118,11 @@ class ShopService
     /**
      * Deduct dark matter and grant the purchased item into the user's inventory.
      * Runs in a transaction with row-level lock on the user row.
+     * Persists an audit row in shop_purchases for forensics.
      */
-    public function purchase(User $user, ShopItem $item): UserItem
+    public function purchase(User $user, ShopItem $item, ?string $ipAddress = null): UserItem
     {
-        return DB::transaction(function () use ($user, $item) {
+        return DB::transaction(function () use ($user, $item, $ipAddress) {
             /** @var User $locked */
             $locked = User::query()->whereKey($user->id)->lockForUpdate()->firstOrFail();
 
@@ -135,7 +136,7 @@ class ShopService
             // tier is VARCHAR(16) — too small for the sha1 ref (40 chars).
             // Identification of the purchased shop item is via source='shop' + source_ref=$item->id.
             // tier_key from shop_items (bronze/silver/gold/platinum) is used when present.
-            return UserItem::create([
+            $userItem = UserItem::create([
                 'user_id'         => $locked->id,
                 'item_type'       => 'shop_item',
                 'tier'            => $item->tier_key,
@@ -150,6 +151,18 @@ class ShopService
                 'source'          => 'shop',
                 'source_ref'      => (int) $item->id,
             ]);
+
+            \OGame\Models\ShopPurchase::create([
+                'user_id'      => $locked->id,
+                'shop_item_id' => (int) $item->id,
+                'user_item_id' => (int) $userItem->id,
+                'dm_spent'     => (int) $item->price_dm,
+                'item_name'    => mb_substr($item->name, 0, 100),
+                'ip_address'   => $ipAddress,
+                'created_at'   => now(),
+            ]);
+
+            return $userItem;
         });
     }
 }
