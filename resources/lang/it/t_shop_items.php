@@ -56,6 +56,10 @@ return [
     'amplifier_deuterium_title' => 'Amplificatore di deuterio',
     'amplifier_energy_title' => 'Amplificatore di energia',
     'resources_lot_title' => 'Pacchetto Risorse',
+    'planet_fields_title' => 'Spazi pianeta',
+    'moon_fields_title' => 'Campi lunari',
+    'expedition_slot_title' => 'Slot spedizioni',
+    'fleet_slot_title' => 'Slot flotte',
 
     // Item descriptions (short — reused from auctioneer)
     'booster_kraken_desc' => 'Fa diminuire (:reduction) il tempo di costruzione degli edifici attualmente in costruzione su un pianeta.',
@@ -66,6 +70,10 @@ return [
     'amplifier_deuterium_desc' => ':percent% in più di produzione di sintetizzatore di deuterio su un pianeta',
     'amplifier_energy_desc' => '+:percent% di produzione energetica sul pianeta',
     'resources_lot_desc' => 'Ricevi un pacchetto fisso di risorse: :metal metallo, :crystal cristallo, :deuterium deuterio.',
+    'planet_fields_desc' => 'Aumenta in modo permanente la dimensione del pianeta di :fields campi.',
+    'moon_fields_desc' => 'Aumenta in modo permanente la dimensione della luna di :fields campi.',
+    'expedition_slot_desc' => 'Aumenta di :slots il numero di spedizioni simultanee.',
+    'fleet_slot_desc' => 'Aumenta di :slots il numero di flotte simultanee.',
 
     // Activation messages
     'activate_success' => 'Oggetto attivato.',

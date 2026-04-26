@@ -95,6 +95,10 @@ class InventoryActivationService
                     $itemType === 'booster_newtron'  => $this->applyResearchQueueReduction($user, $this->reductionFor($def, $item)),
                     str_starts_with($itemType, 'amplifier_') => $this->applyAmplifier($user, $planetId, $itemType, $item),
                     $itemType === 'resources_lot'    => $this->applyResourcesLot($user, $planetId, $tier, $item),
+                    $itemType === 'planet_fields'    => $this->applyPermanentFields($planet, $item, isMoon: false),
+                    $itemType === 'moon_fields'      => $this->applyPermanentFields($planet, $item, isMoon: true),
+                    $itemType === 'expedition_slot'  => $this->applyTimedSlots($user, $planetId, 'expedition_slots', $item),
+                    $itemType === 'fleet_slot'       => $this->applyTimedSlots($user, $planetId, 'fleet_slots', $item),
                     default => null,
                 };
             } catch (RuntimeException $e) {
@@ -321,6 +325,74 @@ class InventoryActivationService
         }
 
         $service->addResources(new Resources($metal, $crystal, $deuterium, 0), true);
+        return true;
+    }
+
+    /**
+     * Permanent +N fields on the chosen planet (Spazi Pianeta) or moon (Campi Lunari).
+     * The target row's `field_max` column is incremented atomically.
+     *
+     * Tiers (verified OGame ufficiale):
+     *   planet — Bronze +4, Silver +9, Gold +15, Platinum +20
+     *   moon   — Bronze +2, Silver +4, Gold +6,  Platinum +8
+     */
+    private function applyPermanentFields(Planet $planet, UserItem $item, bool $isMoon): bool
+    {
+        $payload = (array) ($item->payload ?? []);
+        $fields = (int) ($payload['fields'] ?? 0);
+        if ($fields <= 0) {
+            return false;
+        }
+        if ($isMoon && !$planet->planet_type) {
+            // moon_fields applied on a non-moon row → invalid context
+            return false;
+        }
+
+        $planet->field_max = (int) $planet->field_max + $fields;
+        $planet->save();
+        return true;
+    }
+
+    /**
+     * Timed +N expedition_slots / fleet_slots stored as a PlanetBoost row keyed by a
+     * non-resource string (resource = 'expedition_slots' | 'fleet_slots'). The
+     * downstream Fleet/Expedition services sum percent_bonus from active rows
+     * to compute the user's effective slot cap.
+     *
+     * Tiers (verified OGame ufficiale): Bronze +1, Silver +2, Gold +3 (default 7d).
+     */
+    private function applyTimedSlots(User $user, int $planetId, string $resource, UserItem $item): bool
+    {
+        $payload = (array) ($item->payload ?? []);
+        $slots = (int) ($payload['slots'] ?? 0);
+        $duration = (int) ($payload['duration_seconds'] ?? 604800);
+        if ($slots <= 0 || $duration <= 0) {
+            return false;
+        }
+
+        // Same-tier same-resource: extend duration (consistent with amplifier rule)
+        $existing = PlanetBoost::query()
+            ->where('planet_id', $planetId)
+            ->where('resource', $resource)
+            ->where('percent_bonus', $slots)
+            ->where('expires_at', '>', now())
+            ->lockForUpdate()
+            ->first();
+
+        if ($existing !== null) {
+            $existing->expires_at = $existing->expires_at->copy()->addSeconds($duration);
+            $existing->save();
+            return true;
+        }
+
+        PlanetBoost::create([
+            'planet_id' => $planetId,
+            'user_id' => $user->id,
+            'resource' => $resource,
+            'percent_bonus' => $slots,
+            'expires_at' => now()->addSeconds($duration),
+            'source_user_item_id' => $item->id,
+        ]);
         return true;
     }
 }

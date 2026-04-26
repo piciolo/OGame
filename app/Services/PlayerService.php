@@ -564,7 +564,15 @@ class PlayerService
         $officer_fleet_bonus = $officerService->getAdmiralFleetSlots($user)
             + $officerService->getCommandingStaffFleetSlots($user);
 
-        return $fleet_slots_from_research + $fleet_slots_bonus + $officer_fleet_bonus;
+        // Add inventory item bonus (Slot Flotte) — sum of active PlanetBoost rows
+        // with resource='fleet_slots' across all user's planets.
+        $inventory_fleet_bonus = (int) \OGame\Models\PlanetBoost::query()
+            ->where('user_id', $this->getId())
+            ->where('resource', 'fleet_slots')
+            ->where('expires_at', '>', now())
+            ->sum('percent_bonus');
+
+        return $fleet_slots_from_research + $fleet_slots_bonus + $officer_fleet_bonus + $inventory_fleet_bonus;
     }
 
     /**
@@ -613,7 +621,15 @@ class PlayerService
         $officerService = app(OfficerService::class);
         $officer_expedition_bonus = $officerService->getAdditionalExpeditionSlots($user);
 
-        return $expedition_slots_from_research + $bonus_slots + $expedition_slots_bonus + $officer_expedition_bonus;
+        // Add inventory item bonus (Slot Spedizioni) — sum of active PlanetBoost rows
+        // with resource='expedition_slots' across all user's planets.
+        $inventory_expedition_bonus = (int) \OGame\Models\PlanetBoost::query()
+            ->where('user_id', $user->id)
+            ->where('resource', 'expedition_slots')
+            ->where('expires_at', '>', now())
+            ->sum('percent_bonus');
+
+        return $expedition_slots_from_research + $bonus_slots + $expedition_slots_bonus + $officer_expedition_bonus + $inventory_expedition_bonus;
     }
 
     /**

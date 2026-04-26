@@ -248,4 +248,82 @@ class InventoryActivationTest extends AccountTestCase
             ->count();
         $this->assertSame(1, $boostCount, '2 activations of same tier should extend duration on single row');
     }
+
+    public function testPlanetFieldsGoldAddsFifteenFieldsPermanent(): void
+    {
+        $this->grantItem('planet_fields', 'gold', ['fields' => 15]);
+        $user = User::find($this->currentUserId);
+        $beforeMax = (int) \OGame\Models\Planet::find($this->currentPlanetId)->field_max;
+
+        $r = $this->service->activate($user, 'planet_fields', 'gold', $this->currentPlanetId);
+        $this->assertTrue($r['ok']);
+
+        $afterMax = (int) \OGame\Models\Planet::find($this->currentPlanetId)->field_max;
+        $this->assertSame($beforeMax + 15, $afterMax, 'planet_fields gold must add +15 fields permanently');
+    }
+
+    public function testPlanetFieldsBronzeAddsFourFields(): void
+    {
+        $this->grantItem('planet_fields', 'bronze', ['fields' => 4]);
+        $user = User::find($this->currentUserId);
+        $beforeMax = (int) \OGame\Models\Planet::find($this->currentPlanetId)->field_max;
+
+        $r = $this->service->activate($user, 'planet_fields', 'bronze', $this->currentPlanetId);
+        $this->assertTrue($r['ok']);
+
+        $afterMax = (int) \OGame\Models\Planet::find($this->currentPlanetId)->field_max;
+        $this->assertSame($beforeMax + 4, $afterMax);
+    }
+
+    public function testFleetSlotGoldAddsThreeBoostRow(): void
+    {
+        $this->grantItem('fleet_slot', 'gold', ['slots' => 3, 'duration_seconds' => 604800]);
+        $user = User::find($this->currentUserId);
+
+        $r = $this->service->activate($user, 'fleet_slot', 'gold', $this->currentPlanetId);
+        $this->assertTrue($r['ok']);
+
+        $boost = PlanetBoost::query()
+            ->where('planet_id', $this->currentPlanetId)
+            ->where('resource', 'fleet_slots')
+            ->first();
+        $this->assertNotNull($boost);
+        $this->assertSame(3, (int) $boost->percent_bonus);
+        $this->assertTrue($boost->expires_at->greaterThan(now()->addDays(6)));
+    }
+
+    public function testExpeditionSlotSilverAddsTwoBoostRow(): void
+    {
+        $this->grantItem('expedition_slot', 'silver', ['slots' => 2, 'duration_seconds' => 604800]);
+        $user = User::find($this->currentUserId);
+
+        $r = $this->service->activate($user, 'expedition_slot', 'silver', $this->currentPlanetId);
+        $this->assertTrue($r['ok']);
+
+        $boost = PlanetBoost::query()
+            ->where('planet_id', $this->currentPlanetId)
+            ->where('resource', 'expedition_slots')
+            ->first();
+        $this->assertNotNull($boost);
+        $this->assertSame(2, (int) $boost->percent_bonus);
+    }
+
+    public function testFleetSlotBonusAffectsGetFleetSlotsMax(): void
+    {
+        $user = User::find($this->currentUserId);
+        $player = resolve(\OGame\Factories\PlayerServiceFactory::class)->make($user->id);
+        $beforeMax = $player->getFleetSlotsMax();
+
+        // Add a fleet slot boost (+2)
+        PlanetBoost::create([
+            'planet_id' => $this->currentPlanetId,
+            'user_id' => $user->id,
+            'resource' => 'fleet_slots',
+            'percent_bonus' => 2,
+            'expires_at' => now()->addDays(7),
+        ]);
+
+        $afterMax = $player->getFleetSlotsMax();
+        $this->assertSame($beforeMax + 2, $afterMax, 'fleet_slots boost must increase getFleetSlotsMax by +2');
+    }
 }
