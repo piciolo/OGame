@@ -2161,6 +2161,7 @@ class PlanetService
         $object->production->planetService = $this;
         $object->production->playerService = $this->player;
         $object->production->characterClassService = app(CharacterClassService::class);
+        $object->production->allianceClassService = app(\OGame\Services\AllianceClassService::class);
         $object->production->universe_speed = $this->settingsService->economySpeed();
 
         return $object->production->calculate($object_level, $resource_production_factor * $building_percentage);
@@ -2216,6 +2217,7 @@ class PlanetService
         $metalMine->production->planetService = $this;
         $metalMine->production->playerService = $this->player;
         $metalMine->production->characterClassService = app(CharacterClassService::class);
+        $metalMine->production->allianceClassService = app(\OGame\Services\AllianceClassService::class);
         $metalMine->production->universe_speed = $this->settingsService->economySpeed();
 
         return $metalMine->production->getCrawlerEnergyConsumption();
@@ -2425,6 +2427,16 @@ class PlanetService
 
             // Combine values to one resource object so we have the total storage.
             $storage_sum->add($storage);
+        }
+
+        // Alliance class (Mercante / Trader): +10% capienza deposito (pianeti & lune).
+        // Verified on official OGame UI s274-it: applies to both planets and moons.
+        $allianceClassService = app(\OGame\Services\AllianceClassService::class);
+        $storageBonus = $allianceClassService->getStorageBonus($this->player->getUser());
+        if ($storageBonus > 1.0) {
+            $storage_sum->metal->set((int) floor($storage_sum->metal->get() * $storageBonus));
+            $storage_sum->crystal->set((int) floor($storage_sum->crystal->get() * $storageBonus));
+            $storage_sum->deuterium->set((int) floor($storage_sum->deuterium->get() * $storageBonus));
         }
 
         // Write values to planet

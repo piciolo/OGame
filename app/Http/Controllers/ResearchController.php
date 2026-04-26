@@ -60,9 +60,12 @@ class ResearchController extends OGameController
         // Combat research technologies that get General class bonus
         $combat_research = ['weapon_technology', 'shielding_technology', 'armor_technology'];
 
-        // Get character class bonus for combat research
+        // Get character class bonus for combat research + Alliance Warrior class (+1 combat & espionage)
         $characterClassService = app(CharacterClassService::class);
-        $combatResearchBonus = $characterClassService->getAdditionalCombatResearchLevels($player->getUser());
+        $allianceClassService = app(\OGame\Services\AllianceClassService::class);
+        $combatResearchBonus = $characterClassService->getAdditionalCombatResearchLevels($player->getUser())
+            + $allianceClassService->getAdditionalCombatResearchLevels($player->getUser());
+        $espionageResearchBonus = $allianceClassService->getAdditionalEspionageResearchLevels($player->getUser());
 
         $count = 0;
 

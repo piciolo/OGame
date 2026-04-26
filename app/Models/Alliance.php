@@ -75,6 +75,9 @@ class Alliance extends Model
         'is_open',
         'founder_rank_name',
         'newcomer_rank_name',
+        'alliance_class',
+        'alliance_class_changed_at',
+        'alliance_class_free_used',
     ];
 
     /**
@@ -84,7 +87,21 @@ class Alliance extends Model
      */
     protected $casts = [
         'is_open' => 'boolean',
+        'alliance_class' => 'integer',
+        'alliance_class_changed_at' => 'datetime',
+        'alliance_class_free_used' => 'boolean',
     ];
+
+    /**
+     * Get the alliance class as enum (or null if no class is set).
+     */
+    public function allianceClass(): ?\OGame\Enums\AllianceClass
+    {
+        if ($this->alliance_class === null) {
+            return null;
+        }
+        return \OGame\Enums\AllianceClass::tryFrom((int) $this->alliance_class);
+    }
 
     /**
      * Get the founder user of this alliance.

@@ -593,6 +593,9 @@ class PlanetServiceFactory
                 $characterClassService = app(CharacterClassService::class);
                 $planetSizeMultiplier = $characterClassService->getPlanetSizeBonus($player->getUser());
             }
+            // Alliance Researcher class: +5% planet size on colonisation (multiplicative with character class).
+            $allianceClassService = app(\OGame\Services\AllianceClassService::class);
+            $planetSizeMultiplier *= $allianceClassService->getPlanetSizeBonus($player->getUser());
         }
 
         $planet->field_max = (int)($base_fields * $planetSizeMultiplier);

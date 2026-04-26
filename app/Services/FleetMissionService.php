@@ -70,12 +70,24 @@ class FleetMissionService
                 FleetSpeedType::peaceful => $this->settingsService->fleetSpeedPeaceful(),
             };
         }
-        return (int) max(
-            round(
-                (35000 / $speed_percent * sqrt($distance * 10 / $slowest_speed) + 10) / $fleetSpeed
-            ),
-            1
-        );
+        $duration = (35000 / $speed_percent * sqrt($distance * 10 / $slowest_speed) + 10) / $fleetSpeed;
+
+        // Alliance class flight-speed bonuses (apply as duration divisors).
+        // Researcher (Alliance): +10% speed when target is an expedition.
+        // Warrior (Alliance): +10% speed for ACS missions between alliance members (heuristic: holding speed type).
+        $allianceClassService = app(\OGame\Services\AllianceClassService::class);
+        if ($mission !== null) {
+            $missionUser = $fromPlanet->getPlayer()->getUser();
+            $missionType = $mission instanceof \OGame\GameMissions\ExpeditionMission ? 'expedition' : null;
+            if ($missionType === 'expedition') {
+                $duration /= $allianceClassService->getExpeditionSpeedBonus($missionUser);
+            }
+            if ($mission->getFleetSpeedType() === FleetSpeedType::holding) {
+                $duration /= $allianceClassService->getAllianceFlightSpeedBonus($missionUser);
+            }
+        }
+
+        return (int) max(round($duration), 1);
     }
 
     /**

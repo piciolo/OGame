@@ -210,6 +210,7 @@ Route::middleware(['auth', 'banned', 'globalgame', 'locale', 'firstlogin'])->gro
     Route::post('/alliance/members/kick', [AllianceController::class, 'kickMemberAction'])->name('alliance.members.kick');
     Route::post('/alliance/members/assign-rank', [AllianceController::class, 'assignRankAction'])->name('alliance.members.assign-rank');
     Route::post('/alliance/text/update', [AllianceController::class, 'updateAllianceText'])->name('alliance.text.update');
+    Route::post('/alliance/class/select', [AllianceController::class, 'selectClass'])->name('alliance.class.select');
 
     Route::get('/premium', [PremiumController::class, 'index'])->name('premium.index');
     Route::get('/ajax/premium', [PremiumController::class, 'ajax'])->name('premium.ajax');
