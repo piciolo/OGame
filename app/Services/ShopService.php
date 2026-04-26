@@ -132,10 +132,13 @@ class ShopService
             $locked->dark_matter = (int) $locked->dark_matter - (int) $item->price_dm;
             $locked->save();
 
+            // tier is VARCHAR(16) — too small for the sha1 ref (40 chars).
+            // Identification of the purchased shop item is via source='shop' + source_ref=$item->id.
+            // tier_key from shop_items (bronze/silver/gold/platinum) is used when present.
             return UserItem::create([
                 'user_id'         => $locked->id,
                 'item_type'       => 'shop_item',
-                'tier'            => $item->ref,
+                'tier'            => $item->tier_key,
                 'category'        => 'items',
                 'activation_type' => 'instant',
                 'payload'         => [
