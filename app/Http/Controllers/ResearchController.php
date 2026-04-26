@@ -60,9 +60,12 @@ class ResearchController extends OGameController
         // Combat research technologies that get General class bonus
         $combat_research = ['weapon_technology', 'shielding_technology', 'armor_technology'];
 
-        // Get character class bonus for combat research
+        // Get character class bonus for combat research + Alliance Warrior class (+1 combat & espionage)
         $characterClassService = app(CharacterClassService::class);
-        $combatResearchBonus = $characterClassService->getAdditionalCombatResearchLevels($player->getUser());
+        $allianceClassService = app(\OGame\Services\AllianceClassService::class);
+        $combatResearchBonus = $characterClassService->getAdditionalCombatResearchLevels($player->getUser())
+            + $allianceClassService->getAdditionalCombatResearchLevels($player->getUser());
+        $espionageResearchBonus = $allianceClassService->getAdditionalEspionageResearchLevels($player->getUser());
 
         $count = 0;
 
@@ -100,9 +103,13 @@ class ResearchController extends OGameController
                 $view_model->currently_building = (!empty($research_active) && $research_active->object->machine_name === $object->machine_name);
                 $view_model->research_lab_upgrading = $research_lab_upgrading;
 
-                // Apply combat research bonus if applicable
+                // Apply combat research bonus if applicable (General +2 / Warrior alleanza +1)
                 if (in_array($object->machine_name, $combat_research)) {
                     $view_model->bonus_level = $combatResearchBonus;
+                }
+                // Alliance Warrior class: +1 livello ricerca spionaggio (non incluso in $combat_research)
+                if ($object->machine_name === 'espionage_technology' && $espionageResearchBonus > 0) {
+                    $view_model->bonus_level = $espionageResearchBonus;
                 }
 
                 $research[$key_row][$object->id] = $view_model;
