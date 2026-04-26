@@ -5,6 +5,7 @@ namespace OGame\Services;
 use Illuminate\Support\Facades\DB;
 use OGame\Factories\PlanetServiceFactory;
 use OGame\Models\BuildingQueue;
+use OGame\Models\Enums\PlanetType;
 use OGame\Models\PlanetBoost;
 use OGame\Models\Planet;
 use OGame\Models\ResearchQueue;
@@ -35,6 +36,27 @@ use RuntimeException;
  */
 class InventoryActivationService
 {
+    /**
+     * Returns the planet/moon type required to activate the given item, or null if
+     * the item works on either context.
+     *
+     * Rules (verified vs OGame ufficiale):
+     *   - amplifier_metal/crystal/deuterium/energy → planet only (no production on moons)
+     *   - planet_fields → planet only
+     *   - moon_fields   → moon only
+     *   - all other items (boosters, resources_lot, slot timers) → either
+     */
+    private function getRequiredTargetType(string $itemType): ?PlanetType
+    {
+        if ($itemType === 'moon_fields') {
+            return PlanetType::Moon;
+        }
+        if ($itemType === 'planet_fields' || str_starts_with($itemType, 'amplifier_')) {
+            return PlanetType::Planet;
+        }
+        return null;
+    }
+
     /**
      * Convert reduction shorthand ("30m", "2h", "6h", "1d") to seconds.
      */
@@ -85,6 +107,18 @@ class InventoryActivationService
             $planet = Planet::find($planetId);
             if ($planet === null || (int) $planet->user_id !== (int) $user->id) {
                 return ['ok' => false, 'code' => 'invalid_planet', 'item' => null];
+            }
+
+            // Validate planet/moon target requirement.
+            // Examples: amplifier_energy can only be activated on a planet (no energy
+            // production on moons); moon_fields can only be applied on a moon, etc.
+            $required = $this->getRequiredTargetType($itemType);
+            if ($required !== null && (int) $planet->planet_type !== $required->value) {
+                return [
+                    'ok' => false,
+                    'code' => $required === PlanetType::Moon ? 'requires_moon' : 'requires_planet',
+                    'item' => null,
+                ];
             }
 
             // Dispatch by item_type
@@ -343,8 +377,13 @@ class InventoryActivationService
         if ($fields <= 0) {
             return false;
         }
-        if ($isMoon && !$planet->planet_type) {
-            // moon_fields applied on a non-moon row → invalid context
+        // Defensive double-check: outer activate() already validates target type via
+        // getRequiredTargetType(), but keep this guard so direct callers stay safe.
+        // Planet::planet_type is an int (1=Planet, 3=Moon).
+        if ($isMoon && (int) $planet->planet_type !== PlanetType::Moon->value) {
+            return false;
+        }
+        if (!$isMoon && (int) $planet->planet_type !== PlanetType::Planet->value) {
             return false;
         }
 
