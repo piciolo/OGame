@@ -266,7 +266,8 @@
                             <a href="#" tabindex="1" class="btn btn_confirm buyResourcesLink">
                                 {{ __('t_shop_items.btn_get_more_resources') }}
                             </a>
-                            <a href="#" tabindex="1" class="btn btn_confirm buyDarkMatterLink">
+                            <a href="{{ route('payment.overlay') }}" tabindex="1" class="btn btn_confirm buyDarkMatterLink overlay"
+                               data-overlay-popup-width="800" data-overlay-popup-height="620">
                                 {{ __('t_shop_items.btn_purchase_dark_matter') }}
                             </a>
                         </div>
