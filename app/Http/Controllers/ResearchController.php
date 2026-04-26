@@ -103,9 +103,13 @@ class ResearchController extends OGameController
                 $view_model->currently_building = (!empty($research_active) && $research_active->object->machine_name === $object->machine_name);
                 $view_model->research_lab_upgrading = $research_lab_upgrading;
 
-                // Apply combat research bonus if applicable
+                // Apply combat research bonus if applicable (General +2 / Warrior alleanza +1)
                 if (in_array($object->machine_name, $combat_research)) {
                     $view_model->bonus_level = $combatResearchBonus;
+                }
+                // Alliance Warrior class: +1 livello ricerca spionaggio (non incluso in $combat_research)
+                if ($object->machine_name === 'espionage_technology' && $espionageResearchBonus > 0) {
+                    $view_model->bonus_level = $espionageResearchBonus;
                 }
 
                 $research[$key_row][$object->id] = $view_model;

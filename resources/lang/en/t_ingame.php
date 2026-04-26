@@ -875,6 +875,7 @@ return [
         'class_traders'                 => 'Traders (Alliance)',
         'class_researchers'             => 'Researchers (Alliance)',
         'class_label'                   => 'Alliance Class',
+        'no_class_selected'             => 'No alliance class selected',
         'buy_for'                       => 'Buy for',
         'no_dark_matter'                => 'There is not enough dark matter available',
         'loca_deactivate'               => 'Deactivate',

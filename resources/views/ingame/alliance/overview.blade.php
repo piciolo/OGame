@@ -27,6 +27,19 @@
                 <td class="desc">{{ __('t_ingame.alliance.member') }}:</td>
                 <td class="value"><span>{{ $members->count() }}</span></td>
             </tr>
+            @php $allyClass = $alliance->allianceClass(); @endphp
+            <tr class="alt">
+                <td class="desc">{{ __('t_ingame.alliance.class_label') }}:</td>
+                <td class="value">
+                    <span>
+                        @if($allyClass !== null)
+                            {{ __('t_ingame.alliance.class_' . strtolower($allyClass->name)) }}
+                        @else
+                            {{ __('t_ingame.alliance.no_class_selected') }}
+                        @endif
+                    </span>
+                </td>
+            </tr>
             <tr class="alt">
                 <td class="desc">{{ __('t_ingame.alliance.your_rank') }}:</td>
                 <td class="value">

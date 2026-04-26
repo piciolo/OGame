@@ -854,6 +854,7 @@ return [
         'class_traders'                 => 'Commercianti (Alleanza)',
         'class_researchers'             => 'Ricercatori (Alleanza)',
         'class_label'                   => 'Classe Alleanza',
+        'no_class_selected'             => 'Non è stata scelta alcuna Classe Alleanza',
         'buy_for'                       => 'Acquista per',
         'no_dark_matter'                => 'Non c\'è abbastanza materia oscura disponibile',
         'loca_deactivate'               => 'Disattiva',
