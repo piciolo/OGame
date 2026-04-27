@@ -42,9 +42,9 @@ enum AllianceClass: int
     public function getName(): string
     {
         return match ($this) {
-            self::WARRIOR => 'Guerriero (Alleanza)',
-            self::TRADER => 'Mercante (Alleanza)',
-            self::RESEARCHER => 'Ricercatore (Alleanza)',
+            self::WARRIOR => __('t_ingame.alliance.class_warrior'),
+            self::TRADER => __('t_ingame.alliance.class_trader'),
+            self::RESEARCHER => __('t_ingame.alliance.class_researcher'),
         };
     }
 

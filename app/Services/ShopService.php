@@ -61,14 +61,31 @@ class ShopService
         }
 
         // Build visible sidebar list — exclude hidden categories and append "tutto"
+        // Translate category names from DB-stored keys to active locale via t_shop_items.
+        $catKeyToTransKey = [
+            'offerte_speciali' => 't_shop_items.category_special_offers',
+            'seleziona_classe' => 't_shop_items.category_class_selection',
+            'costruzione'      => 't_shop_items.category_construction',
+            'risorse'          => 't_shop_items.category_resources',
+            'booster_30'       => 't_shop_items.category_booster30',
+            'booster_90'       => 't_shop_items.category_booster90',
+            'profilo'          => 't_shop_items.category_profile',
+        ];
         $catsOut = [];
         foreach ($categories as $cat) {
             if (in_array($cat->key, self::HIDDEN_CATEGORIES, true)) {
                 continue;
             }
+            $transKey = $catKeyToTransKey[$cat->key] ?? null;
+            $name = $transKey ? __($transKey) : $cat->name;
+            // Fallback: if translation key missing in current locale, __() returns
+            // the key itself — keep DB name in that case.
+            if ($transKey && $name === $transKey) {
+                $name = $cat->name;
+            }
             $catsOut[] = [
                 'key' => $cat->key,
-                'name' => $cat->name,
+                'name' => $name,
                 'count' => $counts[$cat->key] ?? 0,
                 'sort_order' => $cat->sort_order,
             ];
