@@ -2,6 +2,10 @@
 
 namespace OGame\Http\Controllers;
 
+
+
+use Throwable;
+use OGame\Models\Setting;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -115,7 +119,7 @@ class AuctioneerController extends OGameController
 
         $auctions = Auction::query()
             ->whereIn('status', [AuctionStatus::Closed->value, AuctionStatus::Assigned->value, AuctionStatus::Cancelled->value])
-            ->orderByDesc('closed_at')
+            ->latest('closed_at')
             ->limit($limit)
             ->get();
 
@@ -152,7 +156,7 @@ class AuctioneerController extends OGameController
     /**
      * @return array<string,mixed>
      */
-    private function serializeAuction(?Auction $auction): array
+    private function serializeAuction(Auction|null $auction): array
     {
         if ($auction === null) {
             return ['status' => 'none'];
@@ -191,7 +195,7 @@ class AuctioneerController extends OGameController
                     if (is_file($path)) {
                         return '/img/objects/units/' . $obj->machine_name . '_small.jpg';
                     }
-                } catch (\Throwable) {}
+                } catch (Throwable) {}
             }
             return '/img/objects/units/cruiser_small.jpg';
         }
@@ -211,7 +215,7 @@ class AuctioneerController extends OGameController
     {
         static $cache = null;
         if ($cache === null) {
-            $cache = \OGame\Models\Setting::query()
+            $cache = Setting::query()
                 ->where('key', 'like', 'auctioneer_%')
                 ->pluck('value', 'key')
                 ->all();

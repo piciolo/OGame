@@ -2,6 +2,7 @@
 
 namespace OGame\Models;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -17,7 +18,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $honor
  * @property int $points
  * @property int $total_points_after
- * @property \Illuminate\Support\Carbon $placed_at
+ * @property Carbon $placed_at
  */
 class AuctionBid extends Model
 {

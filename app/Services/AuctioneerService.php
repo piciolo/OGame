@@ -2,6 +2,12 @@
 
 namespace OGame\Services;
 
+
+
+
+use RuntimeException;
+use Throwable;
+use OGame\Services\ObjectService;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -24,7 +30,7 @@ use OGame\Models\User;
 class AuctioneerService
 {
     /** @var array<string,string>|null */
-    private ?array $settingsCache = null;
+    private array|null $settingsCache = null;
 
     public function __construct(
         private readonly PlanetServiceFactory $planetServiceFactory,
@@ -74,7 +80,7 @@ class AuctioneerService
 
     // --- Query --------------------------------------------------------------
 
-    public function getCurrentAuction(): ?Auction
+    public function getCurrentAuction(): Auction|null
     {
         return Auction::query()
             ->whereIn('status', [AuctionStatus::Waiting->value, AuctionStatus::Running->value])
@@ -242,7 +248,7 @@ class AuctioneerService
      * If a bidder exists, the prize is assigned via the normal flow.
      * Returns the auction id that was closed, or null if nothing was running.
      */
-    public function devForceEndCurrent(): ?int
+    public function devForceEndCurrent(): int|null
     {
         return DB::transaction(function () {
             /** @var Auction|null $auction */
@@ -270,7 +276,7 @@ class AuctioneerService
      * Force-promote the current waiting auction to Running immediately.
      * Returns the auction id promoted, or null if nothing was waiting.
      */
-    public function devForceStartWaiting(): ?int
+    public function devForceStartWaiting(): int|null
     {
         return DB::transaction(function () {
             /** @var Auction|null $waiting */
@@ -292,7 +298,7 @@ class AuctioneerService
      * already exists. Returns the new auction id, or null if no template is
      * available.
      */
-    public function devSpawnAuction(): ?int
+    public function devSpawnAuction(): int|null
     {
         return DB::transaction(function () {
             $before = Auction::query()->max('id');
@@ -307,7 +313,7 @@ class AuctioneerService
      * Ignores weight/enabled flag so any template can be tested directly.
      * Returns the new auction id, or null if the template does not exist.
      */
-    public function devSpawnAuctionForTemplate(int $templateId): ?int
+    public function devSpawnAuctionForTemplate(int $templateId): int|null
     {
         return DB::transaction(function () use ($templateId) {
             $template = AuctionLotTemplate::find($templateId);
@@ -336,7 +342,7 @@ class AuctioneerService
      * spent on bids are NOT refunded (matches OGame rules).
      * Returns the cancelled auction id, or null if none open.
      */
-    public function devCancelCurrent(): ?int
+    public function devCancelCurrent(): int|null
     {
         return DB::transaction(function () {
             /** @var Auction|null $auction */
@@ -379,7 +385,7 @@ class AuctioneerService
                 $auction->status = AuctionStatus::Assigned;
                 $auction->assigned_at = now();
                 $this->sendWinnerMessage($auction);
-            } catch (\Throwable $e) {
+            } catch (Throwable $e) {
                 // Log with full context then re-throw to rollback the outer
                 // DB::transaction in tick(). The auction stays Running and
                 // the next tick retries — this avoids silently losing prizes
@@ -434,7 +440,7 @@ class AuctioneerService
         $auction->save();
     }
 
-    private function pickTemplate(): ?AuctionLotTemplate
+    private function pickTemplate(): AuctionLotTemplate|null
     {
         $templates = AuctionLotTemplate::query()->where('enabled', true)->get();
         if ($templates->isEmpty()) {
@@ -481,7 +487,7 @@ class AuctioneerService
                 'planet' => $planetTag,
                 'bid_points' => (string) $auction->current_bid_points,
             ]);
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             Log::warning('Auctioneer winner message not sent', [
                 'auction_id' => $auction->id,
                 'winner_user_id' => $winnerId,
@@ -497,7 +503,7 @@ class AuctioneerService
 
         $user = User::find($winnerId);
         if ($user === null) {
-            throw new \RuntimeException('Winner user not found');
+            throw new RuntimeException('Winner user not found');
         }
 
         // Honor-only winners have no associated planet — fall back to the user's current planet
@@ -589,7 +595,7 @@ class AuctioneerService
             }
         }
 
-        throw new \RuntimeException(
+        throw new RuntimeException(
             "Auctioneer prize undeliverable: no planet found for user {$winnerUserId} (requested planet {$planetId})"
         );
     }
@@ -609,11 +615,11 @@ class AuctioneerService
                 'planet_id' => $planetId,
                 'user_id' => $winnerUserId,
             ]);
-            throw new \RuntimeException("Invalid ship prize payload (unit_id={$unitId}, amount={$amount})");
+            throw new RuntimeException("Invalid ship prize payload (unit_id={$unitId}, amount={$amount})");
         }
         try {
-            $object = \OGame\Services\ObjectService::getUnitObjectById($unitId);
-        } catch (\Throwable $e) {
+            $object = ObjectService::getUnitObjectById($unitId);
+        } catch (Throwable $e) {
             Log::error('Auctioneer ship grant: invalid unit id', [
                 'unit_id' => $unitId,
                 'user_id' => $winnerUserId,

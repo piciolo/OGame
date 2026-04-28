@@ -2,6 +2,7 @@
 
 namespace OGame\Models;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -23,11 +24,11 @@ use OGame\Enums\AuctionTier;
  * @property int|null $current_bidder_user_id
  * @property int|null $current_bidder_planet_id
  * @property string|null $current_bidder_name
- * @property \Illuminate\Support\Carbon|null $waiting_ends_at
- * @property \Illuminate\Support\Carbon|null $started_at
- * @property \Illuminate\Support\Carbon|null $ends_at
- * @property \Illuminate\Support\Carbon|null $closed_at
- * @property \Illuminate\Support\Carbon|null $assigned_at
+ * @property Carbon|null $waiting_ends_at
+ * @property Carbon|null $started_at
+ * @property Carbon|null $ends_at
+ * @property Carbon|null $closed_at
+ * @property Carbon|null $assigned_at
  * @property int $extension_count
  * @property int $bid_count
  */
