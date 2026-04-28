@@ -627,6 +627,57 @@
                         </div>
                     @endif
 
+                    {{-- ===== REPORTED CHAT MESSAGES (issue #1374) ===== --}}
+                    <p class="box_highlight textCenter no_buddies">@lang('Reported Chat Messages')</p>
+
+                    @if ($reportedMessages->isEmpty())
+                        <div class="group bborder" style="display: block;">
+                            <p style="text-align: center; padding: 10px;">
+                                No pending chat message reports.
+                            </p>
+                        </div>
+                    @else
+                        <div style="max-height: 400px; overflow-y: auto; border: 1px solid #333; border-radius: 3px; margin-bottom: 30px;">
+                            <table style="width: 100%; border-collapse: collapse;">
+                                <thead style="background: #0d0d1a; position: sticky; top: 0;">
+                                    <tr>
+                                        <th style="padding: 4px 8px; text-align: left;">Sender</th>
+                                        <th style="padding: 4px 8px; text-align: left;">Message</th>
+                                        <th style="padding: 4px 8px; text-align: left;">Reporters</th>
+                                        <th style="padding: 4px 8px; text-align: left;">Last reported</th>
+                                        <th style="padding: 4px 8px; text-align: center;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($reportedMessages as $reported)
+                                        <tr style="border-top: 1px solid #222;">
+                                            <td style="padding: 6px 8px; font-size: 11px; vertical-align: top; white-space: nowrap;">
+                                                {{ $reported['sender']?->username ?? '(deleted)' }}
+                                            </td>
+                                            <td style="padding: 6px 8px; font-size: 11px; vertical-align: top; max-width: 380px; word-wrap: break-word;">
+                                                {{ $reported['message']->message }}
+                                            </td>
+                                            <td style="padding: 6px 8px; font-size: 11px; vertical-align: top; color: #aaa;">
+                                                <strong style="color: #e6b800;">{{ $reported['report_count'] }}</strong>
+                                                <span style="font-size: 10px;">({{ $reported['reporters']->implode(', ') }})</span>
+                                            </td>
+                                            <td style="padding: 6px 8px; font-size: 11px; vertical-align: top; color: #aaa; white-space: nowrap;">
+                                                {{ $reported['last_reported']?->format('Y-m-d H:i') }}
+                                            </td>
+                                            <td style="padding: 6px 8px; font-size: 11px; vertical-align: top; text-align: center;">
+                                                <form action="{{ route('admin.server-administration.chat-report.dismiss') }}" method="post" style="display:inline;">
+                                                    {{ csrf_field() }}
+                                                    <input type="hidden" name="chat_message_id" value="{{ $reported['chat_message_id'] }}">
+                                                    <input type="submit" class="btn_blue" value="Dismiss" style="font-size: 10px; padding: 2px 8px;">
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    @endif
+
                 </div>
             </div>
         </div>

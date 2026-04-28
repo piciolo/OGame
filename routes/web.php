@@ -220,6 +220,7 @@ Route::middleware(['auth', 'banned', 'globalgame', 'locale', 'firstlogin'])->gro
     Route::post('/chat/more', [ChatController::class, 'loadMore'])->name('chat.more');
     Route::post('/chat/read', [ChatController::class, 'markRead'])->name('chat.read');
     Route::post('/chat/visibility', [ChatController::class, 'toggleVisibility'])->name('chat.visibility');
+    Route::post('/chat/report/{id}', [ChatController::class, 'reportMessage'])->whereNumber('id')->name('chat.report');
 
     Route::get('/buddies', [BuddiesController::class, 'index'])->name('buddies.index');
     Route::post('/buddies', [BuddiesController::class, 'post'])->name('buddies.post');
@@ -281,6 +282,7 @@ Route::middleware(['auth', 'globalgame', 'locale', 'admin'])->group(function () 
     Route::post('/admin/server-administration/stuck-missions/settings', [ServerAdministrationController::class, 'saveStuckMissionSettings'])->name('admin.server-administration.stuck-missions.settings');
     Route::post('/admin/server-administration/stuck-missions/process', [ServerAdministrationController::class, 'processStuckMission'])->name('admin.server-administration.stuck-missions.process');
     Route::post('/admin/server-administration/stuck-missions/recover-homeworld', [ServerAdministrationController::class, 'recoverStuckMissionToHomeworld'])->name('admin.server-administration.stuck-missions.recover-homeworld');
+    Route::post('/admin/server-administration/chat-report/dismiss', [ServerAdministrationController::class, 'dismissChatReport'])->name('admin.server-administration.chat-report.dismiss');
 
     // Developer shortcuts
     Route::get('/admin/developer-shortcuts', [DeveloperShortcutsController::class, 'index'])->name('admin.developershortcuts.index');
