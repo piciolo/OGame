@@ -90,6 +90,7 @@ return [
     'buy_success' => 'Achat terminé. L\'item se trouve dans votre inventaire.',
     'buy_insufficient_dm' => 'Antimatière insuffisante.',
     'label_dark_matter' => 'Antimatière',
+    'dm_short' => 'AM',
     'btn_buy' => 'Acheter',
     'btn_confirm_buy' => 'Confirmer l\'achat',
     'price' => 'Prix',

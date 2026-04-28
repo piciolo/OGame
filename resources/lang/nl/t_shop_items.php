@@ -90,6 +90,7 @@ return [
     'buy_success' => 'Aankoop voltooid. Het item bevindt zich in je inventaris.',
     'buy_insufficient_dm' => 'Onvoldoende Donkere Materie.',
     'label_dark_matter' => 'Donkere Materie',
+    'dm_short' => 'DM',
     'btn_buy' => 'Kopen',
     'btn_confirm_buy' => 'Aankoop bevestigen',
     'price' => 'Prijs',

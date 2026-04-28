@@ -90,6 +90,7 @@ return [
     'buy_success' => 'Nákup dokončený. Položku nájdeš v inventári.',
     'buy_insufficient_dm' => 'Nedostatok Temnej hmoty.',
     'label_dark_matter' => 'Temná hmota',
+    'dm_short' => 'TH',
     'btn_buy' => 'Kúpiť',
     'btn_confirm_buy' => 'Potvrdiť nákup',
     'price' => 'Cena',

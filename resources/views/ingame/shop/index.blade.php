@@ -287,7 +287,7 @@
                                     $tipTitle = $item['name'];
                                     $tipBody = e($effect) . '<br /><br />'
                                         . __('t_shop_items.label_duration') . ': ' . e($durText) . '<br /><br />'
-                                        . __('t_shop_items.label_price') . ': ' . e($item['price_label']) . ' MO<br />'
+                                        . __('t_shop_items.label_price') . ': ' . e($item['price_label']) . ' ' . __('t_shop_items.dm_short') . '<br />'
                                         . __('t_shop_items.label_inventory') . ': 0';
                                     // Primary + fallback images for background (native pattern)
                                     $bg = 'url(' . $item['image_url'] . ')';

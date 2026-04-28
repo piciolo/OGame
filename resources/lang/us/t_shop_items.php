@@ -90,6 +90,7 @@ return [
     'buy_success' => 'Purchase complete. Find the item in your inventory.',
     'buy_insufficient_dm' => 'Insufficient Dark Matter.',
     'label_dark_matter' => 'Dark Matter',
+    'dm_short' => 'DM',
     'btn_buy' => 'Buy',
     'btn_confirm_buy' => 'Confirm purchase',
     'price' => 'Price',

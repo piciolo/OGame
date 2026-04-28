@@ -90,6 +90,7 @@ return [
     'buy_success' => 'Η αγορά ολοκληρώθηκε. Βρείτε το αντικείμενο στα υπάρχοντά σας.',
     'buy_insufficient_dm' => 'Ανεπαρκής Αντιύλη.',
     'label_dark_matter' => 'Αντιύλη',
+    'dm_short' => 'ΑΥ',
     'btn_buy' => 'Αγορά',
     'btn_confirm_buy' => 'Επιβεβαίωση αγοράς',
     'price' => 'Τιμή',

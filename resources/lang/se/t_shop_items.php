@@ -90,6 +90,7 @@ return [
     'buy_success' => 'Köp slutfört. Hitta objektet i ditt lager.',
     'buy_insufficient_dm' => 'Otillräckligt med mörk materia.',
     'label_dark_matter' => 'Mörk materia',
+    'dm_short' => 'MM',
     'btn_buy' => 'Köp',
     'btn_confirm_buy' => 'Bekräfta köp',
     'price' => 'Pris',

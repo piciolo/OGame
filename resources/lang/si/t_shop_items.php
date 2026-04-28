@@ -90,6 +90,7 @@ return [
     'buy_success' => 'Nakup zaključen. Predmet najdeš v svojem inventarju.',
     'buy_insufficient_dm' => 'Nezadostna Črna materija.',
     'label_dark_matter' => 'Črna materija',
+    'dm_short' => 'ČM',
     'btn_buy' => 'Kupi',
     'btn_confirm_buy' => 'Potrdi nakup',
     'price' => 'Cena',

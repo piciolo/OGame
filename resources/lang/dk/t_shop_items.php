@@ -90,6 +90,7 @@ return [
     'buy_success' => 'Køb gennemført. Find item i dit inventar.',
     'buy_insufficient_dm' => 'Utilstrækkelig Mørk Materie.',
     'label_dark_matter' => 'Mørk Materie',
+    'dm_short' => 'MM',
     'btn_buy' => 'Køb',
     'btn_confirm_buy' => 'Bekræft køb',
     'price' => 'Pris',

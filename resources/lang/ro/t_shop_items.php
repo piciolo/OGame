@@ -90,6 +90,7 @@ return [
     'buy_success' => 'Cumpărare finalizată. Găseşti articolul în inventar.',
     'buy_insufficient_dm' => 'Materie Întunecată insuficientă.',
     'label_dark_matter' => 'Materia Intunecata',
+    'dm_short' => 'MI',
     'btn_buy' => 'Cumpără',
     'btn_confirm_buy' => 'Confirmă cumpărarea',
     'price' => 'Preţ',

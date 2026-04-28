@@ -90,6 +90,7 @@ return [
     'buy_success' => '購入完了。アイテムはインベントリーで確認できます。',
     'buy_insufficient_dm' => 'ダークマターが不足しています。',
     'label_dark_matter' => 'ダークマター',
+    'dm_short' => 'DM',
     'btn_buy' => '購入',
     'btn_confirm_buy' => '購入を確認',
     'price' => '価格',

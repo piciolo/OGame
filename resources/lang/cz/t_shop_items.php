@@ -90,6 +90,7 @@ return [
     'buy_success' => 'Nákup dokončen. Předmět najdeš v inventáři.',
     'buy_insufficient_dm' => 'Nedostatek Temné Hmoty.',
     'label_dark_matter' => 'Temná Hmota',
+    'dm_short' => 'TH',
     'btn_buy' => 'Koupit',
     'btn_confirm_buy' => 'Potvrdit nákup',
     'price' => 'Cena',

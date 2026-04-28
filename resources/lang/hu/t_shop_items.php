@@ -90,6 +90,7 @@ return [
     'buy_success' => 'Vásárlás befejezve. A tárgyat a raktáradban találod.',
     'buy_insufficient_dm' => 'Nincs elég Sötét anyag.',
     'label_dark_matter' => 'Sötét anyag',
+    'dm_short' => 'SA',
     'btn_buy' => 'Vásárlás',
     'btn_confirm_buy' => 'Vásárlás megerősítése',
     'price' => 'Ár',

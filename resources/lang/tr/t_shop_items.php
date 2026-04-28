@@ -90,6 +90,7 @@ return [
     'buy_success' => 'Satın alma tamamlandı. Öğeyi envanterinde bulabilirsin.',
     'buy_insufficient_dm' => 'Yetersiz Karanlık Madde.',
     'label_dark_matter' => 'Karanlık Madde',
+    'dm_short' => 'KM',
     'btn_buy' => 'Satın al',
     'btn_confirm_buy' => 'Satın almayı onayla',
     'price' => 'Fiyat',

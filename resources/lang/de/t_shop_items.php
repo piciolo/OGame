@@ -90,6 +90,7 @@ return [
     'buy_success' => 'Kauf abgeschlossen. Das Item findest du in deinem Inventar.',
     'buy_insufficient_dm' => 'Nicht genug Dunkle Materie.',
     'label_dark_matter' => 'Dunkle Materie',
+    'dm_short' => 'DM',
     'btn_buy' => 'Kaufen',
     'btn_confirm_buy' => 'Kauf bestätigen',
     'price' => 'Preis',

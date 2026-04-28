@@ -90,6 +90,7 @@ return [
     'buy_success' => '購買完成。可在庫存中找到道具.',
     'buy_insufficient_dm' => '暗物質不足.',
     'label_dark_matter' => '暗物質',
+    'dm_short' => 'DM',
     'btn_buy' => '購買',
     'btn_confirm_buy' => '確認購買',
     'price' => '價格',

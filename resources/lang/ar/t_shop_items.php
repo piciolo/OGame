@@ -90,6 +90,7 @@ return [
     'buy_success' => 'Compra completada. Encontrarás el objeto en tu inventario.',
     'buy_insufficient_dm' => 'Materia Oscura insuficiente.',
     'label_dark_matter' => 'Materia Oscura',
+    'dm_short' => 'MO',
     'btn_buy' => 'Comprar',
     'btn_confirm_buy' => 'Confirmar compra',
     'price' => 'Precio',

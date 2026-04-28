@@ -90,6 +90,7 @@ return [
     'buy_success' => 'Compra concluída. Encontras o item no teu inventário.',
     'buy_insufficient_dm' => 'Matéria Negra insuficiente.',
     'label_dark_matter' => 'Matéria Negra',
+    'dm_short' => 'MN',
     'btn_buy' => 'Comprar',
     'btn_confirm_buy' => 'Confirmar compra',
     'price' => 'Preço',

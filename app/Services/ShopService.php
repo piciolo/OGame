@@ -106,20 +106,39 @@ class ShopService
     public function itemToArray(ShopItem $it): array
     {
         $imgDir = '/cdn/img/item-images/';
+
+        // Lookup per-ref translations from the active locale's t_shop_items_data
+        // file (if present). Fall back to DB values otherwise. Keeps the runtime
+        // backward-compatible while letting locales override item strings.
+        $key = 't_shop_items_data.' . $it->ref;
+        $tx = __($key);
+        $hasTx = is_array($tx);
+        $tName = $hasTx && isset($tx['name']) ? $tx['name'] : $it->name;
+        $tDescription = $hasTx && isset($tx['description']) ? $tx['description'] : $it->description;
+        $tExtended = $hasTx && isset($tx['extended_description']) ? $tx['extended_description'] : $it->extended_description;
+        $tEffect = $hasTx && isset($tx['effect_description']) ? $tx['effect_description'] : $it->effect_description;
+        $tRules = $hasTx && isset($tx['rules_description']) ? $tx['rules_description'] : $it->rules_description;
+        $tDuration = $hasTx && isset($tx['duration_label']) ? $tx['duration_label'] : $it->duration_label;
+
+        // Strip locale-specific currency abbreviation from price_label so the view
+        // can append the translated dm_short. DB stores e.g. "350K MO" — we keep
+        // only the numeric part "350K" and let the view add the translated suffix.
+        $priceLabelStripped = preg_replace('/\s+\p{L}+\s*$/u', '', (string) $it->price_label);
+
         return [
             'id' => $it->id,
             'ref' => $it->ref,
-            'name' => $it->name,
-            'description' => $it->description,
-            'extended_description' => $it->extended_description,
-            'effect_description' => $it->effect_description,
-            'rules_description' => $it->rules_description,
+            'name' => $tName,
+            'description' => $tDescription,
+            'extended_description' => $tExtended,
+            'effect_description' => $tEffect,
+            'rules_description' => $tRules,
             'price_dm' => $it->price_dm,
             'price_dm_original' => $it->price_dm_original,
-            'price_label' => $it->price_label,
+            'price_label' => $priceLabelStripped,
             'price_label_original' => $it->price_label_original,
             'duration_seconds' => $it->duration_seconds,
-            'duration_label' => $it->duration_label,
+            'duration_label' => $tDuration,
             'rarity' => $it->rarity,
             'image' => $it->image,
             'image_fallback' => $it->image_fallback,

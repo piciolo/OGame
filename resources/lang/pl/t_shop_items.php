@@ -90,6 +90,7 @@ return [
     'buy_success' => 'Zakup zakończony. Przedmiot znajdziesz w ekwipunku.',
     'buy_insufficient_dm' => 'Niewystarczająca Antymateria.',
     'label_dark_matter' => 'Antymateria',
+    'dm_short' => 'AM',
     'btn_buy' => 'Kup',
     'btn_confirm_buy' => 'Potwierdź zakup',
     'price' => 'Cena',
