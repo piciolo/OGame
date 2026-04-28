@@ -2,9 +2,13 @@
 
 namespace OGame\Services;
 
+
+use OGame\GameMissions\ExpeditionMission;
+use OGame\Services\AllianceClassService;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\DB;
 use OGame\Enums\FleetSpeedType;
 use OGame\Factories\GameMissionFactory;
 use OGame\Factories\PlanetServiceFactory;
@@ -69,12 +73,24 @@ class FleetMissionService
                 FleetSpeedType::peaceful => $this->settingsService->fleetSpeedPeaceful(),
             };
         }
-        return (int) max(
-            round(
-                (35000 / $speed_percent * sqrt($distance * 10 / $slowest_speed) + 10) / $fleetSpeed
-            ),
-            1
-        );
+        $duration = (35000 / $speed_percent * sqrt($distance * 10 / $slowest_speed) + 10) / $fleetSpeed;
+
+        // Alliance class flight-speed bonuses (apply as duration divisors).
+        // Researcher (Alliance): +10% speed when target is an expedition.
+        // Warrior (Alliance): +10% speed for ACS missions between alliance members (heuristic: holding speed type).
+        $allianceClassService = app(AllianceClassService::class);
+        if ($mission !== null) {
+            $missionUser = $fromPlanet->getPlayer()->getUser();
+            $missionType = $mission instanceof ExpeditionMission ? 'expedition' : null;
+            if ($missionType === 'expedition') {
+                $duration /= $allianceClassService->getExpeditionSpeedBonus($missionUser);
+            }
+            if ($mission->getFleetSpeedType() === FleetSpeedType::holding) {
+                $duration /= $allianceClassService->getAllianceFlightSpeedBonus($missionUser);
+            }
+        }
+
+        return (int) max(round($duration), 1);
     }
 
     /**
@@ -272,28 +288,12 @@ class FleetMissionService
             $planetIds[] = $planet->getPlanetId();
         }
 
-        $currentTime = Date::now()->timestamp;
-
         $missions = $query->where(function ($query) use ($planetIds) {
             $query->where('user_id', $this->player->getId())
                 ->orWhereIn('planet_id_to', $planetIds);
         })
             ->where('canceled', 0) // Exclude canceled missions
-            ->where(function ($query) use ($currentTime) {
-                // Include unprocessed missions
-                $query->where('processed', 0)
-                    // Also include ACS Defend outbound missions that are processed but still in hold time
-                    // (ACS Defend is marked processed=1 immediately at arrival, before hold time ends)
-                    ->orWhere(function ($query) use ($currentTime) {
-                        $query->where('mission_type', 5)
-                            ->whereNull('parent_id')
-                            ->where('processed', 1)
-                            ->where('time_arrival', '<=', $currentTime)
-                            // IMPORTANT: Holding time is always real time (not affected by fleet speed)
-                            ->whereRaw('time_arrival + time_holding > ?', [$currentTime]);
-                    });
-                // Note: Expeditions stay processed=0 during hold time, so they're already included above
-            })
+            ->where('processed', 0)
             ->get();
 
         // Order the list taking into account the time_holding. This ensures that the order of missions is correct
@@ -600,7 +600,25 @@ class FleetMissionService
             'fleetMissionService' => $this,
             'messageService' => $this->messageService,
         ]);
-        $missionObject->process($mission);
+
+        // Guard against concurrent processing of the same mission. If two
+        // workers (scheduler tick + request middleware, two web requests,
+        // etc.) both reach this point for the same FleetMission row, they
+        // can each pass the processed=0 check above and then each credit
+        // resources/units to the destination, duplicating them (#895).
+        //
+        // Re-load the row inside a transaction with a row-level lock so the
+        // second caller blocks until the first commits, then observes
+        // processed=1 or canceled=1 and bails out safely.
+        DB::transaction(function () use ($mission, $missionObject): void {
+            /** @var FleetMission|null $locked */
+            $locked = FleetMission::where('id', $mission->id)->lockForUpdate()->first();
+            if ($locked === null || (int)$locked->processed === 1 || (int)$locked->canceled === 1) {
+                return;
+            }
+
+            $missionObject->process($locked);
+        });
     }
 
     /**

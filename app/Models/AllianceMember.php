@@ -2,9 +2,9 @@
 
 namespace OGame\Models;
 
-use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
@@ -35,14 +35,20 @@ use Illuminate\Support\Carbon;
  * @mixin \Eloquent
  */
 #[Fillable([
-    'alliance_id',
-    'user_id',
-    'rank_id',
-    'joined_at',
-])]
+        'alliance_id',
+        'user_id',
+        'rank_id',
+        'joined_at',
+    ])]
 class AllianceMember extends Model
 {
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var list<string>
+     */
 
     /**
      * The attributes that should be cast.
