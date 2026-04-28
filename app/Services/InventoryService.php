@@ -454,6 +454,16 @@ class InventoryService
                 $owned += (int) ($ownedByTypeTier[$auctionKey] ?? 0);
             }
 
+            // Per-ref translation lookup (same pattern as ShopService::itemToArray):
+            // pulls localized name/description/duration_label from
+            // resources/lang/<loc>/t_shop_items_data.php when the locale provides
+            // a translation for this ref. Falls back to DB Italian otherwise.
+            $tx = __('t_shop_items_data.' . $si->ref);
+            $hasTx = is_array($tx);
+            $tTitle    = $hasTx && isset($tx['name'])           ? $tx['name']           : (string) $si->name;
+            $tDesc     = $hasTx && isset($tx['description'])    ? $tx['description']    : (string) ($si->description ?? '');
+            $tDuration = $hasTx && isset($tx['duration_label']) ? $tx['duration_label'] : (string) ($si->duration_label ?? __('t_shop_items.duration_instant'));
+
             $tiles[] = [
                 'ref'              => (string) $si->ref,
                 'item_type'        => 'shop_item',
@@ -463,10 +473,10 @@ class InventoryService
                 'image_url'        => $imgDir . $si->image,
                 'owned'            => $owned,
                 'can_activate'     => $owned > 0,
-                'duration_label'   => (string) ($si->duration_label ?? __('t_shop_items.duration_instant')),
+                'duration_label'   => $tDuration,
                 'duration_seconds' => (int) ($si->duration_seconds ?? 0),
-                'title'            => (string) $si->name,
-                'description_html' => (string) ($si->description ?? ''),
+                'title'            => $tTitle,
+                'description_html' => $tDesc,
             ];
         }
 
