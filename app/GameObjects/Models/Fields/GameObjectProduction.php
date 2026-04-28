@@ -7,6 +7,7 @@ use OGame\Models\{
     ProductionIndex,
 };
 use OGame\Services\{
+    AllianceClassService,
     CharacterClassService,
     PlanetService,
     PlayerService,
@@ -15,7 +16,7 @@ use OGame\Services\{
 class GameObjectProduction
 {
     /**
-     * Metal production formula in \Closure format.
+     * Metal production formula in Closure format.
      * The function is given two arguments and expects a float return value,
      *      which represents the Metal production amount.
      * Arguments:
@@ -24,10 +25,10 @@ class GameObjectProduction
      *
      * @var ?Closure
      */
-    public ?Closure $metal_formula = null;
+    public Closure|null $metal_formula = null;
 
     /**
-     * Crystal production formula in \Closure format.
+     * Crystal production formula in Closure format.
      * The function is given two arguments and expects a float return value,
      *      which represents the Crystal production amount.
      * Arguments:
@@ -36,10 +37,10 @@ class GameObjectProduction
      *
      * @var ?Closure
      */
-    public ?Closure $crystal_formula = null;
+    public Closure|null $crystal_formula = null;
 
     /**
-     * Deuterium production formula in \Closure format.
+     * Deuterium production formula in Closure format.
      * The function is given two arguments and expects a float return value,
      *      which represents the Deuterium production amount.
      * Arguments:
@@ -48,10 +49,10 @@ class GameObjectProduction
      *
      * @var ?Closure
      */
-    public ?Closure $deuterium_formula = null;
+    public Closure|null $deuterium_formula = null;
 
     /**
-     * Energy production formula in \Closure format.
+     * Energy production formula in Closure format.
      * The function is given two arguments and expects a float return value,
      *      which represents the Energy production amount.
      * Arguments:
@@ -60,7 +61,7 @@ class GameObjectProduction
      *
      * @var ?Closure
      */
-    public ?Closure $energy_formula = null;
+    public Closure|null $energy_formula = null;
 
     /**
      * The planet the object production calculation applies to
@@ -81,7 +82,12 @@ class GameObjectProduction
      *
      * @var CharacterClassService|null
      */
-    public ?CharacterClassService $characterClassService = null;
+    public CharacterClassService|null $characterClassService = null;
+
+    /**
+     * Alliance class service for alliance-wide bonus calculations (Mercante: +5% mines, +5% energy).
+     */
+    public AllianceClassService|null $allianceClassService = null;
 
     /**
      * The Universe speed, set by a server admin.
@@ -125,6 +131,7 @@ class GameObjectProduction
         $this->calculateEngineer($productionIndex);
         $this->calculateGeologist($productionIndex);
         $this->calculateCharacterClass($productionIndex);
+        $this->calculateAllianceClass($productionIndex);
         $this->calculateCrawlerProduction($productionIndex);
         $this->calculateCommandingStaff($productionIndex);
         $this->calculateItems($productionIndex);
@@ -349,6 +356,41 @@ class GameObjectProduction
         if ($energyBonus > 1.0 && $productionIndex->mine->energy->get() > 0) {
             $productionIndex->character_class->energy->set(
                 floor($productionIndex->mine->energy->get() * ($energyBonus - 1.0))
+            );
+        }
+    }
+
+    /**
+     * Calculates Alliance Class bonus.
+     * Mercante (Trader): +5% mine production, +5% energy production.
+     * Applied additively on top of Character Class bonus, computed from base mine + planet_slot
+     * to mirror the OGame stacking behaviour (each multiplier applies to the same base).
+     */
+    private function calculateAllianceClass(ProductionIndex $productionIndex): void
+    {
+        if (!$this->allianceClassService) {
+            return;
+        }
+        $user = $this->playerService->getUser();
+
+        $mineBonus = $this->allianceClassService->getMineProductionBonus($user);
+        if ($mineBonus > 1.0) {
+            $delta = $mineBonus - 1.0;
+            foreach (['metal', 'crystal', 'deuterium'] as $res) {
+                $base = $productionIndex->mine->$res->get() + $productionIndex->planet_slot->$res->get();
+                if ($base > 0) {
+                    // Add to character_class bucket so totals propagate without a new ProductionIndex slot.
+                    $current = $productionIndex->character_class->$res->get();
+                    $productionIndex->character_class->$res->set($current + (int) floor($base * $delta));
+                }
+            }
+        }
+
+        $energyBonus = $this->allianceClassService->getEnergyProductionBonus($user);
+        if ($energyBonus > 1.0 && $productionIndex->mine->energy->get() > 0) {
+            $current = $productionIndex->character_class->energy->get();
+            $productionIndex->character_class->energy->set(
+                $current + (int) floor($productionIndex->mine->energy->get() * ($energyBonus - 1.0))
             );
         }
     }

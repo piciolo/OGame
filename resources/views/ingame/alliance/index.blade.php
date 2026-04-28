@@ -12,6 +12,11 @@
         <img height="16" width="16" src="/img/icons/3f9884806436537bdec305aa26fc60.gif">
     </div>
 
+    {{-- Override larghezza tab quando le 5 voci (incluso "Classi Alleanza") devono stare in linea --}}
+    <style>
+        /* Allinea 5 tab in linea (incl. "Classi Alleanza"). Compensa i margini esistenti (2px per lato). */
+        #tab-ally.tabsbelow > li { width: calc(20% - 4px) !important; }
+    </style>
     <div id="alliancecomponent" class="maincontent">
         <div id="netz">
             <div id="alliance">
@@ -27,37 +32,37 @@
                     <div id="tabs">
                         <ul class="tabsbelow" id="tab-ally">
                             @if($alliance)
-                                {{-- User is in an alliance - show alliance management tabs --}}
+                                {{-- User is in an alliance - show alliance management tabs (struttura identica OGame ufficiale s274-it) --}}
                                 <li class="aktiv">
-                                    <a class="overview navi" rel="{{ route('alliance.ajax.overview') }}" data-tab="overview">
-                                        <span>{{ __('t_ingame.alliance.tab_overview') }}</span>
+                                    <a href="javascript:void(0);" rel="{{ route('alliance.ajax.overview') }}" class="navi overview" data-tab="overview">
+                                        <span id="applicationTab">{{ __('t_ingame.alliance.tab_overview') }}<span style="display: inline;" class=""></span></span>
                                     </a>
                                 </li>
                                 @if($member && $member->hasPermission(\OGame\Models\AllianceRank::PERMISSION_MANAGE_ALLY))
-                                    <li>
-                                        <a class="management navi" rel="{{ route('alliance.ajax.management') }}" data-tab="management">
-                                            <span>{{ __('t_ingame.alliance.tab_management') }}</span>
+                                    <li class="">
+                                        <a href="javascript:void(0);" rel="{{ route('alliance.ajax.management') }}" class="navi management" data-tab="management">
+                                            <span id="applicationTab">{{ __('t_ingame.alliance.tab_management') }}<span style="display: inline;" class=""></span></span>
                                         </a>
                                     </li>
                                 @endif
                                 @if($member && $member->hasPermission(\OGame\Models\AllianceRank::PERMISSION_SEND_CIRCULAR_MSG))
-                                    <li>
-                                        <a class="broadcast navi" rel="{{ route('alliance.ajax.broadcast') }}" data-tab="broadcast">
-                                            <span>{{ __('t_ingame.alliance.tab_communication') }}</span>
+                                    <li class="">
+                                        <a href="javascript:void(0);" rel="{{ route('alliance.ajax.broadcast') }}" class="navi broadcast" data-tab="broadcast">
+                                            <span id="applicationTab">{{ __('t_ingame.alliance.tab_communication') }}<span style="display: inline;" class=""></span></span>
                                         </a>
                                     </li>
                                 @endif
                                 @if($member && $member->hasPermission(\OGame\Models\AllianceRank::PERMISSION_SEE_APPLICATIONS))
-                                    <li>
-                                        <a class="applications navi" rel="{{ route('alliance.ajax.applications') }}" data-tab="applications">
-                                            <span id="applicationTab">{{ __('t_ingame.alliance.tab_applications') }} ({{ $applications->count() }})<span class="newApplications undermark" style="display: {{ $applications->count() > 0 ? 'inline' : 'none' }}"></span></span>
+                                    <li class="">
+                                        <a href="javascript:void(0);" rel="{{ route('alliance.ajax.applications') }}" class="navi applications" data-tab="applications">
+                                            <span id="applicationTab">{{ __('t_ingame.alliance.tab_applications') }} ({{ $applications->count() }})<span style="display: {{ $applications->count() > 0 ? 'inline' : 'none' }}" class="newApplications undermark"></span></span>
                                         </a>
                                     </li>
                                 @endif
                                 @if($member && $member->hasPermission(\OGame\Models\AllianceRank::PERMISSION_MANAGE_CLASSES))
-                                    <li>
-                                        <a class="classselection navi" rel="{{ route('alliance.ajax.classes') }}" data-tab="classselection">
-                                            <span>{{ __('t_ingame.alliance.tab_classes') }}</span>
+                                    <li class="">
+                                        <a href="javascript:void(0);" rel="{{ route('alliance.ajax.classes') }}" class="navi classselection" data-tab="classselection">
+                                            <span id="applicationTab">{{ __('t_ingame.alliance.tab_classes') }}<span style="display: inline;" class=""></span></span>
                                         </a>
                                     </li>
                                 @endif

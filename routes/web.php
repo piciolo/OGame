@@ -196,9 +196,14 @@ Route::middleware(['auth', 'banned', 'globalgame', 'locale', 'firstlogin'])->gro
     Route::post('/alliance/members/kick', [AllianceController::class, 'kickMemberAction'])->name('alliance.members.kick');
     Route::post('/alliance/members/assign-rank', [AllianceController::class, 'assignRankAction'])->name('alliance.members.assign-rank');
     Route::post('/alliance/text/update', [AllianceController::class, 'updateAllianceText'])->name('alliance.text.update');
+    Route::post('/alliance/class/select', [AllianceController::class, 'selectClass'])->name('alliance.class.select');
+    Route::get('/ajax/alliance/classes', [AllianceController::class, 'ajaxClasses'])->name('alliance.ajax.classes');
 
     Route::get('/premium', [PremiumController::class, 'index'])->name('premium.index');
     Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
+    Route::post('/ajax/shop/detail', [ShopController::class, 'detail'])->name('shop.detail');
+    Route::post('/ajax/shop/activate', [ShopController::class, 'activate'])->middleware('throttle:30,1')->name('shop.activate');
+    Route::post('/ajax/shop/buy', [ShopController::class, 'buy'])->middleware('throttle:10,1')->name('shop.buy');
 
     // Character Class
     Route::get('/characterclass', [CharacterClassController::class, 'index'])->name('characterclass.index');
