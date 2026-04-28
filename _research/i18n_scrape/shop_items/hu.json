@@ -1,0 +1,644 @@
+{
+  "lang": "hu",
+  "source": "s272-it.ogame.gameforge.com (UI=hu) / inventoryObj.items_shop, 91 items",
+  "captured_at": "2026-04-28",
+  "items": [
+    {
+      "r": "c1d0232604872f899ea15a9772baf76880f55c5f",
+      "n": "Teljes nyersanyagcsomag",
+      "d": "Aktiválás után egy egész napi termelésmennyiséget kapsz minden erőforrásból.",
+      "dur": "most",
+      "p": "252.000 Sötét Anyag"
+    },
+    {
+      "r": "859d82d316b83848f7365d21949b3e1e63c7841f",
+      "n": "Fém csomag",
+      "d": "Aktiválás után egy egész napi termelésmennyiséget kapsz Fémből.",
+      "dur": "most",
+      "p": "42.000 Sötét Anyag"
+    },
+    {
+      "r": "bb2f6843226ef598f0b567b92c51b283de90aa48",
+      "n": "Kristály csomag",
+      "d": "Aktiválás után egy egész napi termelésmennyiséget kapsz Kristályból.",
+      "dur": "most",
+      "p": "84.000 Sötét Anyag"
+    },
+    {
+      "r": "cb72ed207dd871832a850ee29f1c1f83aa3f4f36",
+      "n": "Deutérium csomag",
+      "d": "Aktiválás után egy egész napi termelésmennyiséget kapsz Deutériumból.",
+      "dur": "most",
+      "p": "126.000 Sötét Anyag"
+    },
+    {
+      "r": "77eff880829027daf23b755e14820a60c4c6fd93",
+      "n": "Tábornok",
+      "d": "<div class=\"item_characterclass_bonuslist\"><span class=\"blue_txt tooltip\" title=\"Hadihajók &#43;100% sebessége\">Gyorsabb hadihajók</span><span>, </span><span class=\"blue_txt tooltip\" title=\"Szemetesek &#43;100% sebessége\">Gyors Szemetesek</span><span>, </span><span class=\"blue_txt tooltip\" title=\"Minden hajó -50% deutérium fogyasztása\">Gazdaságos hajók</span><span>, </span><span class=\"blue_txt tooltip\" title=\"Szemetesek és Felderítők &#43;20% árukapacitása\">Bővített árukapacitás</span><span>, </span><span class=\"blue_txt tooltip\" title=\"Kis esély egy Halálcsillag azonnali elpusztítására a csatában Könnyű Harcost használva.\">Hamill Manoeuvre</span><span>, </span><span class=\"blue_txt tooltip\" title=\"Roncs a támadásánál (szállítás az indító bolygóra)\">Roncs a támadásánál</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;2 Hadi kutatás szint\">További Hadi kutatás szintek</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;2 flottahely\">További flottahelyek</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;5 további Holdmező\">További Holdmezők</span><span>, </span><span class=\"blue_txt tooltip\" title=\"Részletes flottasebesség beállítások\">Öt százalékos flottasebesség-növekmény</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;10% kedvezmény a gyorsításra (hajógyár)\">Kedvezmény a gyorsításra (hajógyár)</span></div>",
+      "dur": "Végleges",
+      "p": "500.000 Sötét Anyag"
+    },
+    {
+      "r": "2dd05cc4c0e185fce2e712112dc44932027aee98",
+      "n": "Felfedező",
+      "d": "<div class=\"item_characterclass_bonuslist\"><span class=\"blue_txt tooltip\" title=\"-25% kutatási idő\">Kutatási bónusz</span><span>, </span><span class=\"blue_txt tooltip\" title=\"Növelt begyűjtés a sikeres expedíciókon\">Expedíció bónusz</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;10%-kal nagyobb bolygók a gyarmatosításkor\">Bolygóméret</span><span>, </span><span class=\"blue_txt tooltip\" title=\"Az expedíciókon létrejött törmelékmezők a Galaxis nézetben lesznek láthatók.\">Expedíciós törmelékmezők</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;2 expedíció\">További expedíciók</span><span>, </span><span class=\"blue_txt tooltip\" title=\"-50% esély expedíciós ellenségekre\">Kevesebb expedíciós ellenség</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;20% phalanx hatótávolság\">Megnövelt phalanx hatótávolság</span><span>, </span><span class=\"blue_txt tooltip\" title=\"75% zsákmány inaktív játékosoktól\">Megnövelt inaktív fosztás</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;10% kedvezmény a gyorsításra (kutatás)\">Kedvezmény a gyorsításra (kutatás)</span></div>",
+      "dur": "Végleges",
+      "p": "500.000 Sötét Anyag"
+    },
+    {
+      "r": "9374c79a24b84c4331f0d26526ef6c2d33319a6e",
+      "n": "Gyűjtő",
+      "d": "<div class=\"item_characterclass_bonuslist\"><span class=\"blue_txt tooltip\" title=\"&#43;25% bánya termelés\">Megnövelt termelés</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;10% energiatermelés\">Megnövelt energiatermelés</span><span>, </span><span class=\"blue_txt tooltip\" title=\"Szállítók &#43;100% sebessége\">Gyors Szállítók</span><span>, </span><span class=\"blue_txt tooltip\" title=\"Szállítók &#43;25% árukapacitása\">Bővített árukapacitás</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;50% Crawler bónusz\">Megnövelt Crawler bónusz</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;10%-kal több használható Crawler a Geológussal\">Megnövelt maximális számú Crawler</span><span>, </span><span class=\"blue_txt tooltip\" title=\"A Crawlerek akár 150%-os túlterhelése\">Crawler túlterhelés</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;10% kedvezmény a gyorsításra (épület)\">Kedvezmény a gyorsításra (épületek)</span></div>",
+      "dur": "Végleges",
+      "p": "500.000 Sötét Anyag"
+    },
+    {
+      "r": "a83cfdc15b8dba27c82962d57e50d8101d263cfb",
+      "n": "Platina fém gyorsító",
+      "d": "&#43;40%-kal több Fémbánya termelés a bolygón",
+      "dur": "1s",
+      "p": "30.000 Sötét Anyag"
+    },
+    {
+      "r": "05294270032e5dc968672425ab5611998c409166",
+      "n": "Arany fém gyorsító",
+      "d": "&#43;30%-kal több Fémbánya termelés a bolygón",
+      "dur": "1s",
+      "p": "20.000 Sötét Anyag"
+    },
+    {
+      "r": "ba85cc2b8a5d986bbfba6954e2164ef71af95d4a",
+      "n": "Ezüst fém gyorsító",
+      "d": "&#43;20%-kal több Fémbánya termelés a bolygón",
+      "dur": "1s",
+      "p": "7.500 Sötét Anyag"
+    },
+    {
+      "r": "35d96e441c21ef112a84c618934d9d0f026998fd",
+      "n": "Platina kristály gyorsító",
+      "d": "&#43;40%-kal több Kristálybánya termelés a bolygón",
+      "dur": "1s",
+      "p": "30.000 Sötét Anyag"
+    },
+    {
+      "r": "118d34e685b5d1472267696d1010a393a59aed03",
+      "n": "Arany kristály gyorsító",
+      "d": "&#43;30%-kal több Kristálybánya termelés a bolygón",
+      "dur": "1s",
+      "p": "20.000 Sötét Anyag"
+    },
+    {
+      "r": "422db99aac4ec594d483d8ef7faadc5d40d6f7d3",
+      "n": "Ezüst kristály gyorsító",
+      "d": "&#43;20%-kal több Kristálybánya termelés a bolygón",
+      "dur": "1s",
+      "p": "7.500 Sötét Anyag"
+    },
+    {
+      "r": "4b51d903560edd102467b110586000bd64fdb954",
+      "n": "Platina deutérium gyorsító",
+      "d": "&#43;40%-kal több Deutérium szűrőállomás betakarítás a bolygón",
+      "dur": "1s",
+      "p": "30.000 Sötét Anyag"
+    },
+    {
+      "r": "5560a1580a0330e8aadf05cb5bfe6bc3200406e2",
+      "n": "Arany deutérium gyorsító",
+      "d": "&#43;30%-kal több Deutérium szűrőállomás betakarítás a bolygón",
+      "dur": "1s",
+      "p": "20.000 Sötét Anyag"
+    },
+    {
+      "r": "e4b78acddfa6fd0234bcb814b676271898b0dbb3",
+      "n": "Ezüst deutérium gyorsító",
+      "d": "&#43;20%-kal több Deutérium szűrőállomás betakarítás a bolygón",
+      "dur": "1s",
+      "p": "7.500 Sötét Anyag"
+    },
+    {
+      "r": "f3d9b82e10f2e969209c1a5ad7d22181c703bb36",
+      "n": "Platina bolygómezők",
+      "d": "&#43;20 további mező a bolygón.",
+      "dur": "Végleges",
+      "p": "350.000 Sötét Anyag"
+    },
+    {
+      "r": "04e58444d6d0beb57b3e998edc34c60f8318825a",
+      "n": "Arany Bolygómezők",
+      "d": "&#43;15 további mező a bolygón.",
+      "dur": "Végleges",
+      "p": "300.000 Sötét Anyag"
+    },
+    {
+      "r": "0e41524dc46225dca21c9119f2fb735fd7ea5cb3",
+      "n": "Ezüst Bolygómezők",
+      "d": "&#43;9 további mező a bolygón.",
+      "dur": "Végleges",
+      "p": "150.000 Sötét Anyag"
+    },
+    {
+      "r": "16768164989dffd819a373613b5e1a52e226a5b0",
+      "n": "Bronz Bolygómezők",
+      "d": "&#43;4 további mező a bolygón.",
+      "dur": "Végleges",
+      "p": "75.000 Sötét Anyag"
+    },
+    {
+      "r": "8a426241572b2fea57844acd99bc326fe40e35cf",
+      "n": "Platina holdmező",
+      "d": "&#43;8 további mező egy holdon",
+      "dur": "Állandó, vagyis a hold megsemmisüléséig tartó",
+      "p": "130.000 Sötét Anyag"
+    },
+    {
+      "r": "05ee9654bd11a261f1ff0e5d0e49121b5e7e4401",
+      "n": "Arany holdmező",
+      "d": "&#43;6 további mező egy holdon",
+      "dur": "Állandó, vagyis a hold megsemmisüléséig tartó",
+      "p": "100.000 Sötét Anyag"
+    },
+    {
+      "r": "c21ff33ba8f0a7eadb6b7d1135763366f0c4b8bf",
+      "n": "Ezüst holdmező",
+      "d": "&#43;4 további mező egy holdon",
+      "dur": "Állandó, vagyis a hold megsemmisüléséig tartó",
+      "p": "50.000 Sötét Anyag"
+    },
+    {
+      "r": "be67e009a5894f19bbf3b0c9d9b072d49040a2cc",
+      "n": "Bronz holdmező",
+      "d": "&#43;2 további mező egy holdon",
+      "dur": "Állandó, vagyis a hold megsemmisüléséig tartó",
+      "p": "30.000 Sötét Anyag"
+    },
+    {
+      "r": "45d6660308689c65d97f3c27327b0b31f880ae75",
+      "n": "Arany M.O.O.N.S.",
+      "d": "Elkezdi támadni a bolygód, hogy hold keletkezzen.",
+      "dur": "30m",
+      "p": "100.000 Sötét Anyag"
+    },
+    {
+      "r": "fd895a5c9fd978b9c5c7b65158099773ba0eccef",
+      "n": "Ezüst M.O.O.N.S.",
+      "d": "Elkezdi támadni a bolygód, hogy hold keletkezzen.",
+      "dur": "1ó",
+      "p": "50.000 Sötét Anyag"
+    },
+    {
+      "r": "485a6d5624d9de836d3eb52b181b13423f795770",
+      "n": "Bronz M.O.O.N.S.",
+      "d": "Elkezdi támadni a bolygód, hogy hold keletkezzen.",
+      "dur": "1ó 30m",
+      "p": "30.000 Sötét Anyag"
+    },
+    {
+      "r": "7c2edf40c5cd54ad11c6439398b83020c0a7a6be",
+      "n": "Platina kristály gyorsító",
+      "d": "&#43;40%-kal több Kristálybánya termelés a bolygón",
+      "dur": "12s 6d",
+      "p": "300.000 Sötét Anyag"
+    },
+    {
+      "r": "d45f00e8b909f5293a83df4f369737ea7d69c684",
+      "n": "Arany kristály gyorsító",
+      "d": "&#43;30%-kal több Kristálybánya termelés a bolygón",
+      "dur": "12s 6d",
+      "p": "200.000 Sötét Anyag"
+    },
+    {
+      "r": "04d8afd5936976e32ce894b765ea8bd168aa07ef",
+      "n": "Ezüst kristály gyorsító",
+      "d": "&#43;20%-kal több Kristálybánya termelés a bolygón",
+      "dur": "12s 6d",
+      "p": "80.000 Sötét Anyag"
+    },
+    {
+      "r": "6bf45fcba8a6a68158273d04a924452eca75cf39",
+      "n": "Platina kristály gyorsító",
+      "d": "&#43;40%-kal több Kristálybánya termelés a bolygón",
+      "dur": "4s 2d",
+      "p": "110.000 Sötét Anyag"
+    },
+    {
+      "r": "36fb611e71d42014f5ebd0aa5a52bc0c81a0c1cb",
+      "n": "Arany kristály gyorsító",
+      "d": "&#43;30%-kal több Kristálybánya termelés a bolygón",
+      "dur": "4s 2d",
+      "p": "75.000 Sötét Anyag"
+    },
+    {
+      "r": "5b69663e3ba09a1fe77cf72c5094e246cfe954d6",
+      "n": "Ezüst kristály gyorsító",
+      "d": "&#43;20%-kal több Kristálybánya termelés a bolygón",
+      "dur": "4s 2d",
+      "p": "28.000 Sötét Anyag"
+    },
+    {
+      "r": "831c3ea8d868eb3601536f4d5e768842988a1ba9",
+      "n": "Platina deutérium gyorsító",
+      "d": "&#43;40%-kal több Deutérium szűrőállomás betakarítás a bolygón",
+      "dur": "12s 6d",
+      "p": "300.000 Sötét Anyag"
+    },
+    {
+      "r": "dc5896bed3311434224d511fa7ced6fdbe41b4e8",
+      "n": "Arany deutérium gyorsító",
+      "d": "&#43;30%-kal több Deutérium szűrőállomás betakarítás a bolygón",
+      "dur": "12s 6d",
+      "p": "200.000 Sötét Anyag"
+    },
+    {
+      "r": "6f0952a919fd2ab9c009e9ccd83c1745f98f758f",
+      "n": "Ezüst deutérium gyorsító",
+      "d": "&#43;20%-kal több Deutérium szűrőállomás betakarítás a bolygón",
+      "dur": "12s 6d",
+      "p": "80.000 Sötét Anyag"
+    },
+    {
+      "r": "620f779dbffa1011aded69b091239727910a3d03",
+      "n": "Platina deutérium gyorsító",
+      "d": "&#43;40%-kal több Deutérium szűrőállomás betakarítás a bolygón",
+      "dur": "4s 2d",
+      "p": "110.000 Sötét Anyag"
+    },
+    {
+      "r": "300493ddc756869578cb2888a3a1bc0c3c66765f",
+      "n": "Arany deutérium gyorsító",
+      "d": "&#43;30%-kal több Deutérium szűrőállomás betakarítás a bolygón",
+      "dur": "4s 2d",
+      "p": "75.000 Sötét Anyag"
+    },
+    {
+      "r": "26416a3cdb94613844b1d3ca78b9057fd6ae9b15",
+      "n": "Ezüst deutérium gyorsító",
+      "d": "&#43;20%-kal több Deutérium szűrőállomás betakarítás a bolygón",
+      "dur": "4s 2d",
+      "p": "28.000 Sötét Anyag"
+    },
+    {
+      "r": "ca7f903a65467b70411e513b0920d66c417aa3a2",
+      "n": "Platina fém gyorsító",
+      "d": "&#43;40%-kal több Fémbánya termelés a bolygón",
+      "dur": "12s 6d",
+      "p": "300.000 Sötét Anyag"
+    },
+    {
+      "r": "21c1a65ca6aecf54ffafb94c01d0c60d821b325d",
+      "n": "Arany fém gyorsító",
+      "d": "&#43;30%-kal több Fémbánya termelés a bolygón",
+      "dur": "12s 6d",
+      "p": "200.000 Sötét Anyag"
+    },
+    {
+      "r": "6f44dcd2bd84875527abba69158b4e976c308bbc",
+      "n": "Ezüst fém gyorsító",
+      "d": "&#43;20%-kal több Fémbánya termelés a bolygón",
+      "dur": "12s 6d",
+      "p": "80.000 Sötét Anyag"
+    },
+    {
+      "r": "c690f492cffe5f9f2952337e8eed307a8a62d6cf",
+      "n": "Platina fém gyorsító",
+      "d": "&#43;40%-kal több Fémbánya termelés a bolygón",
+      "dur": "4s 2d",
+      "p": "110.000 Sötét Anyag"
+    },
+    {
+      "r": "6fecb993169fe918d9c63cd37a2e541cc067664e",
+      "n": "Arany fém gyorsító",
+      "d": "&#43;30%-kal több Fémbánya termelés a bolygón",
+      "dur": "4s 2d",
+      "p": "75.000 Sötét Anyag"
+    },
+    {
+      "r": "742743b3b0ae1f0b8a1e01921042810b58f12f39",
+      "n": "Ezüst fém gyorsító",
+      "d": "&#43;20%-kal több Fémbánya termelés a bolygón",
+      "dur": "4s 2d",
+      "p": "28.000 Sötét Anyag"
+    },
+    {
+      "r": "c2bad58fcec374d709099d11d0549e59ea7e233e",
+      "n": "Energia gyorsító, Ezüst",
+      "d": "&#43;40%-kal több energiatermelés egy bolygón",
+      "dur": "1s",
+      "p": "7.500 Sötét Anyag"
+    },
+    {
+      "r": "bedd248aaf288c27e9351cfacfa6be03f1dbb898",
+      "n": "Energia gyorsító, Ezüst",
+      "d": "&#43;40%-kal több energiatermelés egy bolygón",
+      "dur": "4s 2d",
+      "p": "28.000 Sötét Anyag"
+    },
+    {
+      "r": "e05aa5b9e3df5be3857b43da8403eafbf5ad3b96",
+      "n": "Energia gyorsító, Ezüst",
+      "d": "&#43;40%-kal több energiatermelés egy bolygón",
+      "dur": "12s 6d",
+      "p": "80.000 Sötét Anyag"
+    },
+    {
+      "r": "55b52cbfb148ec80cd4e5b0580f7bed01149d643",
+      "n": "Energia gyorsító, Arany",
+      "d": "&#43;60%-kal több energiatermelés egy bolygón",
+      "dur": "1s",
+      "p": "20.000 Sötét Anyag"
+    },
+    {
+      "r": "4fa9a2273ee446284d5177fd9d60a22de01e932b",
+      "n": "Energia gyorsító, Arany",
+      "d": "&#43;60%-kal több energiatermelés egy bolygón",
+      "dur": "4s 2d",
+      "p": "75.000 Sötét Anyag"
+    },
+    {
+      "r": "5ad783dcfce3655ef97b36197425718a0dad6b66",
+      "n": "Energia gyorsító, Arany",
+      "d": "&#43;60%-kal több energiatermelés egy bolygón",
+      "dur": "12s 6d",
+      "p": "200.000 Sötét Anyag"
+    },
+    {
+      "r": "77c36199102e074dca46f5f26ef57ce824d044dd",
+      "n": "Energia gyorsító, Platina",
+      "d": "&#43;80%-kal több energiatermelés egy bolygón",
+      "dur": "1s",
+      "p": "30.000 Sötét Anyag"
+    },
+    {
+      "r": "dfe86378f8c3d7f3ee0790ea64603bc44e83ca47",
+      "n": "Energia gyorsító, Platina",
+      "d": "&#43;80%-kal több energiatermelés egy bolygón",
+      "dur": "4s 2d",
+      "p": "110.000 Sötét Anyag"
+    },
+    {
+      "r": "c39aa972a971e94b1d9b4d7a8f734b3d8be12534",
+      "n": "Energia gyorsító, Platina",
+      "d": "&#43;80%-kal több energiatermelés egy bolygón",
+      "dur": "12s 6d",
+      "p": "300.000 Sötét Anyag"
+    },
+    {
+      "r": "e54ecc0416d6e96b4165f24238b03a1b32c1df47",
+      "n": "Bronz expedíciós helyek",
+      "d": "&#43;1 további expedíciós hely",
+      "dur": "1s",
+      "p": "15.000 Sötét Anyag"
+    },
+    {
+      "r": "8c1f6c6849d1a5e4d9de6ae9bb1b861f6f7b5d4d",
+      "n": "Bronz expedíciós helyek",
+      "d": "&#43;1 további expedíciós hely",
+      "dur": "4s 2d",
+      "p": "56.250 Sötét Anyag"
+    },
+    {
+      "r": "a5784c685c0e1e6111d9c18aeaf80af2e0777ab4",
+      "n": "Bronz expedíciós helyek",
+      "d": "&#43;1 további expedíciós hely",
+      "dur": "12s 6d",
+      "p": "157.500 Sötét Anyag"
+    },
+    {
+      "r": "b2bc9789df7c1ef5e058f72d61380b696dde54e8",
+      "n": "Ezüst expedíciós helyek",
+      "d": "&#43;2 további expedíciós hely",
+      "dur": "1s",
+      "p": "30.000 Sötét Anyag"
+    },
+    {
+      "r": "31a504be1195149a3bef05b9cc6e3af185d24ef2",
+      "n": "Ezüst expedíciós helyek",
+      "d": "&#43;2 további expedíciós hely",
+      "dur": "4s 2d",
+      "p": "112.500 Sötét Anyag"
+    },
+    {
+      "r": "4f6f941bbf2a8527b0424b3ad11014502d8f4fb8",
+      "n": "Ezüst expedíciós helyek",
+      "d": "&#43;2 további expedíciós hely",
+      "dur": "12s 6d",
+      "p": "315.000 Sötét Anyag"
+    },
+    {
+      "r": "9336b9f29d36e3f69b0619c9523d8bec5e09ab8e",
+      "n": "Arany expedíciós helyek",
+      "d": "&#43;3 további expedíciós hely",
+      "dur": "1s",
+      "p": "45.000 Sötét Anyag"
+    },
+    {
+      "r": "fd7d35e73d0e09e83e30812b738ef966ea9ef790",
+      "n": "Arany expedíciós helyek",
+      "d": "&#43;3 további expedíciós hely",
+      "dur": "4s 2d",
+      "p": "168.750 Sötét Anyag"
+    },
+    {
+      "r": "540410439514ac09363c5c47cf47117a8b8ae79a",
+      "n": "Arany expedíciós helyek",
+      "d": "&#43;3 további expedíciós hely",
+      "dur": "12s 6d",
+      "p": "472.500 Sötét Anyag"
+    },
+    {
+      "r": "0684c6a5a42acbb3cd134913d421fc28dae6b90d",
+      "n": "Bronz flottahelyek",
+      "d": "&#43;2 további flottahely",
+      "dur": "1s",
+      "p": "5.000 Sötét Anyag"
+    },
+    {
+      "r": "94a28491b6fd85003f1cb151e88dde106f1d7596",
+      "n": "Bronz flottahelyek",
+      "d": "&#43;2 további flottahely",
+      "dur": "4s 2d",
+      "p": "18.750 Sötét Anyag"
+    },
+    {
+      "r": "bb47add58876240199a18ddacc2db07789be1934",
+      "n": "Bronz flottahelyek",
+      "d": "&#43;2 további flottahely",
+      "dur": "12s 6d",
+      "p": "52.500 Sötét Anyag"
+    },
+    {
+      "r": "f8fd610825fb4a442e27e4e9add74f050e040e27",
+      "n": "Ezüst flottahelyek",
+      "d": "&#43;4 további flottahely",
+      "dur": "1s",
+      "p": "10.000 Sötét Anyag"
+    },
+    {
+      "r": "c4e598a85805a7eb3ca70f9265cbd366fc4d2b0e",
+      "n": "Ezüst flottahelyek",
+      "d": "&#43;4 további flottahely",
+      "dur": "4s 2d",
+      "p": "37.500 Sötét Anyag"
+    },
+    {
+      "r": "a693c5ce3f5676efaaf0781d94234bea4f599d2e",
+      "n": "Ezüst flottahelyek",
+      "d": "&#43;4 további flottahely",
+      "dur": "12s 6d",
+      "p": "105.000 Sötét Anyag"
+    },
+    {
+      "r": "5a8000c372cd079292a92d35d4ddba3c0f348d3b",
+      "n": "Arany flottahelyek",
+      "d": "&#43;6 további flottahely",
+      "dur": "1s",
+      "p": "15.000 Sötét Anyag"
+    },
+    {
+      "r": "1808bf7639b81ac3ac87bcb7eb3bbba0a1874d0a",
+      "n": "Arany flottahelyek",
+      "d": "&#43;6 további flottahely",
+      "dur": "4s 2d",
+      "p": "56.250 Sötét Anyag"
+    },
+    {
+      "r": "1f7024c4f6493f0c589e1b00c76e6ced258c00e5",
+      "n": "Arany flottahelyek",
+      "d": "&#43;6 további flottahely",
+      "dur": "12s 6d",
+      "p": "157.500 Sötét Anyag"
+    },
+    {
+      "r": "1aa36213cb676fd5baad5edc2bee4fbe117a778b",
+      "n": "Kutatók (Szövetség)",
+      "d": "&#43;10% sebesség az expedíció céljáig<br />&#43;5%-kal nagyobb bolygók kolonizáláskor<br />Hozzáférés a rendszer phalanxhoz: ez 40.000 deutériumért használható a flotta mozgásainak átvizsgálására egész rendszerekben, amíg azok hatótávon belül vannak.",
+      "dur": "ez 40.000 deutériumért használható a flotta mozgásainak átvizsgálására egész rendszerekben, amíg azok hatótávon belül vannak.",
+      "p": "Végleges"
+    },
+    {
+      "r": "6c9fe5e35bdad0d4e3382eb6a5aeac6bc8263752",
+      "n": "Kereskedők (Szövetség)",
+      "d": "Szállítók &#43;10% sebessége<br />&#43;5% nyersanyag- és energiatermelés<br />&#43;10% tárolókapacitás a holdakon és bolygókon",
+      "dur": "Végleges",
+      "p": "500.000 Sötét Anyag"
+    },
+    {
+      "r": "9b48e257cbef6c5df0f03a47cead7f9abda3d437",
+      "n": "Harcosok (Szövetség)",
+      "d": "&#43;10% sebesség a szövetség tagjai között közlekedő hajók számára<br />&#43;1 hadi kutatás szint<br />&#43;1 kémkedési kutatás szint<br />Hozzáférés a kémkedési rendszerhez: elküldi a kiválasztott számú kémszondát, hogy átvizsgáljanak egy egész rendszert. Beállítható a kutatott égitest típusa, az utolsó kémtámadás óta eltelt idő vagy a kívánt játékostevékenység is.",
+      "dur": "elküldi a kiválasztott számú kémszondát, hogy átvizsgáljanak egy egész rendszert. Beállítható a kutatott égitest típusa, az utolsó kémtámadás óta eltelt idő vagy a kívánt játékostevékenység is.",
+      "p": "Végleges"
+    },
+    {
+      "r": "dc34fa00ba914ffab0031ac3f165e26f553d7809",
+      "n": "Avatár: Lézer cica",
+      "d": "Válaszd ezt az avatárt a játékosprofilodban az alkalmazáshoz, és tedd személyessé a profilodat! Ez a tárgy feloldódik az azonosítód összes univerzumában. Kérjük, vedd figyelembe, hogy az univerzumok közötti szinkronizálás eltarthat egy ideig.",
+      "dur": "Végleges",
+      "p": "50.000 Sötét Anyag"
+    },
+    {
+      "r": "1c497ef926d674f2df9d96cfc58fe12f97cf4025",
+      "n": "Avatár: Kicsi idegen",
+      "d": "Válaszd ezt az avatárt a játékosprofilodban az alkalmazáshoz, és tedd személyessé a profilodat! Ez a tárgy feloldódik az azonosítód összes univerzumában. Kérjük, vedd figyelembe, hogy az univerzumok közötti szinkronizálás eltarthat egy ideig.",
+      "dur": "Végleges",
+      "p": "50.000 Sötét Anyag"
+    },
+    {
+      "r": "fd3b0789b5dca99e9d5b251f8bae0760ce52dea6",
+      "n": "Avatár: Továbbfejlesztett",
+      "d": "Válaszd ezt az avatárt a játékosprofilodban az alkalmazáshoz, és tedd személyessé a profilodat! Ez a tárgy feloldódik az azonosítód összes univerzumában. Kérjük, vedd figyelembe, hogy az univerzumok közötti szinkronizálás eltarthat egy ideig.",
+      "dur": "Végleges",
+      "p": "50.000 Sötét Anyag"
+    },
+    {
+      "r": "003db2a3d693c2d889864b76ad122b274bfd641b",
+      "n": "Avatár: Súlytalan",
+      "d": "Válaszd ezt az avatárt a játékosprofilodban az alkalmazáshoz, és tedd személyessé a profilodat! Ez a tárgy feloldódik az azonosítód összes univerzumában. Kérjük, vedd figyelembe, hogy az univerzumok közötti szinkronizálás eltarthat egy ideig.",
+      "dur": "Végleges",
+      "p": "50.000 Sötét Anyag"
+    },
+    {
+      "r": "8d514b69eb04a57495bab0c8f4b80f58294a7b17",
+      "n": "Avatár: Jéghideg",
+      "d": "Válaszd ezt az avatárt a játékosprofilodban az alkalmazáshoz, és tedd személyessé a profilodat! Ez a tárgy feloldódik az azonosítód összes univerzumában. Kérjük, vedd figyelembe, hogy az univerzumok közötti szinkronizálás eltarthat egy ideig.",
+      "dur": "Végleges",
+      "p": "50.000 Sötét Anyag"
+    },
+    {
+      "r": "83c4e79697a264462e3ca2e8567307e7f1d7954b",
+      "n": "Avatár: Kibertér",
+      "d": "Válaszd ezt az avatárt a játékosprofilodban az alkalmazáshoz, és tedd személyessé a profilodat! Ez a tárgy feloldódik az azonosítód összes univerzumában. Kérjük, vedd figyelembe, hogy az univerzumok közötti szinkronizálás eltarthat egy ideig.",
+      "dur": "Végleges",
+      "p": "50.000 Sötét Anyag"
+    },
+    {
+      "r": "2d7de180f3f3d191982294d2f8c1cd7507e90cb4",
+      "n": "Avatár: Retro cicák",
+      "d": "Válaszd ezt az avatárt a játékosprofilodban az alkalmazáshoz, és tedd személyessé a profilodat! Ez a tárgy feloldódik az azonosítód összes univerzumában. Kérjük, vedd figyelembe, hogy az univerzumok közötti szinkronizálás eltarthat egy ideig.",
+      "dur": "Végleges",
+      "p": "50.000 Sötét Anyag"
+    },
+    {
+      "r": "c54d5a8f36f20373c5bb633a109241290b2e2a7a",
+      "n": "Avatár: Hadúr",
+      "d": "Válaszd ezt az avatárt a játékosprofilodban az alkalmazáshoz, és tedd személyessé a profilodat! Ez a tárgy feloldódik az azonosítód összes univerzumában. Kérjük, vedd figyelembe, hogy az univerzumok közötti szinkronizálás eltarthat egy ideig.",
+      "dur": "Végleges",
+      "p": "50.000 Sötét Anyag"
+    },
+    {
+      "r": "99f53568108115acac2d7f7425ee2ad76a6206b8",
+      "n": "Avatár: Parancsnok cica",
+      "d": "Válaszd ezt az avatárt a játékosprofilodban az alkalmazáshoz, és tedd személyessé a profilodat! Ez a tárgy feloldódik az azonosítód összes univerzumában. Kérjük, vedd figyelembe, hogy az univerzumok közötti szinkronizálás eltarthat egy ideig.",
+      "dur": "Végleges",
+      "p": "50.000 Sötét Anyag"
+    },
+    {
+      "r": "c70f11e9543100622e3ef3bdcd57099a63f148bf",
+      "n": "Avatár: Végzet",
+      "d": "Válaszd ezt az avatárt a játékosprofilodban az alkalmazáshoz, és tedd személyessé a profilodat! Ez a tárgy feloldódik az azonosítód összes univerzumában. Kérjük, vedd figyelembe, hogy az univerzumok közötti szinkronizálás eltarthat egy ideig.",
+      "dur": "Végleges",
+      "p": "25.000 Sötét Anyag"
+    },
+    {
+      "r": "ac5bd99552a23733f7b0decac45094d5bfbfedac",
+      "n": "Avatár: Izzó harag",
+      "d": "Válaszd ezt az avatárt a játékosprofilodban az alkalmazáshoz, és tedd személyessé a profilodat! Ez a tárgy feloldódik az azonosítód összes univerzumában. Kérjük, vedd figyelembe, hogy az univerzumok közötti szinkronizálás eltarthat egy ideig.",
+      "dur": "Végleges",
+      "p": "50.000 Sötét Anyag"
+    },
+    {
+      "r": "da8b1dcf6a9defb45e456968d3c8587bf63a48b5",
+      "n": "Limitált avatár: Eseményhorizont",
+      "d": "Válaszd ezt az avatárt a játékosprofilodban az alkalmazáshoz, és tedd személyessé a profilodat! Ez a tárgy feloldódik az azonosítód összes univerzumában. Kérjük, vedd figyelembe, hogy az univerzumok közötti szinkronizálás eltarthat egy ideig.",
+      "dur": "Végleges",
+      "p": "65.000 Sötét Anyag"
+    },
+    {
+      "r": "69719df021ec40424225f22e2edca15b799401a5",
+      "n": "Limitált avatár: Sztárpilóta",
+      "d": "Válaszd ezt az avatárt a játékosprofilodban az alkalmazáshoz, és tedd személyessé a profilodat! Ez a tárgy feloldódik az azonosítód összes univerzumában. Kérjük, vedd figyelembe, hogy az univerzumok közötti szinkronizálás eltarthat egy ideig.",
+      "dur": "Végleges",
+      "p": "65.000 Sötét Anyag"
+    },
+    {
+      "r": "facb9419f24c4a1fbff7dc29376c3f57c6204c1c",
+      "n": "Limitált avatár: Android",
+      "d": "Válaszd ezt az avatárt a játékosprofilodban az alkalmazáshoz, és tedd személyessé a profilodat! Ez a tárgy feloldódik az azonosítód összes univerzumában. Kérjük, vedd figyelembe, hogy az univerzumok közötti szinkronizálás eltarthat egy ideig.",
+      "dur": "Végleges",
+      "p": "65.000 Sötét Anyag"
+    },
+    {
+      "r": "74bf9741209dc8ef4f9996b8b2b7ca59001ea3a8",
+      "n": "Limitált avatár: Csillagteknős",
+      "d": "Válaszd ezt az avatárt a játékosprofilodban az alkalmazáshoz, és tedd személyessé a profilodat! Ez a tárgy feloldódik az azonosítód összes univerzumában. Kérjük, vedd figyelembe, hogy az univerzumok közötti szinkronizálás eltarthat egy ideig.",
+      "dur": "Végleges",
+      "p": "65.000 Sötét Anyag"
+    },
+    {
+      "r": "07a4b64949fcc593435cfaa9184290af96ffdc29",
+      "n": "Limitált avatár: A szerencse kovácsa",
+      "d": "Válaszd ezt az avatárt a játékosprofilodban az alkalmazáshoz, és tedd személyessé a profilodat! Ez a tárgy feloldódik az azonosítód összes univerzumában. Kérjük, vedd figyelembe, hogy az univerzumok közötti szinkronizálás eltarthat egy ideig.",
+      "dur": "Végleges",
+      "p": "65.000 Sötét Anyag"
+    }
+  ]
+}

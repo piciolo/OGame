@@ -1,0 +1,28 @@
+{
+  "lang": "it",
+  "source": "s274-it.ogame.gameforge.com / page=ingame#page=traderAuctioneer",
+  "captured_at": "2026-04-27",
+  "strings": {
+    "title": "Battitore",
+    "description_line1": "Qui vengono quotidianamente messi all`asta degli item che possono essere acquistati con le risorse.",
+    "description_line2": "Se la propria offerta è stata battuta, si può alzare l`offerta precedente.",
+    "description_warning": "Le risorse e i punti onore offerti non verranno in alcun caso rimborsati.",
+    "auction_completed": "Asta conclusa",
+    "auction_in_progress": "Asta in corso",
+    "auction_waiting": "Prossima asta",
+    "next_auction_in": "La prossima asta avrà luogo tra:",
+    "current_bid": "Offerta attuale:",
+    "num_bids": "Numero di offerte:",
+    "highest_bidder": "Maggiore offerente:",
+    "submit_bid": "Piazza l`offerta",
+    "max_short": "(max.",
+    "bid_increased_by": "Offerta aumentata di:",
+    "your_bid": "La tua offerta:",
+    "minimum_bid": "Offerta minima:",
+    "shortfall": "Ammanco:",
+    "overbid_message": "Qualcuno ha fatto un`offerta più alta della tua!",
+    "previous_auctions": "Ultime aste",
+    "show_more": "[Mostra di più]",
+    "select_planet_tooltip": "Pianeta Madre"
+  }
+}

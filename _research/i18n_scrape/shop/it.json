@@ -1,0 +1,63 @@
+{
+  "lang": "it",
+  "source": "s274-it.ogame.gameforge.com / page=ingame&component=shop",
+  "captured_at": "2026-04-27",
+  "categories": {
+    "category_special_offers": "Offerte speciali",
+    "category_class_selection": "Seleziona classe",
+    "category_construction": "Costruzione",
+    "category_resources": "Risorse",
+    "category_booster30": "Booster 30 giorni",
+    "category_booster90": "Booster 90 giorni",
+    "category_profile": "Profilo",
+    "category_items": "tutto"
+  },
+  "tabs": {
+    "tab_shop": "Shop",
+    "tab_inventory": "Inventario",
+    "page_title_shop": "Shop",
+    "page_title_inventory": "Inventario"
+  },
+  "buttons": {
+    "btn_get_more_resources": "Procura risorse",
+    "btn_purchase_dark_matter": "Acquista la Materia Oscura"
+  },
+  "labels": {
+    "label_inventory": "Nell`inventario:",
+    "label_duration": "Durata:",
+    "label_price": "Prezzo:",
+    "duration_permanent_planet": "Permanente",
+    "duration_permanent_moon": "Permanente, o meglio finché la luna non verrà distrutta",
+    "currency_dark_matter": "Materia Oscura"
+  },
+  "inventory_hints": {
+    "shop_hint": "Qui puoi acquistare degli item.",
+    "inventory_hint": "Qui trovi una panoramica degli item acquistati."
+  },
+  "items": {
+    "planet_fields_bronze": "Spazi pianeta Bronzo",
+    "planet_fields_silver": "Spazi pianeta Argento",
+    "planet_fields_gold": "Spazi pianeta Oro",
+    "planet_fields_platinum": "Spazi pianeta Platino",
+    "moon_fields_bronze": "Campi lunari bronzo",
+    "moon_fields_silver": "Campi lunari argento",
+    "moon_fields_gold": "Campi lunari oro",
+    "moon_fields_platinum": "Campi lunari Platino",
+    "expedition_slot_bronze": "Slot spedizioni Bronzo",
+    "expedition_slot_silver": "Slot spedizioni Argento",
+    "expedition_slot_gold": "Slot spedizioni Oro",
+    "fleet_slot_bronze": "Slot flotte Bronzo",
+    "fleet_slot_silver": "Slot flotte Argento",
+    "fleet_slot_gold": "Slot flotte Oro",
+    "moons_bronze": "M.O.O.N.S. bronzo",
+    "moons_silver": "M.O.O.N.S. argento",
+    "moons_gold": "M.O.O.N.S. oro"
+  },
+  "item_descriptions": {
+    "planet_fields_desc": "+:fields spazi supplementari su un pianeta",
+    "moon_fields_desc": "+:fields campi aggiuntivi su una luna",
+    "expedition_slot_desc": "+:slots Slot spedizioni extra",
+    "fleet_slot_desc": "+:slots Slot flotte extra",
+    "moons_desc": "Avvia un attacco sul tuo pianeta per creare una luna."
+  }
+}

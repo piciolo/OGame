@@ -1,0 +1,644 @@
+{
+  "lang": "si",
+  "source": "s272-it.ogame.gameforge.com (UI=si)",
+  "captured_at": "2026-04-28",
+  "items": [
+    {
+      "r": "c1d0232604872f899ea15a9772baf76880f55c5f",
+      "n": "Celotni paket surovin",
+      "d": "Ob aktivaciji prejmeš dnevno proizvodnjo vseh surovin.",
+      "dur": "zdaj",
+      "p": "252.000 Črna materija"
+    },
+    {
+      "r": "859d82d316b83848f7365d21949b3e1e63c7841f",
+      "n": "Paket Metala",
+      "d": "Ob aktivaciji prejmeš dnevno proizvodnjo metala.",
+      "dur": "zdaj",
+      "p": "42.000 Črna materija"
+    },
+    {
+      "r": "bb2f6843226ef598f0b567b92c51b283de90aa48",
+      "n": "Paket Kristala",
+      "d": "Ob aktivaciji prejmeš dnevno proizvodnjo kristala.",
+      "dur": "zdaj",
+      "p": "84.000 Črna materija"
+    },
+    {
+      "r": "cb72ed207dd871832a850ee29f1c1f83aa3f4f36",
+      "n": "Paket Deuteriuma",
+      "d": "Ob aktivaciji prejmeš dnevno proizvodnjo deuteriuma.",
+      "dur": "zdaj",
+      "p": "126.000 Črna materija"
+    },
+    {
+      "r": "77eff880829027daf23b755e14820a60c4c6fd93",
+      "n": "Splošno",
+      "d": "<div class=\"item_characterclass_bonuslist\"><span class=\"blue_txt tooltip\" title=\"&#43;100% hitrost za bojne ladje\">Hitrejše bojne ladje</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;100% hitrost za reciklerje\">Takojšnji reciklerji</span><span>, </span><span class=\"blue_txt tooltip\" title=\"-50% porabe deuteriuma za vse ladje\">Ekonomične ladje</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;20% transportni dok za reciklerje in sledilce\">Razširjeni transportni doki</span><span>, </span><span class=\"blue_txt tooltip\" title=\"Majhna možnost za takojšnje uničenje Zvezde smrti v bitki z uporabo majnega lovca.\">Hamill manever</span><span>, </span><span class=\"blue_txt tooltip\" title=\"Razbitin ob napadu (transport na začetni planet)\">Razbitin ob napadu</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;2 stopenj raziskav za bitke\">Več stopenj raziskav za bitke</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;2 mest flote\">Dodatni prostori flote</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;5 dodatnih lunarnih polj\">Dodatna lunarna polja</span><span>, </span><span class=\"blue_txt tooltip\" title=\"Podrobne nastavitve hitrosti flote\">Pet odstotno povečanje za hitrost flote</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;10% popust na pospešitev (ladjedelnica)\">Popust na pospešitev (ladjedelnica)</span></div>",
+      "dur": "Stalen",
+      "p": "500.000 Črna materija"
+    },
+    {
+      "r": "2dd05cc4c0e185fce2e712112dc44932027aee98",
+      "n": "Odkritelj",
+      "d": "<div class=\"item_characterclass_bonuslist\"><span class=\"blue_txt tooltip\" title=\"-25% čas raziskave\">Bonus za raziskave</span><span>, </span><span class=\"blue_txt tooltip\" title=\"Povečan izplen na uspešnih ekspedicijah\">Bonus ekspedicij</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;10% večji planeti pri kolonizaciji\">Velikost planeta</span><span>, </span><span class=\"blue_txt tooltip\" title=\"Polja razbitin, ustvarjena na ekspedicijah, bodo vidna v pregledu galaksije.\">Polja razbitin na ekspediciji</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;2 ekspedicij\">Več Ekspedicij</span><span>, </span><span class=\"blue_txt tooltip\" title=\"-50% možnost za sovražne ekspedicije\">Manj sovražnikov na ekspedicijah</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;20% dosega falange\">Povečam doseg falange</span><span>, </span><span class=\"blue_txt tooltip\" title=\"75% plena od neaktivnih igralcev\">Povečan neaktiven rop</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;10% popust na pospešitev (raziskave)\">Popust na pospešitev (raziskave)</span></div>",
+      "dur": "Stalen",
+      "p": "500.000 Črna materija"
+    },
+    {
+      "r": "9374c79a24b84c4331f0d26526ef6c2d33319a6e",
+      "n": "Zbiralec",
+      "d": "<div class=\"item_characterclass_bonuslist\"><span class=\"blue_txt tooltip\" title=\"&#43;25% produkcije rudnikov\">Povečana proizvodnja</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;10% proizvodnje energije\">Povečana proizvodnja energije</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;100% hitrost za transporterje\">Takojšnji transporterji</span><span>, </span><span class=\"blue_txt tooltip\" title=\"-25% transportni dok za transporterje\">Razširjeni transportni doki</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;50% bonus Plazilca\">Povečan bonus Plazilca</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;10% več uporabnih plazilcev z geologom\">Povečana največja količina plazilcev</span><span>, </span><span class=\"blue_txt tooltip\" title=\"Prenalaganje plazilcev do 150%\">Prenaloži plazilca</span><span>, </span><span class=\"blue_txt tooltip\" title=\"&#43;10% popust na pospešitev (gradnja)\">Popust na pospešitev (gradnja)</span></div>",
+      "dur": "Stalen",
+      "p": "500.000 Črna materija"
+    },
+    {
+      "r": "a83cfdc15b8dba27c82962d57e50d8101d263cfb",
+      "n": "Platinasti booster metala",
+      "d": "&#43;40% ekstrakcije Rudnika metala na enem planetu",
+      "dur": "1t",
+      "p": "30.000 Črna materija"
+    },
+    {
+      "r": "05294270032e5dc968672425ab5611998c409166",
+      "n": "Zlati booster metala",
+      "d": "&#43;30% ekstrakcije Rudnika metala na enem planetu",
+      "dur": "1t",
+      "p": "20.000 Črna materija"
+    },
+    {
+      "r": "ba85cc2b8a5d986bbfba6954e2164ef71af95d4a",
+      "n": "Srebrni booster metala",
+      "d": "&#43;20% ekstrakcije Rudnika metala na enem planetu",
+      "dur": "1t",
+      "p": "7.500 Črna materija"
+    },
+    {
+      "r": "35d96e441c21ef112a84c618934d9d0f026998fd",
+      "n": "Platinasti booster kristala",
+      "d": "&#43;40% produkcije v Rudniku Kristala na enem planetu",
+      "dur": "1t",
+      "p": "30.000 Črna materija"
+    },
+    {
+      "r": "118d34e685b5d1472267696d1010a393a59aed03",
+      "n": "Zlati booster kristala",
+      "d": "&#43;30% produkcije v Rudniku Kristala na enem planetu",
+      "dur": "1t",
+      "p": "20.000 Črna materija"
+    },
+    {
+      "r": "422db99aac4ec594d483d8ef7faadc5d40d6f7d3",
+      "n": "Srebrni booster kristala",
+      "d": "&#43;20% produkcije v Rudniku Kristala na enem planetu",
+      "dur": "1t",
+      "p": "7.500 Črna materija"
+    },
+    {
+      "r": "4b51d903560edd102467b110586000bd64fdb954",
+      "n": "Platinasti booster deuteriuma",
+      "d": "&#43;40% žetve Deuterium sintetizatorja na enem planetu",
+      "dur": "1t",
+      "p": "30.000 Črna materija"
+    },
+    {
+      "r": "5560a1580a0330e8aadf05cb5bfe6bc3200406e2",
+      "n": "Zlati booster deuteriuma",
+      "d": "&#43;30% žetve Deuterium sintetizatorja na enem planetu",
+      "dur": "1t",
+      "p": "20.000 Črna materija"
+    },
+    {
+      "r": "e4b78acddfa6fd0234bcb814b676271898b0dbb3",
+      "n": "Srebrni booster deuteriuma",
+      "d": "&#43;20% žetve Deuterium sintetizatorja na enem planetu",
+      "dur": "1t",
+      "p": "7.500 Črna materija"
+    },
+    {
+      "r": "f3d9b82e10f2e969209c1a5ad7d22181c703bb36",
+      "n": "Platinasta planetova polja",
+      "d": "&#43;20 dodatnih polj na planetu.",
+      "dur": "Stalen",
+      "p": "350.000 Črna materija"
+    },
+    {
+      "r": "04e58444d6d0beb57b3e998edc34c60f8318825a",
+      "n": "Zlati prostori planeta",
+      "d": "&#43;15 dodatnih polj na planetu.",
+      "dur": "Stalen",
+      "p": "300.000 Črna materija"
+    },
+    {
+      "r": "0e41524dc46225dca21c9119f2fb735fd7ea5cb3",
+      "n": "Srebrni prostori planeta",
+      "d": "&#43;9 dodatnih polj na planetu.",
+      "dur": "Stalen",
+      "p": "150.000 Črna materija"
+    },
+    {
+      "r": "16768164989dffd819a373613b5e1a52e226a5b0",
+      "n": "Bronasti prostori planeta",
+      "d": "&#43;4 dodatnih polj na planetu.",
+      "dur": "Stalen",
+      "p": "75.000 Črna materija"
+    },
+    {
+      "r": "8a426241572b2fea57844acd99bc326fe40e35cf",
+      "n": "Platinasta lunarna polja",
+      "d": "&#43;8 dodatnih mest na luni",
+      "dur": "Stalno ali do uničenja lune",
+      "p": "130.000 Črna materija"
+    },
+    {
+      "r": "05ee9654bd11a261f1ff0e5d0e49121b5e7e4401",
+      "n": "Zlato Lunarno polje",
+      "d": "&#43;6 dodatnih mest na luni",
+      "dur": "Stalno ali do uničenja lune",
+      "p": "100.000 Črna materija"
+    },
+    {
+      "r": "c21ff33ba8f0a7eadb6b7d1135763366f0c4b8bf",
+      "n": "Srebrno Lunarno polje",
+      "d": "&#43;4 dodatnih mest na luni",
+      "dur": "Stalno ali do uničenja lune",
+      "p": "50.000 Črna materija"
+    },
+    {
+      "r": "be67e009a5894f19bbf3b0c9d9b072d49040a2cc",
+      "n": "Bronasto Lunarno polje",
+      "d": "&#43;2 dodatnih mest na luni",
+      "dur": "Stalno ali do uničenja lune",
+      "p": "30.000 Črna materija"
+    },
+    {
+      "r": "45d6660308689c65d97f3c27327b0b31f880ae75",
+      "n": "Zlati M.O.O.N.S.",
+      "d": "Začni z napadom na svoj planet za ustvarjenje lune.",
+      "dur": "30m",
+      "p": "100.000 Črna materija"
+    },
+    {
+      "r": "fd895a5c9fd978b9c5c7b65158099773ba0eccef",
+      "n": "Srebrni M.O.O.N.S.",
+      "d": "Začni z napadom na svoj planet za ustvarjenje lune.",
+      "dur": "1h",
+      "p": "50.000 Črna materija"
+    },
+    {
+      "r": "485a6d5624d9de836d3eb52b181b13423f795770",
+      "n": "Bronasti M.O.O.N.S.",
+      "d": "Začni z napadom na svoj planet za ustvarjenje lune.",
+      "dur": "1h 30m",
+      "p": "30.000 Črna materija"
+    },
+    {
+      "r": "7c2edf40c5cd54ad11c6439398b83020c0a7a6be",
+      "n": "Platinasti booster kristala",
+      "d": "&#43;40% produkcije v Rudniku Kristala na enem planetu",
+      "dur": "12t 6d",
+      "p": "300.000 Črna materija"
+    },
+    {
+      "r": "d45f00e8b909f5293a83df4f369737ea7d69c684",
+      "n": "Zlati booster kristala",
+      "d": "&#43;30% produkcije v Rudniku Kristala na enem planetu",
+      "dur": "12t 6d",
+      "p": "200.000 Črna materija"
+    },
+    {
+      "r": "04d8afd5936976e32ce894b765ea8bd168aa07ef",
+      "n": "Srebrni booster kristala",
+      "d": "&#43;20% produkcije v Rudniku Kristala na enem planetu",
+      "dur": "12t 6d",
+      "p": "80.000 Črna materija"
+    },
+    {
+      "r": "6bf45fcba8a6a68158273d04a924452eca75cf39",
+      "n": "Platinasti booster kristala",
+      "d": "&#43;40% produkcije v Rudniku Kristala na enem planetu",
+      "dur": "4t 2d",
+      "p": "110.000 Črna materija"
+    },
+    {
+      "r": "36fb611e71d42014f5ebd0aa5a52bc0c81a0c1cb",
+      "n": "Zlati booster kristala",
+      "d": "&#43;30% produkcije v Rudniku Kristala na enem planetu",
+      "dur": "4t 2d",
+      "p": "75.000 Črna materija"
+    },
+    {
+      "r": "5b69663e3ba09a1fe77cf72c5094e246cfe954d6",
+      "n": "Srebrni booster kristala",
+      "d": "&#43;20% produkcije v Rudniku Kristala na enem planetu",
+      "dur": "4t 2d",
+      "p": "28.000 Črna materija"
+    },
+    {
+      "r": "831c3ea8d868eb3601536f4d5e768842988a1ba9",
+      "n": "Platinasti booster deuteriuma",
+      "d": "&#43;40% žetve Deuterium sintetizatorja na enem planetu",
+      "dur": "12t 6d",
+      "p": "300.000 Črna materija"
+    },
+    {
+      "r": "dc5896bed3311434224d511fa7ced6fdbe41b4e8",
+      "n": "Zlati booster deuteriuma",
+      "d": "&#43;30% žetve Deuterium sintetizatorja na enem planetu",
+      "dur": "12t 6d",
+      "p": "200.000 Črna materija"
+    },
+    {
+      "r": "6f0952a919fd2ab9c009e9ccd83c1745f98f758f",
+      "n": "Srebrni booster deuteriuma",
+      "d": "&#43;20% žetve Deuterium sintetizatorja na enem planetu",
+      "dur": "12t 6d",
+      "p": "80.000 Črna materija"
+    },
+    {
+      "r": "620f779dbffa1011aded69b091239727910a3d03",
+      "n": "Platinasti booster deuteriuma",
+      "d": "&#43;40% žetve Deuterium sintetizatorja na enem planetu",
+      "dur": "4t 2d",
+      "p": "110.000 Črna materija"
+    },
+    {
+      "r": "300493ddc756869578cb2888a3a1bc0c3c66765f",
+      "n": "Zlati booster deuteriuma",
+      "d": "&#43;30% žetve Deuterium sintetizatorja na enem planetu",
+      "dur": "4t 2d",
+      "p": "75.000 Črna materija"
+    },
+    {
+      "r": "26416a3cdb94613844b1d3ca78b9057fd6ae9b15",
+      "n": "Srebrni booster deuteriuma",
+      "d": "&#43;20% žetve Deuterium sintetizatorja na enem planetu",
+      "dur": "4t 2d",
+      "p": "28.000 Črna materija"
+    },
+    {
+      "r": "ca7f903a65467b70411e513b0920d66c417aa3a2",
+      "n": "Platinasti booster metala",
+      "d": "&#43;40% ekstrakcije Rudnika metala na enem planetu",
+      "dur": "12t 6d",
+      "p": "300.000 Črna materija"
+    },
+    {
+      "r": "21c1a65ca6aecf54ffafb94c01d0c60d821b325d",
+      "n": "Zlati booster metala",
+      "d": "&#43;30% ekstrakcije Rudnika metala na enem planetu",
+      "dur": "12t 6d",
+      "p": "200.000 Črna materija"
+    },
+    {
+      "r": "6f44dcd2bd84875527abba69158b4e976c308bbc",
+      "n": "Srebrni booster metala",
+      "d": "&#43;20% ekstrakcije Rudnika metala na enem planetu",
+      "dur": "12t 6d",
+      "p": "80.000 Črna materija"
+    },
+    {
+      "r": "c690f492cffe5f9f2952337e8eed307a8a62d6cf",
+      "n": "Platinasti booster metala",
+      "d": "&#43;40% ekstrakcije Rudnika metala na enem planetu",
+      "dur": "4t 2d",
+      "p": "110.000 Črna materija"
+    },
+    {
+      "r": "6fecb993169fe918d9c63cd37a2e541cc067664e",
+      "n": "Zlati booster metala",
+      "d": "&#43;30% ekstrakcije Rudnika metala na enem planetu",
+      "dur": "4t 2d",
+      "p": "75.000 Črna materija"
+    },
+    {
+      "r": "742743b3b0ae1f0b8a1e01921042810b58f12f39",
+      "n": "Srebrni booster metala",
+      "d": "&#43;20% ekstrakcije Rudnika metala na enem planetu",
+      "dur": "4t 2d",
+      "p": "28.000 Črna materija"
+    },
+    {
+      "r": "c2bad58fcec374d709099d11d0549e59ea7e233e",
+      "n": "Srebrni booster energije",
+      "d": "&#43;40% višja proizvodnja energije na planetu",
+      "dur": "1t",
+      "p": "7.500 Črna materija"
+    },
+    {
+      "r": "bedd248aaf288c27e9351cfacfa6be03f1dbb898",
+      "n": "Srebrni booster energije",
+      "d": "&#43;40% višja proizvodnja energije na planetu",
+      "dur": "4t 2d",
+      "p": "28.000 Črna materija"
+    },
+    {
+      "r": "e05aa5b9e3df5be3857b43da8403eafbf5ad3b96",
+      "n": "Srebrni booster energije",
+      "d": "&#43;40% višja proizvodnja energije na planetu",
+      "dur": "12t 6d",
+      "p": "80.000 Črna materija"
+    },
+    {
+      "r": "55b52cbfb148ec80cd4e5b0580f7bed01149d643",
+      "n": "Zlati booster energije",
+      "d": "&#43;60% višja proizvodnja energije na planetu",
+      "dur": "1t",
+      "p": "20.000 Črna materija"
+    },
+    {
+      "r": "4fa9a2273ee446284d5177fd9d60a22de01e932b",
+      "n": "Zlati booster energije",
+      "d": "&#43;60% višja proizvodnja energije na planetu",
+      "dur": "4t 2d",
+      "p": "75.000 Črna materija"
+    },
+    {
+      "r": "5ad783dcfce3655ef97b36197425718a0dad6b66",
+      "n": "Zlati booster energije",
+      "d": "&#43;60% višja proizvodnja energije na planetu",
+      "dur": "12t 6d",
+      "p": "200.000 Črna materija"
+    },
+    {
+      "r": "77c36199102e074dca46f5f26ef57ce824d044dd",
+      "n": "Platinasti booster energije",
+      "d": "&#43;80% višja proizvodnja energije na planetu",
+      "dur": "1t",
+      "p": "30.000 Črna materija"
+    },
+    {
+      "r": "dfe86378f8c3d7f3ee0790ea64603bc44e83ca47",
+      "n": "Platinasti booster energije",
+      "d": "&#43;80% višja proizvodnja energije na planetu",
+      "dur": "4t 2d",
+      "p": "110.000 Črna materija"
+    },
+    {
+      "r": "c39aa972a971e94b1d9b4d7a8f734b3d8be12534",
+      "n": "Platinasti booster energije",
+      "d": "&#43;80% višja proizvodnja energije na planetu",
+      "dur": "12t 6d",
+      "p": "300.000 Črna materija"
+    },
+    {
+      "r": "e54ecc0416d6e96b4165f24238b03a1b32c1df47",
+      "n": "Bronasti prostori za ekspedicijo",
+      "d": "&#43;1 dodatnih prostorov za ekspedicijo",
+      "dur": "1t",
+      "p": "15.000 Črna materija"
+    },
+    {
+      "r": "8c1f6c6849d1a5e4d9de6ae9bb1b861f6f7b5d4d",
+      "n": "Bronasti prostori za ekspedicijo",
+      "d": "&#43;1 dodatnih prostorov za ekspedicijo",
+      "dur": "4t 2d",
+      "p": "56.250 Črna materija"
+    },
+    {
+      "r": "a5784c685c0e1e6111d9c18aeaf80af2e0777ab4",
+      "n": "Bronasti prostori za ekspedicijo",
+      "d": "&#43;1 dodatnih prostorov za ekspedicijo",
+      "dur": "12t 6d",
+      "p": "157.500 Črna materija"
+    },
+    {
+      "r": "b2bc9789df7c1ef5e058f72d61380b696dde54e8",
+      "n": "Srebrni prostori za ekspedicijo",
+      "d": "&#43;2 dodatnih prostorov za ekspedicijo",
+      "dur": "1t",
+      "p": "30.000 Črna materija"
+    },
+    {
+      "r": "31a504be1195149a3bef05b9cc6e3af185d24ef2",
+      "n": "Srebrni prostori za ekspedicijo",
+      "d": "&#43;2 dodatnih prostorov za ekspedicijo",
+      "dur": "4t 2d",
+      "p": "112.500 Črna materija"
+    },
+    {
+      "r": "4f6f941bbf2a8527b0424b3ad11014502d8f4fb8",
+      "n": "Srebrni prostori za ekspedicijo",
+      "d": "&#43;2 dodatnih prostorov za ekspedicijo",
+      "dur": "12t 6d",
+      "p": "315.000 Črna materija"
+    },
+    {
+      "r": "9336b9f29d36e3f69b0619c9523d8bec5e09ab8e",
+      "n": "Zlati prostori za ekspedicijo",
+      "d": "&#43;3 dodatnih prostorov za ekspedicijo",
+      "dur": "1t",
+      "p": "45.000 Črna materija"
+    },
+    {
+      "r": "fd7d35e73d0e09e83e30812b738ef966ea9ef790",
+      "n": "Zlati prostori za ekspedicijo",
+      "d": "&#43;3 dodatnih prostorov za ekspedicijo",
+      "dur": "4t 2d",
+      "p": "168.750 Črna materija"
+    },
+    {
+      "r": "540410439514ac09363c5c47cf47117a8b8ae79a",
+      "n": "Zlati prostori za ekspedicijo",
+      "d": "&#43;3 dodatnih prostorov za ekspedicijo",
+      "dur": "12t 6d",
+      "p": "472.500 Črna materija"
+    },
+    {
+      "r": "0684c6a5a42acbb3cd134913d421fc28dae6b90d",
+      "n": "Bronasti prostori flote",
+      "d": "&#43;2 dodatnih prostorov flote",
+      "dur": "1t",
+      "p": "5.000 Črna materija"
+    },
+    {
+      "r": "94a28491b6fd85003f1cb151e88dde106f1d7596",
+      "n": "Bronasti prostori flote",
+      "d": "&#43;2 dodatnih prostorov flote",
+      "dur": "4t 2d",
+      "p": "18.750 Črna materija"
+    },
+    {
+      "r": "bb47add58876240199a18ddacc2db07789be1934",
+      "n": "Bronasti prostori flote",
+      "d": "&#43;2 dodatnih prostorov flote",
+      "dur": "12t 6d",
+      "p": "52.500 Črna materija"
+    },
+    {
+      "r": "f8fd610825fb4a442e27e4e9add74f050e040e27",
+      "n": "Srebrni prostori flote",
+      "d": "&#43;4 dodatnih prostorov flote",
+      "dur": "1t",
+      "p": "10.000 Črna materija"
+    },
+    {
+      "r": "c4e598a85805a7eb3ca70f9265cbd366fc4d2b0e",
+      "n": "Srebrni prostori flote",
+      "d": "&#43;4 dodatnih prostorov flote",
+      "dur": "4t 2d",
+      "p": "37.500 Črna materija"
+    },
+    {
+      "r": "a693c5ce3f5676efaaf0781d94234bea4f599d2e",
+      "n": "Srebrni prostori flote",
+      "d": "&#43;4 dodatnih prostorov flote",
+      "dur": "12t 6d",
+      "p": "105.000 Črna materija"
+    },
+    {
+      "r": "5a8000c372cd079292a92d35d4ddba3c0f348d3b",
+      "n": "Zlati prostori flote",
+      "d": "&#43;6 dodatnih prostorov flote",
+      "dur": "1t",
+      "p": "15.000 Črna materija"
+    },
+    {
+      "r": "1808bf7639b81ac3ac87bcb7eb3bbba0a1874d0a",
+      "n": "Zlati prostori flote",
+      "d": "&#43;6 dodatnih prostorov flote",
+      "dur": "4t 2d",
+      "p": "56.250 Črna materija"
+    },
+    {
+      "r": "1f7024c4f6493f0c589e1b00c76e6ced258c00e5",
+      "n": "Zlati prostori flote",
+      "d": "&#43;6 dodatnih prostorov flote",
+      "dur": "12t 6d",
+      "p": "157.500 Črna materija"
+    },
+    {
+      "r": "1aa36213cb676fd5baad5edc2bee4fbe117a778b",
+      "n": "Raziskovalci (aliansa)",
+      "d": "&#43;10% hitrosti do destinacije ekspedicij<br />&#43;5% večji planeti pri kolonizaciji<br />Dostop do falange sistema: za 40,000 deuteriuma se lahko to uporabi za pregled gibanja flot v celotnih sistemih, dokler so ti v dometu.",
+      "dur": "za 40,000 deuteriuma se lahko to uporabi za pregled gibanja flot v celotnih sistemih, dokler so ti v dometu.",
+      "p": "Stalen"
+    },
+    {
+      "r": "6c9fe5e35bdad0d4e3382eb6a5aeac6bc8263752",
+      "n": "Trgovci (aliansa)",
+      "d": "&#43;10% hitrosti za transporterje<br />&#43;5% proizvodnje za surovine in energijo<br />&#43;10% kapacitete skladišč na lunah in planetih",
+      "dur": "Stalen",
+      "p": "500.000 Črna materija"
+    },
+    {
+      "r": "9b48e257cbef6c5df0f03a47cead7f9abda3d437",
+      "n": "Bojevniki (aliansa)",
+      "d": "&#43;10% hitrosti za ladje, ki letijo med člani alianse<br />&#43;1 stopnja raziskav za bitke<br />&#43;1 stopnja raziskav vohunjenja<br />Dostop do vohunjenja sistema: pošlje izbrano število vohunskih sond v pregled celotnega sistema. Za raziskavo lahko nastaviš tip nebesnega telesa, čas od zadnjega vohunskega napada ali željeno aktivnost igralca.",
+      "dur": "pošlje izbrano število vohunskih sond v pregled celotnega sistema. Za raziskavo lahko nastaviš tip nebesnega telesa, čas od zadnjega vohunskega napada ali željeno aktivnost igralca.",
+      "p": "Stalen"
+    },
+    {
+      "r": "dc34fa00ba914ffab0031ac3f165e26f553d7809",
+      "n": "Avatar: Laserska mačka",
+      "d": "Za dodajanje tega avatarja, ga izberi v svojem profilu igralca in daj svojemu profilu osebni slog. Ta predmet bo odklenjen za tvoj račun v vseh vesoljih. Pazi, saj lahko sinhronizacija med vesolji traja nekaj časa.",
+      "dur": "Stalen",
+      "p": "50.000 Črna materija"
+    },
+    {
+      "r": "1c497ef926d674f2df9d96cfc58fe12f97cf4025",
+      "n": "Avatar: Majhni vesoljček",
+      "d": "Za dodajanje tega avatarja, ga izberi v svojem profilu igralca in daj svojemu profilu osebni slog. Ta predmet bo odklenjen za tvoj račun v vseh vesoljih. Pazi, saj lahko sinhronizacija med vesolji traja nekaj časa.",
+      "dur": "Stalen",
+      "p": "50.000 Črna materija"
+    },
+    {
+      "r": "fd3b0789b5dca99e9d5b251f8bae0760ce52dea6",
+      "n": "Avatar: Povečan",
+      "d": "Za dodajanje tega avatarja, ga izberi v svojem profilu igralca in daj svojemu profilu osebni slog. Ta predmet bo odklenjen za tvoj račun v vseh vesoljih. Pazi, saj lahko sinhronizacija med vesolji traja nekaj časa.",
+      "dur": "Stalen",
+      "p": "50.000 Črna materija"
+    },
+    {
+      "r": "003db2a3d693c2d889864b76ad122b274bfd641b",
+      "n": "Avatar: Breztežnostni",
+      "d": "Za dodajanje tega avatarja, ga izberi v svojem profilu igralca in daj svojemu profilu osebni slog. Ta predmet bo odklenjen za tvoj račun v vseh vesoljih. Pazi, saj lahko sinhronizacija med vesolji traja nekaj časa.",
+      "dur": "Stalen",
+      "p": "50.000 Črna materija"
+    },
+    {
+      "r": "8d514b69eb04a57495bab0c8f4b80f58294a7b17",
+      "n": "Avatar: Ledeno hladen",
+      "d": "Za dodajanje tega avatarja, ga izberi v svojem profilu igralca in daj svojemu profilu osebni slog. Ta predmet bo odklenjen za tvoj račun v vseh vesoljih. Pazi, saj lahko sinhronizacija med vesolji traja nekaj časa.",
+      "dur": "Stalen",
+      "p": "50.000 Črna materija"
+    },
+    {
+      "r": "83c4e79697a264462e3ca2e8567307e7f1d7954b",
+      "n": "Avatar: Kiberprostor",
+      "d": "Za dodajanje tega avatarja, ga izberi v svojem profilu igralca in daj svojemu profilu osebni slog. Ta predmet bo odklenjen za tvoj račun v vseh vesoljih. Pazi, saj lahko sinhronizacija med vesolji traja nekaj časa.",
+      "dur": "Stalen",
+      "p": "50.000 Črna materija"
+    },
+    {
+      "r": "2d7de180f3f3d191982294d2f8c1cd7507e90cb4",
+      "n": "Avatar: Retro mucki",
+      "d": "Za dodajanje tega avatarja, ga izberi v svojem profilu igralca in daj svojemu profilu osebni slog. Ta predmet bo odklenjen za tvoj račun v vseh vesoljih. Pazi, saj lahko sinhronizacija med vesolji traja nekaj časa.",
+      "dur": "Stalen",
+      "p": "50.000 Črna materija"
+    },
+    {
+      "r": "c54d5a8f36f20373c5bb633a109241290b2e2a7a",
+      "n": "Avatar: Prinašalec vojne",
+      "d": "Za dodajanje tega avatarja, ga izberi v svojem profilu igralca in daj svojemu profilu osebni slog. Ta predmet bo odklenjen za tvoj račun v vseh vesoljih. Pazi, saj lahko sinhronizacija med vesolji traja nekaj časa.",
+      "dur": "Stalen",
+      "p": "50.000 Črna materija"
+    },
+    {
+      "r": "99f53568108115acac2d7f7425ee2ad76a6206b8",
+      "n": "Avatar: Komandantka Kitty",
+      "d": "Za dodajanje tega avatarja, ga izberi v svojem profilu igralca in daj svojemu profilu osebni slog. Ta predmet bo odklenjen za tvoj račun v vseh vesoljih. Pazi, saj lahko sinhronizacija med vesolji traja nekaj časa.",
+      "dur": "Stalen",
+      "p": "50.000 Črna materija"
+    },
+    {
+      "r": "c70f11e9543100622e3ef3bdcd57099a63f148bf",
+      "n": "Avatar: Usoda",
+      "d": "Za dodajanje tega avatarja, ga izberi v svojem profilu igralca in daj svojemu profilu osebni slog. Ta predmet bo odklenjen za tvoj račun v vseh vesoljih. Pazi, saj lahko sinhronizacija med vesolji traja nekaj časa.",
+      "dur": "Stalen",
+      "p": "25.000 Črna materija"
+    },
+    {
+      "r": "ac5bd99552a23733f7b0decac45094d5bfbfedac",
+      "n": "Avatar: Goreč bes",
+      "d": "Za dodajanje tega avatarja, ga izberi v svojem profilu igralca in daj svojemu profilu osebni slog. Ta predmet bo odklenjen za tvoj račun v vseh vesoljih. Pazi, saj lahko sinhronizacija med vesolji traja nekaj časa.",
+      "dur": "Stalen",
+      "p": "50.000 Črna materija"
+    },
+    {
+      "r": "da8b1dcf6a9defb45e456968d3c8587bf63a48b5",
+      "n": "Omejeni avatar: Horizont eventa",
+      "d": "Za dodajanje tega avatarja, ga izberi v svojem profilu igralca in daj svojemu profilu osebni slog. Ta predmet bo odklenjen za tvoj račun v vseh vesoljih. Pazi, saj lahko sinhronizacija med vesolji traja nekaj časa.",
+      "dur": "Stalen",
+      "p": "65.000 Črna materija"
+    },
+    {
+      "r": "69719df021ec40424225f22e2edca15b799401a5",
+      "n": "Omejeni avatar: Zvezdni pilot",
+      "d": "Za dodajanje tega avatarja, ga izberi v svojem profilu igralca in daj svojemu profilu osebni slog. Ta predmet bo odklenjen za tvoj račun v vseh vesoljih. Pazi, saj lahko sinhronizacija med vesolji traja nekaj časa.",
+      "dur": "Stalen",
+      "p": "65.000 Črna materija"
+    },
+    {
+      "r": "facb9419f24c4a1fbff7dc29376c3f57c6204c1c",
+      "n": "Omejeni avatar: Android",
+      "d": "Za dodajanje tega avatarja, ga izberi v svojem profilu igralca in daj svojemu profilu osebni slog. Ta predmet bo odklenjen za tvoj račun v vseh vesoljih. Pazi, saj lahko sinhronizacija med vesolji traja nekaj časa.",
+      "dur": "Stalen",
+      "p": "65.000 Črna materija"
+    },
+    {
+      "r": "74bf9741209dc8ef4f9996b8b2b7ca59001ea3a8",
+      "n": "Omejeni avatar: Zvezdna želva",
+      "d": "Za dodajanje tega avatarja, ga izberi v svojem profilu igralca in daj svojemu profilu osebni slog. Ta predmet bo odklenjen za tvoj račun v vseh vesoljih. Pazi, saj lahko sinhronizacija med vesolji traja nekaj časa.",
+      "dur": "Stalen",
+      "p": "65.000 Črna materija"
+    },
+    {
+      "r": "07a4b64949fcc593435cfaa9184290af96ffdc29",
+      "n": "Omejeni avatar: Nakovalo usode",
+      "d": "Za dodajanje tega avatarja, ga izberi v svojem profilu igralca in daj svojemu profilu osebni slog. Ta predmet bo odklenjen za tvoj račun v vseh vesoljih. Pazi, saj lahko sinhronizacija med vesolji traja nekaj časa.",
+      "dur": "Stalen",
+      "p": "65.000 Črna materija"
+    }
+  ]
+}

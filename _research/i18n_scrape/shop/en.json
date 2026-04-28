@@ -1,0 +1,85 @@
+{
+  "lang": "en",
+  "source": "s274-it.ogame.gameforge.com (UI=en) / page=ingame&component=shop",
+  "captured_at": "2026-04-27",
+  "categories": {
+    "category_special_offers": "Special offers",
+    "category_class_selection": "Class Selection",
+    "category_construction": "Construction",
+    "category_resources": "Resources",
+    "category_booster30": "Booster (30 Days)",
+    "category_booster90": "Booster (90 Days)",
+    "category_profile": "Profile",
+    "category_items": "all"
+  },
+  "tabs": {
+    "tab_shop": "Shop",
+    "tab_inventory": "Inventory",
+    "page_title_shop": "Shop",
+    "page_title_inventory": "Inventory"
+  },
+  "buttons": {
+    "btn_get_more_resources": "Get more resources",
+    "btn_purchase_dark_matter": "Purchase Dark Matter"
+  },
+  "labels": {
+    "label_inventory": "In Inventory:",
+    "label_duration": "Duration:",
+    "label_price": "Price:",
+    "duration_permanent_planet": "Permanent",
+    "duration_permanent_moon": "Permanent or rather until the moon is destroyed",
+    "currency_dark_matter": "Dark Matter"
+  },
+  "inventory_hints": {
+    "shop_hint": "You can buy items here.",
+    "inventory_hint": "You can get an overview of your purchased items here."
+  },
+  "items_with_tier": {
+    "planet_fields_bronze": "Bronze Planet Fields",
+    "planet_fields_silver": "Silver Planet Fields",
+    "planet_fields_gold": "Gold Planet Fields",
+    "planet_fields_platinum": "Platinum Planet Fields",
+    "moon_fields_bronze": "Bronze Moon Fields",
+    "moon_fields_silver": "Silver Moon Fields",
+    "moon_fields_gold": "Gold Moon Fields",
+    "moon_fields_platinum": "Platinum Moon Fields",
+    "expedition_slot_bronze": "Bronze Expedition Slots",
+    "expedition_slot_silver": "Silver Expedition Slots",
+    "expedition_slot_gold": "Gold Expedition Slots",
+    "fleet_slot_bronze": "Bronze Fleet Slots",
+    "fleet_slot_silver": "Silver Fleet Slots",
+    "fleet_slot_gold": "Gold Fleet Slots",
+    "amplifier_metal_silver": "Silver Metal Booster",
+    "amplifier_metal_gold": "Gold Metal Booster",
+    "amplifier_metal_platinum": "Platinum Metal Booster",
+    "amplifier_crystal_silver": "Silver Crystal Booster",
+    "amplifier_crystal_gold": "Gold Crystal Booster",
+    "amplifier_crystal_platinum": "Platinum Crystal Booster",
+    "amplifier_deuterium_silver": "Silver Deuterium Booster",
+    "amplifier_deuterium_gold": "Gold Deuterium Booster",
+    "amplifier_deuterium_platinum": "Platinum Deuterium Booster",
+    "amplifier_energy_silver": "Energy Booster Silver",
+    "amplifier_energy_gold": "Energy Booster Gold",
+    "amplifier_energy_platinum": "Energy Booster Platinum",
+    "moons_bronze": "Bronze M.O.O.N.S.",
+    "moons_silver": "Silver M.O.O.N.S.",
+    "moons_gold": "Gold M.O.O.N.S.",
+    "complete_resource_package": "Complete Resource Package",
+    "metal_package": "Metal Package",
+    "crystal_package": "Crystal Package",
+    "deuterium_package": "Deuterium Package"
+  },
+  "item_descriptions": {
+    "planet_fields_desc": "+:fields additional fields on a planet.",
+    "moon_fields_desc": "+:fields additional fields on a moon",
+    "expedition_slot_desc": "+:slots additional Expedition slots",
+    "fleet_slot_desc": "+:slots additional Fleet slots",
+    "moons_desc": "Start an attack on your planet to create a moon.",
+    "amplifier_metal_desc": "+:percent% more Metal Mine extraction on one planet",
+    "amplifier_crystal_desc": "+:percent% more Crystal Mine production on one planet",
+    "amplifier_deuterium_desc": "+:percent% more Deuterium Synthesizer harvest on one planet",
+    "amplifier_energy_desc": "+:percent% more energy production on a planet",
+    "complete_resource_pack_desc": "Upon activation you receive a daily production of all resources.",
+    "single_resource_pack_desc": "Upon activation you receive a daily production of :resource."
+  }
+}
