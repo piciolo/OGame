@@ -2,6 +2,7 @@
 
 namespace OGame\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -22,18 +23,14 @@ use Illuminate\Support\Carbon;
  * @method static Builder|ChatReport query()
  * @mixin \Eloquent
  */
+#[Fillable([
+    'chat_message_id',
+    'reporter_user_id',
+    'reviewed_at',
+])]
 class ChatReport extends Model
 {
     use HasFactory;
-
-    /**
-     * @var list<string>
-     */
-    protected $fillable = [
-        'chat_message_id',
-        'reporter_user_id',
-        'reviewed_at',
-    ];
 
     /**
      * @return array<string, string>
