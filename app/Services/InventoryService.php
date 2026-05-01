@@ -527,7 +527,7 @@ class InventoryService
      *
      * Templates that don't contain these placeholders are returned unchanged.
      */
-    private function substituteResourcePlaceholders(string $template, User $user, ShopItem $shop): string
+    public function substituteResourcePlaceholders(string $template, User $user, ShopItem $shop): string
     {
         if (!preg_match('/:metal|:crystal|:deuterium|:warning/', $template)) {
             return $template;

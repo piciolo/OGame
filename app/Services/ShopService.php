@@ -128,6 +128,14 @@ class ShopService
         $tRules = $hasTx && isset($tx['rules_description']) ? $tx['rules_description'] : $it->rules_description;
         $tDuration = $hasTx && isset($tx['duration_label']) ? $tx['duration_label'] : $it->duration_label;
 
+        // Substitute :metal/:crystal/:deuterium/:warning placeholders in extended_description
+        // for the authenticated user (resource pack prose contains dynamic numbers).
+        $user = auth()->user();
+        if ($user instanceof User && is_string($tExtended) && $tExtended !== '') {
+            $inv = app(InventoryService::class);
+            $tExtended = $inv->substituteResourcePlaceholders($tExtended, $user, $it);
+        }
+
         // Strip locale-specific currency abbreviation from price_label so the view
         // can append the translated dm_short. DB stores e.g. "350K MO" — we keep
         // only the numeric part "350K" and let the view add the translated suffix.
