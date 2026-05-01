@@ -645,7 +645,36 @@
                 const invCount = 0; // live API returns this; for initial render we use 0
                 const boldifyReductions = (escapedText) => escapedText.replace(/\(([-+])([^)]{1,8})\)/g, '($1<span style="font-weight: bold;">$2</span>)');
                 const ext = boldifyReductions(esc(item.extended_description || item.description || ''));
-                const effect = boldifyReductions(esc(item.effect_description || item.description || ''));
+                const rawEffect = item.effect_description || item.description || '';
+                // Detect "Bonus (tooltip), Bonus (tooltip), ..." char-class style and render
+                // as native OGame structure: <div class="item_characterclass_bonuslist">
+                //   <span class="blue_txt tooltip" title="tooltip">Bonus</span>, ...
+                // so the existing OGame CSS makes it small/blue/inline like the official panel.
+                const isBonusList = rawEffect.split(/,\s*/).length >= 3 && /\([^)]{2,}\)$/m.test(rawEffect);
+                let effect;
+                if (isBonusList) {
+                    // Greedy split keeping nested parens balanced inside tooltip
+                    const parts = [];
+                    let buf = '', depth = 0;
+                    for (let i = 0; i < rawEffect.length; i++) {
+                        const c = rawEffect[i];
+                        if (c === '(') depth++;
+                        else if (c === ')') depth--;
+                        if (c === ',' && depth === 0) { parts.push(buf.trim()); buf = ''; }
+                        else buf += c;
+                    }
+                    if (buf.trim()) parts.push(buf.trim());
+                    effect = '<div class="item_characterclass_bonuslist">'
+                        + parts.map((p, i) => {
+                            const m = p.match(/^(.*?)\s*\(([\s\S]+)\)$/);
+                            const sep = i === 0 ? '' : '<span>, </span>';
+                            if (m) return sep + `<span class="blue_txt tooltip" title="${esc(m[2])}">${esc(m[1])}</span>`;
+                            return sep + `<span>${esc(p)}</span>`;
+                        }).join('')
+                        + '</div>';
+                } else {
+                    effect = boldifyReductions(esc(rawEffect));
+                }
                 const hasOriginal = item.price_dm_original && item.price_label_original;
 
                 // Format price as full number with thousands separator (Italian: dot)
@@ -695,7 +724,7 @@
                         </div>
                         <div id="description">
                             ${item.rules_description ? `<a href="javascript:void(0);" class="tooltipHTML help" title="${esc(T_RULES_TITLE)}|${esc(item.rules_description)}"></a>` : ''}
-                            <p>${effect}</p>
+                            ${isBonusList ? effect : `<p>${effect}</p>`}
                         </div>
                     </div>`;
                 detailEl.classList.add('active');
