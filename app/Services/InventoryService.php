@@ -223,10 +223,18 @@ class InventoryService
                 if (!isset($result[$ref])) {
                     $allRef = InventoryCategory::Items->ref();
                     $durSec = (int) ($shop->duration_seconds ?? 0);
-                    // Prefer DB-scraped duration_label ("ora", "Permanente", "1 settimana") over auto-format.
-                    $durationLabel = $shop->duration_label ?: ($durSec > 0 ? $this->humanizeDuration($durSec) : __('t_shop_items.duration_instant'));
-                    // Prefer DB-scraped extended_description (full OGame native text with placeholders for amounts).
-                    $longDesc = !empty($shop->extended_description) ? $shop->extended_description : $this->cleanDescription($shop->description);
+                    // Per-ref translation lookup (same pattern as ShopService::itemToArray).
+                    // Falls back to translated description for extended fields when missing.
+                    $tx = __('t_shop_items_data.' . $shop->ref);
+                    $hasTx = is_array($tx);
+                    $tName = $hasTx && isset($tx['name']) ? $tx['name'] : $shop->name;
+                    $tDesc = $hasTx && isset($tx['description']) ? $tx['description'] : $shop->description;
+                    $tDur  = $hasTx && isset($tx['duration_label']) ? $tx['duration_label'] : $shop->duration_label;
+                    $durationLabel = $tDur ?: ($durSec > 0 ? $this->humanizeDuration($durSec) : __('t_shop_items.duration_instant'));
+                    // Long description: prefer translated extended_description, fall back to translated description, finally DB.
+                    $longDesc = $hasTx
+                        ? ($tx['extended_description'] ?? ($tx['description'] ?? (!empty($shop->extended_description) ? $shop->extended_description : $this->cleanDescription($shop->description))))
+                        : (!empty($shop->extended_description) ? $shop->extended_description : $this->cleanDescription($shop->description));
                     // Runtime substitution for dynamic numeric placeholders (:metal/:crystal/:deuterium/:warning)
                     $longDesc = $this->substituteResourcePlaceholders($longDesc, $user, $shop);
                     $result[$ref] = [
@@ -238,7 +246,7 @@ class InventoryService
                         'rarity' => $shop->rarity,
                         'imageLarge' => $shop->ref,
                         'image_override_url' => '/img/shop/' . $shop->image,
-                        'title' => $shop->name . '|' . $this->cleanDescription($shop->description)
+                        'title' => $tName . '|' . $this->cleanDescription($tDesc)
                             . '<br /><br />'
                             . __('t_shop_items.label_duration') . ': ' . $durationLabel,
                         'description_ext' => $longDesc,

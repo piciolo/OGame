@@ -115,8 +115,16 @@ class ShopService
         $hasTx = is_array($tx);
         $tName = $hasTx && isset($tx['name']) ? $tx['name'] : $it->name;
         $tDescription = $hasTx && isset($tx['description']) ? $tx['description'] : $it->description;
-        $tExtended = $hasTx && isset($tx['extended_description']) ? $tx['extended_description'] : $it->extended_description;
-        $tEffect = $hasTx && isset($tx['effect_description']) ? $tx['effect_description'] : $it->effect_description;
+        // When translation exists but a longer field is missing, fall back to the
+        // translated short description rather than the DB original (which is in
+        // the seed locale, e.g. Italian). This keeps the click-detail panel and
+        // tooltips fully localized.
+        $tExtended = $hasTx
+            ? ($tx['extended_description'] ?? ($tx['description'] ?? $it->extended_description))
+            : $it->extended_description;
+        $tEffect = $hasTx
+            ? ($tx['effect_description'] ?? ($tx['description'] ?? $it->effect_description))
+            : $it->effect_description;
         $tRules = $hasTx && isset($tx['rules_description']) ? $tx['rules_description'] : $it->rules_description;
         $tDuration = $hasTx && isset($tx['duration_label']) ? $tx['duration_label'] : $it->duration_label;
 
