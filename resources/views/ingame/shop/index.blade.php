@@ -684,7 +684,7 @@
                     if (!v) return '0';
                     return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
                 };
-                const priceFull = fmtPrice(item.price_dm) + ' MO';
+                const priceFull = item.price_dm ? fmtPrice(item.price_dm) + ' MO' : '---';
                 const priceOrigFull = item.price_dm_original ? fmtPrice(item.price_dm_original) + ' MO' : '';
 
                 const priceBlock = hasOriginal
