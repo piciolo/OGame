@@ -396,6 +396,11 @@ class AuctioneerService
         $auction->ends_at = now()->addSeconds($duration + $jitter);
         $auction->save();
 
+        if (empty($auction->lot_image)) {
+            $auction->lot_image = $this->deriveLotImage($auction->lot_type->value, (array) $auction->lot_payload);
+            $auction->save();
+        }
+
         Log::channel('auctioneer')->info('Auction started', [
             'auction_id' => $auction->id,
             'lot_type' => $auction->lot_type->value,
@@ -476,11 +481,58 @@ class AuctioneerService
         $auction->lot_type = $template->lot_type;
         $auction->lot_payload = $template->lot_payload;
         $auction->lot_title = $template->lot_title;
-        $auction->lot_image = $template->lot_image;
+        $auction->lot_image = !empty($template->lot_image)
+            ? $template->lot_image
+            : $this->deriveLotImage($template->lot_type->value, (array) $template->lot_payload);
         $auction->min_bid_points = $template->min_bid_points;
         $auction->current_bid_points = 0;
         $auction->waiting_ends_at = now()->addSeconds($waiting);
         $auction->save();
+
+        if (empty($template->lot_image)) {
+            Log::channel('auctioneer')->warning('Spawned auction from template with empty lot_image — used derived fallback', [
+                'auction_id' => $auction->id,
+                'template_id' => $template->id,
+                'lot_type' => $template->lot_type->value,
+                'tier' => $template->tier->value,
+                'derived_image' => $auction->lot_image,
+            ]);
+        }
+    }
+
+    /**
+     * Pick a default image for a lot based on its type/payload.
+     * Used as fallback both when persisting new auctions (spawnNewAuction) and
+     * when serializing live data (controller status endpoint).
+     *
+     * @param array<string,mixed> $payload
+     */
+    public function deriveLotImage(string $lotType, array $payload): string
+    {
+        if ($lotType === 'ship') {
+            $unitId = (int) ($payload['unit_id'] ?? 0);
+            if ($unitId > 0) {
+                try {
+                    $obj = resolve(\OGame\Services\ObjectService::class)->getObjectById($unitId);
+                    $path = public_path('img/objects/units/' . $obj->machine_name . '_small.jpg');
+                    if (is_file($path)) {
+                        return '/img/objects/units/' . $obj->machine_name . '_small.jpg';
+                    }
+                } catch (\Throwable) {
+                }
+            }
+            return '/img/objects/units/cruiser_small.jpg';
+        }
+        if (str_starts_with($lotType, 'booster_')) {
+            return '/img/objects/buildings/alliance_depot_small.jpg';
+        }
+        if ($lotType === 'dark_matter') {
+            return '/img/objects/research/astrophysics_technology_small.jpg';
+        }
+        if ($lotType === 'resources') {
+            return '/img/objects/buildings/metal_mine_small.jpg';
+        }
+        return '/img/objects/units/cruiser_small.jpg';
     }
 
     private function pickTemplate(): ?AuctionLotTemplate

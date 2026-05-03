@@ -13,7 +13,6 @@ use OGame\Models\AuctionLotTemplate;
 use OGame\Models\Planet;
 use OGame\Services\AuctioneerService;
 use OGame\Services\InventoryService;
-use OGame\Services\ObjectService;
 use OGame\Services\PlayerService;
 
 class AuctioneerController extends OGameController
@@ -43,7 +42,7 @@ class AuctioneerController extends OGameController
     {
         $auction = $this->auctioneer->getCurrentAuction();
         if ($auction !== null && empty($auction->lot_image)) {
-            $auction->lot_image = $this->deriveLotImage($auction->lot_type->value, (array) $auction->lot_payload);
+            $auction->lot_image = $this->auctioneer->deriveLotImage($auction->lot_type->value, (array) $auction->lot_payload);
         }
         $history = $this->fetchHistory();
         $planets = $player->planets->all();
@@ -82,7 +81,7 @@ class AuctioneerController extends OGameController
     {
         $auction = $this->auctioneer->getCurrentAuction();
         if ($auction !== null && empty($auction->lot_image)) {
-            $auction->lot_image = $this->deriveLotImage($auction->lot_type->value, (array) $auction->lot_payload);
+            $auction->lot_image = $this->auctioneer->deriveLotImage($auction->lot_type->value, (array) $auction->lot_payload);
         }
         return response()->json($this->serializeAuction($auction));
     }
@@ -153,7 +152,7 @@ class AuctioneerController extends OGameController
                 'tier' => $a->tier->value,
                 'lot_type' => $a->lot_type->value,
                 'lot_title' => $a->lot_title,
-                'lot_image' => !empty($a->lot_image) ? $a->lot_image : $this->deriveLotImage($a->lot_type->value, (array) $a->lot_payload),
+                'lot_image' => !empty($a->lot_image) ? $a->lot_image : $this->auctioneer->deriveLotImage($a->lot_type->value, (array) $a->lot_payload),
                 'lot_payload' => (array) $a->lot_payload,
                 'winning_bid' => (int) $a->current_bid_points,
                 'winner_name' => $a->current_bidder_name,
@@ -194,35 +193,6 @@ class AuctioneerController extends OGameController
         ];
     }
 
-    /**
-     * @param array<string,mixed> $payload
-     */
-    private function deriveLotImage(string $lotType, array $payload): string
-    {
-        if ($lotType === 'ship') {
-            $unitId = (int) ($payload['unit_id'] ?? 0);
-            if ($unitId > 0) {
-                try {
-                    $obj = resolve(ObjectService::class)->getObjectById($unitId);
-                    $path = public_path('img/objects/units/' . $obj->machine_name . '_small.jpg');
-                    if (is_file($path)) {
-                        return '/img/objects/units/' . $obj->machine_name . '_small.jpg';
-                    }
-                } catch (\Throwable) {}
-            }
-            return '/img/objects/units/cruiser_small.jpg';
-        }
-        if (str_starts_with($lotType, 'booster_')) {
-            return '/img/objects/buildings/alliance_depot_small.jpg';
-        }
-        if ($lotType === 'dark_matter') {
-            return '/img/objects/research/astrophysics_technology_small.jpg';
-        }
-        if ($lotType === 'resources') {
-            return '/img/objects/buildings/metal_mine_small.jpg';
-        }
-        return '/img/objects/units/cruiser_small.jpg';
-    }
 
     private function settingValue(string $key, string|int|float $default): string
     {
