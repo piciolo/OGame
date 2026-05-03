@@ -76,10 +76,24 @@ class AuctioneerService
 
     public function getCurrentAuction(): ?Auction
     {
-        return Auction::query()
+        $auction = Auction::query()
             ->whereIn('status', [AuctionStatus::Waiting->value, AuctionStatus::Running->value])
             ->orderByDesc('id')
             ->first();
+
+        // Watchdog: surface ghost-row symptoms early (the loop bug pattern).
+        // Live row should always have a non-empty lot_image and a valid lot_type.
+        if ($auction !== null && empty($auction->lot_image)) {
+            Log::channel('auctioneer')->warning('Auctioneer ghost row: empty lot_image on active auction', [
+                'auction_id' => $auction->id,
+                'status' => $auction->status->value,
+                'lot_type' => $auction->lot_type->value,
+                'tier' => $auction->tier->value,
+                'lot_payload' => $auction->lot_payload,
+            ]);
+        }
+
+        return $auction;
     }
 
     // --- Bid (hot path) -----------------------------------------------------
@@ -185,6 +199,21 @@ class AuctioneerService
             }
 
             $auction->save();
+
+            Log::channel('auctioneer')->info('Bid placed', [
+                'auction_id' => $auction->id,
+                'user_id' => $user->id,
+                'planet_id' => $isHonorBid ? null : $planetId,
+                'is_honor_bid' => $isHonorBid,
+                'metal' => $metal,
+                'crystal' => $crystal,
+                'deuterium' => $deuterium,
+                'honor' => $honor,
+                'points' => $points,
+                'bid_count' => (int) $auction->bid_count,
+                'extension_count' => (int) $auction->extension_count,
+                'ends_at' => $auction->ends_at?->toDateTimeString(),
+            ]);
 
             return $auction;
         }, 3);
@@ -366,12 +395,32 @@ class AuctioneerService
         $auction->started_at = now();
         $auction->ends_at = now()->addSeconds($duration + $jitter);
         $auction->save();
+
+        Log::channel('auctioneer')->info('Auction started', [
+            'auction_id' => $auction->id,
+            'lot_type' => $auction->lot_type->value,
+            'tier' => $auction->tier->value,
+            'lot_title' => $auction->lot_title,
+            'lot_image' => $auction->lot_image,
+            'duration_seconds' => $duration + $jitter,
+            'ends_at' => $auction->ends_at?->toDateTimeString(),
+        ]);
     }
 
     private function closeAndAssign(Auction $auction): void
     {
         $auction->status = AuctionStatus::Closed;
         $auction->closed_at = now();
+
+        Log::channel('auctioneer')->info('Auction closing', [
+            'auction_id' => $auction->id,
+            'lot_type' => $auction->lot_type->value,
+            'tier' => $auction->tier->value,
+            'bid_count' => (int) $auction->bid_count,
+            'current_bid_points' => (int) $auction->current_bid_points,
+            'winner_user_id' => $auction->current_bidder_user_id,
+            'winner_name' => $auction->current_bidder_name,
+        ]);
 
         if ($auction->current_bidder_user_id !== null) {
             try {
@@ -384,7 +433,7 @@ class AuctioneerService
                 // DB::transaction in tick(). The auction stays Running and
                 // the next tick retries — this avoids silently losing prizes
                 // when transient failures occur (DB glitch, service down).
-                Log::error('Auctioneer assign failed — rolling back, will retry on next tick', [
+                Log::channel('auctioneer')->error('Auctioneer assign failed — rolling back, will retry on next tick', [
                     'auction_id' => $auction->id,
                     'winner_user_id' => $auction->current_bidder_user_id,
                     'winner_planet_id' => $auction->current_bidder_planet_id,
@@ -482,7 +531,7 @@ class AuctioneerService
                 'bid_points' => (string) $auction->current_bid_points,
             ]);
         } catch (\Throwable $e) {
-            Log::warning('Auctioneer winner message not sent', [
+            Log::channel('auctioneer')->warning('Auctioneer winner message not sent', [
                 'auction_id' => $auction->id,
                 'winner_user_id' => $winnerId,
                 'error' => $e->getMessage(),
@@ -539,7 +588,7 @@ class AuctioneerService
             case AuctionLotType::ResourceBoost:
                 $granted = $this->inventoryService->grantFromAuction($user, $auction);
                 if ($granted === null) {
-                    Log::warning('Auctioneer booster/amplifier not granted to inventory', [
+                    Log::channel('auctioneer')->warning('Auctioneer booster/amplifier not granted to inventory', [
                         'auction_id' => $auction->id,
                         'user_id' => $winnerId,
                         'lot_type' => $auction->lot_type->value,
@@ -567,7 +616,7 @@ class AuctioneerService
             if ($fallbackId > 0) {
                 $service = $this->planetServiceFactory->make($fallbackId, true);
                 if ($service !== null) {
-                    Log::warning('Auctioneer prize delivery: primary planet missing, using planet_current', [
+                    Log::channel('auctioneer')->warning('Auctioneer prize delivery: primary planet missing, using planet_current', [
                         'user_id' => $winnerUserId,
                         'requested_planet_id' => $planetId,
                         'fallback_planet_id' => $fallbackId,
@@ -579,7 +628,7 @@ class AuctioneerService
             if ($firstPlanet !== null) {
                 $service = $this->planetServiceFactory->make((int) $firstPlanet->id, true);
                 if ($service !== null) {
-                    Log::warning('Auctioneer prize delivery: using first available planet as fallback', [
+                    Log::channel('auctioneer')->warning('Auctioneer prize delivery: using first available planet as fallback', [
                         'user_id' => $winnerUserId,
                         'requested_planet_id' => $planetId,
                         'fallback_planet_id' => (int) $firstPlanet->id,
@@ -603,7 +652,7 @@ class AuctioneerService
     private function grantShip(int $planetId, int $winnerUserId, int $unitId, int $amount): void
     {
         if ($unitId <= 0 || $amount <= 0) {
-            Log::error('Auctioneer ship grant: invalid payload', [
+            Log::channel('auctioneer')->error('Auctioneer ship grant: invalid payload', [
                 'unit_id' => $unitId,
                 'amount' => $amount,
                 'planet_id' => $planetId,
@@ -614,7 +663,7 @@ class AuctioneerService
         try {
             $object = \OGame\Services\ObjectService::getUnitObjectById($unitId);
         } catch (\Throwable $e) {
-            Log::error('Auctioneer ship grant: invalid unit id', [
+            Log::channel('auctioneer')->error('Auctioneer ship grant: invalid unit id', [
                 'unit_id' => $unitId,
                 'user_id' => $winnerUserId,
                 'error' => $e->getMessage(),

@@ -4,6 +4,7 @@ namespace OGame\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 use OGame\Enums\AuctionStatus;
 use OGame\Exceptions\AuctionBidException;
@@ -104,6 +105,15 @@ class AuctioneerController extends OGameController
                 $honor,
             );
         } catch (AuctionBidException $e) {
+            Log::channel('auctioneer')->warning('Bid rejected', [
+                'user_id' => $player->getUser()->id,
+                'planet_id' => $planetId,
+                'metal' => $metal,
+                'crystal' => $crystal,
+                'deuterium' => $deuterium,
+                'honor' => $honor,
+                'reason' => $e->getMessage(),
+            ]);
             return response()->json(['success' => false, 'message' => $e->getMessage()], 400);
         }
 
