@@ -80,6 +80,9 @@ class AuctioneerController extends OGameController
     public function status(): JsonResponse
     {
         $auction = $this->auctioneer->getCurrentAuction();
+        if ($auction !== null && empty($auction->lot_image)) {
+            $auction->lot_image = $this->deriveLotImage($auction->lot_type->value, (array) $auction->lot_payload);
+        }
         return response()->json($this->serializeAuction($auction));
     }
 

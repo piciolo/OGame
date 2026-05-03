@@ -694,9 +694,12 @@
             if (!r.ok) return;
             const d = await r.json();
             if (d.status === 'none') { location.reload(); return; }
-            const prev = countdownEl?.dataset.endTimestamp;
-            const ne = d.ends_at || d.waiting_ends_at;
-            if (countdownEl && String(ne) !== prev) { location.reload(); return; }
+            const prev = parseInt(countdownEl?.dataset.endTimestamp || '0', 10);
+            const ne = parseInt(d.ends_at || d.waiting_ends_at || 0, 10);
+            // Reload only when both timestamps are valid AND meaningfully different (>1s).
+            // Guards against null/undefined AJAX fields, transient Running↔Waiting blips,
+            // and timezone/rounding noise that previously caused infinite reload loops.
+            if (countdownEl && prev > 0 && ne > 0 && Math.abs(ne - prev) > 1) { location.reload(); return; }
             syncClock(d.server_now);
             const cb = $('#currentBid'); if (cb) cb.textContent = fmt(d.current_bid_points);
             const bc = $('#bidCount'); if (bc) bc.textContent = d.bid_count;
