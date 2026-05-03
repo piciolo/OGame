@@ -1728,4 +1728,23 @@ Harci szimuláció mentési helyek +20',
         'recall_title' => 'Visszahívás',
         'recall_fleet' => 'Flotta visszahívása',
     ],
+
+    // -------------------------------------------------------------------------
+
+    // -------------------------------------------------------------------------
+    // Panoramica direttive (IPI - Initial Player Instructions)
+    // -------------------------------------------------------------------------
+
+    'ipi' => [
+        'overlay_title'         => 'Irányelvek',
+        'actions_to_complete'   => 'Teljesítsd a következő küldetéseket:',
+        'task_rewards_label'    => 'A küldetés teljesítéséért ezt kapod:',
+        'chapter_rewards_label' => 'Amikor teljesíted ezt az irányelvet, ezt kapod:',
+        'collect_chapter'       => 'Mindent begyűjt',
+        'collect_task'          => 'Jutalom begyűjtése',
+        'task_completed'        => 'Begyűjtve',
+        'track_task'            => 'Küldetés nyomon követése',
+        'untrack_task'          => 'Küldetés elrejtése',
+        'chapter_completed'     => 'Irányelv teljesítve',
+    ],
 ];

@@ -1728,4 +1728,23 @@ Simulação de combate salva slots +20',
         'recall_title' => 'Recolher',
         'recall_fleet' => 'Recolher frota',
     ],
+
+    // -------------------------------------------------------------------------
+
+    // -------------------------------------------------------------------------
+    // Panoramica direttive (IPI - Initial Player Instructions)
+    // -------------------------------------------------------------------------
+
+    'ipi' => [
+        'overlay_title'         => 'Diretivas',
+        'actions_to_complete'   => 'Complete as seguintes missões:',
+        'task_rewards_label'    => 'Ao completar a missão você recebe:',
+        'chapter_rewards_label' => 'Ao concluir esta diretriz, você recebe:',
+        'collect_chapter'       => 'Pegar tudo',
+        'collect_task'          => 'Coletar recompensa',
+        'task_completed'        => 'Coletado',
+        'track_task'            => 'Rastrear Missão',
+        'untrack_task'          => 'Esconder Missão',
+        'chapter_completed'     => 'Diretiva Completa',
+    ],
 ];

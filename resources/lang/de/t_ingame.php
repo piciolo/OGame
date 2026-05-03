@@ -2148,4 +2148,23 @@ return [
         'recall_title'        => 'Zurückrufen',
         'recall_fleet'        => 'Flotte zurückrufen',
     ],
+
+    // -------------------------------------------------------------------------
+
+    // -------------------------------------------------------------------------
+    // Panoramica direttive (IPI - Initial Player Instructions)
+    // -------------------------------------------------------------------------
+
+    'ipi' => [
+        'overlay_title'         => 'Direktiven-Übersicht',
+        'actions_to_complete'   => 'Schließe die folgenden Missionen ab:',
+        'task_rewards_label'    => 'Für den Abschluss dieser Mission erhältst du:',
+        'chapter_rewards_label' => 'Wenn du diese Direktive erfolgreich abschließt, erhältst du:',
+        'collect_chapter'       => 'Alle Belohnungen erhalten',
+        'collect_task'          => 'Belohnung abholen',
+        'task_completed'        => 'Fertig',
+        'track_task'            => 'Mission verfolgen',
+        'untrack_task'          => 'Nicht weiter verfolgen',
+        'chapter_completed'     => 'Direktive abgeschlossen',
+    ],
 ];

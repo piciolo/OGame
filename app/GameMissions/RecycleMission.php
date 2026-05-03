@@ -161,7 +161,8 @@ class RecycleMission extends GameMission
 
         // Add resources to the origin planet (if any).
         $return_resources = $this->fleetMissionService->getResources($mission);
-        if ($return_resources->any()) {
+        $hadLoot = $return_resources->any();
+        if ($hadLoot) {
             $target_planet->addResources($return_resources);
         }
 
@@ -171,5 +172,12 @@ class RecycleMission extends GameMission
         // Mark the return mission as processed
         $mission->processed = 1;
         $mission->save();
+
+        // IPI: notify progress only when recycle actually retrieved resources
+        // (task 5068 "Ricava risorse dal Campo detriti").
+        if ($hadLoot) {
+            app(\OGame\Services\IpiProgressService::class)
+                ->triggerEvent((int)$mission->user_id, 'recycle_debris_field');
+        }
     }
 }

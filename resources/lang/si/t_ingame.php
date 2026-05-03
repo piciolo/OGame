@@ -1728,4 +1728,23 @@ Reže za shranjevanje simulacije boja +20',
         'recall_title' => 'Odpoklic',
         'recall_fleet' => 'Odpokliči floto',
     ],
+
+    // -------------------------------------------------------------------------
+
+    // -------------------------------------------------------------------------
+    // Panoramica direttive (IPI - Initial Player Instructions)
+    // -------------------------------------------------------------------------
+
+    'ipi' => [
+        'overlay_title'         => 'Direktive',
+        'actions_to_complete'   => 'Končaj naslednje misije:',
+        'task_rewards_label'    => 'Za končanje misije prejmeš:',
+        'chapter_rewards_label' => 'Ko končaš to direktivo, prejmeš:',
+        'collect_chapter'       => 'Prevzemi vse',
+        'collect_task'          => 'Vzemi nagrado',
+        'task_completed'        => 'Pobrano',
+        'track_task'            => 'Sledi misiji',
+        'untrack_task'          => 'Skrij misijo',
+        'chapter_completed'     => 'Direktiva končana',
+    ],
 ];

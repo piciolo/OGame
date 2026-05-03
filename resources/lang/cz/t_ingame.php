@@ -1728,4 +1728,23 @@ Simulace bitvy ukládání slotů +20',
         'recall_title' => 'Stažení',
         'recall_fleet' => 'Stáhnout flotilu',
     ],
+
+    // -------------------------------------------------------------------------
+
+    // -------------------------------------------------------------------------
+    // Panoramica direttive (IPI - Initial Player Instructions)
+    // -------------------------------------------------------------------------
+
+    'ipi' => [
+        'overlay_title'         => 'Směrnice',
+        'actions_to_complete'   => 'Dokonči následující mise:',
+        'task_rewards_label'    => 'Za dokončení mise získáš:',
+        'chapter_rewards_label' => 'Po dokončení směrnice obdržíš:',
+        'collect_chapter'       => 'Sebrat vše',
+        'collect_task'          => 'Sebrat odměnu',
+        'task_completed'        => 'Sebráno',
+        'track_task'            => 'Sledovat misi',
+        'untrack_task'          => 'Skrýt misi',
+        'chapter_completed'     => 'Směrnice dokončena',
+    ],
 ];

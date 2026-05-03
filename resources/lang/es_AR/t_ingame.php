@@ -1728,4 +1728,23 @@ Espacios para guardar simulación de combate +20',
         'recall_title' => 'Retirar',
         'recall_fleet' => 'Retirar flota',
     ],
+
+    // -------------------------------------------------------------------------
+
+    // -------------------------------------------------------------------------
+    // Panoramica direttive (IPI - Initial Player Instructions)
+    // -------------------------------------------------------------------------
+
+    'ipi' => [
+        'overlay_title'         => 'Información general de las directivas',
+        'actions_to_complete'   => 'Completa las siguientes misiones:',
+        'task_rewards_label'    => 'Por completar la misión recibes:',
+        'chapter_rewards_label' => 'Si consigues completar esta directiva, recibirás:',
+        'collect_chapter'       => 'Recibir todas las recompensas',
+        'collect_task'          => 'Recompensa recogida',
+        'task_completed'        => 'Listo',
+        'track_task'            => 'Continuar con la misión',
+        'untrack_task'          => 'No continuar más',
+        'chapter_completed'     => 'Directiva completada',
+    ],
 ];

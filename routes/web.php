@@ -122,6 +122,14 @@ Route::middleware(['auth', 'banned', 'globalgame', 'locale', 'firstlogin'])->gro
     // Techtree
     Route::get('/ajax/techtree', [TechtreeController::class, 'ajax'])->name('techtree.ajax');
 
+    // IPI / Panoramica direttive (Initial Player Instructions)
+    // GET routes match the original OGame IPI module's $.get(url + "&token=...") flow.
+    // CSRF is enforced via the token query param (validated server-side in IpiOverviewController).
+    Route::get('/ajax/ipioverview/overlay', [\OGame\Http\Controllers\IpiOverviewController::class, 'overlay'])->name('ipioverview.overlay');
+    Route::get('/ajax/ipioverview/track-task', [\OGame\Http\Controllers\IpiOverviewController::class, 'trackTask'])->name('ipioverview.tracktask');
+    Route::get('/ajax/ipioverview/collect-task', [\OGame\Http\Controllers\IpiOverviewController::class, 'collectTask'])->name('ipioverview.collecttask');
+    Route::get('/ajax/ipioverview/collect-chapter', [\OGame\Http\Controllers\IpiOverviewController::class, 'collectChapter'])->name('ipioverview.collectchapter');
+
     // Fleet
     Route::get('/fleet', [FleetController::class, 'index'])->name('fleet.index');
     Route::get('/fleet/movement', [FleetController::class, 'movement'])->name('fleet.movement');

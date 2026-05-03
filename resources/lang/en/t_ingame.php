@@ -1287,7 +1287,7 @@ return [
         'menu_alliance'             => 'Alliance',
         'menu_officers'             => 'Recruit Officers',
         'menu_shop'                 => 'Shop',
-        'menu_directives'           => 'Directives',
+        'menu_directives'           => 'Next mission',
 
         // Menu sidebar — icon tooltip titles
         'menu_rewards_title'        => 'Rewards',
@@ -2171,5 +2171,24 @@ return [
         'events'              => 'Events',
         'recall_title'        => 'Recall',
         'recall_fleet'        => 'Recall fleet',
+    ],
+
+    // -------------------------------------------------------------------------
+
+    // -------------------------------------------------------------------------
+    // Panoramica direttive (IPI - Initial Player Instructions)
+    // -------------------------------------------------------------------------
+
+    'ipi' => [
+        'overlay_title'         => 'Directives',
+        'actions_to_complete'   => 'Complete the following missions:',
+        'task_rewards_label'    => 'For completing the mission you receive:',
+        'chapter_rewards_label' => 'When you complete this directive, you will receive:',
+        'collect_chapter'       => 'Claim All',
+        'collect_task'          => 'Collect reward',
+        'task_completed'        => 'Collected',
+        'track_task'            => 'Track Mission',
+        'untrack_task'          => 'Hide Mission',
+        'chapter_completed'     => 'Directive Complete',
     ],
 ];

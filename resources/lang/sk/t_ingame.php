@@ -1728,4 +1728,23 @@ Simulácia bitky ukladá sloty +20',
         'recall_title' => 'Stiahnutie',
         'recall_fleet' => 'Stiahnuť flotilu',
     ],
+
+    // -------------------------------------------------------------------------
+
+    // -------------------------------------------------------------------------
+    // Panoramica direttive (IPI - Initial Player Instructions)
+    // -------------------------------------------------------------------------
+
+    'ipi' => [
+        'overlay_title'         => 'Smernice',
+        'actions_to_complete'   => 'Dokonči nasledujúce úlohy:',
+        'task_rewards_label'    => 'Za dokončenie úlohy dostaneš:',
+        'chapter_rewards_label' => 'Keď dokončíš túto smernicu, dostaneš:',
+        'collect_chapter'       => 'Vyzdvihnúť všetko',
+        'collect_task'          => 'Získaj odmenu',
+        'task_completed'        => 'Vyzdvihnuté',
+        'track_task'            => 'Sledovať priebeh úlohy',
+        'untrack_task'          => 'Skryť úlohu',
+        'chapter_completed'     => 'Smernica dokončená',
+    ],
 ];

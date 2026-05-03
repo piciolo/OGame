@@ -1728,4 +1728,23 @@ Savaş simülasyonu kaydetme yuvaları +20',
         'recall_title' => 'Geri çağır',
         'recall_fleet' => 'Filoyu geri çağır',
     ],
+
+    // -------------------------------------------------------------------------
+
+    // -------------------------------------------------------------------------
+    // Panoramica direttive (IPI - Initial Player Instructions)
+    // -------------------------------------------------------------------------
+
+    'ipi' => [
+        'overlay_title'         => 'Yönerge Genel Görünümü',
+        'actions_to_complete'   => 'Şu misyonları başarıyla tamamla:',
+        'task_rewards_label'    => 'Bu görevi tamamlamak için şunları alacaksın:',
+        'chapter_rewards_label' => 'Bu yönergeyi başarıyla tamamlarsan, şunları alacaksın:',
+        'collect_chapter'       => 'Tüm ödülleri kazandın',
+        'collect_task'          => 'Ödülünü al',
+        'task_completed'        => 'Bitti',
+        'track_task'            => 'Misyonu takip et',
+        'untrack_task'          => 'Takip etmekten vazgeç',
+        'chapter_completed'     => 'Yönerge tamamlandı',
+    ],
 ];

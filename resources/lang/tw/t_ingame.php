@@ -1728,4 +1728,23 @@ return [
         'recall_title' => '召回',
         'recall_fleet' => '召回艦隊',
     ],
+
+    // -------------------------------------------------------------------------
+
+    // -------------------------------------------------------------------------
+    // Panoramica direttive (IPI - Initial Player Instructions)
+    // -------------------------------------------------------------------------
+
+    'ipi' => [
+        'overlay_title'         => '指令',
+        'actions_to_complete'   => '完成以下任務：',
+        'task_rewards_label'    => '完成任務後，您將獲得：',
+        'chapter_rewards_label' => '完成指令後，您將會收到：',
+        'collect_chapter'       => '申領所有',
+        'collect_task'          => '收集獎勵',
+        'task_completed'        => '已蒐集',
+        'track_task'            => '追蹤任務',
+        'untrack_task'          => '隱藏任務',
+        'chapter_completed'     => '指令完成',
+    ],
 ];

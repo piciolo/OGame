@@ -1728,4 +1728,23 @@ Emplacements de sauvegarde de simulation de combat +20',
         'recall_title' => 'Rappeler',
         'recall_fleet' => 'Rappeler la flotte',
     ],
+
+    // -------------------------------------------------------------------------
+
+    // -------------------------------------------------------------------------
+    // Panoramica direttive (IPI - Initial Player Instructions)
+    // -------------------------------------------------------------------------
+
+    'ipi' => [
+        'overlay_title'         => 'Aperçu des directives',
+        'actions_to_complete'   => 'Terminez les missions suivantes :',
+        'task_rewards_label'    => 'Vous recevrez pour avoir terminé cette mission :',
+        'chapter_rewards_label' => 'Une fois cette directive exécutée, vous recevez :',
+        'collect_chapter'       => 'Recevoir toutes les récompenses',
+        'collect_task'          => 'Récupérer la récompense',
+        'task_completed'        => 'Terminé',
+        'track_task'            => 'Suivre la mission',
+        'untrack_task'          => 'Ne plus suivre',
+        'chapter_completed'     => 'Directive exécutée',
+    ],
 ];

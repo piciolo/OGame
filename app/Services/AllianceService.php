@@ -292,6 +292,10 @@ class AllianceService
             $applicant->save();
 
             DB::commit();
+
+            // IPI: notify progress for the joining user.
+            app(\OGame\Services\IpiProgressService::class)
+                ->triggerEvent($application->user_id, 'alliance_join');
         } catch (Exception $e) {
             DB::rollBack();
             throw $e;

@@ -1728,4 +1728,23 @@ Simulare de luptă salvare sloturi +20',
         'recall_title' => 'Rechemare',
         'recall_fleet' => 'Rechemare flotă',
     ],
+
+    // -------------------------------------------------------------------------
+
+    // -------------------------------------------------------------------------
+    // Panoramica direttive (IPI - Initial Player Instructions)
+    // -------------------------------------------------------------------------
+
+    'ipi' => [
+        'overlay_title'         => 'Directive',
+        'actions_to_complete'   => 'Completează următoarele misiuni:',
+        'task_rewards_label'    => 'Pentru completarea misiunii primești:',
+        'chapter_rewards_label' => 'Când completezi această directivă, vei primi:',
+        'collect_chapter'       => 'Cere-le pe Toate',
+        'collect_task'          => 'Colectează recompensa',
+        'task_completed'        => 'Colectat',
+        'track_task'            => 'Urmărește Misiunea',
+        'untrack_task'          => 'Ascunde Misiunea',
+        'chapter_completed'     => 'Directivă completă',
+    ],
 ];

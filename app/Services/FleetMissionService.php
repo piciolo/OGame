@@ -534,7 +534,23 @@ class FleetMissionService
             'fleetMissionService' => $this,
             'messageService' => $this->messageService,
         ]);
-        return $missionObject->start($planet, $targetCoordinate, $targetType, $units, $resources, $speedPercent, $holdingHours, $parent_id);
+        $mission = $missionObject->start($planet, $targetCoordinate, $targetType, $units, $resources, $speedPercent, $holdingHours, $parent_id);
+
+        // IPI hooks for fleet-mission "send" events.
+        $userId = (int)$planet->getPlayer()->getId();
+        $ipi = app(\OGame\Services\IpiProgressService::class);
+        switch ($missionType) {
+            case 6:  // EspionageMission
+                $ipi->triggerEvent($userId, 'espionage_send');
+                break;
+            case 3:  // TransportMission — task 5031 wants position 16 specifically.
+                if ((int)$targetCoordinate->position === 16) {
+                    $ipi->triggerEvent($userId, 'mission_transport_send', ['value' => 16]);
+                }
+                break;
+        }
+
+        return $mission;
     }
 
     /**
@@ -699,5 +715,9 @@ class FleetMissionService
             'messageService' => $this->messageService,
         ]);
         $missionObject->cancel($mission);
+
+        // IPI: notify progress (task 5032 "Richiama la flotta").
+        app(\OGame\Services\IpiProgressService::class)
+            ->triggerEvent((int)$mission->user_id, 'fleet_recall');
     }
 }

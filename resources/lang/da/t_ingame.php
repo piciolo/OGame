@@ -1728,4 +1728,23 @@ Kampsimulering gemmer slots +20',
         'recall_title' => 'Tilbagekald',
         'recall_fleet' => 'Tilbagekald flåde',
     ],
+
+    // -------------------------------------------------------------------------
+
+    // -------------------------------------------------------------------------
+    // Panoramica direttive (IPI - Initial Player Instructions)
+    // -------------------------------------------------------------------------
+
+    'ipi' => [
+        'overlay_title'         => 'Direktiver',
+        'actions_to_complete'   => 'Gennemfør følgende missioner:',
+        'task_rewards_label'    => 'For at gennemføre missionen, modtager du:',
+        'chapter_rewards_label' => 'Når du gennemføre denne direktiv, vil du modtage:',
+        'collect_chapter'       => 'Indsaml Alle',
+        'collect_task'          => 'Indsaml belønning',
+        'task_completed'        => 'Indsamlet',
+        'track_task'            => 'Spor Missionen',
+        'untrack_task'          => 'Skjul Missionen',
+        'chapter_completed'     => 'Direktiv Gennemført',
+    ],
 ];

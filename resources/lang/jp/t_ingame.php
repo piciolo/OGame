@@ -1728,4 +1728,23 @@ return [
         'recall_title' => '帰還',
         'recall_fleet' => '艦隊を帰還',
     ],
+
+    // -------------------------------------------------------------------------
+
+    // -------------------------------------------------------------------------
+    // Panoramica direttive (IPI - Initial Player Instructions)
+    // -------------------------------------------------------------------------
+
+    'ipi' => [
+        'overlay_title'         => '指令',
+        'actions_to_complete'   => '次のミッションを完了する：',
+        'task_rewards_label'    => 'ミッションの報酬：',
+        'chapter_rewards_label' => 'この指令を完了した際の報酬：',
+        'collect_chapter'       => 'すべて獲得',
+        'collect_task'          => 'ボーナス獲得',
+        'task_completed'        => '回収',
+        'track_task'            => 'ミッションのトラッキング',
+        'untrack_task'          => 'ミッション非表示',
+        'chapter_completed'     => '指令完了',
+    ],
 ];

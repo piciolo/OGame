@@ -238,6 +238,10 @@ class ExpeditionMission extends GameMission
         // Mark the return mission as processed
         $mission->processed = 1;
         $mission->save();
+
+        // IPI: notify progress (task 5042 "Invia una Flotta di spedizione" — completed on return).
+        app(\OGame\Services\IpiProgressService::class)
+            ->triggerEvent((int)$mission->user_id, 'expedition_complete');
     }
 
     /**

@@ -1729,4 +1729,23 @@ Stridssimulering spara platser +20',
         'recall_title' => 'Återkalla',
         'recall_fleet' => 'Återkalla flotta',
     ],
+
+    // -------------------------------------------------------------------------
+
+    // -------------------------------------------------------------------------
+    // Panoramica direttive (IPI - Initial Player Instructions)
+    // -------------------------------------------------------------------------
+
+    'ipi' => [
+        'overlay_title'         => 'Directives',
+        'actions_to_complete'   => 'Complete the following missions:',
+        'task_rewards_label'    => 'For completing the mission you receive:',
+        'chapter_rewards_label' => 'When you complete this directive, you will receive:',
+        'collect_chapter'       => 'Claim All',
+        'collect_task'          => 'Collect reward',
+        'task_completed'        => 'Collected',
+        'track_task'            => 'Track Mission',
+        'untrack_task'          => 'Hide Mission',
+        'chapter_completed'     => 'Directive Complete',
+    ],
 ];
