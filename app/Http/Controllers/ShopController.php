@@ -23,12 +23,15 @@ class ShopController extends OGameController
     ) {
     }
 
-    public function index(PlayerService $player): View
+    public function index(\Illuminate\Http\Request $request, PlayerService $player): View
     {
         $this->setBodyId('shop');
 
         $user = $player->getUser();
         $payload = $this->inventory->shopPayload($user);
+        // Optional deep-link: ?ref=<sha1> auto-opens that item's detail panel on page load.
+        // Used by the topbar resource icons (metal/crystal/deuterium → amplifier item).
+        $autoOpenRef = (string)$request->query('ref', '');
 
         $categories = [];
         foreach (InventoryCategory::cases() as $cat) {
@@ -55,6 +58,7 @@ class ShopController extends OGameController
             'activateToken' => csrf_token(),
             'shopCatalog' => $shopCatalog,
             'darkMatter' => (int) $user->dark_matter,
+            'autoOpenRef' => $autoOpenRef,
         ]);
     }
 

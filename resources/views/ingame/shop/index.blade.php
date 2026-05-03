@@ -843,6 +843,24 @@
             } else {
                 wireUp();
             }
+
+            // Deep-link: if URL has ?ref=<sha1>, auto-open that item's detail panel.
+            // Triggered by the topbar resource icons (metal/crystal/deuterium).
+            @if(!empty($autoOpenRef))
+                var autoRef = @json($autoOpenRef);
+                var openWhenReady = function () {
+                    if (typeof openShopDetail === 'function' && shopItemsByRef && shopItemsByRef[autoRef]) {
+                        openShopDetail(autoRef);
+                    } else {
+                        setTimeout(openWhenReady, 50);
+                    }
+                };
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', openWhenReady);
+                } else {
+                    openWhenReady();
+                }
+            @endif
         })();
     </script>
 
