@@ -532,6 +532,16 @@ class AuctioneerService
         if ($lotType === 'resources') {
             return '/img/objects/buildings/metal_mine_small.jpg';
         }
+        if ($lotType === 'resource_boost') {
+            $res = (string) ($payload['resource'] ?? '');
+            return match ($res) {
+                'metal' => '/img/objects/buildings/metal_mine_small.jpg',
+                'crystal' => '/img/objects/buildings/crystal_mine_small.jpg',
+                'deuterium' => '/img/objects/buildings/deuterium_synthesizer_small.jpg',
+                'energy' => '/img/objects/buildings/solar_plant_small.jpg',
+                default => '/img/objects/buildings/metal_mine_small.jpg',
+            };
+        }
         return '/img/objects/units/cruiser_small.jpg';
     }
 

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use OGame\Models\AuctionLotTemplate;
+use OGame\Services\AuctioneerService;
 
 /**
  * Aligned with official OGame Gameforge Auctioneer catalog.
@@ -128,7 +129,12 @@ class AuctionLotTemplatesSeeder extends Seeder
         // Disable any template not in the official 28-lot catalog.
         AuctionLotTemplate::whereNotIn('name', $validNames)->update(['enabled' => false]);
 
+        // Single source of truth for lot icon mapping. Avoids hand-curating
+        // images here and the runtime spawn fallback drifting apart.
+        $auctioneer = resolve(AuctioneerService::class);
+
         foreach ($templates as $t) {
+            $t['lot_image'] = $auctioneer->deriveLotImage($t['lot_type'], $t['lot_payload']);
             AuctionLotTemplate::updateOrCreate(
                 ['name' => $t['name']],
                 array_merge($t, ['enabled' => true])
