@@ -315,10 +315,14 @@ class ImportExportService
         $activationType = $item->category === 'accelerator' ? 'instant' : 'duration';
 
         // Mappa il type catalog Import/Export al item_type riconosciuto
-        // dall'InventoryActivationService (sistema unificato OGameX):
-        // - kraken/detroid/newtron passano invariati
-        // - *_booster -> amplifier_<resource> (durata default 7 giorni)
+        // dall'InventoryService/InventoryActivationService (sistema OGameX):
+        // - acceleratori: prefix 'booster_' (booster_kraken/booster_detroid/booster_newtron)
+        //   come da InventoryService::registryKeyForLot()
+        // - resource booster: prefix 'amplifier_' + risorsa (durata default 7 giorni)
         $itemType = match ($item->type) {
+            'kraken'            => 'booster_kraken',
+            'detroid'           => 'booster_detroid',
+            'newtron'           => 'booster_newtron',
             'metal_booster'     => 'amplifier_metal',
             'crystal_booster'   => 'amplifier_crystal',
             'deuterium_booster' => 'amplifier_deuterium',
