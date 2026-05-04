@@ -83,8 +83,6 @@ class ImportExportCatalogSeeder extends Seeder
             ],
         ];
 
-        ImportExportItem::query()->truncate();
-
         foreach (array_merge($accelerators, $resourceBoosters) as $type => $base) {
             foreach ($rarities as $rarity => $rarityCfg) {
                 $isAccel = $base['category'] === 'accelerator';
@@ -93,22 +91,24 @@ class ImportExportCatalogSeeder extends Seeder
                 $tooltipArg  = $isAccel ? $rarityCfg['duration_label'] : $rarityCfg['percent_boost'];
                 $description = $base['description'] . ' ' . sprintf($base['tooltip_fmt'], $tooltipArg);
                 $name        = $base['name'] . ' ' . $rarityCfg['label'];
+                $ref         = sha1('import_export:' . $type . ':' . $rarity);
 
-                ImportExportItem::create([
-                    'ref'              => sha1('import_export:' . $type . ':' . $rarity),
-                    'category'         => $base['category'],
-                    'type'             => $type,
-                    'rarity'           => $rarity,
-                    'name'             => $name,
-                    'description'      => $description,
-                    'effect_value'     => $effectValue,
-                    'duration_seconds' => $duration,
-                    'icon_path'        => 'img/import_export/' . $base['icon'] . '_' . $rarity . '.gif',
-                    'drop_weight'      => $base['cat_weight'] * $rarityCfg['weight'],
-                    'change_dm_cost'   => $rarityCfg['dm_change'],
-                    'price_base'       => $rarityCfg['price_base'],
-                    'translations'     => null,
-                ]);
+                ImportExportItem::updateOrCreate(
+                    ['ref' => $ref],
+                    [
+                        'category'         => $base['category'],
+                        'type'             => $type,
+                        'rarity'           => $rarity,
+                        'name'             => $name,
+                        'description'      => $description,
+                        'effect_value'     => $effectValue,
+                        'duration_seconds' => $duration,
+                        'icon_path'        => 'img/import_export/' . $base['icon'] . '_' . $rarity . '.gif',
+                        'drop_weight'      => $base['cat_weight'] * $rarityCfg['weight'],
+                        'change_dm_cost'   => $rarityCfg['dm_change'],
+                        'price_base'       => $rarityCfg['price_base'],
+                    ]
+                );
             }
         }
     }
