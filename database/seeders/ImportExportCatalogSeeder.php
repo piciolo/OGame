@@ -63,7 +63,7 @@ class ImportExportCatalogSeeder extends Seeder
                 'cat_weight'  => 9,
                 'description' => 'Aumenta la produzione di metallo di un pianeta per 7 giorni grazie all`ottimizzazione automatica dei macchinari di estrazione.',
                 'tooltip_fmt' => 'Aumenta la produzione di metallo del +%d%% per 7 giorni.',
-                'icon'        => 'metal_booster',
+                'icon'        => 'amplifier_metal',
             ],
             'crystal_booster' => [
                 'name'        => 'Booster Cristallo',
@@ -71,7 +71,7 @@ class ImportExportCatalogSeeder extends Seeder
                 'cat_weight'  => 9,
                 'description' => 'Aumenta la produzione di cristallo di un pianeta per 7 giorni grazie all`ottimizzazione automatica dei macchinari di estrazione.',
                 'tooltip_fmt' => 'Aumenta la produzione di cristallo del +%d%% per 7 giorni.',
-                'icon'        => 'crystal_booster',
+                'icon'        => 'amplifier_crystal',
             ],
             'deuterium_booster' => [
                 'name'        => 'Booster Deuterio',
@@ -79,7 +79,7 @@ class ImportExportCatalogSeeder extends Seeder
                 'cat_weight'  => 9,
                 'description' => 'Aumenta la produzione di deuterio di un pianeta per 7 giorni grazie all`ottimizzazione automatica dei sintetizzatori.',
                 'tooltip_fmt' => 'Aumenta la produzione di deuterio del +%d%% per 7 giorni.',
-                'icon'        => 'deuterium_booster',
+                'icon'        => 'amplifier_deuterium',
             ],
         ];
 
@@ -103,7 +103,7 @@ class ImportExportCatalogSeeder extends Seeder
                         'description'      => $description,
                         'effect_value'     => $effectValue,
                         'duration_seconds' => $duration,
-                        'icon_path'        => 'img/import_export/' . $base['icon'] . '_' . $rarity . '.gif',
+                        'icon_path'        => 'img/auctioneer/items/' . $base['icon'] . '_' . $rarity . '.png',
                         'drop_weight'      => $base['cat_weight'] * $rarityCfg['weight'],
                         'change_dm_cost'   => $rarityCfg['dm_change'],
                         'price_base'       => $rarityCfg['price_base'],

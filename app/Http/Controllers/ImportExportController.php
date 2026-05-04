@@ -28,28 +28,40 @@ class ImportExportController extends OGameController
     /**
      * GET /merchant/import-export — pagina principale.
      */
-    public function index(PlayerService $player): View
+    public function index(Request $request, PlayerService $player): View
     {
         $this->setBodyId('traderOverview');
 
-        $user   = $player->getUser();
-        $planet = $player->planets->current();
+        $user = $player->getUser();
 
-        $offer  = $this->service->getOrCreateOffer($user);
+        // Sorgente selezionata: query string ?planet_id=N (default = pianeta corrente)
+        $requestedPlanetId = (int) $request->query('planet_id', 0);
+        if ($requestedPlanetId > 0) {
+            $currentPlanet = Planet::query()->where('id', $requestedPlanetId)->where('user_id', $user->id)->first();
+        }
+        if (empty($currentPlanet)) {
+            $currentPlanet = Planet::query()->find($player->planets->current()->getPlanetId());
+        }
+
+        $offer = $this->service->getOrCreateOffer($user);
         $offer->loadMissing('item');
 
-        $maxInputs = $this->service->calculateMaxInputs($offer, $planet->getPlanet(), $user);
+        $maxInputs = $this->service->calculateMaxInputs($offer, $currentPlanet, $user);
 
-        $planetsList = $player->planets->all() ?? [];
+        // Lista corpi del giocatore (planets + moons separati per i tab)
+        $allBodies = Planet::query()->where('user_id', $user->id)->orderBy('id')->get();
+        $planets = $allBodies->where('planet_type', 1)->values();
+        $moons   = $allBodies->where('planet_type', 3)->values();
 
         return view('ingame.importexport.index', [
-            'offer'        => $offer,
-            'item'         => $offer->item,
-            'currentPlanet' => $planet->getPlanet(),
-            'maxInputs'    => $maxInputs,
-            'darkMatter'   => $user->dark_matter,
-            'honorPoints'  => $user->honor_points,
-            'planetsList'  => $planetsList,
+            'offer'         => $offer,
+            'item'          => $offer->item,
+            'currentPlanet' => $currentPlanet,
+            'maxInputs'     => $maxInputs,
+            'darkMatter'    => $user->dark_matter,
+            'honorPoints'   => $user->honor_points,
+            'planets'       => $planets,
+            'moons'         => $moons,
         ]);
     }
 

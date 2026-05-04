@@ -44,21 +44,35 @@ class ImportExportService
     public function getOrCreateOffer(User $user): ImportExportOffer
     {
         return DB::transaction(function () use ($user) {
+            // 1. Offerta pending non scaduta -> ritorna quella
             $offer = ImportExportOffer::query()
                 ->where('user_id', $user->id)
-                ->whereIn('status', ['pending'])
+                ->where('status', 'pending')
                 ->where('expires_at', '>', now())
                 ->lockForUpdate()
                 ->first();
-
             if ($offer) {
                 return $offer;
             }
 
-            // Marca come expired le pending vecchie
+            // 2. Offerta gia' consumata nel ciclo corrente (paid/taken_dm con
+            //    expires_at futuro) -> ritorna quella per mostrare stato
+            //    post-acquisto "Per oggi non ci sono altre offerte".
+            $consumed = ImportExportOffer::query()
+                ->where('user_id', $user->id)
+                ->whereIn('status', ['paid', 'taken_dm'])
+                ->where('expires_at', '>', now())
+                ->orderByDesc('id')
+                ->first();
+            if ($consumed) {
+                return $consumed;
+            }
+
+            // 3. Nessuna offerta valida -> marca scadute e genera nuova
             ImportExportOffer::query()
                 ->where('user_id', $user->id)
                 ->where('status', 'pending')
+                ->where('expires_at', '<=', now())
                 ->update(['status' => 'expired']);
 
             return $this->rollNewOffer($user);
