@@ -2195,5 +2195,8 @@ return [
         'rarity_bronze'     => 'Bronze',
         'rarity_silver'     => 'Silver',
         'rarity_gold'       => 'Gold',
+        'source_planet_tooltip' => 'Select planet',
+        'source_moon_tooltip'   => 'Select moon',
+        'source_honor_tooltip'  => 'Exchange your honour points',
     ],
 ];

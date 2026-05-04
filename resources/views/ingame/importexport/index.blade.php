@@ -15,7 +15,6 @@
     $changeCost   = (int) $item->change_dm_cost;
     $takeCost     = \OGame\Services\ImportExportService::TAKE_ITEM_DM_COST;
     $changesLeft  = max(0, \OGame\Services\ImportExportService::MAX_CHANGES_PER_CYCLE - (int) $offer->change_count);
-    $showHonorRow = $honorPoints > 0;
     $isMoon       = (int) $currentPlanet->planet_type === 3;
 @endphp
 
@@ -113,9 +112,9 @@
                             <div class="payment">
                                 <div class="resourceSelection">
                                     <div class="selectWrapper">
-                                        <a class="tooltip js_hideTipOnMobile source planet js_planet {{ !$isMoon ? 'selected' : '' }}" title="{{ __('t_ingame.import_export.title') }}"></a>
-                                        <a class="tooltip js_hideTipOnMobile source moon js_moon {{ $isMoon ? 'selected' : '' }}"></a>
-                                        <a class="tooltip js_hideTipOnMobile source honor js_honor"></a>
+                                        <a href="javascript:void(0);" class="tooltip js_hideTipOnMobile source planet js_planet {{ !$isMoon ? 'selected' : '' }}" data-tooltip-title="{{ __('t_ingame.import_export.source_planet_tooltip') }}"></a>
+                                        <a href="javascript:void(0);" class="tooltip js_hideTipOnMobile source moon js_moon {{ $isMoon ? 'selected' : '' }}" data-tooltip-title="{{ __('t_ingame.import_export.source_moon_tooltip') }}"></a>
+                                        <a href="javascript:void(0);" class="tooltip js_hideTipOnMobile source honor js_honor" data-tooltip-title="{{ __('t_ingame.import_export.source_honor_tooltip') }}"></a>
                                         <a id="js_toggleLinkImportExport" class="js_valSourcePlanet toggleHidden toggleLink" href="#togglePanel" title="{{ __('t_ingame.import_export.title') }}">
                                             <img alt="{{ $currentPlanet->name }}" src="{{ $currentIcon }}" width="18" height="18">
                                             <span class="option_source" title="{{ $currentPlanet->name }}">{{ $currentPlanet->name }} [{{ $currentPlanet->galaxy }}:{{ $currentPlanet->system }}:{{ $currentPlanet->planet }}]</span>
@@ -159,14 +158,14 @@
                                                 ['key' => 'crystal',   'mult' => '1.5', 'css' => 'crystal',   'class' => 'normalResource'],
                                                 ['key' => 'deuterium', 'mult' => '3',   'css' => 'deuterium', 'class' => 'normalResource'],
                                             ] as $row)
-                                                <tr class="{{ $row['class'] }}">
+                                                <tr class="{{ $row['class'] }}" data-row-type="normal">
                                                     <td><div class="resourceIcon {{ $row['css'] }} resource_label"></div></td>
                                                     <td class="multiplier undermark tooltip"><span class="dark_highlight_tablet">x {{ $row['mult'] }}</span></td>
                                                     <td><input type="text" name="{{ $row['key'] }}" value="0" data-mult="{{ $row['mult'] }}" data-max="{{ $maxInputs[$row['key']] }}" class="ie_input"></td>
                                                     <td><a class="value-control more js_valButton ie_btn_inc" data-target="{{ $row['key'] }}">+</a></td>
                                                     <td><a class="value-control max js_valButton ie_btn_max" data-target="{{ $row['key'] }}">&gt;&gt;</a></td>
                                                 </tr>
-                                                <tr class="{{ $row['class'] }}">
+                                                <tr class="{{ $row['class'] }}" data-row-type="normal">
                                                     <td></td>
                                                     <td>
                                                         <div class="max_hint">({{ __('t_ingame.import_export.max_hint_prefix') }}
@@ -177,25 +176,24 @@
                                                 </tr>
                                             @endforeach
 
-                                            @if($showHonorRow)
-                                                {{-- Riga honor: condizionale, solo se honor_points > 0 (logica OGame) --}}
-                                                <tr class="honorResource">
-                                                    <td><img class="resource_label" alt="honor" src="{{ asset('img/icons/honor.gif') }}" onerror="this.style.display='none'"></td>
-                                                    <td class="multiplier undermark tooltip"><span class="dark_highlight_tablet">x 100</span></td>
-                                                    <td><input type="text" name="honor" value="0" data-mult="100" data-max="{{ $maxInputs['honor'] }}" class="ie_input"></td>
-                                                    <td><a class="ie_btn_inc" data-target="honor">+</a></td>
-                                                    <td><a class="ie_btn_max" data-target="honor">&gt;&gt;</a></td>
-                                                </tr>
-                                                <tr class="honorResource">
-                                                    <td></td>
-                                                    <td>
-                                                        <div class="max_hint">({{ __('t_ingame.import_export.max_hint_prefix') }}
-                                                            <span class="max_planet_res max_planet_honor">{{ number_format($maxInputs['honor'], 0, ',', '.') }}</span>)
-                                                        </div>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                            @endif
+                                            {{-- Riga honor: sempre presente nel DOM, visibile solo quando .js_honor selected.
+                                                 Pattern AuctioneerController: data-row-type='honor' + display:none default. --}}
+                                            <tr class="honorResource" data-row-type="honor" style="display:none">
+                                                <td><div class="resourceIcon honor resource_label"></div></td>
+                                                <td class="multiplier undermark tooltip"><span class="dark_highlight_tablet">x 100</span></td>
+                                                <td><input type="text" name="honor" value="0" data-mult="100" data-max="{{ $maxInputs['honor'] }}" class="ie_input"></td>
+                                                <td><a class="value-control more js_valButton ie_btn_inc" data-target="honor">+</a></td>
+                                                <td><a class="value-control max js_valButton ie_btn_max" data-target="honor">&gt;&gt;</a></td>
+                                            </tr>
+                                            <tr class="honorResource" data-row-type="honor" style="display:none">
+                                                <td></td>
+                                                <td>
+                                                    <div class="max_hint">({{ __('t_ingame.import_export.max_hint_prefix') }}
+                                                        <span class="max_planet_res max_planet_honor">{{ number_format($maxInputs['honor'], 0, ',', '.') }}</span>)
+                                                    </div>
+                                                </td>
+                                                <td></td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -293,8 +291,9 @@
             var span = $('.max_planet_' + r);
             var input = $('.ie_input[name="' + r + '"]');
             var mult  = r === 'metal' ? 1 : r === 'crystal' ? 1.5 : 3;
+            // Cap a min(risorsa disponibile, prezzo/moltiplicatore) — pattern OGame
             var maxRow = Math.min(p[r] || 0, Math.floor(price_ / mult));
-            if (span)  span.textContent  = (p[r] || 0).toLocaleString('it-IT');
+            if (span)  span.textContent  = maxRow.toLocaleString('it-IT');
             if (input) input.setAttribute('data-max', maxRow);
         });
     }
@@ -323,27 +322,39 @@
         $$('.selectWrapper .source').forEach(function (s) { s.classList.remove('selected'); });
         var src = $('.selectWrapper .source.' + kind);
         if (src) src.classList.add('selected');
-        var planetsUl = $('#js_togglePanelImportExport ul.planet');
-        var moonsUl   = $('#js_togglePanelImportExport ul.moon');
-        if (planetsUl) planetsUl.style.display = kind === 'moon' ? 'none' : '';
-        if (moonsUl)   moonsUl.style.display   = kind === 'moon' ? '' : 'none';
-        var activeUlSel = kind === 'moon' ? 'ul.moon' : 'ul.planet';
-        var items = $$('#js_togglePanelImportExport ' + activeUlSel + ' li');
-        var currentInList = items.find(function (li) { return li.dataset.planetId === sourcePlanetInput.value; });
-        var target = currentInList || items[0];
-        if (target) selectLi(target);
+
+        var isHonor = kind === 'honor';
+        // Toggle righe normal vs honor (pattern AuctioneerController)
+        $$('tr[data-row-type=normal]').forEach(function (tr) { tr.style.display = isHonor ? 'none' : ''; });
+        $$('tr[data-row-type=honor]').forEach(function (tr) { tr.style.display = isHonor ? '' : 'none'; });
+        // Quando honor: nascondi toggleLink (no corpo da scegliere) + chiudi panel
+        if (toggleLink) toggleLink.style.visibility = isHonor ? 'hidden' : '';
+        if (togglePanel) togglePanel.style.display = 'none';
+        // Reset valori input non pertinenti alla sorgente attiva
+        if (isHonor) {
+            ['metal','crystal','deuterium'].forEach(function (r) {
+                var i = $('.ie_input[name="' + r + '"]'); if (i) i.value = '0';
+            });
+        } else {
+            var hi = $('.ie_input[name="honor"]'); if (hi) hi.value = '0';
+        }
+
+        if (kind === 'moon' || kind === 'planet') {
+            var planetsUl = $('#js_togglePanelImportExport ul.planet');
+            var moonsUl   = $('#js_togglePanelImportExport ul.moon');
+            if (planetsUl) planetsUl.style.display = kind === 'moon' ? 'none' : '';
+            if (moonsUl)   moonsUl.style.display   = kind === 'moon' ? '' : 'none';
+            var activeUlSel = kind === 'moon' ? 'ul.moon' : 'ul.planet';
+            var items = $$('#js_togglePanelImportExport ' + activeUlSel + ' li');
+            var currentInList = items.find(function (li) { return li.dataset.planetId === sourcePlanetInput.value; });
+            var target = currentInList || items[0];
+            if (target) selectLi(target);
+        }
+        recalc();
     }
     if ($('.js_planet')) $('.js_planet').addEventListener('click', function (e) { e.preventDefault(); setSource('planet'); });
     if ($('.js_moon'))   $('.js_moon').addEventListener('click',   function (e) { e.preventDefault(); setSource('moon');   });
-    if ($('.js_honor')) $('.js_honor').addEventListener('click', function (e) {
-        // Stella/Honor: in Import/Export la riga 'x 100' della tabella e' gia' la
-        // sorgente honor (condizionale a $showHonorRow). Click serve solo a
-        // evidenziare visivamente la 3a icona, allineato 1:1 al Battitore.
-        e.preventDefault();
-        $$('.selectWrapper .source').forEach(function (s) { s.classList.remove('selected'); });
-        e.currentTarget.classList.add('selected');
-        if (togglePanel) togglePanel.style.display = 'none';
-    });
+    if ($('.js_honor'))  $('.js_honor').addEventListener('click',  function (e) { e.preventDefault(); setSource('honor');  });
     if (toggleLink) toggleLink.addEventListener('click', function (e) {
         e.preventDefault();
         if (togglePanel) togglePanel.style.display = togglePanel.style.display === 'none' ? 'block' : 'none';
