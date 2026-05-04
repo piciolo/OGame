@@ -49,13 +49,13 @@
 <div id="traderOverviewcomponent" class="maincontent">
 <div id="traderOverview">
 <div id="inhalt">
-    <div id="planet" style="background-position: 0px -220px; height: 250px;" class="detail">
+    <div id="planet" style="background-position: -546px -220px; height: 250px;" class="detail">
         <div id="detail" class="detail_screen small">
             <div id="techDetailLoading"></div>
         </div>
         <div id="header_text" style="display: block;">
             <h2>{{ __('t_ingame.import_export.title') }}</h2>
-            <a class="back_to_overview js_backToOverview tooltip js_hideTipOnMobile right" href="{{ route('merchant.index') }}" style="display: inline;"></a>
+            <a class="back_to_overview js_backToOverview tooltip js_hideTipOnMobile left" href="{{ route('merchant.index') }}" style="display: inline;"></a>
             <a class="small_back_to_overview js_backToOverview tooltip js_hideTipOnMobile" href="{{ route('merchant.index') }}"></a>
         </div>
     </div>
@@ -127,21 +127,21 @@
 
                                         <a id="js_toggleLinkImportExport" class="js_valSourcePlanet toggleHidden toggleLink">
                                             <img src="{{ asset('img/planets/small/' . ($currentPlanet->planet_type ?? 1) . '.gif') }}" alt="" onerror="this.style.display='none'">
-                                            <span class="option_source">{{ Str::limit($currentPlanet->name, 8, '...') }} [{{ $currentPlanet->galaxy }}:{{ $currentPlanet->system }}:{{ $currentPlanet->planet }}]</span>
+                                            <span class="option_source">{{ Str::limit($currentPlanet->name, 9, '...') }} [{{ $currentPlanet->galaxy }}:{{ $currentPlanet->system }}:{{ $currentPlanet->planet }}]</span>
                                         </a>
 
                                         <div id="js_togglePanelImportExport" class="togglePanel">
                                             <ul class="planet {{ !$isMoon ? 'active' : '' }}">
                                                 @foreach($planets as $p)
                                                     <li data-planet-id="{{ $p->id }}" class="{{ $p->id === $currentPlanet->id ? 'selected' : '' }}">
-                                                        <span class="option_source">{{ $p->name }} [{{ $p->galaxy }}:{{ $p->system }}:{{ $p->planet }}]</span>
+                                                        <span class="option_source">{{ Str::limit($p->name, 9, '...') }} [{{ $p->galaxy }}:{{ $p->system }}:{{ $p->planet }}]</span>
                                                     </li>
                                                 @endforeach
                                             </ul>
                                             <ul class="moon {{ $isMoon ? 'active' : '' }}">
                                                 @foreach($moons as $m)
                                                     <li data-planet-id="{{ $m->id }}" class="{{ $m->id === $currentPlanet->id ? 'selected' : '' }}">
-                                                        <span class="option_source">{{ $m->name }} [{{ $m->galaxy }}:{{ $m->system }}:{{ $m->planet }}]</span>
+                                                        <span class="option_source">{{ Str::limit($m->name, 9, '...') }} [{{ $m->galaxy }}:{{ $m->system }}:{{ $m->planet }}]</span>
                                                     </li>
                                                 @endforeach
                                             </ul>
