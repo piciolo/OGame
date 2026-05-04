@@ -2172,4 +2172,28 @@ return [
         'recall_title'        => 'Recall',
         'recall_fleet'        => 'Recall fleet',
     ],
+
+    // -------------------------------------------------------------------------
+    // Merchant > Import / Export
+    // -------------------------------------------------------------------------
+
+    'import_export' => [
+        'title'             => 'Import / Export',
+        'stimulus'          => 'Containers with mystery contents are sold here daily, payable in resources.',
+        'offer_of_the_day'  => 'Offer of the day',
+        'price_label'       => 'Price:',
+        'total_label'       => 'Total:',
+        'trade_panel'       => 'Trade',
+        'max_hint_prefix'   => 'max.',
+        'pay_button'        => 'Pay',
+        'change_button'     => 'Change',
+        'take_item_button'  => 'Take item',
+        'dm_cost_label'     => 'Cost: :amount Dark Matter',
+        'bought_success'    => 'Purchase completed.',
+        'bought_1_item'     => 'You have bought 1 :name.',
+        'no_more_today'     => 'No more offers today. Come back tomorrow!',
+        'rarity_bronze'     => 'Bronze',
+        'rarity_silver'     => 'Silver',
+        'rarity_gold'       => 'Gold',
+    ],
 ];

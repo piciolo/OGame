@@ -2105,4 +2105,28 @@ return [
         'recall_title'        => 'Richiama',
         'recall_fleet'        => 'Richiama flotta',
     ],
+
+    // -------------------------------------------------------------------------
+    // Mercante > Import / Export
+    // -------------------------------------------------------------------------
+
+    'import_export' => [
+        'title'             => 'Import / Export',
+        'stimulus'          => 'Qui vengono quotidianamente venduti dei Container dal contenuto sconosciuto pagabili in risorse.',
+        'offer_of_the_day'  => 'Offerta del giorno',
+        'price_label'       => 'Prezzo:',
+        'total_label'       => 'Totale:',
+        'trade_panel'       => 'Commercia',
+        'max_hint_prefix'   => 'max.',
+        'pay_button'        => 'Paga',
+        'change_button'     => 'Cambia',
+        'take_item_button'  => 'Prendi item',
+        'dm_cost_label'     => 'Costo: :amount Materia Oscura',
+        'bought_success'    => 'Acquisto completato.',
+        'bought_1_item'     => 'Hai comprato 1 :name.',
+        'no_more_today'     => 'Per oggi non ci sono altre offerte. Torna domani!',
+        'rarity_bronze'     => 'Bronzo',
+        'rarity_silver'     => 'Argento',
+        'rarity_gold'       => 'Oro',
+    ],
 ];
