@@ -27,26 +27,40 @@ class ImportExportController extends OGameController
     public function index(Request $request, PlayerService $player, PlanetServiceFactory $planetServiceFactory): View
     {
         $this->setBodyId('traderOverview');
+        return view('ingame.importexport.index', $this->buildViewData($player, $planetServiceFactory));
+    }
 
-        $user          = $player->getUser();
+    /**
+     * GET /ajax/merchant/import-export — partial body per ajax_nav slide-in
+     * (pattern AuctioneerController). Restituisce solo _body senza layout main.
+     */
+    public function partial(PlayerService $player, PlanetServiceFactory $planetServiceFactory): View
+    {
+        return view('ingame.importexport.partial', $this->buildViewData($player, $planetServiceFactory));
+    }
+
+    /**
+     * @return array<string,mixed>
+     */
+    private function buildViewData(PlayerService $player, PlanetServiceFactory $planetServiceFactory): array
+    {
+        $user                 = $player->getUser();
         $currentPlanetService = $player->planets->current();
-        $currentPlanet = Planet::query()->find($currentPlanetService->getPlanetId());
+        $currentPlanet        = Planet::query()->find($currentPlanetService->getPlanetId());
 
         $offer = $this->service->getOrCreateOffer($user);
         $offer->loadMissing('item');
 
         $maxInputs = $this->service->calculateMaxInputs($offer, $currentPlanet, $user);
 
-        // Costruisce dati ricchi per il dropdown (icone biome/image come Battitore,
-        // pattern AuctioneerController). Per ogni corpo: id, name, coords, icon path
-        // calcolato via PlanetService, risorse correnti per data-attributes.
+        // Lista corpi del giocatore (planets + moons) con icona biome/image come Battitore.
         $allBodies = Planet::query()->where('user_id', $user->id)->orderBy('id')->get();
         $planets   = [];
         $moons     = [];
         foreach ($allBodies as $b) {
-            $svc = $planetServiceFactory->make($b->id);
+            $svc    = $planetServiceFactory->make($b->id);
             $isMoon = (int) $b->planet_type === 3;
-            $icon = $isMoon
+            $icon   = $isMoon
                 ? '/img/moons/small/1.gif'
                 : '/img/planets/small/' . $svc->getPlanetBiomeType() . '_' . $svc->getPlanetImageType() . '.png';
             $row = [
@@ -67,13 +81,12 @@ class ImportExportController extends OGameController
             }
         }
 
-        // Icona del corpo corrente per il toggleLink
         $isMoonCurrent = (int) $currentPlanet->planet_type === 3;
         $currentIcon   = $isMoonCurrent
             ? '/img/moons/small/1.gif'
             : '/img/planets/small/' . $currentPlanetService->getPlanetBiomeType() . '_' . $currentPlanetService->getPlanetImageType() . '.png';
 
-        return view('ingame.importexport.index', [
+        return [
             'offer'         => $offer,
             'item'          => $offer->item,
             'currentPlanet' => $currentPlanet,
@@ -83,7 +96,7 @@ class ImportExportController extends OGameController
             'honorPoints'   => $user->honor_points,
             'planets'       => $planets,
             'moons'         => $moons,
-        ]);
+        ];
     }
 
     /**
