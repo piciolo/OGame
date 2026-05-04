@@ -184,6 +184,13 @@ Route::middleware(['auth', 'banned', 'globalgame', 'locale', 'firstlogin'])->gro
     Route::post('/merchant/scrap/bargain', [MerchantController::class, 'scrapBargain'])->name('merchant.scrap.bargain');
     Route::post('/merchant/scrap/execute', [MerchantController::class, 'scrapExecute'])->name('merchant.scrap.execute');
 
+    // Import / Export
+    Route::get('/merchant/import-export', [\OGame\Http\Controllers\ImportExportController::class, 'index'])->name('importexport.index');
+    Route::post('/merchant/import-export/pay', [\OGame\Http\Controllers\ImportExportController::class, 'pay'])->name('importexport.pay');
+    Route::post('/merchant/import-export/change', [\OGame\Http\Controllers\ImportExportController::class, 'change'])->name('importexport.change');
+    Route::post('/merchant/import-export/take', [\OGame\Http\Controllers\ImportExportController::class, 'take'])->name('importexport.take');
+    Route::post('/merchant/import-export/activate', [\OGame\Http\Controllers\ImportExportController::class, 'activate'])->name('importexport.activate');
+
     // Auctioneer
     Route::get('/auctioneer', [\OGame\Http\Controllers\AuctioneerController::class, 'index'])->name('auctioneer.index');
     Route::get('/ajax/auctioneer', [\OGame\Http\Controllers\AuctioneerController::class, 'partial'])->name('auctioneer.partial');
