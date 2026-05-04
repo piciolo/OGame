@@ -27,26 +27,21 @@ class ImportExportController extends OGameController
     {
         $this->setBodyId('traderOverview');
 
-        $user = $player->getUser();
-
-        // Sorgente selezionata: query string ?planet_id=N (default = pianeta corrente)
-        $requestedPlanetId = (int) $request->query('planet_id', 0);
-        if ($requestedPlanetId > 0) {
-            $currentPlanet = Planet::query()->where('id', $requestedPlanetId)->where('user_id', $user->id)->first();
-        }
-        if (empty($currentPlanet)) {
-            $currentPlanet = Planet::query()->find($player->planets->current()->getPlanetId());
-        }
+        $user          = $player->getUser();
+        $currentPlanet = Planet::query()->find($player->planets->current()->getPlanetId());
 
         $offer = $this->service->getOrCreateOffer($user);
         $offer->loadMissing('item');
 
         $maxInputs = $this->service->calculateMaxInputs($offer, $currentPlanet, $user);
 
-        // Lista corpi del giocatore (planets + moons separati per i tab)
+        // Lista corpi del giocatore (planets + moons separati per i tab dropdown,
+        // come fa AuctioneerController). Tutti i corpi servono i data-attributes
+        // metal/crystal/deuterium/honor cosi che il JS possa cambiare sorgente
+        // senza reload pagina.
         $allBodies = Planet::query()->where('user_id', $user->id)->orderBy('id')->get();
-        $planets = $allBodies->where('planet_type', 1)->values();
-        $moons   = $allBodies->where('planet_type', 3)->values();
+        $planets   = $allBodies->where('planet_type', 1)->values();
+        $moons     = $allBodies->where('planet_type', 3)->values();
 
         return view('ingame.importexport.index', [
             'offer'         => $offer,

@@ -29,17 +29,8 @@
         cursor: not-allowed; opacity: 0.5;
     }
     /* + e >> usano direttamente sprite OGame via classi value-control more/max */
-    #div_traderImportExport .togglePanel {
-        position:absolute; background:#0a2240; border:1px solid #2a5570;
-        padding:4px; min-width:180px; z-index:1000; display:none;
-    }
-    #div_traderImportExport .togglePanel.open { display:block; }
-    #div_traderImportExport .togglePanel ul { list-style:none; padding:0; margin:0; display:none; }
-    #div_traderImportExport .togglePanel ul.active { display:block; }
-    #div_traderImportExport .togglePanel li { padding:3px 6px; cursor:pointer; }
-    #div_traderImportExport .togglePanel li:hover { background:#1a3550; }
-    #div_traderImportExport .source { display:inline-block; cursor:pointer; opacity:0.5; }
-    #div_traderImportExport .source.selected { opacity:1; }
+    /* togglePanel/source: stile completo gestito da OGame CSS originale
+       (#traderOverview .source, #traderOverview .togglePanel ecc.) */
     #div_traderImportExport .bargain_overlay { display:none; }
     #div_traderImportExport .bargain_overlay.visible { display:block; }
     #div_traderImportExport .bargain_left_overlay { display:none; }
@@ -121,31 +112,42 @@
                             <div class="payment">
                                 <div class="resourceSelection">
                                     <div class="selectWrapper">
-                                        <a class="tooltip source planet js_planet {{ !$isMoon ? 'selected' : '' }}" data-source-type="planet" title="{{ __('t_ingame.import_export.title') }}"></a>
-                                        <a class="tooltip source moon js_moon {{ $isMoon ? 'selected' : '' }}" data-source-type="moon"></a>
-                                        <a class="tooltip source star js_star" data-source-type="star"></a>
-
-                                        <a id="js_toggleLinkImportExport" class="js_valSourcePlanet toggleHidden toggleLink">
-                                            <img src="{{ asset('img/planets/small/' . ($currentPlanet->planet_type ?? 1) . '.gif') }}" alt="" onerror="this.style.display='none'">
-                                            <span class="option_source">{{ Str::limit($currentPlanet->name, 9, '...') }} [{{ $currentPlanet->galaxy }}:{{ $currentPlanet->system }}:{{ $currentPlanet->planet }}]</span>
+                                        <a class="tooltip js_hideTipOnMobile source planet js_planet {{ !$isMoon ? 'selected' : '' }}" title="{{ __('t_ingame.import_export.title') }}"></a>
+                                        <a class="tooltip js_hideTipOnMobile source moon js_moon {{ $isMoon ? 'selected' : '' }}"></a>
+                                        <a id="js_toggleLinkImportExport" class="js_valSourcePlanet toggleHidden toggleLink" href="#togglePanel">
+                                            <img src="{{ asset('img/planets/small/' . ($currentPlanet->planet_type === 3 ? '1' : ($currentPlanet->planet_type ?? 1)) . '.gif') }}" width="18" height="18" alt="" onerror="this.style.display='none'">
+                                            <span class="option_source">{{ $currentPlanet->name }} [{{ $currentPlanet->galaxy }}:{{ $currentPlanet->system }}:{{ $currentPlanet->planet }}]</span>
                                         </a>
-
-                                        <div id="js_togglePanelImportExport" class="togglePanel">
-                                            <ul class="planet {{ !$isMoon ? 'active' : '' }}">
-                                                @foreach($planets as $p)
-                                                    <li data-planet-id="{{ $p->id }}" class="{{ $p->id === $currentPlanet->id ? 'selected' : '' }}">
-                                                        <span class="option_source">{{ Str::limit($p->name, 9, '...') }} [{{ $p->galaxy }}:{{ $p->system }}:{{ $p->planet }}]</span>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                            <ul class="moon {{ $isMoon ? 'active' : '' }}">
+                                    </div>
+                                    <div id="js_togglePanelImportExport" class="togglePanel" style="display:none">
+                                        <ul class="planet active">
+                                            @foreach($planets as $p)
+                                                <li id="{{ $p->id }}"
+                                                    data-planet-id="{{ $p->id }}"
+                                                    data-metal="{{ (int) floor($p->metal) }}"
+                                                    data-crystal="{{ (int) floor($p->crystal) }}"
+                                                    data-deuterium="{{ (int) floor($p->deuterium) }}"
+                                                    class="dark_highlight_tablet planet_select_item @if($p->id === $currentPlanet->id) selected active @endif">
+                                                    <img src="{{ asset('img/planets/small/' . ($p->planet_type ?? 1) . '.gif') }}" width="12" height="12" alt="" onerror="this.style.display='none'">
+                                                    <span class="option_source">{{ $p->name }} [{{ $p->galaxy }}:{{ $p->system }}:{{ $p->planet }}]</span>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                        @if($moons->isNotEmpty())
+                                            <ul class="moon active" style="display:none">
                                                 @foreach($moons as $m)
-                                                    <li data-planet-id="{{ $m->id }}" class="{{ $m->id === $currentPlanet->id ? 'selected' : '' }}">
-                                                        <span class="option_source">{{ Str::limit($m->name, 9, '...') }} [{{ $m->galaxy }}:{{ $m->system }}:{{ $m->planet }}]</span>
+                                                    <li id="{{ $m->id }}"
+                                                        data-planet-id="{{ $m->id }}"
+                                                        data-metal="{{ (int) floor($m->metal) }}"
+                                                        data-crystal="{{ (int) floor($m->crystal) }}"
+                                                        data-deuterium="{{ (int) floor($m->deuterium) }}"
+                                                        class="dark_highlight_tablet planet_select_item @if($m->id === $currentPlanet->id) selected active @endif">
+                                                        <img src="{{ asset('img/moons/small/1.gif') }}" width="12" height="12" alt="" onerror="this.style.display='none'">
+                                                        <span class="option_source">{{ $m->name }} [{{ $m->galaxy }}:{{ $m->system }}:{{ $m->planet }}]</span>
                                                     </li>
                                                 @endforeach
                                             </ul>
-                                        </div>
+                                        @endif
                                     </div>
 
                                     <table class="table_ressources">
@@ -217,19 +219,19 @@
     var totalEl = document.querySelector('.js_import_total');
     var payBtn  = document.getElementById('ie_pay_btn');
 
+    function recalc() {
+        if (!totalEl || !payBtn) return;
+        var total = 0;
+        inputs.forEach(function (el) {
+            var v = parseInt(el.value, 10) || 0;
+            total += v * parseFloat(el.getAttribute('data-mult'));
+        });
+        total = Math.round(total);
+        totalEl.textContent = total.toLocaleString('it-IT');
+        if (total === price) payBtn.classList.remove('disabled');
+        else                 payBtn.classList.add('disabled');
+    }
     if (totalEl && payBtn) {
-        function recalc() {
-            var total = 0;
-            inputs.forEach(function (el) {
-                var v = parseInt(el.value, 10) || 0;
-                total += v * parseFloat(el.getAttribute('data-mult'));
-            });
-            total = Math.round(total);
-            totalEl.textContent = total.toLocaleString('it-IT');
-            if (total === price) payBtn.classList.remove('disabled');
-            else                 payBtn.classList.add('disabled');
-        }
-
         inputs.forEach(function (el) { el.addEventListener('input', recalc); });
 
         document.querySelectorAll('.ie_btn_max').forEach(function (btn) {
@@ -274,33 +276,69 @@
         recalc();
     }
 
-    // Planet/Moon source selector
-    var togglePanel = document.getElementById('js_togglePanelImportExport');
-    var toggleLink  = document.getElementById('js_toggleLinkImportExport');
-    if (toggleLink && togglePanel) {
-        toggleLink.addEventListener('click', function () {
-            togglePanel.classList.toggle('open');
-        });
-        document.querySelectorAll('#js_togglePanelImportExport li').forEach(function (li) {
-            li.addEventListener('click', function () {
-                var pid = li.getAttribute('data-planet-id');
-                window.location.href = '{{ route('importexport.index') }}?planet_id=' + pid;
-            });
+    // Planet/Moon source selector — pattern AuctioneerController (no reload).
+    // Tutto via JS: il <li> ha data-metal/crystal/deuterium, click cambia source,
+    // aggiorna max-hints + max input data-attr + ricalcola Totale, no roundtrip.
+    var $    = function (s) { return document.querySelector(s); };
+    var $$   = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+    var price_ = {{ (int) $offer->price }};
+    var sourcePlanetInput = $('#ie_source_planet_id');
+    var togglePanel       = $('#js_togglePanelImportExport');
+    var toggleLink        = $('#js_toggleLinkImportExport');
+
+    function updateMaxHints(p) {
+        ['metal','crystal','deuterium'].forEach(function (r) {
+            var span = $('.max_planet_' + r);
+            var input = $('.ie_input[name="' + r + '"]');
+            var mult  = r === 'metal' ? 1 : r === 'crystal' ? 1.5 : 3;
+            var maxRow = Math.min(p[r] || 0, Math.floor(price_ / mult));
+            if (span)  span.textContent  = (p[r] || 0).toLocaleString('it-IT');
+            if (input) input.setAttribute('data-max', maxRow);
         });
     }
-    document.querySelectorAll('.selectWrapper .source').forEach(function (a) {
-        a.addEventListener('click', function () {
-            var type = a.getAttribute('data-source-type');
-            // Toggle UL active visibility
-            document.querySelectorAll('#js_togglePanelImportExport > ul').forEach(function (ul) {
-                ul.classList.remove('active');
-            });
-            var target = document.querySelector('#js_togglePanelImportExport > ul.' + type);
-            if (target) target.classList.add('active');
-            document.querySelectorAll('.selectWrapper .source').forEach(function (s) { s.classList.remove('selected'); });
-            a.classList.add('selected');
-            if (togglePanel) togglePanel.classList.add('open');
-        });
+    function currentLi() {
+        var pid = sourcePlanetInput ? sourcePlanetInput.value : '';
+        return $('#js_togglePanelImportExport li[data-planet-id="' + pid + '"]');
+    }
+    function selectLi(li) {
+        if (!li) return;
+        sourcePlanetInput.value = li.dataset.planetId;
+        $$('#js_togglePanelImportExport li').forEach(function (x) { x.classList.remove('active'); x.classList.remove('selected'); });
+        li.classList.add('active'); li.classList.add('selected');
+        var linkSpan = $('#js_toggleLinkImportExport .option_source');
+        var linkImg  = $('#js_toggleLinkImportExport img');
+        var srcSpan  = li.querySelector('.option_source');
+        var srcImg   = li.querySelector('img');
+        if (linkSpan && srcSpan) linkSpan.textContent = srcSpan.textContent;
+        if (linkImg  && srcImg)  linkImg.src = srcImg.src;
+        updateMaxHints({metal:+li.dataset.metal, crystal:+li.dataset.crystal, deuterium:+li.dataset.deuterium});
+        $$('.ie_input').forEach(function (el) { el.value = '0'; });
+        if (togglePanel) togglePanel.style.display = 'none';
+        if (typeof recalc === 'function') recalc();
+    }
+    function setSource(kind) {
+        if (kind === 'moon' && $$('#js_togglePanelImportExport ul.moon li').length === 0) return;
+        $$('.selectWrapper .source').forEach(function (s) { s.classList.remove('selected'); });
+        var src = $('.selectWrapper .source.' + kind);
+        if (src) src.classList.add('selected');
+        var planetsUl = $('#js_togglePanelImportExport ul.planet');
+        var moonsUl   = $('#js_togglePanelImportExport ul.moon');
+        if (planetsUl) planetsUl.style.display = kind === 'moon' ? 'none' : '';
+        if (moonsUl)   moonsUl.style.display   = kind === 'moon' ? '' : 'none';
+        var activeUlSel = kind === 'moon' ? 'ul.moon' : 'ul.planet';
+        var items = $$('#js_togglePanelImportExport ' + activeUlSel + ' li');
+        var currentInList = items.find(function (li) { return li.dataset.planetId === sourcePlanetInput.value; });
+        var target = currentInList || items[0];
+        if (target) selectLi(target);
+    }
+    if ($('.js_planet')) $('.js_planet').addEventListener('click', function (e) { e.preventDefault(); setSource('planet'); });
+    if ($('.js_moon'))   $('.js_moon').addEventListener('click',   function (e) { e.preventDefault(); setSource('moon');   });
+    if (toggleLink) toggleLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (togglePanel) togglePanel.style.display = togglePanel.style.display === 'none' ? 'block' : 'none';
+    });
+    $$('#js_togglePanelImportExport li').forEach(function (li) {
+        li.addEventListener('click', function () { selectLi(li); });
     });
 
     // Cambia / Prendi item
