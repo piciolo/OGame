@@ -2131,5 +2131,6 @@ return [
         'source_planet_tooltip' => 'Seleziona pianeta',
         'source_moon_tooltip'   => 'Seleziona luna',
         'source_honor_tooltip'  => 'Scambia i tuoi punti onore',
+        'honor_points_label'    => 'Punti onore',
     ],
 ];

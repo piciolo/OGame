@@ -188,7 +188,7 @@
                                             {{-- Riga honor: sempre presente nel DOM, visibile solo quando .js_honor selected.
                                                  Pattern AuctioneerController: data-row-type='honor' + display:none default. --}}
                                             <tr class="honorResource" data-row-type="honor" style="display:none">
-                                                <td><div class="resourceIcon honor resource_label"></div></td>
+                                                <td><img src="{{ asset('img/auctioneer/honor_points_large.png') }}" alt="Honour points" class="resource_label" width="48" height="48"></td>
                                                 <td class="multiplier undermark tooltip"><span class="dark_highlight_tablet">x 100</span></td>
                                                 <td><input type="text" name="honor" value="0" data-mult="100" data-max="{{ $maxInputs['honor'] }}" class="ie_input"></td>
                                                 <td><a class="value-control more js_valButton ie_btn_inc" data-target="honor">+</a></td>
@@ -241,7 +241,19 @@
         else                 payBtn.classList.add('disabled');
     }
     if (totalEl && payBtn) {
-        inputs.forEach(function (el) { el.addEventListener('input', recalc); });
+        inputs.forEach(function (el) {
+            // Validazione: rispetta data-max (anche 0). Pattern OGame: appena rilascio
+            // il tasto, il valore e' clampato a [0, max].
+            el.addEventListener('input', function () {
+                var max = parseInt(el.getAttribute('data-max'), 10);
+                if (isNaN(max)) max = 0;
+                var v = parseInt(el.value.replace(/[^0-9]/g, ''), 10);
+                if (isNaN(v) || v < 0) v = 0;
+                if (v > max) v = max;
+                el.value = String(v);
+                recalc();
+            });
+        });
 
         document.querySelectorAll('.ie_btn_max').forEach(function (btn) {
             btn.addEventListener('click', function () {
@@ -326,6 +338,18 @@
         if (togglePanel) togglePanel.style.display = 'none';
         if (typeof recalc === 'function') recalc();
     }
+    // Snapshot del toggleLink in stato planet/moon per ripristinarlo dopo honor
+    var defaultLinkLabel = null;
+    var defaultLinkImg   = null;
+    if (toggleLink) {
+        var sp = toggleLink.querySelector('.option_source');
+        var im = toggleLink.querySelector('img');
+        defaultLinkLabel = sp ? sp.textContent : '';
+        defaultLinkImg   = im ? im.src : '';
+    }
+    var HONOR_ICON = '{{ asset('img/auctioneer/honor_points_large.png') }}';
+    var HONOR_LABEL = '{{ __('t_ingame.import_export.honor_points_label') }}';
+
     function setSource(kind) {
         if (kind === 'moon' && $$('#js_togglePanelImportExport ul.moon li').length === 0) return;
         $$('.selectWrapper .source').forEach(function (s) { s.classList.remove('selected'); });
@@ -336,9 +360,21 @@
         // Toggle righe normal vs honor (pattern AuctioneerController)
         $$('tr[data-row-type=normal]').forEach(function (tr) { tr.style.display = isHonor ? 'none' : ''; });
         $$('tr[data-row-type=honor]').forEach(function (tr) { tr.style.display = isHonor ? '' : 'none'; });
-        // Quando honor: nascondi toggleLink (no corpo da scegliere) + chiudi panel
-        if (toggleLink) toggleLink.style.visibility = isHonor ? 'hidden' : '';
+
+        // ToggleLink: in honor mostra "Honour points" con classe honor (icona honor),
+        // altrimenti ripristina la label del corpo + classe planet/moon.
+        if (toggleLink) {
+            toggleLink.style.visibility = '';
+            toggleLink.classList.toggle('honor', isHonor);
+            var linkSpan = toggleLink.querySelector('.option_source');
+            var linkImg  = toggleLink.querySelector('img');
+            if (isHonor) {
+                if (linkSpan) linkSpan.textContent = HONOR_LABEL;
+                if (linkImg)  linkImg.src = HONOR_ICON;
+            }
+        }
         if (togglePanel) togglePanel.style.display = 'none';
+
         // Reset valori input non pertinenti alla sorgente attiva
         if (isHonor) {
             ['metal','crystal','deuterium'].forEach(function (r) {
