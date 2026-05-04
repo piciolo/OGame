@@ -175,12 +175,13 @@
                                                     <td><a class="value-control max js_valButton ie_btn_max" data-target="{{ $row['key'] }}">&gt;&gt;</a></td>
                                                 </tr>
                                                 <tr class="{{ $row['class'] }}" data-row-type="normal">
-                                                    <td colspan="2"></td>
-                                                    <td colspan="3" style="text-align:center">
+                                                    <td colspan="2">&nbsp;</td>
+                                                    <td>
                                                         <div class="max_hint">({{ __('t_ingame.import_export.max_hint_prefix') }}
                                                             <span class="max_planet_res max_planet_{{ $row['key'] }}">{{ number_format($maxInputs[$row['key']], 0, ',', '.') }}</span>)
                                                         </div>
                                                     </td>
+                                                    <td colspan="2">&nbsp;</td>
                                                 </tr>
                                             @endforeach
 
@@ -194,12 +195,13 @@
                                                 <td><a class="value-control max js_valButton ie_btn_max" data-target="honor">&gt;&gt;</a></td>
                                             </tr>
                                             <tr class="honorResource" data-row-type="honor" style="display:none">
-                                                <td colspan="2"></td>
-                                                <td colspan="3" style="text-align:center">
+                                                <td colspan="2">&nbsp;</td>
+                                                <td>
                                                     <div class="max_hint">({{ __('t_ingame.import_export.max_hint_prefix') }}
                                                         <span class="max_planet_res max_planet_honor">{{ number_format($maxInputs['honor'], 0, ',', '.') }}</span>)
                                                     </div>
                                                 </td>
+                                                <td colspan="2">&nbsp;</td>
                                             </tr>
                                         </tbody>
                                     </table>
