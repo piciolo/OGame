@@ -114,6 +114,7 @@
                                     <div class="selectWrapper">
                                         <a class="tooltip js_hideTipOnMobile source planet js_planet {{ !$isMoon ? 'selected' : '' }}" title="{{ __('t_ingame.import_export.title') }}"></a>
                                         <a class="tooltip js_hideTipOnMobile source moon js_moon {{ $isMoon ? 'selected' : '' }}"></a>
+                                        <a class="tooltip js_hideTipOnMobile source honor js_honor"></a>
                                         <a id="js_toggleLinkImportExport" class="js_valSourcePlanet toggleHidden toggleLink" href="#togglePanel">
                                             <img src="{{ asset('img/planets/small/' . ($currentPlanet->planet_type === 3 ? '1' : ($currentPlanet->planet_type ?? 1)) . '.gif') }}" width="18" height="18" alt="" onerror="this.style.display='none'">
                                             <span class="option_source">{{ $currentPlanet->name }} [{{ $currentPlanet->galaxy }}:{{ $currentPlanet->system }}:{{ $currentPlanet->planet }}]</span>
@@ -333,6 +334,15 @@
     }
     if ($('.js_planet')) $('.js_planet').addEventListener('click', function (e) { e.preventDefault(); setSource('planet'); });
     if ($('.js_moon'))   $('.js_moon').addEventListener('click',   function (e) { e.preventDefault(); setSource('moon');   });
+    if ($('.js_honor')) $('.js_honor').addEventListener('click', function (e) {
+        // Stella/Honor: in Import/Export la riga 'x 100' della tabella e' gia' la
+        // sorgente honor (condizionale a $showHonorRow). Click serve solo a
+        // evidenziare visivamente la 3a icona, allineato 1:1 al Battitore.
+        e.preventDefault();
+        $$('.selectWrapper .source').forEach(function (s) { s.classList.remove('selected'); });
+        e.currentTarget.classList.add('selected');
+        if (togglePanel) togglePanel.style.display = 'none';
+    });
     if (toggleLink) toggleLink.addEventListener('click', function (e) {
         e.preventDefault();
         if (togglePanel) togglePanel.style.display = togglePanel.style.display === 'none' ? 'block' : 'none';
