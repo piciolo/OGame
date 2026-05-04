@@ -31,6 +31,15 @@
     /* + e >> usano direttamente sprite OGame via classi value-control more/max */
     /* togglePanel/source: stile completo gestito da OGame CSS originale
        (#traderOverview .source, #traderOverview .togglePanel ecc.) */
+
+    /* Allineamento input/max coerente con OGame ufficiale: numeri dentro le
+       textbox a destra, '(max. N)' centrati sotto. */
+    #div_traderImportExport .table_ressources .ie_input {
+        text-align: right;
+    }
+    #div_traderImportExport .table_ressources .max_hint {
+        text-align: center;
+    }
     #div_traderImportExport .bargain_overlay { display:none; }
     #div_traderImportExport .bargain_overlay.visible { display:block; }
     #div_traderImportExport .bargain_left_overlay { display:none; }
