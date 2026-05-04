@@ -7,8 +7,9 @@
     /** @var \OGame\Models\Planet            $currentPlanet */
     /** @var array{metal:int,crystal:int,deuterium:int,honor:int} $maxInputs */
     /** @var int $honorPoints */
-    /** @var \Illuminate\Support\Collection $planets */
-    /** @var \Illuminate\Support\Collection $moons */
+    /** @var array<int,array{id:int,name:string,galaxy:int,system:int,planet:int,metal:int,crystal:int,deuterium:int,icon:string}> $planets */
+    /** @var array<int,array{id:int,name:string,galaxy:int,system:int,planet:int,metal:int,crystal:int,deuterium:int,icon:string}> $moons */
+    /** @var string $currentIcon */
 
     $isConsumed   = in_array($offer->status, ['paid', 'taken_dm']);
     $changeCost   = (int) $item->change_dm_cost;
@@ -115,36 +116,36 @@
                                         <a class="tooltip js_hideTipOnMobile source planet js_planet {{ !$isMoon ? 'selected' : '' }}" title="{{ __('t_ingame.import_export.title') }}"></a>
                                         <a class="tooltip js_hideTipOnMobile source moon js_moon {{ $isMoon ? 'selected' : '' }}"></a>
                                         <a class="tooltip js_hideTipOnMobile source honor js_honor"></a>
-                                        <a id="js_toggleLinkImportExport" class="js_valSourcePlanet toggleHidden toggleLink" href="#togglePanel">
-                                            <img src="{{ asset('img/planets/small/' . ($currentPlanet->planet_type === 3 ? '1' : ($currentPlanet->planet_type ?? 1)) . '.gif') }}" width="18" height="18" alt="" onerror="this.style.display='none'">
-                                            <span class="option_source">{{ $currentPlanet->name }} [{{ $currentPlanet->galaxy }}:{{ $currentPlanet->system }}:{{ $currentPlanet->planet }}]</span>
+                                        <a id="js_toggleLinkImportExport" class="js_valSourcePlanet toggleHidden toggleLink" href="#togglePanel" title="{{ __('t_ingame.import_export.title') }}">
+                                            <img alt="{{ $currentPlanet->name }}" src="{{ $currentIcon }}" width="18" height="18">
+                                            <span class="option_source" title="{{ $currentPlanet->name }}">{{ $currentPlanet->name }} [{{ $currentPlanet->galaxy }}:{{ $currentPlanet->system }}:{{ $currentPlanet->planet }}]</span>
                                         </a>
                                     </div>
                                     <div id="js_togglePanelImportExport" class="togglePanel" style="display:none">
                                         <ul class="planet active">
                                             @foreach($planets as $p)
-                                                <li id="{{ $p->id }}"
-                                                    data-planet-id="{{ $p->id }}"
-                                                    data-metal="{{ (int) floor($p->metal) }}"
-                                                    data-crystal="{{ (int) floor($p->crystal) }}"
-                                                    data-deuterium="{{ (int) floor($p->deuterium) }}"
-                                                    class="dark_highlight_tablet planet_select_item @if($p->id === $currentPlanet->id) selected active @endif">
-                                                    <img src="{{ asset('img/planets/small/' . ($p->planet_type ?? 1) . '.gif') }}" width="12" height="12" alt="" onerror="this.style.display='none'">
-                                                    <span class="option_source">{{ $p->name }} [{{ $p->galaxy }}:{{ $p->system }}:{{ $p->planet }}]</span>
+                                                <li id="{{ $p['id'] }}"
+                                                    data-planet-id="{{ $p['id'] }}"
+                                                    data-metal="{{ $p['metal'] }}"
+                                                    data-crystal="{{ $p['crystal'] }}"
+                                                    data-deuterium="{{ $p['deuterium'] }}"
+                                                    class="dark_highlight_tablet planet_select_item @if($p['id'] === $currentPlanet->id) selected active @endif">
+                                                    <img src="{{ $p['icon'] }}" width="12" height="12" alt="{{ $p['name'] }}">
+                                                    <span class="option_source">{{ $p['name'] }} [{{ $p['galaxy'] }}:{{ $p['system'] }}:{{ $p['planet'] }}]</span>
                                                 </li>
                                             @endforeach
                                         </ul>
-                                        @if($moons->isNotEmpty())
+                                        @if(!empty($moons))
                                             <ul class="moon active" style="display:none">
                                                 @foreach($moons as $m)
-                                                    <li id="{{ $m->id }}"
-                                                        data-planet-id="{{ $m->id }}"
-                                                        data-metal="{{ (int) floor($m->metal) }}"
-                                                        data-crystal="{{ (int) floor($m->crystal) }}"
-                                                        data-deuterium="{{ (int) floor($m->deuterium) }}"
-                                                        class="dark_highlight_tablet planet_select_item @if($m->id === $currentPlanet->id) selected active @endif">
-                                                        <img src="{{ asset('img/moons/small/1.gif') }}" width="12" height="12" alt="" onerror="this.style.display='none'">
-                                                        <span class="option_source">{{ $m->name }} [{{ $m->galaxy }}:{{ $m->system }}:{{ $m->planet }}]</span>
+                                                    <li id="{{ $m['id'] }}"
+                                                        data-planet-id="{{ $m['id'] }}"
+                                                        data-metal="{{ $m['metal'] }}"
+                                                        data-crystal="{{ $m['crystal'] }}"
+                                                        data-deuterium="{{ $m['deuterium'] }}"
+                                                        class="dark_highlight_tablet planet_select_item @if($m['id'] === $currentPlanet->id) selected active @endif">
+                                                        <img src="{{ $m['icon'] }}" width="12" height="12" alt="{{ $m['name'] }}">
+                                                        <span class="option_source">{{ $m['name'] }} [{{ $m['galaxy'] }}:{{ $m['system'] }}:{{ $m['planet'] }}]</span>
                                                     </li>
                                                 @endforeach
                                             </ul>
