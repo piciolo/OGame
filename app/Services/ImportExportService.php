@@ -314,9 +314,20 @@ class ImportExportService
 
         $activationType = $item->category === 'accelerator' ? 'instant' : 'duration';
 
+        // Mappa il type catalog Import/Export al item_type riconosciuto
+        // dall'InventoryActivationService (sistema unificato OGameX):
+        // - kraken/detroid/newtron passano invariati
+        // - *_booster -> amplifier_<resource> (durata default 7 giorni)
+        $itemType = match ($item->type) {
+            'metal_booster'     => 'amplifier_metal',
+            'crystal_booster'   => 'amplifier_crystal',
+            'deuterium_booster' => 'amplifier_deuterium',
+            default             => $item->type,
+        };
+
         return UserItem::create([
             'user_id'         => $user->id,
-            'item_type'       => $item->type,
+            'item_type'       => $itemType,
             'tier'            => $item->rarity,
             'category'        => $category,
             'activation_type' => $activationType,

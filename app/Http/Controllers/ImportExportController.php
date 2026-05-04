@@ -2,14 +2,10 @@
 
 namespace OGame\Http\Controllers;
 
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use OGame\Models\ImportExportOffer;
 use OGame\Models\Planet;
-use OGame\Models\UserItem;
-use OGame\Services\ImportExportActivationService;
 use OGame\Services\ImportExportService;
 use OGame\Services\PlayerService;
 use Throwable;
@@ -21,7 +17,6 @@ class ImportExportController extends OGameController
 {
     public function __construct(
         private readonly ImportExportService $service,
-        private readonly ImportExportActivationService $activation,
     ) {
     }
 
@@ -129,23 +124,4 @@ class ImportExportController extends OGameController
         }
     }
 
-    /**
-     * POST /merchant/import-export/activate — attiva un UserItem dall'inventario.
-     */
-    public function activate(Request $request, PlayerService $player): JsonResponse
-    {
-        $request->validate([
-            'user_item_id'     => 'required|integer',
-            'target_planet_id' => 'nullable|integer',
-        ]);
-
-        try {
-            $user = $player->getUser();
-            $item = UserItem::query()->where('id', $request->integer('user_item_id'))->firstOrFail();
-            $this->activation->activate($item, $user, $request->integer('target_planet_id') ?: null);
-            return response()->json(['ok' => true]);
-        } catch (Throwable $e) {
-            return response()->json(['ok' => false, 'error' => $e->getMessage()], 422);
-        }
-    }
 }
