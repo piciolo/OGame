@@ -129,52 +129,24 @@
                                             <span class="option_source" title="{{ $currentPlanet->name }}">{{ $currentPlanet->name }} [{{ $currentPlanet->galaxy }}:{{ $currentPlanet->system }}:{{ $currentPlanet->planet }}]</span>
                                         </a>
                                     </div>
-                                    <div id="js_togglePanelImportExport" class="togglePanel" style="display:none">
-                                        <ul class="planet active">
-                                            @foreach($planets as $p)
-                                                <li id="{{ $p['id'] }}"
-                                                    data-planet-id="{{ $p['id'] }}"
-                                                    data-metal="{{ $p['metal'] }}"
-                                                    data-crystal="{{ $p['crystal'] }}"
-                                                    data-deuterium="{{ $p['deuterium'] }}"
-                                                    class="dark_highlight_tablet planet_select_item @if($p['id'] === $currentPlanet->id) selected active @endif">
-                                                    <img src="{{ $p['icon'] }}" width="12" height="12" alt="{{ $p['name'] }}">
-                                                    <span class="option_source">{{ $p['name'] }} [{{ $p['galaxy'] }}:{{ $p['system'] }}:{{ $p['planet'] }}]</span>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                        @if(!empty($moons))
-                                            <ul class="moon active" style="display:none">
-                                                @foreach($moons as $m)
-                                                    <li id="{{ $m['id'] }}"
-                                                        data-planet-id="{{ $m['id'] }}"
-                                                        data-metal="{{ $m['metal'] }}"
-                                                        data-crystal="{{ $m['crystal'] }}"
-                                                        data-deuterium="{{ $m['deuterium'] }}"
-                                                        class="dark_highlight_tablet planet_select_item @if($m['id'] === $currentPlanet->id) selected active @endif">
-                                                        <img src="{{ $m['icon'] }}" width="12" height="12" alt="{{ $m['name'] }}">
-                                                        <span class="option_source">{{ $m['name'] }} [{{ $m['galaxy'] }}:{{ $m['system'] }}:{{ $m['planet'] }}]</span>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        @endif
-                                    </div>
 
-                                    <table class="table_ressources">
+                                    <table class="table_ressources" cellspacing="0" cellpadding="0">
                                         <tbody>
                                             @foreach([
-                                                ['key' => 'metal',     'mult' => '1',   'css' => 'metal',     'class' => 'normalResource'],
-                                                ['key' => 'crystal',   'mult' => '1.5', 'css' => 'crystal',   'class' => 'normalResource'],
-                                                ['key' => 'deuterium', 'mult' => '3',   'css' => 'deuterium', 'class' => 'normalResource'],
+                                                ['key' => 'metal',     'mult' => '1',   'css' => 'metal',     'cap' => 'Metal'],
+                                                ['key' => 'crystal',   'mult' => '1.5', 'css' => 'crystal',   'cap' => 'Crystal'],
+                                                ['key' => 'deuterium', 'mult' => '3',   'css' => 'deuterium', 'cap' => 'Deuterium'],
                                             ] as $row)
-                                                <tr class="{{ $row['class'] }}" data-row-type="normal">
+                                                <tr class="normalResource" data-row-type="normal">
                                                     <td><div class="resourceIcon {{ $row['css'] }} resource_label"></div></td>
-                                                    <td class="multiplier undermark tooltip"><span class="dark_highlight_tablet">x {{ $row['mult'] }}</span></td>
-                                                    <td><input type="text" name="{{ $row['key'] }}" value="0" data-mult="{{ $row['mult'] }}" data-max="{{ $maxInputs[$row['key']] }}" class="ie_input"></td>
-                                                    <td><a class="value-control more js_valButton ie_btn_inc" data-target="{{ $row['key'] }}">+</a></td>
-                                                    <td><a class="value-control max js_valButton ie_btn_max" data-target="{{ $row['key'] }}">&gt;&gt;</a></td>
+                                                    <td class="multiplier undermark tooltip" data-tooltip-title="Each {{ $row['cap'] }} unit has a value of {{ $row['mult'] }}.">
+                                                        <span class="dark_highlight_tablet">x {{ $row['mult'] }}</span>
+                                                    </td>
+                                                    <td><input type="text" pattern="[0-9,.]*" class="resourceAmount js_amount js_slider{{ $row['cap'] }}Input js_{{ $row['key'] }} checkThousandSeparator hideNumberSpin ie_input" name="{{ $row['key'] }}" value="0" data-mult="{{ $row['mult'] }}" data-max="{{ $maxInputs[$row['key']] }}"></td>
+                                                    <td><a class="value-control more js_slider{{ $row['cap'] }}More js_valButton tooltip js_hideTipOnMobile ie_btn_inc" data-target="{{ $row['key'] }}" data-tooltip-title="Bid +1000 resources">+</a></td>
+                                                    <td><a class="value-control max js_slider{{ $row['cap'] }}Max js_valButton tooltipRight js_hideTipOnMobile ie_btn_max" data-target="{{ $row['key'] }}" data-tooltip-title="Bid as much as is required / possible">&gt;&gt;</a></td>
                                                 </tr>
-                                                <tr class="{{ $row['class'] }}" data-row-type="normal">
+                                                <tr class="normalResource" data-row-type="normal">
                                                     <td colspan="2">&nbsp;</td>
                                                     <td>
                                                         <div class="max_hint">({{ __('t_ingame.import_export.max_hint_prefix') }}
@@ -188,11 +160,13 @@
                                             {{-- Riga honor: sempre presente nel DOM, visibile solo quando .js_honor selected.
                                                  Pattern AuctioneerController: data-row-type='honor' + display:none default. --}}
                                             <tr class="honorResource" data-row-type="honor" style="display:none">
-                                                <td><img src="{{ asset('img/auctioneer/honor_points_large.png') }}" alt="Honour points" class="resource_label" width="48" height="48"></td>
-                                                <td class="multiplier undermark tooltip"><span class="dark_highlight_tablet">x 100</span></td>
-                                                <td><input type="text" name="honor" value="0" data-mult="100" data-max="{{ $maxInputs['honor'] }}" class="ie_input"></td>
-                                                <td><a class="value-control more js_valButton ie_btn_inc" data-target="honor">+</a></td>
-                                                <td><a class="value-control max js_valButton ie_btn_max" data-target="honor">&gt;&gt;</a></td>
+                                                <td><img src="{{ asset('img/auctioneer/honor_points_large.png') }}" alt="Honour points" class="resource_label"></td>
+                                                <td class="multiplier undermark tooltip" data-tooltip-title="Each Honour points unit has a value of 100.">
+                                                    <span class="dark_highlight_tablet">x 100</span>
+                                                </td>
+                                                <td><input type="text" pattern="[0-9,.]*" class="resourceAmount js_amount js_sliderHonorInput js_honor checkThousandSeparator hideNumberSpin ie_input" name="honor" value="0" data-mult="100" data-max="{{ $maxInputs['honor'] }}"></td>
+                                                <td><a class="value-control more js_sliderHonorMore js_valButton tooltip js_hideTipOnMobile ie_btn_inc" data-target="honor" data-tooltip-title="Bid +1000 Honour points">+</a></td>
+                                                <td><a class="value-control max js_sliderHonorMax js_valButton tooltipRight js_hideTipOnMobile ie_btn_max" data-target="honor" data-tooltip-title="Bid as much as is required / possible">&gt;&gt;</a></td>
                                             </tr>
                                             <tr class="honorResource" data-row-type="honor" style="display:none">
                                                 <td colspan="2">&nbsp;</td>
@@ -205,6 +179,34 @@
                                             </tr>
                                         </tbody>
                                     </table>
+                                    <div id="js_togglePanelImportExport" class="togglePanel" style="display:none">
+                                        <ul class="planet active">
+                                            @foreach($planets as $p)
+                                                <li id="{{ $p['id'] }}"
+                                                    data-planet-id="{{ $p['id'] }}"
+                                                    data-metal="{{ $p['metal'] }}"
+                                                    data-crystal="{{ $p['crystal'] }}"
+                                                    data-deuterium="{{ $p['deuterium'] }}"
+                                                    class="dark_highlight_tablet planet_select_item @if($p['id'] === $currentPlanet->id) selected active @endif">
+                                                    <img src="{{ $p['icon'] }}" width="18" height="18" alt="{{ $p['name'] }}">
+                                                    <span class="option_source" title="{{ $p['name'] }}">{{ $p['name'] }} [{{ $p['galaxy'] }}:{{ $p['system'] }}:{{ $p['planet'] }}]</span>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                        <ul class="moon" style="display:none">
+                                            @foreach($moons as $m)
+                                                <li id="{{ $m['id'] }}"
+                                                    data-planet-id="{{ $m['id'] }}"
+                                                    data-metal="{{ $m['metal'] }}"
+                                                    data-crystal="{{ $m['crystal'] }}"
+                                                    data-deuterium="{{ $m['deuterium'] }}"
+                                                    class="dark_highlight_tablet planet_select_item @if($m['id'] === $currentPlanet->id) selected active @endif">
+                                                    <img src="{{ $m['icon'] }}" width="18" height="18" alt="{{ $m['name'] }}">
+                                                    <span class="option_source" title="{{ $m['name'] }}">{{ $m['name'] }} [{{ $m['galaxy'] }}:{{ $m['system'] }}:{{ $m['planet'] }}]</span>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
                                 </div>
                                 <a class="pay disabled" id="ie_pay_btn">{{ __('t_ingame.import_export.pay_button') }}</a>
                             </div>
