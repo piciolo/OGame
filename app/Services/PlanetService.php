@@ -316,6 +316,16 @@ class PlanetService
             $this->save();
         }
 
+        // IPI: planet rename event. Determine scope by checking whether this is the
+        // first (lowest-id) planet of the user (= "home_planet") or a colony.
+        $homePlanetId = \OGame\Models\Planet::where('user_id', $this->planet->user_id)
+            ->where('planet_type', 1)
+            ->orderBy('id')
+            ->value('id');
+        $scope = $this->planet->id === (int)$homePlanetId ? 'home_planet' : 'colonized_planet';
+        app(\OGame\Services\IpiProgressService::class)
+            ->triggerEvent($this->planet->user_id, 'planet_rename', ['scope' => $scope]);
+
         return true;
     }
 

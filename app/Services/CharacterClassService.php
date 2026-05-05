@@ -180,6 +180,10 @@ class CharacterClassService
         if ($newClass !== CharacterClass::COLLECTOR) {
             $this->resetCrawlerOverload($user);
         }
+
+        // IPI: notify progress (task 5069 "Scegli una classe di personaggi").
+        app(\OGame\Services\IpiProgressService::class)
+            ->triggerEvent($user->id, 'character_class_chosen');
     }
 
     /**

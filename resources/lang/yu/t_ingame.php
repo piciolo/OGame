@@ -1728,4 +1728,23 @@ return [
         'recall_title' => 'Povuci',
         'recall_fleet' => 'Povuci flotu',
     ],
+
+    // -------------------------------------------------------------------------
+
+    // -------------------------------------------------------------------------
+    // Panoramica direttive (IPI - Initial Player Instructions)
+    // -------------------------------------------------------------------------
+
+    'ipi' => [
+        'overlay_title'         => 'Direktive',
+        'actions_to_complete'   => 'Završi sljedeće misije:',
+        'task_rewards_label'    => 'Za završetak misije dobit ćete:',
+        'chapter_rewards_label' => 'Nakon što završite ovu direktivu, dobit ćete:',
+        'collect_chapter'       => 'Preuzmi Sve',
+        'collect_task'          => 'Skupi nagradu',
+        'task_completed'        => 'Sakupljeno',
+        'track_task'            => 'Prati Misiju',
+        'untrack_task'          => 'Sakrij Misiju',
+        'chapter_completed'     => 'Direktiva Završena',
+    ],
 ];

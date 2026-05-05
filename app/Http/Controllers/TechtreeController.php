@@ -32,6 +32,13 @@ class TechtreeController extends OGameController
         // Load object
         $object = ObjectService::getObjectById($object_id);
 
+        // IPI: task 5014 "Apri l'Albero tecnologico per Cargo leggeri" — fires when the
+        // user explicitly opens the tech-tree tab (tab=1) for the small_cargo object (id=202).
+        if ($tab === 1 && $object_id === 202 && auth()->id()) {
+            app(\OGame\Services\IpiProgressService::class)
+                ->triggerEvent((int)auth()->id(), 'open_techtree_small_cargo');
+        }
+
         if ($tab === 1) {
             $techtree = $this->getTechtreeArray($object, $player->planets->current());
 

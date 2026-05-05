@@ -2050,4 +2050,23 @@ return [
         'recall_title'        => 'Terugroepen',
         'recall_fleet'        => 'Vloot terugroepen',
     ],
+
+    // -------------------------------------------------------------------------
+
+    // -------------------------------------------------------------------------
+    // Panoramica direttive (IPI - Initial Player Instructions)
+    // -------------------------------------------------------------------------
+
+    'ipi' => [
+        'overlay_title'         => 'Richtlijnen',
+        'actions_to_complete'   => 'Vervul de volgende missies:',
+        'task_rewards_label'    => 'Voor het vervullen van de missie ontvang je:',
+        'chapter_rewards_label' => 'Als je deze richtlijn voltooid, zal je het volgende ontvangen:',
+        'collect_chapter'       => 'Allemaal Verkrijgen',
+        'collect_task'          => 'Beloning verzamelen',
+        'task_completed'        => 'Opgehaald',
+        'track_task'            => 'Missie Tracken',
+        'untrack_task'          => 'Missie Verbergen',
+        'chapter_completed'     => 'Richtlijn Voltooid',
+    ],
 ];

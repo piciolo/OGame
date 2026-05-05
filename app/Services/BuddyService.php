@@ -193,6 +193,9 @@ class BuddyService
             'buddy_request_id' => $buddyRequest->id,
         ]);
 
+        // IPI: notify progress for the sender (task 5023 "Crea richiesta di amicizia").
+        app(\OGame\Services\IpiProgressService::class)->triggerEvent($senderId, 'buddy_request_send');
+
         return $buddyRequest;
     }
 

@@ -1,0 +1,143 @@
+{
+  "$comment": "Manual mapping for IPI actions that the regex parser cannot infer (event-type tasks: alliance, espionage, lifeform, character class, etc.). Format: keyed by 'taskId.actionSortOrder' (0-based). Values become columns on ipi_task_actions.",
+
+  "5001.0": {
+    "requirement_type": "event",
+    "requirement_target": "welcome",
+    "_note": "Welcome task — auto-collected by IpiOverviewService::WELCOME_TASK_ID."
+  },
+
+  "5003.1": {
+    "requirement_type": "event",
+    "requirement_target": "energy_positive",
+    "planet_scope": "home_planet",
+    "_note": "Action #2 of task 5003 (#1 is the regex-parsed solar plant level)."
+  },
+
+  "5014.0": {
+    "requirement_type": "event",
+    "requirement_target": "open_techtree_small_cargo",
+    "hint_target": "ipiToolbarShipyard"
+  },
+
+  "5021.0": {
+    "requirement_type": "event",
+    "requirement_target": "alliance_join",
+    "hint_target": "ipiToolbarAlliance"
+  },
+  "5022.0": {
+    "requirement_type": "event",
+    "requirement_target": "planet_rename",
+    "planet_scope": "home_planet",
+    "hint_target": "ipiPlanetMoveRename"
+  },
+  "5023.0": {
+    "requirement_type": "event",
+    "requirement_target": "buddy_request_send"
+  },
+
+  "5030.0": {
+    "requirement_type": "event",
+    "requirement_target": "espionage_send",
+    "hint_target": "ipiToolbarGalaxy"
+  },
+  "5031.0": {
+    "requirement_type": "event",
+    "requirement_target": "mission_transport_send",
+    "requirement_value": 16,
+    "_note": "Position 16 fleet mission with resources. Value = position number.",
+    "hint_target": "ipiToolbarFleet"
+  },
+  "5032.0": {
+    "requirement_type": "event",
+    "requirement_target": "fleet_recall",
+    "hint_target": "ipiToolbarFleetmovement"
+  },
+
+  "5038.0": {
+    "requirement_type": "event",
+    "requirement_target": "colonize_planet"
+  },
+  "5039.0": {
+    "requirement_type": "event",
+    "requirement_target": "planet_rename",
+    "planet_scope": "colonized_planet"
+  },
+  "5042.0": {
+    "requirement_type": "event",
+    "requirement_target": "expedition_complete",
+    "hint_target": "ipiToolbarFleet"
+  },
+
+  "5058.0": {
+    "requirement_type": "event",
+    "requirement_target": "discovery_mission_send",
+    "hint_target": "ipiToolbarGalaxy"
+  },
+  "5059.0": {
+    "requirement_type": "event",
+    "requirement_target": "lifeform_discovered"
+  },
+  "5060.0": {
+    "requirement_type": "event",
+    "requirement_target": "lifeform_assign_to_colony",
+    "planet_scope": "colonized_planet",
+    "hint_target": "ipiLifeformSettings"
+  },
+  "5062.0": {
+    "requirement_type": "event",
+    "requirement_target": "lifeform_unlock_slot",
+    "requirement_value": 2
+  },
+  "5063.0": {
+    "requirement_type": "event",
+    "requirement_target": "lifeform_select_tech",
+    "requirement_value": 2
+  },
+  "5064.0": {
+    "requirement_type": "event",
+    "requirement_target": "artifacts_collect",
+    "requirement_value": 200
+  },
+  "5065.2": {
+    "requirement_type": "event",
+    "requirement_target": "lifeform_unlock_slot",
+    "requirement_value": 3
+  },
+  "5066.0": {
+    "requirement_type": "event",
+    "requirement_target": "lifeform_buy_with_artifacts"
+  },
+
+  "5068.0": {
+    "requirement_type": "event",
+    "requirement_target": "recycle_debris_field"
+  },
+  "5069.0": {
+    "requirement_type": "event",
+    "requirement_target": "character_class_chosen",
+    "hint_target": "ipiCharacterclassSettings"
+  },
+  "5070.0": {
+    "requirement_type": "event",
+    "requirement_target": "merchant_called",
+    "hint_target": "ipiToolbarTrader"
+  },
+
+  "5056.0": {
+    "requirement_type": "lifeform_research_level",
+    "requirement_target": "intergalactic_envoys",
+    "requirement_value": 1,
+    "_note": "Lifeform-specific research, not in standard ResearchObjects dictionary."
+  },
+
+  "$lifeform_buildings": "PLACEHOLDER. The lifeform feature is NOT implemented in this project (no LifeformObjects, no /lfbuildings route, no migrations as of 2026-05-03). machine_name values below — biosphere_farm, residential_sector, research_centre, intergalactic_envoys — are stubs chosen by convention. When the lifeform feature is implemented, either (a) name the new game objects with these exact machine_names, or (b) update this override to match the chosen names. The 8 lifeform tasks (5054, 5055, 5056, 5060, 5061, 5063, 5065, 5066) will not auto-progress until the lifeform feature exists.",
+
+  "5054.0": { "requirement_type": "lifeform_building_level", "requirement_target": "biosphere_farm",        "requirement_value": 22, "planet_scope": "any" },
+  "5054.1": { "requirement_type": "lifeform_building_level", "requirement_target": "residential_sector",   "requirement_value": 21, "planet_scope": "any" },
+  "5055.0": { "requirement_type": "lifeform_building_level", "requirement_target": "research_centre",      "requirement_value": 1,  "planet_scope": "any" },
+  "5061.0": { "requirement_type": "lifeform_building_level", "requirement_target": "biosphere_farm",        "requirement_value": 23, "planet_scope": "any" },
+  "5061.1": { "requirement_type": "lifeform_building_level", "requirement_target": "residential_sector",   "requirement_value": 22, "planet_scope": "any" },
+  "5065.0": { "requirement_type": "lifeform_building_level", "requirement_target": "biosphere_farm",        "requirement_value": 24, "planet_scope": "any" },
+  "5065.1": { "requirement_type": "lifeform_building_level", "requirement_target": "residential_sector",   "requirement_value": 23, "planet_scope": "any" }
+}

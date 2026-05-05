@@ -1728,4 +1728,23 @@ Miejsca zapisu symulacji walki +20',
         'recall_title' => 'Zawróć',
         'recall_fleet' => 'Zawróć flotę',
     ],
+
+    // -------------------------------------------------------------------------
+
+    // -------------------------------------------------------------------------
+    // Panoramica direttive (IPI - Initial Player Instructions)
+    // -------------------------------------------------------------------------
+
+    'ipi' => [
+        'overlay_title'         => 'Przegląd dyrektyw',
+        'actions_to_complete'   => 'Ukończ następujące misje:',
+        'task_rewards_label'    => 'Za ukończenie tej misji otrzymasz:',
+        'chapter_rewards_label' => 'Jeśli pomyślnie zakończysz tę dyrektywę, otrzymasz:',
+        'collect_chapter'       => 'Otrzymaj wszystkie nagrody',
+        'collect_task'          => 'Odbierz nagrodę',
+        'task_completed'        => 'Gotowe',
+        'track_task'            => 'Śledź misję',
+        'untrack_task'          => 'Przestań śledzić',
+        'chapter_completed'     => 'Dyrektywa zakończona',
+    ],
 ];

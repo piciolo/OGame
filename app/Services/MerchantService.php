@@ -62,6 +62,10 @@ class MerchantService
         // Generate trade rates for this merchant call
         $tradeRates = self::generateTradeRates($merchantType);
 
+        // IPI: notify progress (task 5070 "Evoca il Mercante delle Risorse").
+        app(\OGame\Services\IpiProgressService::class)
+            ->triggerEvent($user->id, 'merchant_called');
+
         return [
             'success' => true,
             'message' => __('t_merchant.success.merchant_called'),

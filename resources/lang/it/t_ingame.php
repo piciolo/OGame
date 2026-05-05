@@ -1251,7 +1251,7 @@ return [
         'menu_alliance'             => 'Alleanza',
         'menu_officers'             => 'Sala ufficiali',
         'menu_shop'                 => 'Negozio',
-        'menu_directives'           => 'Direttive',
+        'menu_directives'           => 'Missione successiva',
 
         // Menu laterale — tooltip icone
         'menu_rewards_title'        => 'Ricompense',
@@ -2132,5 +2132,22 @@ return [
         'source_moon_tooltip'   => 'Seleziona luna',
         'source_honor_tooltip'  => 'Scambia i tuoi punti onore',
         'honor_points_label'    => 'Punti onore',
+    ],
+
+    // -------------------------------------------------------------------------
+    // Panoramica direttive (IPI - Initial Player Instructions)
+    // -------------------------------------------------------------------------
+
+    'ipi' => [
+        'overlay_title'         => 'Panoramica direttive',
+        'actions_to_complete'   => 'Concludi le seguenti missioni:',
+        'task_rewards_label'    => 'Per il completamento di questa missione ottieni:',
+        'chapter_rewards_label' => 'Concludendo con successo questa direttiva, otterrai:',
+        'collect_chapter'       => 'Ottieni tutte le ricompense',
+        'collect_task'          => 'Ritira ricompensa',
+        'task_completed'        => 'Azione completata',
+        'track_task'            => 'Segui missione',
+        'untrack_task'          => 'Non seguire più',
+        'chapter_completed'     => 'Direttiva conclusa',
     ],
 ];

@@ -1,0 +1,2544 @@
+{
+  "extractedAt": "2026-05-03",
+  "language": "it",
+  "ogameVersion": "12.9.0-r1",
+  "source": "s275-it.ogame.gameforge.com",
+  "chapters": {
+    "4001": {
+      "chapterId": 4001,
+      "chapterTitle": "Direttiva I – Economia solida",
+      "taskCount": 13,
+      "tasks": [
+        {
+          "id": 5001,
+          "state": "collected",
+          "title": "Ti diamo il benvenuto, Cadetto!",
+          "progress": 1,
+          "total": 1,
+          "description": "Ti diamo il benvenuto, Cadetto! Io sono la Nova, Primo Ufficiale in carica, e ti insegnerò tutto ciò che devi sapere per diventare un Imperatore intergalattico. Ti mostrerò le direttive che ti permettono di iniziare nel modo giusto. Dai, mettiti all`opera!",
+          "image": "task5001.jpg",
+          "actions": [
+            {
+              "text": "Incarichi (panoramica)",
+              "completed": true
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-4",
+              "tooltip": "Materia Oscura: 500",
+              "display": "500",
+              "qty": 500
+            }
+          ]
+        },
+        {
+          "id": 5002,
+          "state": "tracked",
+          "title": "Risorse importanti",
+          "progress": 0,
+          "total": 1,
+          "description": "Il Metallo è una delle tue risorse più importanti. Lo si ottiene delle Miniere di Metallo. Questa, a sua volta, necessita di energia per funzionare in modo efficiente.",
+          "image": "task5002.jpg",
+          "actions": [
+            {
+              "text": "Sviluppa Miniera di Metallo e porta l`edificio al livello 1",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 50",
+              "display": "50",
+              "qty": 50
+            }
+          ]
+        },
+        {
+          "id": 5003,
+          "state": "none",
+          "title": "Molti edifici e strutture usano energia. È fondamentale produrre energia a sufficienza per renderli efficienti. Costruisci una Centrale solare e migliorala fino ad avere dei valori energetici positivi.",
+          "progress": 0,
+          "total": 2,
+          "description": "Molti edifici e strutture usano energia. È fondamentale produrre energia a sufficienza per renderli efficienti. Costruisci una Centrale solare e migliorala fino ad avere dei valori energetici positivi.",
+          "image": "task5003.jpg",
+          "actions": [
+            {
+              "text": "Sviluppa Centrale solare e porta l`edificio al livello 1",
+              "completed": false
+            },
+            {
+              "text": "Ottieni un bilancio energetico positivo",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 50",
+              "display": "50",
+              "qty": 50
+            }
+          ]
+        },
+        {
+          "id": 5004,
+          "state": "none",
+          "title": "Miniere più produttive",
+          "progress": 0,
+          "total": 1,
+          "description": "Con la nuova energia acquisita possiamo attivare miniere più potenti. Amplia le tua Miniera di Metallo per incrementare la produzione di risorse.",
+          "image": "task5004.jpg",
+          "actions": [
+            {
+              "text": "Sviluppa Miniera di Metallo e porta l`edificio al livello 2",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 50",
+              "display": "50",
+              "qty": 50
+            }
+          ]
+        },
+        {
+          "id": 5005,
+          "state": "none",
+          "title": "Impostazioni risorse",
+          "progress": 0,
+          "total": 1,
+          "description": "Nelle Impostazioni risorse si possono modificare le impostazioni relative ai tuoi edifici. Le miniere che producono di meno consumano anche meno energia. Imposta al 90% le prestazioni della Miniera di Metallo.",
+          "image": "task5005.jpg",
+          "actions": [
+            {
+              "text": "Imposta al 90% le prestazioni della Miniera di Metallo.",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 50",
+              "display": "50",
+              "qty": 50
+            }
+          ]
+        },
+        {
+          "id": 5006,
+          "state": "none",
+          "title": "Incrementa le dimensioni della Centrale Solare",
+          "progress": 0,
+          "total": 1,
+          "description": "Per incrementare la quantità di energia disponibile si può anche ampliare la Centrale Solare. Esegui una costruzione di livello 2!",
+          "image": "task5006.jpg",
+          "actions": [
+            {
+              "text": "Sviluppa Centrale solare e porta l`edificio al livello 2",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 50",
+              "display": "50",
+              "qty": 50
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 30",
+              "display": "30",
+              "qty": 30
+            }
+          ]
+        },
+        {
+          "id": 5007,
+          "state": "none",
+          "title": "Aumenta nuovamente la produzione della Miniera di Metallo",
+          "progress": 0,
+          "total": 1,
+          "description": "Ottimo. Ora che le nostra disponibilità energetica è stata incrementata, possiamo aumentare anche la produzione di Metallo. Riportala al 100%.",
+          "image": "task5007.jpg",
+          "actions": [
+            {
+              "text": "Imposta al 100% le prestazioni della Miniera di Metallo.",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 50",
+              "display": "50",
+              "qty": 50
+            }
+          ]
+        },
+        {
+          "id": 5008,
+          "state": "none",
+          "title": "Incrementa le dimensioni della Miniera di Metallo",
+          "progress": 0,
+          "total": 3,
+          "description": "Incrementa le dimensioni della Miniera di Metallo! Tieni d`occhio il consumo energetico e incrementa anche il livello della tua Centrale solare per garantirne la massima produttività.",
+          "image": "task5008.jpg",
+          "actions": [
+            {
+              "text": "Sviluppa Miniera di Metallo e porta l`edificio al livello 3",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Centrale solare e porta l`edificio al livello 3",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Miniera di Metallo e porta l`edificio al livello 4",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 150",
+              "display": "150",
+              "qty": 150
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 50",
+              "display": "50",
+              "qty": 50
+            }
+          ]
+        },
+        {
+          "id": 5009,
+          "state": "none",
+          "title": "Costruisci una Miniera di Cristalli",
+          "progress": 0,
+          "total": 1,
+          "description": "Ora ci dedicheremo a un`altra risorsa fondamentale: il Cristallo. Il Cristallo viene impiegato per costruzione della maggior parte degli edifici ed è un elemento imprescindibile nella ricerca. Per l`estrazione è necessario avere una Miniera di Cristalli.",
+          "image": "task5009.jpg",
+          "actions": [
+            {
+              "text": "Sviluppa Miniera di Cristalli e porta l`edificio al livello 1",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 50",
+              "display": "50",
+              "qty": 50
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 30",
+              "display": "30",
+              "qty": 30
+            }
+          ]
+        },
+        {
+          "id": 5010,
+          "state": "none",
+          "title": "Aumenta la produzione di risorse",
+          "progress": 0,
+          "total": 5,
+          "description": "È un buon momento per incrementare ulteriormente la produzione di risorse. Più risorse significano più materiali da costruzione e più crescita! Espandi le tue miniere tenendo d`occhio il tuo consumo di energia. Assicurati di produrre abbastanza energia.",
+          "image": "task5010.jpg",
+          "actions": [
+            {
+              "text": "Sviluppa Centrale solare e porta l`edificio al livello 4",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Miniera di Metallo e porta l`edificio al livello 5",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Miniera di Cristalli e porta l`edificio al livello 2",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Centrale solare e porta l`edificio al livello 5",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Miniera di Cristalli e porta l`edificio al livello 3",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 400",
+              "display": "400",
+              "qty": 400
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 200",
+              "display": "200",
+              "qty": 200
+            }
+          ]
+        },
+        {
+          "id": 5011,
+          "state": "none",
+          "title": "Deuterio",
+          "progress": 0,
+          "total": 1,
+          "description": "Un`altra importante materia prima è il Deuterio. Si utilizza per costruire diversi edifici, eseguire ricerche e si usa anche come carburante per le navi. Costruisci il Sintetizzatore di deuterio per avviare le attività di estrazione!",
+          "image": "task5011.jpg",
+          "actions": [
+            {
+              "text": "Sviluppa Sintetizzatore di deuterio e porta l`edificio al livello 1",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 200",
+              "display": "200",
+              "qty": 200
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 100",
+              "display": "100",
+              "qty": 100
+            }
+          ]
+        },
+        {
+          "id": 5012,
+          "state": "none",
+          "title": "Risorse a sufficienza",
+          "progress": 0,
+          "total": 9,
+          "description": "Dovremmo assicurarci di avere risorse sufficienti per crescere il più velocemente possibile. Fai prosperare la tua economia!",
+          "image": "task5012.jpg",
+          "actions": [
+            {
+              "text": "Sviluppa Centrale solare e porta l`edificio al livello 6",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Miniera di Metallo e porta l`edificio al livello 7",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Centrale solare e porta l`edificio al livello 7",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Miniera di Cristalli e porta l`edificio al livello 5",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Sintetizzatore di deuterio e porta l`edificio al livello 2",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Centrale solare e porta l`edificio al livello 8",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Sintetizzatore di deuterio e porta l`edificio al livello 4",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Centrale solare e porta l`edificio al livello 9",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Sintetizzatore di deuterio e porta l`edificio al livello 5",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 3000",
+              "display": "3.000",
+              "qty": 3000
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 1000",
+              "display": "1.000",
+              "qty": 1000
+            }
+          ]
+        },
+        {
+          "id": 5013,
+          "state": "none",
+          "title": "Deposito e capienza deposito",
+          "progress": 0,
+          "total": 3,
+          "description": "I Depositi permettono di aumentare la quantità di risorse che si possono immagazzinare nel pianeta. Se le capacità di stoccaggio del pianeta si esauriscono, non si possono più produrre risorse. Inoltre, i Magazzini dispongono di un nascondiglio. Esso permette di mettere al sicuro una parte delle risorse in caso di attacchi. Costruisci un Magazzino per le tue risorse.",
+          "image": "task5013.jpg",
+          "actions": [
+            {
+              "text": "Sviluppa Deposito di metallo e porta l`edificio al livello 1",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Deposito di cristalli e porta l`edificio al livello 1",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Cisterna di deuterio e porta l`edificio al livello 1",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 3000",
+              "display": "3.000",
+              "qty": 3000
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 1500",
+              "display": "1.500",
+              "qty": 1500
+            }
+          ]
+        }
+      ],
+      "chapterRewards": [
+        {
+          "resource": "resource-0",
+          "tooltip": "Metallo: 5000",
+          "display": "5.000",
+          "qty": 5000
+        },
+        {
+          "resource": "resource-1",
+          "tooltip": "Cristallo: 2500",
+          "display": "2.500",
+          "qty": 2500
+        },
+        {
+          "resource": "resource-2",
+          "tooltip": "Deuterio: 500",
+          "display": "500",
+          "qty": 500
+        },
+        {
+          "resource": "resource-4",
+          "tooltip": "Materia Oscura: 1000",
+          "display": "1.000",
+          "qty": 1000
+        }
+      ]
+    },
+    "4002": {
+      "chapterId": 4002,
+      "chapterTitle": "Direttiva II – La prima nave",
+      "taskCount": 10,
+      "tasks": [
+        {
+          "id": 5014,
+          "state": "none",
+          "title": "Navi civili",
+          "progress": 0,
+          "total": 1,
+          "description": "I Cargo sono navi civili molto importanti, sia per il trasporto che per proteggere le tue risorse dagli attacchi. Dai un`occhiata all`albero delle tecnologie per capire come costruirle.",
+          "image": "task5014.jpg",
+          "actions": [
+            {
+              "text": "Apri l`Albero tecnologico per Cargo leggeri",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 300",
+              "display": "300",
+              "qty": 300
+            }
+          ]
+        },
+        {
+          "id": 5015,
+          "state": "none",
+          "title": "Il laboratorio di ricerca",
+          "progress": 0,
+          "total": 1,
+          "description": "Le nuove tecnologie non possono essere ricercate senza un Laboratorio di Ricerca. Qui si riuniscono le nostre intelligenze più brillanti al fine di tenere aggiornate le nostre tecnologie e restare al passo con gli altri imperi. Costruisci un Laboratorio di Ricerca!",
+          "image": "task5015.jpg",
+          "actions": [
+            {
+              "text": "Sviluppa Laboratorio di Ricerca e porta l`edificio al livello 1",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 100",
+              "display": "100",
+              "qty": 100
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 200",
+              "display": "200",
+              "qty": 200
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 100",
+              "display": "100",
+              "qty": 100
+            }
+          ]
+        },
+        {
+          "id": 5016,
+          "state": "none",
+          "title": "Tecnologia Energetica",
+          "progress": 0,
+          "total": 1,
+          "description": "Prima di costruire un Cargo è meglio apprendere il più possibile in materia di Tecnologia Energetica. La Tecnologia Energetica è importante anche perché aumenta la nostra produzione di energia delle Centrali a Fusione. Esegui delle ricerche sulla Tecnologia Energetica di livello 1 nel nuovo laboratorio.",
+          "image": "task5016.jpg",
+          "actions": [
+            {
+              "text": "Approfondisci Tecnologia Energetica e portala al livello 1",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 500",
+              "display": "500",
+              "qty": 500
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 250",
+              "display": "250",
+              "qty": 250
+            }
+          ]
+        },
+        {
+          "id": 5017,
+          "state": "none",
+          "title": "Propulsori a combustione",
+          "progress": 0,
+          "total": 1,
+          "description": "Abbiamo bisogno di maggiori conoscenze sui motori a combustione per poter costruire navi più avanzate. Inoltre, ogni livello di ricerca aumenta la velocità di tutte le navi che utilizzano questi motori. Esegui delle ricerche di livello 2!",
+          "image": "task5017.jpg",
+          "actions": [
+            {
+              "text": "Approfondisci Propulsore a combustione e portala al livello 2",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 500",
+              "display": "500",
+              "qty": 500
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 250",
+              "display": "250",
+              "qty": 250
+            }
+          ]
+        },
+        {
+          "id": 5018,
+          "state": "none",
+          "title": "Fabbrica dei Robot",
+          "progress": 0,
+          "total": 1,
+          "description": "I Robot sono manodopera utile per l`espansione degli edifici. Più espandi la Fabbrica dei Robot, più velocemente puoi completare i progetti di costruzione per gli Edifici. Costruisci una Fabbrica dei Robot e portala al livello 2.",
+          "image": "task5018.jpg",
+          "actions": [
+            {
+              "text": "Sviluppa Fabbrica dei Robot e porta l`edificio al livello 2",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 500",
+              "display": "500",
+              "qty": 500
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 250",
+              "display": "250",
+              "qty": 250
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 400",
+              "display": "400",
+              "qty": 400
+            }
+          ]
+        },
+        {
+          "id": 5019,
+          "state": "none",
+          "title": "Cantiere spaziale",
+          "progress": 0,
+          "total": 1,
+          "description": "Ci serve ancora un sito in cui costruire le navi: un Cantiere Spaziale! A seconda del livello si possono costruire diverse navi. Portale direttamente al livello 2 in modo che si possano mettere all`opera dei Cargo di piccole dimensioni.",
+          "image": "task5019.jpg",
+          "actions": [
+            {
+              "text": "Sviluppa Cantiere Spaziale e porta l`edificio al livello 2",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 500",
+              "display": "500",
+              "qty": 500
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 250",
+              "display": "250",
+              "qty": 250
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 400",
+              "display": "400",
+              "qty": 400
+            }
+          ]
+        },
+        {
+          "id": 5020,
+          "state": "none",
+          "title": "Cargo leggeri",
+          "progress": 0,
+          "total": 1,
+          "description": "Ora nel Cantiere Spaziale si può costruire il Cargo di piccole dimensioni. I Cargo sono in grado di trasportare risorse da una all`altra delle tue colonie e possono compiere delle manovre particolari che proteggono le risorse dalle incursioni degli imperi avversari.",
+          "image": "task5020.jpg",
+          "actions": [
+            {
+              "text": "Costruisci Cargo leggero (1 volta/e)",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 500",
+              "display": "500",
+              "qty": 500
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 250",
+              "display": "250",
+              "qty": 250
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 100",
+              "display": "100",
+              "qty": 100
+            }
+          ]
+        },
+        {
+          "id": 5021,
+          "state": "none",
+          "title": "Diventa membro di un`alleanza",
+          "progress": 0,
+          "total": 1,
+          "description": "E sempre a proposito di imperi: è sempre buona norma avere degli alleati forti dalla propria parte. Unisciti a un`alleanza o fondane una.",
+          "image": "task5021.jpg",
+          "actions": [
+            {
+              "text": "Unisciti a un`alleanza",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 300",
+              "display": "300",
+              "qty": 300
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 150",
+              "display": "150",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": 5022,
+          "state": "none",
+          "title": "Cambia il nome a un pianeta",
+          "progress": 0,
+          "total": 1,
+          "description": "Mi è stato comunicato che il nome del nostro pianeta d`origine potrebbe essere migliorato. Pensa a un bel nome e ribattezza il pianeta.",
+          "image": "task5022.jpg",
+          "actions": [
+            {
+              "text": "Rinomina il pianeta di origine",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 300",
+              "display": "300",
+              "qty": 300
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 150",
+              "display": "150",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": 5023,
+          "state": "none",
+          "title": "Invia una richiesta di amicizia",
+          "progress": 0,
+          "total": 1,
+          "description": "Le alleanze sono fondamentali. E allo stesso modo gli alleati. Per fare amicizia con un altro imperatore intergalattico, devi inviargli una richiesta di amicizia. Dai, proviamo!",
+          "image": "task5023.jpg",
+          "actions": [
+            {
+              "text": "Crea richiesta di amicizia",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 300",
+              "display": "300",
+              "qty": 300
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 150",
+              "display": "150",
+              "qty": 150
+            }
+          ]
+        }
+      ],
+      "chapterRewards": [
+        {
+          "resource": "resource-0",
+          "tooltip": "Metallo: 1500",
+          "display": "1.500",
+          "qty": 1500
+        },
+        {
+          "resource": "resource-1",
+          "tooltip": "Cristallo: 750",
+          "display": "750",
+          "qty": 750
+        },
+        {
+          "resource": "resource-2",
+          "tooltip": "Deuterio: 250",
+          "display": "250",
+          "qty": 250
+        },
+        {
+          "resource": "resource-4",
+          "tooltip": "Materia Oscura: 2000",
+          "display": "2.000",
+          "qty": 2000
+        }
+      ]
+    },
+    "4003": {
+      "chapterId": 4003,
+      "chapterTitle": "Direttiva III – Sapere è potere",
+      "taskCount": 9,
+      "tasks": [
+        {
+          "id": 5024,
+          "state": "none",
+          "title": "Approfondisci la Tecnologia Energetica e portala al livello 3",
+          "progress": 0,
+          "total": 1,
+          "description": "Innanzitutto, dovremmo continuare ad eseguire delle ricerche sulla Tecnologia Energetica. Abbiamo bisogno di questa conoscenza per poter costruire una Centrale a Fusione. Raggiungi il livello di ricerca 3!",
+          "image": "task5024.jpg",
+          "actions": [
+            {
+              "text": "Approfondisci Tecnologia Energetica e portala al livello 3",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 2500",
+              "display": "2.500",
+              "qty": 2500
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 1500",
+              "display": "1.500",
+              "qty": 1500
+            }
+          ]
+        },
+        {
+          "id": 5025,
+          "state": "none",
+          "title": "Costruisci una Centrale a Fusione",
+          "progress": 0,
+          "total": 1,
+          "description": "Ora abbiamo la Centrale a Fusione. Essa consuma Deuterio per generare energia. La sua importanza è fondamentale nei pianeti distanti dal sole, ovvero quei pianeti in cui il rendimento dell`energia solare è limitato. Il Sole si trova nella posizione 0 in ogni sistema solare. I pianeti in posizione bassa sono vicini al Sole, quelli in posizione alta sono lontani dal Sole. Costruisci una Centrale a Fusione!",
+          "image": "task5025.jpg",
+          "actions": [
+            {
+              "text": "Sviluppa Centrale a Fusione e porta l`edificio al livello 1",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 500",
+              "display": "500",
+              "qty": 500
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 250",
+              "display": "250",
+              "qty": 250
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 100",
+              "display": "100",
+              "qty": 100
+            }
+          ]
+        },
+        {
+          "id": 5026,
+          "state": "none",
+          "title": "Smantella un edificio",
+          "progress": 0,
+          "total": 1,
+          "description": "Mi è stato comunicato che il sito scelto per la costruzione della Centrale a Fusione è di fatto l`habitat di una rara lumaca cosmica a tre occhi. Dobbiamo demolirlo di nuovo. Però almeno ora sappiamo dove vivono queste lumache e possiamo scegliere con più cura un nuovo sito.",
+          "image": "task5026.jpg",
+          "actions": [
+            {
+              "text": "Distruggi Centrale a Fusione",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 300",
+              "display": "300",
+              "qty": 300
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 200",
+              "display": "200",
+              "qty": 200
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 100",
+              "display": "100",
+              "qty": 100
+            }
+          ]
+        },
+        {
+          "id": 5027,
+          "state": "none",
+          "title": "Costruisci satelliti solari",
+          "progress": 0,
+          "total": 6,
+          "description": "È ora di migliorare l`economia! Ho stilato un elenco dei miglioramenti necessari. Abbiamo bisogno di più energia per i nostri edifici di livello superiore. Vado al Sintetizzatore alimentare a prendermi un caffè, fatti sentire non appena hai finito.",
+          "image": "task5027.jpg",
+          "actions": [
+            {
+              "text": "Sviluppa Miniera di Metallo e porta l`edificio al livello 8",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Centrale solare e porta l`edificio al livello 10",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Miniera di Metallo e porta l`edificio al livello 9",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Miniera di Cristalli e porta l`edificio al livello 7",
+              "completed": false
+            },
+            {
+              "text": "Costruisci Satellite Solare (2 volta/e)",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Sintetizzatore di deuterio e porta l`edificio al livello 6",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 5000",
+              "display": "5.000",
+              "qty": 5000
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 2500",
+              "display": "2.500",
+              "qty": 2500
+            }
+          ]
+        },
+        {
+          "id": 5028,
+          "state": "none",
+          "title": "Basi dello spionaggio",
+          "progress": 0,
+          "total": 4,
+          "description": "Te ne ho portato una tazza. Adesso bisogna restare svegli. E utilizzeremo anche le telecamere. Quando i livelli di ricerca della Tecnologia per lo spionaggio sono più elevati significa che i tentativi di spionaggio avranno più possibilità di successo. In questo caso, recupereresti più informazioni sulle flotte che attaccano. Il tuo livello deve essere superiore a quello del tuo obiettivo! E per costruire delle Sonde spia, abbiamo bisogno di alcune espansioni e di eseguire alcune ricerche.",
+          "image": "task5028.jpg",
+          "actions": [
+            {
+              "text": "Sviluppa Laboratorio di Ricerca e porta l`edificio al livello 3",
+              "completed": false
+            },
+            {
+              "text": "Approfondisci Tecnologia per lo spionaggio e portala al livello 2",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Cantiere Spaziale e porta l`edificio al livello 3",
+              "completed": false
+            },
+            {
+              "text": "Approfondisci Propulsore a combustione e portala al livello 3",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 3500",
+              "display": "3.500",
+              "qty": 3500
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 4500",
+              "display": "4.500",
+              "qty": 4500
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 2500",
+              "display": "2.500",
+              "qty": 2500
+            }
+          ]
+        },
+        {
+          "id": 5029,
+          "state": "none",
+          "title": "La tua prima Sonda spia",
+          "progress": 0,
+          "total": 1,
+          "description": "Ottimo, sta procedendo molto bene! Le azioni di spionaggio eseguite con successo permettono di ottenere informazioni utili relative agli Edifici e alle Navi degli altri imperi. Te la senti di realizzare la tua prima Sonda spia? Chiaramente dovrai inoltrare l`Ordine di costruzione al Cantiere spaziale.",
+          "image": "task5029.jpg",
+          "actions": [
+            {
+              "text": "Costruisci Sonda spia (1 volta/e)",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 1000",
+              "display": "1.000",
+              "qty": 1000
+            }
+          ]
+        },
+        {
+          "id": 5030,
+          "state": "none",
+          "title": "Spia un impero",
+          "progress": 0,
+          "total": 1,
+          "description": "Insomma, testiamo il nostro congegno. Eseguire delle ricerche e riflettere sugli eventi e sulle possibili situazioni potrebbe decidere sulle sorti di un conflitto. Bene, avviamo delle azioni di spionaggio in un altro impero.",
+          "image": "task5030.jpg",
+          "actions": [
+            {
+              "text": "Spia un altro giocatore",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 500",
+              "display": "500",
+              "qty": 500
+            }
+          ]
+        },
+        {
+          "id": 5031,
+          "state": "none",
+          "title": "Invia una Flotta con risorse",
+          "progress": 0,
+          "total": 1,
+          "description": "Le flotte si possono utilizzare anche per proteggere le risorse quando si subiscono dei raid da parte dei nemici. Invia una flotta carica di risorse, inclusa una sonda spia, come missione di spionaggio alla posizione 16 nel sistema solare, ovvero nelle infinite distese dello spazio.",
+          "image": "task5031.jpg",
+          "actions": [
+            {
+              "text": "Avvia, nella posizione 16, una missione di spionaggio con delle Risorse.",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 1500",
+              "display": "1.500",
+              "qty": 1500
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 500",
+              "display": "500",
+              "qty": 500
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 250",
+              "display": "250",
+              "qty": 250
+            }
+          ]
+        },
+        {
+          "id": 5032,
+          "state": "none",
+          "title": "Richiama la tua flotta",
+          "progress": 0,
+          "total": 1,
+          "description": "Se qualcuno dovesse attaccarci, non potrà sottrarci le risorse. Con la nostra flotta esse sono al sicuro. Per avere di nuovo accesso alle nostre materie prime, si può aspettare che la flotta faccia rientro da sola. Per accelerarne il ritorno, basta richiamarla.",
+          "image": "task5032.jpg",
+          "actions": [
+            {
+              "text": "Richiama la flotta",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 500",
+              "display": "500",
+              "qty": 500
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 500",
+              "display": "500",
+              "qty": 500
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 500",
+              "display": "500",
+              "qty": 500
+            }
+          ]
+        }
+      ],
+      "chapterRewards": [
+        {
+          "resource": "resource-0",
+          "tooltip": "Metallo: 4000",
+          "display": "4.000",
+          "qty": 4000
+        },
+        {
+          "resource": "resource-1",
+          "tooltip": "Cristallo: 1500",
+          "display": "1.500",
+          "qty": 1500
+        },
+        {
+          "resource": "resource-2",
+          "tooltip": "Deuterio: 1000",
+          "display": "1.000",
+          "qty": 1000
+        },
+        {
+          "resource": "resource-4",
+          "tooltip": "Materia Oscura: 3000",
+          "display": "3.000",
+          "qty": 3000
+        }
+      ]
+    },
+    "4004": {
+      "chapterId": 4004,
+      "chapterTitle": "Direttiva IV – Distese infinite",
+      "taskCount": 10,
+      "tasks": [
+        {
+          "id": 5033,
+          "state": "none",
+          "title": "Preparazione per Astrofisica",
+          "progress": 0,
+          "total": 13,
+          "description": "L`astrofisica, oltre a essere un campo di studi affascinante, ha delle applicazioni pratiche importanti. Grazie ad essa possiamo ottimizzare le nostre spedizioni e colonizzare dei pianeti stranieri. Più alto è il livello, più pianeti possiamo aggiungere al nostro impero. I lavori di studio e ricerca richiedono risorse e pertanto sarebbe meglio fare una prima espansione...",
+          "image": "task5033.jpg",
+          "actions": [
+            {
+              "text": "Sviluppa Miniera di Metallo e porta l`edificio al livello 10",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Miniera di Cristalli e porta l`edificio al livello 8",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Miniera di Metallo e porta l`edificio al livello 11",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Miniera di Cristalli e porta l`edificio al livello 9",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Miniera di Metallo e porta l`edificio al livello 12",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Miniera di Cristalli e porta l`edificio al livello 10",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Sintetizzatore di deuterio e porta l`edificio al livello 7",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Miniera di Metallo e porta l`edificio al livello 13",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Miniera di Cristalli e porta l`edificio al livello 11",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Sintetizzatore di deuterio e porta l`edificio al livello 8",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Miniera di Metallo e porta l`edificio al livello 14",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Miniera di Cristalli e porta l`edificio al livello 12",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Sintetizzatore di deuterio e porta l`edificio al livello 10",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 50000",
+              "display": "50.000",
+              "qty": 50000
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 15000",
+              "display": "15.000",
+              "qty": 15000
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 5000",
+              "display": "5.000",
+              "qty": 5000
+            }
+          ]
+        },
+        {
+          "id": 5034,
+          "state": "none",
+          "title": "Ricerche base per Astrofisica",
+          "progress": 0,
+          "total": 2,
+          "description": "Prima di rivolgerci a degli astrofisici riconosciuti a livello intergalattico, è necessario fare della pratica sulla ricerca di base.",
+          "image": "task5034.jpg",
+          "actions": [
+            {
+              "text": "Approfondisci Tecnologia per lo spionaggio e portala al livello 4",
+              "completed": false
+            },
+            {
+              "text": "Approfondisci Propulsore a impulso e portala al livello 3",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 12000",
+              "display": "12.000",
+              "qty": 12000
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 30000",
+              "display": "30.000",
+              "qty": 30000
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 4000",
+              "display": "4.000",
+              "qty": 4000
+            }
+          ]
+        },
+        {
+          "id": 5035,
+          "state": "none",
+          "title": "Approfondisci l`Astrofisica e portala al livello 1",
+          "progress": 0,
+          "total": 1,
+          "description": "Ci siamo! Esegui degli studi di ricerca sul primo livello di astrofisica in modo da acquisire le conoscenze per costruire una colonia.",
+          "image": "task5035.jpg",
+          "actions": [
+            {
+              "text": "Approfondisci Astrofisica e portala al livello 1",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 2000",
+              "display": "2.000",
+              "qty": 2000
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 4000",
+              "display": "4.000",
+              "qty": 4000
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 2000",
+              "display": "2.000",
+              "qty": 2000
+            }
+          ]
+        },
+        {
+          "id": 5036,
+          "state": "none",
+          "title": "Potenzia il Cantiere spaziale e portalo al livello 4",
+          "progress": 0,
+          "total": 1,
+          "description": "Bisogna però ricordare che la conoscenza da sola non basta. Per colonizzare un nuovo pianeta, abbiamo bisogno di una Colonizzatrice. Potenzia il Cantiere spaziale e portalo al livello 4, così potremo costruirne una.",
+          "image": "task5036.jpg",
+          "actions": [
+            {
+              "text": "Sviluppa Cantiere Spaziale e porta l`edificio al livello 4",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 1000",
+              "display": "1.000",
+              "qty": 1000
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 500",
+              "display": "500",
+              "qty": 500
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 250",
+              "display": "250",
+              "qty": 250
+            }
+          ]
+        },
+        {
+          "id": 5037,
+          "state": "none",
+          "title": "Costruisci la tua prima Colonizzatrice",
+          "progress": 0,
+          "total": 1,
+          "description": "Dovremmo essere pronti per partire. Commissiona la realizzazione della prima Colonizzatrice!",
+          "image": "task5037.jpg",
+          "actions": [
+            {
+              "text": "Costruisci Colonizzatrice (1 volta/e)",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 5000",
+              "display": "5.000",
+              "qty": 5000
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 8000",
+              "display": "8.000",
+              "qty": 8000
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 2500",
+              "display": "2.500",
+              "qty": 2500
+            }
+          ]
+        },
+        {
+          "id": 5038,
+          "state": "none",
+          "title": "Colonizza un nuovo pianeta",
+          "progress": 0,
+          "total": 1,
+          "description": "Le navi nuove hanno un profumo incredibile. Testiamola subito! Scegli un pianeta disabitato della galassia e fai in modo che la tua nave ci crei una colonia. Tieni presente che sui pianeti vicini al sole, cioè in quelli che si trovano in posizioni basse, si possono ottenere più Cristallo ed Energia, ma meno Deuterio. Nei pianeti che si trovano lontani dal Sole, avviene esattamente il contrario. Nelle posizioni intermedie sono presenti pianeti particolarmente grandi. Più colonie significano più risorse e più risorse significano più crescita!",
+          "image": "task5038.jpg",
+          "actions": [
+            {
+              "text": "Colonizza un pianeta",
+              "completed": false
+            }
+          ],
+          "rewards": []
+        },
+        {
+          "id": 5039,
+          "state": "none",
+          "title": "Non tutti i pianeti sono uguali",
+          "progress": 0,
+          "total": 1,
+          "description": "La distanza dal sole, le dimensioni e le condizioni climatiche sono dei fattori importanti che determinano il successo dell`insediamento. Controlla i parametri del tuo nuovo pianeta e dagli un bel nome.",
+          "image": "task5039.jpg",
+          "actions": [
+            {
+              "text": "Rinomina un pianeta colonizzato",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 5000",
+              "display": "5.000",
+              "qty": 5000
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 1500",
+              "display": "1.500",
+              "qty": 1500
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 500",
+              "display": "500",
+              "qty": 500
+            }
+          ]
+        },
+        {
+          "id": 5040,
+          "state": "none",
+          "title": "Economia sui nuovi pianeti",
+          "progress": 0,
+          "total": 10,
+          "description": "Dato che non possiamo ancora teletrasportare le risorse da un pianeta all`altro, ogni pianeta deve fare affidamento sulle proprie risorse. Ciò significa che bisogna innanzitutto creare le condizioni necessarie per un`economia di successo, esattamente come fate in ogni nuova colonia. Quindi hanno la priorità sia le risorse che la produzione di energia.",
+          "image": "task5040.jpg",
+          "actions": [
+            {
+              "text": "Sviluppa Miniera di Metallo sul pianeta colonizzato e porta l`edificio al livello 2",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Centrale solare sul pianeta colonizzato e porta l`edificio al livello 1",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Miniera di Metallo sul pianeta colonizzato e porta l`edificio al livello 3",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Centrale solare sul pianeta colonizzato e porta l`edificio al livello 2",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Miniera di Metallo sul pianeta colonizzato e porta l`edificio al livello 5",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Centrale solare sul pianeta colonizzato e porta l`edificio al livello 3",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Miniera di Cristalli sul pianeta colonizzato e porta l`edificio al livello 2",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Centrale solare sul pianeta colonizzato e porta l`edificio al livello 4",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Miniera di Cristalli sul pianeta colonizzato e porta l`edificio al livello 3",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Centrale solare sul pianeta colonizzato e porta l`edificio al livello 5",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 1000",
+              "display": "1.000",
+              "qty": 1000
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 500",
+              "display": "500",
+              "qty": 500
+            }
+          ]
+        },
+        {
+          "id": 5041,
+          "state": "none",
+          "title": "Approfondisci la Tecnologia informatica e portala al livello 1",
+          "progress": 0,
+          "total": 1,
+          "description": "Poi penseremo alle spedizioni. Per questo, abbiamo bisogno di maggiori capacità computazionali per gestire più flotte contemporaneamente. Esegui delle ricerche di Tecnologia informatica di livello 1.",
+          "image": "task5041.jpg",
+          "actions": [
+            {
+              "text": "Approfondisci Tecnologia informatica e portala al livello 1",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 200",
+              "display": "200",
+              "qty": 200
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 300",
+              "display": "300",
+              "qty": 300
+            }
+          ]
+        },
+        {
+          "id": 5042,
+          "state": "none",
+          "title": "Invia una Flotta di spedizione",
+          "progress": 0,
+          "total": 1,
+          "description": "È arrivato il momento di esplorare le infinite distese dello spazio! Invia una flotta di spedizione con il tuo Cargo leggero. Invia la tua flotta alla posizione 16. Una spedizione è sempre un rischio. I nostri piloti potrebbero fare ritorno con dei carichi enormi di materie prime. Tuttavia, potrebbero anche rientrare a mani vuote o incontrare pirati spaziali. Anche se è raro, può anche accadere che le navi non facciano ritorno da una spedizione. Meglio osare comunque. Potrebbe davvero valerne la pena.",
+          "image": "task5042.jpg",
+          "actions": [
+            {
+              "text": "Completa una spedizione con Cargo leggeri",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 2000",
+              "display": "2.000",
+              "qty": 2000
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 2000",
+              "display": "2.000",
+              "qty": 2000
+            }
+          ]
+        }
+      ],
+      "chapterRewards": [
+        {
+          "resource": "resource-0",
+          "tooltip": "Metallo: 10000",
+          "display": "10.000",
+          "qty": 10000
+        },
+        {
+          "resource": "resource-1",
+          "tooltip": "Cristallo: 5000",
+          "display": "5.000",
+          "qty": 5000
+        },
+        {
+          "resource": "resource-2",
+          "tooltip": "Deuterio: 2500",
+          "display": "2.500",
+          "qty": 2500
+        },
+        {
+          "resource": "resource-4",
+          "tooltip": "Materia Oscura: 4000",
+          "display": "4.000",
+          "qty": 4000
+        }
+      ]
+    },
+    "4005": {
+      "chapterId": 4005,
+      "chapterTitle": "Direttiva V – Proteggi le frontiere",
+      "taskCount": 11,
+      "tasks": [
+        {
+          "id": 5043,
+          "state": "none",
+          "title": "Costruisci una Lanciamissili",
+          "progress": 0,
+          "total": 1,
+          "description": "Nella migliore della ipotesi, nei magazzini del pianeta è meglio non avere risorse di cui qualcuno vorrebbe impadronirsi. La difesa dagli attacchi è un`opzione di emergenza; è sempre meglio non essere un bersaglio interessante. Tuttavia, è importante sapersi difendere bene in caso di attacco. Apri il menù \"Difesa\" e costruisci una Lanciamissili!",
+          "image": "task5043.jpg",
+          "actions": [
+            {
+              "text": "Costruisci Lanciamissili (1 volta/e)",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 1000",
+              "display": "1.000",
+              "qty": 1000
+            }
+          ]
+        },
+        {
+          "id": 5044,
+          "state": "none",
+          "title": "Approfondisci la Tecnologia dei Laser e portala al livello 3",
+          "progress": 0,
+          "total": 1,
+          "description": "I cannoni laser provocano dei danni leggermente superiori rispetto ai Lanciamissili e dispongono di Scudi potenziati. Tuttavia, le nostre conoscenze relative alla tecnologia laser non sono sufficienti per utilizzare questi cannoni. Esegui delle ricerche fino a raggiungere il livello 3.",
+          "image": "task5044.jpg",
+          "actions": [
+            {
+              "text": "Approfondisci Tecnologia dei Laser e portala al livello 3",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 700",
+              "display": "700",
+              "qty": 700
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 350",
+              "display": "350",
+              "qty": 350
+            }
+          ]
+        },
+        {
+          "id": 5045,
+          "state": "none",
+          "title": "Costruisci un cannone laser leggero.",
+          "progress": 0,
+          "total": 1,
+          "description": "Grandioso. Mettiamo in pratica le nostre conoscenze. Costruisci un cannone laser leggero.",
+          "image": "task5045.jpg",
+          "actions": [
+            {
+              "text": "Costruisci Laser leggero (1 volta/e)",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 750",
+              "display": "750",
+              "qty": 750
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 250",
+              "display": "250",
+              "qty": 250
+            }
+          ]
+        },
+        {
+          "id": 5046,
+          "state": "none",
+          "title": "Approfondisci la Tecnologia dei Laser e portala al livello 6",
+          "progress": 0,
+          "total": 1,
+          "description": "Sai cosa sortisce un impatto maggiore di un cannone laser leggero? Un cannone laser pesante! Tuttavia, per poter gestire in modo sicuro un numero così elevato di laser, è necessario raggiungere altri 3 livelli di ricerca nell`ambito della Tecnologia dei Laser.",
+          "image": "task5046.jpg",
+          "actions": [
+            {
+              "text": "Approfondisci Tecnologia dei Laser e portala al livello 6",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 5600",
+              "display": "5.600",
+              "qty": 5600
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 2800",
+              "display": "2.800",
+              "qty": 2800
+            }
+          ]
+        },
+        {
+          "id": 5047,
+          "state": "none",
+          "title": "Costruisci un cannone laser pesante",
+          "progress": 0,
+          "total": 1,
+          "description": "Si potrebbe pensare che i nostri ricercatori lavorino molto velocemente. Ora costruisci un cannone laser pesante per rafforzare il tuo sistema di difesa.",
+          "image": "task5047.jpg",
+          "actions": [
+            {
+              "text": "Costruisci Laser pesante (1 volta/e)",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 3000",
+              "display": "3.000",
+              "qty": 3000
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 1000",
+              "display": "1.000",
+              "qty": 1000
+            }
+          ]
+        },
+        {
+          "id": 5048,
+          "state": "none",
+          "title": "Approfondisci la Tecnologia delle corazze e portala al livello 2",
+          "progress": 0,
+          "total": 1,
+          "description": "Più le navi e le difese resistono agli attacchi e più possibilità avrai di tenere testa ai tuoi nemici. Qui è di fondamentale importanza la corazza delle astronavi, quella che protegge i sistemi di difesa dei pianeti. Esegui delle ricerche di livello 2!",
+          "image": "task5048.jpg",
+          "actions": [
+            {
+              "text": "Approfondisci Tecnologia delle corazze e portala al livello 2",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 1500",
+              "display": "1.500",
+              "qty": 1500
+            }
+          ]
+        },
+        {
+          "id": 5049,
+          "state": "none",
+          "title": "Sviluppa il Laboratorio di Ricerca e portalo a livello 4.",
+          "progress": 0,
+          "total": 1,
+          "description": "I nostri scienziati ci comunicano che nel laboratorio c`è sempre meno spazio. Ogni livello di espansione del Laboratorio di Ricerca aumenta la velocità con cui viene svolta la ricerca. Per questo motivo e per ridurre il numero di incidenti causati da attrezzature impilate, dovresti potenziare il Laboratorio di Ricerca al livello 4.",
+          "image": "task5049.jpg",
+          "actions": [
+            {
+              "text": "Sviluppa Laboratorio di Ricerca e porta l`edificio al livello 4",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 800",
+              "display": "800",
+              "qty": 800
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 1600",
+              "display": "1.600",
+              "qty": 1600
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 800",
+              "display": "800",
+              "qty": 800
+            }
+          ]
+        },
+        {
+          "id": 5050,
+          "state": "none",
+          "title": "Approfondisci la Tecnologia delle armi e portala al livello 1",
+          "progress": 0,
+          "total": 1,
+          "description": "Le ricerche legate alla Tecnologia delle armi sono importanti perché rafforzano i sistemi bellici, indipendentemente che siano sulle navi o sui pianeti. Inoltre, ti consente di costruire navi e difese più avanzate. Esegui delle ricerche di livello 1!",
+          "image": "task5050.jpg",
+          "actions": [
+            {
+              "text": "Approfondisci Tecnologia delle armi e portala al livello 1",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 400",
+              "display": "400",
+              "qty": 400
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 100",
+              "display": "100",
+              "qty": 100
+            }
+          ]
+        },
+        {
+          "id": 5051,
+          "state": "none",
+          "title": "Ci serve una Cupola scudo",
+          "progress": 0,
+          "total": 1,
+          "description": "Gli Scudi servono per proteggere le unità dal fuoco nemico. Sui pianeti si possono costruire delle cupole scudo giganti. Tuttavia, per motivi di sicurezza, dopo l`incidente su Helius Omega, questo scudi di enorme potenza si possono analizzare solo nei Laboratori di Ricerca di livello 6 o superiore. Dobbiamo quindi avviare i lavori di ampliamento.",
+          "image": "task5051.jpg",
+          "actions": [
+            {
+              "text": "Sviluppa Laboratorio di Ricerca e porta l`edificio al livello 6",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 4800",
+              "display": "4.800",
+              "qty": 4800
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 9600",
+              "display": "9.600",
+              "qty": 9600
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 4800",
+              "display": "4.800",
+              "qty": 4800
+            }
+          ]
+        },
+        {
+          "id": 5052,
+          "state": "none",
+          "title": "Approfondisci la Tecnologia degli scudi e portala al livello 1",
+          "progress": 0,
+          "total": 1,
+          "description": "Il responsabile della sicurezza intergalattica ha dato proprio il via libera. Possiamo iniziare! Esegui delle ricerche di livello 1 sulla Tecnologia degli scudi!",
+          "image": "task5052.jpg",
+          "actions": [
+            {
+              "text": "Approfondisci Tecnologia degli scudi e portala al livello 1",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 100",
+              "display": "100",
+              "qty": 100
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 300",
+              "display": "300",
+              "qty": 300
+            }
+          ]
+        },
+        {
+          "id": 5053,
+          "state": "none",
+          "title": "Ci servono caccia pesanti",
+          "progress": 0,
+          "total": 1,
+          "description": "È ora di potenziarsi, cadetto! I caccia pesanti resistono sia alle loro controparti leggere e si distinguono per la maggiore potenza di fuoco. Inoltre, possono anche proteggere i Cargo. Commissiona la realizzazione di una caccia pesante.",
+          "image": "task5053.jpg",
+          "actions": [
+            {
+              "text": "Costruisci Caccia Pesante (1 volta/e)",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 3000",
+              "display": "3.000",
+              "qty": 3000
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 2000",
+              "display": "2.000",
+              "qty": 2000
+            }
+          ]
+        }
+      ],
+      "chapterRewards": [
+        {
+          "resource": "resource-0",
+          "tooltip": "Metallo: 15000",
+          "display": "15.000",
+          "qty": 15000
+        },
+        {
+          "resource": "resource-1",
+          "tooltip": "Cristallo: 7500",
+          "display": "7.500",
+          "qty": 7500
+        },
+        {
+          "resource": "resource-2",
+          "tooltip": "Deuterio: 1500",
+          "display": "1.500",
+          "qty": 1500
+        },
+        {
+          "resource": "resource-4",
+          "tooltip": "Materia Oscura: 5000",
+          "display": "5.000",
+          "qty": 5000
+        }
+      ]
+    },
+    "4006": {
+      "chapterId": 4006,
+      "chapterTitle": "Direttiva VI – Vita extraterrestre",
+      "taskCount": 13,
+      "tasks": [
+        {
+          "id": 5054,
+          "state": "none",
+          "title": "Le fondamenta delle forme delle vita",
+          "progress": 0,
+          "total": 2,
+          "description": "Occupiamoci delle forme di vita. Più una civiltà è sviluppata e più sofisticate sono le tecnologie a tua disposizione. Quindi, per prima cosa bisognerebbe espandere la Fattoria della Biosfera e la Zona residenziale, in modo che la popolazione abbia cibo a sufficienza e alloggi confortevoli. Quando la popolazione sarà cresciuta abbastanza, si potrà accedere all`Albero tecnologico.",
+          "image": "task5054.jpg",
+          "actions": [
+            {
+              "text": "Sviluppa Fattoria della Biosfera e porta l`edificio al livello 22",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Zona residenziale e porta l`edificio al livello 21",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 35000",
+              "display": "35.000",
+              "qty": 35000
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 10000",
+              "display": "10.000",
+              "qty": 10000
+            }
+          ]
+        },
+        {
+          "id": 5055,
+          "state": "none",
+          "title": "Costruisci il Centro di Ricerca",
+          "progress": 0,
+          "total": 1,
+          "description": "Poi abbiamo bisogno di un Centro di Ricerca. I tecnici delle forme di vita sono potenti perché influenzano il tuo intero impero. Ciò significa che qualsiasi ricerca su questo pianeta avrà effetto su tutti i pianeti del tuo impero. I ricercatori hanno provato a spiegarmi perché non riuscivano a portare le attrezzature necessarie in laboratorio. Costruisci un Centro di Ricerca di livello 1!",
+          "image": "task5055.jpg",
+          "actions": [
+            {
+              "text": "Sviluppa Centro di Ricerca e porta l`edificio al livello 1",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 10000",
+              "display": "10.000",
+              "qty": 10000
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 12500",
+              "display": "12.500",
+              "qty": 12500
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 5000",
+              "display": "5.000",
+              "qty": 5000
+            }
+          ]
+        },
+        {
+          "id": 5056,
+          "state": "none",
+          "title": "Approfondisci la ricerca sugli Ambasciatori intergalattici",
+          "progress": 0,
+          "total": 1,
+          "description": "Ora che hai visto il nuovo Centro di Ricerca, potresti andare a far visita agli Ambasciatori intergalattici! Il loro compito è stabilire contatti pacifici con le forme di vita aliene. In pratica, sono i rappresentanti della nostra specie. Selezionali nel primo slot tecnologico delle forme di vita ed esegui delle ricerche di livello 1 non appena avrai raggiunto una popolazione di 200.000.",
+          "image": "task5056.jpg",
+          "actions": [
+            {
+              "text": "Approfondisci la Ricerca Forme di vita (Ambasciatori intergalattici) e portala al livello 1",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 2500",
+              "display": "2.500",
+              "qty": 2500
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 1250",
+              "display": "1.250",
+              "qty": 1250
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 250",
+              "display": "250",
+              "qty": 250
+            }
+          ]
+        },
+        {
+          "id": 5057,
+          "state": "none",
+          "title": "Esegui delle ricerche di Tecnologia informatica di livello 2",
+          "progress": 0,
+          "total": 1,
+          "description": "Ogni nuova flotta da tenere sotto controllo richiede un sistema computazionale più potente rispetto a quello di cui disponiamo. Le missioni di esplorazione non fanno alcuna eccezione. Per gestire la flotta extra esegui delle ricerche sulla Tecnologia informatica di livello 2.",
+          "image": "task5057.jpg",
+          "actions": [
+            {
+              "text": "Approfondisci Tecnologia informatica e portala al livello 2",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 400",
+              "display": "400",
+              "qty": 400
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 600",
+              "display": "600",
+              "qty": 600
+            }
+          ]
+        },
+        {
+          "id": 5058,
+          "state": "none",
+          "title": "Invia una Flotta perlustratrice",
+          "progress": 0,
+          "total": 1,
+          "description": "Le distese infinite ti stanno chiamando, cadetto! È ora di mandare in missione la tua Flotta perlustratrice con un Ambasciatore intergalattico. Speriamo che incontrino degli alieni pacifici. Clicca nel menù della galassia sul simbolo del DNA per inviare una Flotta perlustratrice.",
+          "image": "task5058.jpg",
+          "actions": [
+            {
+              "text": "Inizia una missione di scoperta",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 2500",
+              "display": "2.500",
+              "qty": 2500
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 500",
+              "display": "500",
+              "qty": 500
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 250",
+              "display": "250",
+              "qty": 250
+            }
+          ]
+        },
+        {
+          "id": 5059,
+          "state": "none",
+          "title": "Trova una Forma di vita",
+          "progress": 0,
+          "total": 1,
+          "description": "Abbiamo preparato degli stuzzichini adatti a tutti: mancano solo gli amici alieni. Sfortunatamente, la vita extraterrestre intelligente non è molto comune, quindi potrebbero essere necessari alcuni voli per trovare una civiltà. Non arrenderti e trova una forma di vita con la tua Flotta perlustratrice.",
+          "image": "task5059.jpg",
+          "actions": [
+            {
+              "text": "Trova una forma di vita",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 25000",
+              "display": "25.000",
+              "qty": 25000
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 5000",
+              "display": "5.000",
+              "qty": 5000
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 2500",
+              "display": "2.500",
+              "qty": 2500
+            }
+          ]
+        },
+        {
+          "id": 5060,
+          "state": "none",
+          "title": "Scegli la Forma di vita della tua colonia",
+          "progress": 0,
+          "total": 1,
+          "description": "Quando colonizzi un pianeta, puoi scegliere le forme di vita che si stabiliranno sul tuo pianeta. Ogni forma di vita è dotata di abilità particolari. Rifletti bene su quali siano i tuoi obiettivi nella colonia e ragiona su quale sia la forma di vita più adatta per raggiungere i tuoi obiettivi.",
+          "image": "task5060.jpg",
+          "actions": [
+            {
+              "text": "Assegna una forma di vita a una colonia",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 5000",
+              "display": "5.000",
+              "qty": 5000
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 2000",
+              "display": "2.000",
+              "qty": 2000
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 500",
+              "display": "500",
+              "qty": 500
+            }
+          ]
+        },
+        {
+          "id": 5061,
+          "state": "none",
+          "title": "Sviluppa la Fattoria della Biosfera e la Zona residenziale",
+          "progress": 0,
+          "total": 2,
+          "description": "Abbiamo bisogno di una popolazione più numerosa per sbloccare lo slot tecnologico della 2ª forma di vita. Avere una popolazione più numerosa comporta anche la necessità di produrre più cibo per il loro sostentamento. Continua ad espandere la Fattoria della Biosfera e la Zona residenziale.",
+          "image": "task5061.jpg",
+          "actions": [
+            {
+              "text": "Sviluppa Fattoria della Biosfera e porta l`edificio al livello 23",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Zona residenziale e porta l`edificio al livello 22",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 9000",
+              "display": "9.000",
+              "qty": 9000
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 3000",
+              "display": "3.000",
+              "qty": 3000
+            }
+          ]
+        },
+        {
+          "id": 5062,
+          "state": "none",
+          "title": "Sblocca lo slot 2 della Tecnologia T1",
+          "progress": 0,
+          "total": 1,
+          "description": "Spazi abitativi splendidi e cibo delizioso. Si può desiderare di più? Hai davvero superato te stesso, cadetto! La nostra popolazione è in crescita e prospera. Continuiamo a prendercene cura e a eseguire delle ricerche sulle loro tecnologie.",
+          "image": "task5062.jpg",
+          "actions": [
+            {
+              "text": "Sblocca lo slot 2 per la Ricerca Forme di vita.",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 2000",
+              "display": "2.000",
+              "qty": 2000
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 1000",
+              "display": "1.000",
+              "qty": 1000
+            }
+          ]
+        },
+        {
+          "id": 5063,
+          "state": "none",
+          "title": "Scegli una seconda tecnologia",
+          "progress": 0,
+          "total": 1,
+          "description": "299.999 e... 300.000! Congratulazioni! Abbiamo sbloccato un altro slot tecnologico per le forme di vita. Scegli una tecnologia. Scegli come credi che sia giusto.",
+          "image": "task5063.jpg",
+          "actions": [
+            {
+              "text": "Seleziona una tecnologia delle Forme di vita per lo slot di livello 2.",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 500",
+              "display": "500",
+              "qty": 500
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 500",
+              "display": "500",
+              "qty": 500
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 500",
+              "display": "500",
+              "qty": 500
+            }
+          ]
+        },
+        {
+          "id": 5064,
+          "state": "none",
+          "title": "Trova 200 manufatti",
+          "progress": 0,
+          "total": 1,
+          "description": "Ora dobbiamo occuparci dei manufatti. Negli interstizi dello spazio, quando si compiono delle missioni esplorative, si possono trovare dei manufatti. Essi permettono di formulare delle ipotesi riguardo all`avanzamento tecnologico di altre civiltà. Trova 200 Manufatti nelle missioni di scoperta.",
+          "image": "task5064.jpg",
+          "actions": [
+            {
+              "text": "Svolgi una missione di scoperta e trova 200 Manufatti",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 62500",
+              "display": "62.500",
+              "qty": 62500
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 12500",
+              "display": "12.500",
+              "qty": 12500
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 6250",
+              "display": "6.250",
+              "qty": 6250
+            }
+          ]
+        },
+        {
+          "id": 5065,
+          "state": "none",
+          "title": "Sblocca lo slot 3 della Tecnologia T1",
+          "progress": 0,
+          "total": 3,
+          "description": "Per accedere a delle tecnologie ancora più avanzate, è necessario continuare a far crescere la nostra popolazione. Ormai sai già quali edifici siano adatti per concretizzare tale obiettivo.",
+          "image": "task5065.jpg",
+          "actions": [
+            {
+              "text": "Sviluppa Fattoria della Biosfera e porta l`edificio al livello 24",
+              "completed": false
+            },
+            {
+              "text": "Sviluppa Zona residenziale e porta l`edificio al livello 23",
+              "completed": false
+            },
+            {
+              "text": "Sblocca lo slot 3 per la Ricerca Forme di vita.",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 10000",
+              "display": "10.000",
+              "qty": 10000
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 3500",
+              "display": "3.500",
+              "qty": 3500
+            }
+          ]
+        },
+        {
+          "id": 5066,
+          "state": "none",
+          "title": "Acquista una tecnologia usando dei manufatti",
+          "progress": 0,
+          "total": 1,
+          "description": "Dato che ci permettono di conoscere meglio le tecnologie aliene, i manufatti si possono usare per scegliere in modo ponderato i metodi di ricerca per le forme di vita. In questo modo si possono adattare le tecnologie e attivare, poi, quelle che si preferiscono implementare. Prova con i manufatti che hai accumulato.",
+          "image": "task5066.jpg",
+          "actions": [
+            {
+              "text": "Acquista una tecnologia usando dei manufatti",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 5000",
+              "display": "5.000",
+              "qty": 5000
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 2500",
+              "display": "2.500",
+              "qty": 2500
+            }
+          ]
+        }
+      ],
+      "chapterRewards": [
+        {
+          "resource": "resource-0",
+          "tooltip": "Metallo: 15000",
+          "display": "15.000",
+          "qty": 15000
+        },
+        {
+          "resource": "resource-1",
+          "tooltip": "Cristallo: 7500",
+          "display": "7.500",
+          "qty": 7500
+        },
+        {
+          "resource": "resource-2",
+          "tooltip": "Deuterio: 1500",
+          "display": "1.500",
+          "qty": 1500
+        },
+        {
+          "resource": "resource-4",
+          "tooltip": "Materia Oscura: 6000",
+          "display": "6.000",
+          "qty": 6000
+        }
+      ]
+    },
+    "4007": {
+      "chapterId": 4007,
+      "chapterTitle": "Direttiva VII – Ulteriori suggerimenti",
+      "taskCount": 4,
+      "tasks": [
+        {
+          "id": 5067,
+          "state": "none",
+          "title": "Costruisci una Riciclatrice",
+          "progress": 0,
+          "total": 1,
+          "description": "A seguire questa direttiva, i Campi detriti hanno la priorità. Il Campo detriti si genera a seguito di una battaglia. Le dimensioni del Campo detriti aumentano proporzionalmente alla quantità di ciò che è andato distrutto. Il Campo detriti contiene anche delle risorse di particolare valore. Tuttavia, per poterle utilizzare è necessario costruire una Riciclatrice.",
+          "image": "task5067.jpg",
+          "actions": [
+            {
+              "text": "Costruisci Riciclatrici (1 volta/e)",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 5000",
+              "display": "5.000",
+              "qty": 5000
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 2500",
+              "display": "2.500",
+              "qty": 2500
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 1000",
+              "display": "1.000",
+              "qty": 1000
+            }
+          ]
+        },
+        {
+          "id": 5068,
+          "state": "none",
+          "title": "Ricicla un Campo detriti con successo",
+          "progress": 0,
+          "total": 1,
+          "description": "La Riciclatrice è pronta! Dobbiamo tenere pulito il cosmo. Evitiamo di lasciare le risorse inutilizzate a spasso per lo spazio! Quindi, impiega la Riciclatrice per smantellare il Campo detriti.",
+          "image": "task5068.jpg",
+          "actions": [
+            {
+              "text": "Ricava risorse dal Campo detriti",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 10000",
+              "display": "10.000",
+              "qty": 10000
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 5000",
+              "display": "5.000",
+              "qty": 5000
+            }
+          ]
+        },
+        {
+          "id": 5069,
+          "state": "none",
+          "title": "Scegli la tua classe.",
+          "progress": 0,
+          "total": 1,
+          "description": "Le classi dei personaggi offrono diversi vantaggi. Esse definiscono il tuo ruolo all`interno dell`Impero. Preferisci dedicarti alle arti belliche o vuoi concentrarti sul commercio e sulle esplorazioni? Un Collezionista si concentra sulla produzione e sul commercio. La produzione delle sue miniere aumenta e i suoi Cargo sono migliori. La classe Collezionista si presta a uno stile di gioco più passivo che offre una progressione più lenta ma costante. Il Generale è la guida militare dell`impero. Le sue navi hanno vari vantaggi negli scontri militari. La classe Generale è adatta per uno stile di gioco molto attivo e rischioso. Un Esploratore freme sempre dalla voglia di scoprire nuove terre. Gode ​​di vantaggi nella ricerca e nelle spedizioni. La classe Esploratore è adatta per uno stile di gioco attivo che premia un maggiore investimento di tempo con rapidi progressi. Scegli la tua classe.",
+          "image": "task5069.jpg",
+          "actions": [
+            {
+              "text": "Scegli una classe di personaggi",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-0",
+              "tooltip": "Metallo: 2500",
+              "display": "2.500",
+              "qty": 2500
+            },
+            {
+              "resource": "resource-1",
+              "tooltip": "Cristallo: 1000",
+              "display": "1.000",
+              "qty": 1000
+            },
+            {
+              "resource": "resource-2",
+              "tooltip": "Deuterio: 500",
+              "display": "500",
+              "qty": 500
+            }
+          ]
+        },
+        {
+          "id": 5070,
+          "state": "none",
+          "title": "Chiama il mercante",
+          "progress": 0,
+          "total": 1,
+          "description": "Si può evocare il Mercante tramite la Materia Oscura. Questi commercia risorse. Innanzitutto bisogna selezionare le risorse che si intendono proporre. Ricorda che puoi acquistare risorse solo in una quantità tale che possa essere stoccata nel Deposito. Tuttavia, il Mercante accumula volentieri anche quelle risorse che provengono da dei Depositi particolarmente pieni. Una volta terminati gli affari, se ne va immediatamente. Chiama il Mercante e sperimenta di persona!",
+          "image": "task5070.jpg",
+          "actions": [
+            {
+              "text": "Evoca il Mercante delle Risorse",
+              "completed": false
+            }
+          ],
+          "rewards": [
+            {
+              "resource": "resource-4",
+              "tooltip": "Materia Oscura: 2500",
+              "display": "2.500",
+              "qty": 2500
+            }
+          ]
+        }
+      ],
+      "chapterRewards": [
+        {
+          "resource": "resource-0",
+          "tooltip": "Metallo: 5000",
+          "display": "5.000",
+          "qty": 5000
+        },
+        {
+          "resource": "resource-1",
+          "tooltip": "Cristallo: 2500",
+          "display": "2.500",
+          "qty": 2500
+        },
+        {
+          "resource": "resource-2",
+          "tooltip": "Deuterio: 1500",
+          "display": "1.500",
+          "qty": 1500
+        },
+        {
+          "resource": "resource-4",
+          "tooltip": "Materia Oscura: 3000",
+          "display": "3.000",
+          "qty": 3000
+        }
+      ]
+    }
+  }
+}

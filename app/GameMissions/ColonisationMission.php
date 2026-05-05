@@ -131,6 +131,10 @@ class ColonisationMission extends GameMission
         // Create and start the return mission (if the colonisation mission had ships other than the colony ship itself).
         // Resources were delivered to the new colony, so return with empty cargo.
         $this->startReturn($mission, new Resources(0, 0, 0, 0), $units);
+
+        // IPI: notify progress (task 5038 "Colonizza un pianeta").
+        app(\OGame\Services\IpiProgressService::class)
+            ->triggerEvent($mission->user_id, 'colonize_planet');
     }
 
     /**
