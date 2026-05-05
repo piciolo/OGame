@@ -23,6 +23,14 @@ class PlanetNameLocalizationServiceTest extends AccountTestCase
     {
         parent::setUp();
         $this->service = resolve(PlanetNameLocalizationService::class);
+
+        // The freshly-registered user owns 2 planets, both with localized default
+        // names ("Pianeta Madre" + "Colonia") generated at signup. Reset every
+        // owned body to a non-default custom name so each test starts from a
+        // clean slate and can assert the exact rename count.
+        Planet::query()
+            ->where('user_id', $this->currentUserId)
+            ->update(['name' => 'TestCustomPlanet_' . uniqid()]);
     }
 
     public function testDefaultNamedItalianPlanetIsRetranslatedToEnglish(): void
