@@ -20,6 +20,32 @@ class ShopService
     public const ALL_CATEGORY_KEY = '_all';
 
     /**
+     * Returns the "Pacchetto <resource>" item ref for each base resource. Used by
+     * the topbar resource icons to deep-link the player into the corresponding Shop
+     * item detail when clicked, mirroring OGame's "Metal/Crystal/Deuterium Package".
+     *
+     * Ported from feature/shop to unblock IPI/main-layout rendering on integration
+     * before feature/shop is merged. The full implementation lives on feature/shop.
+     *
+     * @return array<string, string|null>  Keys: 'metal','crystal','deuterium'.
+     *                                      Values: ShopItem.ref (sha1) or null if no item.
+     */
+    public function resourcePackageRefs(): array
+    {
+        $names = [
+            'metal'     => 'Pacchetto Metallo',
+            'crystal'   => 'Pacchetto Cristallo',
+            'deuterium' => 'Pacchetto Deuterio',
+        ];
+        $out = [];
+        foreach ($names as $key => $name) {
+            $row = ShopItem::query()->where('name', $name)->first(['ref']);
+            $out[$key] = $row?->ref;
+        }
+        return $out;
+    }
+
+    /**
      * Full catalog.
      * Shape: [
      *   'categories' => [ ['key','name','count','sort_order'], ... ] (sidebar list, includes "tutto"),
