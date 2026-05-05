@@ -3,6 +3,7 @@
     /** @var \OGame\Models\ImportExportItem  $item */
     /** @var \OGame\Models\Planet            $currentPlanet */
     /** @var array{metal:int,crystal:int,deuterium:int,honor:int} $maxInputs */
+    /** @var int $ownedCount */
     /** @var int $honorPoints */
     /** @var array<int,array{id:int,name:string,galaxy:int,system:int,planet:int,metal:int,crystal:int,deuterium:int,icon:string}> $planets */
     /** @var array<int,array{id:int,name:string,galaxy:int,system:int,planet:int,metal:int,crystal:int,deuterium:int,icon:string}> $moons */
@@ -81,17 +82,19 @@
                         <img src="{{ asset($item->icon_path) }}" alt="" onerror="this.style.opacity=0.3" style="width:140px;height:140px;">
                         <a class="detail_button tooltip r_common_140px"
                            title="{{ $item->name }}::{{ $item->description }}">
+                            @if($ownedCount > 0)
                             <span class="ecke">
-                                <span class="level amount">?</span>
+                                <span class="level amount">{{ $ownedCount }}</span>
                             </span>
+                            @endif
                         </a>
                     </div>
 
                     <label class="import_price">{{ __('t_ingame.import_export.price_label') }}</label>
-                    <div class="price js_import_price">{{ number_format((int) $offer->price, 0, ',', '.') }}</div>
+                    <div class="price">{{ number_format((int) $offer->price, 0, ',', '.') }}</div>
 
-                    <label class="import_total">{{ __('t_ingame.import_export.total_label') }}</label>
-                    <div class="total js_import_total">0</div>
+                    <label class="import_price">{{ __('t_ingame.import_export.total_label') }}</label>
+                    <div class="price js_sum_price">0</div>
 
                     <br class="clearfloat">
                 </div>
@@ -224,7 +227,7 @@
 (function () {
     var price   = {{ (int) $offer->price }};
     var inputs  = document.querySelectorAll('.ie_input');
-    var totalEl = document.querySelector('.js_import_total');
+    var totalEl = document.querySelector('.js_sum_price');
     var payBtn  = document.getElementById('ie_pay_btn');
 
     function recalc() {

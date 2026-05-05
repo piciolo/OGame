@@ -51,7 +51,8 @@ class ImportExportController extends OGameController
         $offer = $this->service->getOrCreateOffer($user);
         $offer->loadMissing('item');
 
-        $maxInputs = $this->service->calculateMaxInputs($offer, $currentPlanet, $user);
+        $maxInputs  = $this->service->calculateMaxInputs($offer, $currentPlanet, $user);
+        $ownedCount = $this->service->ownedCount($user, $offer);
 
         // Lista corpi del giocatore (planets + moons) con icona biome/image come Battitore.
         $allBodies = Planet::query()->where('user_id', $user->id)->orderBy('id')->get();
@@ -92,6 +93,7 @@ class ImportExportController extends OGameController
             'currentPlanet' => $currentPlanet,
             'currentIcon'   => $currentIcon,
             'maxInputs'     => $maxInputs,
+            'ownedCount'    => $ownedCount,
             'darkMatter'    => $user->dark_matter,
             'honorPoints'   => $user->honor_points,
             'planets'       => $planets,

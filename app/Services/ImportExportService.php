@@ -315,19 +315,8 @@ class ImportExportService
         $activationType = $item->category === 'accelerator' ? 'instant' : 'duration';
 
         // Mappa il type catalog Import/Export al item_type riconosciuto
-        // dall'InventoryService/InventoryActivationService (sistema OGameX):
-        // - acceleratori: prefix 'booster_' (booster_kraken/booster_detroid/booster_newtron)
-        //   come da InventoryService::registryKeyForLot()
-        // - resource booster: prefix 'amplifier_' + risorsa (durata default 7 giorni)
-        $itemType = match ($item->type) {
-            'kraken'            => 'booster_kraken',
-            'detroid'           => 'booster_detroid',
-            'newtron'           => 'booster_newtron',
-            'metal_booster'     => 'amplifier_metal',
-            'crystal_booster'   => 'amplifier_crystal',
-            'deuterium_booster' => 'amplifier_deuterium',
-            default             => $item->type,
-        };
+        // dall'InventoryService/InventoryActivationService (sistema OGameX).
+        $itemType = self::mapItemType($item->type);
 
         return UserItem::create([
             'user_id'         => $user->id,
@@ -346,6 +335,40 @@ class ImportExportService
             'source'          => 'import_export',
             'source_ref'      => $offer->id,
         ]);
+    }
+
+    /**
+     * Mappa il type del catalogo Import/Export al item_type usato in user_items
+     * (stesso mapping di grantItemToUser, reso pubblico per riuso nel controller).
+     */
+    public static function mapItemType(string $type): string
+    {
+        return match ($type) {
+            'kraken'            => 'booster_kraken',
+            'detroid'           => 'booster_detroid',
+            'newtron'           => 'booster_newtron',
+            'metal_booster'     => 'amplifier_metal',
+            'crystal_booster'   => 'amplifier_crystal',
+            'deuterium_booster' => 'amplifier_deuterium',
+            default             => $type,
+        };
+    }
+
+    /**
+     * Conta quanti item dello stesso tipo (item_type + rarity) l'utente possiede
+     * già nell'inventario (status 'available'). Usato per la badge "quantità" in UI.
+     */
+    public function ownedCount(User $user, ImportExportOffer $offer): int
+    {
+        $item     = ImportExportItem::query()->find($offer->item_id);
+        $itemType = self::mapItemType($item->type);
+
+        return UserItem::query()
+            ->where('user_id', $user->id)
+            ->where('item_type', $itemType)
+            ->where('tier', $item->rarity)
+            ->where('status', 'available')
+            ->count();
     }
 
     /**
