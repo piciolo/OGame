@@ -230,6 +230,18 @@
             @endif
 
             <div class="build-it_wrap">
+                @if ($show_commander_cta ?? false)
+                    {{-- Player has no Commander and the build queue is at its 1-item cap:
+                         replace the green "Improve" upgrade button with the official OGame
+                         "Hire Commander" upsell. The dialog body reuses the existing key
+                         t_ingame.ajax_object.commander_queue_info (already translated to 27
+                         locales). The click handler is defined just below in this same view. --}}
+                    <a class="build-it_premium" href="javascript:void(0);" data-title=""
+                       data-url="{{ route('premium.index', ['openDetail' => 2]) }}"
+                       data-question="{{ __('t_ingame.ajax_object.commander_queue_info') }}">
+                        <span class="tooltip tpd-hideOnClickOutside" title="{{ __('t_ingame.buildings.commander_required_button') }}">{{ __('t_ingame.buildings.commander_required_button') }}</span>
+                    </a>
+                @else
                 <div class="ipiHintable" data-ipi-hint="ipiTechnologyUpgradedeuteriumSynthesizer">
                     <button class="upgrade"
                             @php
@@ -265,11 +277,7 @@
                         </span>
                     </button>
                 </div>
-                <!--
-                <a class="build-it_premium" href="javascript:void(0);" data-title="" data-url="#TODO_page=premium&amp;openDetail=2" data-question="You need a Commander to be able to use the building queue. Would you like to learn more about the advantages of a Commander?">
-                    <span class="tooltip tpd-hideOnClickOutside" title="">Hire Commander</span>
-                </a>
-                -->
+                @endif
             </div>
 
         </div>
@@ -363,7 +371,7 @@
         initOverlays();
     });
 
-    $(".build-it_disabled:not(.isWorking)")
+    $(".build-it_disabled:not(.isWorking), a.build-it_premium")
         .click(function () {
             errorBoxDecision(@json(__('t_ingame.ajax_object.error')), @json(__('t_ingame.ajax_object.commander_queue_info')), @json(__('t_ingame.shared.yes')), @json(__('t_ingame.shared.no')), function () {
                 window.location.href = '{{ route('premium.index', ['openDetail' => 2]) }}'
