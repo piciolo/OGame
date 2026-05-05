@@ -71,6 +71,9 @@ return [
         'no_moon_building' => 'Nu poți construi acea clădire pe o lună!',
         'not_enough_resources' => 'Nu sunt suficiente resurse!',
         'queue_full' => 'Coada este plină',
+        // Etichetta CTA 'Hire Commander' / 'Acquista il Commander': prefisso di
+        // hire_commander_tooltip della stessa lingua (testo gia' nel progetto).
+        'commander_required_button'      => 'Angajare comandant',
         'not_enough_fields' => 'Câmpuri insuficiente!',
         'shipyard_busy' => 'Şantierul naval este încă ocupat',
         'research_in_progress' => 'În prezent se fac cercetări!',

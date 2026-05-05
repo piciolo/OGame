@@ -71,6 +71,9 @@ return [
         'no_moon_building' => 'Вы не сможете построить это здание на Луне!',
         'not_enough_resources' => 'Недостаточно ресурсов!',
         'queue_full' => 'Очередь заполнена',
+        // Etichetta CTA 'Hire Commander' / 'Acquista il Commander': prefisso di
+        // hire_commander_tooltip della stessa lingua (testo gia' nel progetto).
+        'commander_required_button'      => 'Нанять командира',
         'not_enough_fields' => 'Недостаточно полей!',
         'shipyard_busy' => 'Верфь все еще занята',
         'research_in_progress' => 'В настоящее время проводятся исследования!',

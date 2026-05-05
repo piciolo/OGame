@@ -71,6 +71,9 @@ return [
         'no_moon_building' => 'Δεν μπορείς να χτίσεις αυτό το κτίριο σε ένα φεγγάρι!',
         'not_enough_resources' => 'Δεν επαρκούν οι πόροι!',
         'queue_full' => 'Η ουρά είναι γεμάτη',
+        // Etichetta CTA 'Hire Commander' / 'Acquista il Commander': prefisso di
+        // hire_commander_tooltip della stessa lingua (testo gia' nel progetto).
+        'commander_required_button'      => 'Πρόσληψη διοικητή',
         'not_enough_fields' => 'Δεν υπάρχουν αρκετά πεδία!',
         'shipyard_busy' => 'Το ναυπηγείο είναι ακόμα απασχολημένο',
         'research_in_progress' => 'Αυτή τη στιγμή διεξάγεται έρευνα!',

@@ -71,6 +71,8 @@ return [
         'no_moon_building' => 'Vous ne pouvez pas construire ce bâtiment sur une lune !',
         'not_enough_resources' => 'Pas assez de ressources !',
         'queue_full' => 'La file d\'attente est pleine',
+        // Etichetta CTA 'Hire Commander': prefisso di hire_commander_tooltip
+        'commander_required_button' => 'Embaucher un commandant',
         'not_enough_fields' => 'Pas assez de champs !',
         'shipyard_busy' => 'Le chantier naval est toujours occupé',
         'research_in_progress' => 'Des recherches sont actuellement en cours !',

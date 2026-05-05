@@ -71,6 +71,9 @@ return [
         'no_moon_building' => 'Nie da się zbudować takiego budynku na Księżycu!',
         'not_enough_resources' => 'Za mało zasobów!',
         'queue_full' => 'Kolejka jest pełna',
+        // Etichetta CTA 'Hire Commander' / 'Acquista il Commander': prefisso di
+        // hire_commander_tooltip della stessa lingua (testo gia' nel progetto).
+        'commander_required_button'      => 'Zatrudnij dowódcę',
         'not_enough_fields' => 'Za mało pól!',
         'shipyard_busy' => 'Stocznia nadal ma pełne ręce roboty',
         'research_in_progress' => 'Badania są obecnie prowadzone!',

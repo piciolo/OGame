@@ -90,6 +90,9 @@ return [
         'no_moon_building'       => 'Je kunt dat gebouw niet op een maan bouwen!',
         'not_enough_resources'   => 'Niet genoeg grondstoffen!',
         'queue_full'             => 'Wachtrij is vol',
+        // Etichetta CTA 'Hire Commander' / 'Acquista il Commander': prefisso di
+        // hire_commander_tooltip della stessa lingua (testo gia' nel progetto).
+        'commander_required_button'      => 'Commandant inhuren',
         'not_enough_fields'      => 'Niet genoeg velden!',
         'shipyard_busy'          => 'De scheepswerf is nog bezig',
         'research_in_progress'   => 'Er wordt momenteel onderzoek gedaan!',

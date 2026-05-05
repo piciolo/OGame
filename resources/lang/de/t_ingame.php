@@ -87,6 +87,9 @@ return [
         'no_moon_building'       => 'Dieses Gebäude kann nicht auf einem Mond errichtet werden!',
         'not_enough_resources'   => 'Nicht genügend Rohstoffe!',
         'queue_full'             => 'Bauliste ist voll',
+        // Etichetta CTA 'Hire Commander' / 'Acquista il Commander': prefisso di
+        // hire_commander_tooltip della stessa lingua (testo gia' nel progetto).
+        'commander_required_button'      => 'Commander anheuern',
         'not_enough_fields'      => 'Nicht genügend Felder!',
         'shipyard_busy'          => 'Die Raumschiffswerft ist noch beschäftigt',
         'research_in_progress'   => 'Es wird gerade geforscht!',

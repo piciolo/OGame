@@ -71,6 +71,9 @@ return [
         'no_moon_building' => 'Nem építheted fel azt az épületet a Holdra!',
         'not_enough_resources' => 'Nincs elég forrás!',
         'queue_full' => 'A sor megtelt',
+        // Etichetta CTA 'Hire Commander' / 'Acquista il Commander': prefisso di
+        // hire_commander_tooltip della stessa lingua (testo gia' nel progetto).
+        'commander_required_button'      => 'Parancsnok bérbeadása',
         'not_enough_fields' => 'Nincs elég mező!',
         'shipyard_busy' => 'A hajógyár még mindig elfoglalt',
         'research_in_progress' => 'Jelenleg a kutatás folyik!',

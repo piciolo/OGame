@@ -71,6 +71,9 @@ return [
         'no_moon_building' => '月にその建物を建てることはできません。',
         'not_enough_resources' => 'リソースが足りません!',
         'queue_full' => 'キューがいっぱいです',
+        // Etichetta CTA 'Hire Commander' / 'Acquista il Commander': prefisso di
+        // hire_commander_tooltip della stessa lingua (testo gia' nel progetto).
+        'commander_required_button'      => 'コマンダーを雇う',
         'not_enough_fields' => 'フィールドが足りません!',
         'shipyard_busy' => '造船所はまだ忙しい',
         'research_in_progress' => '現在研究中です！',

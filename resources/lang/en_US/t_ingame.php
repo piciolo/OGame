@@ -71,6 +71,9 @@ return [
         'no_moon_building' => 'You can\'t construct that building on a moon!',
         'not_enough_resources' => 'Not enough resources!',
         'queue_full' => 'Queue is full',
+        // Etichetta CTA 'Hire Commander' / 'Acquista il Commander': prefisso di
+        // hire_commander_tooltip della stessa lingua (testo gia' nel progetto).
+        'commander_required_button'      => 'Hire commander',
         'not_enough_fields' => 'Not enough fields!',
         'shipyard_busy' => 'The shipyard is still busy',
         'research_in_progress' => 'Research is currently being carried out!',

@@ -71,6 +71,9 @@ return [
         'no_moon_building' => 'Et voi rakentaa sitä rakennusta kuuhun!',
         'not_enough_resources' => 'Ei riitä resurssit!',
         'queue_full' => 'Jono on täynnä',
+        // Etichetta CTA 'Hire Commander' / 'Acquista il Commander': prefisso di
+        // hire_commander_tooltip della stessa lingua (testo gia' nel progetto).
+        'commander_required_button'      => 'Palkkaa komentaja',
         'not_enough_fields' => 'Ei tarpeeksi kenttiä!',
         'shipyard_busy' => 'Telakalla on edelleen kiire',
         'research_in_progress' => 'Tutkimustyötä tehdään parhaillaan!',

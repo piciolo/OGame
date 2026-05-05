@@ -71,6 +71,9 @@ return [
         'no_moon_building' => 'O binayı ayda inşa edemezsin!',
         'not_enough_resources' => 'Yeterli kaynak yok!',
         'queue_full' => 'Kuyruk dolu',
+        // Etichetta CTA 'Hire Commander' / 'Acquista il Commander': prefisso di
+        // hire_commander_tooltip della stessa lingua (testo gia' nel progetto).
+        'commander_required_button'      => 'Komutanı Kirala',
         'not_enough_fields' => 'Yeterli alan yok!',
         'shipyard_busy' => 'Tersane hala meşgul',
         'research_in_progress' => 'Şu anda araştırma yapılıyor!',

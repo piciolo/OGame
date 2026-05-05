@@ -71,6 +71,9 @@ return [
         'no_moon_building' => 'Te stavbe ne moreš zgraditi na luni!',
         'not_enough_resources' => 'Ni dovolj sredstev!',
         'queue_full' => 'Čakalna vrsta je polna',
+        // Etichetta CTA 'Hire Commander' / 'Acquista il Commander': prefisso di
+        // hire_commander_tooltip della stessa lingua (testo gia' nel progetto).
+        'commander_required_button'      => 'Najem poveljnika',
         'not_enough_fields' => 'Ni dovolj polj!',
         'shipyard_busy' => 'Ladjedelnica je še vedno zasedena',
         'research_in_progress' => 'Trenutno potekajo raziskave!',

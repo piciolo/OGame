@@ -71,6 +71,9 @@ return [
         'no_moon_building' => 'Du kan inte bygga den byggnaden på en måne!',
         'not_enough_resources' => 'Inte tillräckligt med resurser!',
         'queue_full' => 'Kön är full',
+        // Etichetta CTA 'Hire Commander' / 'Acquista il Commander': prefisso di
+        // hire_commander_tooltip della stessa lingua (testo gia' nel progetto).
+        'commander_required_button'      => 'Anställ chef',
         'not_enough_fields' => 'Inte tillräckligt med fält!',
         'shipyard_busy' => 'Varvet är fortfarande upptaget',
         'research_in_progress' => 'Forskning pågår just nu!',
