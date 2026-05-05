@@ -28,6 +28,14 @@ class IpiOverviewServiceTest extends AccountTestCase
         parent::setUp();
         $this->service = resolve(IpiOverviewService::class);
         $this->progress = resolve(IpiProgressService::class);
+
+        // Drop every progress row for the freshly-registered user so each test
+        // starts from a clean state. Without this cleanup, prior calls inside
+        // AccountTestCase::setUp() (overview rendering, GlobalGame middleware,
+        // etc.) may already have triggered a recompute() that auto-collects
+        // the welcome task — making testWelcomeTaskAutoCollectsOnFirstAccess
+        // flaky depending on test execution order.
+        IpiPlayerProgress::query()->where('user_id', $this->currentUserId)->delete();
     }
 
     public function testGetAllChaptersExcludesDisabled(): void
