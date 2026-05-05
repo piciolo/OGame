@@ -33,6 +33,14 @@ class DebrisFieldServiceTest extends AccountTestCase
         $playerServiceFactory = resolve(PlayerServiceFactory::class);
         $player = $playerServiceFactory->make($this->currentUserId, true);
         $this->service = new DebrisFieldService($player);
+
+        // Clean up the unique-coord range so previous test runs do not pollute
+        // these tests (the database is persistent between runs).
+        DebrisField::query()
+            ->where('galaxy', 9)
+            ->whereBetween('system', [450, 499])
+            ->where('planet', 16)
+            ->delete();
     }
 
     private function uniqueCoord(): Coordinate
