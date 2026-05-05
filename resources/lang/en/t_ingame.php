@@ -90,6 +90,11 @@ return [
         'no_moon_building'       => "You can't construct that building on a moon!",
         'not_enough_resources'   => 'Not enough resources!',
         'queue_full'             => 'Queue is full',
+        // Tooltip/label of the "Buy Commander" CTA shown in place of the upgrade
+        // button when the player has no Commander officer and a build is already
+        // active. Official OGame.com text. The dialog body reuses the existing
+        // key t_ingame.ajax_object.commander_queue_info.
+        'commander_required_button'      => 'Hire Commander',
         'not_enough_fields'      => 'Not enough fields!',
         'shipyard_busy'          => 'The shipyard is still busy',
         'research_in_progress'   => 'Research is currently being carried out!',

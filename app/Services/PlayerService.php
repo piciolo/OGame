@@ -971,6 +971,17 @@ class PlayerService
         return app(OfficerService::class)->isActive($this->getUser(), 'commander');
     }
 
+    /**
+     * Maximum number of items the building queue can hold for this player.
+     *
+     * Without the Commander officer the queue is capped at 1 (single active build,
+     * no scheduling). With Commander the cap is 5 (1 active + 4 queued).
+     */
+    public function getMaxBuildingQueueSize(): int
+    {
+        return $this->hasCommander() ? 5 : 1;
+    }
+
     public function hasAdmiral(): bool
     {
         return app(OfficerService::class)->isActive($this->getUser(), 'admiral');

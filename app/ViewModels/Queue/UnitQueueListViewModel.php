@@ -16,10 +16,12 @@ class UnitQueueListViewModel extends QueueListViewModel
     /**
      * Check if the queue is full.
      * The unit queue (shipyard/defense) is unlimited, so it's never full.
+     * The $maxItems parameter is accepted for parent-class compatibility but ignored.
      *
+     * @param int|null $maxItems Ignored — unit queue has no cap.
      * @return bool
      */
-    public function isQueueFull(): bool
+    public function isQueueFull(int|null $maxItems = null): bool
     {
         return false;
     }

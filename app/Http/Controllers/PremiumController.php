@@ -21,17 +21,28 @@ class PremiumController extends OGameController
 
     /**
      * Shows the premium/officers index page.
+     *
+     * Accepts an optional ?openDetail=<typeId> query parameter that pre-opens
+     * the corresponding officer detail panel client-side (matches OGame's
+     * page=premium&openDetail=N pattern, e.g. 2 = Commander).
      */
-    public function index(): View
+    public function index(Request $request): View
     {
         $this->setBodyId('premium');
 
         $user    = Auth::user();
         $officer = $this->officerService->getOfficer($user);
 
+        // Validate openDetail against known officer type IDs (or 1 = dark matter info).
+        $openDetail = (int) $request->query('openDetail', 0);
+        if ($openDetail !== 1 && !array_key_exists($openDetail, OfficerService::TYPE_MAP)) {
+            $openDetail = 0;
+        }
+
         return view('ingame.premium.index', [
             'darkMatter' => $user->dark_matter ?? 0,
             'officer'    => $officer,
+            'openDetail' => $openDetail,
         ]);
     }
 

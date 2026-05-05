@@ -71,8 +71,10 @@ class BuildingQueueService
         $build_queue = $this->retrieveQueue($planet);
 
         // Max amount of buildings that can be in the queue in a given time.
+        // Commander officer raises the cap from 1 to 5.
         // TODO: refactor throw exception into a more user-friendly message.
-        if ($build_queue->isQueueFull()) {
+        $maxQueueSize = $planet->getPlayer()?->getMaxBuildingQueueSize() ?? 1;
+        if ($build_queue->isQueueFull($maxQueueSize)) {
             // Max amount of build queue items already exist, throw exception.
             throw new Exception('Maximum number of items already in queue.');
         }
@@ -158,7 +160,9 @@ class BuildingQueueService
         $build_queue = $this->retrieveQueue($planet);
 
         // Max amount of buildings that can be in the queue in a given time.
-        if ($build_queue->isQueueFull()) {
+        // Commander officer raises the cap from 1 to 5.
+        $maxQueueSize = $planet->getPlayer()?->getMaxBuildingQueueSize() ?? 1;
+        if ($build_queue->isQueueFull($maxQueueSize)) {
             throw new Exception('Maximum number of items already in queue.');
         }
 

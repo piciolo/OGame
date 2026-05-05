@@ -179,11 +179,16 @@ abstract class AbstractBuildingsController extends OGameController
         }
 
         // Max amount of buildings that can be in the queue in a given time.
-        $max_build_queue_count = 4; //@TODO: refactor into global / constant?
-        $build_queue_max = false;
-        if (count($build_queue) >= $max_build_queue_count) {
-            $build_queue_max = true;
-        }
+        // Without Commander officer the cap is 1 (no scheduling), with Commander it is 5.
+        // NOTE: $build_full_queue is the view model (counts active + queued), $build_queue
+        // is just the queued tail array — use the former so the cap matches the cap enforced
+        // by BuildingQueueService::add() which also includes the active item.
+        $max_build_queue_count = $player->getMaxBuildingQueueSize();
+        $build_queue_max = $build_full_queue->isQueueFull($max_build_queue_count);
+
+        // Show the "Buy Commander" upsell (in place of the disabled queue_full icon)
+        // when the cap was hit purely because the player lacks Commander.
+        $show_commander_cta = $build_queue_max && !$player->hasCommander();
 
         // If openTech is in querystring, add client JS to open the technology tab.
         $open_tech_id = 0;
@@ -209,6 +214,7 @@ abstract class AbstractBuildingsController extends OGameController
             'build_active' => $build_active,
             'build_queue' => $build_queue,
             'build_queue_max' => $build_queue_max,
+            'show_commander_cta' => $show_commander_cta,
             'open_tech_id' => $open_tech_id,
             'jump_gate_level' => $jump_gate_level,
             'is_in_vacation_mode' => $player->isInVacationMode(),

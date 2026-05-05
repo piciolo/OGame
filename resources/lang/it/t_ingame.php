@@ -90,6 +90,11 @@ return [
         'no_moon_building'       => "Non puoi costruire quell'edificio sulla luna!",
         'not_enough_resources'   => 'Risorse insufficienti!',
         'queue_full'             => 'La coda è piena',
+        // Tooltip/etichetta del CTA "Acquista il Commander" mostrato al posto del
+        // pulsante upgrade quando manca il Commander e c'e' gia' una costruzione
+        // in coda. Testo ufficiale OGame.it. Il testo della dialog di conferma
+        // riusa la chiave gia' presente t_ingame.ajax_object.commander_queue_info.
+        'commander_required_button'      => 'Acquista il Commander',
         'not_enough_fields'      => 'Campi insufficienti!',
         'shipyard_busy'          => 'Il cantiere spaziale è ancora occupato',
         'research_in_progress'   => 'È in corso una ricerca!',

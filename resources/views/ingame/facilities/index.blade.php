@@ -69,7 +69,7 @@
                             @elseif (!$building->enough_resources)
                                 data-status="disabled"
                                 title="{{ $building->object->title }}<br/>{{ __('t_ingame.buildings.not_enough_resources') }}"
-                            @elseif ($build_queue_max)
+                            @elseif ($build_queue_max && !$show_commander_cta)
                                 data-status="disabled"
                                 title="{{ $building->object->title }}<br/>{{ __('t_ingame.buildings.queue_full') }}"
                             @elseif (($building->object->type === \OGame\GameObjects\Models\Enums\GameObjectType::Building || $building->object->type === \OGame\GameObjects\Models\Enums\GameObjectType::Station) && $building->fields_exceeded)
@@ -87,11 +87,13 @@
                             @elseif (!$building->character_class_met)
                             @elseif (!$building->valid_planet_type)
                             @elseif (!$building->enough_resources)
-                            @elseif ($build_queue_max)
+                            @elseif ($build_queue_max && !$show_commander_cta)
                             @elseif (($building->object->type === \OGame\GameObjects\Models\Enums\GameObjectType::Building || $building->object->type === \OGame\GameObjects\Models\Enums\GameObjectType::Station) && $building->fields_exceeded)
                             @elseif ($is_in_vacation_mode)
                             @elseif ($building->research_in_progress && $building->object->machine_name == 'research_lab')
                             @elseif ($building->ship_or_defense_in_progress  && ($building->object->machine_name === 'shipyard' || $building->object->machine_name === 'nano_factory'))
+                            @elseif ($show_commander_cta)
+                                @include('ingame.shared.buildings.commander-cta')
                             @else
                                 <button
                                         class="upgrade tooltip hideOthers js_hideTipOnMobile"
@@ -1118,4 +1120,7 @@
     </div>
     {{-- openTech querystring parameter handling --}}
     @include ('ingame.shared.technology.open-tech', ['open_tech_id' => $open_tech_id])
+
+    {{-- Commander upsell dialog handler (shared with resources page) --}}
+    @include ('ingame.shared.buildings.commander-cta-handler')
 @endsection

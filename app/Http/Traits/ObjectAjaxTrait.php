@@ -175,10 +175,9 @@ trait ObjectAjaxTrait
         }
 
         // Max amount of buildings that can be in the queue in a given time.
-        $build_queue_max = false;
-        if ($build_queue->isQueueFull()) {
-            $build_queue_max = true;
-        }
+        // Without Commander officer the cap is 1, with Commander it is 5.
+        $build_queue_max = $build_queue->isQueueFull($player->getMaxBuildingQueueSize());
+        $show_commander_cta = $build_queue_max && !$player->hasCommander();
 
         // Check if planet has enough fields for this building (only for buildings that consume fields)
         // Ships, defense units, and certain other objects don't consume planet fields
@@ -293,6 +292,7 @@ trait ObjectAjaxTrait
             'build_active' => $build_queue->count(),
             'build_active_current' => $build_active_current,
             'build_queue_max' => $build_queue_max,
+            'show_commander_cta' => $show_commander_cta,
             'storage' => $storage,
             'current_storage' => $current_storage,
             'max_storage' => $max_storage,

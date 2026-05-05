@@ -28,15 +28,15 @@ class QueueListViewModel
     }
 
     /**
-     * Get amount of items in the queue.
+     * Whether the queue has reached the maximum allowed items.
      *
+     * @param int|null $maxItems Optional override for the max queue size. Defaults to 5
+     *                           (1 currently building + 4 in queue), the Commander-officer cap.
      * @return bool
      */
-    public function isQueueFull(): bool
+    public function isQueueFull(int|null $maxItems = null): bool
     {
-        // Max items is 1 currently building + 4 in queue = 5.
-        // TODO: refactor into global/constant setting configurable by admin.
-        $maxItemsInQueue = 5;
+        $maxItemsInQueue = $maxItems ?? 5;
         return count($this->queue) >= $maxItemsInQueue;
     }
 }

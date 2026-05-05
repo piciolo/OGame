@@ -104,9 +104,10 @@
             gfSlider = new GFSlider(getElementByIdWithCache('detailWrapper'));
 
             // Se la pagina è stata aperta con ?openDetail=N (es. dal click sull'icona ufficiale
-            // nella barra header), simula il click sul bottone corrispondente per aprire
-            // automaticamente il pannello dettagli dell'ufficiale.
-            var openDetail = {{ (int) request()->query('openDetail', 0) }};
+            // nella barra header o dal CTA "Acquista il Commander" nelle pagine Risorse/Impianti),
+            // simula il click sul bottone corrispondente per aprire automaticamente il pannello
+            // dettagli dell'ufficiale. Valore validato dal controller contro OfficerService::TYPE_MAP.
+            var openDetail = {{ (int) ($openDetail ?? 0) }};
             if (openDetail) {
                 var $btn = $("a.detail_button[ref='" + openDetail + "']");
                 if ($btn.length) {
