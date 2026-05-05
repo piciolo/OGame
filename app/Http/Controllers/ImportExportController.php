@@ -5,6 +5,7 @@ namespace OGame\Http\Controllers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use OGame\Factories\PlanetServiceFactory;
 use OGame\Models\Planet;
 use OGame\Services\ImportExportService;
 use OGame\Services\PlayerService;
@@ -23,41 +24,81 @@ class ImportExportController extends OGameController
     /**
      * GET /merchant/import-export — pagina principale.
      */
-    public function index(Request $request, PlayerService $player): View
+    public function index(Request $request, PlayerService $player, PlanetServiceFactory $planetServiceFactory): View
     {
         $this->setBodyId('traderOverview');
+        return view('ingame.importexport.index', $this->buildViewData($player, $planetServiceFactory));
+    }
 
-        $user = $player->getUser();
+    /**
+     * GET /ajax/merchant/import-export — partial body per ajax_nav slide-in
+     * (pattern AuctioneerController). Restituisce solo _body senza layout main.
+     */
+    public function partial(PlayerService $player, PlanetServiceFactory $planetServiceFactory): View
+    {
+        return view('ingame.importexport.partial', $this->buildViewData($player, $planetServiceFactory));
+    }
 
-        // Sorgente selezionata: query string ?planet_id=N (default = pianeta corrente)
-        $requestedPlanetId = (int) $request->query('planet_id', 0);
-        if ($requestedPlanetId > 0) {
-            $currentPlanet = Planet::query()->where('id', $requestedPlanetId)->where('user_id', $user->id)->first();
-        }
-        if (empty($currentPlanet)) {
-            $currentPlanet = Planet::query()->find($player->planets->current()->getPlanetId());
-        }
+    /**
+     * @return array<string,mixed>
+     */
+    private function buildViewData(PlayerService $player, PlanetServiceFactory $planetServiceFactory): array
+    {
+        $user                 = $player->getUser();
+        $currentPlanetService = $player->planets->current();
+        $currentPlanet        = Planet::query()->find($currentPlanetService->getPlanetId());
 
         $offer = $this->service->getOrCreateOffer($user);
         $offer->loadMissing('item');
 
-        $maxInputs = $this->service->calculateMaxInputs($offer, $currentPlanet, $user);
+        $maxInputs  = $this->service->calculateMaxInputs($offer, $currentPlanet, $user);
+        $ownedCount = $this->service->ownedCount($user, $offer);
 
-        // Lista corpi del giocatore (planets + moons separati per i tab)
+        // Lista corpi del giocatore (planets + moons) con icona biome/image come Battitore.
         $allBodies = Planet::query()->where('user_id', $user->id)->orderBy('id')->get();
-        $planets = $allBodies->where('planet_type', 1)->values();
-        $moons   = $allBodies->where('planet_type', 3)->values();
+        $planets   = [];
+        $moons     = [];
+        foreach ($allBodies as $b) {
+            $svc    = $planetServiceFactory->make($b->id);
+            $isMoon = (int) $b->planet_type === 3;
+            $icon   = $isMoon
+                ? '/img/moons/small/1.gif'
+                : '/img/planets/small/' . $svc->getPlanetBiomeType() . '_' . $svc->getPlanetImageType() . '.png';
+            $row = [
+                'id'        => (int) $b->id,
+                'name'      => $b->name,
+                'galaxy'    => $b->galaxy,
+                'system'    => $b->system,
+                'planet'    => $b->planet,
+                'metal'     => (int) floor($b->metal),
+                'crystal'   => (int) floor($b->crystal),
+                'deuterium' => (int) floor($b->deuterium),
+                'icon'      => $icon,
+            ];
+            if ($isMoon) {
+                $moons[] = $row;
+            } else {
+                $planets[] = $row;
+            }
+        }
 
-        return view('ingame.importexport.index', [
+        $isMoonCurrent = (int) $currentPlanet->planet_type === 3;
+        $currentIcon   = $isMoonCurrent
+            ? '/img/moons/small/1.gif'
+            : '/img/planets/small/' . $currentPlanetService->getPlanetBiomeType() . '_' . $currentPlanetService->getPlanetImageType() . '.png';
+
+        return [
             'offer'         => $offer,
             'item'          => $offer->item,
             'currentPlanet' => $currentPlanet,
+            'currentIcon'   => $currentIcon,
             'maxInputs'     => $maxInputs,
+            'ownedCount'    => $ownedCount,
             'darkMatter'    => $user->dark_matter,
             'honorPoints'   => $user->honor_points,
             'planets'       => $planets,
             'moons'         => $moons,
-        ]);
+        ];
     }
 
     /**

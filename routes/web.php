@@ -186,6 +186,7 @@ Route::middleware(['auth', 'banned', 'globalgame', 'locale', 'firstlogin'])->gro
 
     // Import / Export
     Route::get('/merchant/import-export', [\OGame\Http\Controllers\ImportExportController::class, 'index'])->name('importexport.index');
+    Route::get('/ajax/merchant/import-export', [\OGame\Http\Controllers\ImportExportController::class, 'partial'])->name('importexport.partial');
     Route::post('/merchant/import-export/pay', [\OGame\Http\Controllers\ImportExportController::class, 'pay'])->name('importexport.pay');
     Route::post('/merchant/import-export/change', [\OGame\Http\Controllers\ImportExportController::class, 'change'])->name('importexport.change');
     Route::post('/merchant/import-export/take', [\OGame\Http\Controllers\ImportExportController::class, 'take'])->name('importexport.take');
