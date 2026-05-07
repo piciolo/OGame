@@ -48,10 +48,18 @@
         {{-- ── Avatar collezionabili ───────────────────────────────────── --}}
         <div id="achievementContentList_avatars" class="achievementContentList avatars hidden">
             @foreach($rewardCatalog['avatar'] as $machineName)
-                @php $unlocked = in_array($machineName, $unlockedAvatars, true); @endphp
-                <div class="achievementOverviewProfilePictureHolder {{ $unlocked ? 'unlocked' : '' }}"
-                     data-machine-name="{{ $machineName }}">
-                    <span class="profile-picture {{ $machineName }} {{ $unlocked ? 'unlocked' : 'locked' }}"></span>
+                @php
+                    $unlocked = in_array($machineName, $unlockedAvatars, true);
+                    $isCurrent = ($targetPlayer->getUser()->profile_avatar ?? '') === $machineName;
+                    // Avatar reale solo se sbloccato. Altrimenti lock overlay OGame.
+                    $bgUrl = $unlocked ? '/img/achievements/avatars/'.$machineName.'.jpg' : '/img/achievements/avatar_locked.jpg';
+                @endphp
+                <div class="achievementOverviewProfilePictureHolder {{ $unlocked ? 'unlocked' : '' }} {{ $isCurrent ? 'currentSelection' : '' }}"
+                     data-machine-name="{{ $machineName }}"
+                     data-reward-type="avatar"
+                     title="{{ $machineName }}">
+                    <span class="profile-picture {{ $machineName }} {{ $unlocked ? 'unlocked' : 'locked' }}"
+                          style="background-image: url('{{ $bgUrl }}');"></span>
                 </div>
             @endforeach
             @if(count($rewardCatalog['avatar']) === 0)
@@ -62,10 +70,18 @@
         {{-- ── Skin pianeta ─────────────────────────────────────────────── --}}
         <div id="achievementContentList_spaceObjectSkins" class="achievementContentList spaceObjectSkins hidden">
             @foreach($rewardCatalog['skin'] as $machineName)
-                @php $unlocked = in_array($machineName, $unlockedSkins, true); @endphp
-                <div class="achievementOverviewSpaceObjectSkinHolder {{ $unlocked ? 'unlocked' : '' }}"
-                     data-machine-name="{{ $machineName }}">
-                    <span class="space-object-skin {{ $machineName }} {{ $unlocked ? 'unlocked' : 'locked' }}"></span>
+                @php
+                    $unlocked = in_array($machineName, $unlockedSkins, true);
+                    $isCurrent = ($targetPlayer->getUser()->profile_planet_skin ?? '') === $machineName;
+                    // Skin reale sempre disponibile (sono renderizzati indipendentemente dallo stato).
+                    $bgUrl = '/img/achievements/skins/'.$machineName.'.png';
+                @endphp
+                <div class="achievementOverviewSpaceObjectSkinHolder {{ $unlocked ? 'unlocked' : '' }} {{ $isCurrent ? 'currentSelection' : '' }}"
+                     data-machine-name="{{ $machineName }}"
+                     data-reward-type="skin"
+                     title="{{ $machineName }}">
+                    <span class="space-object-skin {{ $machineName }} {{ $unlocked ? 'unlocked' : 'locked' }}"
+                          style="background-image: url('{{ $bgUrl }}');"></span>
                 </div>
             @endforeach
             @if(count($rewardCatalog['skin']) === 0)
@@ -76,9 +92,13 @@
         {{-- ── Titoli ──────────────────────────────────────────────────── --}}
         <div id="achievementContentList_titles" class="achievementContentList titles hidden">
             @foreach($rewardCatalog['title'] as $machineName)
-                @php $unlocked = in_array($machineName, $unlockedTitles, true); @endphp
-                <div class="achievementOverviewTitleHolder {{ $unlocked ? 'unlocked' : 'locked' }}"
-                     data-machine-name="{{ $machineName }}">
+                @php
+                    $unlocked = in_array($machineName, $unlockedTitles, true);
+                    $isCurrent = ($targetPlayer->getUser()->profile_title ?? '') === $machineName;
+                @endphp
+                <div class="achievementOverviewTitleHolder {{ $unlocked ? 'unlocked' : 'locked' }} {{ $isCurrent ? 'currentSelection' : '' }}"
+                     data-machine-name="{{ $machineName }}"
+                     data-reward-type="title">
                     <span>{{ __('t_ingame.achievements.title_'.$machineName, [], __('t_ingame.profile.no_title')) }}</span>
                 </div>
             @endforeach

@@ -85,6 +85,36 @@ class PlayerProfileController extends OGameController
     }
 
     /**
+     * Imposta avatar/skin/title come selezione corrente del profilo del giocatore.
+     * Richiede che la ricompensa sia gia' sbloccata (player_unlocked_*).
+     */
+    public function selectReward(Request $request, PlayerService $currentPlayer, AchievementService $achievementService): JsonResponse
+    {
+        $type = (string) $request->input('type', '');
+        $machineName = (string) $request->input('machine_name', '');
+
+        if (!in_array($type, ['avatar', 'skin', 'title'], true)) {
+            return response()->json(['success' => false, 'error' => 'invalid_type'], 422);
+        }
+        if ($machineName === '') {
+            return response()->json(['success' => false, 'error' => 'invalid_machine_name'], 422);
+        }
+        if (!$achievementService->isUnlocked($currentPlayer, $type, $machineName)) {
+            return response()->json(['success' => false, 'error' => 'reward_locked'], 403);
+        }
+
+        $user = $currentPlayer->getUser();
+        match ($type) {
+            'avatar' => $user->profile_avatar = $machineName,
+            'skin' => $user->profile_planet_skin = $machineName,
+            'title' => $user->profile_title = $machineName,
+        };
+        $user->save();
+
+        return response()->json(['success' => true, 'type' => $type, 'machine_name' => $machineName]);
+    }
+
+    /**
      * Toggle visibility flags (profile_visible, achievements_visible, global_profile).
      */
     public function visibility(Request $request, PlayerService $currentPlayer): JsonResponse

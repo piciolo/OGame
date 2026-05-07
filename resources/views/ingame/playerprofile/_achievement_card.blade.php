@@ -67,14 +67,18 @@
 
                 <div class="achievementReward">
                     <div class="rewardTitle">{{ __('t_ingame.achievements.reward') }}</div>
+                    @php $tierUnlocked = $tier->tier <= $completedTier; @endphp
                     @if($tier->reward_type === 'skin')
-                        <span class="space-object-skin {{ $tier->reward_machine_name }} {{ $tier->tier <= $completedTier ? 'unlocked' : 'locked' }}"></span>
+                        <span class="space-object-skin {{ $tier->reward_machine_name }} {{ $tierUnlocked ? 'unlocked' : 'locked' }}"
+                              style="background-image: url('/img/achievements/skins/{{ $tier->reward_machine_name }}.png');"></span>
                         <div class="rewardDescription">{{ __('t_ingame.achievements.reward_skin') }}</div>
                     @elseif($tier->reward_type === 'avatar')
-                        <span class="profile-picture {{ $tier->reward_machine_name }} {{ $tier->tier <= $completedTier ? 'unlocked' : 'locked' }}"></span>
+                        @php $avatarUrl = $tierUnlocked ? '/img/achievements/avatars/'.$tier->reward_machine_name.'.jpg' : '/img/achievements/avatar_locked.jpg'; @endphp
+                        <span class="profile-picture {{ $tier->reward_machine_name }} {{ $tierUnlocked ? 'unlocked' : 'locked' }}"
+                              style="background-image: url('{{ $avatarUrl }}');"></span>
                         <div class="rewardDescription">{{ __('t_ingame.achievements.reward_avatar') }}</div>
                     @else
-                        <div class="achievementTitleReward {{ $tier->tier <= $completedTier ? 'unlocked' : 'locked' }}">
+                        <div class="achievementTitleReward {{ $tierUnlocked ? 'unlocked' : 'locked' }}">
                             <span>{{ __('t_ingame.achievements.title_'.$tier->reward_machine_name, [], __('t_ingame.achievements.reward_title')) }}</span>
                         </div>
                         <div class="rewardDescription">{{ __('t_ingame.achievements.reward_title') }}</div>

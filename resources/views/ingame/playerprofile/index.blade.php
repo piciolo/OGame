@@ -234,6 +234,48 @@
                 });
             });
         });
+
+        @if($isOwner)
+        // Click su avatar/skin/titolo SBLOCCATO -> imposta come selezione del profilo.
+        var rewardEndpoint = @json(route('playerprofile.selectreward'));
+        var csrfRT = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+        function selectReward(holder) {
+            if (!holder.classList.contains('unlocked')) return;
+            var type = holder.getAttribute('data-reward-type');
+            var machine = holder.getAttribute('data-machine-name');
+            if (!type || !machine) return;
+            fetch(rewardEndpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': csrfRT,
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                credentials: 'same-origin',
+                body: JSON.stringify({ type: type, machine_name: machine })
+            }).then(function (r) {
+                if (!r.ok) throw new Error('HTTP ' + r.status);
+                return r.json();
+            }).then(function (data) {
+                if (!data.success) throw new Error('fail');
+                // Aggiorna UI: rimuove .currentSelection dai sibling dello stesso tipo, aggiunge a quello cliccato.
+                var selector = '[data-reward-type="' + type + '"]';
+                document.querySelectorAll(selector).forEach(function (el) { el.classList.remove('currentSelection'); });
+                holder.classList.add('currentSelection');
+                // Aggiorna avatar header se type == avatar.
+                if (type === 'avatar') {
+                    var pp = document.querySelector('#bar .profile-picture');
+                    if (pp) pp.style.backgroundImage = "url('/img/achievements/avatars/" + machine + ".jpg')";
+                }
+            }).catch(function () {
+                // silent fail
+            });
+        }
+        document.querySelectorAll('[data-reward-type]').forEach(function (h) {
+            h.addEventListener('click', function () { selectReward(h); });
+        });
+        @endif
     })();
     </script>
     @endif

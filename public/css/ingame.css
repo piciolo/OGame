@@ -49365,6 +49365,18 @@ div.claimsmall p {
 .achievementOverviewProfilePictureHolder.unlocked,
 .achievementOverviewSpaceObjectSkinHolder.unlocked {
     border-color: #66B817;
+    cursor: pointer;
+}
+.achievementOverviewProfilePictureHolder.unlocked:hover,
+.achievementOverviewSpaceObjectSkinHolder.unlocked:hover {
+    box-shadow: 0 0 6px rgba(102, 184, 23, 0.6);
+}
+/* Selezione corrente: bordo dorato */
+.achievementOverviewProfilePictureHolder.currentSelection,
+.achievementOverviewSpaceObjectSkinHolder.currentSelection,
+.achievementOverviewTitleHolder.currentSelection {
+    border-color: #ffcc00 !important;
+    box-shadow: 0 0 6px rgba(255, 204, 0, 0.7);
 }
 .achievementOverviewProfilePictureHolder .profile-picture,
 .achievementOverviewSpaceObjectSkinHolder .space-object-skin {

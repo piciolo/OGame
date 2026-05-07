@@ -251,6 +251,7 @@ Route::middleware(['auth', 'banned', 'globalgame', 'locale', 'firstlogin'])->gro
     Route::post('/ajax/playerprofile/visibility', [PlayerProfileController::class, 'visibility'])->name('playerprofile.visibility');
     Route::post('/ajax/playerprofile/tags', [PlayerProfileController::class, 'tags'])->name('playerprofile.tags');
     Route::post('/ajax/playerprofile/gender', [PlayerProfileController::class, 'gender'])->name('playerprofile.gender');
+    Route::post('/ajax/playerprofile/select-reward', [PlayerProfileController::class, 'selectReward'])->name('playerprofile.selectreward');
 
     Route::impersonate();
 

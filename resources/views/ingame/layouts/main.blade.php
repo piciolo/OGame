@@ -160,9 +160,17 @@
         <div id="headerbarcomponent" class="">
             <div id="bar">
                 <div id="playerName">
-                    @php $playerLocale = $currentPlayer->getUser()->lang ?: app()->getLocale(); @endphp
+                    @php
+                        $playerLocale = $currentPlayer->getUser()->lang ?: app()->getLocale();
+                        $userAvatar = $currentPlayer->getUser()->profile_avatar ?? null;
+                        $headerAvatarUrl = $userAvatar
+                            ? '/img/achievements/avatars/'.$userAvatar.'.jpg'
+                            : '/img/layout/profile-default.png';
+                    @endphp
                     <a href="{{ route('playerprofile.index') }}" class="profile-picture-link"
-                    ><span class="profile-picture sq26 default" data-initial="{{ strtoupper(substr(strip_tags($currentPlayer->getUsername()), 0, 1)) }}">{{ strtoupper(substr(strip_tags($currentPlayer->getUsername()), 0, 1)) }}</span></a>
+                    ><span class="profile-picture sq26 default"
+                           data-initial="{{ strtoupper(substr(strip_tags($currentPlayer->getUsername()), 0, 1)) }}"
+                           style="background-image: url('{{ $headerAvatarUrl }}');">{{ strtoupper(substr(strip_tags($currentPlayer->getUsername()), 0, 1)) }}</span></a>
                     <span class="lang-flag lang-flag-{{ $playerLocale }}" title="{{ strtoupper($playerLocale) }}"></span>
                     <span class="textBeefy">
                         <a href="{{ route('playerprofile.index') }}"
