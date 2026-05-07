@@ -6,6 +6,7 @@ use OGame\Console\Commands\Scheduler\DarkMatterRegenerateCommand;
 use OGame\Console\Commands\Scheduler\GenerateAllianceHighscores;
 use OGame\Console\Commands\Scheduler\GenerateHighscoreRanks;
 use OGame\Console\Commands\Scheduler\GenerateHighscores;
+use OGame\Console\Commands\Scheduler\RecomputeAchievements;
 use OGame\Console\Commands\Scheduler\ResetDebrisFields;
 use OGame\Console\Commands\Scheduler\SnapshotPlayerRanks;
 
@@ -40,3 +41,7 @@ Schedule::command(AuctioneerTickCommand::class)->everyMinute()->withoutOverlappi
 
 // Daily snapshot of player ranks for profile delta arrows (00:05 to ensure highscore ranks are fresh)
 Schedule::command(SnapshotPlayerRanks::class)->dailyAt('00:05')->withoutOverlapping();
+
+// Recompute achievements progress every hour for all players (catches changes
+// the just-in-time recompute on profile view doesn't catch for non-owners).
+Schedule::command(RecomputeAchievements::class)->hourly()->withoutOverlapping();

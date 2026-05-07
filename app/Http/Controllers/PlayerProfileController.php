@@ -6,6 +6,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use OGame\Factories\PlayerServiceFactory;
+use OGame\Services\AchievementProgressTracker;
 use OGame\Services\AchievementService;
 use OGame\Services\PlayerProfileService;
 use OGame\Services\PlayerService;
@@ -17,6 +18,7 @@ class PlayerProfileController extends OGameController
         PlayerService $currentPlayer,
         PlayerProfileService $profileService,
         AchievementService $achievementService,
+        AchievementProgressTracker $progressTracker,
         PlayerServiceFactory $playerFactory,
     ): View {
         $this->setBodyId('playerprofile');
@@ -32,6 +34,12 @@ class PlayerProfileController extends OGameController
         // Visibility check (owners always see their own profile).
         $visible = $isOwner || (bool) ($targetPlayer->getUser()->profile_visible ?? true);
         $achievementsVisible = $isOwner || (bool) ($targetPlayer->getUser()->achievements_visible ?? true);
+
+        // Ricalcola i progressi achievement just-in-time (stateless recompute).
+        // Solo per il proprietario: per gli altri si guarda solo lo stato già salvato.
+        if ($isOwner && $achievementsVisible) {
+            $progressTracker->recomputeForPlayer($targetPlayer);
+        }
 
         return view('ingame.playerprofile.index')->with([
             'isOwner' => $isOwner,
