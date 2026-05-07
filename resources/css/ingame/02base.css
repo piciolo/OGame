@@ -1195,3 +1195,124 @@ ul.chat_bar_list .newMsgMarker {
     margin-top:-64px;
     background:url(/img/galaxy/ajax_indicator.gif);
 }
+
+/* =============================================
+   HEADER BAR — OGame style redesign
+   ============================================= */
+
+#headerbarcomponent {
+    height: 26px;
+}
+
+#bar {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    width: calc(100% - 1px);
+    height: 26px;
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(15,18,22,1) 95%, rgba(15,18,22,0) 100%);
+    font-size: 11px;
+    margin-top: 0;
+    padding: 0 6px;
+    box-sizing: border-box;
+    z-index: 1;
+    color: #f1f1f1;
+    text-align: left;
+}
+
+#bar #playerName {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    float: none;
+    margin-right: 10px;
+}
+
+#bar #playerName > a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+/* Profile picture stile OGame: quadrato 26x26 con angoli stondati */
+#bar .profile-picture,
+#bar profile-picture {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    --var-width: 26;
+    --var-height: 26;
+    border-radius: 4px;
+    background-color: #0f2235;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: #6f9fc8;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    flex-shrink: 0;
+    cursor: pointer;
+    vertical-align: middle;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+#bar .profile-picture.default {
+    border: 1px solid #2a5070;
+    background-image: url("/img/layout/profile-default.png");
+    font-size: 0;
+    color: transparent;
+}
+
+#bar .profile-picture.sq26 {
+    width: 26px !important;
+    height: 26px !important;
+}
+
+#bar .profile-picture:hover {
+    border-color: #6f9fc8;
+}
+
+#bar #headerBarLinks {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+#bar #headerBarLinks span {
+    display: inline;
+    list-style: none;
+    margin: 0 8px 0 0;
+    white-space: nowrap;
+}
+
+#bar #headerBarLinks span:last-child {
+    margin-right: 0;
+}
+
+#bar #headerBarLinks span.highlightHeaderLink a {
+    color: #ffcc00;
+    font-weight: 700;
+}
+
+#bar .OGameClock {
+    flex-shrink: 0;
+    float: none;
+    margin: 0;
+    color: #848484;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* Override: nasconde la vecchia struttura ul se presente */
+#bar > ul {
+    display: none;
+}

@@ -7,6 +7,7 @@ use OGame\Console\Commands\Scheduler\GenerateAllianceHighscores;
 use OGame\Console\Commands\Scheduler\GenerateHighscoreRanks;
 use OGame\Console\Commands\Scheduler\GenerateHighscores;
 use OGame\Console\Commands\Scheduler\ResetDebrisFields;
+use OGame\Console\Commands\Scheduler\SnapshotPlayerRanks;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +37,6 @@ Schedule::command(DarkMatterRegenerateCommand::class)->everyFiveMinutes()->witho
 
 // Advance auctioneer state machine every minute (spawn/start/close/assign)
 Schedule::command(AuctioneerTickCommand::class)->everyMinute()->withoutOverlapping();
+
+// Daily snapshot of player ranks for profile delta arrows (00:05 to ensure highscore ranks are fresh)
+Schedule::command(SnapshotPlayerRanks::class)->dailyAt('00:05')->withoutOverlapping();

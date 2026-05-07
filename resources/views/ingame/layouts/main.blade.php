@@ -159,62 +159,56 @@
         <div id="pageReloader" onclick="javascript: redirectOverview();"></div>
         <div id="headerbarcomponent" class="">
             <div id="bar">
-                <ul>
-                    <li id="playerName">
-                        {{ __('t_ingame.layout.player') }}:
-                        @php $playerLocale = $currentPlayer->getUser()->lang ?: app()->getLocale(); @endphp
-                        <span class="lang-flag lang-flag-{{ $playerLocale }}" title="{{ strtoupper($playerLocale) }}"></span>
-                        <span class="textBeefy">
-                                <a href="{{ route('changenick.overlay') }}"
-                                   class="overlay textBeefy"
-                                   data-overlay-title="{{ __('t_ingame.layout.change_player_name') }}"
-                                   data-overlay-popup-width="400"
-                                   data-overlay-popup-height="200"
-                                >
-                                    {!! $currentPlayer->getUsername() !!}
-                                </a>
-                            </span>
-                    </li>
-                    <li>
+                <div id="playerName">
+                    @php $playerLocale = $currentPlayer->getUser()->lang ?: app()->getLocale(); @endphp
+                    <a href="{{ route('playerprofile.index') }}" class="profile-picture-link"
+                    ><span class="profile-picture sq26 default" data-initial="{{ strtoupper(substr(strip_tags($currentPlayer->getUsername()), 0, 1)) }}">{{ strtoupper(substr(strip_tags($currentPlayer->getUsername()), 0, 1)) }}</span></a>
+                    <span class="lang-flag lang-flag-{{ $playerLocale }}" title="{{ strtoupper($playerLocale) }}"></span>
+                    <span class="textBeefy">
+                        <a href="{{ route('playerprofile.index') }}"
+                           class="textBeefy"
+                        >{!! $currentPlayer->getUsername() !!}</a>
+                    </span>
+                </div>
+                <div id="headerBarLinks">
+                    <span @if(request()->routeIs('playerprofile.*')) class="highlightHeaderLink" @endif>
+                        <a href="{{ route('playerprofile.index') }}" accesskey="">{{ __('t_ingame.profile.tab_profile') }}</a>
+                    </span>
+                    <span>
                         <a href="{{ route('highscore.index') }}" accesskey="">{{ __('t_ingame.layout.highscore') }}</a>
                         ({{ $highscoreRank }})
-                    </li>
-                    <li>
+                    </span>
+                    <span>
                         <a href="{{ route('notes.overlay') }}"
-                           class="overlay" data-overlay-title="{{ __('t_ingame.layout.notes_overlay_title') }}"
+                           class="overlay"
+                           data-overlay-title="{{ __('t_ingame.layout.notes_overlay_title') }}"
                            data-overlay-class="notices"
                            data-overlay-popup-width="750"
                            data-overlay-popup-height="480"
-                           accesskey="">
-                            {{ __('t_ingame.layout.notes') }}</a>
-                    </li>
-                    <li>
-                        <a class=""
-                           accesskey=""
-                           href="{{ route('buddies.index') }}"
-                        >
-                            {{ __('t_ingame.layout.buddies') }}@if($buddyRequestCount > 0) <span style="color: white;">({{ $buddyRequestCount }})</span>@endif</a>
-                    </li>
-                    <li><a class="overlay"
+                           accesskey="">{{ __('t_ingame.layout.notes') }}</a>
+                    </span>
+                    <span>
+                        <a class="" accesskey="" href="{{ route('buddies.index') }}">{{ __('t_ingame.layout.buddies') }}@if($buddyRequestCount > 0) <span style="color: white;">({{ $buddyRequestCount }})</span>@endif</a>
+                    </span>
+                    <span>
+                        <a class="overlay"
                            href="{{ route('search.overlay') }}"
                            data-overlay-title="{{ __('t_ingame.layout.search_overlay_title') }}"
                            data-overlay-close="__default closeSearch"
                            data-overlay-class="search"
                            accesskey="">{{ __('t_ingame.layout.search') }}</a>
-                    </li>
-                    <li><a href="{{ route('options.index') }}" accesskey="">{{ __('t_ingame.layout.options') }}</a></li>
-                    <li><a href="#">{{ __('t_ingame.layout.support') }}</a></li>
-                    <li>
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">{{ __('t_ingame.layout.log_out') }}</a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                              style="display: none;">
+                    </span>
+                    <span><a href="{{ route('options.index') }}" accesskey="">{{ __('t_ingame.layout.options') }}</a></span>
+                    <span><a href="#">{{ __('t_ingame.layout.support') }}</a></span>
+                    <span>
+                        <a href="{{ route('logout') }}"
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('t_ingame.layout.log_out') }}</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
                         </form>
-                    </li>
-                    <li class="OGameClock">{{ \Carbon\Carbon::now()->format('d.m.Y H:i:s') }}</li>
-                </ul>
+                    </span>
+                </div>
+                <div class="OGameClock">{{ \Carbon\Carbon::now()->format('d.m.Y') }} <span>{{ \Carbon\Carbon::now()->format('H:i:s') }}</span></div>
             </div>
         </div>
         <div id="resourcesbarcomponent" class="">

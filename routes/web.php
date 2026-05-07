@@ -19,6 +19,7 @@ use OGame\Http\Controllers\FleetEventsController;
 use OGame\Http\Controllers\ForgotEmailController;
 use OGame\Http\Controllers\GalaxyController;
 use OGame\Http\Controllers\HighscoreController;
+use OGame\Http\Controllers\PlayerProfileController;
 use OGame\Http\Controllers\JumpGateController;
 use OGame\Http\Controllers\LanguageController;
 use OGame\Http\Controllers\MerchantController;
@@ -121,6 +122,14 @@ Route::middleware(['auth', 'banned', 'globalgame', 'locale', 'firstlogin'])->gro
 
     // Techtree
     Route::get('/ajax/techtree', [TechtreeController::class, 'ajax'])->name('techtree.ajax');
+
+    // IPI / Panoramica direttive (Initial Player Instructions)
+    // GET routes match the original OGame IPI module's $.get(url + "&token=...") flow.
+    // CSRF is enforced via the token query param (validated server-side in IpiOverviewController).
+    Route::get('/ajax/ipioverview/overlay', [\OGame\Http\Controllers\IpiOverviewController::class, 'overlay'])->name('ipioverview.overlay');
+    Route::get('/ajax/ipioverview/track-task', [\OGame\Http\Controllers\IpiOverviewController::class, 'trackTask'])->name('ipioverview.tracktask');
+    Route::get('/ajax/ipioverview/collect-task', [\OGame\Http\Controllers\IpiOverviewController::class, 'collectTask'])->name('ipioverview.collecttask');
+    Route::get('/ajax/ipioverview/collect-chapter', [\OGame\Http\Controllers\IpiOverviewController::class, 'collectChapter'])->name('ipioverview.collectchapter');
 
     // Fleet
     Route::get('/fleet', [FleetController::class, 'index'])->name('fleet.index');
@@ -237,6 +246,11 @@ Route::middleware(['auth', 'banned', 'globalgame', 'locale', 'firstlogin'])->gro
 
     Route::get('/highscore', [HighscoreController::class, 'index'])->name('highscore.index');
     Route::post('/ajax/highscore', [HighscoreController::class, 'ajax'])->name('highscore.ajax');
+
+    Route::get('/playerprofile', [PlayerProfileController::class, 'index'])->name('playerprofile.index');
+    Route::post('/ajax/playerprofile/visibility', [PlayerProfileController::class, 'visibility'])->name('playerprofile.visibility');
+    Route::post('/ajax/playerprofile/tags', [PlayerProfileController::class, 'tags'])->name('playerprofile.tags');
+    Route::post('/ajax/playerprofile/gender', [PlayerProfileController::class, 'gender'])->name('playerprofile.gender');
 
     Route::impersonate();
 

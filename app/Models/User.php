@@ -143,6 +143,11 @@ class User extends Authenticatable
         'character_class_free_used' => 'boolean',
         'character_class_changed_at' => 'datetime',
         'alliance_left_at' => 'datetime',
+        'profile_visible' => 'boolean',
+        'achievements_visible' => 'boolean',
+        'global_profile' => 'boolean',
+        'profile_tags' => 'array',
+        'profile_gender' => 'string',
     ];
 
     /**
