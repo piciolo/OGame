@@ -6,6 +6,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use OGame\Factories\PlayerServiceFactory;
+use OGame\Services\AchievementService;
 use OGame\Services\PlayerProfileService;
 use OGame\Services\PlayerService;
 
@@ -15,6 +16,7 @@ class PlayerProfileController extends OGameController
         Request $request,
         PlayerService $currentPlayer,
         PlayerProfileService $profileService,
+        AchievementService $achievementService,
         PlayerServiceFactory $playerFactory,
     ): View {
         $this->setBodyId('playerprofile');
@@ -29,14 +31,21 @@ class PlayerProfileController extends OGameController
 
         // Visibility check (owners always see their own profile).
         $visible = $isOwner || (bool) ($targetPlayer->getUser()->profile_visible ?? true);
+        $achievementsVisible = $isOwner || (bool) ($targetPlayer->getUser()->achievements_visible ?? true);
 
         return view('ingame.playerprofile.index')->with([
             'isOwner' => $isOwner,
             'visible' => $visible,
+            'achievementsVisible' => $achievementsVisible,
             'targetPlayer' => $targetPlayer,
             'profileEntries' => $visible ? $profileService->getProfileEntries($targetPlayer) : [],
             'moreInfoEntries' => $visible ? $profileService->getMoreInfoEntries($targetPlayer) : [],
             'availableTags' => $isOwner ? $profileService->getAvailableTags($targetPlayer) : [],
+            'achievements' => $achievementsVisible ? $achievementService->getAchievementsForPlayer($targetPlayer) : collect(),
+            'unlockedAvatars' => $achievementsVisible ? $achievementService->getUnlockedAvatars($targetPlayer) : [],
+            'unlockedSkins' => $achievementsVisible ? $achievementService->getUnlockedSkins($targetPlayer) : [],
+            'unlockedTitles' => $achievementsVisible ? $achievementService->getUnlockedTitles($targetPlayer) : [],
+            'rewardCatalog' => $achievementsVisible ? $achievementService->getRewardCatalog() : ['avatar' => [], 'skin' => [], 'title' => []],
         ]);
     }
 

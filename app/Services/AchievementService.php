@@ -39,6 +39,27 @@ class AchievementService
     }
 
     /**
+     * Catalogo completo di avatar/skin/titoli (machine_name) attualmente esistenti
+     * nel sistema. Letti dai reward_machine_name dei tier (sorgente di verità unica).
+     *
+     * @return array{avatar: array<int, string>, skin: array<int, string>, title: array<int, string>}
+     */
+    public function getRewardCatalog(): array
+    {
+        $cat = ['avatar' => [], 'skin' => [], 'title' => []];
+        $tiers = \OGame\Models\AchievementTier::query()
+            ->select(['reward_type', 'reward_machine_name'])
+            ->orderBy('reward_machine_name')
+            ->get();
+        foreach ($tiers as $t) {
+            if (isset($cat[$t->reward_type]) && !in_array($t->reward_machine_name, $cat[$t->reward_type], true)) {
+                $cat[$t->reward_type][] = $t->reward_machine_name;
+            }
+        }
+        return $cat;
+    }
+
+    /**
      * Avatar sbloccati dal giocatore (per la tab Avatar).
      *
      * @return array<int, string>  array di machine_name

@@ -6,10 +6,16 @@
         <div id="inhalt">
 
             <div class="tabSelection">
-                <div class="tabSelectionTab profileTab active">{{ __('t_ingame.profile.tab_profile') }}</div>
-                <div class="tabSelectionTab achievementsTab inactive disabled" title="{{ __('t_ingame.profile.tab_achievements_disabled') }}">{{ __('t_ingame.profile.tab_achievements') }}</div>
+                <div class="tabSelectionTab profileTab active" data-target="profileOverview">{{ __('t_ingame.profile.tab_profile') }}</div>
+                <div class="tabSelectionTab achievementsTab" data-target="achievementOverview">{{ __('t_ingame.profile.tab_achievements') }}</div>
                 <div class="none"></div>
             </div>
+
+            @if($achievementsVisible)
+                <div id="achievementOverview" class="contentRS hidden">
+                    @include('ingame.playerprofile._achievements')
+                </div>
+            @endif
 
             @if(!$visible)
                 <div id="profileOverview" class="contentRS">
@@ -141,6 +147,96 @@
 
         </div>
     </div>
+
+    {{-- ── JS Tab Trofei (anche per non-owner se achievements_visible) ── --}}
+    @if($achievementsVisible)
+    <script>
+    (function () {
+        'use strict';
+        // Top-level tab switch (Profilo / Trofei)
+        var profileOv = document.getElementById('profileOverview');
+        var achievOv = document.getElementById('achievementOverview');
+        document.querySelectorAll('.tabSelectionTab').forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                if (tab.classList.contains('disabled')) return;
+                document.querySelectorAll('.tabSelectionTab').forEach(function (t) { t.classList.remove('active'); });
+                tab.classList.add('active');
+                var target = tab.getAttribute('data-target');
+                if (profileOv) profileOv.classList.toggle('hidden', target !== 'profileOverview');
+                if (achievOv) achievOv.classList.toggle('hidden', target !== 'achievementOverview');
+            });
+        });
+
+        // Sub-category switch (Riepilogo / Avatar / Skin / Titoli)
+        var categories = document.querySelectorAll('#achievementsOverviewCategories .achievementCategory');
+        var lists = {
+            unlocks: document.getElementById('achievementContentList_unlocks'),
+            avatars: document.getElementById('achievementContentList_avatars'),
+            spaceObjectSkins: document.getElementById('achievementContentList_spaceObjectSkins'),
+            titles: document.getElementById('achievementContentList_titles'),
+        };
+        categories.forEach(function (cat) {
+            cat.addEventListener('click', function () {
+                categories.forEach(function (c) { c.classList.remove('active'); });
+                cat.classList.add('active');
+                var key = cat.getAttribute('data-category');
+                Object.keys(lists).forEach(function (k) {
+                    if (lists[k]) lists[k].classList.toggle('hidden', k !== key);
+                });
+            });
+        });
+
+        // Filtri Riepilogo (all / unfinished / finished)
+        var filterBtns = document.querySelectorAll('#achievementOverviewAchievementFilters [data-filter]');
+        filterBtns.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                filterBtns.forEach(function (b) { b.classList.remove('selected', 'green'); });
+                btn.classList.add('selected', 'green');
+                var f = btn.getAttribute('data-filter');
+                document.querySelectorAll('#achievementContentList_unlocks .achievementOverviewAchievementHolder').forEach(function (card) {
+                    var done = parseInt(card.getAttribute('data-completed-tier') || '0', 10);
+                    var total = parseInt(card.getAttribute('data-total-tiers') || '0', 10);
+                    var isFinished = (done > 0 && done >= total);
+                    var visible = (f === 'all') || (f === 'unfinished' && !isFinished) || (f === 'finished' && isFinished);
+                    card.classList.toggle('hidden', !visible);
+                });
+            });
+        });
+
+        // Expand all / Collapse all (mostra/nascondi tutte le tier visibili)
+        var expandBtn = document.getElementById('achievementOverviewExpandAllBtn');
+        var collapseBtn = document.getElementById('achievementOverviewCollapseAllBtn');
+        if (expandBtn) {
+            expandBtn.addEventListener('click', function () {
+                document.querySelectorAll('#achievementContentList_unlocks .achievementOverviewAchievementHolder').forEach(function (card) {
+                    card.classList.add('expanded');
+                });
+            });
+        }
+        if (collapseBtn) {
+            collapseBtn.addEventListener('click', function () {
+                document.querySelectorAll('#achievementContentList_unlocks .achievementOverviewAchievementHolder').forEach(function (card) {
+                    card.classList.remove('expanded');
+                });
+            });
+        }
+
+        // Tier selector: click su una stellina mostra il tier container corrispondente.
+        document.querySelectorAll('.achievementOverviewAchievementHolder').forEach(function (card) {
+            var btns = card.querySelectorAll('.achievementTierBtn');
+            var conts = card.querySelectorAll('.achievementTierContainer');
+            btns.forEach(function (b) {
+                b.addEventListener('click', function () {
+                    var tier = b.getAttribute('data-tier');
+                    btns.forEach(function (x) { x.classList.remove('selected'); });
+                    b.classList.add('selected');
+                    conts.forEach(function (c) { c.classList.toggle('visible', c.getAttribute('data-tier') === tier); });
+                });
+            });
+        });
+    })();
+    </script>
+    @endif
 
     @if($isOwner && $visible)
         <script>
