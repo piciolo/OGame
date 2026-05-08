@@ -43,18 +43,34 @@ space-object-skin > img {
 
 /* Override dimensione bottoni Seleziona/Deseleziona dei reward catalog.
    Il default `gradient-button { width: 150px }` (regola generica OGame)
-   sforerebbe il container 95x95 dell'holder. Ridimensiono al contenuto. */
+   sforerebbe il container 95x95 dell'holder. Ridimensiono al contenuto.
+   `display: none !important` forza la visibilità default a nascosto: senza
+   !important, le regole `gradient-button { display: flex }` di OGame
+   genericamente applicate (pari specificity 0,0,0,1 ma duplicate in più
+   sezioni di playerprofile_utilities.css) batterebbero il display:none
+   originale, mostrando il bottone Seleziona anche fuori hover. */
 #achievementsOverviewList .achievementContentList.avatars .achievementOverviewProfilePictureHolder .profilePictureSelectBtn,
 #achievementsOverviewList .achievementContentList.avatars .achievementOverviewProfilePictureHolder .profilePictureDeselectBtn,
 #achievementsOverviewList .achievementContentList.spaceObjectSkins .achievementOverviewSpaceObjectSkinHolder .spaceObjectSkinSelectBtn,
 #achievementsOverviewList .achievementContentList.spaceObjectSkins .achievementOverviewSpaceObjectSkinHolder .spaceObjectSkinDeselectBtn,
 #achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder .profileTitleSelectBtn,
 #achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder .profileTitleDeselectBtn {
+    display: none !important;
     width: auto !important;
     height: auto !important;
     min-width: 0 !important;
     left: 5px;
     right: 5px;
+}
+
+/* Hover override (overriding il display:none !important con flex !important). */
+#achievementsOverviewList .achievementContentList.avatars .achievementOverviewProfilePictureHolder:not(.selected):hover .profilePictureSelectBtn,
+#achievementsOverviewList .achievementContentList.spaceObjectSkins .achievementOverviewSpaceObjectSkinHolder:not(.selected):hover .spaceObjectSkinSelectBtn,
+#achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder:not(.locked):not(.selected):hover .profileTitleSelectBtn,
+#achievementsOverviewList .achievementContentList.avatars .achievementOverviewProfilePictureHolder.selected:hover .profilePictureDeselectBtn,
+#achievementsOverviewList .achievementContentList.spaceObjectSkins .achievementOverviewSpaceObjectSkinHolder.selected:hover .spaceObjectSkinDeselectBtn,
+#achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder.selected:hover .profileTitleDeselectBtn {
+    display: flex !important;
 }
 #achievementsOverviewList .achievementContentList.avatars .achievementOverviewProfilePictureHolder gradient-button button,
 #achievementsOverviewList .achievementContentList.spaceObjectSkins .achievementOverviewSpaceObjectSkinHolder gradient-button button,
