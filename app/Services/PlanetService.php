@@ -439,6 +439,43 @@ class PlanetService
      *
      * @return string
      */
+    /**
+     * Skin pianeta personalizzata (machine_name della reward Trofei) o null se default.
+     */
+    public function getSpaceObjectSkin(): ?string
+    {
+        $skin = $this->planet->space_object_skin ?? null;
+        return is_string($skin) && $skin !== '' ? $skin : null;
+    }
+
+    /**
+     * Imposta (o resetta a null) la skin pianeta. Persiste sul Planet model.
+     */
+    public function setSpaceObjectSkin(?string $machineName): void
+    {
+        $this->planet->space_object_skin = $machineName;
+        $this->planet->save();
+    }
+
+    /**
+     * URL dell'immagine pianeta da renderizzare nel planet bar e overview.
+     * Se è settata una skin reward → usa quella; altrimenti l'immagine
+     * default basata su biome+type derivati dalle coordinate.
+     */
+    public function getPlanetImageUrl(): string
+    {
+        $skin = $this->getSpaceObjectSkin();
+        if ($skin !== null) {
+            // Cerca skin locale .png prima poi .jpg
+            foreach (['.png', '.jpg'] as $ext) {
+                if (file_exists(public_path('img/achievements/skins/' . $skin . $ext))) {
+                    return asset('img/achievements/skins/' . $skin . $ext);
+                }
+            }
+        }
+        return asset('img/planets/medium/' . $this->getPlanetBiomeType() . '_' . $this->getPlanetImageType() . '.png');
+    }
+
     public function getPlanetImageType(): string
     {
         // Get system and planet.

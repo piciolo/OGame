@@ -112,14 +112,32 @@ class PlayerProfileController extends OGameController
 
         $user = $currentPlayer->getUser();
         $value = $machineName === '' ? null : $machineName;
-        match ($type) {
-            'avatar' => $user->profile_avatar = $value,
-            'skin' => $user->profile_planet_skin = $value,
-            'title' => $user->profile_title = $value,
-        };
+
+        // Skin: applica al pianeta CORRENTE (replica OGame in cui la skin è
+        // per-pianeta). Conserva anche profile_planet_skin sull'user come
+        // ultima skin selezionata, così il pop-up "scegli pianeta" può
+        // ricordare la preferenza globale (estensione futura).
+        $appliedTarget = null;
+        if ($type === 'skin') {
+            $currentPlanet = $currentPlayer->planets->current();
+            if ($currentPlanet !== null) {
+                $currentPlanet->setSpaceObjectSkin($value);
+                $appliedTarget = $currentPlanet->getPlanetId();
+            }
+            $user->profile_planet_skin = $value;
+        } elseif ($type === 'avatar') {
+            $user->profile_avatar = $value;
+        } else {
+            $user->profile_title = $value;
+        }
         $user->save();
 
-        return response()->json(['success' => true, 'type' => $type, 'machine_name' => $machineName]);
+        return response()->json([
+            'success' => true,
+            'type' => $type,
+            'machine_name' => $machineName,
+            'planet_id' => $appliedTarget,
+        ]);
     }
 
     /**

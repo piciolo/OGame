@@ -1741,13 +1741,16 @@ However, the Space Dock's engineers think that some of the remains can be salvag
                                                 <img id="planetBarSpaceObjectImg_{{ $planet->getPlanetId() }}"
                                                      class="planetPic js_replace2x"
                                                      alt="{{ $planet->getPlanetName() }}"
-                                                     src="{!! asset('img/planets/medium/' . $planet->getPlanetBiomeType() . '_' . $planet->getPlanetImageType() . '.png') !!}"
+                                                     src="{!! $planet->getPlanetImageUrl() !!}"
+                                                     data-default-src="{!! asset('img/planets/medium/' . $planet->getPlanetBiomeType() . '_' . $planet->getPlanetImageType() . '.png') !!}"
                                                      width="30" height="30">
                                             </div>
                                         @else
-                                            <img class="planetPic js_replace2x"
+                                            <img id="planetBarSpaceObjectImg_{{ $planet->getPlanetId() }}"
+                                                 class="planetPic js_replace2x"
                                                  alt="{{ $planet->getPlanetName() }}"
-                                                 src="{!! asset('img/planets/medium/' . $planet->getPlanetBiomeType() . '_' . $planet->getPlanetImageType() . '.png') !!}"
+                                                 src="{!! $planet->getPlanetImageUrl() !!}"
+                                                 data-default-src="{!! asset('img/planets/medium/' . $planet->getPlanetBiomeType() . '_' . $planet->getPlanetImageType() . '.png') !!}"
                                                  width="48" height="48">
                                         @endif
                                         <span class="planet-name ">{!! $planet->getPlanetName() !!}</span>

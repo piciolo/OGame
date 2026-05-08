@@ -284,6 +284,20 @@
                 list.querySelectorAll('.selected').forEach(function (el) { el.classList.remove('selected'); });
                 var target = list.querySelector('[' + dataAttr + '="' + machine + '"]');
                 if (target) target.classList.add('selected');
+                // Skin pianeta: aggiorna l'<img> nel planet bar per il pianeta cui
+                // è stata applicata. Il backend ritorna planet_id (= pianeta corrente).
+                if (type === 'skin' && data.planet_id) {
+                    var pImg = document.getElementById('planetBarSpaceObjectImg_' + data.planet_id);
+                    if (pImg) {
+                        if (machine === '') {
+                            // Deselect: ripristina default-src se presente.
+                            var def = pImg.getAttribute('data-default-src');
+                            if (def) pImg.src = def;
+                        } else {
+                            pImg.src = '/img/achievements/skins/' + machine + '.png';
+                        }
+                    }
+                }
                 // Aggiorna avatar header se type == avatar (sq200 nel profilo).
                 if (type === 'avatar') {
                     var ph = document.querySelector('.avatarHolder profile-picture');
