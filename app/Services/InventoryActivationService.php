@@ -81,6 +81,12 @@ class InventoryActivationService
      */
     public function activate(User $user, string $itemType, ?string $tier, int $planetId): array
     {
+        // Avatar profilo (acquistati dallo shop categoria "profilo"): non sono nel
+        // registry inventory_items, hanno logica dedicata che NON consuma l'item.
+        if ($itemType === 'profile_avatar') {
+            return $this->activateProfileAvatar($user, $tier);
+        }
+
         $registry = config('inventory_items');
         $key = $itemType . ':' . ((string) $tier);
         if (!isset($registry[$key])) {
@@ -148,6 +154,43 @@ class InventoryActivationService
 
             $item->status = 'consumed';
             $item->consumed_at = now();
+            $item->activated_at = now();
+            $item->save();
+
+            return ['ok' => true, 'code' => 'activated', 'item' => $item];
+        }, 3);
+    }
+
+    /**
+     * Avatar profilo dallo shop: applica al user (users.profile_avatar = "shop:<id>")
+     * MA NON consuma l'item — resta nell'inventario per essere riapplicato/disattivato.
+     * `activated_at` viene aggiornato a "now()" come marker dell'ultima attivazione.
+     *
+     * @return array{ok:bool, code:string, item:?UserItem}
+     */
+    private function activateProfileAvatar(User $user, ?string $tier): array
+    {
+        return DB::transaction(function () use ($user, $tier) {
+            /** @var UserItem|null $item */
+            $item = UserItem::query()
+                ->where('user_id', $user->id)
+                ->where('item_type', 'profile_avatar')
+                ->where('tier', $tier)
+                ->where('status', 'available')
+                ->lockForUpdate()
+                ->orderBy('id')
+                ->first();
+
+            if ($item === null) {
+                return ['ok' => false, 'code' => 'not_found', 'item' => null];
+            }
+
+            // Identifica l'avatar via shop_item id (source_ref).
+            $avatarRef = 'shop:' . (int) $item->source_ref;
+            $user->profile_avatar = $avatarRef;
+            $user->save();
+
+            // Marker di ultima attivazione (non consume).
             $item->activated_at = now();
             $item->save();
 

@@ -125,12 +125,20 @@
                             <div class="avatarHolder">
                                 @php
                                     // Avatar selezionato (DOM 1:1 OGame): l'<img> dentro <picture>
-                                    // si rende SOPRA il ::before (paint order pseudo < children),
-                                    // come fa OGame col custom element profile-picture.
+                                    // si rende SOPRA il ::before (paint order pseudo < children).
+                                    // Supporta 2 formati di profile_avatar:
+                                    //   1) "A1_T2_Ava_ID1" (reward Trofei)  → /img/achievements/avatars/<ref>.{jpg,png}
+                                    //   2) "shop:NN" (avatar shop premium)   → /img/shop/<image> (da shop_items)
                                     $selectedAvatar = $targetPlayer->getUser()->profile_avatar ?? '';
-                                    $avatarClass = $selectedAvatar !== '' ? $selectedAvatar : 'default';
+                                    $avatarClass = $selectedAvatar !== '' ? str_replace(':', '-', $selectedAvatar) : 'default';
                                     $selAvUrl = null;
-                                    if ($selectedAvatar !== '') {
+                                    if (str_starts_with($selectedAvatar, 'shop:')) {
+                                        $shopId = (int) substr($selectedAvatar, 5);
+                                        $shopAvatar = \OGame\Models\ShopItem::find($shopId);
+                                        if ($shopAvatar !== null && $shopAvatar->image) {
+                                            $selAvUrl = '/img/shop/'.$shopAvatar->image;
+                                        }
+                                    } elseif ($selectedAvatar !== '') {
                                         foreach (['.jpg', '.png'] as $ext) {
                                             if (file_exists(public_path('img/achievements/avatars/'.$selectedAvatar.$ext))) {
                                                 $selAvUrl = '/img/achievements/avatars/'.$selectedAvatar.$ext;

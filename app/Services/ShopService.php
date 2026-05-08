@@ -188,15 +188,26 @@ class ShopService
             // tier is VARCHAR(16) — too small for the sha1 ref (40 chars).
             // Identification of the purchased shop item is via source='shop' + source_ref=$item->id.
             // tier_key from shop_items (bronze/silver/gold/platinum) is used when present.
+            //
+            // Avatar shop items: distinguibili dal nome ("Avatar:") o dalla categoria
+            // "profilo". Vengono creati come item_type='profile_avatar' + category='profile'
+            // così l'inventario li raggruppa nella tab Profilo. Differenza chiave dai
+            // booster: l'attivazione NON consuma l'item (resta riusabile, vedi
+            // InventoryActivationService).
+            $isProfileAvatar = (bool) $item->categories->contains(fn ($c) => $c->key === 'profilo');
+            // Per i profile_avatar usiamo `tier = shop_item.id` come discriminante,
+            // così ogni avatar diverso ha uno stack univoco nell'inventario
+            // (lo stackRef è sha1(item_type:tier)).
             $userItem = UserItem::create([
                 'user_id'         => $locked->id,
-                'item_type'       => 'shop_item',
-                'tier'            => $item->tier_key,
-                'category'        => 'items',
-                'activation_type' => 'instant',
+                'item_type'       => $isProfileAvatar ? 'profile_avatar' : 'shop_item',
+                'tier'            => $isProfileAvatar ? (string) $item->id : $item->tier_key,
+                'category'        => $isProfileAvatar ? 'profile' : 'items',
+                'activation_type' => $isProfileAvatar ? 'manual' : 'instant',
                 'payload'         => [
                     'shop_ref' => $item->ref,
                     'name'     => $item->name,
+                    'image'    => $item->image,
                 ],
                 'status'          => 'available',
                 'acquired_at'     => now(),

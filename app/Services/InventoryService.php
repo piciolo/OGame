@@ -205,14 +205,60 @@ class InventoryService
         $result = [];
         $orders = [];
 
-        // Preload ShopItem rows for any shop_item UserItem (source_ref -> ShopItem)
-        $shopIds = $rows->where('item_type', 'shop_item')->pluck('source_ref')->filter()->unique()->values()->all();
+        // Preload ShopItem rows for any shop_item / profile_avatar UserItem
+        // (source_ref -> ShopItem). I profile_avatar usano lo stesso lookup ma
+        // con un ramo dedicato (item_type='profile_avatar', category=Profile).
+        $shopIds = $rows->whereIn('item_type', ['shop_item', 'profile_avatar'])
+            ->pluck('source_ref')->filter()->unique()->values()->all();
         $shopItems = [];
         if (!empty($shopIds)) {
             $shopItems = ShopItem::query()->whereIn('id', $shopIds)->get()->keyBy('id');
         }
 
         foreach ($rows as $row) {
+            // Avatar profilo dallo shop: stesso pattern shop_item ma il `ref` dello
+            // stack è basato su tier (= shop_item.id) per discriminare avatar diversi.
+            // Differenza chiave: NON consumabile — il backend mantiene status='available'
+            // anche dopo l'attivazione (vedi InventoryActivationService::activateProfileAvatar).
+            if ($row->item_type === 'profile_avatar') {
+                /** @var ShopItem|null $shop */
+                $shop = $shopItems[$row->source_ref] ?? null;
+                if ($shop === null) {
+                    continue;
+                }
+                $ref = UserItem::refFor('profile_avatar', $row->tier);
+                if (!isset($result[$ref])) {
+                    $profileRef = InventoryCategory::Profile->ref();
+                    $allRef = InventoryCategory::Items->ref();
+                    $tx = __('t_shop_items_data.' . $shop->ref);
+                    $hasTx = is_array($tx);
+                    $tName = $hasTx && isset($tx['name']) ? $tx['name'] : $shop->name;
+                    $tDesc = $hasTx && isset($tx['description']) ? $tx['description'] : ($shop->description ?? '');
+                    $result[$ref] = [
+                        'ref' => $ref,
+                        'item_type' => 'profile_avatar',
+                        'tier' => $row->tier,
+                        'category' => [$profileRef, $allRef],
+                        'amount' => 0,
+                        'rarity' => $shop->rarity,
+                        'imageLarge' => $shop->ref,
+                        'image_override_url' => '/img/shop/' . $shop->image,
+                        'title' => $tName . '|' . $this->cleanDescription($tDesc),
+                        'description_ext' => $tDesc,
+                        'description_html' => $tDesc,
+                        'canBeActivated' => true,
+                        'canBeBoughtAndActivated' => false,
+                        'activation_type' => 'manual',
+                        'duration_seconds' => 0,
+                        'duration_label' => '',
+                        'payload' => $row->payload,
+                        'first_item_id' => (int) $row->id,
+                        'shop_image' => $shop->image,
+                    ];
+                }
+                $result[$ref]['amount']++;
+                continue;
+            }
             if ($row->item_type === 'shop_item') {
                 /** @var ShopItem|null $shop */
                 $shop = $shopItems[$row->source_ref] ?? null;
