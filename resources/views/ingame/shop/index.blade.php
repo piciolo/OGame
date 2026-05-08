@@ -419,6 +419,7 @@
             function fmtInt(n) { return (Number(n) || 0).toLocaleString('it-IT'); }
 
             const T_ACTIVATE = @json(__('t_shop_items.btn_activate'));
+            const T_DEACTIVATE = @json(__('t_shop_items.btn_deactivate'));
             const T_BUY = @json(__('t_shop_items.btn_buy'));
             const T_CONFIRM_BUY = @json(__('t_shop_items.btn_confirm_buy'));
             const T_INVENTORY_EMPTY = @json(__('t_shop_items.inventory_empty'));
@@ -602,6 +603,9 @@
                 const body = item.description_ext || item.description_html || (parts[1] || '').split('<br')[0];
                 const imgUrl = item.image_override_url || ('/img/auctioneer/items/' + item.imageLarge + '.png');
                 const canActivate = item.canBeActivated && item.amount > 0;
+                // Toggle label per profile_avatar: "Disattiva" se l'avatar è
+                // attualmente in uso, altrimenti "Attiva" (riapplica).
+                const actLabel = (item.is_active ? T_DEACTIVATE : T_ACTIVATE);
                 // Prefer scraped duration_label ("ora", "Permanente"...) over auto-format.
                 const duration = item.duration_label || humanizeDuration(item.duration_seconds);
                 detailEl.innerHTML = `
@@ -617,7 +621,7 @@
                                     <div id="features">
                                         <p class="extended_description">${body} <span class="more_info blue_txt bold">${esc(T_DURATION_LABEL)}: ${esc(duration)}</span></p>
                                         <a class="${canActivate ? 'build-it' : 'build-it_disabled'} item activateItem js_activateItem" href="javascript:void(0);" data-ref="${esc(ref)}">
-                                            <span>${esc(T_ACTIVATE)}</span>
+                                            <span>${esc(actLabel)}</span>
                                         </a>
                                     </div>
                                 </div>
@@ -818,6 +822,24 @@
                             if (countEl) countEl.textContent = newAmount;
                             const detEl = document.querySelector('#itemDetails[data-uuid="' + ref + '"] .inventoryAmount .amount');
                             if (detEl) detEl.textContent = newAmount;
+                            // profile_avatar: toggle stato attivo + label bottone (Attiva/Disattiva)
+                            // + mini-avatar header (sq26).
+                            const it = inventoryItems[ref];
+                            if (it && it.item_type === 'profile_avatar') {
+                                Object.values(inventoryItems).forEach(other => {
+                                    if (other.item_type === 'profile_avatar' && other.ref !== ref) other.is_active = false;
+                                });
+                                it.is_active = !it.is_active;
+                                const btnSpan = document.querySelector('#itemDetails[data-uuid="' + ref + '"] .js_activateItem span');
+                                if (btnSpan) btnSpan.textContent = it.is_active ? T_DEACTIVATE : T_ACTIVATE;
+                                const headerAv = document.querySelector('.profile-picture.sq26');
+                                if (headerAv) {
+                                    const newUrl = it.is_active && it.image_override_url
+                                        ? it.image_override_url
+                                        : '/img/layout/profile-default.png';
+                                    headerAv.style.backgroundImage = "url('" + newUrl + "')";
+                                }
+                            }
                         }
                         fadeMsg((res.message && res.message.message) || 'OK', false);
                         updateCategoryCounts();

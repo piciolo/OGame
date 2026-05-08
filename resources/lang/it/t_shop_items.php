@@ -21,6 +21,8 @@ return [
     'btn_get_more_resources' => 'Procura risorse',
     'btn_purchase_dark_matter' => 'Acquista la Materia Oscura',
     'btn_activate' => 'Attiva',
+    'btn_deactivate' => 'Disattiva',
+    'deactivate_success' => 'Avatar disattivato.',
     'btn_buy_and_activate' => 'Compra & Attiva',
     'btn_buy_at_cost' => 'Compra al costo di',
 

@@ -213,12 +213,15 @@ class ShopController extends OGameController
         }
 
         $newCount = $this->inventory->countStack($user, $match->item_type, $match->tier);
+        $messageKey = $result['code'] === 'deactivated'
+            ? 't_shop_items.deactivate_success'
+            : 't_shop_items.activate_success';
 
         return response()->json([
             'error' => false,
             'newToken' => csrf_token(),
             'message' => [
-                'message' => __('t_shop_items.activate_success'),
+                'message' => __($messageKey),
                 'item' => [
                     'ref' => $ref,
                     'amount' => $newCount,

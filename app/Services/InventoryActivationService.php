@@ -185,16 +185,23 @@ class InventoryActivationService
                 return ['ok' => false, 'code' => 'not_found', 'item' => null];
             }
 
-            // Identifica l'avatar via shop_item id (source_ref).
+            // Toggle: se l'avatar è già quello attivo per l'user → disattiva
+            // (profile_avatar = null), altrimenti applica.
             $avatarRef = 'shop:' . (int) $item->source_ref;
-            $user->profile_avatar = $avatarRef;
+            $isAlreadyActive = ($user->profile_avatar === $avatarRef);
+
+            $user->profile_avatar = $isAlreadyActive ? null : $avatarRef;
             $user->save();
 
-            // Marker di ultima attivazione (non consume).
+            // Marker di ultima attivazione (non consume in nessun caso).
             $item->activated_at = now();
             $item->save();
 
-            return ['ok' => true, 'code' => 'activated', 'item' => $item];
+            return [
+                'ok' => true,
+                'code' => $isAlreadyActive ? 'deactivated' : 'activated',
+                'item' => $item,
+            ];
         }, 3);
     }
 

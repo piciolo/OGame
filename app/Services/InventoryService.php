@@ -220,6 +220,9 @@ class InventoryService
             // stack è basato su tier (= shop_item.id) per discriminare avatar diversi.
             // Differenza chiave: NON consumabile — il backend mantiene status='available'
             // anche dopo l'attivazione (vedi InventoryActivationService::activateProfileAvatar).
+            // `is_active` = true se l'avatar attualmente selezionato dall'user è proprio
+            // questo (users.profile_avatar == "shop:<id>"), così il pulsante può
+            // mostrare "Disattiva" invece di "Attiva".
             if ($row->item_type === 'profile_avatar') {
                 /** @var ShopItem|null $shop */
                 $shop = $shopItems[$row->source_ref] ?? null;
@@ -234,6 +237,7 @@ class InventoryService
                     $hasTx = is_array($tx);
                     $tName = $hasTx && isset($tx['name']) ? $tx['name'] : $shop->name;
                     $tDesc = $hasTx && isset($tx['description']) ? $tx['description'] : ($shop->description ?? '');
+                    $isActive = ($user->profile_avatar ?? '') === ('shop:' . (int) $row->source_ref);
                     $result[$ref] = [
                         'ref' => $ref,
                         'item_type' => 'profile_avatar',
@@ -254,6 +258,7 @@ class InventoryService
                         'payload' => $row->payload,
                         'first_item_id' => (int) $row->id,
                         'shop_image' => $shop->image,
+                        'is_active' => $isActive,
                     ];
                 }
                 $result[$ref]['amount']++;

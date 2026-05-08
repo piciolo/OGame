@@ -21,6 +21,8 @@ return [
     'btn_get_more_resources' => 'Get more resources',
     'btn_purchase_dark_matter' => 'Purchase Dark Matter',
     'btn_activate' => 'Activate',
+    'btn_deactivate' => 'Deactivate',
+    'deactivate_success' => 'Avatar deactivated.',
     'btn_buy_and_activate' => 'Buy & Activate',
     'btn_buy_at_cost' => 'Buy at the cost of',
 
