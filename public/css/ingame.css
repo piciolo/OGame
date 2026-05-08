@@ -50082,9 +50082,6 @@ progress.achievementProgress {
     content: "";
     background: repeating-linear-gradient(90deg, #000000, #000000 1px, transparent 2px, transparent 10px);
 }
-
-/
-
 #achievementsoverviewcomponent gradient-button span {
     color: #f1f1f1;
     font-family: Verdana, Arial, SunSans-Regular, sans-serif;
@@ -50111,8 +50108,6 @@ progress.achievementProgress {
     font-size: 14px;
     background-color: #590404;
 }
-
-/
 #achievementsOverviewList .achievementContentList.unlocks .seasonalSummary {
     width: 100%;
     background: linear-gradient(to top, rgba(20, 29, 37, 0.8) 0%, rgba(9, 13, 18, 0.8) 100%);
@@ -50188,8 +50183,6 @@ progress.achievementProgress {
 .achievementOverviewTierSelectionContainer gradient-button button:not(:disabled).selected {
     box-shadow: 0px 2px 3px 1px #0000008c;
 }
-
-/
 profile-picture {
     display: inline-flex;
     height: 50px;
@@ -50201,8 +50194,6 @@ profile-picture {
     /*border: 1px outset #696666 !important;*/
     border-radius: 4px;
 }
-
-/
 profile-picture.default {
     background-image: url("/img/layout/profile-default.png");
 }
@@ -50374,8 +50365,6 @@ profile-picture.S8_A13_T5_Ava_ID5 {
 profile-picture.S8_A15_T5_Ava_ID6 {
     background-image: url("//gf2.geo.gfsrv.net/cdn4b/4cf93285783f4c902f3f4fc6e5bbc1.jpg");
 }
-
-/
 space-object-skin {
     display: inline-block;
     height: 50px;

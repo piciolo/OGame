@@ -137,5 +137,10 @@ $out = str_replace(
     $out
 );
 
+// Pulisci righe contenenti solo `/` orfani (artefatto del tokenizer dei
+// commenti /* */ rimossi che a volte lasciano `/` solitari): un `/` non
+// commentato spacca il parsing CSS rendendo il blocco successivo inerte.
+$out = preg_replace('/^\s*\/\s*$\n/m', '', $out);
+
 file_put_contents(__DIR__ . '/../resources/css/ingame/playerprofile_achievements.css', $out);
 echo "Wrote " . strlen($out) . " bytes, " . count($rules) . " rules + " . count($sm[0]) . " scrollbar rules\n";
