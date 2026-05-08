@@ -41,6 +41,31 @@ space-object-skin > img {
     display: block;
 }
 
+/* Override dimensione bottoni Seleziona/Deseleziona dei reward catalog.
+   Il default `gradient-button { width: 150px }` (regola generica OGame)
+   sforerebbe il container 95x95 dell'holder. Ridimensiono al contenuto. */
+#achievementsOverviewList .achievementContentList.avatars .achievementOverviewProfilePictureHolder .profilePictureSelectBtn,
+#achievementsOverviewList .achievementContentList.avatars .achievementOverviewProfilePictureHolder .profilePictureDeselectBtn,
+#achievementsOverviewList .achievementContentList.spaceObjectSkins .achievementOverviewSpaceObjectSkinHolder .spaceObjectSkinSelectBtn,
+#achievementsOverviewList .achievementContentList.spaceObjectSkins .achievementOverviewSpaceObjectSkinHolder .spaceObjectSkinDeselectBtn,
+#achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder .profileTitleSelectBtn,
+#achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder .profileTitleDeselectBtn {
+    width: auto !important;
+    height: auto !important;
+    min-width: 0 !important;
+    left: 5px;
+    right: 5px;
+}
+#achievementsOverviewList .achievementContentList.avatars .achievementOverviewProfilePictureHolder gradient-button button,
+#achievementsOverviewList .achievementContentList.spaceObjectSkins .achievementOverviewSpaceObjectSkinHolder gradient-button button,
+#achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder gradient-button button {
+    line-height: 1;
+    height: auto;
+    font-size: 9px;
+    width: auto;
+    min-width: 0;
+}
+
 /* === Avatar === */
 profile-picture.A10_T4_Ava_ID14 { background-image: url("/img/achievements/avatars/A10_T4_Ava_ID14.jpg?v=2"); }
 profile-picture.A10_T5_Ava_ID4 { background-image: url("/img/achievements/avatars/A10_T5_Ava_ID4.jpg?v=2"); }
