@@ -69,10 +69,18 @@
                     $unlocked = in_array($machineName, $unlockedAvatars, true);
                     $isCurrent = ($targetPlayer->getUser()->profile_avatar ?? '') === $machineName;
                 @endphp
+                @php
+                    $avatarBase = 'img/achievements/avatars/'.$machineName;
+                    $avatarUrl = null;
+                    foreach (['.jpg', '.png'] as $ext) {
+                        if (file_exists(public_path($avatarBase.$ext))) { $avatarUrl = '/'.$avatarBase.$ext; break; }
+                    }
+                @endphp
                 <div class="achievementOverviewProfilePictureHolder {{ $isCurrent ? 'selected' : '' }}"
                      data-avatar-id="{{ $machineName }}">
-                    <profile-picture class="{{ $machineName }} {{ $unlocked ? '' : 'locked' }}"
-                                     {{ $unlocked ? '' : 'title='.__('t_ingame.achievements.locked') }}></profile-picture>
+                    <profile-picture class="{{ $machineName }} {{ $unlocked ? '' : 'locked' }}">
+                        @if($avatarUrl)<picture><img src="{{ $avatarUrl }}" alt=""></picture>@endif
+                    </profile-picture>
                 </div>
             @endforeach
             @if(count($rewardCatalog['avatar']) === 0)
@@ -95,7 +103,7 @@
                 <div class="achievementOverviewSpaceObjectSkinHolder {{ $isCurrent ? 'selected' : '' }}"
                      data-space-object-skin-id="{{ $machineName }}">
                     <space-object-skin class="{{ $machineName }} {{ $unlocked ? '' : 'locked' }}">
-                        @if($skinUrl)<img src="{{ $skinUrl }}" alt="{{ $machineName }}">@endif
+                        @if($skinUrl)<img src="{{ $skinUrl }}" alt="">@endif
                     </space-object-skin>
                 </div>
             @endforeach

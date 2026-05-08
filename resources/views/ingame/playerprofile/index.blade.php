@@ -124,12 +124,24 @@
                         <div class="profileHolder">
                             <div class="avatarHolder">
                                 @php
-                                    // Avatar selezionato (DOM 1:1 OGame): la classe macchina applica
-                                    // la background-image via regola CSS in playerprofile_avatars.css.
+                                    // Avatar selezionato (DOM 1:1 OGame): l'<img> dentro <picture>
+                                    // si rende SOPRA il ::before (paint order pseudo < children),
+                                    // come fa OGame col custom element profile-picture.
                                     $selectedAvatar = $targetPlayer->getUser()->profile_avatar ?? '';
                                     $avatarClass = $selectedAvatar !== '' ? $selectedAvatar : 'default';
+                                    $selAvUrl = null;
+                                    if ($selectedAvatar !== '') {
+                                        foreach (['.jpg', '.png'] as $ext) {
+                                            if (file_exists(public_path('img/achievements/avatars/'.$selectedAvatar.$ext))) {
+                                                $selAvUrl = '/img/achievements/avatars/'.$selectedAvatar.$ext;
+                                                break;
+                                            }
+                                        }
+                                    }
                                 @endphp
-                                <profile-picture class="{{ $avatarClass }} sq200"></profile-picture>
+                                <profile-picture sq200 class="{{ $avatarClass }}">
+                                    @if($selAvUrl)<picture><img src="{{ $selAvUrl }}" alt=""></picture>@endif
+                                </profile-picture>
                             </div>
                             <div class="profilePageInfo" id="profilePageInfo" data-section="profile">
                                 @foreach($profileEntries as $entry)

@@ -50451,6 +50451,48 @@ space-object-skin img {
 /* OGame achievements — regole per-machine_name (sorgente autoritativa estratta da CSS Gameforge
    gf3.geo.gfsrv.net/cdn22/9b6fdb87.css). URL pointati alle copie locali. */
 
+/* Override grid: usare minmax(0, 1fr) invece di 1fr per impedire alle img 800x800
+   di forzare min-content e sforare il container. */
+#achievementsOverviewList .achievementContentList.avatars,
+#achievementsOverviewList .achievementContentList.spaceObjectSkins,
+#achievementsOverviewList .achievementContentList.titles {
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+}
+#achievementsOverviewList .achievementContentList.spaceObjectSkins space-object-skin img,
+#achievementsOverviewList .achievementContentList.avatars profile-picture img {
+    width: 100% !important;
+    height: 100% !important;
+    -o-object-fit: cover;
+       object-fit: cover;
+    display: block;
+}
+
+/* Universale: <picture> e <img> dentro <profile-picture> e <space-object-skin>
+   devono fittare il parent (anche fuori dalla tab achievement, es. avatarHolder
+   nel profilo). Il pattern OGame mette l'<img> come children, quindi nel paint
+   order sta sopra il ::before pseudo-elemento (che resta visibile solo per il
+   glyph 🔒 quando .locked). */
+profile-picture, space-object-skin {
+    position: relative;
+    overflow: hidden;
+}
+profile-picture > picture,
+space-object-skin > picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+profile-picture > picture > img,
+profile-picture > img,
+space-object-skin > picture > img,
+space-object-skin > img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    display: block;
+}
+
 /* === Avatar === */
 profile-picture.A10_T4_Ava_ID14 { background-image: url("/img/achievements/avatars/A10_T4_Ava_ID14.jpg?v=2"); }
 profile-picture.A10_T5_Ava_ID4 { background-image: url("/img/achievements/avatars/A10_T5_Ava_ID4.jpg?v=2"); }

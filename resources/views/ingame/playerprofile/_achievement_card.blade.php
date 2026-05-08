@@ -80,11 +80,20 @@
                             }
                         @endphp
                         <space-object-skin sq100 class="{{ $tier->reward_machine_name }} {{ $tierUnlocked ? '' : 'locked' }}">
-                            @if($skinUrl)<img src="{{ $skinUrl }}" alt="{{ $tier->reward_machine_name }}">@endif
+                            @if($skinUrl)<img src="{{ $skinUrl }}" alt="">@endif
                         </space-object-skin>
                         <div class="rewardDescription">{{ __('t_ingame.achievements.reward_skin') }}</div>
                     @elseif($tier->reward_type === 'avatar')
-                        <profile-picture sq100 class="{{ $tier->reward_machine_name }} {{ $tierUnlocked ? '' : 'locked' }}"></profile-picture>
+                        @php
+                            $avBase = 'img/achievements/avatars/'.$tier->reward_machine_name;
+                            $avUrl = null;
+                            foreach (['.jpg', '.png'] as $ext) {
+                                if (file_exists(public_path($avBase.$ext))) { $avUrl = '/'.$avBase.$ext; break; }
+                            }
+                        @endphp
+                        <profile-picture sq100 class="{{ $tier->reward_machine_name }} {{ $tierUnlocked ? '' : 'locked' }}">
+                            @if($avUrl)<picture><img src="{{ $avUrl }}" alt=""></picture>@endif
+                        </profile-picture>
                         <div class="rewardDescription">{{ __('t_ingame.achievements.reward_avatar') }}</div>
                     @else
                         <div sq100 class="rewardTypeTitleContainer {{ $tierUnlocked ? '' : 'locked' }}">
