@@ -51,15 +51,27 @@
                 @php
                     $unlocked = in_array($machineName, $unlockedAvatars, true);
                     $isCurrent = ($targetPlayer->getUser()->profile_avatar ?? '') === $machineName;
-                    // Avatar reale solo se sbloccato. Altrimenti lock overlay OGame.
-                    $bgUrl = $unlocked ? '/img/achievements/avatars/'.$machineName.'.jpg' : '/img/achievements/avatar_locked.jpg';
+                    // Issue #1: placeholder distinto per machine_name (gradient deterministico)
+                    // finché non scarichiamo gli sprite reali Gameforge per i 60 avatar.
+                    $h = crc32($machineName);
+                    $hue1 = $h % 360;
+                    $hue2 = ($h >> 8) % 360;
+                    $avatarStyle = sprintf(
+                        'background: linear-gradient(135deg, hsl(%d,55%%,38%%) 0%%, hsl(%d,55%%,18%%) 100%%);',
+                        $hue1, $hue2
+                    );
                 @endphp
                 <div class="achievementOverviewProfilePictureHolder {{ $unlocked ? 'unlocked' : '' }} {{ $isCurrent ? 'currentSelection' : '' }}"
                      data-machine-name="{{ $machineName }}"
                      data-reward-type="avatar"
                      title="{{ $machineName }}">
-                    <span class="profile-picture {{ $machineName }} {{ $unlocked ? 'unlocked' : 'locked' }}"
-                          style="background-image: url('{{ $bgUrl }}');"></span>
+                    <span class="profile-picture avatar-placeholder {{ $machineName }} {{ $unlocked ? 'unlocked' : 'locked' }}"
+                          style="{{ $avatarStyle }}">
+                        <span class="avatar-initial">{{ $machineName }}</span>
+                        @unless($unlocked)
+                            <span class="avatar-lock-overlay"></span>
+                        @endunless
+                    </span>
                 </div>
             @endforeach
             @if(count($rewardCatalog['avatar']) === 0)
@@ -99,7 +111,8 @@
                 <div class="achievementOverviewTitleHolder {{ $unlocked ? 'unlocked' : 'locked' }} {{ $isCurrent ? 'currentSelection' : '' }}"
                      data-machine-name="{{ $machineName }}"
                      data-reward-type="title">
-                    <span>{{ __('t_ingame.achievements.title_'.$machineName, [], __('t_ingame.profile.no_title')) }}</span>
+                    {{-- Issue #3: testo titolo reale dal DB (achievement_tiers.title_text) --}}
+                    <span>{{ $titleTextLookup[$machineName] ?? $machineName }}</span>
                 </div>
             @endforeach
             @if(count($rewardCatalog['title']) === 0)

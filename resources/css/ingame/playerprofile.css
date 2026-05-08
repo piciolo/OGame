@@ -813,6 +813,29 @@
     padding: 6px;
     max-height: 580px;
     overflow-y: auto;
+    overflow-x: hidden; /* Issue #6: niente scrollbar orizzontale */
+}
+
+/* Issue #5: scrollbar verticale OGame-style (slim, dark, accentata bordo blu).
+   WebKit + Firefox. */
+.achievementContentList::-webkit-scrollbar {
+    width: 8px;
+}
+.achievementContentList::-webkit-scrollbar-track {
+    background: #0a0d12;
+    border-left: 1px solid #1c2a36;
+}
+.achievementContentList::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #364D63 0%, #283948 50%, #141E26 100%);
+    border: 1px solid #2a4054;
+    border-radius: 2px;
+}
+.achievementContentList::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #4a6a85 0%, #364D63 50%, #1c2a36 100%);
+}
+.achievementContentList {
+    scrollbar-width: thin;
+    scrollbar-color: #364D63 #0a0d12;
 }
 
 /* ── Filtri Riepilogo ────────────────────────────────────────── */
@@ -1075,6 +1098,70 @@
 }
 .achievementTitleReward.locked::after {
     content: none;
+}
+
+/* ── Reward Title 1:1 OGame (rewardTypeTitleContainer) ───────── */
+.rewardTypeTitleContainer {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(180deg, #2a3a4d 0%, #0e151b 100%);
+    border: 1px solid #3a5573;
+    border-radius: 4px;
+    padding: 6px;
+    box-sizing: border-box;
+}
+.rewardTypeTitleContainer.locked {
+    filter: grayscale(0.85) brightness(0.45);
+}
+.rewardTypeTitle {
+    color: #f1c34c;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.15;
+    text-align: center;
+    text-shadow: 0 1px 2px #000;
+    word-break: break-word;
+}
+
+/* ── Avatar placeholder distinti (Issue #1) ──────────────────── */
+.profile-picture.avatar-placeholder {
+    position: relative;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+.profile-picture.avatar-placeholder .avatar-initial {
+    color: #ffffff;
+    font-size: 9px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.1;
+    text-shadow: 0 1px 2px #000;
+    pointer-events: none;
+    word-break: break-all;
+    padding: 4px;
+}
+.profile-picture.avatar-placeholder .avatar-initial.avatar-initial-large {
+    font-size: 14px;
+    padding: 8px;
+}
+.profile-picture.avatar-placeholder .avatar-lock-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55) url('/img/achievements/avatar_locked.jpg') center/40% no-repeat;
+    background-blend-mode: multiply;
+}
+.profile-picture.avatar-placeholder.locked {
+    filter: grayscale(0.85) brightness(0.55);
+}
+.profile-picture.avatar-placeholder.locked::after {
+    content: none; /* sostituito da .avatar-lock-overlay */
 }
 
 /* ── Avatar / Skin / Titoli grid (sotto-tab 2-3-4) ───────────── */

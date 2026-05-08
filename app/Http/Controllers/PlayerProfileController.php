@@ -54,6 +54,7 @@ class PlayerProfileController extends OGameController
             'unlockedSkins' => $achievementsVisible ? $achievementService->getUnlockedSkins($targetPlayer) : [],
             'unlockedTitles' => $achievementsVisible ? $achievementService->getUnlockedTitles($targetPlayer) : [],
             'rewardCatalog' => $achievementsVisible ? $achievementService->getRewardCatalog() : ['avatar' => [], 'skin' => [], 'title' => []],
+            'titleTextLookup' => $achievementsVisible ? $achievementService->getTitleTextLookup() : [],
         ]);
     }
 

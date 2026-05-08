@@ -45,7 +45,7 @@
                  data-tier="{{ $tier->tier }}">
                 <div class="achievementTierContainerData">
                     <div class="achievementTierStatus">
-                        <div class="description">{{ __($achievement->description_key) }}</div>
+                        <div class="description">{{ $tier->description_text ?: __($achievement->description_key) }}</div>
                         <div>
                             <div class="unlockedOrProgress">
                                 <div class="progressParent">
@@ -73,13 +73,29 @@
                               style="background-image: url('/img/achievements/skins/{{ $tier->reward_machine_name }}.png');"></span>
                         <div class="rewardDescription">{{ __('t_ingame.achievements.reward_skin') }}</div>
                     @elseif($tier->reward_type === 'avatar')
-                        @php $avatarUrl = $tierUnlocked ? '/img/achievements/avatars/'.$tier->reward_machine_name.'.jpg' : '/img/achievements/avatar_locked.jpg'; @endphp
-                        <span class="profile-picture {{ $tier->reward_machine_name }} {{ $tierUnlocked ? 'unlocked' : 'locked' }}"
-                              style="background-image: url('{{ $avatarUrl }}');"></span>
+                        @php
+                            // Hash deterministico → due colori per avatar diverso (placeholder fino a quando
+                            // non scarichiamo gli sprite reali Gameforge per i 60 avatar).
+                            $h = crc32($tier->reward_machine_name);
+                            $hue1 = $h % 360;
+                            $hue2 = ($h >> 8) % 360;
+                            $avatarStyle = sprintf(
+                                'background: linear-gradient(135deg, hsl(%d,55%%,38%%) 0%%, hsl(%d,55%%,18%%) 100%%);',
+                                $hue1, $hue2
+                            );
+                        @endphp
+                        <span class="profile-picture avatar-placeholder {{ $tier->reward_machine_name }} {{ $tierUnlocked ? 'unlocked' : 'locked' }}"
+                              style="{{ $avatarStyle }}"
+                              data-avatar-id="{{ $tier->reward_machine_name }}">
+                            <span class="avatar-initial">A{{ $achievement->display_number }}<br>T{{ $tier->tier }}</span>
+                            @unless($tierUnlocked)
+                                <span class="avatar-lock-overlay"></span>
+                            @endunless
+                        </span>
                         <div class="rewardDescription">{{ __('t_ingame.achievements.reward_avatar') }}</div>
                     @else
-                        <div class="achievementTitleReward {{ $tierUnlocked ? 'unlocked' : 'locked' }}">
-                            <span>{{ __('t_ingame.achievements.title_'.$tier->reward_machine_name, [], __('t_ingame.achievements.reward_title')) }}</span>
+                        <div class="rewardTypeTitleContainer {{ $tierUnlocked ? 'unlocked' : 'locked' }}">
+                            <div class="rewardTypeTitle">{{ $tier->title_text ?: __('t_ingame.achievements.reward_title') }}</div>
                         </div>
                         <div class="rewardDescription">{{ __('t_ingame.achievements.reward_title') }}</div>
                     @endif

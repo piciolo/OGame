@@ -4,6 +4,7 @@ namespace OGame\Services;
 
 use OGame\Enums\HighscoreTypeEnum;
 use OGame\Enums\ProfileTagEnum;
+use OGame\Models\AchievementTier;
 use OGame\Models\AllianceHighscore;
 use OGame\Models\Highscore;
 
@@ -17,6 +18,20 @@ class PlayerProfileService
     /** Slot fissi per sezione (replica del comportamento OGame ufficiale). */
     public const PROFILE_SLOTS = 9;
     public const MOREINFO_SLOTS = 12;
+
+    /**
+     * Risolve il testo titolo a partire dal machine_name (es. A1_T4_Tit_ID1
+     * → "Talento eccezionale"). Sorgente: achievement_tiers.title_text.
+     */
+    private function resolveTitleText(string $machineName): string
+    {
+        if ($machineName === '') {
+            return '';
+        }
+        return (string) (AchievementTier::where('reward_machine_name', $machineName)
+            ->where('reward_type', 'title')
+            ->value('title_text') ?? '');
+    }
 
     /**
      * Ritorna esattamente PROFILE_SLOTS voci. Le voci selezionate vanno
@@ -185,6 +200,8 @@ class PlayerProfileService
                 'type' => 'title',
                 'label' => '',
                 'value' => $player->getUser()->profile_gender ?? 'male',
+                'title_machine_name' => $player->getUser()->profile_title ?? '',
+                'title_text' => $this->resolveTitleText($player->getUser()->profile_title ?? ''),
             ],
             ProfileTagEnum::HonorDisplay => [
                 'type' => 'simple',

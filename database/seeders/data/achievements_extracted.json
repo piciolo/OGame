@@ -1,0 +1,2603 @@
+[
+    {
+        "achievement_id": 1000100,
+        "title": "Progresso della base",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 10,
+                "description": "Completa 10x Achievement non segreti della base con tutti i gradi.",
+                "reward_type": "skin",
+                "reward_machine_name": "A1_T1_Pskin_ID1",
+                "reward_image_url": "https://gf2.geo.gfsrv.net/cdn13/5ce5714e8e197012263989e878a22a.png",
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 20,
+                "description": "Completa 20x Achievement non segreti della base con tutti i gradi.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A1_T2_Ava_ID1",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 30,
+                "description": "Completa 30x Achievement non segreti della base con tutti i gradi.",
+                "reward_type": "skin",
+                "reward_machine_name": "A1_T3_Pskin_ID2",
+                "reward_image_url": "https://gf3.geo.gfsrv.net/cdn82/3bebf42016a5cf0958f4d6f2a2d070.png",
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": 40,
+                "description": "Completa 40x Achievement non segreti della base con tutti i gradi.",
+                "reward_type": "title",
+                "reward_machine_name": "A1_T4_Tit_ID1",
+                "reward_image_url": null,
+                "reward_title_text": "Talento eccezionale"
+            },
+            {
+                "tier": 5,
+                "target": 50,
+                "description": "Completa 50x Achievement non segreti della base con tutti i gradi.",
+                "reward_type": "title",
+                "reward_machine_name": "A1_T5_Tit_ID2",
+                "reward_image_url": null,
+                "reward_title_text": "Sommo saggio"
+            }
+        ]
+    },
+    {
+        "achievement_id": 1000200,
+        "title": "Progressi stagione",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 15,
+                "description": "Completa 15x Achievement stagionali con tutti i gradi.",
+                "reward_type": "title",
+                "reward_machine_name": "A2_T1_Tit_ID3",
+                "reward_image_url": null,
+                "reward_title_text": "Competitivo"
+            },
+            {
+                "tier": 2,
+                "target": 30,
+                "description": "Completa 30x Achievement stagionali con tutti i gradi.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A2_T2_Ava_ID2",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 45,
+                "description": "Completa 45x Achievement stagionali con tutti i gradi.",
+                "reward_type": "title",
+                "reward_machine_name": "A2_T3_Tit_ID4",
+                "reward_image_url": null,
+                "reward_title_text": "Veterano scafato"
+            },
+            {
+                "tier": 4,
+                "target": 60,
+                "description": "Completa 60x Achievement stagionali con tutti i gradi.",
+                "reward_type": "skin",
+                "reward_machine_name": "A2_T4_Pskin_ID3",
+                "reward_image_url": "https://gf1.geo.gfsrv.net/cdn3f/44fa24ac4e98a016acf914b030b1e2.png",
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 100,
+                "description": "Completa 100x Achievement stagionali con tutti i gradi.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A2_T5_Ava_ID3",
+                "reward_image_url": null,
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1000300,
+        "title": "Espansione planetaria",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 4,
+                "description": "Possiedi 4 pianeti.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A3_T1_Ava_ID4",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 8,
+                "description": "Possiedi 8 pianeti.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A3_T2_Ava_ID5",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 12,
+                "description": "Possiedi 12 pianeti.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A3_T3_Ava_ID6",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": 16,
+                "description": "Possiedi 16 pianeti.",
+                "reward_type": "title",
+                "reward_machine_name": "A3_T4_Tit_ID5",
+                "reward_image_url": null,
+                "reward_title_text": "Imperatore galattico"
+            },
+            {
+                "tier": 5,
+                "target": 20,
+                "description": "Possiedi 20 pianeti.",
+                "reward_type": "skin",
+                "reward_machine_name": "A3_T5_Pskin_ID4",
+                "reward_image_url": "https://gf2.geo.gfsrv.net/cdnae/5dd6ce8ea075b33bb9e86f94db9c6e.png",
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1000400,
+        "title": "Passeggiata sulla luna",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 1,
+                "description": "Possiedi 1 Luna.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 5,
+                "description": "Possiedi 5 Lune.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A4_T2_Ava_ID7",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 10,
+                "description": "Possiedi 10 Lune.",
+                "reward_type": "title",
+                "reward_machine_name": "A4_T3_Tit_ID6",
+                "reward_image_url": null,
+                "reward_title_text": "Uomo della luna"
+            },
+            {
+                "tier": 4,
+                "target": 16,
+                "description": "Possiedi 16 Lune.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A4_T4_Ava_ID8",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 20,
+                "description": "Possiedi 20 Lune.",
+                "reward_type": "skin",
+                "reward_machine_name": "A4_T5_Pskin_ID5",
+                "reward_image_url": "https://gf1.geo.gfsrv.net/cdn92/c2966fb350350b695452fdc55f098c.png",
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1000500,
+        "title": "Magnetismo",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 20,
+                "description": "Sviluppa una Miniera di Metallo portandola al livello 20.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 30,
+                "description": "Sviluppa una Miniera di Metallo portandola al livello 30.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A5_T2_Ava_ID52",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 40,
+                "description": "Sviluppa una Miniera di Metallo portandola al livello 40.",
+                "reward_type": "title",
+                "reward_machine_name": "A5_T3_Tit_ID7",
+                "reward_image_url": null,
+                "reward_title_text": "Metalhead"
+            },
+            {
+                "tier": 4,
+                "target": 50,
+                "description": "Sviluppa una Miniera di Metallo portandola al livello 50.",
+                "reward_type": "title",
+                "reward_machine_name": "A5_T4_Tit_ID8",
+                "reward_image_url": null,
+                "reward_title_text": "Commerciante di metallo"
+            },
+            {
+                "tier": 5,
+                "target": 62,
+                "description": "Sviluppa una Miniera di Metallo portandola al livello 62.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A5_T5_Ava_ID9",
+                "reward_image_url": null,
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1000600,
+        "title": "Magia dei cristalli",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 20,
+                "description": "Sviluppa una Miniera di Cristalli portandola al livello 20.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 30,
+                "description": "Sviluppa una Miniera di Cristalli portandola al livello 30.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 40,
+                "description": "Sviluppa una Miniera di Cristalli portandola al livello 40.",
+                "reward_type": "title",
+                "reward_machine_name": "A6_T3_Tit_ID9",
+                "reward_image_url": null,
+                "reward_title_text": "Commerciante di cristallo"
+            },
+            {
+                "tier": 4,
+                "target": 50,
+                "description": "Sviluppa una Miniera di Cristalli portandola al livello 50.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A6_T4_Ava_ID10",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 52,
+                "description": "Sviluppa una Miniera di Cristalli portandola al livello 52.",
+                "reward_type": "title",
+                "reward_machine_name": "A6_T5_Tit_ID10",
+                "reward_image_url": null,
+                "reward_title_text": "Barone del cristallo"
+            }
+        ]
+    },
+    {
+        "achievement_id": 1000700,
+        "title": "Fan della fusione",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 20,
+                "description": "Sviluppa un Sintetizzatore di deuterio portandolo al livello 20.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 30,
+                "description": "Sviluppa un Sintetizzatore di deuterio portandolo al livello 30.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 40,
+                "description": "Sviluppa un Sintetizzatore di deuterio portandolo al livello 40.",
+                "reward_type": "title",
+                "reward_machine_name": "A7_T3_Tit_ID11",
+                "reward_image_url": null,
+                "reward_title_text": "Deuterminatissimo"
+            },
+            {
+                "tier": 4,
+                "target": 50,
+                "description": "Sviluppa un Sintetizzatore di deuterio portandolo al livello 50.",
+                "reward_type": "title",
+                "reward_machine_name": "A7_T4_Tit_ID12",
+                "reward_image_url": null,
+                "reward_title_text": "Commerciante di deuterio"
+            },
+            {
+                "tier": 5,
+                "target": 57,
+                "description": "Sviluppa un Sintetizzatore di deuterio portandolo al livello 57.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A7_T5_Ava_ID11",
+                "reward_image_url": null,
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1000800,
+        "title": "Interrato",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 500,
+                "description": "Ottieni un totale di 500 livelli della Miniera su tutti i tuoi pianeti combinati.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 1000,
+                "description": "Ottieni un totale di 1.000 livelli della Miniera su tutti i tuoi pianeti combinati.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 1500,
+                "description": "Ottieni un totale di 1.500 livelli della Miniera su tutti i tuoi pianeti combinati.",
+                "reward_type": "title",
+                "reward_machine_name": "A8_T3_Tit_ID13",
+                "reward_image_url": null,
+                "reward_title_text": "Miracolo della scienza"
+            },
+            {
+                "tier": 4,
+                "target": 2000,
+                "description": "Ottieni un totale di 2.000 livelli della Miniera su tutti i tuoi pianeti combinati.",
+                "reward_type": "title",
+                "reward_machine_name": "A8_T4_Tit_ID14",
+                "reward_image_url": null,
+                "reward_title_text": "Magnate delle mine"
+            },
+            {
+                "tier": 5,
+                "target": 2500,
+                "description": "Ottieni un totale di 2.500 livelli della Miniera su tutti i tuoi pianeti combinati.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A8_T5_Ava_ID12",
+                "reward_image_url": null,
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1000900,
+        "title": "Energia pulita",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 15,
+                "description": "Sviluppa una Centrale a Fusione portandola al livello 15.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 20,
+                "description": "Sviluppa una Centrale a Fusione portandola al livello 20.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 25,
+                "description": "Sviluppa una Centrale a Fusione portandola al livello 25.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": 30,
+                "description": "Sviluppa una Centrale a Fusione portandola al livello 30.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A9_T4_Ava_ID13",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 35,
+                "description": "Sviluppa una Centrale a Fusione portandola al livello 35.",
+                "reward_type": "title",
+                "reward_machine_name": "A9_T5_Tit_ID15",
+                "reward_image_url": null,
+                "reward_title_text": "Leggermente contaminato"
+            }
+        ]
+    },
+    {
+        "achievement_id": 1001000,
+        "title": "Sovraccarico",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 10000,
+                "description": "Produci 10.000x Energia su un pianeta.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 100000,
+                "description": "Produci 100.000x Energia su un pianeta.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 1000000,
+                "description": "Produci 1.000.000x Energia su un pianeta.",
+                "reward_type": "title",
+                "reward_machine_name": "A10_T3_Tit_ID16",
+                "reward_image_url": null,
+                "reward_title_text": "Competente"
+            },
+            {
+                "tier": 4,
+                "target": 10000000,
+                "description": "Produci 10.000.000x Energia su un pianeta.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A10_T4_Ava_ID14",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 100000000,
+                "description": "Produci 100.000.000x Energia su un pianeta.",
+                "reward_type": "skin",
+                "reward_machine_name": "A10_T5_Pskin_ID6",
+                "reward_image_url": "https://gf3.geo.gfsrv.net/cdn56/5f55156991933d269d438de1a79f3b.png",
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1001100,
+        "title": "Full House",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": null,
+                "description": "Scegli il Collezionista come tua classe.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A11_T1_Ava_ID15",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": null,
+                "description": "Scegli il Generale come tua classe.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A11_T2_Ava_ID16",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": null,
+                "description": "Scegli l`Esploratore come tua classe.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A11_T3_Ava_ID17",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": null,
+                "description": "Attiva l`intero staff di comando.",
+                "reward_type": "title",
+                "reward_machine_name": "A11_T4_Tit_ID17",
+                "reward_image_url": null,
+                "reward_title_text": "Consiglio di amministrazione galattico"
+            },
+            {
+                "tier": 5,
+                "target": 4,
+                "description": "Completa dal grado 1 al grado 4 di questo Achievement.",
+                "reward_type": "title",
+                "reward_machine_name": "A11_T5_Tit_ID18",
+                "reward_image_url": null,
+                "reward_title_text": "Onnisciente"
+            }
+        ]
+    },
+    {
+        "achievement_id": 1001200,
+        "title": "Rivolta dei robot",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 10,
+                "description": "Sviluppa una Fabbrica dei Robot portandola al livello 10.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 15,
+                "description": "Sviluppa una Fabbrica dei Robot portandola al livello 15.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A12_T2_Ava_ID60",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 20,
+                "description": "Sviluppa una Fabbrica dei Robot portandola al livello 20.",
+                "reward_type": "title",
+                "reward_machine_name": "A12_T3_Tit_ID19",
+                "reward_image_url": null,
+                "reward_title_text": "Instancabile"
+            },
+            {
+                "tier": 4,
+                "target": 25,
+                "description": "Sviluppa una Fabbrica dei Robot portandola al livello 25.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A12_T4_Ava_ID18",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 30,
+                "description": "Sviluppa una Fabbrica dei Robot portandola al livello 30.",
+                "reward_type": "skin",
+                "reward_machine_name": "A12_T5_Pskin_ID7",
+                "reward_image_url": "https://gf1.geo.gfsrv.net/cdnca/0fd31cf6acdce1276d380f6cee8a9a.png",
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1001300,
+        "title": "Si parte!",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 10,
+                "description": "Sviluppa un Cantiere Spaziale portandolo al livello 10.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 15,
+                "description": "Sviluppa un Cantiere Spaziale portandolo al livello 15.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 20,
+                "description": "Sviluppa un Cantiere Spaziale portandolo al livello 20.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": 25,
+                "description": "Sviluppa un Cantiere Spaziale portandolo al livello 25.",
+                "reward_type": "title",
+                "reward_machine_name": "A13_T4_Tit_ID20",
+                "reward_image_url": null,
+                "reward_title_text": "Maestro costruttore navale"
+            },
+            {
+                "tier": 5,
+                "target": 30,
+                "description": "Sviluppa un Cantiere Spaziale portandolo al livello 30.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A13_T5_Ava_ID19",
+                "reward_image_url": null,
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1001400,
+        "title": "So-tutto-io",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 25,
+                "description": "Ottieni un totale di 25 livelli del Laboratorio di ricerca su tutti i tuoi pianeti combinati.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 50,
+                "description": "Ottieni un totale di 50 livelli del Laboratorio di ricerca su tutti i tuoi pianeti combinati.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 100,
+                "description": "Ottieni un totale di 100 livelli del Laboratorio di ricerca su tutti i tuoi pianeti combinati.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": 200,
+                "description": "Ottieni un totale di 200 livelli del Laboratorio di ricerca su tutti i tuoi pianeti combinati.",
+                "reward_type": "title",
+                "reward_machine_name": "A14_T4_Tit_ID21",
+                "reward_image_url": null,
+                "reward_title_text": "Genio all`opera"
+            },
+            {
+                "tier": 5,
+                "target": 400,
+                "description": "Ottieni un totale di 400 livelli del Laboratorio di ricerca su tutti i tuoi pianeti combinati.",
+                "reward_type": "skin",
+                "reward_machine_name": "A14_T5_Pskin_ID8",
+                "reward_image_url": "https://gf1.geo.gfsrv.net/cdnc3/e514e06ca3b17c58983b829f80f14b.png",
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1001500,
+        "title": "Amico e aiutante",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 10,
+                "description": "Sviluppa una Base di appoggio portandola al livello 10.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 15,
+                "description": "Sviluppa una Base di appoggio portandola al livello 15.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 20,
+                "description": "Sviluppa una Base di appoggio portandola al livello 20.",
+                "reward_type": "title",
+                "reward_machine_name": "A15_T3_Tit_ID22",
+                "reward_image_url": null,
+                "reward_title_text": "Benedizione dell`alleanza"
+            },
+            {
+                "tier": 4,
+                "target": 200,
+                "description": "Ottieni un totale di 200 livelli della Base di appoggio su tutti i tuoi pianeti combinati.",
+                "reward_type": "title",
+                "reward_machine_name": "A15_T4_Tit_ID23",
+                "reward_image_url": null,
+                "reward_title_text": "Sprecone"
+            },
+            {
+                "tier": 5,
+                "target": 300,
+                "description": "Ottieni un totale di 300 livelli della Base di appoggio su tutti i tuoi pianeti combinati.",
+                "reward_type": "title",
+                "reward_machine_name": "A15_T5_Tit_ID24",
+                "reward_image_url": null,
+                "reward_title_text": "Pazzo"
+            }
+        ]
+    },
+    {
+        "achievement_id": 1001600,
+        "title": "Piccolo ma utile",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 5,
+                "description": "Sviluppa la Fabbrica dei Naniti e portala al livello 5.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 8,
+                "description": "Sviluppa la Fabbrica dei Naniti e portala al livello 8.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 11,
+                "description": "Sviluppa la Fabbrica dei Naniti e portala al livello 11.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A16_T3_Ava_ID20",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": 14,
+                "description": "Sviluppa la Fabbrica dei Naniti e portala al livello 14.",
+                "reward_type": "title",
+                "reward_machine_name": "A16_T4_Tit_ID25",
+                "reward_image_url": null,
+                "reward_title_text": "Nano-ingegnere"
+            },
+            {
+                "tier": 5,
+                "target": 17,
+                "description": "Sviluppa la Fabbrica dei Naniti e portala al livello 17.",
+                "reward_type": "skin",
+                "reward_machine_name": "A16_T5_Pskin_ID9",
+                "reward_image_url": "https://gf2.geo.gfsrv.net/cdna7/2eb3ecf6246e0951ba5c4cef88a0be.png",
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1001700,
+        "title": "Vena creativa",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 10,
+                "description": "Sviluppa un Terraformer portandolo al livello 10.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 15,
+                "description": "Sviluppa un Terraformer portandolo al livello 15.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 100,
+                "description": "Raggiungi complessivamente 100 livelli di Terraformer su tutti i tuoi pianeti messi insieme.",
+                "reward_type": "skin",
+                "reward_machine_name": "A9_T3_Pskin_ID47",
+                "reward_image_url": "https://gf3.geo.gfsrv.net/cdne2/efcb43f42c36a8421f0bf065a2bfe1.png",
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": 150,
+                "description": "Raggiungi complessivamente 150 livelli di Terraformer su tutti i tuoi pianeti messi insieme.",
+                "reward_type": "title",
+                "reward_machine_name": "A17_T4_Tit_ID26",
+                "reward_image_url": null,
+                "reward_title_text": "Artista planetario"
+            },
+            {
+                "tier": 5,
+                "target": 200,
+                "description": "Raggiungi complessivamente 200 livelli di Terraformer su tutti i tuoi pianeti messi insieme.",
+                "reward_type": "skin",
+                "reward_machine_name": "A17_T5_Pskin_ID10",
+                "reward_image_url": "https://gf2.geo.gfsrv.net/cdn1c/4e0287b13c923ac2b87de0cf3fbec4.png",
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1001800,
+        "title": "Portomatico",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 5,
+                "description": "Sviluppa un Porto Spaziale portandolo al livello 5.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 10,
+                "description": "Sviluppa un Porto Spaziale portandolo al livello 10.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 15,
+                "description": "Sviluppa un Porto Spaziale portandolo al livello 15.",
+                "reward_type": "title",
+                "reward_machine_name": "A18_T3_Tit_ID27",
+                "reward_image_url": null,
+                "reward_title_text": "Pronto a combattere"
+            },
+            {
+                "tier": 4,
+                "target": 100,
+                "description": "Ottieni un totale di 100 livelli del Porto spaziale su tutti i tuoi pianeti combinati.",
+                "reward_type": "title",
+                "reward_machine_name": "A18_T4_Tit_ID28",
+                "reward_image_url": null,
+                "reward_title_text": "Riparatore instancabile"
+            },
+            {
+                "tier": 5,
+                "target": 200,
+                "description": "Ottieni un totale di 200 livelli del Porto spaziale su tutti i tuoi pianeti combinati.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A18_T5_Ava_ID21",
+                "reward_image_url": null,
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1001900,
+        "title": "Ben equipaggiato",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 100,
+                "description": "Disponi di 100x Missile su un pianeta.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 200,
+                "description": "Disponi di 200x Missile su un pianeta.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A19_T2_Ava_ID22",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 500,
+                "description": "Disponi di 500x Missile su tutti i tuoi pianeti combinati.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": 1000,
+                "description": "Disponi di 1.000x Missile su tutti i tuoi pianeti combinati.",
+                "reward_type": "title",
+                "reward_machine_name": "A19_T4_Tit_ID29",
+                "reward_image_url": null,
+                "reward_title_text": "Guerriero gelido"
+            },
+            {
+                "tier": 5,
+                "target": 1500,
+                "description": "Disponi di 1.500x Missile su tutti i tuoi pianeti combinati.",
+                "reward_type": "skin",
+                "reward_machine_name": "A19_T5_Pskin_ID11",
+                "reward_image_url": "https://gf1.geo.gfsrv.net/cdn64/22986e3714a4c71fdf5895227137c2.png",
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1002000,
+        "title": "Elettronica specializzata",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 10,
+                "description": "Approfondisci lo studio della Tecnologia Energetica e portala al livello 10.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 15,
+                "description": "Approfondisci lo studio della Tecnologia Energetica e portala al livello 15.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 20,
+                "description": "Approfondisci lo studio della Tecnologia Energetica e portala al livello 20.",
+                "reward_type": "title",
+                "reward_machine_name": "A20_T3_Tit_ID30",
+                "reward_image_url": null,
+                "reward_title_text": "Energico"
+            },
+            {
+                "tier": 4,
+                "target": 25,
+                "description": "Approfondisci lo studio della Tecnologia Energetica e portala al livello 25.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A20_T4_Ava_ID23",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 30,
+                "description": "Approfondisci lo studio della Tecnologia Energetica e portala al livello 30.",
+                "reward_type": "skin",
+                "reward_machine_name": "A20_T5_Pskin_ID12",
+                "reward_image_url": "https://gf2.geo.gfsrv.net/cdnd5/1f6eb499b8238e2c07686a8efc4e4c.png",
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1002100,
+        "title": "PAM! PAM!",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 5,
+                "description": "Approfondisci la Tecnologia dei Laser e portala al livello 5.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 10,
+                "description": "Approfondisci la Tecnologia dei Laser e portala al livello 10.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 15,
+                "description": "Approfondisci la Tecnologia dei Laser e portala al livello 15.",
+                "reward_type": "title",
+                "reward_machine_name": "A21_T3_Tit_ID31",
+                "reward_image_url": null,
+                "reward_title_text": "Sussurratore di gatti"
+            },
+            {
+                "tier": 4,
+                "target": 20,
+                "description": "Approfondisci la Tecnologia dei Laser e portala al livello 20.",
+                "reward_type": "title",
+                "reward_machine_name": "A21_T4_Tit_ID32",
+                "reward_image_url": null,
+                "reward_title_text": "Pioniere fotonico"
+            },
+            {
+                "tier": 5,
+                "target": 25,
+                "description": "Approfondisci la Tecnologia dei Laser e portala al livello 25.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A21_T5_Ava_ID24",
+                "reward_image_url": null,
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1002200,
+        "title": "Ancora più PAM!",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 5,
+                "description": "Approfondisci lo studio della Tecnologia ionica e portala al livello 5.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 10,
+                "description": "Approfondisci lo studio della Tecnologia ionica e portala al livello 10.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 15,
+                "description": "Approfondisci lo studio della Tecnologia ionica e portala al livello 15.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A22_T3_Ava_ID25",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": 20,
+                "description": "Approfondisci lo studio della Tecnologia ionica e portala al livello 20.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 25,
+                "description": "Approfondisci lo studio della Tecnologia ionica e portala al livello 25.",
+                "reward_type": "skin",
+                "reward_machine_name": "A22_T5_Pskin_ID13",
+                "reward_image_url": "https://gf2.geo.gfsrv.net/cdn1f/0107980913b98ea5bc5a14b4d9495f.png",
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1002300,
+        "title": "Anomalia spazio-temporale",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 5,
+                "description": "Approfondisci lo studio della Tecnologia iperspaziale e portala al livello 5.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 10,
+                "description": "Approfondisci lo studio della Tecnologia iperspaziale e portala al livello 10.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 15,
+                "description": "Approfondisci lo studio della Tecnologia iperspaziale e portala al livello 15.",
+                "reward_type": "title",
+                "reward_machine_name": "A23_T3_Tit_ID33",
+                "reward_image_url": null,
+                "reward_title_text": "Viaggiatore dimensionale"
+            },
+            {
+                "tier": 4,
+                "target": 20,
+                "description": "Approfondisci lo studio della Tecnologia iperspaziale e portala al livello 20.",
+                "reward_type": "skin",
+                "reward_machine_name": "A23_T4_Pskin_ID14",
+                "reward_image_url": "https://gf1.geo.gfsrv.net/cdn36/dea620a072f1295e1ccfe1fc4a1f08.png",
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 25,
+                "description": "Approfondisci lo studio della Tecnologia iperspaziale e portala al livello 25.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A23_T5_Ava_ID26",
+                "reward_image_url": null,
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1002400,
+        "title": "Fuso, non toccato",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 5,
+                "description": "Approfondisci la Tecnologia del plasma e portala al livello 5.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 10,
+                "description": "Approfondisci la Tecnologia del plasma e portala al livello 10.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 15,
+                "description": "Approfondisci la Tecnologia del plasma e portala al livello 15.",
+                "reward_type": "title",
+                "reward_machine_name": "A24_T3_Tit_ID34",
+                "reward_image_url": null,
+                "reward_title_text": "Donatore di plasma"
+            },
+            {
+                "tier": 4,
+                "target": 20,
+                "description": "Approfondisci la Tecnologia del plasma e portala al livello 20.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A24_T4_Ava_ID27",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 26,
+                "description": "Approfondisci la Tecnologia del plasma e portala al livello 26.",
+                "reward_type": "skin",
+                "reward_machine_name": "A24_T5_Pskin_ID15",
+                "reward_image_url": "https://gf2.geo.gfsrv.net/cdna3/a673344e935cce4341f575c27e1986.png",
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1002500,
+        "title": "Tuning della nave spaziale",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 5,
+                "description": "Approfondisci lo studio del Propulsore a combustione fino al livello 5",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 10,
+                "description": "Approfondisci lo studio del Propulsore a combustione fino al livello 10",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 15,
+                "description": "Approfondisci lo studio del Propulsore a combustione fino al livello 15",
+                "reward_type": "avatar",
+                "reward_machine_name": "A25_T3_Ava_ID28",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": 20,
+                "description": "Approfondisci lo studio del Propulsore a combustione fino al livello 20",
+                "reward_type": "skin",
+                "reward_machine_name": "A25_T4_Pskin_ID16",
+                "reward_image_url": "https://gf1.geo.gfsrv.net/cdn9b/8075ceef82040c2bcb1fae52ef65e8.png",
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 27,
+                "description": "Approfondisci lo studio del Propulsore a combustione fino al livello 27",
+                "reward_type": "title",
+                "reward_machine_name": "A25_T5_Tit_ID35",
+                "reward_image_url": null,
+                "reward_title_text": "Veloce come un fulmine"
+            }
+        ]
+    },
+    {
+        "achievement_id": 1002600,
+        "title": "Impulso ricevuto: avanti!",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 5,
+                "description": "Approfondisci lo studio del Propulsore a impulso e portalo al livello 5.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 10,
+                "description": "Approfondisci lo studio del Propulsore a impulso e portalo al livello 10.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 15,
+                "description": "Approfondisci lo studio del Propulsore a impulso e portalo al livello 15.",
+                "reward_type": "title",
+                "reward_machine_name": "A26_T3_Tit_ID36",
+                "reward_image_url": null,
+                "reward_title_text": "Impulsivo"
+            },
+            {
+                "tier": 4,
+                "target": 20,
+                "description": "Approfondisci lo studio del Propulsore a impulso e portalo al livello 20.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A26_T4_Ava_ID29",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 25,
+                "description": "Approfondisci lo studio del Propulsore a impulso e portalo al livello 25.",
+                "reward_type": "skin",
+                "reward_machine_name": "A26_T5_Pskin_ID17",
+                "reward_image_url": "https://gf2.geo.gfsrv.net/cdnda/6ae5d31ef05fb5fa70ac7d56ffa7d4.png",
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1002700,
+        "title": "Più veloce delle leggi della fisica",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 5,
+                "description": "Approfondisci lo studio del Propulsore iperspaziale fino al livello 5",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 10,
+                "description": "Approfondisci lo studio del Propulsore iperspaziale fino al livello 10",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 15,
+                "description": "Approfondisci lo studio del Propulsore iperspaziale fino al livello 15",
+                "reward_type": "title",
+                "reward_machine_name": "A27_T3_Tit_ID37",
+                "reward_image_url": null,
+                "reward_title_text": "Nella corsia di sorpasso"
+            },
+            {
+                "tier": 4,
+                "target": 20,
+                "description": "Approfondisci lo studio del Propulsore iperspaziale fino al livello 20",
+                "reward_type": "avatar",
+                "reward_machine_name": "A27_T4_Ava_ID30",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 25,
+                "description": "Approfondisci lo studio del Propulsore iperspaziale fino al livello 25",
+                "reward_type": "title",
+                "reward_machine_name": "A27_T5_Tit_ID38",
+                "reward_image_url": null,
+                "reward_title_text": "Speed Demon"
+            }
+        ]
+    },
+    {
+        "achievement_id": 1002800,
+        "title": "Stratega segreto",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 10,
+                "description": "Approfondisci la Tecnologia per lo spionaggio e portala al livello 10.",
+                "reward_type": "title",
+                "reward_machine_name": "A28_T1_Tit_ID39",
+                "reward_image_url": null,
+                "reward_title_text": "Ficcanaso"
+            },
+            {
+                "tier": 2,
+                "target": 15,
+                "description": "Approfondisci la Tecnologia per lo spionaggio e portala al livello 15.",
+                "reward_type": "title",
+                "reward_machine_name": "A28_T2_Tit_ID40",
+                "reward_image_url": null,
+                "reward_title_text": "Leak di dati"
+            },
+            {
+                "tier": 3,
+                "target": 20,
+                "description": "Approfondisci la Tecnologia per lo spionaggio e portala al livello 20.",
+                "reward_type": "title",
+                "reward_machine_name": "A28_T3_Tit_ID41",
+                "reward_image_url": null,
+                "reward_title_text": "Investigatore intergalattico"
+            },
+            {
+                "tier": 4,
+                "target": 25,
+                "description": "Approfondisci la Tecnologia per lo spionaggio e portala al livello 25.",
+                "reward_type": "title",
+                "reward_machine_name": "A28_T4_Tit_ID42",
+                "reward_image_url": null,
+                "reward_title_text": "Onnipresente"
+            },
+            {
+                "tier": 5,
+                "target": 30,
+                "description": "Approfondisci la Tecnologia per lo spionaggio e portala al livello 30.",
+                "reward_type": "skin",
+                "reward_machine_name": "A28_T5_Pskin_ID18",
+                "reward_image_url": "https://gf1.geo.gfsrv.net/cdn0a/72ad70f4d1363393714387d2d331d4.png",
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1002900,
+        "title": "NERD corp.",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 10,
+                "description": "Approfondisci lo studio della Tecnologia informatica e portala al livello 10.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 15,
+                "description": "Approfondisci lo studio della Tecnologia informatica e portala al livello 15.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 20,
+                "description": "Approfondisci lo studio della Tecnologia informatica e portala al livello 20.",
+                "reward_type": "title",
+                "reward_machine_name": "A29_T3_Tit_ID43",
+                "reward_image_url": null,
+                "reward_title_text": "Hacker"
+            },
+            {
+                "tier": 4,
+                "target": 25,
+                "description": "Approfondisci lo studio della Tecnologia informatica e portala al livello 25.",
+                "reward_type": "skin",
+                "reward_machine_name": "A29_T4_Pskin_ID19",
+                "reward_image_url": "https://gf2.geo.gfsrv.net/cdn13/6aa75ef0d497589402d89afce208be.png",
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 28,
+                "description": "Approfondisci lo studio della Tecnologia informatica e portala al livello 28.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A29_T5_Ava_ID31",
+                "reward_image_url": null,
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1003000,
+        "title": "Rete di premi Nobel",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 1,
+                "description": "Approfondisci lo studio del Network di Ricerca e portalo al livello 1.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 5,
+                "description": "Approfondisci lo studio del Network di Ricerca e portalo al livello 5.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 10,
+                "description": "Approfondisci lo studio del Network di Ricerca e portalo al livello 10.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A30_T3_Ava_ID32",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": 15,
+                "description": "Approfondisci lo studio del Network di Ricerca e portalo al livello 15.",
+                "reward_type": "title",
+                "reward_machine_name": "A30_T4_Tit_ID44",
+                "reward_image_url": null,
+                "reward_title_text": "Nexus di ricerca"
+            },
+            {
+                "tier": 5,
+                "target": 20,
+                "description": "Approfondisci lo studio del Network di Ricerca e portalo al livello 20.",
+                "reward_type": "skin",
+                "reward_machine_name": "A30_T5_Pskin_ID20",
+                "reward_image_url": "https://gf3.geo.gfsrv.net/cdn5d/c4135967a2a5929c196569ffa898f2.png",
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1003100,
+        "title": "Divora-energia",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 1,
+                "description": "Approfondisci lo studio della Tecnologia Gravitonica e portala al livello 1.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 2,
+                "description": "Approfondisci lo studio della Tecnologia Gravitonica e portala al livello 2.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 3,
+                "description": "Approfondisci lo studio della Tecnologia Gravitonica e portala al livello 3.",
+                "reward_type": "title",
+                "reward_machine_name": "A31_T3_Tit_ID45",
+                "reward_image_url": null,
+                "reward_title_text": "Overachiever"
+            },
+            {
+                "tier": 4,
+                "target": 5,
+                "description": "Approfondisci lo studio della Tecnologia Gravitonica e portala al livello 5.",
+                "reward_type": "skin",
+                "reward_machine_name": "A31_T4_Pskin_ID21",
+                "reward_image_url": "https://gf1.geo.gfsrv.net/cdn67/960a5517149d2fff73f69853f08679.png",
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 8,
+                "description": "Approfondisci lo studio della Tecnologia Gravitonica e portala al livello 8.",
+                "reward_type": "title",
+                "reward_machine_name": "A31_T5_Tit_ID46",
+                "reward_image_url": null,
+                "reward_title_text": "Perché io posso!"
+            }
+        ]
+    },
+    {
+        "achievement_id": 1003200,
+        "title": "Forbici",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 10,
+                "description": "Approfondisci la Tecnologia delle armi e portala al livello 10.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 15,
+                "description": "Approfondisci la Tecnologia delle armi e portala al livello 15.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A32_T2_Ava_ID54",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 20,
+                "description": "Approfondisci la Tecnologia delle armi e portala al livello 20.",
+                "reward_type": "title",
+                "reward_machine_name": "A32_T3_Tit_ID47",
+                "reward_image_url": null,
+                "reward_title_text": "Pesantemente armato"
+            },
+            {
+                "tier": 4,
+                "target": 25,
+                "description": "Approfondisci la Tecnologia delle armi e portala al livello 25.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A32_T4_Ava_ID33",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 30,
+                "description": "Approfondisci la Tecnologia delle armi e portala al livello 30.",
+                "reward_type": "skin",
+                "reward_machine_name": "A32_T5_Pskin_ID22",
+                "reward_image_url": "https://gf2.geo.gfsrv.net/cdna3/e6b55b70f1f07e1c634a57efaed162.png",
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1003300,
+        "title": "Sasso",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 10,
+                "description": "Approfondisci la Tecnologia degli scudi e portala al livello 10.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 15,
+                "description": "Approfondisci la Tecnologia degli scudi e portala al livello 15.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A33_T2_Ava_ID55",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 20,
+                "description": "Approfondisci la Tecnologia degli scudi e portala al livello 20.",
+                "reward_type": "title",
+                "reward_machine_name": "A33_T3_Tit_ID48",
+                "reward_image_url": null,
+                "reward_title_text": "Potente"
+            },
+            {
+                "tier": 4,
+                "target": 25,
+                "description": "Approfondisci la Tecnologia degli scudi e portala al livello 25.",
+                "reward_type": "skin",
+                "reward_machine_name": "A33_T4_Pskin_ID23",
+                "reward_image_url": "https://gf2.geo.gfsrv.net/cdn45/656ef8415b805bb0cc0f9768bc3efc.png",
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 30,
+                "description": "Approfondisci la Tecnologia degli scudi e portala al livello 30.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A33_T5_Ava_ID34",
+                "reward_image_url": null,
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1003400,
+        "title": "Carta",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 10,
+                "description": "Approfondisci la Tecnologia delle corazze e portala al livello 10.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 15,
+                "description": "Approfondisci la Tecnologia delle corazze e portala al livello 15.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A34_T2_Ava_ID56",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 20,
+                "description": "Approfondisci la Tecnologia delle corazze e portala al livello 20.",
+                "reward_type": "title",
+                "reward_machine_name": "A34_T3_Tit_ID49",
+                "reward_image_url": null,
+                "reward_title_text": "Intoccabile"
+            },
+            {
+                "tier": 4,
+                "target": 25,
+                "description": "Approfondisci la Tecnologia delle corazze e portala al livello 25.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A34_T4_Ava_ID35",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 30,
+                "description": "Approfondisci la Tecnologia delle corazze e portala al livello 30.",
+                "reward_type": "skin",
+                "reward_machine_name": "A34_T5_Pskin_ID24",
+                "reward_image_url": "https://gf1.geo.gfsrv.net/cdn6b/fc9a5658fb11aa1c64092d87021797.png",
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1003500,
+        "title": "Affondamento",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 50000,
+                "description": "Possiedi 50.000 Navi (a esclusione delle Sonde spia e dei Satelliti solari).",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 500000,
+                "description": "Possiedi 500.000 Navi (a esclusione delle Sonde spia e dei Satelliti solari).",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 5000000,
+                "description": "Possiedi 5.000.000 Navi (a esclusione delle Sonde spia e dei Satelliti solari).",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": 50000000,
+                "description": "Possiedi 50.000.000 Navi (a esclusione delle Sonde spia e dei Satelliti solari).",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 500000000,
+                "description": "Possiedi 500.000.000 Navi (a esclusione delle Sonde spia e dei Satelliti solari).",
+                "reward_type": "avatar",
+                "reward_machine_name": "A35_T5_Ava_ID36",
+                "reward_image_url": null,
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1003600,
+        "title": "Vasca di palline",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 100,
+                "description": "Possiedi 100x Morte nera.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 1000,
+                "description": "Possiedi 1.000x Morte nera.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 10000,
+                "description": "Possiedi 10.000x Morte nera.",
+                "reward_type": "title",
+                "reward_machine_name": "A36_T3_Tit_ID50",
+                "reward_image_url": null,
+                "reward_title_text": "Terrore della luna"
+            },
+            {
+                "tier": 4,
+                "target": 100000,
+                "description": "Possiedi 100.000x Morte nera.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A36_T4_Ava_ID37",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 1000000,
+                "description": "Possiedi 1.000.000x Morte nera.",
+                "reward_type": "title",
+                "reward_machine_name": "A36_T5_Tit_ID51",
+                "reward_image_url": null,
+                "reward_title_text": "Fine dell`universo"
+            }
+        ]
+    },
+    {
+        "achievement_id": 1003700,
+        "title": "Costruttore di torrette",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 10000,
+                "description": "Disponi di una difesa con 10.000 unità (a esclusione dei Missili) su un pianeta.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 100000,
+                "description": "Disponi di una difesa con 100.000 unità (a esclusione dei Missili) su un pianeta.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 1000000,
+                "description": "Disponi di una difesa con 1.000.000 unità (a esclusione dei Missili) su un pianeta.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": 10000000,
+                "description": "Disponi di una difesa con 10.000.000 unità (a esclusione dei Missili) su un pianeta.",
+                "reward_type": "skin",
+                "reward_machine_name": "A37_T4_Pskin_ID25",
+                "reward_image_url": "https://gf1.geo.gfsrv.net/cdn67/82337d38e4705bf13d592ff3e981ad.png",
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 100000000,
+                "description": "Disponi di una difesa con 100.000.000 unità (a esclusione dei Missili) su un pianeta.",
+                "reward_type": "title",
+                "reward_machine_name": "A37_T5_Tit_ID52",
+                "reward_image_url": null,
+                "reward_title_text": "Isolato"
+            }
+        ]
+    },
+    {
+        "achievement_id": 1003800,
+        "title": "Mercato delle pulci",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 1000000000,
+                "description": "Commercia 1.000.000.000x Metallo con il Mercante.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 1000000000,
+                "description": "Commercia 1.000.000.000x Cristallo con il Mercante.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 1000000000,
+                "description": "Commercia 1.000.000.000x Deuterio con il Mercante.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": 250,
+                "description": "Trova 250 Mercanti gratuiti nelle spedizioni.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 750,
+                "description": "Trova 750 Mercanti gratuiti nelle spedizioni.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A38_T5_Ava_ID38",
+                "reward_image_url": null,
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1003900,
+        "title": "Flora Explora",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 1000,
+                "description": "Completa 1.000 spedizioni.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 10000,
+                "description": "Completa 10.000 spedizioni.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 25000,
+                "description": "Completa 25.000 spedizioni.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A39_T3_Ava_ID39",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": 50000,
+                "description": "Completa 50.000 spedizioni.",
+                "reward_type": "title",
+                "reward_machine_name": "A39_T4_Tit_ID53",
+                "reward_image_url": null,
+                "reward_title_text": "Esploratore"
+            },
+            {
+                "tier": 5,
+                "target": 100000,
+                "description": "Completa 100.000 spedizioni.",
+                "reward_type": "skin",
+                "reward_machine_name": "A39_T5_Pskin_ID26",
+                "reward_image_url": "https://gf2.geo.gfsrv.net/cdn7e/a34aa136322890c906ce89be2c5062.png",
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1004000,
+        "title": "Chi trova...",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 10000,
+                "description": "Trova 10.000x Navi nelle spedizioni.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 100000,
+                "description": "Trova 100.000x Navi nelle spedizioni.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 250000,
+                "description": "Trova 250.000x Navi nelle spedizioni.",
+                "reward_type": "title",
+                "reward_machine_name": "A40_T3_Tit_ID54",
+                "reward_image_url": null,
+                "reward_title_text": "Capitano della nave fantasma"
+            },
+            {
+                "tier": 4,
+                "target": 500000,
+                "description": "Trova 500.000x Navi nelle spedizioni.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 1000000,
+                "description": "Trova 1.000.000x Navi nelle spedizioni.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A40_T5_Ava_ID40",
+                "reward_image_url": null,
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1004100,
+        "title": "... tiene!",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 10000,
+                "description": "Trova 10.000x Materia Oscura nelle spedizioni.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 50000,
+                "description": "Trova 50.000x Materia Oscura nelle spedizioni.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 100000,
+                "description": "Trova 100.000x Materia Oscura nelle spedizioni.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": 500000,
+                "description": "Trova 500.000x Materia Oscura nelle spedizioni.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 1000000,
+                "description": "Trova 1.000.000x Materia Oscura nelle spedizioni.",
+                "reward_type": "title",
+                "reward_machine_name": "A41_T5_Tit_ID55",
+                "reward_image_url": null,
+                "reward_title_text": "Fortunello"
+            }
+        ]
+    },
+    {
+        "achievement_id": 1004200,
+        "title": "Va ancora bene!",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 100000000,
+                "description": "Trova 100.000.000 Risorse (Metallo, Cristallo o Deuterio).",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 500000000,
+                "description": "Trova 500.000.000 Risorse (Metallo, Cristallo o Deuterio).",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 1000000000,
+                "description": "Trova 1.000.000.000 Risorse (Metallo, Cristallo o Deuterio).",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": 100000000000,
+                "description": "Trova 100.000.000.000 Risorse (Metallo, Cristallo o Deuterio).",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 1000000000000,
+                "description": "Trova 1.000.000.000.000 Risorse (Metallo, Cristallo o Deuterio).",
+                "reward_type": "skin",
+                "reward_machine_name": "A42_T5_Pskin_ID27",
+                "reward_image_url": "https://gf3.geo.gfsrv.net/cdnea/157112e2c6b727b12879474894cb5c.png",
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1004300,
+        "title": "Varietà potentissima",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 10,
+                "description": "Porta una Forma di vita al livello 10.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 20,
+                "description": "Porta una Forma di vita al livello 20.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 40,
+                "description": "Porta una Forma di vita al livello 40.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A43_T3_Ava_ID57",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": 80,
+                "description": "Porta una Forma di vita al livello 80.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A43_T4_Ava_ID41",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 4,
+                "description": "Porta tutte le Forme di vita al livello 100.",
+                "reward_type": "skin",
+                "reward_machine_name": "A43_T5_Pskin_ID28",
+                "reward_image_url": "https://gf2.geo.gfsrv.net/cdn79/7f8cc0a0a20e96874d7a8c03a83f2d.png",
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1004400,
+        "title": "Guardare al futuro",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 1,
+                "description": "Sblocca tutti gli slot di Ricerca Forme di vita di livello 1 su un pianeta.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 1,
+                "description": "Sblocca tutti gli slot di Ricerca Forme di vita di livello 2 su un pianeta.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 1,
+                "description": "Sblocca tutti gli slot di Ricerca Forme di vita di livello 3 su un pianeta.",
+                "reward_type": "skin",
+                "reward_machine_name": "A44_T3_Pskin_ID50",
+                "reward_image_url": "https://gf2.geo.gfsrv.net/cdna0/76904641b5842600f5637c16068e6e.png",
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": 10,
+                "description": "Sblocca tutti gli slot di Ricerca Forme di vita di livello 2 su 10 pianeti.",
+                "reward_type": "title",
+                "reward_machine_name": "A44_T4_Tit_ID56",
+                "reward_image_url": null,
+                "reward_title_text": "Benedizione della civiltà"
+            },
+            {
+                "tier": 5,
+                "target": 15,
+                "description": "Sblocca tutti gli slot di Ricerca Forme di vita di livello 3 su 15 pianeti.",
+                "reward_type": "skin",
+                "reward_machine_name": "A44_T5_Pskin_ID29",
+                "reward_image_url": "https://gf1.geo.gfsrv.net/cdn05/c50c6c01625e2746342309ae19354c.png",
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1004500,
+        "title": "Mi prendo tutto!",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 60,
+                "description": "Raggiungi un totale di 60 livelli in un Albero tecnologico di livello 1 su un pianeta.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 60,
+                "description": "Raggiungi un totale di 60 livelli in un Albero tecnologico di livello 2 su un pianeta.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 60,
+                "description": "Raggiungi un totale di 60 livelli in un Albero tecnologico di livello 3 su un pianeta.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A45_T3_Ava_ID42",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": 2700,
+                "description": "Raggiungi complessivamente 2.700 livelli tecnologia Forme di vita su tutti i tuoi pianeti messi insieme.",
+                "reward_type": "skin",
+                "reward_machine_name": "A45_T4_Pskin_ID30",
+                "reward_image_url": "https://gf2.geo.gfsrv.net/cdn4b/c5ece05c6315f5a0c06b03d1b59a79.png",
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 4600,
+                "description": "Raggiungi complessivamente 4.600 livelli tecnologia Forme di vita su tutti i tuoi pianeti messi insieme.",
+                "reward_type": "title",
+                "reward_machine_name": "A45_T5_Tit_ID57",
+                "reward_image_url": null,
+                "reward_title_text": "Portatore di futuro"
+            }
+        ]
+    },
+    {
+        "achievement_id": 1004600,
+        "title": "Non c`è tempo!",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 25,
+                "description": "Raggiungi un Bonus Tecnologia Forme di vita globale di un 25% sul Tempo di ricerca.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 50,
+                "description": "Raggiungi un Bonus Tecnologia Forme di vita globale di un 50% sul Tempo di ricerca.",
+                "reward_type": "title",
+                "reward_machine_name": "A46_T2_Tit_ID58",
+                "reward_image_url": null,
+                "reward_title_text": "Anticipatore"
+            },
+            {
+                "tier": 3,
+                "target": 10,
+                "description": "Migliora il 3° edificio di qualsiasi Forma di vita su un pianeta portandolo al livello 10.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": 20,
+                "description": "Migliora il 3° edificio di qualsiasi Forma di vita su un pianeta portandolo al livello 20.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A46_T4_Ava_ID43",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 15,
+                "description": "Migliora il 3° edificio di qualsiasi Forma di vita su 15 pianeti portandolo al livello 25.",
+                "reward_type": "skin",
+                "reward_machine_name": "A46_T5_Pskin_ID31",
+                "reward_image_url": "https://gf1.geo.gfsrv.net/cdn08/e8cfcfb830dc90d48a41e1c27628ca.png",
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1004700,
+        "title": "Questo finisce nella mia stiva",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 10000,
+                "description": "Raccogli 10.000 manufatti.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 20000,
+                "description": "Raccogli 20.000 manufatti.",
+                "reward_type": null,
+                "reward_machine_name": null,
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 30000,
+                "description": "Raccogli 30.000 manufatti.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A41_T3_Ava_ID59",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": 50000,
+                "description": "Raccogli 50.000 manufatti.",
+                "reward_type": "title",
+                "reward_machine_name": "A47_T4_Tit_ID59",
+                "reward_image_url": null,
+                "reward_title_text": "Cacciatore di manufatti"
+            },
+            {
+                "tier": 5,
+                "target": 100000,
+                "description": "Raccogli 100.000 manufatti.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A47_T5_Ava_ID44",
+                "reward_image_url": null,
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1004800,
+        "title": "Effetto duplicante",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 100,
+                "description": "Raggiungi un Bonus Tecnologia Forme di vita globale di un 100% sulla produzione di Metallo.",
+                "reward_type": "skin",
+                "reward_machine_name": "A48_T1_Pskin_ID32",
+                "reward_image_url": "https://gf2.geo.gfsrv.net/cdnd7/cd3e330391d88201a919d7d76c737e.png",
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 100,
+                "description": "Raggiungi un Bonus Tecnologia Forme di vita globale di un 100% sulla produzione di Cristallo.",
+                "reward_type": "skin",
+                "reward_machine_name": "A48_T2_Pskin_ID33",
+                "reward_image_url": "https://gf1.geo.gfsrv.net/cdn00/1e1485e5a97479f778712892ccf746.png",
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 100,
+                "description": "Raggiungi un Bonus Tecnologia Forme di vita globale di un 100% sulla produzione di Deuterio.",
+                "reward_type": "skin",
+                "reward_machine_name": "A48_T3_Pskin_ID34",
+                "reward_image_url": "https://gf3.geo.gfsrv.net/cdnba/017633b58dff261260005e39203a68.png",
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": 100,
+                "description": "Raggiungi un Bonus Tecnologia Forme di vita globale di un 100% sulla Produzione di energia.",
+                "reward_type": "skin",
+                "reward_machine_name": "A48_T4_Pskin_ID35",
+                "reward_image_url": "https://gf1.geo.gfsrv.net/cdnc5/fcc118503e7d8f100d78fb72cbc786.png",
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 1000,
+                "description": "Raggiungi un Bonus Tecnologia Forme di vita globale di un 1.000% sulla Capienza del nascondiglio.",
+                "reward_type": "skin",
+                "reward_machine_name": "A48_T5_Pskin_ID36",
+                "reward_image_url": "https://gf3.geo.gfsrv.net/cdn2e/f6832c8a760a9aea31514b40422234.png",
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1004900,
+        "title": "Qualità, non quantità",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 150,
+                "description": "Raggiungi un Bonus Tecnologia Forme di vita globale di un 150% sui Caccia leggeri.",
+                "reward_type": "skin",
+                "reward_machine_name": "A49_T1_Pskin_ID37",
+                "reward_image_url": "https://gf1.geo.gfsrv.net/cdn9a/6d4789d573d1dc93da67e03a58dee8.png",
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 150,
+                "description": "Raggiungi un Bonus Tecnologia Forme di vita globale di un 150% sui Caccia pesanti.",
+                "reward_type": "skin",
+                "reward_machine_name": "A49_T2_Pskin_ID38",
+                "reward_image_url": "https://gf3.geo.gfsrv.net/cdn57/d18e4db88f153e00e820d18223b37b.png",
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 150,
+                "description": "Raggiungi un Bonus Tecnologia Forme di vita globale di un 150% sugli Incrociatori.",
+                "reward_type": "skin",
+                "reward_machine_name": "A49_T3_Pskin_ID39",
+                "reward_image_url": "https://gf1.geo.gfsrv.net/cdn62/2eb08875aa505e7847133ce11c7a79.png",
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": 150,
+                "description": "Raggiungi un Bonus Tecnologia Forme di vita globale di un 150% sugli Incrociatori da battaglia.",
+                "reward_type": "skin",
+                "reward_machine_name": "A49_T4_Pskin_ID40",
+                "reward_image_url": "https://gf1.geo.gfsrv.net/cdn3c/671160d6b84a5ce8395badcc0299dd.png",
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 150,
+                "description": "Raggiungi un Bonus Tecnologia Forme di vita globale di un 150% sulle Corazzate.",
+                "reward_type": "skin",
+                "reward_machine_name": "A49_T5_Pskin_ID41",
+                "reward_image_url": "https://gf1.geo.gfsrv.net/cdn0f/69aa8473d635cee7727afb19c26bd4.png",
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1005000,
+        "title": "Voglio essere il migliore",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": null,
+                "description": "Sblocca lo slot 18 per gli Umani.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A50_T1_Ava_ID45",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": null,
+                "description": "Sblocca lo slot 18 per i Rock`tal.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A50_T2_Ava_ID46",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": null,
+                "description": "Sblocca lo slot 18 per i Mecha.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A50_T3_Ava_ID47",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": null,
+                "description": "Sblocca lo slot 18 per i Kaelesh.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A50_T4_Ava_ID48",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 4,
+                "description": "Completa dal grado 1 al grado 4 di questo Achievement.",
+                "reward_type": "skin",
+                "reward_machine_name": "A50_T5_Pskin_ID42",
+                "reward_image_url": "https://gf1.geo.gfsrv.net/cdn3f/419abc4ce8f4406293d46209399e7f.png",
+                "reward_title_text": null
+            }
+        ]
+    },
+    {
+        "achievement_id": 1005100,
+        "title": "Astro in ascesa",
+        "tiers": [
+            {
+                "tier": 1,
+                "target": 5000000,
+                "description": "Totalizza 5.000.000 Punti high-score.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A51_T1_Ava_ID49",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 2,
+                "target": 50000000,
+                "description": "Totalizza 50.000.000 Punti high-score.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A51_T2_Ava_ID50",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 3,
+                "target": 500000000,
+                "description": "Totalizza 500.000.000 Punti high-score.",
+                "reward_type": "skin",
+                "reward_machine_name": "A51_T3_Pskin_ID43",
+                "reward_image_url": "https://gf3.geo.gfsrv.net/cdn52/4258a2c1eab58e99f150fce81ba5f5.png",
+                "reward_title_text": null
+            },
+            {
+                "tier": 4,
+                "target": 5000000000,
+                "description": "Totalizza 5.000.000.000 Punti high-score.",
+                "reward_type": "avatar",
+                "reward_machine_name": "A51_T4_Ava_ID51",
+                "reward_image_url": null,
+                "reward_title_text": null
+            },
+            {
+                "tier": 5,
+                "target": 50000000000,
+                "description": "Totalizza 50.000.000.000 Punti high-score.",
+                "reward_type": "skin",
+                "reward_machine_name": "A51_T5_Pskin_ID44",
+                "reward_image_url": "https://gf1.geo.gfsrv.net/cdn06/a379cb5f78afc566f451ccc713ce1e.png",
+                "reward_title_text": null
+            }
+        ]
+    }
+]

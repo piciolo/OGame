@@ -2,9 +2,14 @@
 @if($entry['type'] === 'empty')
     <div class="profileEntry empty"></div>
 @elseif($entry['type'] === 'title')
+    @php
+        // Issue #2: mostra titolo selezionato dal player se presente, altrimenti placeholder.
+        $playerTitleText = trim((string) ($entry['title_text'] ?? ''));
+        $titleLabel = $playerTitleText !== '' ? $playerTitleText : __('t_ingame.profile.no_title');
+    @endphp
     <div class="profileEntry" data-type="{{ $entry['tag'] }}">
         <div class="profileHeading playerTitle">
-            <span class="titleLabel">{{ __('t_ingame.profile.no_title') }}</span>
+            <span class="titleLabel {{ $playerTitleText !== '' ? 'hasTitle' : '' }}">{{ $titleLabel }}</span>
             <span class="titleSelector">
                 <button type="button" class="custom_btn titleTypeSelection {{ ($entry['value'] ?? 'male') === 'male' ? 'active' : '' }}" data-gender="male" title="{{ __('t_ingame.profile.gender_male') }}">
                     <img src="/img/layout/gender_male.png" alt="M">

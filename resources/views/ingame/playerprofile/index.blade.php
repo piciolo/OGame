@@ -123,7 +123,28 @@
                         {{-- Avatar + colonna info --}}
                         <div class="profileHolder">
                             <div class="avatarHolder">
-                                <span class="profile-picture default sq200"></span>
+                                @php
+                                    // Issue #2: applica avatar selezionato. Se nessuno selezionato → default.
+                                    $selectedAvatar = $targetPlayer->getUser()->profile_avatar ?? '';
+                                    $avatarStyle = '';
+                                    $avatarClass = 'default';
+                                    if ($selectedAvatar !== '') {
+                                        $avatarClass = $selectedAvatar;
+                                        $h = crc32($selectedAvatar);
+                                        $hue1 = $h % 360;
+                                        $hue2 = ($h >> 8) % 360;
+                                        $avatarStyle = sprintf(
+                                            'background: linear-gradient(135deg, hsl(%d,55%%,38%%) 0%%, hsl(%d,55%%,18%%) 100%%);',
+                                            $hue1, $hue2
+                                        );
+                                    }
+                                @endphp
+                                <span class="profile-picture avatar-placeholder {{ $avatarClass }} sq200"
+                                      style="{{ $avatarStyle }}">
+                                    @if($selectedAvatar !== '')
+                                        <span class="avatar-initial avatar-initial-large">{{ $selectedAvatar }}</span>
+                                    @endif
+                                </span>
                             </div>
                             <div class="profilePageInfo" id="profilePageInfo" data-section="profile">
                                 @foreach($profileEntries as $entry)

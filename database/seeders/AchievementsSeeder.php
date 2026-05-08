@@ -8,33 +8,37 @@ use OGame\Models\AchievementTier;
 
 /**
  * Seed dei 51 achievement OGame.
- * Sorgente: scraping diretto da https://s275-it.ogame.gameforge.com/game/index.php?page=ingame&component=playerprofile
- * (tab Trofei → Riepilogo, sezione "achievementContentList_unlocks").
  *
- * Dati: database/seeders/data/achievements.json — contiene per ogni achievement:
- *   - display_number (es. 1..51)
- *   - machine_name (slug)
- *   - name_it (titolo italiano)
- *   - desc_it (descrizione italiana base)
- *   - tiers[] (5 livelli, ognuno con target + reward_type + reward_machine_name)
+ * Sorgente:
+ *  - `achievements.json`            → mapping display_number → machine_name/name_key/desc_key
+ *  - `achievements_extracted.json`  → dati REALI scrappati da OGame.it
+ *                                     (target, descrizione per-tier, reward_type, reward_machine_name, title_text)
  *
- * Le 2 voci stagionali segrete (4000100_X, 8000100_X) NON sono qui — andranno
- * gestite separatamente quando il sistema stagionale sarà implementato.
+ * I due file sono allineati per `display_number` (= ordine OGame `#1`..`#51`).
+ *
+ * Le 92 ricompense `null` nell'extracted corrispondono a tier "segreti" che
+ * OGame nasconde finché non vengono sbloccati: in quel caso conserviamo i
+ * machine_name esistenti del file `achievements.json` (best-effort).
  */
 class AchievementsSeeder extends Seeder
 {
     public function run(): void
     {
-        $path = database_path('seeders/data/achievements.json');
-        if (!is_file($path)) {
-            $this->command?->error('Missing data file: '.$path);
+        $base = database_path('seeders/data/achievements.json');
+        $real = database_path('seeders/data/achievements_extracted.json');
+
+        if (!is_file($base) || !is_file($real)) {
+            $this->command?->error('Missing data files (achievements.json / achievements_extracted.json)');
             return;
         }
 
-        $rows = json_decode((string) file_get_contents($path), true);
-        if (!is_array($rows)) {
-            $this->command?->error('Invalid JSON in '.$path);
-            return;
+        $rows = json_decode((string) file_get_contents($base), true) ?: [];
+        $extracted = json_decode((string) file_get_contents($real), true) ?: [];
+
+        // Allineiamo per display_number = indice 1-based.
+        $extractedByIndex = [];
+        foreach ($extracted as $i => $e) {
+            $extractedByIndex[$i + 1] = $e;
         }
 
         foreach ($rows as $row) {
@@ -50,19 +54,40 @@ class AchievementsSeeder extends Seeder
                 ]
             );
 
+            $extractedRow = $extractedByIndex[(int) $row['display_number']] ?? null;
+            $extractedTiers = [];
+            if ($extractedRow !== null) {
+                foreach ($extractedRow['tiers'] ?? [] as $t) {
+                    $extractedTiers[(int) $t['tier']] = $t;
+                }
+            }
+
             // Sincronizza i tier (delete+recreate per semplicità)
             AchievementTier::where('achievement_id', $achievement->id)->delete();
             foreach ($row['tiers'] ?? [] as $t) {
+                $tierNum = (int) $t['tier'];
+                $ex = $extractedTiers[$tierNum] ?? [];
+
+                // Reward: prendi sempre prima quello reale scrappato; fallback al base file
+                // se OGame nascondeva la reward (achievement segreto).
+                $rewardType = $ex['reward_type'] ?? $t['reward_type'];
+                $rewardMachine = $ex['reward_machine_name'] ?? $t['reward_machine_name'];
+                $titleText = $ex['reward_title_text'] ?? null;
+                $description = $ex['description'] ?? null;
+                $target = (int) ($ex['target'] ?? $t['target']);
+
                 AchievementTier::create([
                     'achievement_id' => $achievement->id,
-                    'tier' => (int) $t['tier'],
-                    'target' => (int) $t['target'],
-                    'reward_type' => (string) $t['reward_type'],
-                    'reward_machine_name' => (string) $t['reward_machine_name'],
+                    'tier' => $tierNum,
+                    'target' => $target,
+                    'reward_type' => (string) $rewardType,
+                    'reward_machine_name' => (string) $rewardMachine,
+                    'description_text' => $description,
+                    'title_text' => $titleText,
                 ]);
             }
         }
 
-        $this->command?->info('Seeded '.count($rows).' achievements.');
+        $this->command?->info('Seeded '.count($rows).' achievements (con dati reali OGame).');
     }
 }

@@ -60,6 +60,25 @@ class AchievementService
     }
 
     /**
+     * Mappa machine_name → testo titolo per i 59 reward titoli (sorgente OGame
+     * estratta in achievements_extracted.json e salvata in `achievement_tiers.title_text`).
+     *
+     * @return array<string, string>
+     */
+    public function getTitleTextLookup(): array
+    {
+        $rows = \OGame\Models\AchievementTier::query()
+            ->where('reward_type', 'title')
+            ->whereNotNull('title_text')
+            ->get(['reward_machine_name', 'title_text']);
+        $out = [];
+        foreach ($rows as $r) {
+            $out[$r->reward_machine_name] = $r->title_text;
+        }
+        return $out;
+    }
+
+    /**
      * Avatar sbloccati dal giocatore (per la tab Avatar).
      *
      * @return array<int, string>  array di machine_name

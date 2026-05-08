@@ -13,9 +13,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $target
  * @property string $reward_type     'avatar' | 'skin' | 'title'
  * @property string $reward_machine_name
+ * @property string|null $description_text
+ * @property string|null $title_text
  */
 #[Fillable([
     'achievement_id', 'tier', 'target', 'reward_type', 'reward_machine_name',
+    'description_text', 'title_text',
 ])]
 class AchievementTier extends Model
 {
