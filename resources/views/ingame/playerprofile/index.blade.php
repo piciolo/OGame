@@ -287,6 +287,23 @@
                 list.querySelectorAll('.selected').forEach(function (el) { el.classList.remove('selected'); });
                 var target = list.querySelector('[' + dataAttr + '="' + machine + '"]');
                 if (target) target.classList.add('selected');
+                // Titolo: aggiorna il .titleLabel nel profilo header.
+                if (type === 'title') {
+                    var label = document.querySelector('.profileHeading.playerTitle .titleLabel');
+                    if (label) {
+                        if (machine === '') {
+                            label.textContent = @json(__('t_ingame.profile.no_title'));
+                            label.classList.remove('hasTitle');
+                        } else {
+                            // Recupera il testo dal titleHolder cliccato.
+                            var th = document.querySelector('#achievementContentList_titles [data-title-id="' + machine + '"] .titleHolder');
+                            if (th) {
+                                label.textContent = th.textContent.trim();
+                                label.classList.add('hasTitle');
+                            }
+                        }
+                    }
+                }
                 // Skin pianeta: aggiorna l'<img> nel planet bar per il pianeta cui
                 // è stata applicata. Il backend ritorna planet_id (= pianeta corrente).
                 if (type === 'skin' && data.planet_id) {
