@@ -48984,453 +48984,2271 @@ div.claimsmall p {
     color: #ffcc00;
 }
 
-/* =============================================================
-   TAB TROFEI (replica OGame ufficiale)
-   ============================================================= */
-
+/* Tab Trofei: stili gestiti da playerprofile_achievements.css (sorgente OGame autoritativa) */
 #playerprofilecomponent .hidden { display: none !important; }
-
+/* Width container achievement (specifico OGameX, non in CSS OGame) */
 #achievementOverview {
-    width: 670px;
-    background: #0a0d12;
-    border: 1px solid #2a4054;
-    border-radius: 0 4px 4px 4px;
-    padding: 0;
-}
-
-#achievementsoverviewcomponent {
-    display: flex;
-    flex-direction: column;
-    width: 670px;
-    padding: 0 5px 5px;
+    width: 100%;
     box-sizing: border-box;
-    background-color: #0d1014;
+}
+
+/* OGame: regole utility per attributi sq*/w*/h* (estratte da CSS principale) */
+
+*[sq12] {
+    width: 12px !important;
+    height: 12px !important;
+    --var-width: 12 !important;
+    --var-height: 12 !important;
+}
+*[sq16] {
+    width: 16px !important;
+    height: 16px !important;
+    --var-width: 16 !important;
+    --var-height: 16 !important;
+}
+*[sq20] {
+    width: 20px !important;
+    height: 20px !important;
+    --var-width: 20 !important;
+    --var-height: 20 !important;
+}
+*[sq22] {
+    width: 22px !important;
+    height: 22px !important;
+    --var-width: 22 !important;
+    --var-height: 22 !important;
+}
+*[sq24] {
+    width: 24px !important;
+    height: 24px !important;
+    --var-width: 24 !important;
+    --var-height: 24 !important;
+}
+*[sq26] {
+    width: 26px !important;
+    height: 26px !important;
+    --var-width: 26 !important;
+    --var-height: 26 !important;
+}
+*[sq28] {
+    width: 28px !important;
+    height: 28px !important;
+    --var-width: 28 !important;
+    --var-height: 28 !important;
+}
+*[sq30] {
+    width: 30px !important;
+    height: 30px !important;
+    --var-width: 30 !important;
+    --var-height: 30 !important;
+}
+*[sq36] {
+    width: 36px !important;
+    height: 36px !important;
+    --var-width: 36 !important;
+    --var-height: 36 !important;
+}
+*[sq40] {
+    width: 40px !important;
+    height: 40px !important;
+    --var-width: 40 !important;
+    --var-height: 40 !important;
+}
+*[sq44] {
+    width: 44px !important;
+    height: 44px !important;
+    --var-width: 44 !important;
+    --var-height: 44 !important;
+}
+*[sq50] {
+    width: 50px !important;
+    height: 50px !important;
+    --var-width: 50 !important;
+    --var-height: 50 !important;
+}
+*[sq55] {
+    width: 55px !important;
+    height: 55px !important;
+    --var-width: 55 !important;
+    --var-height: 55 !important;
+}
+*[sq70] {
+    width: 70px !important;
+    height: 70px !important;
+    --var-width: 70 !important;
+    --var-height: 70 !important;
+}
+*[sq100] {
+    width: 100px !important;
+    height: 100px !important;
+    --var-width: 100 !important;
+    --var-height: 100 !important;
+}
+*[sq180] {
+    width: 180px !important;
+    height: 180px !important;
+    --var-width: 180 !important;
+    --var-height: 180 !important;
+}
+*[sq200] {
+    width: 200px !important;
+    height: 200px !important;
+    --var-width: 200 !important;
+    --var-height: 200 !important;
+}
+*[w50] {
+    width: 50px !important;
+    --var-width: 50 !important;
+}
+*[w60] {
+    width: 60px !important;
+    --var-width: 60 !important;
+}
+*[w70] {
+    width: 70px !important;
+    --var-width: 70 !important;
+}
+*[w80] {
+    width: 80px !important;
+    --var-width: 80 !important;
+}
+*[w100] {
+    width: 100px !important;
+    --var-width: 100 !important;
+}
+*[w150] {
+    width: 150px !important;
+    --var-width: 150 !important;
+}
+*[w200] {
+    width: 200px !important;
+    --var-width: 200 !important;
+}
+*[h16] {
+    height: 16px !important;
+    --var-height: 16 !important;
+}
+*[h18] {
+    height: 18px !important;
+    --var-height: 18 !important;
+}
+*[h20] {
+    height: 20px !important;
+    --var-height: 20 !important;
+}
+*[h22] {
+    height: 22px !important;
+    --var-height: 22 !important;
+}
+*[h28] {
+    height: 28px !important;
+    --var-height: 28 !important;
+}
+*[h50] {
+    height: 50px !important;
+    --var-height: 50 !important;
+}
+*[w50] {
+    width: 50px;
+}
+*[w68] {
+    width: 68px;
+}
+*[w100] {
+    width: 100px;
+}
+*[w150] {
+    width: 150px;
+}
+*[w310] {
+    width: 310px;
+}
+*[w380] {
+    width: 380px;
+}
+*[w390] {
+    width: 390px;
+}
+*[w400] {
+    width: 400px;
+}
+*[w420] {
+    width: 420px;
+}
+*[w450] {
+    width: 450px;
+}
+*[h30] {
+    height: 30px;
+}
+
+/* gradient-button */
+gradient-button button,
+#achievementsOverviewList .achievementContentList.spaceObjectSkins .achievementOverviewSpaceObjectSkinHolder gradient-button button,
+#achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder gradient-button button {
+    padding: 0 5px;
+}
+gradient-button span,
+#achievementsOverviewList .achievementContentList.spaceObjectSkins .achievementOverviewSpaceObjectSkinHolder gradient-button span,
+#achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder gradient-button span {
     color: #f1f1f1;
-    font-size: 12px;
+    font-family: Verdana, Arial, SunSans-Regular, sans-serif;
+    font-size: 9px;
+    font-weight: bold;
+    padding-bottom: 3px;
 }
-
-#achievementsoverviewcomponent h3 {
+gradient-button span {
+    color: #f1f1f1;
+    font-family: Verdana, Arial, SunSans-Regular, sans-serif;
+    font-size: 9px;
+    font-weight: bold;
+    padding-bottom: 3px;
+}
+gradient-button .seasonExpiration span {
+    font-size: 16px;
+}
+gradient-button {
+    width: 120px;
+    height: 34px;
+}
+gradient-button .commandingStaffBonus {
+    border: 1px outset #ff9600 !important;
+    background: linear-gradient(160deg, #dd8301 0%, #b76d00 33%, #673b00 66%, #000000 100%);
+    color: antiquewhite;
+}
+gradient-button .commandingStaffBonus:hover {
+    filter: brightness(120%);
+}
+gradient-button .smallFont {
+    font-size: 12px !important;
+}
+gradient-button {
     width: 100%;
-    height: 28px;
-    margin: 0;
-    line-height: 28px;
-    text-align: center;
-    color: #6f9fc8;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    border-bottom: 1px solid #1c2a36;
+    height: 45px;
 }
-
-/* ── 4 sotto-tab (Riepilogo/Avatar/Skin/Titolo) ──────────────── */
-#achievementsOverviewCategories {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 30px;
-    margin-top: 4px;
-    color: #848484;
-    font-size: 12px;
+gradient-button {
+    margin-top: 6px;
 }
-
-.achievementCategory {
-    flex: 1;
-    height: 30px;
+gradient-button.newbutton .custom_btn span,
+gradient-button.savebutton .custom_btn span,
+gradient-button.deletebutton .custom_btn span,
+gradient-button.simulatebutton .custom_btn span,
+gradient-button.moredetails .custom_btn span,
+gradient-button.moreDetailsShortInfo .custom_btn span
+{
+    font-size: 12px !important;
+}
+gradient-button.moreDetailsShortInfo {
+    z-index: 3 !important;
+}
+gradient-button.moredetails .custom_btn span,
+gradient-button.moreDetailsShortInfo .custom_btn span {
+    max-width: 180px;
+}
+gradient-button */
+gradient-button {
     display: flex;
-    align-items: center;
     justify-content: center;
-    background: linear-gradient(180deg, #1a2630 0%, #0c141c 100%);
-    border: 1px solid #2a4054;
-    border-bottom: none;
-    cursor: pointer;
-    color: #848484;
-    font-weight: 700;
-    margin-right: 2px;
-    transition: filter 0.1s;
+    align-items: center;
 }
-.achievementCategory:last-child { margin-right: 0; }
-.achievementCategory:hover { filter: brightness(1.2); }
-.achievementCategory.active {
-    background: linear-gradient(180deg, #617c8d 0%, #2e4356 100%);
-    color: #ffffff;
+gradient-button .custom_btn {
+    width: 100%;
+    height: 100%;
+    border: 1px outset #696666 !important;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #bbb;
+    font-size: 17px;
+    background: linear-gradient(160deg, rgba(54,77,99,1) 0%, rgba(40,57,72,1) 33%, rgba(20,30,38,1) 66%, rgba(18,26,33,1) 100%);
+    box-shadow: 0px 2px 3px 1px #0000008c;
+    outline: none;
+    transition: 300ms;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-block: 0;
+    padding-inline: 0;
+    box-sizing: border-box;
+}
+gradient-button .custom_btn.send {
+    font-size: 11px;
+    font-weight: 700;
+}
+gradient-button .custom_btn.green,
+gradient-button .custom_btn.active {
+    border: 1px outset #66B817 !important;
+    background: linear-gradient(160deg, rgba(55, 99, 54, 1) 0%, rgba(40, 72, 40, 1) 33%, rgba(26, 38, 20, 1) 66%, rgba(24, 33, 18, 1) 100%);
+}
+gradient-button .custom_btn.red {
+    border: 1px outset rgb(161, 36, 36) !important;
+    background: linear-gradient(160deg, rgba(161, 36, 36, 1) 0%, rgba(144, 29, 29, 1) 33%, rgba(29, 18, 17, 1) 66%, rgba(33, 18, 18, 1) 100%);
+}
+gradient-button button:not(:disabled).selected {
+    border: 1px outset #dee3d8 !important;
+    background: linear-gradient(160deg, rgba(67,107,145,1) 0%, rgba(52,76,97,1) 33%, rgba(40,58,71,1) 66%, rgba(20,26,32,1) 100%);
+    box-shadow: 0px 0px 0px 0px transparent;
+}
+gradient-button button:not(:disabled).selected,
+.achievementOverviewTierSelectionContainer gradient-button button:not(:disabled).selected {
+    box-shadow: 0px 2px 3px 1px #0000008c;
+}
+gradient-button button:not(:disabled):hover {
+    background: linear-gradient(160deg, rgba(67,107,145,1) 0%, rgba(52,76,97,1) 33%, rgba(40,58,71,1) 66%, rgba(20,26,32,1) 100%);
+    box-shadow: 0px 0px 0px 0px transparent;
+}
+gradient-button button:not(:disabled).green.selected,
+gradient-button button:not(:disabled).active.selected {
+    border: 1px outset #dee3d8 !important;
+    background: linear-gradient(160deg, rgb(68, 121, 67) 0%, rgb(49, 87, 49) 33%, rgb(35, 52, 28) 66%, rgb(35, 49, 27) 100%);
+}
+gradient-button button:not(:disabled).green:hover,
+gradient-button button:not(:disabled).active:hover {
+    border: 1px outset #66B817 !important;
+    background: linear-gradient(160deg, rgb(68, 121, 67) 0%, rgb(49, 87, 49) 33%, rgb(35, 52, 28) 66%, rgb(35, 49, 27) 100%);
+}
+gradient-button button:not(:disabled).red:hover {
+    border: 1px outset #cb2323 !important;
+    background: linear-gradient(160deg, rgba(203, 35, 35, 1) 0%, rgba(200, 31, 31, 1) 33%, rgba(38, 21, 20, 1) 66%, rgba(33, 18, 18, 1) 100%);
+}
+gradient-button button:disabled,
+gradient-button button[disabled] {
+    border: 1px solid #999999 !important;
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+gradient-button */
+
+/* start group title */
+group-title {
+    display: flex;
+    justify-content: center;
+    background: url(//gf3.geo.gfsrv.net/cdneb/f5f81e8302aaad56c958c033677fb8.png) -143px -162px no-repeat;
+    height: 25px;
+    width: 231px;
+    font-size: 11px;
+    line-height: 25px;
+    margin: 8px 0 5px -12px;
+    position: relative;
+}
+gradient-button {
+    height: 30px;
+    width: 150px;
+}
+gradient-button button img {
+    width: 8px !important;
+    height: 8px !important;
+}
+gradient-button span {
+    color: #f1f1f1;
+    font-family: Verdana, Arial, SunSans-Regular, sans-serif;
+    font-size: 9px;
+    font-weight: bold;
+    padding-bottom: 3px;
+}
+gradient-button span.icon {
+    padding-bottom: 0;
+}
+gradient-button button.custom_btn.active {
+    border: 1px outset #66B817 !important;
+    background: linear-gradient(160deg, rgba(55,99,54,1) 0%, rgba(40,72,40,1) 33%, rgba(26,38,20,1) 66%, rgba(24,33,18,1) 100%);
+}
+gradient-button span {
+    color: #f1f1f1;
+    font-family: Verdana, Arial, SunSans-Regular, sans-serif;
+    font-size: 9px;
+    font-weight: bold;
+    padding-bottom: 3px;
+}
+gradient-button .custom_btn.showPlanetProdOverviewBtn {
+    border: 1px outset #797979 !important;
+}
+/* OGame Trofei - CSS autoritativo estratto da gf3.geo.gfsrv.net/cdn22/9b6fdb87.css
+   Le regole per-machine_name (profile-picture.A*, space-object-skin.A*) sono in
+   playerprofile_avatars.css con path locali. */
+
+/* OGame achievement-related CSS — concatenated extraction */
+
+/* ============================================ */
+/* SOURCE: https://gf3.geo.gfsrv.net/cdn22/ca67fb31d6d4d2820560eb35905481.css */
+/* FILE  : 001_gf3_geo_gfsrv_net_9b6fdb87.css (305 blocks) */
+/* ============================================ */
+/* *****************************************************************************
+   ALLGEMEINE STYLES
+***************************************************************************** */
+/*#planet h2 {*/
+/*    color: #fff;*/
+/*    font: bold 18px/22px Verdana,Arial,Helvetica,sans-serif;*/
+/*    height: 22px;*/
+/*    margin: 0 0 0 144px;*/
+/*    overflow: hidden;*/
+/*    padding-top: 7px;*/
+/*    white-space: nowrap;*/
+/*    width: 470px;*/
+/*    text-overflow: ellipsis;*/
+/*}*/
+
+
+
+/* *************************** Scrollbars *******************************************/
+/*
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3d5b75;
+    border: 0px none #ffffff;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #567394;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: #627f9b;
+}
+
+::-webkit-scrollbar-track {
+    background: #090909;
+    border: 0px none #ffffff;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-track:hover {
+    background: #000000;
+}
+
+::-webkit-scrollbar-track:active {
+    background: #000000;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* *****************************************************************************
+   ALLGEMEINE STYLES
+***************************************************************************** */
+/*#planet h2 {*/
+/*    color: #fff;*/
+/*    font: bold 18px/22px Verdana,Arial,Helvetica,sans-serif;*/
+/*    height: 22px;*/
+/*    margin: 0 0 0 144px;*/
+/*    overflow: hidden;*/
+/*    padding-top: 7px;*/
+/*    white-space: nowrap;*/
+/*    width: 470px;*/
+/*    text-overflow: ellipsis;*/
+/*}*/
+
+
+
+/* *************************** Scrollbars *******************************************/
+/*
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+::-webkit-scrollbar-thumb {
+    background: #3d5b75;
+    border: 0px none #ffffff;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #567394;
+}
+::-webkit-scrollbar-thumb:active {
+    background: #627f9b;
+}
+::-webkit-scrollbar-track {
+    background: #090909;
+    border: 0px none #ffffff;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-track:hover {
+    background: #000000;
+}
+::-webkit-scrollbar-track:active {
+    background: #000000;
+}
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+*/
+/* *************************** Links *******************************************/
+
+a:link,
+a:visited,
+.no-touch a:hover,
+a:active { color:#848484;}
+
+.dropdown.currentlySelected,
+.dropdown.currentlySelected:before,
+.dropdown.currentlySelected>a { background-image: url("//gf3.geo.gfsrv.net/cdne1/d03835718066a5a592a6426736e019.png"); }
+
+.dropdown.currentlySelected {
+    background-repeat: repeat-x;
+    background-position: 0 -560px;
+    color: #fff;
+    position:relative;
+    height: 24px;
+    line-height: 24px;
+    vertical-align: middle;
+}
+
+.dropdown.currentlySelected:before {
+    background-color: #0D1014;
+    background-position: 0 -632px;
+    content: '';
+    position: absolute;
+    height: 24px;
+    left: 0;
+    width: 5px;
+}
+
+.no-touch .dropdown.currentlySelected:hover { background-position: 0 -584px; }
+
+.no-touch .dropdown.currentlySelected:hover:before { background-position: -5px -632px; }
+
+.dropdown.currentlySelected>a {
+    background-position: 100% -488px;
+    background-repeat: no-repeat;
+}
+
+.no-touch .dropdown.currentlySelected>a:hover,
+.dropdown.currentlySelected>a.hover,
+.dropdown.currentlySelected.focus>a,
+.dropdown.currentlySelected>a:focus {
+    background-position: 100% -512px;
+    color: #fff;
+}
+
+#links .leftmenu li a.selected:link,
+#links .leftmenu li a.selected:visited,
+.no-touch #links .leftmenu li a.selected:hover,
+#links .leftmenu li a.selected:active {
+    background: url("//gf3.geo.gfsrv.net/cdneb/f5f81e8302aaad56c958c033677fb8.png") -374px -287px no-repeat;
+    color:#fff;
+}
+
+/* Planeten rechts */
+
+#selectedplanet {
+    display:none;
+    left: 866px;
+    position: absolute;
+    top: 19px;
+}
+
+#selectedPlanetName {
+    display:none;
+    color:cyan;
+    height:16px;
+    left:866px;
+    position:absolute;
+    top:121px;
+    font-size:11px;
+    width:130px;
+}
+
+.comm_menu.messages.selected { background-position: 15px -39px; }
+
+.comm_menu.chat.selected { background-position: 8px -161px; }
+
+.comm_menu.buddies.selected { background-position: 2px -298px; }
+
+#helper a,
+.no-touch  #helper a:hover.help_selected {
+    display:block;
+    position:relative;
+    top:90px;
+    left:139px;
+    /* @TODO-merge REMOVE CSS BELOW */
+    background: transparent url("//gf3.geo.gfsrv.net/cdneb/f5f81e8302aaad56c958c033677fb8.png") -143px -96px no-repeat;
+    /* @TODO-merge REMOVE CSS ABOVE */
+    width:27px;
+    height:27px;
+}
+
+.no-touch #helper a:hover,
+.no-touch #helper a:hover.help_selected { background-position: -143px -123px; }
+
+#helper a.help_selected {
+    position:relative;
+    top:53px;
+    left:99px;
+    background:url("//gf3.geo.gfsrv.net/cdn54/19d8745d33ecac0fd288870ba79bde.png") no-repeat;
+    height:100px;
+    width:100px;
 }
 
 #achievementsOverviewList {
     display: flex;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 600px;
     flex-direction: column;
-    flex: 1;
-    border: 1px solid #2a4054;
-    background: #0a0d12;
 }
 
-.achievementContentList {
+#achievementsOverviewList .achievementContentList {
+    padding: 10px;
+}
+
+#achievementsOverviewList .achievementContentList.hidden {
+    display: none !important;
+}
+
+#achievementsOverviewList .achievementContentList.avatars,
+#achievementsOverviewList .achievementContentList.spaceObjectSkins,
+#achievementsOverviewList .achievementContentList.titles {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    align-items: center;
+    justify-items: center;
+}
+
+#achievementsOverviewList .achievementContentList.unlocks {
+    width: 100%;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+#avatarAchievementsOverviewContent #achievementsOverviewList #achievementOverviewAchievementFilters {
+    z-index: 20;
+}
+
+#achievementsOverviewList .achievementContentList.avatars .achievementOverviewProfilePictureHolder,
+#achievementsOverviewList .achievementContentList.spaceObjectSkins .achievementOverviewSpaceObjectSkinHolder,
+#achievementsOverviewList .achievementContentList.avatars profile-picture {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
+    position: relative;
+}
+
+#achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
+    position: relative;
+}
+
+#achievementsOverviewList .achievementContentList.avatars .achievementOverviewProfilePictureHolder,
+#achievementsOverviewList .achievementContentList.spaceObjectSkins .achievementOverviewSpaceObjectSkinHolder,
+#achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#achievementsOverviewList .achievementContentList.avatars .achievementOverviewProfilePictureHolder.selected,
+#achievementsOverviewList .achievementContentList.spaceObjectSkins .achievementOverviewSpaceObjectSkinHolder.selected,
+#achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder.selected {
+    border: 2px #6F9FC8 solid;
+    border-radius: 4px;
+}
+
+#achievementsOverviewList .achievementContentList.avatars .achievementOverviewProfilePictureHolder .profilePictureSelectBtn,
+#achievementsOverviewList .achievementContentList.avatars .achievementOverviewProfilePictureHolder .profilePictureDeselectBtn,
+#achievementsOverviewList .achievementContentList.spaceObjectSkins .achievementOverviewSpaceObjectSkinHolder .spaceObjectSkinSelectBtn,
+#achievementsOverviewList .achievementContentList.spaceObjectSkins .achievementOverviewSpaceObjectSkinHolder .spaceObjectSkinDeselectBtn,
+#achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder .profileTitleSelectBtn,
+#achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder .profileTitleDeselectBtn {
+    display: none;
+    position: absolute;
+    bottom: 5px;
+    z-index: 2;
+}
+
+#achievementsOverviewList .achievementContentList.avatars .achievementOverviewProfilePictureHolder gradient-button button,
+#achievementsOverviewList .achievementContentList.spaceObjectSkins .achievementOverviewSpaceObjectSkinHolder gradient-button button,
+#achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder gradient-button button {
+    padding: 0 5px;
+}
+
+#achievementsOverviewList .achievementContentList.avatars .achievementOverviewProfilePictureHolder gradient-button span,
+#achievementsOverviewList .achievementContentList.spaceObjectSkins .achievementOverviewSpaceObjectSkinHolder gradient-button span,
+#achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder gradient-button span {
+    color: #f1f1f1;
+    font-family: Verdana, Arial, SunSans-Regular, sans-serif;
+    font-size: 9px;
+    font-weight: bold;
+    padding-bottom: 3px;
+}
+
+#achievementsOverviewList .achievementContentList.avatars .achievementOverviewProfilePictureHolder:not(.selected):hover .profilePictureSelectBtn,
+#achievementsOverviewList .achievementContentList.spaceObjectSkins .achievementOverviewSpaceObjectSkinHolder:not(.selected):hover .spaceObjectSkinSelectBtn,
+#achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder:not(.selected):hover .profileTitleSelectBtn {
+    display: flex;
+}
+
+#achievementsOverviewList .achievementContentList.avatars .achievementOverviewProfilePictureHolder.selected:hover .profilePictureDeselectBtn,
+#achievementsOverviewList .achievementContentList.spaceObjectSkins .achievementOverviewSpaceObjectSkinHolder.selected:hover .spaceObjectSkinDeselectBtn,
+#achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder.selected:hover .profileTitleDeselectBtn {
+    display: flex;
+}
+
+#achievementsOverviewList .achievementContentList.avatars profile-picture.locked,
+#achievementsOverviewList .achievementContentList.spaceObjectSkins space-object-skin.locked,
+#achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder.locked {
+    cursor: auto;
+}
+
+#achievementsOverviewList .achievementContentList.avatars profile-picture picture,
+#achievementsOverviewList .achievementContentList.spaceObjectSkins space-object-skin {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+#achievementsOverviewList .achievementContentList.avatars profile-picture picture source,
+#achievementsOverviewList .achievementContentList.spaceObjectSkins space-object-skin img {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+#achievementsOverviewList .achievementContentList.avatars profile-picture picture {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+#achievementsOverviewList .achievementContentList.avatars profile-picture picture img {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+#achievementsOverviewList .achievementContentList.avatars profile-picture.locked::before,
+#achievementsOverviewList .achievementContentList.spaceObjectSkins space-object-skin.locked::before,
+#achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder.locked::before {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "\01F512";
+    background-color: rgba(0, 0, 0, 0.8);
+    filter: grayscale(1);
+    cursor: auto;
+    justify-content: flex-end;
+    align-items: flex-start;
+    font-size: 13px;
+    padding: 5px;
+}
+
+#achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder.locked::before {
+    border-radius: 4px;
+}
+
+#achievementsOverviewList .achievementContentList.spaceObjectSkins .achievementOverviewSpaceObjectSkinHolder.selected::after {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: attr(data-space-object-name) ' ' attr(data-space-object-coordinates);
+    position: absolute;
+    min-height: 20%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    text-align: center;
+    padding: 2px;
+    color: #6F9FC8;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+#achievementsOverviewList .achievementContentList.avatars .achievementOverviewProfilePictureHolder ,
+#achievementsOverviewList .achievementContentList.spaceObjectSkins .achievementOverviewSpaceObjectSkinHolder,
+#achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder {
+    border: 1px solid #252525;
+    border-radius: 4px;
+}
+
+#achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder .titleHolder {
+    z-index: unset;
+    text-align: center;
+    text-shadow: 0px 0px 3px rgba(255, 255, 255, 0.7);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 5px;
+    max-width: 100%;
+    max-height: 100%;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+}
+
+#achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder {
+    background-color: #12161a;
+}
+
+.tippy-content .achievementOverviewAchievementHolder,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder {
+    width: 100%;
+    background: linear-gradient(to top, rgba(20, 29, 37, 0.8) 0%, rgba(9, 13, 18, 0.8) 100%);
+    border-radius: 3px;
+    box-shadow: 0 0 2px 1px black, inset 0 1px 2px 1px hsl(205, 33%, 11%);
+    display:flex;
+    gap: 4px;
+    flex-direction: column;
+    border: 1px solid #252525;
+    border-color: #24323D #131A20 #131A20 #131A20;
+    padding: 4px;
+    box-sizing: border-box;
+}
+
+.tippy-content .achievementOverviewAchievementHolder {
+    width: 450px;
+}
+
+.tippy-content .achievementOverviewAchievementHolder.hidden,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder.hidden,
+.hiddenAchievement {
+    background: rgb(125,125,125) !important;
+    background: linear-gradient(180deg, rgba(125,125,125,1) 0%, rgba(69,69,69,1) 89%, rgba(36,36,36,1) 100%) !important;
+}
+
+.tippy-content .achievementOverviewAchievementHolder *,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder * {
+    z-index: unset;
+}
+
+.tippy-content .achievementOverviewAchievementHolder .achievementTitleAndTierSelectionContainer,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder .achievementTitleAndTierSelectionContainer {
+    margin: 3px 0px 3px 2px;
+    display: flex;
+    flex-direction: row;
+}
+
+.tippy-content .achievementOverviewAchievementHolder .achievementOverviewAchievementTitle,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder .achievementOverviewAchievementTitle {
+    display: flex;
+    width: 100%;
+    text-shadow: 0px 0px 3px rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    font-weight: 700;
+    flex: 1;
+    color: white;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.tippy-content .achievementOverviewAchievementHolder .achievementOverviewAchievementTitle .achievementSeasonTitle,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder .achievementOverviewAchievementTitle .achievementSeasonTitle {
+    text-shadow: none;
+    font-size: 12px;
+    color: lightgrey;
+    font-style: italic;
+}
+
+.tippy-content .achievementOverviewAchievementHolder.hidden .achievementOverviewAchievementTitle,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder.hidden .achievementOverviewAchievementTitle,
+.hiddenAchievementTitle {
+    color: #fdbb2d;
+    text-shadow: 0px 3px 6px rgb(0 0 0 / 100%);
+}
+
+.tippy-content .achievementOverviewAchievementHolder .achievementOverviewTierSelectionContainer,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder .achievementOverviewTierSelectionContainer {
+    display: flex;
+    gap: 4px;
+    justify-content: flex-end;
+}
+
+.tippy-content .achievementOverviewAchievementHolder .achievementOverviewTierSelectionContainer {
+    display: none;
+}
+
+.tippy-content .achievementOverviewAchievementHolder .achievementOverviewTiersContainer,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder .achievementOverviewTiersContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 8px;
+    margin-top: 2px;
+}
+
+.tippy-content .achievementOverviewAchievementHolder .achievementTierContainer,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder .achievementTierContainer {
+    width: 100%;
+    border-radius: 4px;
+    padding-top: 6px;
+    position: relative;
+    display: none;
+    gap: 10px;
+    min-height: 150px;
+}
+
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder .achievementTierContainer.visible {
+    display: flex;
+}
+
+.tippy-content .achievementOverviewAchievementHolder .achievementTierContainer,
+.tippy-content .achievementOverviewAchievementHolder .achievementTierContainer.visible {
+    display: none;
+}
+
+.tippy-content .achievementOverviewAchievementHolder.tier_1 .achievementTierContainer.tier_1,
+.tippy-content .achievementOverviewAchievementHolder.tier_2 .achievementTierContainer.tier_2,
+.tippy-content .achievementOverviewAchievementHolder.tier_3 .achievementTierContainer.tier_3,
+.tippy-content .achievementOverviewAchievementHolder.tier_4 .achievementTierContainer.tier_4,
+.tippy-content .achievementOverviewAchievementHolder.tier_5 .achievementTierContainer.tier_5,
+.tippy-content .achievementOverviewAchievementHolder.tier_6 .achievementTierContainer.tier_6 {
+    display: flex !important;
+}
+
+.tippy-content .achievementOverviewAchievementHolder.tier_1 .achievementTierContainer:not(.tier_1),
+.tippy-content .achievementOverviewAchievementHolder.tier_2 .achievementTierContainer:not(.tier_2),
+.tippy-content .achievementOverviewAchievementHolder.tier_3 .achievementTierContainer:not(.tier_3),
+.tippy-content .achievementOverviewAchievementHolder.tier_4 .achievementTierContainer:not(.tier_4),
+.tippy-content .achievementOverviewAchievementHolder.tier_5 .achievementTierContainer:not(.tier_5),
+.tippy-content .achievementOverviewAchievementHolder.tier_6 .achievementTierContainer:not(.tier_6) {
+    display: none !important;
+}
+
+.tippy-content .achievementOverviewAchievementHolder .achievementTierContainer .achievementTierContainerTitle,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder .achievementTierContainer .achievementTierContainerTitle {
+    position: absolute;
+    top: -5px;
+    left: 0;
+    display: flex;
+    width: 100%;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 100%;
+    line-height: 12px;
+}
+
+.tippy-content .achievementOverviewAchievementHolder .achievementTierContainer .achievementTierContainerTitle:before,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder .achievementTierContainer .achievementTierContainerTitle:before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    margin-top: 6px;
+    border-top: solid 1px;
+    border-top-color: rgba(192, 192, 192, 0.15);
+    min-width: 10px;
+    height: 10px;
+    pointer-events: none;
+    box-shadow: inset 0 1px transparent;
+    margin-right: 4px;
+    border-left: solid 1px transparent;
+    border-radius: 4px 0;
+}
+
+.tippy-content .achievementOverviewAchievementHolder .achievementTierContainer.unlocked .achievementTierContainerTitle:before,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder .achievementTierContainer.unlocked .achievementTierContainerTitle:before {
+    border-top-color: rgba(52, 115, 63, 0.75);
+}
+
+.tippy-content .achievementOverviewAchievementHolder.hidden .achievementTierContainer.unlocked .achievementTierContainerTitle:before,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder.hidden .achievementTierContainer.unlocked .achievementTierContainerTitle:before {
+    border-top-color: #fdbb2d;
+}
+
+.tippy-content .achievementOverviewAchievementHolder .achievementTierContainer .achievementTierContainerTitle:after,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder .achievementTierContainer .achievementTierContainerTitle:after {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    margin-top: 6px;
+    border-top: solid 1px;
+    border-top-color: rgba(192, 192, 192, 0.15);
+    min-width: 10px;
+    height: 10px;
+    pointer-events: none;
+    box-shadow: inset 0 1px transparent;
+    flex-grow: 1;
+    margin-left: 4px;
+    border-right: solid 1px transparent;
+    border-radius: 0 4px;
+}
+
+.tippy-content .achievementOverviewAchievementHolder .achievementTierContainer.unlocked .achievementTierContainerTitle:after,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder .achievementTierContainer.unlocked .achievementTierContainerTitle:after {
+    border-top-color: rgba(52, 115, 63, 0.75);
+}
+
+.tippy-content .achievementOverviewAchievementHolder.hidden .achievementTierContainer.unlocked .achievementTierContainerTitle:after,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder.hidden .achievementTierContainer.unlocked .achievementTierContainerTitle:after {
+    border-top-color: #fdbb2d;
+}
+
+.tippy-content .achievementOverviewAchievementHolder .achievementTierContainer .achievementTierContainerData,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder .achievementTierContainer .achievementTierContainerData {
+    width: 100%;
+    min-height: 75px;
+    border: 1px solid rgba(80, 80, 80, 0.6);
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    border-top: transparent;
+    font-size: 11px;
+    color: #CFCBC2;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.tippy-content .achievementOverviewAchievementHolder .achievementTierContainer.unlocked .achievementTierContainerData,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder .achievementTierContainer.unlocked .achievementTierContainerData {
+    border-color: rgba(52, 115, 63, 0.75);
+    border-top: transparent;
+}
+
+.tippy-content .achievementOverviewAchievementHolder.hidden .achievementTierContainer.unlocked .achievementTierContainerData,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder.hidden .achievementTierContainer.unlocked .achievementTierContainerData {
+    border-color: #fdbb2d;
+}
+
+.tippy-content .achievementOverviewAchievementHolder .achievementTierContainer .achievementTierContainerData .achievementTierStatus,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder .achievementTierContainer .achievementTierContainerData .achievementTierStatus {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.tippy-content .achievementOverviewAchievementHolder .achievementTierContainer .achievementTierContainerData .achievementTierStatus .description,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder .achievementTierContainer .achievementTierContainerData .achievementTierStatus .description {
+    display: flex;
+    flex: 1;
+    padding-bottom: 10px;
+}
+
+.tippy-content .achievementOverviewAchievementHolder .achievementTierContainer .achievementReward,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder .achievementTierContainer .achievementReward {
+    width: 25%;
+    min-width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    background: linear-gradient(to top, rgba(20, 29, 37, 0.8) 0%, rgba(9, 13, 18, 0.8) 100%);
+    border: 1px solid;
+    border-color: #24323D #131A20 #131A20 #131A20;
+    border-radius: 4px;
+    box-shadow: 0 0 2px 1px black, inset 0 1px 2px 1px hsl(205, 33%, 11%);
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.tippy-content .achievementOverviewAchievementHolder .achievementReward .rewardTitle,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder .achievementReward .rewardTitle {
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+}
+
+.tippy-content .achievementOverviewAchievementHolder .achievementReward .rewardDescription,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder .achievementReward .rewardDescription {
+    color: white;
+}
+
+.tippy-content .achievementOverviewAchievementHolder .achievementReward .rewardTypeTitleContainer,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder .achievementReward .rewardTypeTitleContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #252525;
+    border-radius: 4px;
+    background-color: #12161a;
+}
+
+.tippy-content .achievementOverviewAchievementHolder .achievementReward .rewardTypeTitle,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder .achievementReward .rewardTypeTitle {
+    z-index: unset;
+    text-align: center;
+    text-shadow: 0px 0px 3px rgba(255, 255, 255, 0.7);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 5px;
+    max-width: 100%;
+    max-height: 100%;
+    color: white;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+}
+
+.tippy-content .achievementOverviewAchievementHolder .achievementTierContainer .achievementTierContainerData .unlockedContainer,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder .achievementTierContainer .achievementTierContainerData .unlockedContainer {
+    color: #5db143;
+}
+
+.tippy-content .achievementOverviewAchievementHolder .achievementTierContainer .achievementTierContainerData .achievementProgressLabel,
+#achievementsOverviewList .achievementContentList.unlocks .achievementOverviewAchievementHolder .achievementTierContainer .achievementTierContainerData .achievementProgressLabel {
+    width: 200px;
+    text-align: center;
+}
+
+progress.achievementProgress {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    height: 8px;
+    position: relative;
+    border-radius: 25px;
+    border: 1px solid #000;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 200px;
+}
+
+.progressParent {
+    display: flex;
+    width: 200px;
+    position: relative;
+}
+
+.progressParent::after {
+    position: absolute;
+    left: 0;
+    top: 0;
     display: block;
     width: 100%;
-    box-sizing: border-box;
-    padding: 6px;
-    max-height: 580px;
-    overflow-y: auto;
+    height: 100%;
+    content: "";
+    background: repeating-linear-gradient(90deg, #000000, #000000 1px, transparent 2px, transparent 10px);
 }
 
-/* ── Filtri Riepilogo ────────────────────────────────────────── */
-#achievementOverviewAchievementFilters {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 4px;
-    padding: 4px 6px;
-    margin-bottom: 6px;
-    background: #12171c;
-    border-radius: 3px;
-}
+/* Space object skin selection tooltip end */
 
-.achievementFilterIcon {
-    width: 28px !important;
-    min-width: 28px !important;
-    padding: 0 !important;
-    font-size: 14px !important;
-}
-
-.horizontalSplit {
-    width: 1px;
-    height: 18px;
-    background: #2a4054;
-    margin: 0 4px;
-}
-
-.achievementFilterLabel {
-    color: #b8b8b8;
-    font-size: 11px;
-    margin-right: 4px;
-}
-
-.achievementFilteringOptions {
-    display: flex;
-    flex-direction: row;
-    gap: 4px;
-    margin-left: auto;
-}
-
-#achievementOverview .custom_btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 22px;
-    min-width: 60px;
-    padding: 0 8px;
-    border: 1px outset #696666;
-    border-radius: 3px;
-    box-shadow: 0 1px 2px 1px rgba(0,0,0,0.55);
+#achievementsoverviewcomponent gradient-button span {
     color: #f1f1f1;
-    font-size: 11px;
+    font-family: Verdana, Arial, SunSans-Regular, sans-serif;
+    font-size: 9px;
+    font-weight: bold;
+    padding-bottom: 3px;
+}
+
+#achievementsoverviewcomponent gradient-button .seasonExpiration span {
+    font-size: 16px;
+}
+
+/* SEASONAL SUMMARY start */
+#achievementsOverviewList .achievementContentList.unlocks .seasonalSummary {
+    width: 100%;
+    background: linear-gradient(to top, rgba(20, 29, 37, 0.8) 0%, rgba(9, 13, 18, 0.8) 100%);
+    border-radius: 3px;
+    box-shadow: 0 0 2px 1px black, inset 0 1px 2px 1px hsl(205, 33%, 11%);
+}
+
+#achievementsOverviewList .achievementContentList.unlocks .seasonalSummary .seasonalSummaryHeader {
+    display:flex;
+    height: 50px;
+    position: relative;
+}
+
+#achievementsOverviewList .achievementContentList.unlocks .seasonalSummary .seasonalSummaryHeader .togglingIconHolder {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+#achievementsOverviewList .achievementContentList.unlocks .seasonalSummary .seasonalSummaryHeader .seasonalSummaryHeaderTitleAndProgress {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#achievementsOverviewList .achievementContentList.unlocks .seasonalSummary .seasonalSummaryHeader .seasonalSummaryHeaderTitleAndProgress .seasonalSummaryTitle {
+    text-shadow: 0px 0px 3px rgba(255, 255, 255, 0.7);
+    font-size: 14px;
     font-weight: 700;
-    cursor: pointer;
+    padding-bottom: 5px;
+}
+
+#achievementsOverviewList .achievementContentList.unlocks .seasonalSummary .seasonalSummaryHeader .seasonalSummarySeasonStatus {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    padding: 5px;
+    font-size: 8px;
+}
+
+#achievementsOverviewList .achievementContentList.unlocks .seasonalSummary .seasonalSummaryHeader .seasonalSummarySeasonStatus span.running {
+    color: #008900;
+}
+
+#achievementsOverviewList .achievementContentList.unlocks .seasonalSummary .seasonalSummaryHeader .seasonalSummarySeasonStatus span.ended {
+    color: #a11d1d;
+}
+
+#achievementsOverviewList .achievementContentList.unlocks .seasonalSummary .seasonalSummaryAchievementList {
+    display:none;
+    margin-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+/* SEASONAL SUMMARY end */
+
+
+.progressUpdateBtn button.custom_btn {
+    box-shadow: 0px 0.5px 1px 0.5px #0000001c !important;
+    padding-top: 2px;
+}
+
+.achievementProgressLabel button {
+    position: absolute;
+    top: -1px;
+    width: 20px !important;
+    height: 20px !important;
+}
+
+#artifactshop #artifactShopTierContent tier-items purchase-button gradient-button {
+    width: 120px;
+    height: 34px;
+}
+
+#artifactshop #artifactShopTierContent tier-items purchase-button gradient-button .commandingStaffBonus {
+    border: 1px outset #ff9600 !important;
+    background: linear-gradient(160deg, #dd8301 0%, #b76d00 33%, #673b00 66%, #000000 100%);
+    color: antiquewhite;
+}
+
+#artifactshop #artifactShopTierContent tier-items purchase-button gradient-button .commandingStaffBonus:hover {
+    filter: brightness(120%);
+}
+
+#artifactshop gradient-button .smallFont {
+    font-size: 12px !important;
+}
+
+#artifactshop #artifactShopTierContent tier-scrollbar {
+    width: 80%;
+    height: 60px;
+    overflow-x: scroll;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
     -webkit-user-select: none;
        -moz-user-select: none;
             user-select: none;
-    background: linear-gradient(160deg, #364D63 0%, #283948 33%, #141E26 66%, #121A21 100%);
-    transition: filter 0.1s;
-}
-#achievementOverview .custom_btn:hover { filter: brightness(1.2); }
-#achievementOverview .custom_btn.green,
-#achievementOverview .custom_btn.selected {
-    background: linear-gradient(160deg, #4FA14F 0%, #3D7E3D 33%, #1D2E1D 66%, #182518 100%);
-    border-color: #66B817;
+
+    tier {
+        display: flex;
+        flex-direction: column;
+        width: 50px;
+        min-width: 50px;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        gap: 5px;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        tier-content {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+
+            .tierClaimed &,
+            .tierInProgress & {
+                animation: pulse 3.5s infinite;
+            }
+
+            left {
+                display: flex;
+                content: " ";
+                height: 2px;
+                width: 30%;
+                background: #39546de8;
+                justify-content: center;
+                flex-direction: row;
+                align-items: center;
+                align-content: stretch;
+                flex-wrap: wrap;
+
+                .tierClaimed & {
+                    background-color: darkgreen;
+                }
+
+                .tierInProgress & {
+                    background: linear-gradient(90deg,rgba(0, 100, 0, 1) 1%, rgba(153, 153, 48, 1) 100%);
+                }
+            }
+
+            middle {
+                display: flex;
+                width: 30px;
+                aspect-ratio: 1 / 1;
+                border: 2px solid #39546de8 !important;
+                border-radius: 50%;
+                box-sizing: border-box;
+                text-align: center;
+                -webkit-appearance: none;
+                box-shadow: hsla(0,0%,100%,.15) 0 1px 1px, inset hsla(0,0%,0%,.5) 0 0 0 1px;
+                background-color: hsla(0,0%,0%,.2);
+                background-image: -webkit-radial-gradient( hsla(200,100%,90%,1) 0%, hsla(200,100%,70%,1) 15%, hsla(200,100%,60%,.3) 28%, hsla(200,100%,30%,0) 70% );
+                background-repeat: no-repeat;
+                -webkit-transition: background-position .15s cubic-bezier(.8, 0, 1, 1),
+                -webkit-transform .25s cubic-bezier(.8, 0, 1, 1);
+                outline: none;
+
+                .tierClaimed & {
+                    border-color: darkgreen !important;
+                    background-color: rgba(0, 100, 0, 0.1);
+                }
+
+                .tierInProgress & {
+                    border-color: #999930 !important;
+                    background-color: rgba(153, 153, 48, 0.1);
+                }
+
+                &.selectedTier {
+                    -webkit-transition: background-position .2s .15s cubic-bezier(0, 0, .2, 1),
+                    -webkit-transform .25s cubic-bezier(0, 0, .2, 1);
+                    background-position: 0 0;
+                }
+
+                &.selectedOnLeft {
+                    background-position: -24px 0;
+                }
+
+                &.selectedOnRight {
+                    background-position: 24px 0;
+                }
+
+                &.selectedTier ~ &.selectedOnLeft{
+                    background-position: 24px 0;
+                }
+
+                &.selectedTier ~ &.selectedOnLeft{
+                    background-position: -24px 0;
+                }
+            }
+
+            &:hover > middle {
+                transform: scale(1.2);
+            }
+
+            right {
+                display: flex;
+                content: " ";
+                height: 2px;
+                width: 30%;
+                background: #39546de8;
+                justify-content: center;
+                flex-direction: row;
+                align-items: center;
+                align-content: stretch;
+                flex-wrap: wrap;
+
+                .tierClaimed & {
+                    background: linear-gradient(90deg, darkgreen 1%, #39546de8 100%);
+                }
+
+                .tierInProgress & {
+                    background: linear-gradient(90deg,rgba(153, 153, 48, 1) 1%, #39546de8 100%);
+                }
+            }
+
+            empty {
+                display: flex;
+                width: 30%;
+                height: 2px;
+            }
+        }
+
+        tier-title {
+            font-size: 9px;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            text-align: center;
+        }
+    }
+
+    tier.tierInProgress + tier.tierInProgress {
+        tier-content left {
+            background: rgba(153, 153, 48, 1);
+        }
+    }
+
+    tier.tierClaimed:has(+ tier.tierClaimed) {
+        tier-content right {
+            background: darkgreen;
+        }
+    }
+
+    tier.tierClaimed:has(+ tier.tierInProgress) {
+        tier-content right {
+            background: darkgreen;
+        }
+    }
+
+    tier.tierInProgress:has(+ tier.tierInProgress) {
+        tier-content right {
+            background: rgba(153, 153, 48, 1);
+        }
+    }
+
+    tier.tierInProgress:has(+ tier.tierClaimed) {
+        tier-content right {
+            background: linear-gradient(90deg,rgba(153, 153, 48, 1) 1%, darkgreen 100%);
+        }
+    }
+
 }
 
-/* ── Card achievement ────────────────────────────────────────── */
-.achievementOverviewAchievementHolder {
+fleet-section-clear gradient-button {
     width: 100%;
-    margin-bottom: 6px;
-    padding: 6px;
-    box-sizing: border-box;
-    background: linear-gradient(180deg, rgba(20,29,37,0.8) 0%, rgba(9,13,18,0.8) 100%);
-    border: 1px solid #1c2a36;
-    border-radius: 3px;
-}
-.achievementOverviewAchievementHolder.completed {
-    border-color: #66B817;
-    box-shadow: 0 0 4px rgba(102, 184, 23, 0.3);
+    height: 45px;
 }
 
-.achievementTitleAndTierSelectionContainer {
+#combatsim fleet-content .load_data gradient-button {
+    margin-top: 6px;
+}
+
+#combatsim .planetSelection .planet:hover,
+#combatsim .planetSelection .planet.selected { background-position: 0 -30px; }
+
+#combatsim .planetSelection .moon:hover,
+#combatsim .planetSelection .moon.selected { background-position: -37px -30px; }
+
+gradient-button.newbutton .custom_btn span,
+gradient-button.savebutton .custom_btn span,
+gradient-button.deletebutton .custom_btn span,
+gradient-button.simulatebutton .custom_btn span,
+gradient-button.moredetails .custom_btn span,
+gradient-button.moreDetailsShortInfo .custom_btn span {
+    font-size: 12px !important;
+}
+
+gradient-button.moreDetailsShortInfo {
+    z-index: 3 !important;
+}
+
+gradient-button.moredetails .custom_btn span,
+gradient-button.moreDetailsShortInfo .custom_btn span {
+    max-width: 180px;
+}
+
+/* end combatsim-section fir displaying a section in combatsim */
+
+/* start gradient-button */
+gradient-button {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 4px;
-}
-
-.achievementOverviewAchievementTitle {
-    color: #6f9fc8;
-    font-weight: 700;
-    font-size: 13px;
-}
-
-.achievementOverviewTierSelectionContainer {
-    display: flex;
-    flex-direction: row;
-    gap: 2px;
-}
-
-.achievementTierBtn {
-    display: inline-flex !important;
-    align-items: center;
     justify-content: center;
-    height: 22px !important;
-    min-width: 30px !important;
-    padding: 2px 4px !important;
-    gap: 1px;
+    align-items: center;
 }
-.achievementTierBtn.completed {
-    background: linear-gradient(160deg, #b58b3c 0%, #8d6a2d 33%, #2e2210 66%, #1f1709 100%) !important;
-    border-color: #d4a84a !important;
-}
-.achievementTierBtn.selected {
-    background: linear-gradient(160deg, #4FA14F 0%, #3D7E3D 33%, #1D2E1D 66%, #182518 100%) !important;
-    border-color: #66B817 !important;
-}
-.achTierStar {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    background: #ffcc00;
-    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-}
-.achievementTierBtn.completed .achTierStar { background: #fff; }
-.achievementTierBtn:not(.completed):not(.selected) .achTierStar { opacity: 0.45; }
 
-/* ── Tier container (descrizione + progresso + reward) ──────── */
-.achievementOverviewTiersContainer {
+gradient-button .custom_btn {
+    width: 100%;
+    height: 100%;
+    border: 1px outset #696666 !important;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #bbb;
+    font-size: 17px;
+    background: linear-gradient(160deg, rgba(54,77,99,1) 0%, rgba(40,57,72,1) 33%, rgba(20,30,38,1) 66%, rgba(18,26,33,1) 100%);
+    box-shadow: 0px 2px 3px 1px #0000008c;
+    outline: none;
+    transition: 300ms;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-block: 0;
+    padding-inline: 0;
+    box-sizing: border-box;
+}
+
+gradient-button .custom_btn.send {
+    font-size: 11px;
+    font-weight: 700;
+}
+
+gradient-button .custom_btn.green,
+gradient-button .custom_btn.active {
+    border: 1px outset #66B817 !important;
+    background: linear-gradient(160deg, rgba(55, 99, 54, 1) 0%, rgba(40, 72, 40, 1) 33%, rgba(26, 38, 20, 1) 66%, rgba(24, 33, 18, 1) 100%);
+}
+
+gradient-button .custom_btn.red {
+    border: 1px outset rgb(161, 36, 36) !important;
+    background: linear-gradient(160deg, rgba(161, 36, 36, 1) 0%, rgba(144, 29, 29, 1) 33%, rgba(29, 18, 17, 1) 66%, rgba(33, 18, 18, 1) 100%);
+}
+
+gradient-button button:not(:disabled).selected {
+    border: 1px outset #dee3d8 !important;
+    background: linear-gradient(160deg, rgba(67,107,145,1) 0%, rgba(52,76,97,1) 33%, rgba(40,58,71,1) 66%, rgba(20,26,32,1) 100%);
+    box-shadow: 0px 0px 0px 0px transparent;
+}
+
+.achievementOverviewTierSelectionContainer gradient-button button:not(:disabled).selected,
+.achievementOverviewTierSelectionContainer gradient-button button:not(:disabled).selected {
+    box-shadow: 0px 2px 3px 1px #0000008c;
+}
+
+gradient-button button:not(:disabled):hover {
+    background: linear-gradient(160deg, rgba(67,107,145,1) 0%, rgba(52,76,97,1) 33%, rgba(40,58,71,1) 66%, rgba(20,26,32,1) 100%);
+    box-shadow: 0px 0px 0px 0px transparent;
+}
+
+gradient-button button:not(:disabled).green.selected,
+gradient-button button:not(:disabled).active.selected {
+    border: 1px outset #dee3d8 !important;
+    background: linear-gradient(160deg, rgb(68, 121, 67) 0%, rgb(49, 87, 49) 33%, rgb(35, 52, 28) 66%, rgb(35, 49, 27) 100%);
+}
+
+gradient-button button:not(:disabled).green:hover,
+gradient-button button:not(:disabled).active:hover {
+    border: 1px outset #66B817 !important;
+    background: linear-gradient(160deg, rgb(68, 121, 67) 0%, rgb(49, 87, 49) 33%, rgb(35, 52, 28) 66%, rgb(35, 49, 27) 100%);
+}
+
+gradient-button button:not(:disabled).red:hover {
+    border: 1px outset #cb2323 !important;
+    background: linear-gradient(160deg, rgba(203, 35, 35, 1) 0%, rgba(200, 31, 31, 1) 33%, rgba(38, 21, 20, 1) 66%, rgba(33, 18, 18, 1) 100%);
+}
+
+gradient-button button:disabled,
+gradient-button button[disabled] {
+    border: 1px solid #999999 !important;
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* end gradient-button */
+
+/* start group title */
+group-title {
+    display: flex;
+    justify-content: center;
+    background: url(//gf3.geo.gfsrv.net/cdneb/f5f81e8302aaad56c958c033677fb8.png) -143px -162px no-repeat;
+    height: 25px;
+    width: 231px;
+    font-size: 11px;
+    line-height: 25px;
+    margin: 8px 0 5px -12px;
     position: relative;
 }
-.achievementTierContainer {
-    display: none;
-    flex-direction: row;
-    gap: 8px;
-    align-items: stretch;
-}
-.achievementTierContainer.visible { display: flex; }
 
-.achievementTierContainerData {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-.achievementTierStatus {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: space-between;
-    padding: 6px 8px;
-    background: #12171c;
-    border-radius: 3px;
-    color: #f1f1f1;
-    font-size: 12px;
-}
-.achievementTierStatus .description { margin-bottom: 8px; line-height: 1.4; }
+/* end class selection in radial menu */
 
-.unlockedOrProgress {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-.progressParent { width: 100%; }
-.achievementProgress {
-    width: 100%;
-    height: 8px;
-    -moz-appearance: none;
-         appearance: none;
-    -webkit-appearance: none;
-    background: #0a0d12;
-    border: 1px solid #2a4054;
-    border-radius: 2px;
-    overflow: hidden;
-}
-.achievementProgress::-webkit-progress-bar { background: #0a0d12; }
-.achievementProgress::-webkit-progress-value { background: linear-gradient(90deg, #4FA14F 0%, #66B817 100%); }
-.achievementProgress::-moz-progress-bar { background: linear-gradient(90deg, #4FA14F 0%, #66B817 100%); }
-.achievementProgressLabel {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    color: #b8b8b8;
-    font-size: 11px;
-    margin-top: 2px;
-}
-
-.achievementReward {
-    width: 130px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 4px 6px;
-    background: #12171c;
-    border-radius: 3px;
-    text-align: center;
-}
-.rewardTitle {
-    color: #b58b3c;
-    font-size: 11px;
-    font-weight: 700;
-    margin-bottom: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-.rewardDescription {
-    color: #c8c8c8;
-    font-size: 11px;
-    margin-top: 2px;
-}
-
-/* ── Reward placeholders (unlocked / locked) ─────────────────── */
-.space-object-skin,
-#achievementOverview .profile-picture {
+/* selected language styling start */
+selected-language-icon {
     display: inline-block;
-    width: 80px;
-    height: 80px;
-    border-radius: 4px;
-    border: 1px solid #252525;
-    background-color: #0f1820;
+    width: 16px;
+    height: 11px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+/* selected language styling end */
+
+/* fleet speed bar start */
+fleetspeed-section {
+    width: 334px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* avatars start */
+profile-picture {
+    display: inline-flex;
+    height: 50px;
+    width: 50px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-}
-.locked {
-    filter: grayscale(0.8) brightness(0.5);
-    position: relative;
-}
-.locked::after {
-    content: "🔒";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 24px;
-    color: #ffffff;
-    text-shadow: 0 0 4px #000;
-}
-.unlocked {
-    filter: none;
+    background-image: url("/img/layout/avatar.png");
+    /*border: 1px outset #696666 !important;*/
+    border-radius: 4px;
 }
 
-.achievementTitleReward {
+/* TODO: (AVATAR CHANGES) files has to be named like in these classes */
+profile-picture.default {
+    background-image: url("/img/layout/avatar.png");
+}
+
+profile-picture.S1_A1_T5_Ava_ID1 {
+    background-image: url("//gf3.geo.gfsrv.net/cdnb5/cecc6815e2fc417ccc663cb1a4172f.jpg");
+}
+
+profile-picture.S1_A2_T4_Ava_ID2 {
+    background-image: url("//gf2.geo.gfsrv.net/cdnde/33fe2a5b35854e6f744a7899d9ef2d.jpg");
+}
+
+profile-picture.S1_A3_T5_Ava_ID3 {
+    background-image: url("//gf3.geo.gfsrv.net/cdnee/48728449e827fca96b6ac7d52534fe.jpg");
+}
+
+profile-picture.S1_A10_T5_Ava_ID4 {
+    background-image: url("//gf2.geo.gfsrv.net/cdn74/0aacfc3b2902c092e9d3c67b285132.jpg");
+}
+
+profile-picture.S1_A13_T5_Ava_ID5 {
+    background-image: url("//gf1.geo.gfsrv.net/cdn32/68c0adf25989faa945e83463ca3916.jpg");
+}
+
+profile-picture.S1_A15_T5_Ava_ID6 {
+    background-image: url("//gf1.geo.gfsrv.net/cdnf8/2a92ba6c164dd5b4b982416e926685.jpg");
+}
+
+profile-picture.S2_A1_T5_Ava_ID1 {
+    background-image: url("//gf1.geo.gfsrv.net/cdnf6/6515f9de6a244300c28017a29acafa.jpg");
+}
+
+profile-picture.S2_A2_T5_Ava_ID2 {
+    background-image: url("//gf3.geo.gfsrv.net/cdnb1/510611fc7e6eed2ddf8789b05a4553.jpg");
+}
+
+profile-picture.S2_A3_T5_Ava_ID3 {
+    background-image: url("//gf3.geo.gfsrv.net/cdn55/40a6270dc81a6cd64cdc0f31989c20.jpg");
+}
+
+profile-picture.S2_A10_T5_Ava_ID4 {
+    background-image: url("//gf2.geo.gfsrv.net/cdn14/905fb1d0a70fc87857cb8bde831895.jpg");
+}
+
+profile-picture.S2_A13_T5_Ava_ID5 {
+    background-image: url("//gf3.geo.gfsrv.net/cdn8c/54ed07776b0fb518d1f853b08320b7.jpg");
+}
+
+profile-picture.S2_A15_T5_Ava_ID6 {
+    background-image: url("//gf1.geo.gfsrv.net/cdn96/61cd52f5dc26c66f87071cbadf9f1c.jpg");
+}
+
+profile-picture.S3_A1_T5_Ava_ID1 {
+    background-image: url("//gf3.geo.gfsrv.net/cdne4/497bd8572944cc7405a0fe6f7ad7cd.jpg");
+}
+
+profile-picture.S3_A2_T4_Ava_ID2 {
+    background-image: url("//gf1.geo.gfsrv.net/cdn67/b14bb45717dc0d35b4e3888c3214a6.jpg");
+}
+
+profile-picture.S3_A3_T5_Ava_ID3 {
+    background-image: url("//gf1.geo.gfsrv.net/cdn96/bf11fc58061c3b92601edde0989b29.jpg");
+}
+
+profile-picture.S3_A9_T5_Ava_ID4 {
+    background-image: url("//gf2.geo.gfsrv.net/cdnd9/55ae6c707174f3a0706956708f04e3.jpg");
+}
+
+profile-picture.S3_A13_T5_Ava_ID5 {
+    background-image: url("//gf2.geo.gfsrv.net/cdndd/02db698a03aa5e22388a3eb21f29c1.jpg");
+}
+
+profile-picture.S3_A15_T5_Ava_ID6 {
+    background-image: url("//gf3.geo.gfsrv.net/cdne0/250cd306f2fa2c5f32bfd48690b451.jpg");
+}
+
+profile-picture.S4_A1_T5_Ava_ID1 {
+    background-image: url("//gf2.geo.gfsrv.net/cdn77/711a0bc6b644b99d4198826bd29591.jpg");
+}
+
+profile-picture.S4_A2_T5_Ava_ID2 {
+    background-image: url("//gf3.geo.gfsrv.net/cdn21/01c65c8b7808fadb9b6ee7ab70a824.jpg");
+}
+
+profile-picture.S4_A3_T5_Ava_ID3 {
+    background-image: url("//gf2.geo.gfsrv.net/cdn1d/1497abff268822de5fb205c01384ba.jpg");
+}
+
+profile-picture.S4_A10_T5_Ava_ID4 {
+    background-image: url("//gf1.geo.gfsrv.net/cdn90/28638be7286b6d8b0e1f3a7c578a2c.jpg");
+}
+
+profile-picture.S4_A13_T5_Ava_ID5 {
+    background-image: url("//gf2.geo.gfsrv.net/cdn7f/32a5fb047154723cb1cdd582b1aab6.jpg");
+}
+
+profile-picture.S4_A15_T5_Ava_ID6 {
+    background-image: url("//gf1.geo.gfsrv.net/cdn98/f0f86ed8ef1423e4481bcbf5121c27.jpg");
+}
+
+profile-picture.S6_A1_T5_Ava_ID1 {
+    background-image: url("//gf2.geo.gfsrv.net/cdnab/8344250ee2c97e8409a701f75838fb.webp");
+}
+
+profile-picture.S6_A2_T5_Ava_ID2 {
+    background-image: url("//gf1.geo.gfsrv.net/cdn32/443db7b03fd44acc8e491ff592a414.jpg");
+}
+
+profile-picture.S6_A3_T5_Ava_ID3 {
+    background-image: url("//gf2.geo.gfsrv.net/cdn1f/c727dcf39d8926f7079891bb54baea.jpg");
+}
+
+profile-picture.S6_A10_T5_Ava_ID4 {
+    background-image: url("//gf2.geo.gfsrv.net/cdnab/a4e5193497cd28ee43ce6f4f3f93d7.jpg");
+}
+
+profile-picture.S6_A13_T5_Ava_ID5 {
+    background-image: url("//gf2.geo.gfsrv.net/cdn4d/685bc9ff531b6d3c3ff140bb2d3702.jpg");
+}
+
+profile-picture.S6_A15_T5_Ava_ID6 {
+    background-image: url("//gf2.geo.gfsrv.net/cdn11/b99fc5032c96233463b2e54f0a5000.jpg");
+}
+
+profile-picture.S7_A1_T5_Ava_ID1 {
+    background-image: url("//gf3.geo.gfsrv.net/cdn26/20e8455010d2b1b9c710422eead5ce.jpg");
+}
+
+profile-picture.S7_A2_T5_Ava_ID2 {
+    background-image: url("//gf1.geo.gfsrv.net/cdn9a/99f210f3e02a9009718e6591a58809.jpg");
+}
+
+profile-picture.S7_A4_T5_Ava_ID3 {
+    background-image: url("//gf1.geo.gfsrv.net/cdnf2/600339847b74fc1599c50f1cc6a134.jpg");
+}
+
+profile-picture.S7_A9_T5_Ava_ID4 {
+    background-image: url("//gf3.geo.gfsrv.net/cdn20/d0bb99f299cd1cee7e40f1695ac089.jpg");
+}
+
+profile-picture.S7_A10_T5_Ava_ID5 {
+    background-image: url("//gf1.geo.gfsrv.net/cdnf0/99f125af632c243dd1d69b2ace7b97.jpg");
+}
+
+profile-picture.S7_A15_T5_Ava_ID6 {
+    background-image: url("//gf3.geo.gfsrv.net/cdn54/e537d3d97aebc2d1bdcf6d0faf9e56.jpg");
+}
+
+profile-picture.S8_A1_T5_Ava_ID1 {
+    background-image: url("//gf1.geo.gfsrv.net/cdn9c/1723d224be680d273b575cac82502e.jpg");
+}
+
+profile-picture.S8_A2_T4_Ava_ID2 {
+    background-image: url("//gf1.geo.gfsrv.net/cdn68/899325c16de0463bad09f797d59750.jpg");
+}
+
+profile-picture.S8_A3_T5_Ava_ID3 {
+    background-image: url("//gf1.geo.gfsrv.net/cdn6d/4bc0f27069f1e71ce90d2b87d09a9f.jpg");
+}
+
+profile-picture.S8_A10_T5_Ava_ID4 {
+    background-image: url("//gf3.geo.gfsrv.net/cdnbb/601cbea63a2c48bf666c24a03b62da.jpg");
+}
+
+profile-picture.S8_A13_T5_Ava_ID5 {
+    background-image: url("//gf1.geo.gfsrv.net/cdn3d/f3da1a4dc6925f71b109d8d4bc2c5e.jpg");
+}
+
+profile-picture.S8_A15_T5_Ava_ID6 {
+    background-image: url("//gf2.geo.gfsrv.net/cdn4b/4cf93285783f4c902f3f4fc6e5bbc1.jpg");
+}
+
+/* avatars end */
+
+/* space object skins */
+space-object-skin {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    border-radius: 4px;
+}
+
+space-object-skin img {
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    height: 100%;
     width: 100%;
-    height: 80px;
-    background: #12161a;
-    border: 1px solid #252525;
     border-radius: 4px;
-    color: #6f9fc8;
-    font-weight: 700;
-    font-size: 11px;
-    text-align: center;
-    padding: 4px;
-    box-sizing: border-box;
-}
-.achievementTitleReward.locked {
-    color: #555;
-}
-.achievementTitleReward.locked::after {
-    content: none;
 }
 
-/* ── Avatar / Skin / Titoli grid (sotto-tab 2-3-4) ───────────── */
-#achievementContentList_avatars,
-#achievementContentList_spaceObjectSkins,
-#achievementContentList_titles {
-    display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 4px;
-}
-#achievementContentList_avatars > *,
-#achievementContentList_spaceObjectSkins > *,
-#achievementContentList_titles > * {
-    min-width: 0;
+/* space object skins */
+
+/* change all scrollbars in OGame*/
+::-webkit-scrollbar {
+    width: 8px;
 }
 
-.achievementOverviewProfilePictureHolder,
-.achievementOverviewSpaceObjectSkinHolder {
-    aspect-ratio: 1 / 1;
-    border: 1px solid #252525;
-    border-radius: 4px;
-    background: #12161a;
-    overflow: hidden;
+::-webkit-scrollbar-track {
+    background: #5E798A;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2E4456;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #435B6D;
+}
+
+#expeditionFleetTemplatesEdit .expeditionFleetTemplateActionsContainer gradient-button {
+    height: 30px;
+    width: 150px;
+}
+
+#FederationLayer #buddyselect li.ui-selected,
+#FederationLayer #participantselect li.ui-selected {
+    background: #2E3A48;
+    border: 1px solid #3C4B5D;
+    color: #fff;
+}
+
+#FederationLayer #fleet3 #buttonz ul#missions a:active,
+#FederationLayer .no-touch #fleet3 #buttonz ul#missions a:hover,
+#FederationLayer #fleet3 #buttonz ul#missions  a.selected { color:#F1F1F1; }
+
+#fleet2 #start a.planet,
+#fleet2 #start a.planet_source,
+#fleet2 #start a.planet_selected,
+#fleet2 #start a.planet_source_selected {
+    margin-left:47px;
+}
+
+#fleet2 #target a.planet,
+#fleet2 #target a.planet_source,
+#fleet2 #target a.planet_selected,
+#fleet2 #target a.planet_source_selected {
+    margin-left:20px;
+    padding: 0;
+}
+
+.no-touch #fleet2 #mission a:not(.dropdown a).planet:hover,
+#fleet2 #mission a:not(.dropdown a).planet_selected,
+#fleet2 #mission a:not(.dropdown a).planet_source_selected {background-position:0 -36px;}
+
+.no-touch #fleet2 #mission a:not(.dropdown a).moon:hover,
+#fleet2 #mission a:not(.dropdown a).moon_selected,
+#fleet2 #mission a:not(.dropdown a).moon_source_selected {background-position:-44px -36px;}
+
+.no-touch #fleet2 #mission a:not(.dropdown a).debris:hover,
+#fleet2 #mission a:not(.dropdown a).debris_selected {background-position:-88px -36px;}
+
+#fleet2 #speedLinks>a.speed.selected:link {
+    border-color: #FF9600;
+}
+
+#fleet2 #speedLinks>a.speed.selected,
+#fleet2 #speedLinks>a.speed.selected:link,
+#fleet2.no-touch #speedLinks>a.speed:hover,
+#fleet2 #speedLinks>a.speed:focus {
+    color: #99CC00;
+}
+
+#fleet2 #speedLinks>a.speed.middle.selected,
+#fleet2 #speedLinks>a.speed.middle.selected:link,
+#fleet2.no-touch #speedLinks>a.speed.middle:hover,
+#fleet2 #speedLinks>a.speed.middle:focus {
+    color: #D29D00;
+}
+
+#fleet2 #speedLinks>a.speed.low.selected,
+#fleet2 #speedLinks>a.speed.low.selected:link,
+#fleet2.no-touch #speedLinks>a.speed.low:hover,
+#fleet2 #speedLinks>a.speed.low:focus {
+    color: #D43635;
+}
+
+.no-touch #fleet2 #buttonz ul#missions li#button15.on a:hover,
+#fleet2 #buttonz ul#missions li#button15.on a.selected {background-position: 0 -54px;}
+
+.no-touch #fleet2 #buttonz ul#missions li#button15.off a:hover,
+#fleet2 #buttonz ul#missions li#button15.off a.selected {background-position: 0 -161px;}
+
+.no-touch #fleet2 #buttonz ul#missions li#button7.on a:hover,
+#fleet2 #buttonz ul#missions li#button7.on a.selected {background-position: -108px -54px;}
+
+.no-touch #fleet2 #buttonz ul#missions li#button7.off a:hover ,
+#fleet2 #buttonz ul#missions li#button7.off a.selected {background-position: -108px -161px;}
+
+.no-touch #fleet2 #buttonz ul#missions li#button8.on a:hover,
+#fleet2 #buttonz ul#missions li#button8.on a.selected {background-position: -216px -54px;}
+
+.no-touch #fleet2 #buttonz ul#missions li#button8.off a:hover ,
+#fleet2 #buttonz ul#missions li#button8.off a.selected {background-position: -216px -161px;}
+
+.no-touch #fleet2 #buttonz ul#missions li#button3.on a:hover,
+#fleet2 #buttonz ul#missions li#button3.on a.selected {background-position: -270px -54px;}
+
+.no-touch #fleet2 #buttonz ul#missions li#button3.off a:hover ,
+#fleet2 #buttonz ul#missions li#button3.off a.selected {background-position: -270px -161px;}
+
+.no-touch #fleet2 #buttonz ul#missions li#button4.on a:hover,
+#fleet2 #buttonz ul#missions li#button4.on a.selected {background-position: -162px -54px;}
+
+.no-touch #fleet2 #buttonz ul#missions li#button4.off a:hover,
+#fleet2 #buttonz ul#missions li#button4.off a.selected {background-position: -162px -161px;}
+
+.no-touch #fleet2 #buttonz ul#missions li#button6.on a:hover,
+#fleet2 #buttonz ul#missions li#button6.on a.selected {background-position: -324px -54px;}
+
+.no-touch #fleet2 #buttonz ul#missions li#button6.off a:hover ,
+#fleet2 #buttonz ul#missions li#button6.off a.selected {background-position: -324px -161px;}
+
+.no-touch #fleet2 #buttonz ul#missions li#button5.on a:hover,
+#fleet2 #buttonz ul#missions li#button5.on a.selected {background-position: -378px -54px;}
+
+.no-touch #fleet2 #buttonz ul#missions li#button5.off a:hover ,
+#fleet2 #buttonz ul#missions li#button5.off a.selected {background-position: -378px -161px;}
+
+.no-touch #fleet2 #buttonz ul#missions li#button1.on a:hover,
+#fleet2 #buttonz ul#missions li#button1.on a.selected {background-position: -432px -54px;}
+
+.no-touch #fleet2 #buttonz ul#missions li#button1.off a:hover ,
+#fleet2 #buttonz ul#missions li#button1.off a.selected {background-position: -432px -161px;}
+
+.no-touch #fleet2 #buttonz ul#missions li#button2.on a:hover,
+#fleet2 #buttonz ul#missions li#button2.on a.selected {background-position: -540px -54px;}
+
+.no-touch #fleet2 #buttonz ul#missions li#button2.off a:hover ,
+#fleet2 #buttonz ul#missions li#button2.off a.selected {background-position: -540px -161px;}
+
+.no-touch #fleet2 #buttonz ul#missions li#button9.on a:hover,
+#fleet2 #buttonz ul#missions li#button9.on a.selected {background-position: -486px -54px;}
+
+.no-touch #fleet2 #buttonz ul#missions li#button9.off a:hover ,
+#fleet2 #buttonz ul#missions li#button9.off a.selected {background-position: -486px -161px;}
+
+#fleet2 #buttonz ul#missions a:active,
+.no-touch #fleet2 #buttonz ul#missions a:hover,
+#fleet2 #buttonz ul#missions  a.selected { color:#F1F1F1; }
+
+#intro .box.selected {
+    border-color:#6F9FF8;
+}
+
+.ui-icon-locked { background-position: -192px -96px; }
+
+.ui-icon-unlocked { background-position: -208px -96px; }
+
+#lfresearch .icon.research-locked {
+    background: url(//gf1.geo.gfsrv.net/cdn36/5395f4191666be14fe8d735eea568a.png) no-repeat;
+    background-size: contain;
+}
+
+#lfresearch .tech-tree-locked-message {
     position: relative;
-    cursor: pointer;
-}
-.achievementOverviewProfilePictureHolder.unlocked,
-.achievementOverviewSpaceObjectSkinHolder.unlocked {
-    border-color: #66B817;
-    cursor: pointer;
-}
-.achievementOverviewProfilePictureHolder.unlocked:hover,
-.achievementOverviewSpaceObjectSkinHolder.unlocked:hover {
-    box-shadow: 0 0 6px rgba(102, 184, 23, 0.6);
-}
-/* Selezione corrente: bordo dorato */
-.achievementOverviewProfilePictureHolder.currentSelection,
-.achievementOverviewSpaceObjectSkinHolder.currentSelection,
-.achievementOverviewTitleHolder.currentSelection {
-    border-color: #ffcc00 !important;
-    box-shadow: 0 0 6px rgba(255, 204, 0, 0.7);
-}
-.achievementOverviewProfilePictureHolder .profile-picture,
-.achievementOverviewSpaceObjectSkinHolder .space-object-skin {
-    width: 100% !important;
-    height: 100% !important;
-    border: 0;
-    border-radius: 0;
-}
-
-.achievementOverviewTitleHolder {
-    aspect-ratio: 1 / 1;
-    background: #12161a;
-    border: 1px solid #252525;
-    border-radius: 4px;
+    box-sizing: border-box;
+    width: 654px;
+    border: 2px solid #000;
+    margin: 0 auto 7px;
+    padding: 0 5px;
+    background: #0d1014;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 4px;
-    color: #6f9fc8;
-    font-weight: 700;
-    font-size: 10px;
-    line-height: 1.2;
-    cursor: pointer;
-    box-sizing: border-box;
-    position: relative;
-    overflow: hidden;
-    word-break: break-word;
-}
-.achievementOverviewTitleHolder span {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-}
-.achievementOverviewTitleHolder.unlocked { border-color: #66B817; color: #ffffff; }
-.achievementOverviewTitleHolder.locked { color: #555; }
-.achievementOverviewTitleHolder.locked::after {
-    content: "🔒";
-    position: absolute;
-    top: 4px;
-    right: 4px;
-    font-size: 10px;
-    color: #888;
 }
 
-.achievementsEmpty {
-    width: 100%;
-    padding: 40px 20px;
-    text-align: center;
-    color: #b8b8b8;
-    font-size: 13px;
+#lfresearch .tech-tree-locked-message::before,
+#lfresearch .tech-tree-locked-message::after {
+    pointer-events: none;
 }
+
+#lfresearch .tech-tree-locked-message::before {
+    position: absolute;
+    left: -9px;
+    top: -3px;
+    width: 668px;
+    height: 28px;
+    background: url("//gf3.geo.gfsrv.net/cdn53/f333e15eb738b8ec692340f507e1ae.png") bottom left no-repeat, url("//gf2.geo.gfsrv.net/cdnd5/66551209db14e23b3001901b996cc6.png") bottom right no-repeat;
+    content: "";
+}
+
+#lfresearch .tech-tree-locked-message::after {
+    position: absolute;
+    left: -9px;
+    bottom: -4px;
+    width: 668px;
+    height: 50px;
+    background: url("//gf3.geo.gfsrv.net/cdnea/0330abcdca0d125d35a0ebace4b584.png") bottom left no-repeat, url("//gf1.geo.gfsrv.net/cdn9b/8003a40825bc96919c5fec01b018b8.png") bottom right no-repeat;
+    content: "";
+}
+
+#lfresearch .tech-tree-locked-message {
+    color: #B00000;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+#lfresearch .tech-tree-locked-message p {
+    margin: 0 4px;
+}
+
+LifeformIcon .lifeformSelectedIcon {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+}
+
+.messagesHolder .msgWithFilter.collapsible .msgFilteredHeaderRow .msgFilteredHeaderContainer .msgFilteredHeaderCell > gradient-button button img {
+    width: 8px !important;
+    height: 8px !important;
+}
+
+#newmessagesindicatorcomponent .messagesIndicator.selected,
+#newmessagesindicatorcomponent .messagesIndicator:hover {
+    background-position: 0 -39px !important;
+}
+
+#newmessagesindicatorcomponent .chatIndicator.selected,
+#newmessagesindicatorcomponent .chatIndicator:hover {
+    background-position: 0 -161px !important;
+}
+
+.recipient_select_box .over,
+.recipient_select_box .selected {
+    background-color: #859fb0;
+}
+
+#messagewrapper gradient-button span {
+    color: #f1f1f1;
+    font-family: Verdana, Arial, SunSans-Regular, sans-serif;
+    font-size: 9px;
+    font-weight: bold;
+    padding-bottom: 3px;
+}
+
+#messagewrapper gradient-button span.icon {
+    padding-bottom: 0;
+}
+
+#notificationbarcomponent .comm_menu.messages.selected { background-position: 15px -39px; }
+
+#notificationbarcomponent .comm_menu.chat.selected { background-position: 8px -161px; }
+
+#notificationbarcomponent .comm_menu.buddies.selected { background-position: 2px -298px; }
+
+.percentageBar .steps .step.selected {
+
+    border:2px solid #ff9600;
+    border-radius: 3px;
+
+    line-height: 16px;
+
+    background-color: #000000;
+    color: #99cc00;
+
+    transform: scale(1.1);
+}
+
+#planetbarcomponent #selectedplanet {
+    display: none;
+    left: 866px;
+    position: absolute;
+    top: 19px;
+}
+
+#planetbarcomponent #selectedPlanetName {
+    display: none;
+    color: cyan;
+    height: 16px;
+    left: 866px;
+    position: absolute;
+    top: 121px;
+    font-size:11px;
+    width: 130px;
+}
+
+#playerprofilecomponent .editHolder .profileTag.active,
+#playerprofilecomponent .profileEntry .playerTitle gradient-button button.custom_btn.active {
+    border: 1px outset #66B817 !important;
+    background: linear-gradient(160deg, rgba(55,99,54,1) 0%, rgba(40,72,40,1) 33%, rgba(26,38,20,1) 66%, rgba(24,33,18,1) 100%);
+}
+
+#playerprofilecomponent .editProfileHolder gradient-button span {
+    color: #f1f1f1;
+    font-family: Verdana, Arial, SunSans-Regular, sans-serif;
+    font-size: 9px;
+    font-weight: bold;
+    padding-bottom: 3px;
+}
+
+gradient-button .custom_btn.showPlanetProdOverviewBtn {
+    border: 1px outset #797979 !important;
+}
+
+#traderOverview .source.hover,
+#traderOverview .source.selected { background-position: 0 -30px; }
+
+#traderOverview .moon.hover,
+#traderOverview .moon.selected { background-position: -37px -30px; }
+
+#traderOverview .honor.hover,
+#traderOverview .honor.selected { background-position: -76px -30px; }
+
+#traderOverview .scrap_ships.selected,
+#traderOverview .scrap_defense.selected {
+    background: url("//gf1.geo.gfsrv.net/cdn06/548bc30b8ed3413d7d0f0ac1bc6f80.gif") no-repeat 0 -26px;
+    color: #fff;
+}
+
+#div_traderResources .selected_premium {
+    background-image: url(//gf3.geo.gfsrv.net/cdn5f/332ef677bcc98906442a947614deb1.png);
+    height: 90px;
+    left: -5px;
+    position: relative;
+    top: -5px;
+    visibility: hidden;
+    width: 90px;
+}
+
+#div_traderResources .active .selected_premium {
+    background-position: 0 0;
+    visibility: visible;
+}
+
+#div_traderResources .resource_link.oldTraderActive:active .selected_premium,
+#div_traderResources .oldTraderActive .selected_premium {
+    background-position: -90px 0;
+    visibility: visible;
+}
+
+#tutorial .pagination a.tutorial_done_selected {
+    background-position:0 -92px;
+    border-color: #2b66a5;
+    color: #FFF !important;
+    cursor: default;
+    font-weight: bold;
+}
+
+
+/* OGame achievements — regole per-machine_name (sorgente autoritativa estratta da CSS Gameforge
+   gf3.geo.gfsrv.net/cdn22/9b6fdb87.css). URL pointati alle copie locali. */
+
+/* === Avatar === */
+profile-picture.A10_T4_Ava_ID14 { background-image: url("/img/achievements/avatars/A10_T4_Ava_ID14.jpg"); }
+profile-picture.A10_T5_Ava_ID4 { background-image: url("/img/achievements/avatars/A10_T5_Ava_ID4.jpg"); }
+profile-picture.A10_T5_Ava_ID5 { background-image: url("/img/achievements/avatars/A10_T5_Ava_ID5.jpg"); }
+profile-picture.A11_T1_Ava_ID15 { background-image: url("/img/achievements/avatars/A11_T1_Ava_ID15.jpg"); }
+profile-picture.A11_T2_Ava_ID16 { background-image: url("/img/achievements/avatars/A11_T2_Ava_ID16.jpg"); }
+profile-picture.A11_T3_Ava_ID17 { background-image: url("/img/achievements/avatars/A11_T3_Ava_ID17.jpg"); }
+profile-picture.A12_T2_Ava_ID60 { background-image: url("/img/achievements/avatars/A12_T2_Ava_ID60.jpg"); }
+profile-picture.A12_T4_Ava_ID18 { background-image: url("/img/achievements/avatars/A12_T4_Ava_ID18.jpg"); }
+profile-picture.A13_T5_Ava_ID19 { background-image: url("/img/achievements/avatars/A13_T5_Ava_ID19.jpg"); }
+profile-picture.A13_T5_Ava_ID5 { background-image: url("/img/achievements/avatars/A13_T5_Ava_ID5.jpg"); }
+profile-picture.A15_T5_Ava_ID6 { background-image: url("/img/achievements/avatars/A15_T5_Ava_ID6.jpg"); }
+profile-picture.A16_T3_Ava_ID20 { background-image: url("/img/achievements/avatars/A16_T3_Ava_ID20.jpg"); }
+profile-picture.A18_T5_Ava_ID21 { background-image: url("/img/achievements/avatars/A18_T5_Ava_ID21.jpg"); }
+profile-picture.A19_T2_Ava_ID22 { background-image: url("/img/achievements/avatars/A19_T2_Ava_ID22.jpg"); }
+profile-picture.A1_T2_Ava_ID1 { background-image: url("/img/achievements/avatars/A1_T2_Ava_ID1.jpg"); }
+profile-picture.A1_T5_Ava_ID1 { background-image: url("/img/achievements/avatars/A1_T5_Ava_ID1.jpg"); }
+profile-picture.A20_T4_Ava_ID23 { background-image: url("/img/achievements/avatars/A20_T4_Ava_ID23.jpg"); }
+profile-picture.A21_T5_Ava_ID24 { background-image: url("/img/achievements/avatars/A21_T5_Ava_ID24.jpg"); }
+profile-picture.A22_T3_Ava_ID25 { background-image: url("/img/achievements/avatars/A22_T3_Ava_ID25.jpg"); }
+profile-picture.A23_T5_Ava_ID26 { background-image: url("/img/achievements/avatars/A23_T5_Ava_ID26.jpg"); }
+profile-picture.A24_T4_Ava_ID27 { background-image: url("/img/achievements/avatars/A24_T4_Ava_ID27.jpg"); }
+profile-picture.A25_T3_Ava_ID28 { background-image: url("/img/achievements/avatars/A25_T3_Ava_ID28.jpg"); }
+profile-picture.A26_T4_Ava_ID29 { background-image: url("/img/achievements/avatars/A26_T4_Ava_ID29.jpg"); }
+profile-picture.A27_T4_Ava_ID30 { background-image: url("/img/achievements/avatars/A27_T4_Ava_ID30.jpg"); }
+profile-picture.A29_T5_Ava_ID31 { background-image: url("/img/achievements/avatars/A29_T5_Ava_ID31.jpg"); }
+profile-picture.A2_T2_Ava_ID2 { background-image: url("/img/achievements/avatars/A2_T2_Ava_ID2.jpg"); }
+profile-picture.A2_T4_Ava_ID2 { background-image: url("/img/achievements/avatars/A2_T4_Ava_ID2.jpg"); }
+profile-picture.A2_T5_Ava_ID2 { background-image: url("/img/achievements/avatars/A2_T5_Ava_ID2.jpg"); }
+profile-picture.A2_T5_Ava_ID3 { background-image: url("/img/achievements/avatars/A2_T5_Ava_ID3.jpg"); }
+profile-picture.A30_T3_Ava_ID32 { background-image: url("/img/achievements/avatars/A30_T3_Ava_ID32.jpg"); }
+profile-picture.A32_T2_Ava_ID54 { background-image: url("/img/achievements/avatars/A32_T2_Ava_ID54.jpg"); }
+profile-picture.A32_T4_Ava_ID33 { background-image: url("/img/achievements/avatars/A32_T4_Ava_ID33.jpg"); }
+profile-picture.A33_T2_Ava_ID55 { background-image: url("/img/achievements/avatars/A33_T2_Ava_ID55.jpg"); }
+profile-picture.A33_T5_Ava_ID34 { background-image: url("/img/achievements/avatars/A33_T5_Ava_ID34.jpg"); }
+profile-picture.A34_T2_Ava_ID56 { background-image: url("/img/achievements/avatars/A34_T2_Ava_ID56.jpg"); }
+profile-picture.A34_T4_Ava_ID35 { background-image: url("/img/achievements/avatars/A34_T4_Ava_ID35.jpg"); }
+profile-picture.A35_T5_Ava_ID36 { background-image: url("/img/achievements/avatars/A35_T5_Ava_ID36.jpg"); }
+profile-picture.A36_T4_Ava_ID37 { background-image: url("/img/achievements/avatars/A36_T4_Ava_ID37.jpg"); }
+profile-picture.A38_T5_Ava_ID38 { background-image: url("/img/achievements/avatars/A38_T5_Ava_ID38.jpg"); }
+profile-picture.A39_T3_Ava_ID39 { background-image: url("/img/achievements/avatars/A39_T3_Ava_ID39.jpg"); }
+profile-picture.A3_T1_Ava_ID4 { background-image: url("/img/achievements/avatars/A3_T1_Ava_ID4.jpg"); }
+profile-picture.A3_T2_Ava_ID5 { background-image: url("/img/achievements/avatars/A3_T2_Ava_ID5.jpg"); }
+profile-picture.A3_T3_Ava_ID6 { background-image: url("/img/achievements/avatars/A3_T3_Ava_ID6.jpg"); }
+profile-picture.A3_T5_Ava_ID3 { background-image: url("/img/achievements/avatars/A3_T5_Ava_ID3.jpg"); }
+profile-picture.A40_T5_Ava_ID40 { background-image: url("/img/achievements/avatars/A40_T5_Ava_ID40.jpg"); }
+profile-picture.A41_T3_Ava_ID59 { background-image: url("/img/achievements/avatars/A41_T3_Ava_ID59.jpg"); }
+profile-picture.A43_T3_Ava_ID57 { background-image: url("/img/achievements/avatars/A43_T3_Ava_ID57.jpg"); }
+profile-picture.A43_T4_Ava_ID41 { background-image: url("/img/achievements/avatars/A43_T4_Ava_ID41.jpg"); }
+profile-picture.A45_T3_Ava_ID42 { background-image: url("/img/achievements/avatars/A45_T3_Ava_ID42.jpg"); }
+profile-picture.A46_T4_Ava_ID43 { background-image: url("/img/achievements/avatars/A46_T4_Ava_ID43.jpg"); }
+profile-picture.A47_T5_Ava_ID44 { background-image: url("/img/achievements/avatars/A47_T5_Ava_ID44.jpg"); }
+profile-picture.A4_T2_Ava_ID7 { background-image: url("/img/achievements/avatars/A4_T2_Ava_ID7.jpg"); }
+profile-picture.A4_T4_Ava_ID8 { background-image: url("/img/achievements/avatars/A4_T4_Ava_ID8.jpg"); }
+profile-picture.A4_T5_Ava_ID3 { background-image: url("/img/achievements/avatars/A4_T5_Ava_ID3.jpg"); }
+profile-picture.A50_T1_Ava_ID45 { background-image: url("/img/achievements/avatars/A50_T1_Ava_ID45.jpg"); }
+profile-picture.A50_T2_Ava_ID46 { background-image: url("/img/achievements/avatars/A50_T2_Ava_ID46.jpg"); }
+profile-picture.A50_T3_Ava_ID47 { background-image: url("/img/achievements/avatars/A50_T3_Ava_ID47.jpg"); }
+profile-picture.A50_T4_Ava_ID48 { background-image: url("/img/achievements/avatars/A50_T4_Ava_ID48.jpg"); }
+profile-picture.A51_T1_Ava_ID49 { background-image: url("/img/achievements/avatars/A51_T1_Ava_ID49.jpg"); }
+profile-picture.A51_T2_Ava_ID50 { background-image: url("/img/achievements/avatars/A51_T2_Ava_ID50.jpg"); }
+profile-picture.A51_T4_Ava_ID51 { background-image: url("/img/achievements/avatars/A51_T4_Ava_ID51.jpg"); }
+profile-picture.A5_T2_Ava_ID52 { background-image: url("/img/achievements/avatars/A5_T2_Ava_ID52.jpg"); }
+profile-picture.A5_T5_Ava_ID9 { background-image: url("/img/achievements/avatars/A5_T5_Ava_ID9.jpg"); }
+profile-picture.A6_T4_Ava_ID10 { background-image: url("/img/achievements/avatars/A6_T4_Ava_ID10.jpg"); }
+profile-picture.A7_T5_Ava_ID11 { background-image: url("/img/achievements/avatars/A7_T5_Ava_ID11.jpg"); }
+profile-picture.A8_T5_Ava_ID12 { background-image: url("/img/achievements/avatars/A8_T5_Ava_ID12.jpg"); }
+profile-picture.A9_T4_Ava_ID13 { background-image: url("/img/achievements/avatars/A9_T4_Ava_ID13.jpg"); }
+profile-picture.A9_T5_Ava_ID4 { background-image: url("/img/achievements/avatars/A9_T5_Ava_ID4.jpg"); }
+
+/* === Skin planetarie === */
+space-object-skin.A1_T1_Pskin_ID1 img { content: url("/img/achievements/skins/A1_T1_Pskin_ID1.png"); }
+space-object-skin.A1_T3_Pskin_ID2 img { content: url("/img/achievements/skins/A1_T3_Pskin_ID2.png"); }
+space-object-skin.A2_T4_Pskin_ID3 img { content: url("/img/achievements/skins/A2_T4_Pskin_ID3.png"); }
+space-object-skin.A3_T5_Pskin_ID4 img { content: url("/img/achievements/skins/A3_T5_Pskin_ID4.png"); }
+space-object-skin.A4_T5_Pskin_ID5 img { content: url("/img/achievements/skins/A4_T5_Pskin_ID5.png"); }
+space-object-skin.A10_T5_Pskin_ID6 img { content: url("/img/achievements/skins/A10_T5_Pskin_ID6.png"); }
+space-object-skin.A12_T5_Pskin_ID7 img { content: url("/img/achievements/skins/A12_T5_Pskin_ID7.png"); }
+space-object-skin.A14_T5_Pskin_ID8 img { content: url("/img/achievements/skins/A14_T5_Pskin_ID8.png"); }
+space-object-skin.A16_T5_Pskin_ID9 img { content: url("/img/achievements/skins/A16_T5_Pskin_ID9.png"); }
+space-object-skin.A9_T3_Pskin_ID47 img { content: url("/img/achievements/skins/A9_T3_Pskin_ID47.png"); }
+space-object-skin.A17_T5_Pskin_ID10 img { content: url("/img/achievements/skins/A17_T5_Pskin_ID10.png"); }
+space-object-skin.A19_T5_Pskin_ID11 img { content: url("/img/achievements/skins/A19_T5_Pskin_ID11.png"); }
+space-object-skin.A20_T5_Pskin_ID12 img { content: url("/img/achievements/skins/A20_T5_Pskin_ID12.png"); }
+space-object-skin.A22_T5_Pskin_ID13 img { content: url("/img/achievements/skins/A22_T5_Pskin_ID13.png"); }
+space-object-skin.A23_T4_Pskin_ID14 img { content: url("/img/achievements/skins/A23_T4_Pskin_ID14.png"); }
+space-object-skin.A24_T5_Pskin_ID15 img { content: url("/img/achievements/skins/A24_T5_Pskin_ID15.png"); }
+space-object-skin.A25_T4_Pskin_ID16 img { content: url("/img/achievements/skins/A25_T4_Pskin_ID16.png"); }
+space-object-skin.A26_T5_Pskin_ID17 img { content: url("/img/achievements/skins/A26_T5_Pskin_ID17.png"); }
+space-object-skin.A28_T5_Pskin_ID18 img { content: url("/img/achievements/skins/A28_T5_Pskin_ID18.png"); }
+space-object-skin.A29_T4_Pskin_ID19 img { content: url("/img/achievements/skins/A29_T4_Pskin_ID19.png"); }
+space-object-skin.A30_T5_Pskin_ID20 img { content: url("/img/achievements/skins/A30_T5_Pskin_ID20.png"); }
+space-object-skin.A31_T4_Pskin_ID21 img { content: url("/img/achievements/skins/A31_T4_Pskin_ID21.png"); }
+space-object-skin.A32_T5_Pskin_ID22 img { content: url("/img/achievements/skins/A32_T5_Pskin_ID22.png"); }
+space-object-skin.A33_T4_Pskin_ID23 img { content: url("/img/achievements/skins/A33_T4_Pskin_ID23.png"); }
+space-object-skin.A34_T5_Pskin_ID24 img { content: url("/img/achievements/skins/A34_T5_Pskin_ID24.png"); }
+space-object-skin.A37_T4_Pskin_ID25 img { content: url("/img/achievements/skins/A37_T4_Pskin_ID25.png"); }
+space-object-skin.A39_T5_Pskin_ID26 img { content: url("/img/achievements/skins/A39_T5_Pskin_ID26.png"); }
+space-object-skin.A42_T5_Pskin_ID27 img { content: url("/img/achievements/skins/A42_T5_Pskin_ID27.png"); }
+space-object-skin.A43_T5_Pskin_ID28 img { content: url("/img/achievements/skins/A43_T5_Pskin_ID28.png"); }
+space-object-skin.A44_T3_Pskin_ID50 img { content: url("/img/achievements/skins/A44_T3_Pskin_ID50.png"); }
+space-object-skin.A44_T5_Pskin_ID29 img { content: url("/img/achievements/skins/A44_T5_Pskin_ID29.png"); }
+space-object-skin.A45_T4_Pskin_ID30 img { content: url("/img/achievements/skins/A45_T4_Pskin_ID30.png"); }
+space-object-skin.A46_T5_Pskin_ID31 img { content: url("/img/achievements/skins/A46_T5_Pskin_ID31.png"); }
+space-object-skin.A48_T1_Pskin_ID32 img { content: url("/img/achievements/skins/A48_T1_Pskin_ID32.png"); }
+space-object-skin.A48_T2_Pskin_ID33 img { content: url("/img/achievements/skins/A48_T2_Pskin_ID33.png"); }
+space-object-skin.A48_T3_Pskin_ID34 img { content: url("/img/achievements/skins/A48_T3_Pskin_ID34.png"); }
+space-object-skin.A48_T4_Pskin_ID35 img { content: url("/img/achievements/skins/A48_T4_Pskin_ID35.png"); }
+space-object-skin.A48_T5_Pskin_ID36 img { content: url("/img/achievements/skins/A48_T5_Pskin_ID36.png"); }
+space-object-skin.A49_T1_Pskin_ID37 img { content: url("/img/achievements/skins/A49_T1_Pskin_ID37.png"); }
+space-object-skin.A49_T2_Pskin_ID38 img { content: url("/img/achievements/skins/A49_T2_Pskin_ID38.png"); }
+space-object-skin.A49_T3_Pskin_ID39 img { content: url("/img/achievements/skins/A49_T3_Pskin_ID39.png"); }
+space-object-skin.A49_T4_Pskin_ID40 img { content: url("/img/achievements/skins/A49_T4_Pskin_ID40.png"); }
+space-object-skin.A49_T5_Pskin_ID41 img { content: url("/img/achievements/skins/A49_T5_Pskin_ID41.png"); }
+space-object-skin.A50_T5_Pskin_ID42 img { content: url("/img/achievements/skins/A50_T5_Pskin_ID42.png"); }
+space-object-skin.A51_T3_Pskin_ID43 img { content: url("/img/achievements/skins/A51_T3_Pskin_ID43.png"); }
+space-object-skin.A51_T5_Pskin_ID44 img { content: url("/img/achievements/skins/A51_T5_Pskin_ID44.png"); }
 
 /*@import "ingame/base1.css";*/
 /*@import "ingame/base2.css";*/

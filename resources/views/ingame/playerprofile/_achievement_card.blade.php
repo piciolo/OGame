@@ -1,5 +1,5 @@
-{{-- Card singolo achievement (replica .achievementOverviewAchievementHolder OGame).
-     Atteso: $entry = ['achievement' => Achievement, 'progress' => PlayerAchievementProgress|null, 'tiers' => Collection<AchievementTier>] --}}
+{{-- Card achievement — DOM 1:1 OGame (estratto da ogame_trofei_schemas.md).
+     Atteso: $entry = ['achievement' => Achievement, 'progress' => …|null, 'tiers' => Collection<AchievementTier>] --}}
 
 @php
     /** @var \OGame\Models\Achievement $achievement */
@@ -11,101 +11,84 @@
     /** @var \Illuminate\Support\Collection<int, \OGame\Models\AchievementTier> $tiers */
     $tiers = $entry['tiers'];
     $totalTiers = $tiers->count();
-    $isFullyCompleted = ($completedTier > 0 && $completedTier >= $totalTiers);
-    // Tier mostrato di default: il primo non ancora completato (o l'ultimo se tutto completato).
+    // achievement_id "esterno" usato da OGame: progressivo display_number * 100 + 100, e.g. 1000100, 1000200…
+    // Lo replichiamo per allineare il markup (anche se il routing usa $achievement->id)
+    $extId = $achievement->display_number * 1000 + 100;
     $visibleTier = ($completedTier < $totalTiers) ? ($completedTier + 1) : $totalTiers;
 @endphp
 
-<div class="achievementOverviewAchievementHolder {{ $isFullyCompleted ? 'completed' : '' }}"
-     data-achievement-id="{{ $achievement->id }}"
-     data-completed-tier="{{ $completedTier }}"
-     data-total-tiers="{{ $totalTiers }}">
-
+<div id="achievementOverviewAchievementHolder_{{ $extId }}"
+     class="achievementOverviewAchievementHolder">
     <div class="achievementTitleAndTierSelectionContainer">
         <div class="achievementOverviewAchievementTitle">
             <span>#{{ $achievement->display_number }} - {{ __($achievement->name_key) }}</span>
         </div>
+
         <div class="achievementOverviewTierSelectionContainer">
             @foreach($tiers as $tier)
-                <button type="button"
-                        class="custom_btn titleTypeSelection achievementTierBtn {{ $tier->tier === $visibleTier ? 'selected' : '' }} {{ $tier->tier <= $completedTier ? 'completed' : '' }}"
-                        data-tier="{{ $tier->tier }}"
-                        title="{{ __('t_ingame.achievements.tier') }} {{ $tier->tier }}/{{ $totalTiers }}">
-                    @for($i = 0; $i < $tier->tier; $i++)
-                        <span class="achTierStar"></span>
-                    @endfor
-                </button>
+                <gradient-button h16 w50>
+                    <button class="custom_btn {{ $tier->tier === $visibleTier ? 'selected' : '' }}"
+                            onclick="showAchievementTier('{{ $extId }}', {{ $tier->tier }})">
+                        @for($i = 0; $i < $tier->tier; $i++)<img src="/cdn/img/avatars/tierstar.png" style="width: 8px; height: 8px;">@endfor
+                    </button>
+                </gradient-button>
             @endforeach
         </div>
     </div>
 
     <div class="achievementOverviewTiersContainer">
         @foreach($tiers as $tier)
-            <div class="tier_{{ $tier->tier }} achievementTierContainer {{ $tier->tier === $visibleTier ? 'visible' : '' }}"
-                 data-tier="{{ $tier->tier }}">
-                <div class="achievementTierContainerData">
-                    <div class="achievementTierStatus">
-                        <div class="description">{{ $tier->description_text ?: __($achievement->description_key) }}</div>
-                        <div>
-                            <div class="unlockedOrProgress">
-                                <div class="progressParent">
-                                    @php
-                                        $progressForTier = ($tier->tier <= $completedTier) ? $tier->target : min($currentValue, $tier->target);
-                                        $progressPercent = $tier->target > 0 ? min(100, round(($progressForTier / $tier->target) * 100)) : 0;
-                                    @endphp
-                                    <progress class="achievementProgress" value="{{ $progressForTier }}" max="{{ $tier->target }}"></progress>
+            @php
+                $tierUnlocked = $tier->tier <= $completedTier;
+                $progressForTier = $tierUnlocked ? $tier->target : min($currentValue, $tier->target);
+            @endphp
+            <div id="achievementTier_{{ $extId }}_{{ $tier->tier }}"
+                 class="tier_{{ $tier->tier }} achievementTierContainer {{ $tier->tier === $visibleTier ? 'visible' : '' }} {{ $tierUnlocked ? 'unlocked' : '' }}">
+                <div style="display: flex; width: calc(75% - 10px); position: relative;">
+                    <div class="achievementTierContainerTitle">
+                        @for($i = 0; $i < $tier->tier; $i++)<img src="/cdn/img/avatars/tierstar.png" style="width: 11px; height: 11px;">@endfor
+                    </div>
+                    <div class="achievementTierContainerData">
+                        <div class="achievementTierStatus">
+                            <div class="description">{{ $tier->description_text ?: __($achievement->description_key) }}</div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <div class="unlockedOrProgress">
+                                    <div class="progressParent" style="margin-bottom: 5px;">
+                                        <progress id="achievementProgress_{{ $extId }}_{{ $tier->tier }}"
+                                                  class="achievementProgress progress_{{ $tierUnlocked ? '100' : '0' }}"
+                                                  max="{{ $tier->target }}"
+                                                  value="{{ $progressForTier }}"></progress>
+                                    </div>
+                                    <div class="achievementProgressLabel" style="position: relative">
+                                        {{ $progressForTier }}
+                                        / <span class="progressTarget"> {{ $tier->target }}</span>
+                                    </div>
                                 </div>
-                                <div class="achievementProgressLabel">
-                                    <span class="progressCurrent">{{ $progressForTier }}</span>
-                                    <span> / </span>
-                                    <span class="progressTarget">{{ $tier->target }}</span>
-                                </div>
+                                <div style="position: absolute; right: 10px; bottom: 10px;"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="achievementReward">
                     <div class="rewardTitle">{{ __('t_ingame.achievements.reward') }}</div>
-                    @php $tierUnlocked = $tier->tier <= $completedTier; @endphp
                     @if($tier->reward_type === 'skin')
-                        <span class="space-object-skin {{ $tier->reward_machine_name }} {{ $tierUnlocked ? 'unlocked' : 'locked' }}"
-                              style="background-image: url('/img/achievements/skins/{{ $tier->reward_machine_name }}.png');"></span>
-                        <div class="rewardDescription">{{ __('t_ingame.achievements.reward_skin') }}</div>
-                    @elseif($tier->reward_type === 'avatar')
                         @php
-                            // Hash deterministico → due colori per avatar diverso (placeholder fino a quando
-                            // non scarichiamo gli sprite reali Gameforge per i 60 avatar).
-                            $h = crc32($tier->reward_machine_name);
-                            $hue1 = $h % 360;
-                            $hue2 = ($h >> 8) % 360;
-                            $avatarStyle = sprintf(
-                                'background: linear-gradient(135deg, hsl(%d,55%%,38%%) 0%%, hsl(%d,55%%,18%%) 100%%);',
-                                $hue1, $hue2
-                            );
-                        @endphp
-                        @php
-                            // Se esiste un avatar reale scaricato, lo usiamo. Altrimenti fallback gradient.
-                            $avatarBase = 'img/achievements/avatars/'.$tier->reward_machine_name;
-                            $avatarRealUrl = null;
-                            foreach (['.jpg', '.png'] as $ext) {
-                                if (file_exists(public_path($avatarBase.$ext))) {
-                                    $avatarRealUrl = '/'.$avatarBase.$ext;
-                                    break;
-                                }
+                            $skinBase = 'img/achievements/skins/'.$tier->reward_machine_name;
+                            $skinUrl = null;
+                            foreach (['.png', '.jpg'] as $ext) {
+                                if (file_exists(public_path($skinBase.$ext))) { $skinUrl = '/'.$skinBase.$ext; break; }
                             }
                         @endphp
-                        <span class="profile-picture avatar-placeholder {{ $tier->reward_machine_name }} {{ $tierUnlocked ? 'unlocked' : 'locked' }}"
-                              style="{{ $avatarRealUrl ? 'background-image: url('.e($avatarRealUrl).'); background-size: cover;' : $avatarStyle }}"
-                              data-avatar-id="{{ $tier->reward_machine_name }}">
-                            @unless($tierUnlocked)
-                                <span class="avatar-lock-overlay"></span>
-                            @endunless
-                        </span>
+                        <space-object-skin sq100 class="{{ $tier->reward_machine_name }} {{ $tierUnlocked ? '' : 'locked' }}">
+                            @if($skinUrl)<img src="{{ $skinUrl }}" alt="{{ $tier->reward_machine_name }}">@endif
+                        </space-object-skin>
+                        <div class="rewardDescription">{{ __('t_ingame.achievements.reward_skin') }}</div>
+                    @elseif($tier->reward_type === 'avatar')
+                        <profile-picture sq100 class="{{ $tier->reward_machine_name }} {{ $tierUnlocked ? '' : 'locked' }}"></profile-picture>
                         <div class="rewardDescription">{{ __('t_ingame.achievements.reward_avatar') }}</div>
                     @else
-                        <div class="rewardTypeTitleContainer {{ $tierUnlocked ? 'unlocked' : 'locked' }}">
-                            <div class="rewardTypeTitle">{{ $tier->title_text ?: __('t_ingame.achievements.reward_title') }}</div>
+                        <div sq100 class="rewardTypeTitleContainer {{ $tierUnlocked ? '' : 'locked' }}">
+                            <div class="rewardTypeTitle" lang="it">{{ $tier->title_text ?: '' }}</div>
                         </div>
                         <div class="rewardDescription">{{ __('t_ingame.achievements.reward_title') }}</div>
                     @endif

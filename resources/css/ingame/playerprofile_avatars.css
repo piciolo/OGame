@@ -1,0 +1,120 @@
+/* OGame achievements — regole per-machine_name (sorgente autoritativa estratta da CSS Gameforge
+   gf3.geo.gfsrv.net/cdn22/9b6fdb87.css). URL pointati alle copie locali. */
+
+/* === Avatar === */
+profile-picture.A10_T4_Ava_ID14 { background-image: url("/img/achievements/avatars/A10_T4_Ava_ID14.jpg"); }
+profile-picture.A10_T5_Ava_ID4 { background-image: url("/img/achievements/avatars/A10_T5_Ava_ID4.jpg"); }
+profile-picture.A10_T5_Ava_ID5 { background-image: url("/img/achievements/avatars/A10_T5_Ava_ID5.jpg"); }
+profile-picture.A11_T1_Ava_ID15 { background-image: url("/img/achievements/avatars/A11_T1_Ava_ID15.jpg"); }
+profile-picture.A11_T2_Ava_ID16 { background-image: url("/img/achievements/avatars/A11_T2_Ava_ID16.jpg"); }
+profile-picture.A11_T3_Ava_ID17 { background-image: url("/img/achievements/avatars/A11_T3_Ava_ID17.jpg"); }
+profile-picture.A12_T2_Ava_ID60 { background-image: url("/img/achievements/avatars/A12_T2_Ava_ID60.jpg"); }
+profile-picture.A12_T4_Ava_ID18 { background-image: url("/img/achievements/avatars/A12_T4_Ava_ID18.jpg"); }
+profile-picture.A13_T5_Ava_ID19 { background-image: url("/img/achievements/avatars/A13_T5_Ava_ID19.jpg"); }
+profile-picture.A13_T5_Ava_ID5 { background-image: url("/img/achievements/avatars/A13_T5_Ava_ID5.jpg"); }
+profile-picture.A15_T5_Ava_ID6 { background-image: url("/img/achievements/avatars/A15_T5_Ava_ID6.jpg"); }
+profile-picture.A16_T3_Ava_ID20 { background-image: url("/img/achievements/avatars/A16_T3_Ava_ID20.jpg"); }
+profile-picture.A18_T5_Ava_ID21 { background-image: url("/img/achievements/avatars/A18_T5_Ava_ID21.jpg"); }
+profile-picture.A19_T2_Ava_ID22 { background-image: url("/img/achievements/avatars/A19_T2_Ava_ID22.jpg"); }
+profile-picture.A1_T2_Ava_ID1 { background-image: url("/img/achievements/avatars/A1_T2_Ava_ID1.jpg"); }
+profile-picture.A1_T5_Ava_ID1 { background-image: url("/img/achievements/avatars/A1_T5_Ava_ID1.jpg"); }
+profile-picture.A20_T4_Ava_ID23 { background-image: url("/img/achievements/avatars/A20_T4_Ava_ID23.jpg"); }
+profile-picture.A21_T5_Ava_ID24 { background-image: url("/img/achievements/avatars/A21_T5_Ava_ID24.jpg"); }
+profile-picture.A22_T3_Ava_ID25 { background-image: url("/img/achievements/avatars/A22_T3_Ava_ID25.jpg"); }
+profile-picture.A23_T5_Ava_ID26 { background-image: url("/img/achievements/avatars/A23_T5_Ava_ID26.jpg"); }
+profile-picture.A24_T4_Ava_ID27 { background-image: url("/img/achievements/avatars/A24_T4_Ava_ID27.jpg"); }
+profile-picture.A25_T3_Ava_ID28 { background-image: url("/img/achievements/avatars/A25_T3_Ava_ID28.jpg"); }
+profile-picture.A26_T4_Ava_ID29 { background-image: url("/img/achievements/avatars/A26_T4_Ava_ID29.jpg"); }
+profile-picture.A27_T4_Ava_ID30 { background-image: url("/img/achievements/avatars/A27_T4_Ava_ID30.jpg"); }
+profile-picture.A29_T5_Ava_ID31 { background-image: url("/img/achievements/avatars/A29_T5_Ava_ID31.jpg"); }
+profile-picture.A2_T2_Ava_ID2 { background-image: url("/img/achievements/avatars/A2_T2_Ava_ID2.jpg"); }
+profile-picture.A2_T4_Ava_ID2 { background-image: url("/img/achievements/avatars/A2_T4_Ava_ID2.jpg"); }
+profile-picture.A2_T5_Ava_ID2 { background-image: url("/img/achievements/avatars/A2_T5_Ava_ID2.jpg"); }
+profile-picture.A2_T5_Ava_ID3 { background-image: url("/img/achievements/avatars/A2_T5_Ava_ID3.jpg"); }
+profile-picture.A30_T3_Ava_ID32 { background-image: url("/img/achievements/avatars/A30_T3_Ava_ID32.jpg"); }
+profile-picture.A32_T2_Ava_ID54 { background-image: url("/img/achievements/avatars/A32_T2_Ava_ID54.jpg"); }
+profile-picture.A32_T4_Ava_ID33 { background-image: url("/img/achievements/avatars/A32_T4_Ava_ID33.jpg"); }
+profile-picture.A33_T2_Ava_ID55 { background-image: url("/img/achievements/avatars/A33_T2_Ava_ID55.jpg"); }
+profile-picture.A33_T5_Ava_ID34 { background-image: url("/img/achievements/avatars/A33_T5_Ava_ID34.jpg"); }
+profile-picture.A34_T2_Ava_ID56 { background-image: url("/img/achievements/avatars/A34_T2_Ava_ID56.jpg"); }
+profile-picture.A34_T4_Ava_ID35 { background-image: url("/img/achievements/avatars/A34_T4_Ava_ID35.jpg"); }
+profile-picture.A35_T5_Ava_ID36 { background-image: url("/img/achievements/avatars/A35_T5_Ava_ID36.jpg"); }
+profile-picture.A36_T4_Ava_ID37 { background-image: url("/img/achievements/avatars/A36_T4_Ava_ID37.jpg"); }
+profile-picture.A38_T5_Ava_ID38 { background-image: url("/img/achievements/avatars/A38_T5_Ava_ID38.jpg"); }
+profile-picture.A39_T3_Ava_ID39 { background-image: url("/img/achievements/avatars/A39_T3_Ava_ID39.jpg"); }
+profile-picture.A3_T1_Ava_ID4 { background-image: url("/img/achievements/avatars/A3_T1_Ava_ID4.jpg"); }
+profile-picture.A3_T2_Ava_ID5 { background-image: url("/img/achievements/avatars/A3_T2_Ava_ID5.jpg"); }
+profile-picture.A3_T3_Ava_ID6 { background-image: url("/img/achievements/avatars/A3_T3_Ava_ID6.jpg"); }
+profile-picture.A3_T5_Ava_ID3 { background-image: url("/img/achievements/avatars/A3_T5_Ava_ID3.jpg"); }
+profile-picture.A40_T5_Ava_ID40 { background-image: url("/img/achievements/avatars/A40_T5_Ava_ID40.jpg"); }
+profile-picture.A41_T3_Ava_ID59 { background-image: url("/img/achievements/avatars/A41_T3_Ava_ID59.jpg"); }
+profile-picture.A43_T3_Ava_ID57 { background-image: url("/img/achievements/avatars/A43_T3_Ava_ID57.jpg"); }
+profile-picture.A43_T4_Ava_ID41 { background-image: url("/img/achievements/avatars/A43_T4_Ava_ID41.jpg"); }
+profile-picture.A45_T3_Ava_ID42 { background-image: url("/img/achievements/avatars/A45_T3_Ava_ID42.jpg"); }
+profile-picture.A46_T4_Ava_ID43 { background-image: url("/img/achievements/avatars/A46_T4_Ava_ID43.jpg"); }
+profile-picture.A47_T5_Ava_ID44 { background-image: url("/img/achievements/avatars/A47_T5_Ava_ID44.jpg"); }
+profile-picture.A4_T2_Ava_ID7 { background-image: url("/img/achievements/avatars/A4_T2_Ava_ID7.jpg"); }
+profile-picture.A4_T4_Ava_ID8 { background-image: url("/img/achievements/avatars/A4_T4_Ava_ID8.jpg"); }
+profile-picture.A4_T5_Ava_ID3 { background-image: url("/img/achievements/avatars/A4_T5_Ava_ID3.jpg"); }
+profile-picture.A50_T1_Ava_ID45 { background-image: url("/img/achievements/avatars/A50_T1_Ava_ID45.jpg"); }
+profile-picture.A50_T2_Ava_ID46 { background-image: url("/img/achievements/avatars/A50_T2_Ava_ID46.jpg"); }
+profile-picture.A50_T3_Ava_ID47 { background-image: url("/img/achievements/avatars/A50_T3_Ava_ID47.jpg"); }
+profile-picture.A50_T4_Ava_ID48 { background-image: url("/img/achievements/avatars/A50_T4_Ava_ID48.jpg"); }
+profile-picture.A51_T1_Ava_ID49 { background-image: url("/img/achievements/avatars/A51_T1_Ava_ID49.jpg"); }
+profile-picture.A51_T2_Ava_ID50 { background-image: url("/img/achievements/avatars/A51_T2_Ava_ID50.jpg"); }
+profile-picture.A51_T4_Ava_ID51 { background-image: url("/img/achievements/avatars/A51_T4_Ava_ID51.jpg"); }
+profile-picture.A5_T2_Ava_ID52 { background-image: url("/img/achievements/avatars/A5_T2_Ava_ID52.jpg"); }
+profile-picture.A5_T5_Ava_ID9 { background-image: url("/img/achievements/avatars/A5_T5_Ava_ID9.jpg"); }
+profile-picture.A6_T4_Ava_ID10 { background-image: url("/img/achievements/avatars/A6_T4_Ava_ID10.jpg"); }
+profile-picture.A7_T5_Ava_ID11 { background-image: url("/img/achievements/avatars/A7_T5_Ava_ID11.jpg"); }
+profile-picture.A8_T5_Ava_ID12 { background-image: url("/img/achievements/avatars/A8_T5_Ava_ID12.jpg"); }
+profile-picture.A9_T4_Ava_ID13 { background-image: url("/img/achievements/avatars/A9_T4_Ava_ID13.jpg"); }
+profile-picture.A9_T5_Ava_ID4 { background-image: url("/img/achievements/avatars/A9_T5_Ava_ID4.jpg"); }
+
+/* === Skin planetarie === */
+space-object-skin.A1_T1_Pskin_ID1 img { content: url("/img/achievements/skins/A1_T1_Pskin_ID1.png"); }
+space-object-skin.A1_T3_Pskin_ID2 img { content: url("/img/achievements/skins/A1_T3_Pskin_ID2.png"); }
+space-object-skin.A2_T4_Pskin_ID3 img { content: url("/img/achievements/skins/A2_T4_Pskin_ID3.png"); }
+space-object-skin.A3_T5_Pskin_ID4 img { content: url("/img/achievements/skins/A3_T5_Pskin_ID4.png"); }
+space-object-skin.A4_T5_Pskin_ID5 img { content: url("/img/achievements/skins/A4_T5_Pskin_ID5.png"); }
+space-object-skin.A10_T5_Pskin_ID6 img { content: url("/img/achievements/skins/A10_T5_Pskin_ID6.png"); }
+space-object-skin.A12_T5_Pskin_ID7 img { content: url("/img/achievements/skins/A12_T5_Pskin_ID7.png"); }
+space-object-skin.A14_T5_Pskin_ID8 img { content: url("/img/achievements/skins/A14_T5_Pskin_ID8.png"); }
+space-object-skin.A16_T5_Pskin_ID9 img { content: url("/img/achievements/skins/A16_T5_Pskin_ID9.png"); }
+space-object-skin.A9_T3_Pskin_ID47 img { content: url("/img/achievements/skins/A9_T3_Pskin_ID47.png"); }
+space-object-skin.A17_T5_Pskin_ID10 img { content: url("/img/achievements/skins/A17_T5_Pskin_ID10.png"); }
+space-object-skin.A19_T5_Pskin_ID11 img { content: url("/img/achievements/skins/A19_T5_Pskin_ID11.png"); }
+space-object-skin.A20_T5_Pskin_ID12 img { content: url("/img/achievements/skins/A20_T5_Pskin_ID12.png"); }
+space-object-skin.A22_T5_Pskin_ID13 img { content: url("/img/achievements/skins/A22_T5_Pskin_ID13.png"); }
+space-object-skin.A23_T4_Pskin_ID14 img { content: url("/img/achievements/skins/A23_T4_Pskin_ID14.png"); }
+space-object-skin.A24_T5_Pskin_ID15 img { content: url("/img/achievements/skins/A24_T5_Pskin_ID15.png"); }
+space-object-skin.A25_T4_Pskin_ID16 img { content: url("/img/achievements/skins/A25_T4_Pskin_ID16.png"); }
+space-object-skin.A26_T5_Pskin_ID17 img { content: url("/img/achievements/skins/A26_T5_Pskin_ID17.png"); }
+space-object-skin.A28_T5_Pskin_ID18 img { content: url("/img/achievements/skins/A28_T5_Pskin_ID18.png"); }
+space-object-skin.A29_T4_Pskin_ID19 img { content: url("/img/achievements/skins/A29_T4_Pskin_ID19.png"); }
+space-object-skin.A30_T5_Pskin_ID20 img { content: url("/img/achievements/skins/A30_T5_Pskin_ID20.png"); }
+space-object-skin.A31_T4_Pskin_ID21 img { content: url("/img/achievements/skins/A31_T4_Pskin_ID21.png"); }
+space-object-skin.A32_T5_Pskin_ID22 img { content: url("/img/achievements/skins/A32_T5_Pskin_ID22.png"); }
+space-object-skin.A33_T4_Pskin_ID23 img { content: url("/img/achievements/skins/A33_T4_Pskin_ID23.png"); }
+space-object-skin.A34_T5_Pskin_ID24 img { content: url("/img/achievements/skins/A34_T5_Pskin_ID24.png"); }
+space-object-skin.A37_T4_Pskin_ID25 img { content: url("/img/achievements/skins/A37_T4_Pskin_ID25.png"); }
+space-object-skin.A39_T5_Pskin_ID26 img { content: url("/img/achievements/skins/A39_T5_Pskin_ID26.png"); }
+space-object-skin.A42_T5_Pskin_ID27 img { content: url("/img/achievements/skins/A42_T5_Pskin_ID27.png"); }
+space-object-skin.A43_T5_Pskin_ID28 img { content: url("/img/achievements/skins/A43_T5_Pskin_ID28.png"); }
+space-object-skin.A44_T3_Pskin_ID50 img { content: url("/img/achievements/skins/A44_T3_Pskin_ID50.png"); }
+space-object-skin.A44_T5_Pskin_ID29 img { content: url("/img/achievements/skins/A44_T5_Pskin_ID29.png"); }
+space-object-skin.A45_T4_Pskin_ID30 img { content: url("/img/achievements/skins/A45_T4_Pskin_ID30.png"); }
+space-object-skin.A46_T5_Pskin_ID31 img { content: url("/img/achievements/skins/A46_T5_Pskin_ID31.png"); }
+space-object-skin.A48_T1_Pskin_ID32 img { content: url("/img/achievements/skins/A48_T1_Pskin_ID32.png"); }
+space-object-skin.A48_T2_Pskin_ID33 img { content: url("/img/achievements/skins/A48_T2_Pskin_ID33.png"); }
+space-object-skin.A48_T3_Pskin_ID34 img { content: url("/img/achievements/skins/A48_T3_Pskin_ID34.png"); }
+space-object-skin.A48_T4_Pskin_ID35 img { content: url("/img/achievements/skins/A48_T4_Pskin_ID35.png"); }
+space-object-skin.A48_T5_Pskin_ID36 img { content: url("/img/achievements/skins/A48_T5_Pskin_ID36.png"); }
+space-object-skin.A49_T1_Pskin_ID37 img { content: url("/img/achievements/skins/A49_T1_Pskin_ID37.png"); }
+space-object-skin.A49_T2_Pskin_ID38 img { content: url("/img/achievements/skins/A49_T2_Pskin_ID38.png"); }
+space-object-skin.A49_T3_Pskin_ID39 img { content: url("/img/achievements/skins/A49_T3_Pskin_ID39.png"); }
+space-object-skin.A49_T4_Pskin_ID40 img { content: url("/img/achievements/skins/A49_T4_Pskin_ID40.png"); }
+space-object-skin.A49_T5_Pskin_ID41 img { content: url("/img/achievements/skins/A49_T5_Pskin_ID41.png"); }
+space-object-skin.A50_T5_Pskin_ID42 img { content: url("/img/achievements/skins/A50_T5_Pskin_ID42.png"); }
+space-object-skin.A51_T3_Pskin_ID43 img { content: url("/img/achievements/skins/A51_T3_Pskin_ID43.png"); }
+space-object-skin.A51_T5_Pskin_ID44 img { content: url("/img/achievements/skins/A51_T5_Pskin_ID44.png"); }

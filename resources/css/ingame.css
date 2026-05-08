@@ -11,6 +11,9 @@
 @import "ingame/modules/highscore.css";
 @import "ingame/modules/messages.css";
 @import "ingame/playerprofile.css";
+@import "ingame/playerprofile_utilities.css";
+@import "ingame/playerprofile_achievements.css";
+@import "ingame/playerprofile_avatars.css";
 
 
 /* New style overrides that conflict with some existing styles, implement later */

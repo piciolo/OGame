@@ -124,34 +124,12 @@
                         <div class="profileHolder">
                             <div class="avatarHolder">
                                 @php
-                                    // Issue #2: applica avatar selezionato. Se nessuno selezionato → default.
+                                    // Avatar selezionato (DOM 1:1 OGame): la classe macchina applica
+                                    // la background-image via regola CSS in playerprofile_avatars.css.
                                     $selectedAvatar = $targetPlayer->getUser()->profile_avatar ?? '';
-                                    $avatarStyle = '';
-                                    $avatarClass = 'default';
-                                    if ($selectedAvatar !== '') {
-                                        $avatarClass = $selectedAvatar;
-                                        $avatarRealUrl = null;
-                                        foreach (['.jpg', '.png'] as $ext) {
-                                            if (file_exists(public_path('img/achievements/avatars/'.$selectedAvatar.$ext))) {
-                                                $avatarRealUrl = '/img/achievements/avatars/'.$selectedAvatar.$ext;
-                                                break;
-                                            }
-                                        }
-                                        if ($avatarRealUrl) {
-                                            $avatarStyle = "background-image: url('{$avatarRealUrl}'); background-size: cover; background-position: center;";
-                                        } else {
-                                            $h = crc32($selectedAvatar);
-                                            $hue1 = $h % 360;
-                                            $hue2 = ($h >> 8) % 360;
-                                            $avatarStyle = sprintf(
-                                                'background: linear-gradient(135deg, hsl(%d,55%%,38%%) 0%%, hsl(%d,55%%,18%%) 100%%);',
-                                                $hue1, $hue2
-                                            );
-                                        }
-                                    }
+                                    $avatarClass = $selectedAvatar !== '' ? $selectedAvatar : 'default';
                                 @endphp
-                                <span class="profile-picture avatar-placeholder {{ $avatarClass }} sq200"
-                                      style="{{ $avatarStyle }}"></span>
+                                <profile-picture class="{{ $avatarClass }} sq200"></profile-picture>
                             </div>
                             <div class="profilePageInfo" id="profilePageInfo" data-section="profile">
                                 @foreach($profileEntries as $entry)
@@ -195,84 +173,80 @@
             });
         });
 
-        // Sub-category switch (Riepilogo / Avatar / Skin / Titoli)
-        var categories = document.querySelectorAll('#achievementsOverviewCategories .achievementCategory');
-        var lists = {
-            unlocks: document.getElementById('achievementContentList_unlocks'),
-            avatars: document.getElementById('achievementContentList_avatars'),
-            spaceObjectSkins: document.getElementById('achievementContentList_spaceObjectSkins'),
-            titles: document.getElementById('achievementContentList_titles'),
+        // ── DOM 1:1 OGame: handler legati ai nomi globali invocati dagli onclick inline ──
+
+        // Sub-category switch: chiamata da onclick="changeAchievementCategory(this)"
+        window.changeAchievementCategory = function (el) {
+            var key = el.getAttribute('data-achievement-category-id');
+            document.querySelectorAll('#achievementsOverviewCategories .achievementCategory').forEach(function (c) {
+                c.classList.toggle('active', c === el);
+            });
+            ['unlocks', 'avatars', 'spaceObjectSkins', 'titles'].forEach(function (k) {
+                var n = document.getElementById('achievementContentList_' + k);
+                if (n) n.classList.toggle('hidden', k !== key);
+            });
         };
-        categories.forEach(function (cat) {
-            cat.addEventListener('click', function () {
-                categories.forEach(function (c) { c.classList.remove('active'); });
-                cat.classList.add('active');
-                var key = cat.getAttribute('data-category');
-                Object.keys(lists).forEach(function (k) {
-                    if (lists[k]) lists[k].classList.toggle('hidden', k !== key);
-                });
-            });
-        });
 
-        // Filtri Riepilogo (all / unfinished / finished)
-        var filterBtns = document.querySelectorAll('#achievementOverviewAchievementFilters [data-filter]');
-        filterBtns.forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                filterBtns.forEach(function (b) { b.classList.remove('selected', 'green'); });
-                btn.classList.add('selected', 'green');
-                var f = btn.getAttribute('data-filter');
-                document.querySelectorAll('#achievementContentList_unlocks .achievementOverviewAchievementHolder').forEach(function (card) {
-                    var done = parseInt(card.getAttribute('data-completed-tier') || '0', 10);
-                    var total = parseInt(card.getAttribute('data-total-tiers') || '0', 10);
-                    var isFinished = (done > 0 && done >= total);
-                    var visible = (f === 'all') || (f === 'unfinished' && !isFinished) || (f === 'finished' && isFinished);
-                    card.classList.toggle('hidden', !visible);
-                });
+        // Tier switch dentro un achievement: chiamata da onclick="showAchievementTier('1000100', 1)"
+        window.showAchievementTier = function (extId, tier) {
+            var card = document.getElementById('achievementOverviewAchievementHolder_' + extId);
+            if (!card) return;
+            card.querySelectorAll('.achievementOverviewTierSelectionContainer .custom_btn').forEach(function (b, idx) {
+                b.classList.toggle('selected', (idx + 1) === tier);
             });
-        });
+            card.querySelectorAll('.achievementOverviewTiersContainer > .achievementTierContainer').forEach(function (c) {
+                var matches = c.classList.contains('tier_' + tier);
+                c.classList.toggle('visible', matches);
+            });
+        };
 
-        // Expand all / Collapse all (mostra/nascondi tutte le tier visibili)
-        var expandBtn = document.getElementById('achievementOverviewExpandAllBtn');
-        var collapseBtn = document.getElementById('achievementOverviewCollapseAllBtn');
-        if (expandBtn) {
-            expandBtn.addEventListener('click', function () {
-                document.querySelectorAll('#achievementContentList_unlocks .achievementOverviewAchievementHolder').forEach(function (card) {
-                    card.classList.add('expanded');
-                });
+        // Filtri Riepilogo: onclick="filterAchievements(this, 'all'|'unfinished'|'finished')"
+        window.filterAchievements = function (el, f) {
+            document.querySelectorAll('#achievementOverviewAchievementFilters .achievementFilteringOptions .custom_btn').forEach(function (b) {
+                b.classList.remove('active');
             });
-        }
-        if (collapseBtn) {
-            collapseBtn.addEventListener('click', function () {
-                document.querySelectorAll('#achievementContentList_unlocks .achievementOverviewAchievementHolder').forEach(function (card) {
-                    card.classList.remove('expanded');
-                });
+            el.classList.add('active');
+            document.querySelectorAll('#achievementContentList_unlocks .achievementOverviewAchievementHolder').forEach(function (card) {
+                var tiers = card.querySelectorAll('.achievementTierContainer');
+                var unlockedCount = card.querySelectorAll('.achievementTierContainer.unlocked').length;
+                var total = tiers.length;
+                var isFinished = (total > 0 && unlockedCount >= total);
+                var visible = (f === 'all') || (f === 'unfinished' && !isFinished) || (f === 'finished' && isFinished);
+                card.classList.toggle('hidden', !visible);
             });
-        }
+        };
 
-        // Tier selector: click su una stellina mostra il tier container corrispondente.
-        document.querySelectorAll('.achievementOverviewAchievementHolder').forEach(function (card) {
-            var btns = card.querySelectorAll('.achievementTierBtn');
-            var conts = card.querySelectorAll('.achievementTierContainer');
-            btns.forEach(function (b) {
-                b.addEventListener('click', function () {
-                    var tier = b.getAttribute('data-tier');
-                    btns.forEach(function (x) { x.classList.remove('selected'); });
-                    b.classList.add('selected');
-                    conts.forEach(function (c) { c.classList.toggle('visible', c.getAttribute('data-tier') === tier); });
+        // Expand / collapse all (mostra tutti i tier vs solo quello selezionato)
+        window.expandAllAchievementTiers = function () {
+            document.querySelectorAll('#achievementContentList_unlocks .achievementOverviewAchievementHolder .achievementTierContainer').forEach(function (c) {
+                c.classList.add('visible');
+            });
+            var e = document.getElementById('achievementOverviewExpandAllBtn');
+            var c = document.getElementById('achievementOverviewCollapseAllBtn');
+            if (e) e.style.display = 'none';
+            if (c) c.style.display = '';
+        };
+        window.collapseAllAchievementTiers = function () {
+            document.querySelectorAll('#achievementContentList_unlocks .achievementOverviewAchievementHolder').forEach(function (card) {
+                var sel = card.querySelector('.achievementOverviewTierSelectionContainer .custom_btn.selected');
+                var idx = sel ? Array.prototype.indexOf.call(sel.parentNode.parentNode.querySelectorAll('.custom_btn'), sel) + 1 : 1;
+                card.querySelectorAll('.achievementTierContainer').forEach(function (c) {
+                    c.classList.toggle('visible', c.classList.contains('tier_' + idx));
                 });
             });
-        });
+            var e = document.getElementById('achievementOverviewExpandAllBtn');
+            var c = document.getElementById('achievementOverviewCollapseAllBtn');
+            if (e) e.style.display = '';
+            if (c) c.style.display = 'none';
+        };
 
         @if($isOwner)
-        // Click su avatar/skin/titolo SBLOCCATO -> imposta come selezione del profilo.
+        // Selezione reward dai cataloghi avatar / skin / titoli (solo se non locked).
         var rewardEndpoint = @json(route('playerprofile.selectreward'));
         var csrfRT = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
-        function selectReward(holder) {
-            if (!holder.classList.contains('unlocked')) return;
-            var type = holder.getAttribute('data-reward-type');
-            var machine = holder.getAttribute('data-machine-name');
-            if (!type || !machine) return;
-            fetch(rewardEndpoint, {
+
+        function applyReward(holder, type, machine) {
+            return fetch(rewardEndpoint, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -286,22 +260,39 @@
                 if (!r.ok) throw new Error('HTTP ' + r.status);
                 return r.json();
             }).then(function (data) {
-                if (!data.success) throw new Error('fail');
-                // Aggiorna UI: rimuove .currentSelection dai sibling dello stesso tipo, aggiunge a quello cliccato.
-                var selector = '[data-reward-type="' + type + '"]';
-                document.querySelectorAll(selector).forEach(function (el) { el.classList.remove('currentSelection'); });
-                holder.classList.add('currentSelection');
-                // Aggiorna avatar header se type == avatar.
-                if (type === 'avatar') {
-                    var pp = document.querySelector('#bar .profile-picture');
-                    if (pp) pp.style.backgroundImage = "url('/img/achievements/avatars/" + machine + ".jpg')";
-                }
-            }).catch(function () {
-                // silent fail
-            });
+                if (!data.success) throw new Error(data.error || 'fail');
+                // Rimuovi .selected da tutti i sibling dello stesso tipo e aggiungi al cliccato.
+                var listId = type === 'avatar' ? 'achievementContentList_avatars'
+                            : type === 'skin'   ? 'achievementContentList_spaceObjectSkins'
+                            :                     'achievementContentList_titles';
+                var list = document.getElementById(listId);
+                if (list) list.querySelectorAll('.selected').forEach(function (el) { el.classList.remove('selected'); });
+                holder.classList.add('selected');
+            }).catch(function () { /* silent */ });
         }
-        document.querySelectorAll('[data-reward-type]').forEach(function (h) {
-            h.addEventListener('click', function () { selectReward(h); });
+
+        // Avatar holders
+        document.querySelectorAll('#achievementContentList_avatars .achievementOverviewProfilePictureHolder').forEach(function (h) {
+            h.addEventListener('click', function () {
+                var pp = h.querySelector('profile-picture');
+                if (!pp || pp.classList.contains('locked')) return;
+                applyReward(h, 'avatar', h.getAttribute('data-avatar-id'));
+            });
+        });
+        // Skin holders
+        document.querySelectorAll('#achievementContentList_spaceObjectSkins .achievementOverviewSpaceObjectSkinHolder').forEach(function (h) {
+            h.addEventListener('click', function () {
+                var s = h.querySelector('space-object-skin');
+                if (!s || s.classList.contains('locked')) return;
+                applyReward(h, 'skin', h.getAttribute('data-space-object-skin-id'));
+            });
+        });
+        // Title holders
+        document.querySelectorAll('#achievementContentList_titles .achievementOverviewProfileTitleHolder').forEach(function (h) {
+            h.addEventListener('click', function () {
+                if (h.classList.contains('locked')) return;
+                applyReward(h, 'title', h.getAttribute('data-title-id'));
+            });
         });
         @endif
     })();
