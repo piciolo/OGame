@@ -344,8 +344,10 @@ class InventoryService
         }
 
         // Recompute tooltip with final amount for registry items only
+        // (skip shop_item e profile_avatar — il loro title viene già composto
+        // direttamente dal nome del ShopItem nel branch dedicato).
         foreach ($result as $ref => &$item) {
-            if ($item['item_type'] === 'shop_item') {
+            if (in_array($item['item_type'], ['shop_item', 'profile_avatar'], true)) {
                 continue;
             }
             $key = $item['item_type'] . ':' . ($item['tier'] ?? '');
