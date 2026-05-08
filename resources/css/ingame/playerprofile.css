@@ -1136,21 +1136,9 @@
     background-color: transparent !important;
     background-image: none !important;
 }
-.profile-picture.avatar-placeholder .avatar-initial {
-    color: #ffffff;
-    font-size: 9px;
-    font-weight: 700;
-    text-align: center;
-    line-height: 1.1;
-    text-shadow: 0 1px 2px #000;
-    pointer-events: none;
-    word-break: break-all;
-    padding: 4px;
-}
-.profile-picture.avatar-placeholder .avatar-initial.avatar-initial-large {
-    font-size: 14px;
-    padding: 8px;
-}
+/* avatar-initial deprecato — non usiamo più label visibile sui placeholder.
+   Resta solo per fallback (scope future): nascosto di default. */
+.profile-picture.avatar-placeholder .avatar-initial { display: none; }
 .profile-picture.avatar-placeholder .avatar-lock-overlay {
     position: absolute;
     inset: 0;

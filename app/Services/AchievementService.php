@@ -48,10 +48,15 @@ class AchievementService
     {
         $cat = ['avatar' => [], 'skin' => [], 'title' => []];
         $tiers = \OGame\Models\AchievementTier::query()
-            ->select(['reward_type', 'reward_machine_name'])
+            ->select(['reward_type', 'reward_machine_name', 'title_text'])
             ->orderBy('reward_machine_name')
             ->get();
         foreach ($tiers as $t) {
+            // Filtra titoli senza testo (sono i tier "segreti" che OGame non rivela
+            // finché non sono sbloccati: niente da mostrare nel catalogo).
+            if ($t->reward_type === 'title' && empty($t->title_text)) {
+                continue;
+            }
             if (isset($cat[$t->reward_type]) && !in_array($t->reward_machine_name, $cat[$t->reward_type], true)) {
                 $cat[$t->reward_type][] = $t->reward_machine_name;
             }

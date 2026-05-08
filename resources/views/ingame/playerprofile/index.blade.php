@@ -130,21 +130,28 @@
                                     $avatarClass = 'default';
                                     if ($selectedAvatar !== '') {
                                         $avatarClass = $selectedAvatar;
-                                        $h = crc32($selectedAvatar);
-                                        $hue1 = $h % 360;
-                                        $hue2 = ($h >> 8) % 360;
-                                        $avatarStyle = sprintf(
-                                            'background: linear-gradient(135deg, hsl(%d,55%%,38%%) 0%%, hsl(%d,55%%,18%%) 100%%);',
-                                            $hue1, $hue2
-                                        );
+                                        $avatarRealUrl = null;
+                                        foreach (['.jpg', '.png'] as $ext) {
+                                            if (file_exists(public_path('img/achievements/avatars/'.$selectedAvatar.$ext))) {
+                                                $avatarRealUrl = '/img/achievements/avatars/'.$selectedAvatar.$ext;
+                                                break;
+                                            }
+                                        }
+                                        if ($avatarRealUrl) {
+                                            $avatarStyle = "background-image: url('{$avatarRealUrl}'); background-size: cover; background-position: center;";
+                                        } else {
+                                            $h = crc32($selectedAvatar);
+                                            $hue1 = $h % 360;
+                                            $hue2 = ($h >> 8) % 360;
+                                            $avatarStyle = sprintf(
+                                                'background: linear-gradient(135deg, hsl(%d,55%%,38%%) 0%%, hsl(%d,55%%,18%%) 100%%);',
+                                                $hue1, $hue2
+                                            );
+                                        }
                                     }
                                 @endphp
                                 <span class="profile-picture avatar-placeholder {{ $avatarClass }} sq200"
-                                      style="{{ $avatarStyle }}">
-                                    @if($selectedAvatar !== '')
-                                        <span class="avatar-initial avatar-initial-large">{{ $selectedAvatar }}</span>
-                                    @endif
-                                </span>
+                                      style="{{ $avatarStyle }}"></span>
                             </div>
                             <div class="profilePageInfo" id="profilePageInfo" data-section="profile">
                                 @foreach($profileEntries as $entry)

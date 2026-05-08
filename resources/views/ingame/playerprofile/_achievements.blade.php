@@ -61,13 +61,22 @@
                         $hue1, $hue2
                     );
                 @endphp
+                @php
+                    $avatarBase = 'img/achievements/avatars/'.$machineName;
+                    $avatarRealUrl = null;
+                    foreach (['.jpg', '.png'] as $ext) {
+                        if (file_exists(public_path($avatarBase.$ext))) {
+                            $avatarRealUrl = '/'.$avatarBase.$ext;
+                            break;
+                        }
+                    }
+                @endphp
                 <div class="achievementOverviewProfilePictureHolder {{ $unlocked ? 'unlocked' : '' }} {{ $isCurrent ? 'currentSelection' : '' }}"
                      data-machine-name="{{ $machineName }}"
                      data-reward-type="avatar"
                      title="{{ $machineName }}">
                     <span class="profile-picture avatar-placeholder {{ $machineName }} {{ $unlocked ? 'unlocked' : 'locked' }}"
-                          style="{{ $avatarStyle }}">
-                        <span class="avatar-initial">{{ $machineName }}</span>
+                          style="{{ $avatarRealUrl ? 'background-image: url('.e($avatarRealUrl).'); background-size: cover;' : $avatarStyle }}">
                         @unless($unlocked)
                             <span class="avatar-lock-overlay"></span>
                         @endunless

@@ -84,10 +84,20 @@
                                 $hue1, $hue2
                             );
                         @endphp
+                        @php
+                            // Se esiste un avatar reale scaricato, lo usiamo. Altrimenti fallback gradient.
+                            $avatarBase = 'img/achievements/avatars/'.$tier->reward_machine_name;
+                            $avatarRealUrl = null;
+                            foreach (['.jpg', '.png'] as $ext) {
+                                if (file_exists(public_path($avatarBase.$ext))) {
+                                    $avatarRealUrl = '/'.$avatarBase.$ext;
+                                    break;
+                                }
+                            }
+                        @endphp
                         <span class="profile-picture avatar-placeholder {{ $tier->reward_machine_name }} {{ $tierUnlocked ? 'unlocked' : 'locked' }}"
-                              style="{{ $avatarStyle }}"
+                              style="{{ $avatarRealUrl ? 'background-image: url('.e($avatarRealUrl).'); background-size: cover;' : $avatarStyle }}"
                               data-avatar-id="{{ $tier->reward_machine_name }}">
-                            <span class="avatar-initial">A{{ $achievement->display_number }}<br>T{{ $tier->tier }}</span>
                             @unless($tierUnlocked)
                                 <span class="avatar-lock-overlay"></span>
                             @endunless
