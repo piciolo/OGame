@@ -1,232 +1,159 @@
-/* OGame Trofei - CSS autoritativo estratto da gf3.geo.gfsrv.net/cdn22/9b6fdb87.css
-   Le regole per-machine_name (profile-picture.A*, space-object-skin.A*) sono in
+/* OGame Trofei — CSS autoritativo (regenerato da scripts/rebuild_achievement_css.php).
+   Sorgente: _research/ogame_css/001_gf3_geo_gfsrv_net_9b6fdb87.css
+   Le regole per-machine_name (profile-picture.A*, space-object-skin.A*) vivono in
    playerprofile_avatars.css con path locali. */
 
-/* OGame achievement-related CSS — concatenated extraction */
-
-/* ============================================ */
-/* SOURCE: https://gf3.geo.gfsrv.net/cdn22/ca67fb31d6d4d2820560eb35905481.css */
-/* FILE  : 001_gf3_geo_gfsrv_net_9b6fdb87.css (305 blocks) */
-/* ============================================ */
-/* *****************************************************************************
-   ALLGEMEINE STYLES
-***************************************************************************** */
-/*#planet h2 {*/
-/*    color: #fff;*/
-/*    font: bold 18px/22px Verdana,Arial,Helvetica,sans-serif;*/
-/*    height: 22px;*/
-/*    margin: 0 0 0 144px;*/
-/*    overflow: hidden;*/
-/*    padding-top: 7px;*/
-/*    white-space: nowrap;*/
-/*    width: 470px;*/
-/*    text-overflow: ellipsis;*/
-/*}*/
-
-
-
-/* *************************** Scrollbars *******************************************/
-/*
-::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
+#achievementsoverviewcomponent {
+    width: 100%;
+    margin: 0 2px 0 5px;
+    padding: 0 5px 5px 5px;
+    display: flex;
+    border: 2px solid #000;
+    background: #0d1014;
+    position: relative;
+    flex-direction: column;
+    margin-inline: auto;
+    box-sizing: border-box;
 }
 
-::-webkit-scrollbar-button {
-    width: 0px;
-    height: 0px;
+.contentRS #achievementsoverviewcomponent {
+    width: 655px;
 }
 
-::-webkit-scrollbar-thumb {
-    background: #3d5b75;
-    border: 0px none #ffffff;
-    border-radius: 5px;
+#achievementsoverviewcomponent *,
+#avatarAchievementsOverviewContent * {
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: #567394;
-}
-
-::-webkit-scrollbar-thumb:active {
-    background: #627f9b;
-}
-
-::-webkit-scrollbar-track {
-    background: #090909;
-    border: 0px none #ffffff;
-    border-radius: 5px;
-}
-
-::-webkit-scrollbar-track:hover {
-    background: #000000;
-}
-
-::-webkit-scrollbar-track:active {
-    background: #000000;
-}
-
-::-webkit-scrollbar-corner {
-    background: transparent;
-}
-
-/* *****************************************************************************
-   ALLGEMEINE STYLES
-***************************************************************************** */
-/*#planet h2 {*/
-/*    color: #fff;*/
-/*    font: bold 18px/22px Verdana,Arial,Helvetica,sans-serif;*/
-/*    height: 22px;*/
-/*    margin: 0 0 0 144px;*/
-/*    overflow: hidden;*/
-/*    padding-top: 7px;*/
-/*    white-space: nowrap;*/
-/*    width: 470px;*/
-/*    text-overflow: ellipsis;*/
-/*}*/
-
-
-
-/* *************************** Scrollbars *******************************************/
-/*
-::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-}
-::-webkit-scrollbar-button {
-    width: 0px;
-    height: 0px;
-}
-::-webkit-scrollbar-thumb {
-    background: #3d5b75;
-    border: 0px none #ffffff;
-    border-radius: 5px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #567394;
-}
-::-webkit-scrollbar-thumb:active {
-    background: #627f9b;
-}
-::-webkit-scrollbar-track {
-    background: #090909;
-    border: 0px none #ffffff;
-    border-radius: 5px;
-}
-::-webkit-scrollbar-track:hover {
-    background: #000000;
-}
-::-webkit-scrollbar-track:active {
-    background: #000000;
-}
-::-webkit-scrollbar-corner {
-    background: transparent;
-}
-*/
-/* *************************** Links *******************************************/
-
-a:link,
-a:visited,
-.no-touch a:hover,
-a:active { color:#848484;}
-
-.dropdown.currentlySelected,
-.dropdown.currentlySelected:before,
-.dropdown.currentlySelected>a { background-image: url("//gf3.geo.gfsrv.net/cdne1/d03835718066a5a592a6426736e019.png"); }
-
-.dropdown.currentlySelected {
-    background-repeat: repeat-x;
-    background-position: 0 -560px;
-    color: #fff;
-    position:relative;
-    height: 24px;
-    line-height: 24px;
-    vertical-align: middle;
-}
-
-.dropdown.currentlySelected:before {
-    background-color: #0D1014;
-    background-position: 0 -632px;
-    content: '';
+#achievementsoverviewcomponent::before {
     position: absolute;
-    height: 24px;
-    left: 0;
-    width: 5px;
+    left: -6px;
+    top: -1px;
+    width: calc(100% + 14px);
+    height: 28px;
+    background: url(//gf3.geo.gfsrv.net/cdn53/f333e15eb738b8ec692340f507e1ae.png) bottom left no-repeat, url(//gf2.geo.gfsrv.net/cdnd5/66551209db14e23b3001901b996cc6.png) bottom right no-repeat;
+    content: "";
 }
 
-.no-touch .dropdown.currentlySelected:hover { background-position: 0 -584px; }
-
-.no-touch .dropdown.currentlySelected:hover:before { background-position: -5px -632px; }
-
-.dropdown.currentlySelected>a {
-    background-position: 100% -488px;
-    background-repeat: no-repeat;
-}
-
-.no-touch .dropdown.currentlySelected>a:hover,
-.dropdown.currentlySelected>a.hover,
-.dropdown.currentlySelected.focus>a,
-.dropdown.currentlySelected>a:focus {
-    background-position: 100% -512px;
-    color: #fff;
-}
-
-#links .leftmenu li a.selected:link,
-#links .leftmenu li a.selected:visited,
-.no-touch #links .leftmenu li a.selected:hover,
-#links .leftmenu li a.selected:active {
-    background: url("//gf3.geo.gfsrv.net/cdneb/f5f81e8302aaad56c958c033677fb8.png") -374px -287px no-repeat;
-    color:#fff;
-}
-
-/* Planeten rechts */
-
-#selectedplanet {
-    display:none;
-    left: 866px;
+#achievementsoverviewcomponent::after {
     position: absolute;
-    top: 19px;
+    left: -8px;
+    bottom: -4px;
+    width: calc(100% + 17px);
+    height: 50px;
+    background: url(//gf3.geo.gfsrv.net/cdnea/0330abcdca0d125d35a0ebace4b584.png) bottom left no-repeat, url(//gf1.geo.gfsrv.net/cdn9b/8003a40825bc96919c5fec01b018b8.png) bottom right no-repeat;
+    content: "";
+    pointer-events: none;
 }
 
-#selectedPlanetName {
-    display:none;
-    color:cyan;
-    height:16px;
-    left:866px;
-    position:absolute;
-    top:121px;
-    font-size:11px;
-    width:130px;
+#achievementsoverviewcomponent > h3,
+#avatarAchievementsOverviewContent > h3 {
+    position: relative;
+    width: 100%;
+    margin: 0 0 5px;
+    background: url(//gf1.geo.gfsrv.net/cdnfb/a4e7913209228ebaf2297429aeb87b.png);
+    color: #6f9fc8;
+    font: bold 12px / 27px Verdana, Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-weight: 600;
+    font-size: 15px;
 }
 
-.comm_menu.messages.selected { background-position: 15px -39px; }
-
-.comm_menu.chat.selected { background-position: 8px -161px; }
-
-.comm_menu.buddies.selected { background-position: 2px -298px; }
-
-#helper a,
-.no-touch  #helper a:hover.help_selected {
-    display:block;
-    position:relative;
-    top:90px;
-    left:139px;
-    /* @TODO-merge REMOVE CSS BELOW */
-    background: transparent url("//gf3.geo.gfsrv.net/cdneb/f5f81e8302aaad56c958c033677fb8.png") -143px -96px no-repeat;
-    /* @TODO-merge REMOVE CSS ABOVE */
-    width:27px;
-    height:27px;
+#achievementsoverviewcomponent > h3::before,
+#achievementsoverviewcomponent > h3::after,
+#avatarAchievementsOverviewContent > h3::before,
+#avatarAchievementsOverviewContent > h3::after {
+    position: absolute;
+    top: 0;
+    width: 26px;
+    height: 27px;
+    content: "";
 }
 
-.no-touch #helper a:hover,
-.no-touch #helper a:hover.help_selected { background-position: -143px -123px; }
+#achievementsoverviewcomponent > h3::before,
+#avatarAchievementsOverviewContent > h3::before {
+    left: -5px;
+    background: url(//gf2.geo.gfsrv.net/cdn4a/127bd495b9325216af08a588ecc540.png);
+}
 
-#helper a.help_selected {
-    position:relative;
-    top:53px;
-    left:99px;
-    background:url("//gf3.geo.gfsrv.net/cdn54/19d8745d33ecac0fd288870ba79bde.png") no-repeat;
-    height:100px;
-    width:100px;
+#achievementsoverviewcomponent > h3::after,
+#avatarAchievementsOverviewContent > h3::after {
+    right: -5px;
+    background: url(//gf2.geo.gfsrv.net/cdn1d/80db96934a5b82ce002f839cd85a44.png);
+}
+
+#achievementsOverviewCategories {
+    display: flex;
+    width: 100%;
+    height: 30px;
+    flex-direction: row;
+    box-shadow: 0 0 2px 1px black, inset 0 1px 2px 1px hsl(205, 33%, 11%);
+    color: #848484;
+    z-index: 100;
+}
+
+#achievementsOverviewCategories .achievementCategory {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    flex: 1 1 0px;
+    width: 0;
+    position: relative;
+}
+
+#achievementsOverviewCategories .achievementCategory span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#achievementsOverviewCategories #achievementSeasonDropdownHolder {
+    display: inline-block;
+    position: relative;
+    overflow: visible;
+
+    > span {
+        display: inline-flex;
+        height: 100%;
+        align-items: center;
+    }
+
+    > span:before {
+        content: "\25bc";
+        margin-right: 3px;
+    }
+
+    div {
+        background: #0d1014;
+        box-shadow: 0 0 2px 1px black, inset 0 1px 2px 1px hsl(205, 33%, 11%);
+        display: none;
+        position: relative;
+        right: 0;
+        min-width: 100%;
+    }
+}
+
+#achievementsOverviewCategories #achievementSeasonDropdownHolder:hover div {
+    display: flex;
+    filter: brightness(110%);
+    animation: growOut 300ms ease-in-out forwards;
+    transform-origin: top center;
+}
+
+#achievementsOverviewCategories #achievementSeasonDropdownHolder:has(div.active) {
+    color: white;
+    background: linear-gradient(180deg, rgba(97, 124, 141, 1) 0%, rgba(46, 67, 86, 1) 100%) !important;
+}
+
+#achievementsOverviewCategories .achievementCategory.active {
+    color: white;
+    background: linear-gradient(180deg, rgba(97, 124, 141, 1) 0%, rgba(46, 67, 86, 1) 100%) !important;
 }
 
 #achievementsOverviewList {
@@ -266,8 +193,39 @@ a:active { color:#848484;}
     position: relative;
 }
 
+#achievementOverviewAchievementFilters {
+    display: flex;
+    width: 100%;
+    height: 30px;
+    flex-direction: row;
+    position: sticky;
+    top: 0;
+    left: 0;
+    gap: 5px;
+    padding: 5px;
+    background: #0d1014;
+    box-shadow: black 0px 0px 2px 2px, rgb(19, 30, 37) 0px 0px 2px 1px inset;
+}
+
 #avatarAchievementsOverviewContent #achievementsOverviewList #achievementOverviewAchievementFilters {
     z-index: 20;
+}
+
+#achievementOverviewAchievementFilters button {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+#achievementOverviewAchievementFilters .horizontalSplit {
+    width: 5px;
+    border-right: 1px solid #717171;
+    margin-right: 4px;
+}
+
+#achievementOverviewAchievementFilters .achievementFilteringOptions {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
 }
 
 #achievementsOverviewList .achievementContentList.avatars .achievementOverviewProfilePictureHolder,
@@ -758,7 +716,7 @@ progress.achievementProgress {
     background: repeating-linear-gradient(90deg, #000000, #000000 1px, transparent 2px, transparent 10px);
 }
 
-/* Space object skin selection tooltip end */
+/
 
 #achievementsoverviewcomponent gradient-button span {
     color: #f1f1f1;
@@ -772,7 +730,22 @@ progress.achievementProgress {
     font-size: 16px;
 }
 
-/* SEASONAL SUMMARY start */
+#achievementsoverviewcomponent .seasonExpiration {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:5px;
+    color: #3a7fb4;
+    font-weight: 700;
+    text-align: left;
+    text-shadow: 1px 1px 1px black, 0 0 7px hsl(200, 60%, 35%);
+    line-height: 16px;
+    font-size: 14px;
+    background-color: #590404;
+}
+
+/
 #achievementsOverviewList .achievementContentList.unlocks .seasonalSummary {
     width: 100%;
     background: linear-gradient(to top, rgba(20, 29, 37, 0.8) 0%, rgba(9, 13, 18, 0.8) 100%);
@@ -837,14 +810,6 @@ progress.achievementProgress {
     padding-right: 5px;
 }
 
-/* SEASONAL SUMMARY end */
-
-
-.progressUpdateBtn button.custom_btn {
-    box-shadow: 0px 0.5px 1px 0.5px #0000001c !important;
-    padding-top: 2px;
-}
-
 .achievementProgressLabel button {
     position: absolute;
     top: -1px;
@@ -852,362 +817,12 @@ progress.achievementProgress {
     height: 20px !important;
 }
 
-#artifactshop #artifactShopTierContent tier-items purchase-button gradient-button {
-    width: 120px;
-    height: 34px;
-}
-
-#artifactshop #artifactShopTierContent tier-items purchase-button gradient-button .commandingStaffBonus {
-    border: 1px outset #ff9600 !important;
-    background: linear-gradient(160deg, #dd8301 0%, #b76d00 33%, #673b00 66%, #000000 100%);
-    color: antiquewhite;
-}
-
-#artifactshop #artifactShopTierContent tier-items purchase-button gradient-button .commandingStaffBonus:hover {
-    filter: brightness(120%);
-}
-
-#artifactshop gradient-button .smallFont {
-    font-size: 12px !important;
-}
-
-#artifactshop #artifactShopTierContent tier-scrollbar {
-    width: 80%;
-    height: 60px;
-    overflow-x: scroll;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    scrollbar-width: none;
-    scroll-behavior: smooth;
-    user-select: none;
-
-    tier {
-        display: flex;
-        flex-direction: column;
-        width: 50px;
-        min-width: 50px;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
-        gap: 5px;
-
-        &:hover {
-            cursor: pointer;
-        }
-
-        tier-content {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-
-            .tierClaimed &,
-            .tierInProgress & {
-                animation: pulse 3.5s infinite;
-            }
-
-            left {
-                display: flex;
-                content: " ";
-                height: 2px;
-                width: 30%;
-                background: #39546de8;
-                justify-content: center;
-                flex-direction: row;
-                align-items: center;
-                align-content: stretch;
-                flex-wrap: wrap;
-
-                .tierClaimed & {
-                    background-color: darkgreen;
-                }
-
-                .tierInProgress & {
-                    background: linear-gradient(90deg,rgba(0, 100, 0, 1) 1%, rgba(153, 153, 48, 1) 100%);
-                }
-            }
-
-            middle {
-                display: flex;
-                width: 30px;
-                aspect-ratio: 1 / 1;
-                border: 2px solid #39546de8 !important;
-                border-radius: 50%;
-                box-sizing: border-box;
-                text-align: center;
-                -webkit-appearance: none;
-                box-shadow: hsla(0,0%,100%,.15) 0 1px 1px, inset hsla(0,0%,0%,.5) 0 0 0 1px;
-                background-color: hsla(0,0%,0%,.2);
-                background-image: -webkit-radial-gradient( hsla(200,100%,90%,1) 0%, hsla(200,100%,70%,1) 15%, hsla(200,100%,60%,.3) 28%, hsla(200,100%,30%,0) 70% );
-                background-repeat: no-repeat;
-                -webkit-transition: background-position .15s cubic-bezier(.8, 0, 1, 1),
-                -webkit-transform .25s cubic-bezier(.8, 0, 1, 1);
-                outline: none;
-
-                .tierClaimed & {
-                    border-color: darkgreen !important;
-                    background-color: rgba(0, 100, 0, 0.1);
-                }
-
-                .tierInProgress & {
-                    border-color: #999930 !important;
-                    background-color: rgba(153, 153, 48, 0.1);
-                }
-
-                &.selectedTier {
-                    -webkit-transition: background-position .2s .15s cubic-bezier(0, 0, .2, 1),
-                    -webkit-transform .25s cubic-bezier(0, 0, .2, 1);
-                    background-position: 0 0;
-                }
-
-                &.selectedOnLeft {
-                    background-position: -24px 0;
-                }
-
-                &.selectedOnRight {
-                    background-position: 24px 0;
-                }
-
-                &.selectedTier ~ &.selectedOnLeft{
-                    background-position: 24px 0;
-                }
-
-                &.selectedTier ~ &.selectedOnLeft{
-                    background-position: -24px 0;
-                }
-            }
-
-            &:hover > middle {
-                transform: scale(1.2);
-            }
-
-            right {
-                display: flex;
-                content: " ";
-                height: 2px;
-                width: 30%;
-                background: #39546de8;
-                justify-content: center;
-                flex-direction: row;
-                align-items: center;
-                align-content: stretch;
-                flex-wrap: wrap;
-
-                .tierClaimed & {
-                    background: linear-gradient(90deg, darkgreen 1%, #39546de8 100%);
-                }
-
-                .tierInProgress & {
-                    background: linear-gradient(90deg,rgba(153, 153, 48, 1) 1%, #39546de8 100%);
-                }
-            }
-
-            empty {
-                display: flex;
-                width: 30%;
-                height: 2px;
-            }
-        }
-
-        tier-title {
-            font-size: 9px;
-            overflow-wrap: break-word;
-            hyphens: auto;
-            text-align: center;
-        }
-    }
-
-    tier.tierInProgress + tier.tierInProgress {
-        tier-content left {
-            background: rgba(153, 153, 48, 1);
-        }
-    }
-
-    tier.tierClaimed:has(+ tier.tierClaimed) {
-        tier-content right {
-            background: darkgreen;
-        }
-    }
-
-    tier.tierClaimed:has(+ tier.tierInProgress) {
-        tier-content right {
-            background: darkgreen;
-        }
-    }
-
-    tier.tierInProgress:has(+ tier.tierInProgress) {
-        tier-content right {
-            background: rgba(153, 153, 48, 1);
-        }
-    }
-
-    tier.tierInProgress:has(+ tier.tierClaimed) {
-        tier-content right {
-            background: linear-gradient(90deg,rgba(153, 153, 48, 1) 1%, darkgreen 100%);
-        }
-    }
-
-}
-
-fleet-section-clear gradient-button {
-    width: 100%;
-    height: 45px;
-}
-
-#combatsim fleet-content .load_data gradient-button {
-    margin-top: 6px;
-}
-
-#combatsim .planetSelection .planet:hover,
-#combatsim .planetSelection .planet.selected { background-position: 0 -30px; }
-
-#combatsim .planetSelection .moon:hover,
-#combatsim .planetSelection .moon.selected { background-position: -37px -30px; }
-
-gradient-button.newbutton .custom_btn span,
-gradient-button.savebutton .custom_btn span,
-gradient-button.deletebutton .custom_btn span,
-gradient-button.simulatebutton .custom_btn span,
-gradient-button.moredetails .custom_btn span,
-gradient-button.moreDetailsShortInfo .custom_btn span {
-    font-size: 12px !important;
-}
-
-gradient-button.moreDetailsShortInfo {
-    z-index: 3 !important;
-}
-
-gradient-button.moredetails .custom_btn span,
-gradient-button.moreDetailsShortInfo .custom_btn span {
-    max-width: 180px;
-}
-
-/* end combatsim-section fir displaying a section in combatsim */
-
-/* start gradient-button */
-gradient-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-gradient-button .custom_btn {
-    width: 100%;
-    height: 100%;
-    border: 1px outset #696666 !important;
-    border-radius: 4px;
-    cursor: pointer;
-    color: #bbb;
-    font-size: 17px;
-    background: linear-gradient(160deg, rgba(54,77,99,1) 0%, rgba(40,57,72,1) 33%, rgba(20,30,38,1) 66%, rgba(18,26,33,1) 100%);
-    box-shadow: 0px 2px 3px 1px #0000008c;
-    outline: none;
-    transition: 300ms;
-    margin: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-block: 0;
-    padding-inline: 0;
-    box-sizing: border-box;
-}
-
-gradient-button .custom_btn.send {
-    font-size: 11px;
-    font-weight: 700;
-}
-
-gradient-button .custom_btn.green,
-gradient-button .custom_btn.active {
-    border: 1px outset #66B817 !important;
-    background: linear-gradient(160deg, rgba(55, 99, 54, 1) 0%, rgba(40, 72, 40, 1) 33%, rgba(26, 38, 20, 1) 66%, rgba(24, 33, 18, 1) 100%);
-}
-
-gradient-button .custom_btn.red {
-    border: 1px outset rgb(161, 36, 36) !important;
-    background: linear-gradient(160deg, rgba(161, 36, 36, 1) 0%, rgba(144, 29, 29, 1) 33%, rgba(29, 18, 17, 1) 66%, rgba(33, 18, 18, 1) 100%);
-}
-
-gradient-button button:not(:disabled).selected {
-    border: 1px outset #dee3d8 !important;
-    background: linear-gradient(160deg, rgba(67,107,145,1) 0%, rgba(52,76,97,1) 33%, rgba(40,58,71,1) 66%, rgba(20,26,32,1) 100%);
-    box-shadow: 0px 0px 0px 0px transparent;
-}
-
 .achievementOverviewTierSelectionContainer gradient-button button:not(:disabled).selected,
 .achievementOverviewTierSelectionContainer gradient-button button:not(:disabled).selected {
     box-shadow: 0px 2px 3px 1px #0000008c;
 }
 
-gradient-button button:not(:disabled):hover {
-    background: linear-gradient(160deg, rgba(67,107,145,1) 0%, rgba(52,76,97,1) 33%, rgba(40,58,71,1) 66%, rgba(20,26,32,1) 100%);
-    box-shadow: 0px 0px 0px 0px transparent;
-}
-
-gradient-button button:not(:disabled).green.selected,
-gradient-button button:not(:disabled).active.selected {
-    border: 1px outset #dee3d8 !important;
-    background: linear-gradient(160deg, rgb(68, 121, 67) 0%, rgb(49, 87, 49) 33%, rgb(35, 52, 28) 66%, rgb(35, 49, 27) 100%);
-}
-
-gradient-button button:not(:disabled).green:hover,
-gradient-button button:not(:disabled).active:hover {
-    border: 1px outset #66B817 !important;
-    background: linear-gradient(160deg, rgb(68, 121, 67) 0%, rgb(49, 87, 49) 33%, rgb(35, 52, 28) 66%, rgb(35, 49, 27) 100%);
-}
-
-gradient-button button:not(:disabled).red:hover {
-    border: 1px outset #cb2323 !important;
-    background: linear-gradient(160deg, rgba(203, 35, 35, 1) 0%, rgba(200, 31, 31, 1) 33%, rgba(38, 21, 20, 1) 66%, rgba(33, 18, 18, 1) 100%);
-}
-
-gradient-button button:disabled,
-gradient-button button[disabled] {
-    border: 1px solid #999999 !important;
-    opacity: 0.3;
-    cursor: not-allowed;
-}
-
-/* end gradient-button */
-
-/* start group title */
-group-title {
-    display: flex;
-    justify-content: center;
-    background: url(//gf3.geo.gfsrv.net/cdneb/f5f81e8302aaad56c958c033677fb8.png) -143px -162px no-repeat;
-    height: 25px;
-    width: 231px;
-    font-size: 11px;
-    line-height: 25px;
-    margin: 8px 0 5px -12px;
-    position: relative;
-}
-
-/* end class selection in radial menu */
-
-/* selected language styling start */
-selected-language-icon {
-    display: inline-block;
-    width: 16px;
-    height: 11px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-}
-
-/* selected language styling end */
-
-/* fleet speed bar start */
-fleetspeed-section {
-    width: 334px;
-    height: 18px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-/* avatars start */
+/
 profile-picture {
     display: inline-flex;
     height: 50px;
@@ -1220,7 +835,7 @@ profile-picture {
     border-radius: 4px;
 }
 
-/* TODO: (AVATAR CHANGES) files has to be named like in these classes */
+/
 profile-picture.default {
     background-image: url("/img/layout/avatar.png");
 }
@@ -1393,9 +1008,7 @@ profile-picture.S8_A15_T5_Ava_ID6 {
     background-image: url("//gf2.geo.gfsrv.net/cdn4b/4cf93285783f4c902f3f4fc6e5bbc1.jpg");
 }
 
-/* avatars end */
-
-/* space object skins */
+/
 space-object-skin {
     display: inline-block;
     height: 50px;
@@ -1410,352 +1023,60 @@ space-object-skin img {
     border-radius: 4px;
 }
 
-/* space object skins */
-
-/* change all scrollbars in OGame*/
+#rewardings #rewarddescription,
+#rewardings #header,
+#rewardings #commandingstaff,
+#rewardings #select_one {
+    color: #848484;
+    font-size: 11px;
+    line-height: 130%;
+    margin: 3px 0 0 4px;
+    height: 30px;
+    text-align: center;
+}
+/* === Scrollbar globale OGame === */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+::-webkit-scrollbar-thumb {
+    background: #3d5b75;
+    border: 0px none #ffffff;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #567394;
+}
+::-webkit-scrollbar-thumb:active {
+    background: #627f9b;
+}
+::-webkit-scrollbar-track {
+    background: #090909;
+    border: 0px none #ffffff;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-track:hover {
+    background: #000000;
+}
+::-webkit-scrollbar-track:active {
+    background: #000000;
+}
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
 ::-webkit-scrollbar {
     width: 8px;
 }
-
 ::-webkit-scrollbar-track {
     background: #5E798A;
 }
-
 ::-webkit-scrollbar-thumb {
     background: #2E4456;
 }
-
 ::-webkit-scrollbar-thumb:hover {
     background: #435B6D;
 }
-
-#expeditionFleetTemplatesEdit .expeditionFleetTemplateActionsContainer gradient-button {
-    height: 30px;
-    width: 150px;
-}
-
-#FederationLayer #buddyselect li.ui-selected,
-#FederationLayer #participantselect li.ui-selected {
-    background: #2E3A48;
-    border: 1px solid #3C4B5D;
-    color: #fff;
-}
-
-#FederationLayer #fleet3 #buttonz ul#missions a:active,
-#FederationLayer .no-touch #fleet3 #buttonz ul#missions a:hover,
-#FederationLayer #fleet3 #buttonz ul#missions  a.selected { color:#F1F1F1; }
-
-#fleet2 #start a.planet,
-#fleet2 #start a.planet_source,
-#fleet2 #start a.planet_selected,
-#fleet2 #start a.planet_source_selected {
-    margin-left:47px;
-}
-
-#fleet2 #target a.planet,
-#fleet2 #target a.planet_source,
-#fleet2 #target a.planet_selected,
-#fleet2 #target a.planet_source_selected {
-    margin-left:20px;
-    padding: 0;
-}
-
-.no-touch #fleet2 #mission a:not(.dropdown a).planet:hover,
-#fleet2 #mission a:not(.dropdown a).planet_selected,
-#fleet2 #mission a:not(.dropdown a).planet_source_selected {background-position:0 -36px;}
-
-.no-touch #fleet2 #mission a:not(.dropdown a).moon:hover,
-#fleet2 #mission a:not(.dropdown a).moon_selected,
-#fleet2 #mission a:not(.dropdown a).moon_source_selected {background-position:-44px -36px;}
-
-.no-touch #fleet2 #mission a:not(.dropdown a).debris:hover,
-#fleet2 #mission a:not(.dropdown a).debris_selected {background-position:-88px -36px;}
-
-#fleet2 #speedLinks>a.speed.selected:link {
-    border-color: #FF9600;
-}
-
-#fleet2 #speedLinks>a.speed.selected,
-#fleet2 #speedLinks>a.speed.selected:link,
-#fleet2.no-touch #speedLinks>a.speed:hover,
-#fleet2 #speedLinks>a.speed:focus {
-    color: #99CC00;
-}
-
-#fleet2 #speedLinks>a.speed.middle.selected,
-#fleet2 #speedLinks>a.speed.middle.selected:link,
-#fleet2.no-touch #speedLinks>a.speed.middle:hover,
-#fleet2 #speedLinks>a.speed.middle:focus {
-    color: #D29D00;
-}
-
-#fleet2 #speedLinks>a.speed.low.selected,
-#fleet2 #speedLinks>a.speed.low.selected:link,
-#fleet2.no-touch #speedLinks>a.speed.low:hover,
-#fleet2 #speedLinks>a.speed.low:focus {
-    color: #D43635;
-}
-
-.no-touch #fleet2 #buttonz ul#missions li#button15.on a:hover,
-#fleet2 #buttonz ul#missions li#button15.on a.selected {background-position: 0 -54px;}
-
-.no-touch #fleet2 #buttonz ul#missions li#button15.off a:hover,
-#fleet2 #buttonz ul#missions li#button15.off a.selected {background-position: 0 -161px;}
-
-.no-touch #fleet2 #buttonz ul#missions li#button7.on a:hover,
-#fleet2 #buttonz ul#missions li#button7.on a.selected {background-position: -108px -54px;}
-
-.no-touch #fleet2 #buttonz ul#missions li#button7.off a:hover ,
-#fleet2 #buttonz ul#missions li#button7.off a.selected {background-position: -108px -161px;}
-
-.no-touch #fleet2 #buttonz ul#missions li#button8.on a:hover,
-#fleet2 #buttonz ul#missions li#button8.on a.selected {background-position: -216px -54px;}
-
-.no-touch #fleet2 #buttonz ul#missions li#button8.off a:hover ,
-#fleet2 #buttonz ul#missions li#button8.off a.selected {background-position: -216px -161px;}
-
-.no-touch #fleet2 #buttonz ul#missions li#button3.on a:hover,
-#fleet2 #buttonz ul#missions li#button3.on a.selected {background-position: -270px -54px;}
-
-.no-touch #fleet2 #buttonz ul#missions li#button3.off a:hover ,
-#fleet2 #buttonz ul#missions li#button3.off a.selected {background-position: -270px -161px;}
-
-.no-touch #fleet2 #buttonz ul#missions li#button4.on a:hover,
-#fleet2 #buttonz ul#missions li#button4.on a.selected {background-position: -162px -54px;}
-
-.no-touch #fleet2 #buttonz ul#missions li#button4.off a:hover,
-#fleet2 #buttonz ul#missions li#button4.off a.selected {background-position: -162px -161px;}
-
-.no-touch #fleet2 #buttonz ul#missions li#button6.on a:hover,
-#fleet2 #buttonz ul#missions li#button6.on a.selected {background-position: -324px -54px;}
-
-.no-touch #fleet2 #buttonz ul#missions li#button6.off a:hover ,
-#fleet2 #buttonz ul#missions li#button6.off a.selected {background-position: -324px -161px;}
-
-.no-touch #fleet2 #buttonz ul#missions li#button5.on a:hover,
-#fleet2 #buttonz ul#missions li#button5.on a.selected {background-position: -378px -54px;}
-
-.no-touch #fleet2 #buttonz ul#missions li#button5.off a:hover ,
-#fleet2 #buttonz ul#missions li#button5.off a.selected {background-position: -378px -161px;}
-
-.no-touch #fleet2 #buttonz ul#missions li#button1.on a:hover,
-#fleet2 #buttonz ul#missions li#button1.on a.selected {background-position: -432px -54px;}
-
-.no-touch #fleet2 #buttonz ul#missions li#button1.off a:hover ,
-#fleet2 #buttonz ul#missions li#button1.off a.selected {background-position: -432px -161px;}
-
-.no-touch #fleet2 #buttonz ul#missions li#button2.on a:hover,
-#fleet2 #buttonz ul#missions li#button2.on a.selected {background-position: -540px -54px;}
-
-.no-touch #fleet2 #buttonz ul#missions li#button2.off a:hover ,
-#fleet2 #buttonz ul#missions li#button2.off a.selected {background-position: -540px -161px;}
-
-.no-touch #fleet2 #buttonz ul#missions li#button9.on a:hover,
-#fleet2 #buttonz ul#missions li#button9.on a.selected {background-position: -486px -54px;}
-
-.no-touch #fleet2 #buttonz ul#missions li#button9.off a:hover ,
-#fleet2 #buttonz ul#missions li#button9.off a.selected {background-position: -486px -161px;}
-
-#fleet2 #buttonz ul#missions a:active,
-.no-touch #fleet2 #buttonz ul#missions a:hover,
-#fleet2 #buttonz ul#missions  a.selected { color:#F1F1F1; }
-
-#intro .box.selected {
-    border-color:#6F9FF8;
-}
-
-.ui-icon-locked { background-position: -192px -96px; }
-
-.ui-icon-unlocked { background-position: -208px -96px; }
-
-#lfresearch .icon.research-locked {
-    background: url(//gf1.geo.gfsrv.net/cdn36/5395f4191666be14fe8d735eea568a.png) no-repeat;
-    background-size: contain;
-}
-
-#lfresearch .tech-tree-locked-message {
-    position: relative;
-    box-sizing: border-box;
-    width: 654px;
-    border: 2px solid #000;
-    margin: 0 auto 7px;
-    padding: 0 5px;
-    background: #0d1014;
-    display: flex;
-}
-
-#lfresearch .tech-tree-locked-message::before,
-#lfresearch .tech-tree-locked-message::after {
-    pointer-events: none;
-}
-
-#lfresearch .tech-tree-locked-message::before {
-    position: absolute;
-    left: -9px;
-    top: -3px;
-    width: 668px;
-    height: 28px;
-    background: url("//gf3.geo.gfsrv.net/cdn53/f333e15eb738b8ec692340f507e1ae.png") bottom left no-repeat, url("//gf2.geo.gfsrv.net/cdnd5/66551209db14e23b3001901b996cc6.png") bottom right no-repeat;
-    content: "";
-}
-
-#lfresearch .tech-tree-locked-message::after {
-    position: absolute;
-    left: -9px;
-    bottom: -4px;
-    width: 668px;
-    height: 50px;
-    background: url("//gf3.geo.gfsrv.net/cdnea/0330abcdca0d125d35a0ebace4b584.png") bottom left no-repeat, url("//gf1.geo.gfsrv.net/cdn9b/8003a40825bc96919c5fec01b018b8.png") bottom right no-repeat;
-    content: "";
-}
-
-#lfresearch .tech-tree-locked-message {
-    color: #B00000;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 8px;
-}
-
-#lfresearch .tech-tree-locked-message p {
-    margin: 0 4px;
-}
-
-LifeformIcon .lifeformSelectedIcon {
-    width: 15px;
-    height: 15px;
-    position: absolute;
-    right: 2px;
-    top: 2px;
-}
-
-.messagesHolder .msgWithFilter.collapsible .msgFilteredHeaderRow .msgFilteredHeaderContainer .msgFilteredHeaderCell > gradient-button button img {
-    width: 8px !important;
-    height: 8px !important;
-}
-
-#newmessagesindicatorcomponent .messagesIndicator.selected,
-#newmessagesindicatorcomponent .messagesIndicator:hover {
-    background-position: 0 -39px !important;
-}
-
-#newmessagesindicatorcomponent .chatIndicator.selected,
-#newmessagesindicatorcomponent .chatIndicator:hover {
-    background-position: 0 -161px !important;
-}
-
-.recipient_select_box .over,
-.recipient_select_box .selected {
-    background-color: #859fb0;
-}
-
-#messagewrapper gradient-button span {
-    color: #f1f1f1;
-    font-family: Verdana, Arial, SunSans-Regular, sans-serif;
-    font-size: 9px;
-    font-weight: bold;
-    padding-bottom: 3px;
-}
-
-#messagewrapper gradient-button span.icon {
-    padding-bottom: 0;
-}
-
-#notificationbarcomponent .comm_menu.messages.selected { background-position: 15px -39px; }
-
-#notificationbarcomponent .comm_menu.chat.selected { background-position: 8px -161px; }
-
-#notificationbarcomponent .comm_menu.buddies.selected { background-position: 2px -298px; }
-
-.percentageBar .steps .step.selected {
-
-    border:2px solid #ff9600;
-    border-radius: 3px;
-
-    line-height: 16px;
-
-    background-color: #000000;
-    color: #99cc00;
-
-    transform: scale(1.1);
-}
-
-#planetbarcomponent #selectedplanet {
-    display: none;
-    left: 866px;
-    position: absolute;
-    top: 19px;
-}
-
-#planetbarcomponent #selectedPlanetName {
-    display: none;
-    color: cyan;
-    height: 16px;
-    left: 866px;
-    position: absolute;
-    top: 121px;
-    font-size:11px;
-    width: 130px;
-}
-
-#playerprofilecomponent .editHolder .profileTag.active,
-#playerprofilecomponent .profileEntry .playerTitle gradient-button button.custom_btn.active {
-    border: 1px outset #66B817 !important;
-    background: linear-gradient(160deg, rgba(55,99,54,1) 0%, rgba(40,72,40,1) 33%, rgba(26,38,20,1) 66%, rgba(24,33,18,1) 100%);
-}
-
-#playerprofilecomponent .editProfileHolder gradient-button span {
-    color: #f1f1f1;
-    font-family: Verdana, Arial, SunSans-Regular, sans-serif;
-    font-size: 9px;
-    font-weight: bold;
-    padding-bottom: 3px;
-}
-
-gradient-button .custom_btn.showPlanetProdOverviewBtn {
-    border: 1px outset #797979 !important;
-}
-
-#traderOverview .source.hover,
-#traderOverview .source.selected { background-position: 0 -30px; }
-
-#traderOverview .moon.hover,
-#traderOverview .moon.selected { background-position: -37px -30px; }
-
-#traderOverview .honor.hover,
-#traderOverview .honor.selected { background-position: -76px -30px; }
-
-#traderOverview .scrap_ships.selected,
-#traderOverview .scrap_defense.selected {
-    background: url("//gf1.geo.gfsrv.net/cdn06/548bc30b8ed3413d7d0f0ac1bc6f80.gif") no-repeat 0 -26px;
-    color: #fff;
-}
-
-#div_traderResources .selected_premium {
-    background-image: url(//gf3.geo.gfsrv.net/cdn5f/332ef677bcc98906442a947614deb1.png);
-    height: 90px;
-    left: -5px;
-    position: relative;
-    top: -5px;
-    visibility: hidden;
-    width: 90px;
-}
-
-#div_traderResources .active .selected_premium {
-    background-position: 0 0;
-    visibility: visible;
-}
-
-#div_traderResources .resource_link.oldTraderActive:active .selected_premium,
-#div_traderResources .oldTraderActive .selected_premium {
-    background-position: -90px 0;
-    visibility: visible;
-}
-
-#tutorial .pagination a.tutorial_done_selected {
-    background-position:0 -92px;
-    border-color: #2b66a5;
-    color: #FFF !important;
-    cursor: default;
-    font-weight: bold;
-}
-

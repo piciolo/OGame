@@ -49,7 +49,6 @@ class AchievementService
         $cat = ['avatar' => [], 'skin' => [], 'title' => []];
         $tiers = \OGame\Models\AchievementTier::query()
             ->select(['reward_type', 'reward_machine_name', 'title_text'])
-            ->orderBy('reward_machine_name')
             ->get();
         foreach ($tiers as $t) {
             // Filtra titoli senza testo (sono i tier "segreti" che OGame non rivela
@@ -61,6 +60,20 @@ class AchievementService
                 $cat[$t->reward_type][] = $t->reward_machine_name;
             }
         }
+        // Ordinamento OGame: per il numero finale (Ava_IDN, Pskin_IDN, Tit_IDN), NON alfabetico.
+        // Es. A1_T2_Ava_ID1 < A2_T2_Ava_ID2 < … < A10_T4_Ava_ID14 < … < A50_T1_Ava_ID45.
+        $sortByIdNum = function (array $arr): array {
+            usort($arr, function (string $a, string $b) {
+                $ra = preg_match('/_ID(\d+)$/', $a, $ma) ? (int) $ma[1] : 0;
+                $rb = preg_match('/_ID(\d+)$/', $b, $mb) ? (int) $mb[1] : 0;
+                return $ra <=> $rb;
+            });
+            return $arr;
+        };
+        $cat['avatar'] = $sortByIdNum($cat['avatar']);
+        $cat['skin']   = $sortByIdNum($cat['skin']);
+        $cat['title']  = $sortByIdNum($cat['title']);
+
         return $cat;
     }
 
