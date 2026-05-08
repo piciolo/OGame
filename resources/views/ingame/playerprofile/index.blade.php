@@ -258,7 +258,10 @@
         var rewardEndpoint = @json(route('playerprofile.selectreward'));
         var csrfRT = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
 
-        function applyReward(type, machine) {
+        function applyReward(type, machine, opts) {
+            opts = opts || {};
+            var payload = { type: type, machine_name: machine };
+            if (opts.planetId) payload.planet_id = opts.planetId;
             return fetch(rewardEndpoint, {
                 method: 'POST',
                 headers: {
@@ -268,7 +271,7 @@
                     'X-Requested-With': 'XMLHttpRequest'
                 },
                 credentials: 'same-origin',
-                body: JSON.stringify({ type: type, machine_name: machine })
+                body: JSON.stringify(payload)
             }).then(function (r) {
                 if (!r.ok) throw new Error('HTTP ' + r.status);
                 return r.json();
@@ -337,10 +340,34 @@
         window.toggleSpaceObjectSkin = function (machine) {
             var holder = document.querySelector('#achievementContentList_spaceObjectSkins [data-space-object-skin-id="' + machine + '"]');
             if (holder && holder.classList.contains('selected')) {
+                // Deseleziona: rimuovi skin dal pianeta che attualmente la mostra
+                // (planet_id non serve, il backend toglie la skin dal pianeta corrente).
                 applyReward('skin', '');
-            } else {
-                applyReward('skin', machine);
+                return;
             }
+            // Selezione: apri pop-up "Scegli un pianeta" se ci sono >1 pianeti.
+            var tt = document.getElementById('spaceObjectSkinSelectTooltip');
+            var bd = document.getElementById('spaceObjectSkinSelectTooltipBackdrop');
+            if (!tt) {
+                applyReward('skin', machine); // fallback: applica al pianeta corrente
+                return;
+            }
+            tt.setAttribute('data-pending-skin', machine);
+            tt.style.display = 'flex';
+            if (bd) bd.style.display = 'block';
+        };
+        window.applyPendingSkinToPlanet = function (planetId) {
+            var tt = document.getElementById('spaceObjectSkinSelectTooltip');
+            if (!tt) return;
+            var machine = tt.getAttribute('data-pending-skin') || '';
+            window.closeSpaceObjectSkinTooltip();
+            if (machine) applyReward('skin', machine, { planetId: planetId });
+        };
+        window.closeSpaceObjectSkinTooltip = function () {
+            var tt = document.getElementById('spaceObjectSkinSelectTooltip');
+            var bd = document.getElementById('spaceObjectSkinSelectTooltipBackdrop');
+            if (tt) { tt.style.display = 'none'; tt.setAttribute('data-pending-skin', ''); }
+            if (bd) bd.style.display = 'none';
         };
         window.toggleProfileTitle = function (machine) {
             var holder = document.querySelector('#achievementContentList_titles [data-title-id="' + machine + '"]');

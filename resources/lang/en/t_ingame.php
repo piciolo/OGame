@@ -1500,6 +1500,7 @@ return [
         'reward_title'     => 'Title',
         'select'           => 'Select',
         'deselect'         => 'Deselect',
+        'choose_planet'    => 'Choose a planet.',
         'no_data'          => 'No data available.',
         'name_progress_base' => 'Base progress',
         'name_progress_season' => 'Season progress',

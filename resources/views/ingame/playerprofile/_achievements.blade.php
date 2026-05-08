@@ -155,4 +155,28 @@
         </div>
 
     </div>
+
+    {{-- ── Tooltip "Scegli un pianeta" per selezione skin (replica OGame) ── --}}
+    @if($isOwner && !empty($playerSpaceObjects))
+        <div id="spaceObjectSkinSelectTooltipBackdrop" style="display:none;" onclick="closeSpaceObjectSkinTooltip()"></div>
+        <div id="spaceObjectSkinSelectTooltip" class="htmlTooltip" style="display:none;" data-pending-skin="">
+            <h1>{{ __('t_ingame.achievements.choose_planet') }}</h1>
+            <div class="splitLine"></div>
+            @foreach($playerSpaceObjects as $pid => $obj)
+                <div class="spaceObjectSkinSelectionSpaceObjectsPerCoordinate">
+                    <div class="spaceObjectSkinSelectionCoordinatesHolder">{{ $obj['coordinates'] }}</div>
+                    <div class="spaceObjectSkinSelectionSpaceObjectsHolder">
+                        <div class="spaceObjectSkinSelectionSpaceObject" onclick="applyPendingSkinToPlanet({{ $pid }})">
+                            <img class="planetPic spaceObjectImage_{{ $pid }}"
+                                 alt="{{ $obj['name'] }}"
+                                 src="{{ $obj['image'] }}"
+                                 data-default-src="{{ $obj['defaultImage'] }}"
+                                 width="25" height="25">
+                            <span>{{ $obj['localizedSpaceObjectType'] }} - {{ $obj['name'] }}</span>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    @endif
 </div>

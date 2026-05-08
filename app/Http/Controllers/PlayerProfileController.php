@@ -55,7 +55,31 @@ class PlayerProfileController extends OGameController
             'unlockedTitles' => $achievementsVisible ? $achievementService->getUnlockedTitles($targetPlayer) : [],
             'rewardCatalog' => $achievementsVisible ? $achievementService->getRewardCatalog() : ['avatar' => [], 'skin' => [], 'title' => []],
             'titleTextLookup' => $achievementsVisible ? $achievementService->getTitleTextLookup() : [],
+            'playerSpaceObjects' => $isOwner ? $this->buildPlayerSpaceObjects($currentPlayer) : [],
         ]);
+    }
+
+    /**
+     * Costruisce la mappa playerSpaceObjects per il tooltip "Scegli un pianeta"
+     * della selezione skin. Replica lo schema OGame:
+     *   {planet_id: {id, name, localizedSpaceObjectType, image, defaultImage, coordinates}}
+     *
+     * @return array<int, array<string, mixed>>
+     */
+    private function buildPlayerSpaceObjects(PlayerService $player): array
+    {
+        $out = [];
+        foreach ($player->planets->all() as $p) {
+            $out[$p->getPlanetId()] = [
+                'id' => $p->getPlanetId(),
+                'name' => $p->getPlanetName(),
+                'localizedSpaceObjectType' => __('t_ingame.fleet.planet'),
+                'image' => $p->getPlanetImageUrl(),
+                'defaultImage' => asset('img/planets/medium/' . $p->getPlanetBiomeType() . '_' . $p->getPlanetImageType() . '.png'),
+                'coordinates' => '[' . $p->getPlanetCoordinates()->asString() . ']',
+            ];
+        }
+        return $out;
     }
 
     /**
@@ -119,10 +143,24 @@ class PlayerProfileController extends OGameController
         // ricordare la preferenza globale (estensione futura).
         $appliedTarget = null;
         if ($type === 'skin') {
-            $currentPlanet = $currentPlayer->planets->current();
-            if ($currentPlanet !== null) {
-                $currentPlanet->setSpaceObjectSkin($value);
-                $appliedTarget = $currentPlanet->getPlanetId();
+            // Pianeta target: se passato planet_id e appartiene al player, applica
+            // a quello; altrimenti fallback al pianeta corrente.
+            $requestedPlanetId = (int) $request->input('planet_id', 0);
+            $targetPlanet = null;
+            if ($requestedPlanetId > 0) {
+                foreach ($currentPlayer->planets->all() as $p) {
+                    if ($p->getPlanetId() === $requestedPlanetId) {
+                        $targetPlanet = $p;
+                        break;
+                    }
+                }
+            }
+            if ($targetPlanet === null) {
+                $targetPlanet = $currentPlayer->planets->current();
+            }
+            if ($targetPlanet !== null) {
+                $targetPlanet->setSpaceObjectSkin($value);
+                $appliedTarget = $targetPlanet->getPlanetId();
             }
             $user->profile_planet_skin = $value;
         } elseif ($type === 'avatar') {

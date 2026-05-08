@@ -1465,6 +1465,7 @@ return [
         'reward_title'     => 'Titolo',
         'select'           => 'Seleziona',
         'deselect'         => 'Deseleziona',
+        'choose_planet'    => 'Scegli un pianeta.',
         'no_data'          => 'Nessun dato disponibile.',
         // Nomi achievement (51 voci)
         'name_progress_base'              => 'Progresso della base',

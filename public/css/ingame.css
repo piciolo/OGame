@@ -50482,6 +50482,89 @@ space-object-skin > img {
     display: block;
 }
 
+/* === Space object skin selection tooltip ===
+   Pop-up "Scegli un pianeta" che appare al click del bottone Seleziona
+   nella tab Skin. Stile estratto verbatim da CSS Gameforge. */
+#spaceObjectSkinSelectTooltip {
+    display: flex;
+    min-width: 260px;
+    max-height: 200px;
+    overflow-y: auto;
+    flex-direction: column;
+    overscroll-behavior: contain;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+    background: linear-gradient(180deg, rgba(20,29,37,0.98) 0%, rgba(9,13,18,0.98) 100%);
+    border: 1px solid #2a4054;
+    border-radius: 4px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.85);
+    padding: 8px 12px;
+}
+#spaceObjectSkinSelectTooltip h1 {
+    color: #6f9fc8;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 4px 0 6px 0;
+    text-align: center;
+}
+#spaceObjectSkinSelectTooltip .splitLine {
+    border-top: 1px solid #2a4054;
+    margin: 4px 0 6px 0;
+}
+.spaceObjectSkinSelectionSpaceObjectsPerCoordinate {
+    display: flex;
+    flex-direction: row;
+}
+.spaceObjectSkinSelectionSpaceObjectsPerCoordinate:hover {
+    background-color: #2b2521;
+}
+.spaceObjectSkinSelectionCoordinatesHolder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 5px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #6F9FC8;
+    width: 60px;
+}
+.spaceObjectSkinSelectionSpaceObjectsHolder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    font-size: 15px;
+    padding-right: 5px;
+}
+.spaceObjectSkinSelectionSpaceObject {
+    cursor: pointer;
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #3a7fb4;
+    font-weight: 700;
+    text-shadow: 1px 1px 1px black, 0 0 7px hsl(200, 60%, 35%);
+    font-size: 14px;
+}
+.spaceObjectSkinSelectionSpaceObject:hover {
+    color: #f4f2f1;
+}
+.spaceObjectSkinSelectionSpaceObject .planetPic {
+    width: 25px;
+    height: 25px;
+    border-radius: 12px;
+}
+#spaceObjectSkinSelectTooltipBackdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 9999;
+}
+
 /* Override dimensione bottoni Seleziona/Deseleziona dei reward catalog.
    Il default `gradient-button { width: 150px }` (regola generica OGame)
    sforerebbe il container 95x95 dell'holder. Ridimensiono al contenuto.
