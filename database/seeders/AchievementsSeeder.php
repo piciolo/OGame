@@ -35,6 +35,14 @@ class AchievementsSeeder extends Seeder
         $rows = json_decode((string) file_get_contents($base), true) ?: [];
         $extracted = json_decode((string) file_get_contents($real), true) ?: [];
 
+        // Override per i title_text completi (sorgente: titles_extracted.json,
+        // generato dall'HAR autoritativo del componente trofei OGame). Mappa
+        // machine_name → testo italiano. Sovrascrive valori null/parziali.
+        $titlesOverridePath = database_path('seeders/data/titles_extracted.json');
+        $titlesOverride = is_file($titlesOverridePath)
+            ? (json_decode((string) file_get_contents($titlesOverridePath), true) ?: [])
+            : [];
+
         // Allineiamo per display_number = indice 1-based.
         $extractedByIndex = [];
         foreach ($extracted as $i => $e) {
@@ -73,6 +81,11 @@ class AchievementsSeeder extends Seeder
                 $rewardType = $ex['reward_type'] ?? $t['reward_type'];
                 $rewardMachine = $ex['reward_machine_name'] ?? $t['reward_machine_name'];
                 $titleText = $ex['reward_title_text'] ?? null;
+                // Override autoritativo per titoli mancanti (es. tier "segreti"
+                // nello scrape iniziale, ora recuperati dal HAR completo).
+                if ($rewardType === 'title' && empty($titleText) && isset($titlesOverride[$rewardMachine])) {
+                    $titleText = $titlesOverride[$rewardMachine];
+                }
                 $description = $ex['description'] ?? null;
                 $target = (int) ($ex['target'] ?? $t['target']);
 

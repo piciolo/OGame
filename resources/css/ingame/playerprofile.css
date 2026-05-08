@@ -806,36 +806,33 @@
     background: #0a0d12;
 }
 
+/* ── Scrollbar 1:1 OGame (estratto da CSS originale Gameforge in HAR
+   "ca67fb31d6d4d2820560eb35905481.css", regola "change all scrollbars in OGame")
+   width 8px, track #5E798A, thumb #2E4456 hover #435B6D. ─────────────── */
 .achievementContentList {
     display: block;
     width: 100%;
     box-sizing: border-box;
-    padding: 6px;
+    padding: 10px;          /* OGame: 10px */
     max-height: 580px;
     overflow-y: auto;
-    overflow-x: hidden; /* Issue #6: niente scrollbar orizzontale */
+    overflow-x: hidden;
 }
-
-/* Issue #5: scrollbar verticale OGame-style (slim, dark, accentata bordo blu).
-   WebKit + Firefox. */
 .achievementContentList::-webkit-scrollbar {
     width: 8px;
 }
 .achievementContentList::-webkit-scrollbar-track {
-    background: #0a0d12;
-    border-left: 1px solid #1c2a36;
+    background: #5E798A;
 }
 .achievementContentList::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #364D63 0%, #283948 50%, #141E26 100%);
-    border: 1px solid #2a4054;
-    border-radius: 2px;
+    background: #2E4456;
 }
 .achievementContentList::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #4a6a85 0%, #364D63 50%, #1c2a36 100%);
+    background: #435B6D;
 }
 .achievementContentList {
     scrollbar-width: thin;
-    scrollbar-color: #364D63 #0a0d12;
+    scrollbar-color: #2E4456 #5E798A;
 }
 
 /* ── Filtri Riepilogo ────────────────────────────────────────── */
