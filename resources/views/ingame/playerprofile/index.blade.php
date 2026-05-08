@@ -253,11 +253,12 @@
         };
 
         @if($isOwner)
-        // Selezione reward dai cataloghi avatar / skin / titoli (solo se non locked).
+        // ── Toggle reward (avatar/skin/title) — chiamati dagli onclick dei
+        //    <gradient-button> Seleziona / Deseleziona dentro ogni holder. ──
         var rewardEndpoint = @json(route('playerprofile.selectreward'));
         var csrfRT = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
 
-        function applyReward(holder, type, machine) {
+        function applyReward(type, machine) {
             return fetch(rewardEndpoint, {
                 method: 'POST',
                 headers: {
@@ -273,39 +274,68 @@
                 return r.json();
             }).then(function (data) {
                 if (!data.success) throw new Error(data.error || 'fail');
-                // Rimuovi .selected da tutti i sibling dello stesso tipo e aggiungi al cliccato.
-                var listId = type === 'avatar' ? 'achievementContentList_avatars'
-                            : type === 'skin'   ? 'achievementContentList_spaceObjectSkins'
-                            :                     'achievementContentList_titles';
+                // Aggiorna .selected sul holder del machine cliccato.
+                var listId, dataAttr;
+                if (type === 'avatar')      { listId = 'achievementContentList_avatars';          dataAttr = 'data-avatar-id'; }
+                else if (type === 'skin')   { listId = 'achievementContentList_spaceObjectSkins'; dataAttr = 'data-space-object-skin-id'; }
+                else                        { listId = 'achievementContentList_titles';           dataAttr = 'data-title-id'; }
                 var list = document.getElementById(listId);
-                if (list) list.querySelectorAll('.selected').forEach(function (el) { el.classList.remove('selected'); });
-                holder.classList.add('selected');
+                if (!list) return;
+                list.querySelectorAll('.selected').forEach(function (el) { el.classList.remove('selected'); });
+                var target = list.querySelector('[' + dataAttr + '="' + machine + '"]');
+                if (target) target.classList.add('selected');
+                // Aggiorna avatar header se type == avatar (sq200 nel profilo).
+                if (type === 'avatar') {
+                    var ph = document.querySelector('.avatarHolder profile-picture');
+                    if (!ph) return;
+                    ph.setAttribute('sq200', '');
+                    if (machine === '') {
+                        // Deseleziona → torna al default OGame.
+                        ph.className = 'default';
+                        var picD = ph.querySelector('picture');
+                        if (picD) picD.remove();
+                    } else {
+                        ph.className = machine;
+                        var pic = ph.querySelector('picture');
+                        if (!pic) {
+                            pic = document.createElement('picture');
+                            var im = document.createElement('img');
+                            im.alt = '';
+                            pic.appendChild(im);
+                            ph.appendChild(pic);
+                        }
+                        pic.querySelector('img').src = '/img/achievements/avatars/' + machine + '.jpg';
+                    }
+                }
             }).catch(function () { /* silent */ });
         }
 
-        // Avatar holders
-        document.querySelectorAll('#achievementContentList_avatars .achievementOverviewProfilePictureHolder').forEach(function (h) {
-            h.addEventListener('click', function () {
-                var pp = h.querySelector('profile-picture');
-                if (!pp || pp.classList.contains('locked')) return;
-                applyReward(h, 'avatar', h.getAttribute('data-avatar-id'));
-            });
-        });
-        // Skin holders
-        document.querySelectorAll('#achievementContentList_spaceObjectSkins .achievementOverviewSpaceObjectSkinHolder').forEach(function (h) {
-            h.addEventListener('click', function () {
-                var s = h.querySelector('space-object-skin');
-                if (!s || s.classList.contains('locked')) return;
-                applyReward(h, 'skin', h.getAttribute('data-space-object-skin-id'));
-            });
-        });
-        // Title holders
-        document.querySelectorAll('#achievementContentList_titles .achievementOverviewProfileTitleHolder').forEach(function (h) {
-            h.addEventListener('click', function () {
-                if (h.classList.contains('locked')) return;
-                applyReward(h, 'title', h.getAttribute('data-title-id'));
-            });
-        });
+        // OGame chiama queste funzioni dagli onclick inline. Toggle: se è già
+        // selezionato → deseleziona (post con machine vuoto), altrimenti applica.
+        window.toggleProfilePicture = function (machine) {
+            var holder = document.querySelector('#achievementContentList_avatars [data-avatar-id="' + machine + '"]');
+            if (holder && holder.classList.contains('selected')) {
+                applyReward('avatar', '');
+            } else {
+                applyReward('avatar', machine);
+            }
+        };
+        window.toggleSpaceObjectSkin = function (machine) {
+            var holder = document.querySelector('#achievementContentList_spaceObjectSkins [data-space-object-skin-id="' + machine + '"]');
+            if (holder && holder.classList.contains('selected')) {
+                applyReward('skin', '');
+            } else {
+                applyReward('skin', machine);
+            }
+        };
+        window.toggleProfileTitle = function (machine) {
+            var holder = document.querySelector('#achievementContentList_titles [data-title-id="' + machine + '"]');
+            if (holder && holder.classList.contains('selected')) {
+                applyReward('title', '');
+            } else {
+                applyReward('title', machine);
+            }
+        };
         @endif
     })();
     </script>

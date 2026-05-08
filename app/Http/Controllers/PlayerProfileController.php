@@ -105,18 +105,17 @@ class PlayerProfileController extends OGameController
         if (!in_array($type, ['avatar', 'skin', 'title'], true)) {
             return response()->json(['success' => false, 'error' => 'invalid_type'], 422);
         }
-        if ($machineName === '') {
-            return response()->json(['success' => false, 'error' => 'invalid_machine_name'], 422);
-        }
-        if (!$achievementService->isUnlocked($currentPlayer, $type, $machineName)) {
+        // machine_name vuoto = deseleziona (toggle off): consentito.
+        if ($machineName !== '' && !$achievementService->isUnlocked($currentPlayer, $type, $machineName)) {
             return response()->json(['success' => false, 'error' => 'reward_locked'], 403);
         }
 
         $user = $currentPlayer->getUser();
+        $value = $machineName === '' ? null : $machineName;
         match ($type) {
-            'avatar' => $user->profile_avatar = $machineName,
-            'skin' => $user->profile_planet_skin = $machineName,
-            'title' => $user->profile_title = $machineName,
+            'avatar' => $user->profile_avatar = $value,
+            'skin' => $user->profile_planet_skin = $value,
+            'title' => $user->profile_title = $value,
         };
         $user->save();
 

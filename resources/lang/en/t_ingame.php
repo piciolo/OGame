@@ -1498,6 +1498,8 @@ return [
         'reward_avatar'    => 'Avatar',
         'reward_skin'      => 'Planet skin',
         'reward_title'     => 'Title',
+        'select'           => 'Select',
+        'deselect'         => 'Deselect',
         'no_data'          => 'No data available.',
         'name_progress_base' => 'Base progress',
         'name_progress_season' => 'Season progress',

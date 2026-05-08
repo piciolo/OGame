@@ -81,6 +81,14 @@
                     <profile-picture class="{{ $machineName }} {{ $unlocked ? '' : 'locked' }}">
                         @if($avatarUrl)<picture><img src="{{ $avatarUrl }}" alt=""></picture>@endif
                     </profile-picture>
+                    @if($isOwner && $unlocked)
+                        <gradient-button class="profilePictureSelectBtn">
+                            <button class="custom_btn" onclick="toggleProfilePicture('{{ $machineName }}')"><span>{{ __('t_ingame.achievements.select') }}</span></button>
+                        </gradient-button>
+                        <gradient-button class="profilePictureDeselectBtn">
+                            <button class="custom_btn" onclick="toggleProfilePicture('{{ $machineName }}')"><span>{{ __('t_ingame.achievements.deselect') }}</span></button>
+                        </gradient-button>
+                    @endif
                 </div>
             @endforeach
             @if(count($rewardCatalog['avatar']) === 0)
@@ -105,6 +113,14 @@
                     <space-object-skin class="{{ $machineName }} {{ $unlocked ? '' : 'locked' }}">
                         @if($skinUrl)<img src="{{ $skinUrl }}" alt="">@endif
                     </space-object-skin>
+                    @if($isOwner && $unlocked)
+                        <gradient-button class="spaceObjectSkinSelectBtn">
+                            <button class="custom_btn" onclick="toggleSpaceObjectSkin('{{ $machineName }}')"><span>{{ __('t_ingame.achievements.select') }}</span></button>
+                        </gradient-button>
+                        <gradient-button class="spaceObjectSkinDeselectBtn">
+                            <button class="custom_btn" onclick="toggleSpaceObjectSkin('{{ $machineName }}')"><span>{{ __('t_ingame.achievements.deselect') }}</span></button>
+                        </gradient-button>
+                    @endif
                 </div>
             @endforeach
             @if(count($rewardCatalog['skin']) === 0)
@@ -123,6 +139,14 @@
                 <div class="achievementOverviewProfileTitleHolder {{ $unlocked ? '' : 'locked' }} {{ $isCurrent ? 'selected' : '' }}"
                      data-title-id="{{ $machineName }}">
                     <div class="titleHolder" lang="it">{{ $titleText }}</div>
+                    @if($isOwner && $unlocked)
+                        <gradient-button class="profileTitleSelectBtn">
+                            <button class="custom_btn" onclick="toggleProfileTitle('{{ $machineName }}')"><span>{{ __('t_ingame.achievements.select') }}</span></button>
+                        </gradient-button>
+                        <gradient-button class="profileTitleDeselectBtn">
+                            <button class="custom_btn" onclick="toggleProfileTitle('{{ $machineName }}')"><span>{{ __('t_ingame.achievements.deselect') }}</span></button>
+                        </gradient-button>
+                    @endif
                 </div>
             @endforeach
             @if(count($rewardCatalog['title']) === 0)

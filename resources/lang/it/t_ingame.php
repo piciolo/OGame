@@ -1463,6 +1463,8 @@ return [
         'reward_avatar'    => 'Avatar',
         'reward_skin'      => 'Skin planetaria',
         'reward_title'     => 'Titolo',
+        'select'           => 'Seleziona',
+        'deselect'         => 'Deseleziona',
         'no_data'          => 'Nessun dato disponibile.',
         // Nomi achievement (51 voci)
         'name_progress_base'              => 'Progresso della base',
