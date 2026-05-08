@@ -10,7 +10,7 @@ $src = preg_replace('/space-object-skin\.A\d+_T\d+_Pskin_ID\d+\s*\{[^}]*\}\s*/m'
 // Default avatar fallback → local
 $src = str_replace(
     '//gf2.geo.gfsrv.net/cdn1e/e7eca98a47726ae2c85a595b29dd82.png',
-    '/img/layout/avatar.png',
+    '/img/layout/profile-default.png',
     $src
 );
 

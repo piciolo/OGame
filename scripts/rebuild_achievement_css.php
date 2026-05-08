@@ -133,7 +133,7 @@ $out .= $globalScrollbar;
 // Default avatar fallback → local
 $out = str_replace(
     '//gf2.geo.gfsrv.net/cdn1e/e7eca98a47726ae2c85a595b29dd82.png',
-    '/img/layout/avatar.png',
+    '/img/layout/profile-default.png',
     $out
 );
 
