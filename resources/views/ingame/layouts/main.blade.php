@@ -163,9 +163,24 @@
                     @php
                         $playerLocale = $currentPlayer->getUser()->lang ?: app()->getLocale();
                         $userAvatar = $currentPlayer->getUser()->profile_avatar ?? null;
-                        $headerAvatarUrl = $userAvatar
-                            ? '/img/achievements/avatars/'.$userAvatar.'.jpg'
-                            : '/img/layout/profile-default.png';
+                        // Supporta 2 formati di profile_avatar:
+                        //   - "shop:<id>"      → ShopItem image (acquistato dallo shop)
+                        //   - "A1_T2_Ava_ID1"  → reward Trofei (file locale .jpg/.png)
+                        $headerAvatarUrl = '/img/layout/profile-default.png';
+                        if (is_string($userAvatar) && str_starts_with($userAvatar, 'shop:')) {
+                            $shopAvId = (int) substr($userAvatar, 5);
+                            $shopAv = \OGame\Models\ShopItem::find($shopAvId);
+                            if ($shopAv && $shopAv->image) {
+                                $headerAvatarUrl = '/img/shop/'.$shopAv->image;
+                            }
+                        } elseif (is_string($userAvatar) && $userAvatar !== '') {
+                            foreach (['.jpg', '.png'] as $ext) {
+                                if (file_exists(public_path('img/achievements/avatars/'.$userAvatar.$ext))) {
+                                    $headerAvatarUrl = '/img/achievements/avatars/'.$userAvatar.$ext;
+                                    break;
+                                }
+                            }
+                        }
                     @endphp
                     <a href="{{ route('playerprofile.index') }}" class="profile-picture-link"
                     ><span class="profile-picture sq26 default"
