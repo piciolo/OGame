@@ -94,13 +94,24 @@ class OfficerService
 
     /**
      * Get or create the Officer record for a user (cached per request).
+     *
+     * For unsaved User instances (e.g. test fixtures, transient objects that
+     * never hit the DB), return a non-persisted Officer with all *_until
+     * columns null — so isOfficerActive() correctly reports no active
+     * officers without violating the officers.user_id FK constraint.
      */
     public function getOfficer(User $user): Officer
     {
-        if (!isset($this->cache[$user->id])) {
-            $this->cache[$user->id] = Officer::firstOrCreate(['user_id' => $user->id]);
+        $userId = (int) $user->id;
+
+        if ($userId <= 0 || !$user->exists) {
+            return new Officer(['user_id' => $userId]);
         }
-        return $this->cache[$user->id];
+
+        if (!isset($this->cache[$userId])) {
+            $this->cache[$userId] = Officer::firstOrCreate(['user_id' => $userId]);
+        }
+        return $this->cache[$userId];
     }
 
     /**
