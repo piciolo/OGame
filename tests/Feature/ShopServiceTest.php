@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Database\Seeders\ShopCatalogSeeder;
 use OGame\Models\ShopItem;
 use OGame\Services\ShopService;
 use Tests\AccountTestCase;
@@ -19,6 +20,12 @@ class ShopServiceTest extends AccountTestCase
     protected function setUp(): void
     {
         parent::setUp();
+
+        // Seed shop catalog (categories + items) for this test class.
+        // The base AccountTestCase does not run shop seeders, so categories
+        // would otherwise be missing and catalog() would return an empty list.
+        $this->seed(ShopCatalogSeeder::class);
+
         $this->service = resolve(ShopService::class);
     }
 
