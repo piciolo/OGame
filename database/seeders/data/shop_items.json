@@ -21,7 +21,7 @@
       "p": "price_full (e.g. 500.000 Materia Oscura)",
       "ps": "price_short (e.g. 500K MO)",
       "rar": "rarity (common|uncommon|rare|epic)",
-      "img": "image filename from Gameforge CDN (gf3.geo.gfsrv.net)",
+      "img": "image filename from Gameforge CDN",
       "c": "categories[]"
     }
   },
