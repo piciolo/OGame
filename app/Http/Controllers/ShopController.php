@@ -96,7 +96,7 @@ class ShopController extends OGameController
         if ($shop !== null) {
             $imgDir = '/cdn/img/item-images/';
             // Inventory count for shop items: how many UserItem stacks the user has with same ref
-            $invCount = (int) \OGame\Models\UserItem::query()
+            $invCount = (int) UserItem::query()
                 ->where('user_id', $user->id)
                 ->where('source', 'shop')
                 ->where('source_ref', $shop->id)

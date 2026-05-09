@@ -2,6 +2,8 @@
 
 namespace OGame\Services;
 
+use Throwable;
+use RuntimeException;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -434,7 +436,7 @@ class AuctioneerService
                 $auction->status = AuctionStatus::Assigned;
                 $auction->assigned_at = now();
                 $this->sendWinnerMessage($auction);
-            } catch (\Throwable $e) {
+            } catch (Throwable $e) {
                 // Log with full context then re-throw to rollback the outer
                 // DB::transaction in tick(). The auction stays Running and
                 // the next tick retries — this avoids silently losing prizes
@@ -519,7 +521,7 @@ class AuctioneerService
                     if (is_file($path)) {
                         return '/img/objects/units/' . $obj->machine_name . '_small.jpg';
                     }
-                } catch (\Throwable) {
+                } catch (Throwable) {
                 }
             }
             return '/img/objects/units/cruiser_small.jpg';
@@ -593,7 +595,7 @@ class AuctioneerService
                 'planet' => $planetTag,
                 'bid_points' => (string) $auction->current_bid_points,
             ]);
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             Log::channel('auctioneer')->warning('Auctioneer winner message not sent', [
                 'auction_id' => $auction->id,
                 'winner_user_id' => $winnerId,
@@ -609,7 +611,7 @@ class AuctioneerService
 
         $user = User::find($winnerId);
         if ($user === null) {
-            throw new \RuntimeException('Winner user not found');
+            throw new RuntimeException('Winner user not found');
         }
 
         // Honor-only winners have no associated planet — fall back to the user's current planet
@@ -701,7 +703,7 @@ class AuctioneerService
             }
         }
 
-        throw new \RuntimeException(
+        throw new RuntimeException(
             "Auctioneer prize undeliverable: no planet found for user {$winnerUserId} (requested planet {$planetId})"
         );
     }
@@ -721,11 +723,11 @@ class AuctioneerService
                 'planet_id' => $planetId,
                 'user_id' => $winnerUserId,
             ]);
-            throw new \RuntimeException("Invalid ship prize payload (unit_id={$unitId}, amount={$amount})");
+            throw new RuntimeException("Invalid ship prize payload (unit_id={$unitId}, amount={$amount})");
         }
         try {
             $object = ObjectService::getUnitObjectById($unitId);
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             Log::channel('auctioneer')->error('Auctioneer ship grant: invalid unit id', [
                 'unit_id' => $unitId,
                 'user_id' => $winnerUserId,

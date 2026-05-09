@@ -2,6 +2,7 @@
 
 namespace OGame\Services;
 
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use OGame\Models\Achievement;
@@ -148,13 +149,13 @@ class AchievementService
 
         if ($newValue <= $progress->current_value) {
             // Nessun avanzamento.
-            $progress->last_updated_at = Carbon::now();
+            $progress->last_updated_at = Date::now();
             $progress->save();
             return $progress;
         }
 
         $progress->current_value = $newValue;
-        $progress->last_updated_at = Carbon::now();
+        $progress->last_updated_at = Date::now();
 
         // Verifica se si sono completati nuovi tier.
         $tiers = $achievement->tiers->sortBy('tier');
@@ -166,7 +167,7 @@ class AchievementService
                 $this->unlockReward($player, $tier->reward_type, $tier->reward_machine_name);
                 $progress->completed_tier = $tier->tier;
                 if ($tier->tier === $tiers->last()->tier) {
-                    $progress->completed_at = Carbon::now();
+                    $progress->completed_at = Date::now();
                 }
             } else {
                 break; // tier successivi non raggiunti
@@ -182,7 +183,7 @@ class AchievementService
      */
     public function unlockReward(PlayerService $player, string $rewardType, string $machineName): void
     {
-        $now = Carbon::now();
+        $now = Date::now();
         $playerId = $player->getId();
         match ($rewardType) {
             'avatar' => PlayerUnlockedAvatar::firstOrCreate(

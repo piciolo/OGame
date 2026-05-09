@@ -2,6 +2,8 @@
 
 namespace OGame\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
@@ -11,12 +13,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property string $name
  * @property int $sort_order
  */
+#[Fillable(['key', 'name', 'sort_order'])]
+#[Table(name: 'shop_categories')]
 class ShopCategory extends Model
 {
-    protected $table = 'shop_categories';
-
-    protected $fillable = ['key', 'name', 'sort_order'];
-
     public function items(): BelongsToMany
     {
         return $this->belongsToMany(ShopItem::class, 'shop_item_category');

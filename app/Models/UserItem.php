@@ -2,6 +2,9 @@
 
 namespace OGame\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Attributes\Table;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -16,32 +19,30 @@ use OGame\Enums\InventoryCategory;
  * @property string $activation_type
  * @property array<string,mixed>|null $payload
  * @property string $status
- * @property \Illuminate\Support\Carbon $acquired_at
- * @property \Illuminate\Support\Carbon|null $activated_at
- * @property \Illuminate\Support\Carbon|null $consumed_at
+ * @property Carbon $acquired_at
+ * @property Carbon|null $activated_at
+ * @property Carbon|null $consumed_at
  * @property string $source
  * @property int|null $source_ref
  */
+#[Fillable([
+    'user_id',
+    'item_type',
+    'tier',
+    'category',
+    'activation_type',
+    'payload',
+    'status',
+    'acquired_at',
+    'activated_at',
+    'consumed_at',
+    'source',
+    'source_ref',
+])]
+#[Table(name: 'user_items')]
 class UserItem extends Model
 {
     use HasFactory;
-
-    protected $table = 'user_items';
-
-    protected $fillable = [
-        'user_id',
-        'item_type',
-        'tier',
-        'category',
-        'activation_type',
-        'payload',
-        'status',
-        'acquired_at',
-        'activated_at',
-        'consumed_at',
-        'source',
-        'source_ref',
-    ];
 
     protected $casts = [
         'payload' => 'array',

@@ -2,6 +2,7 @@
 
 namespace OGame\Services;
 
+use Throwable;
 use OGame\Models\Achievement;
 use OGame\Models\Enums\PlanetType;
 use OGame\Models\FleetMission;
@@ -79,7 +80,7 @@ class AchievementProgressTracker
                 } else {
                     $planetsCount++;
                 }
-            } catch (\Throwable $e) {
+            } catch (Throwable $e) {
                 $planetsCount++;
             }
 
@@ -88,14 +89,14 @@ class AchievementProgressTracker
                     $lvl = $planetSvc->getObjectLevel($b);
                     $maxBuildLevels[$b] = max($maxBuildLevels[$b] ?? 0, $lvl);
                     $totalBuildings += $lvl;
-                } catch (\Throwable $e) {
+                } catch (Throwable $e) {
                     // Building machine_name non riconosciuto → ignora.
                 }
             }
             foreach (array_keys($sumShips) as $ship) {
                 try {
                     $sumShips[$ship] += $planetSvc->getObjectAmount($ship);
-                } catch (\Throwable $e) {
+                } catch (Throwable $e) {
                     // Ship machine_name non valido in questo build OGameX → ignora.
                 }
             }

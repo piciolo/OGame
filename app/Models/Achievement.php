@@ -2,6 +2,7 @@
 
 namespace OGame\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -15,7 +16,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $category
  * @property bool $is_secret
  * @property int $sort_order
- * @property-read \Illuminate\Database\Eloquent\Collection<int, AchievementTier> $tiers
+ * @property-read Collection<int, AchievementTier> $tiers
  */
 #[Fillable([
     'machine_name', 'display_number', 'name_key', 'description_key',

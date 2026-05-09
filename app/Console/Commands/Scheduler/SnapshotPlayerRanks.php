@@ -2,6 +2,7 @@
 
 namespace OGame\Console\Commands\Scheduler;
 
+use Illuminate\Support\Facades\Date;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
 use OGame\Enums\HighscoreTypeEnum;
@@ -16,7 +17,7 @@ class SnapshotPlayerRanks extends Command
 
     public function handle(PlayerRankHistoryService $rankHistory): void
     {
-        $today = Carbon::today();
+        $today = Date::today();
         $this->info("Snapshotting player ranks for {$today->toDateString()}...");
 
         $count = 0;

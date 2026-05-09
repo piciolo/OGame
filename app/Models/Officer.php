@@ -2,6 +2,7 @@
 
 namespace OGame\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
@@ -19,17 +20,17 @@ use Illuminate\Support\Carbon;
  * @property Carbon $updated_at
  * @property-read User $user
  */
+#[Fillable([
+    'user_id',
+    'commander_until',
+    'admiral_until',
+    'engineer_until',
+    'geologist_until',
+    'technocrat_until',
+    'all_officers_until',
+])]
 class Officer extends Model
 {
-    protected $fillable = [
-        'user_id',
-        'commander_until',
-        'admiral_until',
-        'engineer_until',
-        'geologist_until',
-        'technocrat_until',
-        'all_officers_until',
-    ];
 
     protected $casts = [
         'commander_until'    => 'datetime',

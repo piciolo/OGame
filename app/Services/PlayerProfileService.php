@@ -2,6 +2,7 @@
 
 namespace OGame\Services;
 
+use Throwable;
 use OGame\Enums\HighscoreTypeEnum;
 use OGame\Enums\ProfileTagEnum;
 use OGame\Models\AchievementTier;
@@ -393,7 +394,7 @@ class PlayerProfileService
                 ->where('mission_type', 15)
                 ->where('processed', true)
                 ->count();
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             return 0;
         }
     }

@@ -2,6 +2,7 @@
 
 namespace OGame\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -20,9 +21,9 @@ use Illuminate\Support\Carbon;
     'player_id', 'achievement_id', 'current_value', 'completed_tier',
     'last_updated_at', 'completed_at',
 ])]
+#[Table(name: 'player_achievement_progress')]
 class PlayerAchievementProgress extends Model
 {
-    protected $table = 'player_achievement_progress';
 
     protected $casts = [
         'last_updated_at' => 'datetime',

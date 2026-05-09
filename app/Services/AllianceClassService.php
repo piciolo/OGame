@@ -2,6 +2,7 @@
 
 namespace OGame\Services;
 
+use Illuminate\Support\Facades\Date;
 use Exception;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -106,7 +107,7 @@ class AllianceClassService
         if ($alliance->created_at === null) {
             return null;
         }
-        return Carbon::instance($alliance->created_at->copy()->addDays(AllianceClass::getFreeActivationDelayDays()));
+        return Date::instance($alliance->created_at->copy()->addDays(AllianceClass::getFreeActivationDelayDays()));
     }
 
     /**
@@ -195,7 +196,7 @@ class AllianceClassService
         if ($user->alliance_left_at === null) {
             return null;
         }
-        $expires = Carbon::instance($user->alliance_left_at->copy()->addDays(self::LEAVE_DEBUFF_DAYS));
+        $expires = Date::instance($user->alliance_left_at->copy()->addDays(self::LEAVE_DEBUFF_DAYS));
         return $expires->isFuture() ? $expires : null;
     }
 

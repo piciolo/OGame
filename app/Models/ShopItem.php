@@ -2,6 +2,8 @@
 
 namespace OGame\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
@@ -26,19 +28,17 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property string|null $tier_key
  * @property int $sort_order
  */
+#[Fillable([
+    'ref', 'name', 'description', 'extended_description', 'effect_description', 'rules_description',
+    'price_dm', 'price_dm_original', 'price_label', 'price_label_original',
+    'duration_seconds', 'duration_label',
+    'rarity', 'image', 'image_fallback',
+    'is_lifeform', 'booster_type', 'tier_key',
+    'sort_order',
+])]
+#[Table(name: 'shop_items')]
 class ShopItem extends Model
 {
-    protected $table = 'shop_items';
-
-    protected $fillable = [
-        'ref', 'name', 'description', 'extended_description', 'effect_description', 'rules_description',
-        'price_dm', 'price_dm_original', 'price_label', 'price_label_original',
-        'duration_seconds', 'duration_label',
-        'rarity', 'image', 'image_fallback',
-        'is_lifeform', 'booster_type', 'tier_key',
-        'sort_order',
-    ];
-
     protected $casts = [
         'price_dm' => 'integer',
         'price_dm_original' => 'integer',

@@ -2,6 +2,9 @@
 
 namespace OGame\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Attributes\Table;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -15,23 +18,21 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $dm_spent
  * @property string $item_name
  * @property string|null $ip_address
- * @property \Illuminate\Support\Carbon $created_at
+ * @property Carbon $created_at
  */
+#[Fillable([
+    'user_id',
+    'shop_item_id',
+    'user_item_id',
+    'dm_spent',
+    'item_name',
+    'ip_address',
+    'created_at',
+])]
+#[Table(name: 'shop_purchases')]
 class ShopPurchase extends Model
 {
-    protected $table = 'shop_purchases';
-
     public $timestamps = false;
-
-    protected $fillable = [
-        'user_id',
-        'shop_item_id',
-        'user_item_id',
-        'dm_spent',
-        'item_name',
-        'ip_address',
-        'created_at',
-    ];
 
     protected $casts = [
         'dm_spent' => 'int',

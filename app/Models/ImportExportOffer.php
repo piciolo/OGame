@@ -2,6 +2,9 @@
 
 namespace OGame\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Attributes\Table;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -12,19 +15,17 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $price
  * @property string $status
  * @property int $change_count
- * @property \Illuminate\Support\Carbon|null $revealed_at
- * @property \Illuminate\Support\Carbon|null $consumed_at
- * @property \Illuminate\Support\Carbon $expires_at
+ * @property Carbon|null $revealed_at
+ * @property Carbon|null $consumed_at
+ * @property Carbon $expires_at
  */
+#[Fillable([
+    'user_id', 'item_id', 'price', 'status', 'change_count',
+    'revealed_at', 'consumed_at', 'expires_at',
+])]
+#[Table(name: 'import_export_offers')]
 class ImportExportOffer extends Model
 {
-    protected $table = 'import_export_offers';
-
-    protected $fillable = [
-        'user_id', 'item_id', 'price', 'status', 'change_count',
-        'revealed_at', 'consumed_at', 'expires_at',
-    ];
-
     protected $casts = [
         'revealed_at' => 'datetime',
         'consumed_at' => 'datetime',

@@ -2,6 +2,7 @@
 
 namespace OGame\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
@@ -17,9 +18,9 @@ use Illuminate\Support\Carbon;
 #[Fillable([
     'player_id', 'highscore_type', 'rank', 'points', 'snapshot_date',
 ])]
+#[Table(name: 'player_rank_history')]
 class PlayerRankHistory extends Model
 {
-    protected $table = 'player_rank_history';
 
     protected $casts = [
         'snapshot_date' => 'date',

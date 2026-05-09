@@ -2,6 +2,7 @@
 
 namespace OGame\Services;
 
+use Illuminate\Support\Facades\Date;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use OGame\Enums\InventoryCategory;
@@ -377,6 +378,6 @@ class ImportExportService
     private function nextDailyResetAt(): Carbon
     {
         $tz = config('app.timezone', 'Europe/Rome');
-        return Carbon::now($tz)->addDay()->startOfDay()->utc();
+        return Date::now($tz)->addDay()->startOfDay()->utc();
     }
 }

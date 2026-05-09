@@ -2,6 +2,9 @@
 
 namespace OGame\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Attributes\Table;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -11,22 +14,20 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $user_id
  * @property string $resource   metal|crystal|deuterium|energy
  * @property int $percent_bonus
- * @property \Illuminate\Support\Carbon $expires_at
+ * @property Carbon $expires_at
  * @property int|null $source_user_item_id
  */
+#[Fillable([
+    'planet_id',
+    'user_id',
+    'resource',
+    'percent_bonus',
+    'expires_at',
+    'source_user_item_id',
+])]
+#[Table(name: 'planet_boosts')]
 class PlanetBoost extends Model
 {
-    protected $table = 'planet_boosts';
-
-    protected $fillable = [
-        'planet_id',
-        'user_id',
-        'resource',
-        'percent_bonus',
-        'expires_at',
-        'source_user_item_id',
-    ];
-
     protected $casts = [
         'percent_bonus' => 'int',
         'expires_at' => 'datetime',

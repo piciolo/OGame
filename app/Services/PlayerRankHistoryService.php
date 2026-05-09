@@ -2,6 +2,7 @@
 
 namespace OGame\Services;
 
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Carbon;
 use OGame\Enums\HighscoreTypeEnum;
 use OGame\Models\PlayerRankHistory;
@@ -13,7 +14,7 @@ class PlayerRankHistoryService
      */
     public function recordSnapshot(int $playerId, HighscoreTypeEnum $type, int $rank, int $points, Carbon|null $date = null): void
     {
-        $date = ($date ?? Carbon::today())->toDateString();
+        $date = ($date ?? Date::today())->toDateString();
 
         PlayerRankHistory::updateOrCreate(
             [
@@ -46,7 +47,7 @@ class PlayerRankHistoryService
 
         $previous = PlayerRankHistory::where('player_id', $playerId)
             ->where('highscore_type', $type->value)
-            ->where('snapshot_date', '<', Carbon::today()->toDateString())
+            ->where('snapshot_date', '<', Date::today()->toDateString())
             ->orderByDesc('snapshot_date')
             ->first();
 

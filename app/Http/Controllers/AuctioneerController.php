@@ -132,7 +132,7 @@ class AuctioneerController extends OGameController
 
         $auctions = Auction::query()
             ->whereIn('status', [AuctionStatus::Closed->value, AuctionStatus::Assigned->value, AuctionStatus::Cancelled->value])
-            ->orderByDesc('closed_at')
+            ->latest('closed_at')
             ->limit($limit)
             ->get();
 

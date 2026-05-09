@@ -2,6 +2,7 @@
 
 namespace OGame\Console\Commands\Scheduler;
 
+use Throwable;
 use Illuminate\Console\Command;
 use OGame\Factories\PlayerServiceFactory;
 use OGame\Models\User;
@@ -23,7 +24,7 @@ class RecomputeAchievements extends Command
                     $player = $playerFactory->make($u->id);
                     $tracker->recomputeForPlayer($player);
                     $count++;
-                } catch (\Throwable $e) {
+                } catch (Throwable $e) {
                     $this->warn('Skip user '.$u->id.': '.$e->getMessage());
                 }
             }

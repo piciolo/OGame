@@ -2,6 +2,7 @@
 
 namespace OGame\Http\Controllers\Admin;
 
+use Throwable;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -508,7 +509,7 @@ class DeveloperShortcutsController extends OGameController
     {
         try {
             $id = $auctioneer->devForceEndCurrent();
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             return redirect()->back()->with('error', 'Auctioneer force-end failed: ' . $e->getMessage());
         }
         $msg = $id !== null
@@ -521,7 +522,7 @@ class DeveloperShortcutsController extends OGameController
     {
         try {
             $id = $auctioneer->devForceStartWaiting();
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             return redirect()->back()->with('error', 'Auctioneer force-start failed: ' . $e->getMessage());
         }
         $msg = $id !== null
@@ -534,7 +535,7 @@ class DeveloperShortcutsController extends OGameController
     {
         try {
             $id = $auctioneer->devSpawnAuction();
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             return redirect()->back()->with('error', 'Auctioneer spawn failed: ' . $e->getMessage());
         }
         $msg = $id !== null
@@ -547,7 +548,7 @@ class DeveloperShortcutsController extends OGameController
     {
         try {
             $id = $auctioneer->devCancelCurrent();
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             return redirect()->back()->with('error', 'Auctioneer cancel failed: ' . $e->getMessage());
         }
         $msg = $id !== null
@@ -561,7 +562,7 @@ class DeveloperShortcutsController extends OGameController
         $validated = $request->validate(['template_id' => 'required|integer|min:1']);
         try {
             $id = $auctioneer->devSpawnAuctionForTemplate((int) $validated['template_id']);
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             return redirect()->back()->with('error', 'Spawn failed: ' . $e->getMessage());
         }
         $msg = $id !== null
@@ -574,7 +575,7 @@ class DeveloperShortcutsController extends OGameController
     {
         try {
             $auctioneer->tick();
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             return redirect()->back()->with('error', 'Auctioneer tick failed: ' . $e->getMessage());
         }
         return redirect()->back()->with('success', 'Auctioneer tick executed.');

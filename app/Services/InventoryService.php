@@ -284,9 +284,11 @@ class InventoryService
                     $tDur  = $hasTx && isset($tx['duration_label']) ? $tx['duration_label'] : $shop->duration_label;
                     $durationLabel = $tDur ?: ($durSec > 0 ? $this->humanizeDuration($durSec) : __('t_shop_items.duration_instant'));
                     // Long description: prefer translated extended_description, fall back to translated description, finally DB.
-                    $longDesc = $hasTx
-                        ? ($tx['extended_description'] ?? ($tx['description'] ?? (!empty($shop->extended_description) ? $shop->extended_description : $this->cleanDescription($shop->description))))
-                        : (!empty($shop->extended_description) ? $shop->extended_description : $this->cleanDescription($shop->description));
+                    $longDesc = match (true) {
+                        $hasTx => $tx['extended_description'] ?? ($tx['description'] ?? (!empty($shop->extended_description) ? $shop->extended_description : $this->cleanDescription($shop->description))),
+                        !empty($shop->extended_description) => $shop->extended_description,
+                        default => $this->cleanDescription($shop->description),
+                    };
                     // Runtime substitution for dynamic numeric placeholders (:metal/:crystal/:deuterium/:warning)
                     $longDesc = $this->substituteResourcePlaceholders($longDesc, $user, $shop);
                     $result[$ref] = [
@@ -387,7 +389,7 @@ class InventoryService
      */
     public function countsByRegistryKey(User $user): array
     {
-        $rows = \Illuminate\Support\Facades\DB::table('user_items')
+        $rows = DB::table('user_items')
             ->where('user_id', $user->id)
             ->where('status', 'available')
             ->whereNull('consumed_at')
