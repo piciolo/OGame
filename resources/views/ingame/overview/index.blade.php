@@ -420,7 +420,7 @@
         #invOverlayRoot #invOverlayDetail{display:block;width:654px;height:258px;}
 
         /* === Container principale === */
-        #invOverlayRoot #activeBuffDetails{position:relative;width:654px;height:258px;background:#0d1014 url(//gf3.geo.gfsrv.net/cdnb2/862bd57e5d13bfc8cd9ce0a1d72c9f.png) 0 0 no-repeat;color:#f1f1f1;z-index:11;overflow:hidden;}
+        #invOverlayRoot #activeBuffDetails{position:relative;width:654px;height:258px;background:#0d1014;color:#f1f1f1;z-index:11;overflow:hidden;}
         #invOverlayRoot #activeBuffDetails h2.detail_screen_h2{margin:0;padding:3px 0 0 40px;color:#d29d00;font:700 12px/16px Verdana,Arial,Helvetica,sans-serif;}
         #invOverlayRoot .close_details{position:absolute;top:4px;right:8px;width:16px;height:16px;cursor:pointer;z-index:20;text-decoration:none;}
 
@@ -447,7 +447,7 @@
 
         /* === Tile item (75×90, 4 per riga) === */
         #invOverlayRoot .active_item_slider .item_img{position:relative;display:block;float:left;width:75px;height:90px;margin:7px 0 0 10px;background-repeat:no-repeat;background-size:71px 71px;background-position:2px 2px;cursor:pointer;}
-        #invOverlayRoot .active_item_slider .item_img .item_img_box{position:relative;width:75px;height:75px;margin:0 0 2px;background:url(//gf1.geo.gfsrv.net/cdn9b/14e5b9c95e1eefb2700775852cdb47.png) -150px 0 no-repeat;z-index:10;}
+        #invOverlayRoot .active_item_slider .item_img .item_img_box{position:relative;width:75px;height:75px;margin:0 0 2px;z-index:10;}
         #invOverlayRoot .active_item_slider .item_img.r_common .item_img_box{background-position:-150px 0;}
         #invOverlayRoot .active_item_slider .item_img.r_uncommon .item_img_box{background-position:-75px 0;}
         #invOverlayRoot .active_item_slider .item_img.r_rare .item_img_box{background-position:0 0;}
@@ -456,7 +456,7 @@
         #invOverlayRoot .active_item_slider .item_img a.detail_button{position:relative;display:block;width:75px;height:75px;text-decoration:none;text-indent:-9999px;color:#ff9600;}
         #invOverlayRoot .active_item_slider .item_img a.detail_button.active,
         #invOverlayRoot .active_item_slider .item_img.selected a.detail_button,
-        #invOverlayRoot .active_item_slider .item_img:hover a.detail_button{background:url(//gf1.geo.gfsrv.net/cdnff/ce5a256cdc38d913295a8cdecbad41.png) no-repeat;}
+        #invOverlayRoot .active_item_slider .item_img:hover a.detail_button{outline:1px solid #ff9600;}
         #invOverlayRoot .active_item_slider .item_img .activation{position:absolute;top:0;left:0;width:100%;height:0;background:#000;opacity:.6;z-index:1;border-top-left-radius:3px;border-top-right-radius:3px;}
         #invOverlayRoot .active_item_slider .item_img .ecke{position:relative;display:block;float:left;top:60px;left:0;width:72px;text-align:right;color:#ff9600;font:11px/11px Verdana,Arial,sans-serif;text-indent:0;}
         #invOverlayRoot .active_item_slider .item_img .level.amount{display:inline;color:#ff9600;}
@@ -485,7 +485,7 @@
         #invOverlayRoot #activeBuffDetails .shop_link:hover{text-decoration:underline;}
 
         /* === Activation button (143×54, native sprite) === */
-        #invOverlayRoot #activationButton{display:table;position:relative;width:143px;height:54px;float:right;margin:0;padding:0;background:url(//gf3.geo.gfsrv.net/cdneb/f5f81e8302aaad56c958c033677fb8.png) 0 -108px no-repeat;color:#848484;font:700 12px/12px Verdana,Arial,sans-serif;text-align:center;text-decoration:none;cursor:pointer;}
+        #invOverlayRoot #activationButton{display:table;position:relative;width:143px;height:54px;float:right;margin:0;padding:0;background:#1c2a38;color:#848484;font:700 12px/12px Verdana,Arial,sans-serif;text-align:center;text-decoration:none;cursor:pointer;}
         #invOverlayRoot #activationButton.build-it{background-position:0 0;color:#fff;}
         #invOverlayRoot #activationButton.build-it_disabled{background-position:0 -108px;color:#848484;cursor:default;}
         #invOverlayRoot #activationButton > span{display:table-cell;vertical-align:middle;width:143px;height:54px;text-align:center;font:700 12px/12px Verdana,Arial,sans-serif;padding:0 6px;}

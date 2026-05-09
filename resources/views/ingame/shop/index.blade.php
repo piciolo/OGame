@@ -74,7 +74,7 @@
         #shop #detail .inventoryAmount { margin: 0; padding: 0; border: 0; z-index: 1; width: auto; position: absolute; right: 35px; font: 10px/22px Verdana, Arial, Helvetica, sans-serif; color: #d29d00; }
         #shop #detail #description { padding: 0; border: 0; font-weight: inherit; font-style: inherit; font-family: inherit; z-index: 1; color: #848484; height: 90px; line-height: 130%; margin: 3px 0 0 4px; }
         #shop #detail #description p { line-height: 130%; margin: 0; padding: 0; border: 0; font-style: inherit; font-size: 100%; font-family: inherit; z-index: 1; white-space: normal; color: #6F9FC8; font-weight: 700; }
-        #shop #detail #description a.help { line-height: 130%; padding: 0; border: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; z-index: 1; color: #848484; display: block; float: left; height: 18px; margin: 2px 5px 0 0; width: 18px; background: transparent url('//gf3.geo.gfsrv.net/cdneb/f5f81e8302aaad56c958c033677fb8.png') -207px -34px no-repeat; }
+        #shop #detail #description a.help { line-height: 130%; padding: 0; border: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; z-index: 1; color: #848484; display: block; float: left; height: 18px; margin: 2px 5px 0 0; width: 18px; background: transparent; }
         /* Native OGame label inside the buy buttons (#itemDetails .build-it span.textlabel)
            Verified live computed style (Apr 2026):
              font: 700 12px/14px Verdana, Arial, Helvetica, sans-serif (BOLD 12px)
@@ -127,7 +127,7 @@
             margin: 0;
             border: 0;
             background-color: #000;
-            background-image: url("//gf3.geo.gfsrv.net/cdnea/8c3657fbb2a8808627f8a3dbedcb8c.png");
+            background-image: none;
             background-repeat: repeat-x;
             background-position: 0 -228px;
             height: 38px;
