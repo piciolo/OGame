@@ -140,15 +140,15 @@ class InventoryActivationTest extends AccountTestCase
 
     public function testKrakenSilverReducesBuildingQueueByTwoHours(): void
     {
-        $now = now()->timestamp;
+        $now = (int) now()->timestamp;
         $task = new BuildingQueue();
         $task->planet_id = $this->currentPlanetId;
         $task->object_id = 1;
         $task->object_level_target = 5;
         $task->is_downgrade = false;
         $task->time_duration = 36000;
-        $task->time_start = (int) $now;
-        $task->time_end = (int) ($now + 36000);
+        $task->time_start = $now;
+        $task->time_end = $now + 36000;
         $task->metal = 0;
         $task->crystal = 0;
         $task->deuterium = 0;
@@ -165,7 +165,7 @@ class InventoryActivationTest extends AccountTestCase
         $this->assertTrue($r['ok'], 'activation should succeed: ' . $r['code']);
 
         $task = BuildingQueue::query()->where('planet_id', $this->currentPlanetId)->first();
-        $this->assertSame((int) ($now + 36000 - 7200), (int) $task->time_end, 'time_end must be reduced by 7200s (2h)');
+        $this->assertSame($now + 36000 - 7200, (int) $task->time_end, 'time_end must be reduced by 7200s (2h)');
     }
 
     public function testKrakenWithEmptyQueueFailsAndDoesNotConsume(): void

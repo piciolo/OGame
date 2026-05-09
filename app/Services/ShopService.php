@@ -14,9 +14,6 @@ class ShopService
 {
     public const ITEMS_PER_PAGE = 9;
 
-    /** Categories never shown in the sidebar (items still appear via "tutto"). */
-    private const HIDDEN_CATEGORIES = [];
-
     /** Virtual category key for the "tutto" (all items) tab. */
     public const ALL_CATEGORY_KEY = '_all';
 
@@ -193,7 +190,7 @@ class ShopService
             // così l'inventario li raggruppa nella tab Profilo. Differenza chiave dai
             // booster: l'attivazione NON consuma l'item (resta riusabile, vedi
             // InventoryActivationService).
-            $isProfileAvatar = (bool) $item->categories->contains(fn (ShopCategory $c) => $c->key === 'profilo');
+            $isProfileAvatar = $item->categories->where('key', 'profilo')->isNotEmpty();
             // Per i profile_avatar usiamo `tier = shop_item.id` come discriminante,
             // così ogni avatar diverso ha uno stack univoco nell'inventario
             // (lo stackRef è sha1(item_type:tier)).

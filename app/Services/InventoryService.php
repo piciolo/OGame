@@ -387,7 +387,7 @@ class InventoryService
      */
     public function countsByRegistryKey(User $user): array
     {
-        $rows = UserItem::query()
+        $rows = \Illuminate\Support\Facades\DB::table('user_items')
             ->where('user_id', $user->id)
             ->where('status', 'available')
             ->whereNull('consumed_at')
@@ -397,6 +397,7 @@ class InventoryService
 
         $out = [];
         foreach ($rows as $r) {
+            /** @var object{item_type: string, tier: string|null, c: int} $r */
             $out[$r->item_type . ':' . ($r->tier ?? '')] = (int) $r->c;
         }
         return $out;
