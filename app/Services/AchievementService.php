@@ -15,8 +15,6 @@ class AchievementService
 {
     /**
      * Lista degli achievement con progresso del giocatore (usata per la tab Riepilogo).
-     *
-     * @return Collection<int, array{achievement:Achievement, progress:PlayerAchievementProgress|null, tiers:\Illuminate\Database\Eloquent\Collection<int, AchievementTier>}>
      */
     public function getAchievementsForPlayer(PlayerService $player): Collection
     {
