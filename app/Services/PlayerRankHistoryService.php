@@ -11,7 +11,7 @@ class PlayerRankHistoryService
     /**
      * Salva (o aggiorna) lo snapshot di rank+punti per un player/tipo nella data odierna.
      */
-    public function recordSnapshot(int $playerId, HighscoreTypeEnum $type, int $rank, int $points, ?Carbon $date = null): void
+    public function recordSnapshot(int $playerId, HighscoreTypeEnum $type, int $rank, int $points, Carbon|null $date = null): void
     {
         $date = ($date ?? Carbon::today())->toDateString();
 

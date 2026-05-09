@@ -5,8 +5,10 @@ namespace OGame\Services;
 use OGame\Enums\HighscoreTypeEnum;
 use OGame\Enums\ProfileTagEnum;
 use OGame\Models\AchievementTier;
+use OGame\Models\Alliance;
 use OGame\Models\AllianceHighscore;
 use OGame\Models\Highscore;
+use OGame\Models\FleetMission;
 
 class PlayerProfileService
 {
@@ -78,7 +80,7 @@ class PlayerProfileService
     }
 
     /**
-     * @return array{profile: array<int, array{tag:ProfileTagEnum,label:string,entry:array}>, moreInfo: array<int, array{tag:ProfileTagEnum,label:string,entry:array}>}
+     * @return list<array{tag:ProfileTagEnum, label:string, entry:array}>
      */
     public function getAvailableTags(PlayerService $player): array
     {
@@ -188,7 +190,7 @@ class PlayerProfileService
     /**
      * @return array{tag:string,type:string,label:string,value:mixed,removable:bool}
      */
-    private function buildEntryForTag(PlayerService $player, ProfileTagEnum $tag, ?Highscore $hsRow): array
+    private function buildEntryForTag(PlayerService $player, ProfileTagEnum $tag, Highscore|null $hsRow): array
     {
         $base = [
             'tag' => $tag->value,
@@ -335,12 +337,13 @@ class PlayerProfileService
     /**
      * @return array{tag:string,name:string,id:int}|null
      */
-    private function buildAllianceValue(PlayerService $player): ?array
+    private function buildAllianceValue(PlayerService $player): array|null
     {
         $a = $player->getUser()->alliance ?? null;
         if (!$a) {
             return null;
         }
+        /** @var Alliance $a */
         return ['tag' => (string) $a->alliance_tag, 'name' => (string) $a->alliance_name, 'id' => (int) $a->id];
     }
 
@@ -350,10 +353,11 @@ class PlayerProfileService
     private function buildAllianceClassValue(PlayerService $player): array
     {
         $a = $player->getUser()->alliance ?? null;
-        $cls = $a?->allianceClass();
+        /** @var Alliance|null $a */
+        $cls = $a !== null ? $a->allianceClass() : null;
         return [
-            'name' => $cls?->getName(),
-            'machine' => $cls?->getMachineName() ?? 'neutral',
+            'name' => $cls !== null ? $cls->getName() : null,
+            'machine' => $cls !== null ? $cls->getMachineName() : 'neutral',
         ];
     }
 
@@ -366,10 +370,11 @@ class PlayerProfileService
         if (!$a) {
             return ['rank' => 0, 'points' => 0, 'change' => 'point', 'delta' => 0];
         }
+        /** @var Alliance $a */
         $hs = AllianceHighscore::where('alliance_id', $a->id)->first();
         return [
-            'rank' => (int) ($hs?->{$key.'_rank'} ?? 0),
-            'points' => (int) ($hs?->{$key} ?? 0),
+            'rank' => $hs !== null ? (int) ($hs->{$key.'_rank'} ?? 0) : 0,
+            'points' => $hs !== null ? (int) ($hs->{$key} ?? 0) : 0,
             'change' => 'point',
             'delta' => 0,
         ];
@@ -384,7 +389,7 @@ class PlayerProfileService
     {
         // Conta missioni Expedition (mission_type=15) processate da questo giocatore.
         try {
-            return (int) \OGame\Models\FleetMission::where('user_id', $player->getId())
+            return (int) FleetMission::where('user_id', $player->getId())
                 ->where('mission_type', 15)
                 ->where('processed', true)
                 ->count();
@@ -393,7 +398,7 @@ class PlayerProfileService
         }
     }
 
-    private function getHighscoreRow(int $playerId): ?Highscore
+    private function getHighscoreRow(int $playerId): Highscore|null
     {
         return Highscore::where('player_id', $playerId)->first();
     }
@@ -401,10 +406,10 @@ class PlayerProfileService
     /**
      * @return array{rank:int, points:int, change:string, delta:int}
      */
-    private function buildHighscoreValue(int $playerId, HighscoreTypeEnum $type, ?Highscore $hs): array
+    private function buildHighscoreValue(int $playerId, HighscoreTypeEnum $type, Highscore|null $hs): array
     {
-        $rank = (int) ($hs?->{$type->name.'_rank'} ?? 0);
-        $points = (int) ($hs?->{$type->name} ?? 0);
+        $rank = $hs !== null ? (int) ($hs->{$type->name.'_rank'} ?? 0) : 0;
+        $points = $hs !== null ? (int) ($hs->{$type->name} ?? 0) : 0;
         $delta = $this->rankHistoryService->getRankDelta($playerId, $type, $rank);
 
         return [

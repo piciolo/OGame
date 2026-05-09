@@ -20,6 +20,7 @@ use OGame\Models\Planet;
 use OGame\Models\Resources;
 use OGame\Models\Setting;
 use OGame\Models\User;
+use OGame\Services\ObjectService;
 
 class AuctioneerService
 {
@@ -74,7 +75,7 @@ class AuctioneerService
 
     // --- Query --------------------------------------------------------------
 
-    public function getCurrentAuction(): ?Auction
+    public function getCurrentAuction(): Auction|null
     {
         $auction = Auction::query()
             ->whereIn('status', [AuctionStatus::Waiting->value, AuctionStatus::Running->value])
@@ -212,7 +213,7 @@ class AuctioneerService
                 'points' => $points,
                 'bid_count' => (int) $auction->bid_count,
                 'extension_count' => (int) $auction->extension_count,
-                'ends_at' => $auction->ends_at?->toDateTimeString(),
+                'ends_at' => $auction->ends_at->toDateTimeString(),
             ]);
 
             return $auction;
@@ -271,7 +272,7 @@ class AuctioneerService
      * If a bidder exists, the prize is assigned via the normal flow.
      * Returns the auction id that was closed, or null if nothing was running.
      */
-    public function devForceEndCurrent(): ?int
+    public function devForceEndCurrent(): int|null
     {
         return DB::transaction(function () {
             /** @var Auction|null $auction */
@@ -299,7 +300,7 @@ class AuctioneerService
      * Force-promote the current waiting auction to Running immediately.
      * Returns the auction id promoted, or null if nothing was waiting.
      */
-    public function devForceStartWaiting(): ?int
+    public function devForceStartWaiting(): int|null
     {
         return DB::transaction(function () {
             /** @var Auction|null $waiting */
@@ -321,7 +322,7 @@ class AuctioneerService
      * already exists. Returns the new auction id, or null if no template is
      * available.
      */
-    public function devSpawnAuction(): ?int
+    public function devSpawnAuction(): int|null
     {
         return DB::transaction(function () {
             $before = Auction::query()->max('id');
@@ -336,7 +337,7 @@ class AuctioneerService
      * Ignores weight/enabled flag so any template can be tested directly.
      * Returns the new auction id, or null if the template does not exist.
      */
-    public function devSpawnAuctionForTemplate(int $templateId): ?int
+    public function devSpawnAuctionForTemplate(int $templateId): int|null
     {
         return DB::transaction(function () use ($templateId) {
             $template = AuctionLotTemplate::find($templateId);
@@ -365,7 +366,7 @@ class AuctioneerService
      * spent on bids are NOT refunded (matches OGame rules).
      * Returns the cancelled auction id, or null if none open.
      */
-    public function devCancelCurrent(): ?int
+    public function devCancelCurrent(): int|null
     {
         return DB::transaction(function () {
             /** @var Auction|null $auction */
@@ -408,7 +409,7 @@ class AuctioneerService
             'lot_title' => $auction->lot_title,
             'lot_image' => $auction->lot_image,
             'duration_seconds' => $duration + $jitter,
-            'ends_at' => $auction->ends_at?->toDateTimeString(),
+            'ends_at' => $auction->ends_at->toDateTimeString(),
         ]);
     }
 
@@ -513,7 +514,7 @@ class AuctioneerService
             $unitId = (int) ($payload['unit_id'] ?? 0);
             if ($unitId > 0) {
                 try {
-                    $obj = resolve(\OGame\Services\ObjectService::class)->getObjectById($unitId);
+                    $obj = resolve(ObjectService::class)->getObjectById($unitId);
                     $path = public_path('img/objects/units/' . $obj->machine_name . '_small.jpg');
                     if (is_file($path)) {
                         return '/img/objects/units/' . $obj->machine_name . '_small.jpg';
@@ -545,7 +546,7 @@ class AuctioneerService
         return '/img/objects/units/cruiser_small.jpg';
     }
 
-    private function pickTemplate(): ?AuctionLotTemplate
+    private function pickTemplate(): AuctionLotTemplate|null
     {
         $templates = AuctionLotTemplate::query()->where('enabled', true)->get();
         if ($templates->isEmpty()) {
@@ -723,7 +724,7 @@ class AuctioneerService
             throw new \RuntimeException("Invalid ship prize payload (unit_id={$unitId}, amount={$amount})");
         }
         try {
-            $object = \OGame\Services\ObjectService::getUnitObjectById($unitId);
+            $object = ObjectService::getUnitObjectById($unitId);
         } catch (\Throwable $e) {
             Log::channel('auctioneer')->error('Auctioneer ship grant: invalid unit id', [
                 'unit_id' => $unitId,

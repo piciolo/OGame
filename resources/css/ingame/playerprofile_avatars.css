@@ -1,5 +1,4 @@
-/* OGame achievements — regole per-machine_name (sorgente autoritativa estratta da CSS Gameforge
-   gf3.geo.gfsrv.net/cdn22/9b6fdb87.css). URL pointati alle copie locali. */
+/* OGame achievements — regole per-machine_name. URL puntano alle copie locali in public/img/achievements/. */
 
 /* Override grid: usare minmax(0, 1fr) invece di 1fr per impedire alle img 800x800
    di forzare min-content e sforare il container. */

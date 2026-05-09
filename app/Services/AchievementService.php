@@ -9,13 +9,14 @@ use OGame\Models\PlayerAchievementProgress;
 use OGame\Models\PlayerUnlockedAvatar;
 use OGame\Models\PlayerUnlockedSkin;
 use OGame\Models\PlayerUnlockedTitle;
+use OGame\Models\AchievementTier;
 
 class AchievementService
 {
     /**
      * Lista degli achievement con progresso del giocatore (usata per la tab Riepilogo).
      *
-     * @return Collection<int, array{achievement:Achievement, progress:PlayerAchievementProgress|null, tiers:array}>
+     * @return Collection<int, array{achievement:Achievement, progress:PlayerAchievementProgress|null, tiers:\Illuminate\Database\Eloquent\Collection}>
      */
     public function getAchievementsForPlayer(PlayerService $player): Collection
     {
@@ -47,7 +48,7 @@ class AchievementService
     public function getRewardCatalog(): array
     {
         $cat = ['avatar' => [], 'skin' => [], 'title' => []];
-        $tiers = \OGame\Models\AchievementTier::query()
+        $tiers = AchievementTier::query()
             ->select(['reward_type', 'reward_machine_name', 'title_text'])
             ->get();
         foreach ($tiers as $t) {
@@ -85,7 +86,7 @@ class AchievementService
      */
     public function getTitleTextLookup(): array
     {
-        $rows = \OGame\Models\AchievementTier::query()
+        $rows = AchievementTier::query()
             ->where('reward_type', 'title')
             ->whereNotNull('title_text')
             ->get(['reward_machine_name', 'title_text']);

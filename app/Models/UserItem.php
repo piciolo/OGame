@@ -66,7 +66,7 @@ class UserItem extends Model
         return self::refFor($this->item_type, $this->tier);
     }
 
-    public static function refFor(string $itemType, ?string $tier): string
+    public static function refFor(string $itemType, string|null $tier): string
     {
         return sha1('user_item:' . $itemType . ':' . ($tier ?? ''));
     }

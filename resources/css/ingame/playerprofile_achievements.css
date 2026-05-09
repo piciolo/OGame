@@ -1,5 +1,4 @@
-/* OGame Trofei — CSS autoritativo (regenerato da scripts/rebuild_achievement_css.php).
-   Sorgente: _research/ogame_css/001_gf3_geo_gfsrv_net_9b6fdb87.css
+/* OGame Trofei — CSS autoritativo. Immagini remote scaricate e hostate localmente in public/img/achievements/.
    Le regole per-machine_name (profile-picture.A*, space-object-skin.A*) vivono in
    playerprofile_avatars.css con path locali. */
 
@@ -34,7 +33,7 @@
     top: -1px;
     width: calc(100% + 14px);
     height: 28px;
-    background: url(//gf3.geo.gfsrv.net/cdn53/f333e15eb738b8ec692340f507e1ae.png) bottom left no-repeat, url(//gf2.geo.gfsrv.net/cdnd5/66551209db14e23b3001901b996cc6.png) bottom right no-repeat;
+    background: url(/img/achievements/ui/ach-before-left.png) bottom left no-repeat, url(/img/achievements/ui/ach-before-right.png) bottom right no-repeat;
     content: "";
 }
 
@@ -44,7 +43,7 @@
     bottom: -4px;
     width: calc(100% + 17px);
     height: 50px;
-    background: url(//gf3.geo.gfsrv.net/cdnea/0330abcdca0d125d35a0ebace4b584.png) bottom left no-repeat, url(//gf1.geo.gfsrv.net/cdn9b/8003a40825bc96919c5fec01b018b8.png) bottom right no-repeat;
+    background: url(/img/achievements/ui/ach-after-left.png) bottom left no-repeat, url(/img/achievements/ui/ach-after-right.png) bottom right no-repeat;
     content: "";
     pointer-events: none;
 }
@@ -54,7 +53,7 @@
     position: relative;
     width: 100%;
     margin: 0 0 5px;
-    background: url(//gf1.geo.gfsrv.net/cdnfb/a4e7913209228ebaf2297429aeb87b.png);
+    background: url(/img/achievements/ui/ach-h3-bg.png);
     color: #6f9fc8;
     font: bold 12px / 27px Verdana, Arial, Helvetica, sans-serif;
     text-align: center;
@@ -76,13 +75,13 @@
 #achievementsoverviewcomponent > h3::before,
 #avatarAchievementsOverviewContent > h3::before {
     left: -5px;
-    background: url(//gf2.geo.gfsrv.net/cdn4a/127bd495b9325216af08a588ecc540.png);
+    background: url(/img/achievements/ui/ach-h3-before.png);
 }
 
 #achievementsoverviewcomponent > h3::after,
 #avatarAchievementsOverviewContent > h3::after {
     right: -5px;
-    background: url(//gf2.geo.gfsrv.net/cdn1d/80db96934a5b82ce002f839cd85a44.png);
+    background: url(/img/achievements/ui/ach-h3-after.png);
 }
 
 #achievementsOverviewCategories {
@@ -832,171 +831,171 @@ profile-picture.default {
 }
 
 profile-picture.S1_A1_T5_Ava_ID1 {
-    background-image: url("//gf3.geo.gfsrv.net/cdnb5/cecc6815e2fc417ccc663cb1a4172f.jpg");
+    background-image: url("/img/achievements/avatars/A1_T5_Ava_ID1.jpg");
 }
 
 profile-picture.S1_A2_T4_Ava_ID2 {
-    background-image: url("//gf2.geo.gfsrv.net/cdnde/33fe2a5b35854e6f744a7899d9ef2d.jpg");
+    background-image: url("/img/achievements/avatars/A2_T4_Ava_ID2.jpg");
 }
 
 profile-picture.S1_A3_T5_Ava_ID3 {
-    background-image: url("//gf3.geo.gfsrv.net/cdnee/48728449e827fca96b6ac7d52534fe.jpg");
+    background-image: url("/img/achievements/avatars/A3_T5_Ava_ID3.jpg");
 }
 
 profile-picture.S1_A10_T5_Ava_ID4 {
-    background-image: url("//gf2.geo.gfsrv.net/cdn74/0aacfc3b2902c092e9d3c67b285132.jpg");
+    background-image: url("/img/achievements/avatars/A10_T5_Ava_ID4.jpg");
 }
 
 profile-picture.S1_A13_T5_Ava_ID5 {
-    background-image: url("//gf1.geo.gfsrv.net/cdn32/68c0adf25989faa945e83463ca3916.jpg");
+    background-image: url("/img/achievements/avatars/A13_T5_Ava_ID5.jpg");
 }
 
 profile-picture.S1_A15_T5_Ava_ID6 {
-    background-image: url("//gf1.geo.gfsrv.net/cdnf8/2a92ba6c164dd5b4b982416e926685.jpg");
+    background-image: url("/img/achievements/avatars/A15_T5_Ava_ID6.jpg");
 }
 
 profile-picture.S2_A1_T5_Ava_ID1 {
-    background-image: url("//gf1.geo.gfsrv.net/cdnf6/6515f9de6a244300c28017a29acafa.jpg");
+    background-image: url("/img/achievements/avatars/A1_T5_Ava_ID1.jpg");
 }
 
 profile-picture.S2_A2_T5_Ava_ID2 {
-    background-image: url("//gf3.geo.gfsrv.net/cdnb1/510611fc7e6eed2ddf8789b05a4553.jpg");
+    background-image: url("/img/achievements/avatars/A2_T5_Ava_ID2.jpg");
 }
 
 profile-picture.S2_A3_T5_Ava_ID3 {
-    background-image: url("//gf3.geo.gfsrv.net/cdn55/40a6270dc81a6cd64cdc0f31989c20.jpg");
+    background-image: url("/img/achievements/avatars/A3_T5_Ava_ID3.jpg");
 }
 
 profile-picture.S2_A10_T5_Ava_ID4 {
-    background-image: url("//gf2.geo.gfsrv.net/cdn14/905fb1d0a70fc87857cb8bde831895.jpg");
+    background-image: url("/img/achievements/avatars/A10_T5_Ava_ID4.jpg");
 }
 
 profile-picture.S2_A13_T5_Ava_ID5 {
-    background-image: url("//gf3.geo.gfsrv.net/cdn8c/54ed07776b0fb518d1f853b08320b7.jpg");
+    background-image: url("/img/achievements/avatars/A13_T5_Ava_ID5.jpg");
 }
 
 profile-picture.S2_A15_T5_Ava_ID6 {
-    background-image: url("//gf1.geo.gfsrv.net/cdn96/61cd52f5dc26c66f87071cbadf9f1c.jpg");
+    background-image: url("/img/achievements/avatars/A15_T5_Ava_ID6.jpg");
 }
 
 profile-picture.S3_A1_T5_Ava_ID1 {
-    background-image: url("//gf3.geo.gfsrv.net/cdne4/497bd8572944cc7405a0fe6f7ad7cd.jpg");
+    background-image: url("/img/achievements/avatars/A1_T5_Ava_ID1.jpg");
 }
 
 profile-picture.S3_A2_T4_Ava_ID2 {
-    background-image: url("//gf1.geo.gfsrv.net/cdn67/b14bb45717dc0d35b4e3888c3214a6.jpg");
+    background-image: url("/img/achievements/avatars/A2_T4_Ava_ID2.jpg");
 }
 
 profile-picture.S3_A3_T5_Ava_ID3 {
-    background-image: url("//gf1.geo.gfsrv.net/cdn96/bf11fc58061c3b92601edde0989b29.jpg");
+    background-image: url("/img/achievements/avatars/A3_T5_Ava_ID3.jpg");
 }
 
 profile-picture.S3_A9_T5_Ava_ID4 {
-    background-image: url("//gf2.geo.gfsrv.net/cdnd9/55ae6c707174f3a0706956708f04e3.jpg");
+    background-image: url("/img/achievements/avatars/A9_T5_Ava_ID4.jpg");
 }
 
 profile-picture.S3_A13_T5_Ava_ID5 {
-    background-image: url("//gf2.geo.gfsrv.net/cdndd/02db698a03aa5e22388a3eb21f29c1.jpg");
+    background-image: url("/img/achievements/avatars/A13_T5_Ava_ID5.jpg");
 }
 
 profile-picture.S3_A15_T5_Ava_ID6 {
-    background-image: url("//gf3.geo.gfsrv.net/cdne0/250cd306f2fa2c5f32bfd48690b451.jpg");
+    background-image: url("/img/achievements/avatars/A15_T5_Ava_ID6.jpg");
 }
 
 profile-picture.S4_A1_T5_Ava_ID1 {
-    background-image: url("//gf2.geo.gfsrv.net/cdn77/711a0bc6b644b99d4198826bd29591.jpg");
+    background-image: url("/img/achievements/avatars/A1_T5_Ava_ID1.jpg");
 }
 
 profile-picture.S4_A2_T5_Ava_ID2 {
-    background-image: url("//gf3.geo.gfsrv.net/cdn21/01c65c8b7808fadb9b6ee7ab70a824.jpg");
+    background-image: url("/img/achievements/avatars/A2_T5_Ava_ID2.jpg");
 }
 
 profile-picture.S4_A3_T5_Ava_ID3 {
-    background-image: url("//gf2.geo.gfsrv.net/cdn1d/1497abff268822de5fb205c01384ba.jpg");
+    background-image: url("/img/achievements/avatars/A3_T5_Ava_ID3.jpg");
 }
 
 profile-picture.S4_A10_T5_Ava_ID4 {
-    background-image: url("//gf1.geo.gfsrv.net/cdn90/28638be7286b6d8b0e1f3a7c578a2c.jpg");
+    background-image: url("/img/achievements/avatars/A10_T5_Ava_ID4.jpg");
 }
 
 profile-picture.S4_A13_T5_Ava_ID5 {
-    background-image: url("//gf2.geo.gfsrv.net/cdn7f/32a5fb047154723cb1cdd582b1aab6.jpg");
+    background-image: url("/img/achievements/avatars/A13_T5_Ava_ID5.jpg");
 }
 
 profile-picture.S4_A15_T5_Ava_ID6 {
-    background-image: url("//gf1.geo.gfsrv.net/cdn98/f0f86ed8ef1423e4481bcbf5121c27.jpg");
+    background-image: url("/img/achievements/avatars/A15_T5_Ava_ID6.jpg");
 }
 
 profile-picture.S6_A1_T5_Ava_ID1 {
-    background-image: url("//gf2.geo.gfsrv.net/cdnab/8344250ee2c97e8409a701f75838fb.webp");
+    background-image: url("//[hosted locally]");
 }
 
 profile-picture.S6_A2_T5_Ava_ID2 {
-    background-image: url("//gf1.geo.gfsrv.net/cdn32/443db7b03fd44acc8e491ff592a414.jpg");
+    background-image: url("/img/achievements/avatars/A2_T5_Ava_ID2.jpg");
 }
 
 profile-picture.S6_A3_T5_Ava_ID3 {
-    background-image: url("//gf2.geo.gfsrv.net/cdn1f/c727dcf39d8926f7079891bb54baea.jpg");
+    background-image: url("/img/achievements/avatars/A3_T5_Ava_ID3.jpg");
 }
 
 profile-picture.S6_A10_T5_Ava_ID4 {
-    background-image: url("//gf2.geo.gfsrv.net/cdnab/a4e5193497cd28ee43ce6f4f3f93d7.jpg");
+    background-image: url("/img/achievements/avatars/A10_T5_Ava_ID4.jpg");
 }
 
 profile-picture.S6_A13_T5_Ava_ID5 {
-    background-image: url("//gf2.geo.gfsrv.net/cdn4d/685bc9ff531b6d3c3ff140bb2d3702.jpg");
+    background-image: url("/img/achievements/avatars/A13_T5_Ava_ID5.jpg");
 }
 
 profile-picture.S6_A15_T5_Ava_ID6 {
-    background-image: url("//gf2.geo.gfsrv.net/cdn11/b99fc5032c96233463b2e54f0a5000.jpg");
+    background-image: url("/img/achievements/avatars/A15_T5_Ava_ID6.jpg");
 }
 
 profile-picture.S7_A1_T5_Ava_ID1 {
-    background-image: url("//gf3.geo.gfsrv.net/cdn26/20e8455010d2b1b9c710422eead5ce.jpg");
+    background-image: url("/img/achievements/avatars/A1_T5_Ava_ID1.jpg");
 }
 
 profile-picture.S7_A2_T5_Ava_ID2 {
-    background-image: url("//gf1.geo.gfsrv.net/cdn9a/99f210f3e02a9009718e6591a58809.jpg");
+    background-image: url("/img/achievements/avatars/A2_T5_Ava_ID2.jpg");
 }
 
 profile-picture.S7_A4_T5_Ava_ID3 {
-    background-image: url("//gf1.geo.gfsrv.net/cdnf2/600339847b74fc1599c50f1cc6a134.jpg");
+    background-image: url("/img/achievements/avatars/A4_T5_Ava_ID3.jpg");
 }
 
 profile-picture.S7_A9_T5_Ava_ID4 {
-    background-image: url("//gf3.geo.gfsrv.net/cdn20/d0bb99f299cd1cee7e40f1695ac089.jpg");
+    background-image: url("/img/achievements/avatars/A9_T5_Ava_ID4.jpg");
 }
 
 profile-picture.S7_A10_T5_Ava_ID5 {
-    background-image: url("//gf1.geo.gfsrv.net/cdnf0/99f125af632c243dd1d69b2ace7b97.jpg");
+    background-image: url("/img/achievements/avatars/A10_T5_Ava_ID5.jpg");
 }
 
 profile-picture.S7_A15_T5_Ava_ID6 {
-    background-image: url("//gf3.geo.gfsrv.net/cdn54/e537d3d97aebc2d1bdcf6d0faf9e56.jpg");
+    background-image: url("/img/achievements/avatars/A15_T5_Ava_ID6.jpg");
 }
 
 profile-picture.S8_A1_T5_Ava_ID1 {
-    background-image: url("//gf1.geo.gfsrv.net/cdn9c/1723d224be680d273b575cac82502e.jpg");
+    background-image: url("/img/achievements/avatars/A1_T5_Ava_ID1.jpg");
 }
 
 profile-picture.S8_A2_T4_Ava_ID2 {
-    background-image: url("//gf1.geo.gfsrv.net/cdn68/899325c16de0463bad09f797d59750.jpg");
+    background-image: url("/img/achievements/avatars/A2_T4_Ava_ID2.jpg");
 }
 
 profile-picture.S8_A3_T5_Ava_ID3 {
-    background-image: url("//gf1.geo.gfsrv.net/cdn6d/4bc0f27069f1e71ce90d2b87d09a9f.jpg");
+    background-image: url("/img/achievements/avatars/A3_T5_Ava_ID3.jpg");
 }
 
 profile-picture.S8_A10_T5_Ava_ID4 {
-    background-image: url("//gf3.geo.gfsrv.net/cdnbb/601cbea63a2c48bf666c24a03b62da.jpg");
+    background-image: url("/img/achievements/avatars/A10_T5_Ava_ID4.jpg");
 }
 
 profile-picture.S8_A13_T5_Ava_ID5 {
-    background-image: url("//gf1.geo.gfsrv.net/cdn3d/f3da1a4dc6925f71b109d8d4bc2c5e.jpg");
+    background-image: url("/img/achievements/avatars/A13_T5_Ava_ID5.jpg");
 }
 
 profile-picture.S8_A15_T5_Ava_ID6 {
-    background-image: url("//gf2.geo.gfsrv.net/cdn4b/4cf93285783f4c902f3f4fc6e5bbc1.jpg");
+    background-image: url("/img/achievements/avatars/A15_T5_Ava_ID6.jpg");
 }
 space-object-skin {
     display: inline-block;

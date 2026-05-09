@@ -20,6 +20,7 @@ use OGame\Services\PlanetService;
 use OGame\Services\PlayerService;
 use OGame\Services\SettingsService;
 use OGame\Services\WreckFieldService;
+use OGame\Services\AllianceClassService;
 
 /**
  * Abstract class BattleEngine.
@@ -111,7 +112,7 @@ abstract class BattleEngine
 
         // Apply General class combat research bonus (+2 levels) + Alliance Warrior class (+1 level).
         $characterClassService = app(CharacterClassService::class);
-        $allianceClassService = app(\OGame\Services\AllianceClassService::class);
+        $allianceClassService = app(AllianceClassService::class);
         $attackerCombatBonus = $characterClassService->getAdditionalCombatResearchLevels($attackerPlayer->getUser())
             + $allianceClassService->getAdditionalCombatResearchLevels($attackerPlayer->getUser());
         $defenderCombatBonus = $characterClassService->getAdditionalCombatResearchLevels($this->defenderPlanet->getPlayer()->getUser())

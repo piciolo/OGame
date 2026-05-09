@@ -14,6 +14,7 @@ use OGame\Services\PlanetService;
 use OGame\Services\PlayerService;
 use OGame\Services\ResearchQueueService;
 use OGame\ViewModels\ResearchViewModel;
+use OGame\Services\AllianceClassService;
 
 class ResearchController extends OGameController
 {
@@ -62,7 +63,7 @@ class ResearchController extends OGameController
 
         // Get character class bonus for combat research + Alliance Warrior class (+1 combat & espionage)
         $characterClassService = app(CharacterClassService::class);
-        $allianceClassService = app(\OGame\Services\AllianceClassService::class);
+        $allianceClassService = app(AllianceClassService::class);
         $combatResearchBonus = $characterClassService->getAdditionalCombatResearchLevels($player->getUser())
             + $allianceClassService->getAdditionalCombatResearchLevels($player->getUser());
         $espionageResearchBonus = $allianceClassService->getAdditionalEspionageResearchLevels($player->getUser());

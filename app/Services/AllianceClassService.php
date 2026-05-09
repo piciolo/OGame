@@ -3,6 +3,7 @@
 namespace OGame\Services;
 
 use Exception;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use OGame\Enums\AllianceClass;
 use OGame\Enums\DarkMatterTransactionType;
@@ -11,6 +12,7 @@ use OGame\Models\AllianceMember;
 use OGame\Models\Planet;
 use OGame\Models\PlanetBoost;
 use OGame\Models\User;
+use OGame\Models\AllianceRank;
 
 /**
  * AllianceClassService — primary service for Alliance Class operations.
@@ -39,7 +41,7 @@ class AllianceClassService
     ) {
     }
 
-    public function getAllianceClass(Alliance $alliance): ?AllianceClass
+    public function getAllianceClass(Alliance $alliance): AllianceClass|null
     {
         return $alliance->allianceClass();
     }
@@ -64,7 +66,7 @@ class AllianceClassService
         if ($member === null) {
             return false;
         }
-        return $member->hasPermission(\OGame\Models\AllianceRank::PERMISSION_MANAGE_CLASSES);
+        return $member->hasPermission(AllianceRank::PERMISSION_MANAGE_CLASSES);
     }
 
     /**
@@ -99,12 +101,12 @@ class AllianceClassService
     /**
      * Timestamp at which the free activation becomes available.
      */
-    public function getFreeActivationAvailableAt(Alliance $alliance): ?\Illuminate\Support\Carbon
+    public function getFreeActivationAvailableAt(Alliance $alliance): Carbon|null
     {
         if ($alliance->created_at === null) {
             return null;
         }
-        return $alliance->created_at->copy()->addDays(AllianceClass::getFreeActivationDelayDays());
+        return Carbon::instance($alliance->created_at->copy()->addDays(AllianceClass::getFreeActivationDelayDays()));
     }
 
     /**
@@ -156,7 +158,7 @@ class AllianceClassService
     //  All take a User: the user's alliance is resolved internally.
     // -----------------------------------------------------------------
 
-    private function classFor(User $user): ?AllianceClass
+    private function classFor(User $user): AllianceClass|null
     {
         if ($user->alliance_id === null) {
             return null;
@@ -188,12 +190,12 @@ class AllianceClassService
     /**
      * Returns the timestamp at which the leave-debuff expires, or null if no debuff.
      */
-    public function getLeaveDebuffExpiresAt(User $user): ?\Illuminate\Support\Carbon
+    public function getLeaveDebuffExpiresAt(User $user): Carbon|null
     {
         if ($user->alliance_left_at === null) {
             return null;
         }
-        $expires = $user->alliance_left_at->copy()->addDays(self::LEAVE_DEBUFF_DAYS);
+        $expires = Carbon::instance($user->alliance_left_at->copy()->addDays(self::LEAVE_DEBUFF_DAYS));
         return $expires->isFuture() ? $expires : null;
     }
 

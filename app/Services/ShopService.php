@@ -8,6 +8,7 @@ use OGame\Models\ShopItem;
 use OGame\Models\User;
 use OGame\Models\UserItem;
 use RuntimeException;
+use OGame\Models\ShopPurchase;
 
 class ShopService
 {
@@ -50,6 +51,7 @@ class ShopService
             $dto = $this->itemToArray($it);
             $allItems[$it->ref] = $dto;
             foreach ($it->categories as $cat) {
+                /** @var ShopCategory $cat */
                 $byCat[$cat->key][] = $dto;
             }
             $byCat[self::ALL_CATEGORY_KEY][] = $dto;
@@ -73,9 +75,6 @@ class ShopService
         ];
         $catsOut = [];
         foreach ($categories as $cat) {
-            if (in_array($cat->key, self::HIDDEN_CATEGORIES, true)) {
-                continue;
-            }
             $transKey = $catKeyToTransKey[$cat->key] ?? null;
             $name = $transKey ? __($transKey) : $cat->name;
             // Fallback: if translation key missing in current locale, __() returns
@@ -172,7 +171,7 @@ class ShopService
      * Runs in a transaction with row-level lock on the user row.
      * Persists an audit row in shop_purchases for forensics.
      */
-    public function purchase(User $user, ShopItem $item, ?string $ipAddress = null): UserItem
+    public function purchase(User $user, ShopItem $item, string|null $ipAddress = null): UserItem
     {
         return DB::transaction(function () use ($user, $item, $ipAddress) {
             /** @var User $locked */
@@ -194,7 +193,7 @@ class ShopService
             // così l'inventario li raggruppa nella tab Profilo. Differenza chiave dai
             // booster: l'attivazione NON consuma l'item (resta riusabile, vedi
             // InventoryActivationService).
-            $isProfileAvatar = (bool) $item->categories->contains(fn ($c) => $c->key === 'profilo');
+            $isProfileAvatar = (bool) $item->categories->contains(fn (ShopCategory $c) => $c->key === 'profilo');
             // Per i profile_avatar usiamo `tier = shop_item.id` come discriminante,
             // così ogni avatar diverso ha uno stack univoco nell'inventario
             // (lo stackRef è sha1(item_type:tier)).
@@ -215,7 +214,7 @@ class ShopService
                 'source_ref'      => (int) $item->id,
             ]);
 
-            \OGame\Models\ShopPurchase::create([
+            ShopPurchase::create([
                 'user_id'      => $locked->id,
                 'shop_item_id' => (int) $item->id,
                 'user_item_id' => (int) $userItem->id,

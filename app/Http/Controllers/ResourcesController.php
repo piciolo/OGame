@@ -19,6 +19,7 @@ use OGame\Services\ObjectService;
 use OGame\Services\PlayerService;
 use OGame\Services\SettingsService;
 use OGame\Services\UnitQueueService;
+use OGame\Models\PlanetBoost;
 
 class ResourcesController extends AbstractBuildingsController
 {
@@ -182,7 +183,7 @@ class ResourcesController extends AbstractBuildingsController
 
         // Inventory item bonus row (PlanetBoost amplifiers active on this planet).
         // Sum percent_bonus per resource and apply to mine production for display.
-        $activeBoosts = \OGame\Models\PlanetBoost::query()
+        $activeBoosts = PlanetBoost::query()
             ->where('planet_id', $this->planet->getPlanetId())
             ->where('expires_at', '>', now())
             ->get();

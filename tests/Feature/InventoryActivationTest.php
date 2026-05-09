@@ -32,7 +32,7 @@ class InventoryActivationTest extends AccountTestCase
         BuildingQueue::query()->where('planet_id', $this->currentPlanetId)->delete();
     }
 
-    private function grantItem(string $itemType, ?string $tier, array $payload): UserItem
+    private function grantItem(string $itemType, string|null $tier, array $payload): UserItem
     {
         $registry = config('inventory_items');
         $key = $itemType . ':' . ((string) $tier);
@@ -111,7 +111,8 @@ class InventoryActivationTest extends AccountTestCase
         $expiresBefore = (int) \DB::table('planet_boosts')
             ->where('planet_id', $this->currentPlanetId)
             ->where('resource', 'crystal')
-            ->value(\DB::raw('UNIX_TIMESTAMP(expires_at)'));
+            ->selectRaw('UNIX_TIMESTAMP(expires_at) as ts')
+            ->value('ts');
 
         // Activate second time same tier same resource
         $this->grantItem('amplifier_crystal', 'silver', ['percent' => 20, 'duration_seconds' => 604800]);
@@ -127,7 +128,8 @@ class InventoryActivationTest extends AccountTestCase
         $expiresAfter = (int) \DB::table('planet_boosts')
             ->where('planet_id', $this->currentPlanetId)
             ->where('resource', 'crystal')
-            ->value(\DB::raw('UNIX_TIMESTAMP(expires_at)'));
+            ->selectRaw('UNIX_TIMESTAMP(expires_at) as ts')
+            ->value('ts');
 
         $this->assertGreaterThan(
             $expiresBefore + (6 * 86400),
@@ -145,8 +147,8 @@ class InventoryActivationTest extends AccountTestCase
         $task->object_level_target = 5;
         $task->is_downgrade = false;
         $task->time_duration = 36000;
-        $task->time_start = $now;
-        $task->time_end = $now + 36000;
+        $task->time_start = (int) $now;
+        $task->time_end = (int) ($now + 36000);
         $task->metal = 0;
         $task->crystal = 0;
         $task->deuterium = 0;
@@ -163,7 +165,7 @@ class InventoryActivationTest extends AccountTestCase
         $this->assertTrue($r['ok'], 'activation should succeed: ' . $r['code']);
 
         $task = BuildingQueue::query()->where('planet_id', $this->currentPlanetId)->first();
-        $this->assertSame($now + 36000 - 7200, (int) $task->time_end, 'time_end must be reduced by 7200s (2h)');
+        $this->assertSame((int) ($now + 36000 - 7200), (int) $task->time_end, 'time_end must be reduced by 7200s (2h)');
     }
 
     public function testKrakenWithEmptyQueueFailsAndDoesNotConsume(): void

@@ -120,8 +120,8 @@ class AchievementProgressTracker
 
         // Highscore rank/points.
         $hs = Highscore::where('player_id', $player->getId())->first();
-        $generalRank = (int) ($hs?->general_rank ?? 0);
-        $generalPoints = (int) ($hs?->general ?? 0);
+        $generalRank = $hs !== null ? (int) $hs->general_rank : 0;
+        $generalPoints = $hs !== null ? (int) $hs->general : 0;
 
         // Spedizioni completate.
         $expeditionsDone = (int) FleetMission::where('user_id', $player->getId())

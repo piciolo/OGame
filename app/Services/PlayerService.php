@@ -20,6 +20,7 @@ use OGame\Models\User;
 use OGame\Models\UserTech;
 use RuntimeException;
 use Throwable;
+use OGame\Models\PlanetBoost;
 
 /**
  * Class PlayerService.
@@ -566,7 +567,7 @@ class PlayerService
 
         // Add inventory item bonus (Slot Flotte) — sum of active PlanetBoost rows
         // with resource='fleet_slots' across all user's planets.
-        $inventory_fleet_bonus = (int) \OGame\Models\PlanetBoost::query()
+        $inventory_fleet_bonus = (int) PlanetBoost::query()
             ->where('user_id', $this->getId())
             ->where('resource', 'fleet_slots')
             ->where('expires_at', '>', now())
@@ -623,7 +624,7 @@ class PlayerService
 
         // Add inventory item bonus (Slot Spedizioni) — sum of active PlanetBoost rows
         // with resource='expedition_slots' across all user's planets.
-        $inventory_expedition_bonus = (int) \OGame\Models\PlanetBoost::query()
+        $inventory_expedition_bonus = (int) PlanetBoost::query()
             ->where('user_id', $user->id)
             ->where('resource', 'expedition_slots')
             ->where('expires_at', '>', now())

@@ -22,7 +22,7 @@ class ShopCatalogSeeder extends Seeder
     public function run(): void
     {
         $path = database_path('seeders/data/shop_items.json');
-        $raw = json_decode(file_get_contents($path), true);
+        $raw = json_decode((string) file_get_contents($path), true);
         if (!is_array($raw) || !isset($raw['items'])) {
             $this->command->error('Invalid shop_items.json');
             return;
@@ -101,7 +101,7 @@ class ShopCatalogSeeder extends Seeder
      *   "Permanente..." -> null
      *   "ora" (standalone) -> 3600
      */
-    private function parseDurationSeconds(string $label): ?int
+    private function parseDurationSeconds(string $label): int|null
     {
         $label = trim($label);
         if ($label === '') {

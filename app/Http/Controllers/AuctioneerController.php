@@ -14,6 +14,7 @@ use OGame\Models\Planet;
 use OGame\Services\AuctioneerService;
 use OGame\Services\InventoryService;
 use OGame\Services\PlayerService;
+use OGame\Models\Setting;
 
 class AuctioneerController extends OGameController
 {
@@ -168,7 +169,7 @@ class AuctioneerController extends OGameController
     /**
      * @return array<string,mixed>
      */
-    private function serializeAuction(?Auction $auction): array
+    private function serializeAuction(Auction|null $auction): array
     {
         if ($auction === null) {
             return ['status' => 'none'];
@@ -198,7 +199,7 @@ class AuctioneerController extends OGameController
     {
         static $cache = null;
         if ($cache === null) {
-            $cache = \OGame\Models\Setting::query()
+            $cache = Setting::query()
                 ->where('key', 'like', 'auctioneer_%')
                 ->pluck('value', 'key')
                 ->all();

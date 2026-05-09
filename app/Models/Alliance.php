@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Carbon;
+use OGame\Enums\AllianceClass;
 
 /**
  *
@@ -90,12 +91,12 @@ class Alliance extends Model
     /**
      * Get the alliance class as enum (or null if no class is set).
      */
-    public function allianceClass(): ?\OGame\Enums\AllianceClass
+    public function allianceClass(): AllianceClass|null
     {
         if ($this->alliance_class === null) {
             return null;
         }
-        return \OGame\Enums\AllianceClass::tryFrom((int) $this->alliance_class);
+        return AllianceClass::tryFrom((int) $this->alliance_class);
     }
 
     /**

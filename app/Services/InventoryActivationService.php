@@ -46,7 +46,7 @@ class InventoryActivationService
      *   - moon_fields   → moon only
      *   - all other items (boosters, resources_lot, slot timers) → either
      */
-    private function getRequiredTargetType(string $itemType): ?PlanetType
+    private function getRequiredTargetType(string $itemType): PlanetType|null
     {
         if ($itemType === 'moon_fields') {
             return PlanetType::Moon;
@@ -79,7 +79,7 @@ class InventoryActivationService
     /**
      * @return array{ok:bool, code:string, item:?UserItem}
      */
-    public function activate(User $user, string $itemType, ?string $tier, int $planetId): array
+    public function activate(User $user, string $itemType, string|null $tier, int $planetId): array
     {
         // Avatar profilo (acquistati dallo shop categoria "profilo"): non sono nel
         // registry inventory_items, hanno logica dedicata che NON consuma l'item.
@@ -168,7 +168,7 @@ class InventoryActivationService
      *
      * @return array{ok:bool, code:string, item:?UserItem}
      */
-    private function activateProfileAvatar(User $user, ?string $tier): array
+    private function activateProfileAvatar(User $user, string|null $tier): array
     {
         return DB::transaction(function () use ($user, $tier) {
             /** @var UserItem|null $item */
@@ -392,7 +392,7 @@ class InventoryActivationService
      * Here we use the auctioneer payload (metal/crystal/deuterium) directly,
      * since those values are already what the auctioneer/shop awarded.
      */
-    private function applyResourcesLot(User $user, int $planetId, ?string $tier, UserItem $item): bool
+    private function applyResourcesLot(User $user, int $planetId, string|null $tier, UserItem $item): bool
     {
         $payload = (array) ($item->payload ?? []);
         $metal = (int) ($payload['metal'] ?? 0);

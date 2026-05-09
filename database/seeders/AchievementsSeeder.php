@@ -28,7 +28,7 @@ class AchievementsSeeder extends Seeder
         $real = database_path('seeders/data/achievements_extracted.json');
 
         if (!is_file($base) || !is_file($real)) {
-            $this->command?->error('Missing data files (achievements.json / achievements_extracted.json)');
+            $this->command->error('Missing data files (achievements.json / achievements_extracted.json)');
             return;
         }
 
@@ -101,6 +101,6 @@ class AchievementsSeeder extends Seeder
             }
         }
 
-        $this->command?->info('Seeded '.count($rows).' achievements (con dati reali OGame).');
+        $this->command->info('Seeded '.count($rows).' achievements (con dati reali OGame).');
     }
 }

@@ -158,10 +158,8 @@ class PlayerProfileController extends OGameController
             if ($targetPlanet === null) {
                 $targetPlanet = $currentPlayer->planets->current();
             }
-            if ($targetPlanet !== null) {
-                $targetPlanet->setSpaceObjectSkin($value);
-                $appliedTarget = $targetPlanet->getPlanetId();
-            }
+            $targetPlanet->setSpaceObjectSkin($value);
+            $appliedTarget = $targetPlanet->getPlanetId();
             $user->profile_planet_skin = $value;
         } elseif ($type === 'avatar') {
             $user->profile_avatar = $value;

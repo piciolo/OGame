@@ -27,6 +27,7 @@ use OGame\Services\OfficerService;
 use OGame\Services\PlanetService;
 use OGame\Services\PlayerService;
 use Throwable;
+use OGame\Services\AllianceClassService;
 
 class EspionageMission extends GameMission
 {
@@ -97,7 +98,7 @@ class EspionageMission extends GameMission
         $counterEspionageService = resolve(CounterEspionageService::class);
         $attackerProbeCount = $mission->espionage_probe;
         $officerService = app(OfficerService::class);
-        $allianceClassService = app(\OGame\Services\AllianceClassService::class);
+        $allianceClassService = app(AllianceClassService::class);
         $attackerEspionageLevel = $origin_planet->getPlayer()->getResearchLevel('espionage_technology')
             + $officerService->getAdditionalEspionageLevels($origin_planet->getPlayer()->getUser())
             + $officerService->getCommandingStaffEspionageLevels($origin_planet->getPlayer()->getUser())
@@ -469,7 +470,7 @@ class EspionageMission extends GameMission
 
         // TODO: Validate this does not cause issues when probing slot 16
         $officerServiceReport = app(OfficerService::class);
-        $allianceClassServiceReport = app(\OGame\Services\AllianceClassService::class);
+        $allianceClassServiceReport = app(AllianceClassService::class);
         $attackerEspionageLevel = $originPlanet->getPlayer()->getResearchLevel('espionage_technology')
             + $officerServiceReport->getAdditionalEspionageLevels($originPlanet->getPlayer()->getUser())
             + $officerServiceReport->getCommandingStaffEspionageLevels($originPlanet->getPlayer()->getUser())

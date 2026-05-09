@@ -1,6 +1,6 @@
 .border5px, #activeBuffDetails .anythingWindow { border-radius: 5px; background-clip: padding-box; }
-div.detail_screen { background-repeat: no-repeat; height: 300px; width: 654px; background-image: url("//gf1.geo.gfsrv.net/cdn95/dab435e02e060b479363268ca63b0e.gif"); z-index: 10; display: none; margin: 0px; position: absolute; top: 0px; }
-div.detail_screen.small { background-image: url("//gf1.geo.gfsrv.net/cdn99/5368907a3fd41c0a3a5bbf077fb24b.gif"); }
+div.detail_screen { background-repeat: no-repeat; height: 300px; width: 654px; background-image: url("/img/shop/ui/detail-screen-bg.gif"); z-index: 10; display: none; margin: 0px; position: absolute; top: 0px; }
+div.detail_screen.small { background-image: url("/img/shop/ui/detail-screen-small-bg.gif"); }
 .detail_screen #pic ul { list-style-type: none; }
 .detail_screen #pic .textLabel { position: absolute; text-indent: -9999px; }
 .detail_screen #content { width: 450px; height: 200px; overflow: hidden; float: left; }
@@ -12,23 +12,23 @@ div.detail_screen.small { background-image: url("//gf1.geo.gfsrv.net/cdn99/53689
 #shipyard .detail_screen #action li.demolish { top: 0px; left: 316px; }
 #defense .detail_screen #action li.demolish { top: 0px; left: 315px; }
 .build-it_wrap { float: right; margin: 0px 8px 0px 0px; }
-a.build-it, a.build-it_disabled { background: url("//gf3.geo.gfsrv.net/cdneb/f5f81e8302aaad56c958c033677fb8.png") 0px 0px no-repeat transparent; color: rgb(255, 255, 255); display: table; font-size: 16px; font-weight: bold; height: 54px; text-decoration: none; text-align: center; float: right; }
+a.build-it, a.build-it_disabled { background: url("/img/shop/ui/btn-build-it.png") 0px 0px no-repeat transparent; color: rgb(255, 255, 255); display: table; font-size: 16px; font-weight: bold; height: 54px; text-decoration: none; text-align: center; float: right; }
 a.build-it > span, a.build-it_disabled > span { display: table-cell; vertical-align: middle; width: 143px; height: 54px; }
 a.build-it_disabled { color: rgb(132, 132, 132); }
 .no-touch a.build-it:hover, a.build-it:active { background-position: 0px -54px; color: rgb(255, 255, 255); }
 a.build-it_disabled { background-position: 0px -108px; cursor: default; }
 .no-touch a.build-it_disabled:hover, a.build-it_disabled:active { background-position: 0px -108px; }
-a.build-it_premium { background: url("//gf1.geo.gfsrv.net/cdnfc/35658d707df040ae66b71215d187c1.png") 0px 0px no-repeat transparent; box-sizing: border-box; color: rgb(255, 255, 255); display: table-cell; font-size: 13px; font-weight: bold; height: 52px; padding: 0px 0px 0px 40px; text-decoration: none; text-align: center; vertical-align: middle; width: 204px; }
+a.build-it_premium { background: url("/img/shop/ui/btn-build-it-premium.png") 0px 0px no-repeat transparent; box-sizing: border-box; color: rgb(255, 255, 255); display: table-cell; font-size: 13px; font-weight: bold; height: 52px; padding: 0px 0px 0px 40px; text-decoration: none; text-align: center; vertical-align: middle; width: 204px; }
 a.build-it_premium:hover, a.build-it_premium:active { background-position: 0px -52px; color: rgb(255, 255, 255); }
 div#promotionCountdownBox a.build-it { position: static; font-weight: bold; margin: auto; }
 div#promotionCountdownBox a.build-it span { padding-top: 12px; }
 a.close_details { height: 16px; width: 16px; float: right; margin: 2px 0px 0px 5px; }
-a.close_details, a.close_details:link, a.close_details:visited { background: url("//gf3.geo.gfsrv.net/cdneb/f5f81e8302aaad56c958c033677fb8.png") -207px 0px no-repeat transparent; }
+a.close_details, a.close_details:link, a.close_details:visited { background: url("/img/shop/ui/btn-build-it.png") -207px 0px no-repeat transparent; }
 a.close_details:active, a.close_details:focus { background-position: -207px 0px; }
 a.close_details .textlabel { height: 1px; left: -9999px; overflow: hidden; position: absolute; width: 1px; }
 #RessLayer a.close_details, #rocketsilo a.close_details, #supplydepotlayer a.close_details, #jumpgate a.close_details, #sftcontainer a.close_details, #feedback a.close_details { float: right; margin: 3px 9px 0px 0px; display: inline; }
 .detail_screen a.close_details { margin: 1px; }
-#inhalt.officers .detail_screen div#description span { float: left; background: url("//gf3.geo.gfsrv.net/cdn89/b1c7ef5b1164eba44e55b7f6d25d35.gif") 100% 70% no-repeat; color: rgb(111, 159, 200); height: 17px; line-height: 17px; padding-right: 15px; text-decoration: none; width: auto; margin-right: 25px; }
+#inhalt.officers .detail_screen div#description span { float: left; background: url("/img/shop/ui/overlay-bg-anim3.gif") 100% 70% no-repeat; color: rgb(111, 159, 200); height: 17px; line-height: 17px; padding-right: 15px; text-decoration: none; width: auto; margin-right: 25px; }
 .detail_screen div#description .benefitlist, .detail_screen div#description .benefits { float: left; color: rgb(111, 159, 200); font-weight: 700; padding: 0px; }
 .detail_screen div#description .benefitlist { width: 530px; white-space: normal; line-height: 15px; }
 .detail_screen div#description .benefits { margin: 0px 0px 0px 10px; width: 100px; }
@@ -43,7 +43,7 @@ div#announcement a.close_details { margin: 0px; float: right; display: inline; }
 .item_img_box .event_active_hint { height: 25px; width: 25px; position: absolute; bottom: -4px; left: -4px; z-index: 10; }
 #activeBuffDetails .event_item_10p_discount { background-position: 25px -1px; height: 75px; width: 75px; }
 #shop #inhalt .item_img a, #activeBuffDetails .item_img a { z-index: 1; }
-button.build-it_premium { background: url("//gf1.geo.gfsrv.net/cdnfc/35658d707df040ae66b71215d187c1.png") 0px 0px no-repeat transparent; box-sizing: border-box; color: rgb(255, 255, 255); display: table-cell; font-size: 13px; font-weight: bold; height: 52px; padding: 0px 0px 0px 40px; text-decoration: none; text-align: center; vertical-align: middle; width: 204px; }
+button.build-it_premium { background: url("/img/shop/ui/btn-build-it-premium.png") 0px 0px no-repeat transparent; box-sizing: border-box; color: rgb(255, 255, 255); display: table-cell; font-size: 13px; font-weight: bold; height: 52px; padding: 0px 0px 0px 40px; text-decoration: none; text-align: center; vertical-align: middle; width: 204px; }
 button.build-it_premium:hover, button.build-it_premium:active { background-position: 0px -52px; color: rgb(255, 255, 255); }
 .allianceclass.box .build-it.deactivate { filter: hue-rotate(270deg); }
 div.anythingSlider { display: block; width: 475px; height: 390px; margin: 0px auto; overflow: hidden; }
@@ -59,7 +59,7 @@ div.anythingSlider { position: relative; padding: 0px 35px 28px; }
 .anythingBase { background: transparent; list-style: none; position: absolute; top: 0px; left: 0px; margin: 0px; padding: 0px; }
 .anythingBase .panel { background: transparent; display: block; overflow: hidden; float: left; padding: 0px; margin: 0px; }
 div.anythingSlider .arrow { background: none; top: 50%; position: absolute; display: block; }
-div.anythingSlider .arrow a { background: url("//gf3.geo.gfsrv.net/cdnb5/f49f4260ff20f815d0a6470ed55ad3.png") no-repeat; display: block; height: 180px; margin: -90px 0px 0px; width: 30px; text-align: center; outline: 0px; }
+div.anythingSlider .arrow a { background: url("/img/shop/ui/overlay-btn-close.png") no-repeat; display: block; height: 180px; margin: -90px 0px 0px; width: 30px; text-align: center; outline: 0px; }
 #buffBar div.anythingSlider .arrow a { height: 44px; width: 12px; margin: -26px 0px 0px; cursor: pointer; }
 .active_item_slider div.anythingSlider .arrow a { height: 135px; margin: -85px 0px 0px; width: 25px; }
 div.anythingSlider .arrow a span { display: block; text-indent: -9999px; }
@@ -104,7 +104,7 @@ div.anythingSlider.rtl .anythingWindow { direction: ltr; unicode-bidi: bidi-over
 #artifactshop #artifactShopTierContent .item_img .ecke { color: rgb(255, 150, 0); position: absolute; bottom: 0px; right: 0px; width: 72px; text-align: right; display: flex; justify-content: flex-end; }
 #artifactshop #artifactShopTierContent .r_common .item_img_box { background-position: -210px 0px; }
 #artifactshop #artifactShopTierContent .r_epic .item_img_box { background-position: -420px 0px; }
-#artifactshop #artifactShopTierContent .item_img_box { background: url("//gf1.geo.gfsrv.net/cdn05/40c2de12da5e952a18570b71e7a081.png") 0px 0px no-repeat; height: 105px; width: 105px; margin: 0px 0px 2px; position: relative; z-index: 10; }
+#artifactshop #artifactShopTierContent .item_img_box { background: url("/img/shop/ui/overlay-bg-item.png") 0px 0px no-repeat; height: 105px; width: 105px; margin: 0px 0px 2px; position: relative; z-index: 10; }
 div#banner_skyscraper a.close_details { position: relative; display: flex; align-items: flex-end; }
 div#banner_skyscraper a.close_details { display: flex; position: absolute; margin-top: 0px; justify-content: flex-end; z-index: 2; }
 .characterclass.box .build-it.deactivate { filter: hue-rotate(270deg); }
@@ -119,23 +119,23 @@ div#banner_skyscraper a.close_details { display: flex; position: absolute; margi
 #empireComponent .middleSliderArrows div.anythingSlider .forward a { background-position: -118px -310px; }
 #empireComponent .no-touch .middleSliderArrows div.anythingSlider .forward a:hover, #empireComponent .middleSliderArrows div.anythingSlider .forward a.hover { background-position: -148px -310px; }
 #eventHeader a.close_details { right: 5px; position: absolute; margin: 7px 30px 7px 7px; }
-#eventHeader a.close_details:link, #eventHeader a.close_details:visited, .no-touch #eventHeader a.close_details:hover, #eventHeader a.close_details:active { background: url("//gf3.geo.gfsrv.net/cdneb/f5f81e8302aaad56c958c033677fb8.png") -207px 0px no-repeat scroll transparent; }
-.no-touch #eventHeader a.close_details:hover { background: url("//gf3.geo.gfsrv.net/cdneb/f5f81e8302aaad56c958c033677fb8.png") -207px -17px no-repeat scroll transparent; }
+#eventHeader a.close_details:link, #eventHeader a.close_details:visited, .no-touch #eventHeader a.close_details:hover, #eventHeader a.close_details:active { background: url("/img/shop/ui/btn-build-it.png") -207px 0px no-repeat scroll transparent; }
+.no-touch #eventHeader a.close_details:hover { background: url("/img/shop/ui/btn-build-it.png") -207px -17px no-repeat scroll transparent; }
 #div_traderScrap div.anythingWindow li div.buildingimg { display: block; width: 80px; height: 80px; }
-#div_traderScrap div.anythingWindow li a:not(.dropdown a):link, #div_traderScrap div.anythingWindow li a:not(.dropdown a):visited { background: url("//gf2.geo.gfsrv.net/cdn42/e3d481656bab1b216428a98a2e022e.gif") no-repeat; color: rgb(255, 150, 0); text-decoration: none; }
-.no-touch #div_traderScrap div.anythingWindow li a:not(.dropdown a):hover { background: url("//gf2.geo.gfsrv.net/cdnad/85ac39e8f55c11b1634688f52030a6.gif") no-repeat; }
+#div_traderScrap div.anythingWindow li a:not(.dropdown a):link, #div_traderScrap div.anythingWindow li a:not(.dropdown a):visited { background: url("/img/shop/ui/overlay-bg-anim2.gif") no-repeat; color: rgb(255, 150, 0); text-decoration: none; }
+.no-touch #div_traderScrap div.anythingWindow li a:not(.dropdown a):hover { background: url("/img/shop/ui/overlay-spinner.gif") no-repeat; }
 #sftcontainer a.close_details { margin: -1px 8px 0px 0px; }
-#lfresearch a.build-it, #lfresearch a.build-it_disabled { background: url("//gf3.geo.gfsrv.net/cdneb/f5f81e8302aaad56c958c033677fb8.png") 0px 0px no-repeat transparent; color: rgb(255, 255, 255); display: block; font-size: 16px; font-weight: bold; height: 54px; text-decoration: none; text-align: center; width: 142px; float: none; }
+#lfresearch a.build-it, #lfresearch a.build-it_disabled { background: url("/img/shop/ui/btn-build-it.png") 0px 0px no-repeat transparent; color: rgb(255, 255, 255); display: block; font-size: 16px; font-weight: bold; height: 54px; text-decoration: none; text-align: center; width: 142px; float: none; }
 #lfresearch a.build-it > span, #lfresearch a.build-it_disabled > span { display: table-cell; vertical-align: middle; width: 143px; height: 54px; }
 #lfresearch a.build-it_disabled, #lfresearch a.build-it_disabled:hover { color: rgb(132, 132, 132); }
 #lfresearch .no-touch a.build-it:hover, #lfresearch a.build-it:active { background-position: 0px -54px; color: rgb(255, 255, 255); cursor: pointer; }
 #lfresearch a.build-it_disabled { background-position: 0px -108px; cursor: default; }
 .activePager { border: 1px solid rgb(0, 0, 0); color: rgb(255, 255, 255); background: rgb(34, 49, 59); font-weight: bold; padding: 2px 6px; }
-#officersmess .detail_screen div#description span { float: left; background: url("//gf3.geo.gfsrv.net/cdn89/b1c7ef5b1164eba44e55b7f6d25d35.gif") 100% 70% no-repeat; color: rgb(111, 159, 200); height: 17px; line-height: 17px; padding-right: 15px; text-decoration: none; width: auto; margin-right: 25px; }
+#officersmess .detail_screen div#description span { float: left; background: url("/img/shop/ui/overlay-bg-anim3.gif") 100% 70% no-repeat; color: rgb(111, 159, 200); height: 17px; line-height: 17px; padding-right: 15px; text-decoration: none; width: auto; margin-right: 25px; }
 #officersmess .detail_screen div#description .benefitlist, #officersmess .detail_screen div#description .benefits { float: left; color: rgb(111, 159, 200); font-weight: 700; padding: 0px; }
 #officersmess .detail_screen div#description .benefitlist { width: 530px; white-space: normal; line-height: 15px; }
 #detailWrapper { position: absolute; width: 650px; }
-#activeBuffDetails .sale_badge, #activeBuffDetails .sale_badge.disabled { background: url("//gf3.geo.gfsrv.net/cdnb5/f49f4260ff20f815d0a6470ed55ad3.png") no-repeat; }
+#activeBuffDetails .sale_badge, #activeBuffDetails .sale_badge.disabled { background: url("/img/shop/ui/overlay-btn-close.png") no-repeat; }
 #empire .item_img_box { border: 1px solid transparent; display: block; position: relative; opacity: 0.8; }
 #empire .r_epic .item_img_box { border-color: rgb(133, 65, 149); }
 #empire .r_buddy .item_img_box { border-color: rgb(55, 97, 142); }
@@ -144,7 +144,7 @@ div#banner_skyscraper a.close_details { display: flex; position: absolute; margi
 #buffBar .active_item.r_rare, #empire .r_rare .item_img_box { border-color: rgb(186, 127, 35); }
 #empire .r_debuff .item_img_box { border-color: rgb(153, 0, 0); }
 #detailWrapper { height: 259px; }
-#activeBuffDetails, #overview div.detail_screen { background: url("//gf3.geo.gfsrv.net/cdnb2/862bd57e5d13bfc8cd9ce0a1d72c9f.png") 0px 0px no-repeat rgb(13, 16, 20); height: 258px; width: 654px; z-index: 11; }
+#activeBuffDetails, #overview div.detail_screen { background: url("/img/shop/ui/overlay-section-bg.png") 0px 0px no-repeat rgb(13, 16, 20); height: 258px; width: 654px; z-index: 11; }
 #activeBuffDetails h2 { font: bold 12px / 16px Verdana, Arial, Helvetica, sans-serif; color: rgb(210, 157, 0); padding: 0px; margin: 0px; height: auto; width: auto; white-space: normal; }
 #activeBuffDetails .detail_screen_h2 { padding: 3px 0px 0px 40px; }
 #activeBuffDetails .shop_link { color: rgb(255, 255, 255); float: right; margin: -18px 32px 0px 0px; position: relative; text-decoration: none; }
@@ -158,18 +158,18 @@ div.values .equipment .item_img a.timeLink span.time { left: 1px; }
 #activeBuffDetails .active_item_slider .activation { width: 100%; height: 100%; display: none; }
 #activeBuffDetails .active_item_slider .activation.disabled { display: block; }
 #phalanxWrap #eventHeader a.close_details { right: 13px; position: absolute; top: 6px; }
-#phalanxWrap #eventHeader a.close_details:link, #phalanxWrap #eventHeader a.close_details:visited, .no-touch #phalanxWrap #eventHeader a.close_details:hover, #phalanxWrap #eventHeader a.close_details:active { background: url("//gf3.geo.gfsrv.net/cdneb/f5f81e8302aaad56c958c033677fb8.png") -207px 0px no-repeat scroll transparent; }
-.no-touch #phalanxWrap #eventHeader a.close_details:hover { background: url("//gf3.geo.gfsrv.net/cdneb/f5f81e8302aaad56c958c033677fb8.png") -207px -17px no-repeat scroll transparent; }
+#phalanxWrap #eventHeader a.close_details:link, #phalanxWrap #eventHeader a.close_details:visited, .no-touch #phalanxWrap #eventHeader a.close_details:hover, #phalanxWrap #eventHeader a.close_details:active { background: url("/img/shop/ui/btn-build-it.png") -207px 0px no-repeat scroll transparent; }
+.no-touch #phalanxWrap #eventHeader a.close_details:hover { background: url("/img/shop/ui/btn-build-it.png") -207px -17px no-repeat scroll transparent; }
 #shop .item_img, #activeBuffDetails .active_item_slider .item_img, div.values div.equipment .item_img { background-repeat: no-repeat; height: 75px; margin: 2px; position: relative; width: 75px; background-size: 71px; background-position: 2px 2px; display: block; float: left; }
 #empire div.values div.equipment .item_img { height: 34px; width: 34px; }
 #activeBuffDetails .active_item_slider .item_img { height: 90px; margin: 7px 0px 0px 10px; }
 #activeBuffDetails .item_img .empty { height: 75px; }
 #shop #inhalt .item_img { cursor: pointer; width: 105px; height: 105px; }
 div.values div.equipment .item_img { margin: 4px 2px 1px 1px; }
-#inhalt .item_img_box, div.values div.item_img_box { background: url("//gf1.geo.gfsrv.net/cdn9b/14e5b9c95e1eefb2700775852cdb47.png") 0px 0px no-repeat; height: 75px; margin: 0px 0px 2px; position: relative; width: 75px; z-index: 10; }
+#inhalt .item_img_box, div.values div.item_img_box { background: url("/img/shop/ui/overlay-panel-top.png") 0px 0px no-repeat; height: 75px; margin: 0px 0px 2px; position: relative; width: 75px; z-index: 10; }
 #empire div.values div.item_img_box { background: none; height: 32px; width: 32px; border-radius: 2px; }
 #shopcomponent #inhalt .item_img { background-position: center center; background-repeat: no-repeat; background-size: 100px 100px; }
-#shopcomponent #inhalt .item_img_box { background: url("//gf1.geo.gfsrv.net/cdn05/40c2de12da5e952a18570b71e7a081.png") 0px 0px no-repeat; height: 105px; width: 105px; box-shadow: rgb(0, 0, 0) 2px 2px 3px 0px; }
+#shopcomponent #inhalt .item_img_box { background: url("/img/shop/ui/overlay-bg-item.png") 0px 0px no-repeat; height: 105px; width: 105px; box-shadow: rgb(0, 0, 0) 2px 2px 3px 0px; }
 #shopcomponent #inhalt .r_epic .item_img_box { background-position: -420px 0px; }
 #shopcomponent #inhalt .r_buddy .item_img_box { background-position: -315px 0px; }
 #shopcomponent #inhalt .r_common .item_img_box { background-position: -210px 0px; }
@@ -183,20 +183,20 @@ div.values div.equipment .item_img { margin: 4px 2px 1px 1px; }
 #shopcomponent #inhalt .item_img .empty, #activeBuffDetails .item_img .empty { background: rgb(0, 0, 0); cursor: default; opacity: 0.4; }
 #shopcomponent #inhalt .item_img a, #activeBuffDetails .item_img a { color: rgb(255, 150, 0); display: block; height: 75px; position: relative; text-decoration: none; text-indent: -9999px; width: 75px; }
 #shopcomponent #inhalt .item_img a, #shopcomponent #inhalt .item_img .empty { height: 105px; width: 105px; }
-#shopcomponent .item_img a.active, .no-touch#shopcomponent .item_img a:hover { background: url("//gf1.geo.gfsrv.net/cdn3a/1f4d3d656e8c12b494296a652927f0.png") no-repeat; }
-#activeBuffDetails .item_img a.active, .no-touch #activeBuffDetails .item_img a:hover { background: url("//gf1.geo.gfsrv.net/cdnff/ce5a256cdc38d913295a8cdecbad41.png") no-repeat; }
+#shopcomponent .item_img a.active, .no-touch#shopcomponent .item_img a:hover { background: url("/img/shop/ui/overlay-item-alt.png") no-repeat; }
+#activeBuffDetails .item_img a.active, .no-touch #activeBuffDetails .item_img a:hover { background: url("/img/shop/ui/overlay-panel-alt.png") no-repeat; }
 #shopcomponent .item_img .ecke { color: rgb(255, 150, 0); position: absolute; bottom: 0px; right: 0px; width: 72px; text-align: right; }
 #shopcomponent #inhalt .item_img { cursor: pointer; width: 105px; height: 105px; }
 #shopcomponent .anythingBase .panel { display: flex; flex-wrap: wrap; gap: 6px; }
 #shopcomponent #inhalt .item_img .seasonExpiration { display: block; position: absolute; right: 3px; bottom: 20px; font-size: 16px; align-content: center; }
-div.detail_screen { background-repeat: no-repeat; height: 300px; width: 654px; background-image: url("//gf1.geo.gfsrv.net/cdn95/dab435e02e060b479363268ca63b0e.gif"); z-index: 10; display: none; margin: 0px; position: absolute; top: 0px; padding: 1px 0px 0px 3px; }
+div.detail_screen { background-repeat: no-repeat; height: 300px; width: 654px; background-image: url("/img/shop/ui/detail-screen-bg.gif"); z-index: 10; display: none; margin: 0px; position: absolute; top: 0px; padding: 1px 0px 0px 3px; }
 .detail_screen #content h2 { font: bold 12px / 22px Verdana, Arial, Helvetica, sans-serif; color: rgb(210, 157, 0); display: inline-block; float: left; height: 22px; margin: 0px 0px 0px 25px; overflow: hidden; padding-top: 0px; width: auto; }
 .build-it_wrap { float: right; bottom: 0px; position: absolute; right: 0px; margin: 8px; }
 a.build-it_disabled, a.build-it_disabled:hover { color: rgb(132, 132, 132); }
 .detail_screen a.close_details { margin: 1px 4px 0px 0px; }
 #technologydetails a.build-it_premium span, #technologydetails button.build-it_premium span { width: 100%; height: 100%; color: rgb(255, 255, 255); font-size: 14px; font-weight: bold; text-align: center; display: table-cell; vertical-align: middle; padding-left: 6px; padding-top: 2px; }
 #technologydetails button.build-it_premium:disabled span { padding-left: 48px; }
-a.build-it_premium, button.build-it_premium { background: url("//gf1.geo.gfsrv.net/cdnfc/35658d707df040ae66b71215d187c1.png") 0px 0px no-repeat transparent; box-sizing: border-box; color: rgb(255, 255, 255); display: table-cell; font-size: 13px; font-weight: bold; height: 52px; padding: 0px 0px 0px 40px; text-decoration: none; text-align: center; vertical-align: middle; width: 204px; }
+a.build-it_premium, button.build-it_premium { background: url("/img/shop/ui/btn-build-it-premium.png") 0px 0px no-repeat transparent; box-sizing: border-box; color: rgb(255, 255, 255); display: table-cell; font-size: 13px; font-weight: bold; height: 52px; padding: 0px 0px 0px 40px; text-decoration: none; text-align: center; vertical-align: middle; width: 204px; }
 a.build-it_premium:hover, a.build-it_premium:active, button.build-it_premium:hover, button.build-it_premium:active { background-position: 0px -52px; color: rgb(255, 255, 255); }
 #traderOverview .detail_screen #wrapper { margin-top: 10px; }
 #traderOverview .detail_screen #content h2 { margin: 2px 0px 0px 25px; width: auto; }
@@ -209,7 +209,7 @@ a.build-it_premium:hover, a.build-it_premium:active, button.build-it_premium:hov
 #traderOverview div.anythingSlider { float: left; padding: 0px 25px 5px 22px; }
 * + html #traderOverview div.anythingSlider { margin: 0px 0px 0px -9px; }
 #traderOverview div.anythingSlider .anythingWindow { border-left: 1px solid rgb(34, 49, 59); border-right: 1px solid rgb(34, 49, 59); border-bottom: 1px solid rgb(34, 49, 59); }
-#traderOverview div.anythingSlider .arrow a { background: url("//gf2.geo.gfsrv.net/cdnd7/8262d3e0a091b16540301a19ed6240.png") no-repeat; display: block; height: 168px; margin: -90px 0px 0px; text-align: center; outline: 0px; width: 16px; }
+#traderOverview div.anythingSlider .arrow a { background: url("/img/shop/ui/overlay-panel-side.png") no-repeat; display: block; height: 168px; margin: -90px 0px 0px; text-align: center; outline: 0px; width: 16px; }
 #traderOverview div.anythingSlider .forward a { background-position: -67px 0px; margin-right: 2px; }
 #traderOverview div.anythingSlider .back a { background-position: -18px 0px; margin-left: 4px; }
 .no-touch #traderOverview div.anythingSlider .forward a:hover, #traderOverview div.anythingSlider .forward a.hover { background-position: -83px 0px; }
@@ -224,7 +224,7 @@ a.build-it_premium:hover, a.build-it_premium:active, button.build-it_premium:hov
 #traderOverview .history_content .item_img.r_rare { border-color: rgb(186, 127, 35); }
 #activeBuffDetails .active_item_details, #activeBuffDetails .anythingWindow { background: -webkit-linear-gradient(top, rgb(28, 36, 45) 0%, rgb(16, 24, 30) 100%); }
 #shop #inhalt .item_img { background-position: center center; background-repeat: no-repeat; background-size: 100px 100px; }
-#shop #inhalt .item_img_box { background: url("//gf1.geo.gfsrv.net/cdn05/40c2de12da5e952a18570b71e7a081.png") 0px 0px no-repeat; height: 105px; width: 105px; box-shadow: rgb(0, 0, 0) 2px 2px 3px 0px; }
+#shop #inhalt .item_img_box { background: url("/img/shop/ui/overlay-bg-item.png") 0px 0px no-repeat; height: 105px; width: 105px; box-shadow: rgb(0, 0, 0) 2px 2px 3px 0px; }
 #shop #inhalt .r_epic .item_img_box { background-position: -420px 0px; }
 #shop #inhalt .r_buddy .item_img_box { background-position: -315px 0px; }
 #shop #inhalt .r_common .item_img_box { background-position: -210px 0px; }
@@ -233,14 +233,14 @@ a.build-it_premium:hover, a.build-it_premium:active, button.build-it_premium:hov
 #shop #inhalt .item_img .empty, #activeBuffDetails .item_img .empty { background: rgb(0, 0, 0); cursor: default; opacity: 0.4; }
 #shop #inhalt .item_img a, #activeBuffDetails .item_img a { color: rgb(255, 150, 0); display: block; height: 75px; position: relative; text-decoration: none; text-indent: -9999px; width: 75px; }
 #shop #inhalt .item_img a, #shop #inhalt .item_img .empty { height: 105px; width: 105px; }
-#shop .item_img a.active, .no-touch#shop .item_img a:hover { background: url("//gf1.geo.gfsrv.net/cdn3a/1f4d3d656e8c12b494296a652927f0.png") no-repeat; }
+#shop .item_img a.active, .no-touch#shop .item_img a:hover { background: url("/img/shop/ui/overlay-item-alt.png") no-repeat; }
 #activeBuffDetails .item_img .ecke, div.values .item_img .ecke { color: rgb(255, 150, 0); float: left; left: 0px; position: relative; text-align: right; top: 60px; width: 72px; }
 #shop .item_img .ecke { top: 90px; width: 100px; }
 #activeBuffDetails .sale_badge { background-position: 0px -275px; height: 25px; right: -3px; position: absolute; top: -2px; width: 25px; z-index: 1; }
 #activeBuffDetails .sale_badge.disabled { background-position: -30px -275px; }
 #shop .detail_screen #content span.level { float: right; text-align: right; width: auto; margin-right: 5px; }
 #itemDetails a.build-it .textlabel, #activeBuffDetails a.build-it .textlabel { text-shadow: rgb(23, 30, 37) 1px 1px 2px, rgb(34, 96, 0) 0px 0px 8px; }
-#itemDetails #features a.build-it.activateItem, #itemDetails #features a.build-it_disabled.activateItem, #activeBuffDetails a.build-it.activateItem, #activeBuffDetails a.build-it_disabled.activateItem { background: url("//gf3.geo.gfsrv.net/cdneb/f5f81e8302aaad56c958c033677fb8.png") 0px -188px no-repeat; font-size: 12px; height: 26px; left: auto; margin-top: 15px; position: relative; }
+#itemDetails #features a.build-it.activateItem, #itemDetails #features a.build-it_disabled.activateItem, #activeBuffDetails a.build-it.activateItem, #activeBuffDetails a.build-it_disabled.activateItem { background: url("/img/shop/ui/btn-build-it.png") 0px -188px no-repeat; font-size: 12px; height: 26px; left: auto; margin-top: 15px; position: relative; }
 #itemDetails #features a.build-it.activateItem, #activeBuffDetails a.build-it.activateItem { text-shadow: rgb(18, 43, 3) 1px 1px 2px, rgb(34, 96, 0) 0px 0px 8px; }
 #itemDetails #features a.build-it.activateItem span, #itemDetails #features a.build-it_disabled.activateItem span, #activeBuffDetails a.build-it.activateItem span, #activeBuffDetails a.build-it_disabled.activateItem span { height: 26px; }
 #activeBuffDetails a.build-it.activateItem, #activeBuffDetails a.build-it_disabled.activateItem { margin: 26px auto 0px; }

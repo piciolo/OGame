@@ -21,8 +21,8 @@ class SnapshotPlayerRanks extends Command
 
         $count = 0;
         Highscore::query()->chunkById(500, function ($highscores) use ($rankHistory, $today, &$count) {
+            /** @var iterable<Highscore> $highscores */
             foreach ($highscores as $hs) {
-                /** @var Highscore $hs */
                 foreach (HighscoreTypeEnum::cases() as $type) {
                     $rankAttr = $type->name.'_rank';
                     $pointsAttr = $type->name;

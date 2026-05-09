@@ -18,6 +18,8 @@ use OGame\Models\Enums\PlanetType;
 use OGame\Models\FleetMission;
 use OGame\Models\Planet\Coordinate;
 use OGame\Models\Resources;
+use OGame\Services\AllianceClassService;
+use OGame\GameMissions\ExpeditionMission;
 
 /**
  * Class FleetMissionService.
@@ -75,10 +77,10 @@ class FleetMissionService
         // Alliance class flight-speed bonuses (apply as duration divisors).
         // Researcher (Alliance): +10% speed when target is an expedition.
         // Warrior (Alliance): +10% speed for ACS missions between alliance members (heuristic: holding speed type).
-        $allianceClassService = app(\OGame\Services\AllianceClassService::class);
+        $allianceClassService = app(AllianceClassService::class);
         if ($mission !== null) {
             $missionUser = $fromPlanet->getPlayer()->getUser();
-            $missionType = $mission instanceof \OGame\GameMissions\ExpeditionMission ? 'expedition' : null;
+            $missionType = $mission instanceof ExpeditionMission ? 'expedition' : null;
             if ($missionType === 'expedition') {
                 $duration /= $allianceClassService->getExpeditionSpeedBonus($missionUser);
             }

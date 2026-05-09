@@ -176,7 +176,7 @@ class AuctioneerTest extends AccountTestCase
             $this->assertStringContainsString('Bid too low', $e->getMessage());
         }
 
-        $this->assertNotNull($first);
+        $this->assertInstanceOf(\OGame\Models\Auction::class, $first);
         $this->assertTrue($secondFailed, 'Second identical-points bid must fail');
         $this->assertSame(1, (int) $auction->fresh()->bid_count);
     }

@@ -40,7 +40,9 @@ class ShopServiceTest extends AccountTestCase
     public function testCatalogTuttoCountMatchesShopItemsLessLifeforms(): void
     {
         $catalog = $this->service->catalog();
-        $allCat = collect($catalog['categories'])->firstWhere('key', ShopService::ALL_CATEGORY_KEY);
+        /** @var array<int, array<string, mixed>> $categories */
+        $categories = $catalog['categories'];
+        $allCat = collect($categories)->firstWhere('key', ShopService::ALL_CATEGORY_KEY);
 
         // Lifeform variants are filtered out from catalog
         $expected = ShopItem::query()->where('name', 'not like', '%(Forme di vita)%')->count();

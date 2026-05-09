@@ -13,6 +13,7 @@ use OGame\Services\PlanetService;
 use OGame\Services\PlayerService;
 use OGame\Services\SettingsService;
 use RuntimeException;
+use OGame\Services\AllianceClassService;
 
 /**
  * Factory class for creating and caching planetService instances. A planetService can represent either a planet (PlanetType::Planet) or a moon (PlanetType::Moon).
@@ -594,7 +595,7 @@ class PlanetServiceFactory
                 $planetSizeMultiplier = $characterClassService->getPlanetSizeBonus($player->getUser());
             }
             // Alliance Researcher class: +5% planet size on colonisation (multiplicative with character class).
-            $allianceClassService = app(\OGame\Services\AllianceClassService::class);
+            $allianceClassService = app(AllianceClassService::class);
             $planetSizeMultiplier *= $allianceClassService->getPlanetSizeBonus($player->getUser());
         }
 

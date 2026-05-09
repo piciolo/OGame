@@ -27,6 +27,8 @@ use OGame\Models\UnitQueue;
 use OGame\Services\OfficerService;
 use RuntimeException;
 use Throwable;
+use OGame\Models\PlanetBoost;
+use OGame\Services\AllianceClassService;
 
 /**
  * Class PlanetService.
@@ -442,7 +444,7 @@ class PlanetService
     /**
      * Skin pianeta personalizzata (machine_name della reward Trofei) o null se default.
      */
-    public function getSpaceObjectSkin(): ?string
+    public function getSpaceObjectSkin(): string|null
     {
         $skin = $this->planet->space_object_skin ?? null;
         return is_string($skin) && $skin !== '' ? $skin : null;
@@ -451,7 +453,7 @@ class PlanetService
     /**
      * Imposta (o resetta a null) la skin pianeta. Persiste sul Planet model.
      */
-    public function setSpaceObjectSkin(?string $machineName): void
+    public function setSpaceObjectSkin(string|null $machineName): void
     {
         $this->planet->space_object_skin = $machineName;
         $this->planet->save();
@@ -2142,7 +2144,7 @@ class PlanetService
      */
     private function getActiveBoostMultipliers(): array
     {
-        $rows = \OGame\Models\PlanetBoost::query()
+        $rows = PlanetBoost::query()
             ->where('planet_id', $this->planet->id)
             ->where('expires_at', '>', now())
             ->get(['resource', 'percent_bonus']);
@@ -2198,7 +2200,7 @@ class PlanetService
         $object->production->planetService = $this;
         $object->production->playerService = $this->player;
         $object->production->characterClassService = app(CharacterClassService::class);
-        $object->production->allianceClassService = app(\OGame\Services\AllianceClassService::class);
+        $object->production->allianceClassService = app(AllianceClassService::class);
         $object->production->universe_speed = $this->settingsService->economySpeed();
 
         return $object->production->calculate($object_level, $resource_production_factor * $building_percentage);
@@ -2254,7 +2256,7 @@ class PlanetService
         $metalMine->production->planetService = $this;
         $metalMine->production->playerService = $this->player;
         $metalMine->production->characterClassService = app(CharacterClassService::class);
-        $metalMine->production->allianceClassService = app(\OGame\Services\AllianceClassService::class);
+        $metalMine->production->allianceClassService = app(AllianceClassService::class);
         $metalMine->production->universe_speed = $this->settingsService->economySpeed();
 
         return $metalMine->production->getCrawlerEnergyConsumption();
@@ -2468,7 +2470,7 @@ class PlanetService
 
         // Alliance class (Mercante / Trader): +10% capienza deposito (pianeti & lune).
         // Verified on official OGame UI s274-it: applies to both planets and moons.
-        $allianceClassService = app(\OGame\Services\AllianceClassService::class);
+        $allianceClassService = app(AllianceClassService::class);
         $storageBonus = $allianceClassService->getStorageBonus($this->player->getUser());
         if ($storageBonus > 1.0) {
             $storage_sum->metal->set((int) floor($storage_sum->metal->get() * $storageBonus));

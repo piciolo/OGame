@@ -22,7 +22,7 @@ class OfferteSpecialiSeeder extends Seeder
             $this->command->error("Missing: $path");
             return;
         }
-        $raw = json_decode(file_get_contents($path), true);
+        $raw = json_decode((string) file_get_contents($path), true);
         $extMap = $raw['extended_descriptions'] ?? [];
         $items = $raw['items'] ?? [];
 

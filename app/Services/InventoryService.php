@@ -13,6 +13,7 @@ use OGame\Models\PlanetBoost;
 use OGame\Models\ShopItem;
 use OGame\Models\User;
 use OGame\Models\UserItem;
+use OGame\Models\Planet;
 
 class InventoryService
 {
@@ -74,9 +75,9 @@ class InventoryService
             $label = $resourceLabel . ' ' . __('t_shop_items.tier_' . $tier);
 
             $shop = $shopItems[$label] ?? null;
-            $description = $shop?->description ?? '';
-            $priceLabel = $shop?->price_label ?? '—';
-            $durationLabel = $shop?->duration_label ?? '—';
+            $description = $shop !== null ? ($shop->description ?? '') : '';
+            $priceLabel = $shop !== null ? ($shop->price_label ?? '—') : '—';
+            $durationLabel = $shop !== null ? ($shop->duration_label ?? '—') : '—';
             $inventoryKey = 'amplifier_' . $b->resource . ':' . $tier;
             $inventoryCount = (int) ($invByItemTypeTier[$inventoryKey] ?? 0);
 
@@ -122,9 +123,9 @@ class InventoryService
      * Resolve the registry key for an auction lot.
      * Returns null for lots that should not go into inventory (dark matter, ships).
      */
-    public function registryKeyForAuction(Auction $auction): ?string
+    public function registryKeyForAuction(Auction $auction): string|null
     {
-        $tier = $auction->tier?->value;
+        $tier = $auction->tier->value;
 
         return match ($auction->lot_type) {
             AuctionLotType::BoosterKraken   => 'booster_kraken:' . $tier,
@@ -136,11 +137,11 @@ class InventoryService
         };
     }
 
-    private function amplifierKey(Auction $auction): ?string
+    private function amplifierKey(Auction $auction): string|null
     {
         $payload = (array) $auction->lot_payload;
         $family = $payload['resource'] ?? $payload['amplifier_family'] ?? null; // metal | crystal | deuterium | energy
-        $tier = $auction->tier?->value;
+        $tier = $auction->tier->value;
         if ($family === null || $tier === null) {
             return null;
         }
@@ -151,7 +152,7 @@ class InventoryService
      * Grant the auction prize into the winner's inventory (if applicable).
      * Dark matter and ship lots bypass inventory — handled by the auctioneer directly.
      */
-    public function grantFromAuction(User $user, Auction $auction): ?UserItem
+    public function grantFromAuction(User $user, Auction $auction): UserItem|null
     {
         $key = $this->registryKeyForAuction($auction);
         if ($key === null) {
@@ -405,7 +406,7 @@ class InventoryService
      * Resolve a registry key from raw lot data (used to match auctioneer history
      * items against inventory counts without needing a loaded Auction model).
      */
-    public function registryKeyForLot(string $lotType, string $tier, array $payload = []): ?string
+    public function registryKeyForLot(string $lotType, string $tier, array $payload = []): string|null
     {
         return match ($lotType) {
             'booster_kraken'   => 'booster_kraken:' . $tier,
@@ -422,7 +423,7 @@ class InventoryService
     /**
      * Count available items for a (item_type, tier) stack.
      */
-    public function countStack(User $user, string $itemType, ?string $tier): int
+    public function countStack(User $user, string $itemType, string|null $tier): int
     {
         return UserItem::query()
             ->where('user_id', $user->id)
@@ -436,7 +437,7 @@ class InventoryService
      * Consume (mark used) a single item from a stack. Returns true if one was consumed.
      * This is a stub for PR1 — real activation effects land in PR boost.
      */
-    public function consumeOne(User $user, string $itemType, ?string $tier): ?UserItem
+    public function consumeOne(User $user, string $itemType, string|null $tier): UserItem|null
     {
         return DB::transaction(function () use ($user, $itemType, $tier) {
             $item = UserItem::query()
@@ -548,7 +549,7 @@ class InventoryService
         return ['pages' => $pages];
     }
 
-    private function composeTooltip(array $def, ?array $payload, int $amount): string
+    private function composeTooltip(array $def, array|null $payload, int $amount): string
     {
         $title = __('t_shop_items.' . $def['title_key']);
         if (!empty($def['tier'])) {
@@ -566,7 +567,7 @@ class InventoryService
         return $title . '|' . $body;
     }
 
-    private function cleanDescription(?string $raw): string
+    private function cleanDescription(string|null $raw): string
     {
         return (string) ($raw ?? '');
     }
@@ -586,7 +587,7 @@ class InventoryService
             return $template;
         }
 
-        $planets = \OGame\Models\Planet::query()->where('user_id', $user->id)->get();
+        $planets = Planet::query()->where('user_id', $user->id)->get();
         if ($planets->isEmpty()) {
             return $template;
         }

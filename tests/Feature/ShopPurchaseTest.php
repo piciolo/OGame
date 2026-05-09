@@ -61,7 +61,7 @@ class ShopPurchaseTest extends AccountTestCase
 
         $user->refresh();
         $this->assertSame(4000, (int) $user->dark_matter, 'DM must be deducted');
-        $this->assertNotNull($userItem);
+        $this->assertInstanceOf(\OGame\Models\UserItem::class, $userItem);
         $this->assertSame('shop_item', $userItem->item_type);
         $this->assertSame((int) $item->id, (int) $userItem->source_ref);
 
