@@ -70,36 +70,39 @@ class MerchantService
     }
 
     /**
-     * Generate randomized trade rates for a merchant.
-     * Based on OGame mechanics: The resource being sold always has its maximum value.
-     * The two resources you can receive have variable rates with weighted probabilities.
+     * Generate randomized trade rates for a merchant call (OGame official mechanic).
      *
-     * Rates follow a triangular distribution:
-     * - Metal: 2.10 to 3.00 (sold resource always 3.00)
-     * - Crystal: 1.40 to 2.00 (sold resource always 2.00)
-     * - Deuterium: 0.70 to 1.00 (sold resource always 1.00)
+     * Per OGame Wiki / forum, the merchant's exchange rates form a triplet
+     * (Metal:Crystal:Deuterium) sampled uniformly between the player-favourable
+     * 3:2:1 boundary and the player-unfavourable 2:1:1 boundary:
+     *   - Metal rate     ∈ [2.00, 3.00]  uniform
+     *   - Crystal rate   ∈ [1.00, 2.00]  uniform
+     *   - Deuterium rate = 1.00          (reference, always)
      *
-     * The median rate is 2.70:1.80:0.90, with 3.00:2.00:1.00 having highest probability (14.97%).
+     * The triplet is generated ONCE per call. The player then chooses which
+     * of the 3 resources to sell ($merchantType); the other two become the
+     * "receive" options. Both the sold and the received rates are persisted
+     * so the trade math uses the actual triplet (not a static 3:2:1 fallback).
      *
      * @param string $merchantType
-     * @return array{give: string, receive: array<string, array{rate: float, display: string}>}
+     * @return array{give: string, give_rate: float, receive: array<string, array{rate: float, display: string}>}
      */
     public static function generateTradeRates(string $merchantType): array
     {
-        $rates = [];
-        $rates['give'] = $merchantType;
-        $rates['receive'] = [];
+        $triplet = self::generateRateTriplet();
+        $giveRate = $triplet[$merchantType];
 
-        // The merchant takes the specified resource type and gives the other two
-        $receiveTypes = array_diff(['metal', 'crystal', 'deuterium'], [$merchantType]);
+        $rates = [
+            'give' => $merchantType,
+            'give_rate' => $giveRate,
+            'receive' => [],
+        ];
 
-        foreach ($receiveTypes as $receiveType) {
-            // Generate a random rate using weighted triangular distribution
-            $rate = self::generateWeightedRate($receiveType);
-
+        foreach (array_diff(['metal', 'crystal', 'deuterium'], [$merchantType]) as $receiveType) {
+            $receiveRate = $triplet[$receiveType];
             $rates['receive'][$receiveType] = [
-                'rate' => round($rate, 2),  // Display with 2 decimal places
-                'display' => self::formatTradeRate($merchantType, $receiveType, $rate),
+                'rate' => $receiveRate,
+                'display' => self::formatTradeRate($merchantType, $giveRate, $receiveType, $receiveRate),
             ];
         }
 
@@ -107,76 +110,27 @@ class MerchantService
     }
 
     /**
-     * Generate a weighted random rate for a resource type.
-     * Uses triangular distribution where 3.00:2.00:1.00 has the highest probability (14.97%).
+     * Sample a (metal, crystal, deuterium) rate triplet uniformly at random
+     * within the OGame official range 2:1:1 → 3:2:1.
      *
-     * Rate ranges:
-     * - Metal: 2.10 to 3.00 (in 0.03 increments)
-     * - Crystal: 1.40 to 2.00 (in 0.02 increments)
-     * - Deuterium: 0.70 to 1.00 (in 0.01 increments)
-     *
-     * @param string $resourceType
-     * @return float
+     * @return array{metal: float, crystal: float, deuterium: float}
      */
-    private static function generateWeightedRate(string $resourceType): float
+    private static function generateRateTriplet(): array
     {
-        // Define rate ranges and increments based on resource type
-        $ranges = [
-            'metal' => ['min' => 2.10, 'max' => 3.00, 'increment' => 0.03],
-            'crystal' => ['min' => 1.40, 'max' => 2.00, 'increment' => 0.02],
-            'deuterium' => ['min' => 0.70, 'max' => 1.00, 'increment' => 0.01],
+        // mt_rand(0, 100) gives 101 discrete steps over the unit interval, matching
+        // the 0.01 granularity used by OGame in the displayed rates.
+        return [
+            'metal'     => round(2.00 + mt_rand(0, 100) / 100.0, 2),
+            'crystal'   => round(1.00 + mt_rand(0, 100) / 100.0, 2),
+            'deuterium' => 1.00,
         ];
-
-        $range = $ranges[$resourceType];
-        $min = $range['min'];
-        $max = $range['max'];
-        $increment = $range['increment'];
-
-        // Calculate number of steps
-        $steps = round(($max - $min) / $increment);
-
-        // Generate weights for triangular distribution
-        // Weights increase from 1 to (steps+1), then decrease symmetrically
-        // The maximum value has the highest weight
-        $weights = [];
-        $totalWeight = 0;
-
-        for ($i = 0; $i <= $steps; $i++) {
-            // Triangular distribution: weight increases to middle, then decreases
-            // Maximum value (at $i = $steps) gets highest weight
-            if ($i <= $steps / 2) {
-                $weight = $i + 1;
-            } else {
-                $weight = $steps - $i + 1;
-            }
-
-            // Maximum value (3.00, 2.00, 1.00) gets extra weight for 14.97% probability
-            if ($i == $steps) {
-                $weight = round($weight * 3.14);  // Boost to achieve ~15% probability
-            }
-
-            $weights[$i] = $weight;
-            $totalWeight += $weight;
-        }
-
-        // Select a random weighted index
-        $randomValue = rand(1, (int)$totalWeight);
-        $cumulativeWeight = 0;
-
-        foreach ($weights as $index => $weight) {
-            $cumulativeWeight += $weight;
-            if ($randomValue <= $cumulativeWeight) {
-                return round($min + ($index * $increment), 2);
-            }
-        }
-
-        // Fallback (should never reach here)
-        return $max;
     }
 
     /**
-     * Get the base rate for a resource type.
-     * Base rates represent relative resource values: Metal=3, Crystal=2, Deuterium=1
+     * Nominal upper-bound (3:2:1) reference rate for a resource type. Used only as a
+     * fallback when the actual triplet for an active merchant is missing from the
+     * cache (legacy callers / pre-refactor cache entries). Live trade math should
+     * always pull the rate from `trade_rates['give_rate']` and `trade_rates['receive'][*]['rate']`.
      *
      * @param string $resourceType
      * @return float
@@ -192,18 +146,20 @@ class MerchantService
     }
 
     /**
-     * Format a trade rate for display (e.g., "1,000 deuterium = 2,400 metal").
+     * Format a trade rate for display (e.g., "1,000 Metal = 1,628 Crystal").
      *
      * @param string $giveType
+     * @param float $giveRate
      * @param string $receiveType
-     * @param float $rate
+     * @param float $receiveRate
      * @return string
      */
-    private static function formatTradeRate(string $giveType, string $receiveType, float $rate): string
+    private static function formatTradeRate(string $giveType, float $giveRate, string $receiveType, float $receiveRate): string
     {
         $baseAmount = 1000;
-        $giveRate = self::getBaseRate($giveType);
-        $receiveAmount = (int)round($baseAmount * $rate / $giveRate);
+        $receiveAmount = $receiveRate > 0
+            ? (int)round($baseAmount * $giveRate / $receiveRate)
+            : 0;
 
         return number_format($baseAmount) . ' ' . ucfirst($giveType) .
                ' = ' .
@@ -263,7 +219,11 @@ class MerchantService
             ];
         }
 
-        $giveRate = self::getBaseRate($giveResource);
+        // Prefer the give_rate captured at merchant-call time (dynamic triplet). Fall back
+        // to the nominal 3:2:1 rate for legacy cache entries that predate the refactor.
+        $giveRate = isset($activeMerchant['trade_rates']['give_rate'])
+            ? (float)$activeMerchant['trade_rates']['give_rate']
+            : self::getBaseRate($giveResource);
         $currentResources = $planet->getResources();
 
         // Build per-resource trade plan: calculate give cost and cap to available storage
@@ -451,19 +411,26 @@ class MerchantService
             // Generate new rates for the same merchant type
             $newRates = self::generateTradeRates($merchantType);
 
-            // Check if new rates are better for ALL receive resources
+            // Per-component "improvement" check, preserved from pre-refactor behaviour:
+            // any rate (give_rate or any receive_rate) that comes back higher overwrites
+            // the cached one. Note this is a deliberately generous cherry-pick — it does
+            // not model true player-favourability across the whole triplet, which would
+            // require comparing (give_rate / receive_rate) per pair. A faithful rework
+            // is queued with the slider/UI work; for now we keep semantics stable.
             $improved = false;
+
+            $currentGiveRate = $currentRates['give_rate'] ?? self::getBaseRate($merchantType);
+            if ($newRates['give_rate'] > $currentGiveRate) {
+                $currentRates['give_rate'] = $newRates['give_rate'];
+                $improved = true;
+            }
+
             foreach ($newRates['receive'] as $receiveResource => $rateData) {
                 $currentRate = $currentRates['receive'][$receiveResource]['rate'] ?? 0;
-                $newRate = $rateData['rate'];
-
-                // Better rate = higher exchange rate (you get more)
-                if ($newRate > $currentRate) {
-                    $improved = true;
-                    // Update to the better rate
+                if ($rateData['rate'] > $currentRate) {
                     $currentRates['receive'][$receiveResource] = $rateData;
+                    $improved = true;
                 }
-                // If any rate is worse, keep the old rate (don't update)
             }
 
             if ($improved) {

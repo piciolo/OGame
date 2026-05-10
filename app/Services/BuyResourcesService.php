@@ -1,0 +1,246 @@
+<?php
+
+namespace OGame\Services;
+
+use Exception;
+use Illuminate\Support\Facades\DB;
+use OGame\Enums\DarkMatterTransactionType;
+use OGame\Models\Resources;
+use RuntimeException;
+
+/**
+ * Procura risorse — Resource Market "Buy Resources" tab.
+ *
+ * Replicates OGame ufficiale's productionBasedPackages mechanic: the player can spend
+ * Dark Matter to buy a package equal to up to one day of the current planet's hourly
+ * production, capped at the storage headroom of that resource on that planet. Per the
+ * OGame backend, the unit price in DM is a fixed per-resource coefficient (universe-
+ * wide constant, independent of mine level / character class / officers). The package
+ * quantity scales with production; the unit cost does not.
+ *
+ * Anti-tamper: the server ALWAYS recomputes both Q and P from authoritative planet
+ * state. Client-supplied price/quantity is never trusted — only the package_type.
+ */
+class BuyResourcesService
+{
+    /**
+     * Per-unit DM cost coefficients confirmed against the live ufficiale UI
+     * (snapshot from a real planet on s275-it: derived empirically and validated
+     * by an OGame expert as universe-wide constants for the standard OGame ratio).
+     *
+     * Future: move to a `universe_settings` table once we support per-universe pricing.
+     */
+    public const COEFFICIENTS = [
+        'metal'     => 0.153856,
+        'crystal'   => 0.650939,
+        'deuterium' => 2.477391,
+    ];
+
+    /**
+     * Minimum DM cost per buy action. Floor for tiny packages (mirrors OGame's
+     * `data-min-premium-costs="500"` attribute on the buy buttons).
+     */
+    public const MIN_COST_DM = 500;
+
+    /**
+     * Valid package keys the client may request.
+     */
+    public const PACKAGE_METAL     = 'metal';
+    public const PACKAGE_CRYSTAL   = 'crystal';
+    public const PACKAGE_DEUTERIUM = 'deuterium';
+    public const PACKAGE_ALL       = 'allLocalResources';
+
+    /**
+     * Compute a single-resource package: how much would be credited and how many DM
+     * it would cost, given the current planet's production and storage headroom.
+     *
+     * @return array{
+     *     resource: string,
+     *     amount: int,
+     *     daily_production: int,
+     *     storage_headroom: int,
+     *     is_capped: bool,
+     *     cost_dm: int,
+     *     coefficient: float
+     * }
+     */
+    public function calculatePackage(PlanetService $planet, string $resource): array
+    {
+        if (!isset(self::COEFFICIENTS[$resource])) {
+            throw new \InvalidArgumentException("Invalid resource: {$resource}");
+        }
+
+        $hourly = match ($resource) {
+            'metal'     => $planet->getMetalProductionPerHour(),
+            'crystal'   => $planet->getCrystalProductionPerHour(),
+            'deuterium' => $planet->getDeuteriumProductionPerHour(),
+        };
+        $dailyProduction = max(0, (int) floor($hourly) * 24);
+
+        $storageMax = (int) floor($planet->{$resource . 'Storage'}()->get());
+        $stockNow = (int) floor($planet->{$resource}()->get());
+        $headroom = max(0, $storageMax - $stockNow);
+
+        $amount = min($dailyProduction, $headroom);
+        $isCapped = $headroom < $dailyProduction;
+
+        $coef = self::COEFFICIENTS[$resource];
+        // Cost is always computed from the FULL daily production (not the capped amount):
+        // OGame charges the full package price even when storage forces partial delivery,
+        // matching the warning tooltip "le eccedenze non verranno immagazzinate".
+        $cost = $dailyProduction > 0
+            ? max(self::MIN_COST_DM, (int) ceil($dailyProduction * $coef))
+            : 0;
+
+        return [
+            'resource'         => $resource,
+            'amount'           => $amount,
+            'daily_production' => $dailyProduction,
+            'storage_headroom' => $headroom,
+            'is_capped'        => $isCapped,
+            'cost_dm'          => $cost,
+            'coefficient'      => $coef,
+        ];
+    }
+
+    /**
+     * Compute the "all resources" combined package.
+     *
+     * @return array{
+     *     packages: array<string, array<string, mixed>>,
+     *     total_cost_dm: int
+     * }
+     */
+    public function calculateAllPackage(PlanetService $planet): array
+    {
+        $packages = [];
+        $total = 0;
+        foreach (array_keys(self::COEFFICIENTS) as $resource) {
+            $pkg = $this->calculatePackage($planet, $resource);
+            $packages[$resource] = $pkg;
+            $total += $pkg['cost_dm'];
+        }
+
+        return [
+            'packages'      => $packages,
+            'total_cost_dm' => $total,
+        ];
+    }
+
+    /**
+     * Execute a purchase: debit DM, credit resources to the planet, atomically.
+     *
+     * Anti-tamper: any client-side $costDm or $amountRequested for a *cost* is
+     * ignored — server recomputes both Q and P from authoritative state. The
+     * client may request a *partial* package by passing $amountRequested (capped
+     * to the daily production); the cost scales linearly via `ceil(amount × coef)`.
+     *
+     * @param string|null $amountRequested  optional per-resource amount (only meaningful
+     *                                      for single-resource packages; ignored for "all")
+     * @return array{success: bool, message: string, credited?: array<string,int>, cost_dm?: int}
+     */
+    public function executePurchase(PlayerService $player, PlanetService $planet, string $package, ?int $amountRequested = null): array
+    {
+        $validPackages = [self::PACKAGE_METAL, self::PACKAGE_CRYSTAL, self::PACKAGE_DEUTERIUM, self::PACKAGE_ALL];
+        if (!in_array($package, $validPackages, true)) {
+            return [
+                'success' => false,
+                'message' => __('t_merchant.error.buy.invalid_package'),
+            ];
+        }
+
+        // Recompute server-side. For partial single-resource purchases, scale Q and
+        // recompute P from the requested amount (clamped to [1, daily_production]).
+        if ($package === self::PACKAGE_ALL) {
+            $bundle = $this->calculateAllPackage($planet);
+            $items = $bundle['packages'];
+            $totalCost = $bundle['total_cost_dm'];
+        } else {
+            $pkg = $this->calculatePackage($planet, $package);
+
+            // Partial buy: recompute amount + cost from the user-requested integer,
+            // capped at the daily production (and at storage headroom for delivery).
+            if ($amountRequested !== null && $amountRequested > 0) {
+                $coef = self::COEFFICIENTS[$package];
+                $requested = min($amountRequested, $pkg['daily_production']);
+                $deliverable = min($requested, $pkg['storage_headroom']);
+                $cost = max(self::MIN_COST_DM, (int) ceil($requested * $coef));
+                $pkg['amount'] = $deliverable;
+                $pkg['cost_dm'] = $cost;
+                $pkg['is_capped'] = $deliverable < $requested;
+            }
+
+            $items = [$package => $pkg];
+            $totalCost = $pkg['cost_dm'];
+        }
+
+        // Fast-fail when nothing can actually be delivered (e.g., zero production AND
+        // zero headroom on every entry). Charging DM for nothing would be a bug.
+        $totalAmount = array_sum(array_column($items, 'amount'));
+        if ($totalAmount <= 0 || $totalCost <= 0) {
+            return [
+                'success' => false,
+                'message' => __('t_merchant.error.buy.nothing_to_buy'),
+            ];
+        }
+
+        $user = $player->getUser();
+        if ($user->dark_matter < $totalCost) {
+            return [
+                'success' => false,
+                'message' => __('t_merchant.error.buy.insufficient_dark_matter', [
+                    'cost' => number_format($totalCost),
+                ]),
+            ];
+        }
+
+        $darkMatterService = resolve(DarkMatterService::class);
+
+        try {
+            $credited = DB::transaction(function () use ($items, $planet, $user, $totalCost, $package, $darkMatterService) {
+                // Debit DM first; throws on race-condition shortfall and rolls back the credit.
+                $darkMatterService->debit(
+                    $user,
+                    $totalCost,
+                    DarkMatterTransactionType::MERCHANT->value,
+                    'Procura risorse: ' . $package . ' on planet ' . $planet->getPlanetId()
+                );
+
+                $credited = ['metal' => 0, 'crystal' => 0, 'deuterium' => 0];
+                foreach ($items as $resource => $pkg) {
+                    if ($pkg['amount'] <= 0) {
+                        continue;
+                    }
+                    $resources = new Resources(
+                        $resource === 'metal' ? $pkg['amount'] : 0,
+                        $resource === 'crystal' ? $pkg['amount'] : 0,
+                        $resource === 'deuterium' ? $pkg['amount'] : 0
+                    );
+                    $planet->addResources($resources, true);
+                    $credited[$resource] = $pkg['amount'];
+                }
+
+                return $credited;
+            });
+        } catch (RuntimeException $e) {
+            return [
+                'success' => false,
+                'message' => __('t_merchant.error.buy.insufficient_dark_matter', [
+                    'cost' => number_format($totalCost),
+                ]),
+            ];
+        } catch (Exception $e) {
+            return [
+                'success' => false,
+                'message' => __('t_merchant.error.buy.execution_failed', ['error' => $e->getMessage()]),
+            ];
+        }
+
+        return [
+            'success'  => true,
+            'message'  => __('t_merchant.success.buy_completed'),
+            'credited' => $credited,
+            'cost_dm'  => $totalCost,
+        ];
+    }
+}

@@ -149,8 +149,8 @@
                     </div>
                     <div id="header_text" style="display: block;">
                         <h2>{{ __('t_merchant.resource_market') }}</h2>
-                        <a class="back_to_overview js_backToOverview tooltip js_hideTipOnMobile right" href="{{ route('merchant.resource-market') }}" data-tooltip-title="{{ __('t_merchant.back') }}" style="display: inline;"></a>
-                        <a class="small_back_to_overview js_backToOverview tooltip js_hideTipOnMobile" href="{{ route('merchant.resource-market') }}" data-tooltip-title="{{ __('t_merchant.back') }}"></a>
+                        <a class="back_to_overview js_backToOverview tooltip js_hideTipOnMobile right" href="javascript:void(0)" data-tooltip-title="{{ __('t_merchant.back') }}" style="display: inline;"></a>
+                        <a class="small_back_to_overview js_backToOverview tooltip js_hideTipOnMobile" href="javascript:void(0)" data-tooltip-title="{{ __('t_merchant.back') }}"></a>
                     </div>
                 </div>
                 <div class="c-left c-small" style=""></div>

@@ -145,6 +145,12 @@ return [
             'storage_full' => 'Storage is full for :resource. Cannot complete trade.',
             'execution_failed' => 'Trade execution failed: :error',
         ],
+        'buy' => [
+            'invalid_package' => 'Invalid resource package.',
+            'nothing_to_buy' => 'Nothing to buy: no production or storage is full.',
+            'insufficient_dark_matter' => 'Insufficient dark matter. You need :cost DM for this package.',
+            'execution_failed' => 'Purchase failed: :error',
+        ],
     ],
 
     // Success Messages
@@ -152,5 +158,23 @@ return [
         'merchant_dismissed' => 'Merchant dismissed.',
         'merchant_called' => 'Merchant called successfully.',
         'trade_completed' => 'Trade completed successfully.',
+        'buy_completed' => 'Resources purchased successfully.',
     ],
+
+    // "Procura risorse" tab — buy daily production with Dark Matter
+    'buy_resources' => 'Get more resources',
+    'buy_action' => 'Buy',
+    'refill_resources' => 'Refill resources?',
+    'dark_matter_short' => 'DM',
+    'buy_capped_tooltip' => 'Warning: there is not enough space in the storage. If you activate the package now, you will only receive the amount that fits the storage. Surplus resources will be lost.',
+    'buy_daily_production_title' => 'Buy a daily production directly from the merchant',
+    'buy_daily_production_desc' => 'Here you can have the resource storage of your planet refilled by up to one daily production.',
+    'cost_dm_label' => 'Cost: DM',
+    'notices' => 'Notices:',
+    'buy_notice_daily_production' => 'You are offered up to one full daily production of the active planet.',
+    'buy_notice_storage_capacity' => 'You must have enough free storage capacity. Excess resources are lost.',
+    'resource_metal' => 'Metal',
+    'resource_crystal' => 'Crystal',
+    'resource_deuterium' => 'Deuterium',
+    'resource_allLocalResources' => 'all resources',
 ];

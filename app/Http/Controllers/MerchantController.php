@@ -4,9 +4,11 @@ namespace OGame\Http\Controllers;
 
 use Exception;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use OGame\Models\Resources;
+use OGame\Services\BuyResourcesService;
 use OGame\Services\DarkMatterService;
 use OGame\Services\MerchantService;
 use OGame\Services\ObjectService;
@@ -15,10 +17,9 @@ use OGame\Services\PlayerService;
 class MerchantController extends OGameController
 {
     /**
-     * Shows the merchant index page
-     *
-     * @param PlayerService $player
-     * @return View
+     * Merchant hub — landing page that shows the 4 sub-merchant icons in a sidebar
+     * layout, matching the dev.ogamex.top look. Per project preference the user lands
+     * on this hub rather than being redirected straight into the Resource Market.
      */
     public function index(PlayerService $player): View
     {
@@ -54,7 +55,89 @@ class MerchantController extends OGameController
             'darkMatter' => $darkMatter,
             'merchantCost' => $merchantCost,
             'activeMerchant' => $activeMerchant,
+            'buyPackages' => $this->buildBuyResourcesPackages($player),
         ]);
+    }
+
+    /**
+     * AJAX partial of the resource market — returns just the body markup so the
+     * traderOverview SPA shell can swap it into #contentWrapper without reloading.
+     */
+    public function resourceMarketPartial(Request $request, PlayerService $player): View
+    {
+        $darkMatter = $player->getUser()->dark_matter;
+        $merchantCost = MerchantService::DARK_MATTER_COST;
+        $activeMerchant = cache()->get('active_merchant_' . $player->getId());
+        $buyPackages = $this->buildBuyResourcesPackages($player);
+
+        return view('ingame.merchant.partial-resource-market', [
+            'darkMatter' => $darkMatter,
+            'merchantCost' => $merchantCost,
+            'activeMerchant' => $activeMerchant,
+            'buyPackages' => $buyPackages,
+        ]);
+    }
+
+    /**
+     * Build the 4 "Procura risorse" packages (metal, crystal, deuterium, all) for the
+     * current planet, ready to be rendered in the buy-resources tab.
+     *
+     * @return array{
+     *     metal: array<string,mixed>, crystal: array<string,mixed>,
+     *     deuterium: array<string,mixed>, all: array<string,mixed>
+     * }
+     */
+    private function buildBuyResourcesPackages(PlayerService $player): array
+    {
+        $planet = $player->planets->current();
+        $service = resolve(BuyResourcesService::class);
+        $dm = (int) $player->getUser()->dark_matter;
+
+        $metal = $service->calculatePackage($planet, 'metal');
+        $crystal = $service->calculatePackage($planet, 'crystal');
+        $deuterium = $service->calculatePackage($planet, 'deuterium');
+        $all = $service->calculateAllPackage($planet);
+
+        $withDm = function (array $pkg) use ($dm): array {
+            $pkg['sufficient_dm'] = $dm >= ($pkg['cost_dm'] ?? 0);
+            return $pkg;
+        };
+
+        return [
+            'metal'     => $withDm($metal),
+            'crystal'   => $withDm($crystal),
+            'deuterium' => $withDm($deuterium),
+            'all'       => [
+                'amount'           => array_sum(array_column($all['packages'], 'amount')),
+                'is_capped'        => (bool) array_filter(array_column($all['packages'], 'is_capped')),
+                'cost_dm'          => $all['total_cost_dm'],
+                'sufficient_dm'    => $dm >= $all['total_cost_dm'],
+                'packages'         => $all['packages'],
+            ],
+        ];
+    }
+
+    /**
+     * POST endpoint: execute a Procura risorse purchase. Anti-tamper: trusts only
+     * the 'package' field; the service recomputes amount and DM cost from the
+     * authoritative planet state.
+     */
+    public function buyResources(Request $request, PlayerService $player, BuyResourcesService $service): JsonResponse
+    {
+        $package = (string) $request->input('package', '');
+        $planet = $player->planets->current();
+
+        // Optional partial-amount: client may pass `amount` to buy less than the
+        // full daily production. Only meaningful for single-resource packages.
+        // Server caps to authoritative daily production / storage headroom.
+        $amountRaw = $request->input('amount');
+        $amountRequested = ($amountRaw !== null && is_numeric($amountRaw))
+            ? max(0, (int) $amountRaw)
+            : null;
+
+        $result = $service->executePurchase($player, $planet, $package, $amountRequested);
+
+        return response()->json($result, $result['success'] ? 200 : 400);
     }
 
     /**
@@ -165,7 +248,9 @@ class MerchantController extends OGameController
                 $activeMerchant = cache()->get('active_merchant_' . $player->getId());
                 if ($activeMerchant && isset($activeMerchant['trade_rates']['receive'][$singleResource])) {
                     $receiveRate = (float)$activeMerchant['trade_rates']['receive'][$singleResource]['rate'];
-                    $giveRate = MerchantService::getBaseRate((string)$giveResource);
+                    $giveRate = isset($activeMerchant['trade_rates']['give_rate'])
+                        ? (float)$activeMerchant['trade_rates']['give_rate']
+                        : MerchantService::getBaseRate((string)$giveResource);
                     $receiveAmount = (int)floor($giveAmount * ($receiveRate / $giveRate));
                     if ($receiveAmount > 0) {
                         $sanitizedReceiveResources[$singleResource] = $receiveAmount;
@@ -332,6 +417,18 @@ class MerchantController extends OGameController
             'storageCapacity' => $storageCapacity,
             'currentResources' => $currentResources,
         ]);
+    }
+
+    /**
+     * AJAX partial of the scrap merchant — returns only the body markup so the
+     * traderOverview SPA shell can swap it into #contentWrapper without reloading.
+     * Re-uses the same data prep as scrap() by calling it directly and re-keying
+     * the resulting view to its partial counterpart.
+     */
+    public function scrapPartial(Request $request, PlayerService $player): View
+    {
+        $view = $this->scrap($request, $player);
+        return view('ingame.merchant.partial-scrap', $view->getData());
     }
 
     /**

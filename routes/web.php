@@ -185,11 +185,14 @@ Route::middleware(['auth', 'banned', 'globalgame', 'locale', 'firstlogin'])->gro
     // Misc
     Route::get('/merchant', [MerchantController::class, 'index'])->name('merchant.index');
     Route::get('/merchant/resource-market', [MerchantController::class, 'resourceMarket'])->name('merchant.resource-market');
+    Route::get('/ajax/merchant/resource-market', [MerchantController::class, 'resourceMarketPartial'])->name('merchant.resource-market.partial');
     Route::get('/merchant/market/{type}', [MerchantController::class, 'showMarket'])->name('merchant.market');
     Route::post('/merchant/call', [MerchantController::class, 'callMerchant'])->name('merchant.call');
     Route::post('/merchant/trade', [MerchantController::class, 'executeTrade'])->name('merchant.trade');
+    Route::post('/merchant/buy-resources', [MerchantController::class, 'buyResources'])->name('merchant.buy-resources');
     Route::post('/merchant/dismiss', [MerchantController::class, 'dismissMerchant'])->name('merchant.dismiss');
     Route::get('/merchant/scrap', [MerchantController::class, 'scrap'])->name('merchant.scrap');
+    Route::get('/ajax/merchant/scrap', [MerchantController::class, 'scrapPartial'])->name('merchant.scrap.partial');
     Route::post('/merchant/scrap/bargain', [MerchantController::class, 'scrapBargain'])->name('merchant.scrap.bargain');
     Route::post('/merchant/scrap/execute', [MerchantController::class, 'scrapExecute'])->name('merchant.scrap.execute');
 

@@ -2,6 +2,23 @@
 
 @section('content')
 
+    <style>
+        /* Hide the H2 visually — the sprite background of #header_text already
+           contains the section title text (see _trader-sidebar.blade.php for
+           the same rule applied to the 4 sub-merchant pages). */
+        #traderOverview #planet #header_text > h2 {
+            position: absolute !important;
+            width: 1px !important;
+            height: 1px !important;
+            padding: 0 !important;
+            margin: -1px !important;
+            overflow: hidden !important;
+            clip: rect(0, 0, 0, 0) !important;
+            white-space: nowrap !important;
+            border: 0 !important;
+        }
+    </style>
+
     @if (session('status'))
         <div class="alert alert-success">
             {{ session('status') }}
@@ -21,19 +38,23 @@
                     <div id="loadingOverlay">
                         <img src="/img/icons/4161a64a933a5345d00cb9fdaa25c7.gif" alt="load...">
                     </div>
+                    {{-- On the hub, #header_text is intentionally hidden (CSS default
+                         `display: none`): the visible chrome is the 4 trader_link cards.
+                         The header_text title sprite + back button only appear on the 4
+                         sub-merchant pages, where it acts as the section header. --}}
                     <div id="header_text">
                         <h2></h2>
-                        <a class="back_to_overview js_backToOverview tooltip js_hideTipOnMobile" href="{{ route('overview.index') }}" title="{{ __('t_merchant.back') }}"></a>
-                        <a class="small_back_to_overview js_backToOverview tooltip js_hideTipOnMobile" href="{{ route('overview.index') }}" title="{{ __('t_merchant.back') }}"></a>
+                        <a class="back_to_overview js_backToOverview tooltip js_hideTipOnMobile right" href="javascript:void(0)" data-tooltip-title="{{ __('t_merchant.back') }}"></a>
+                        <a class="small_back_to_overview js_backToOverview tooltip js_hideTipOnMobile" href="javascript:void(0)" data-tooltip-title="{{ __('t_merchant.back') }}"></a>
                     </div>
-                    <a href="{{ route('merchant.resource-market') }}" id="js_traderResources" class="js_trader trader_link tooltipLeft js_hideTipOnMobile ipiHintable" data-ipi-hint="ipiTraderResources" data-tooltip-title="{{ __('t_merchant.exchange_resources_desc') }}">
+                    <a href="{{ route('merchant.resource-market') }}" data-ajax-url="{{ route('merchant.resource-market.partial') }}" id="js_traderResources" class="js_trader trader_link tooltipLeft js_hideTipOnMobile ipiHintable ajax_nav" data-ipi-hint="ipiTraderResources" data-tooltip-title="{{ __('t_merchant.exchange_resources_desc') }}">
                         <h2>{{ __('t_merchant.resource_market') }}</h2>
                     </a>
                     <a href="{{ route('auctioneer.index') }}" data-ajax-url="{{ route('auctioneer.partial') }}" id="js_traderAuctioneer" class="js_trader trader_link tooltipRight js_hideTipOnMobile ipiHintable ajax_nav" data-ipi-hint="ipiTraderAuctioneer" data-tooltip-title="{{ __('t_merchant.auctioneer_desc') }}">
                         <h2>{{ __('t_merchant.auctioneer') }}</h2>
                     </a>
                     <br>
-                    <a href="{{ route('merchant.scrap') }}" id="js_traderScrap" class="js_trader trader_link tooltipLeft js_hideTipOnMobile ipiHintable" data-ipi-hint="ipiTraderScrap" data-tooltip-title="{{ __('t_merchant.scrap_merchant_desc') }}">
+                    <a href="{{ route('merchant.scrap') }}" data-ajax-url="{{ route('merchant.scrap.partial') }}" id="js_traderScrap" class="js_trader trader_link tooltipLeft js_hideTipOnMobile ipiHintable ajax_nav" data-ipi-hint="ipiTraderScrap" data-tooltip-title="{{ __('t_merchant.scrap_merchant_desc') }}">
                         <h2>{{ __('t_merchant.scrap_merchant') }}</h2>
                     </a>
                     <a href="{{ route('importexport.index') }}" data-ajax-url="{{ route('importexport.partial') }}" id="js_traderImportExport" class="js_trader trader_link tooltipRight js_hideTipOnMobile ipiHintable ajax_nav" data-ipi-hint="ipiTraderImportExport" data-tooltip-title="{{ __('t_merchant.import_export_desc') }}">
@@ -68,6 +89,23 @@
                 function() { $(this).addClass('importexport_link_hover'); },
                 function() { $(this).removeClass('importexport_link_hover'); }
             );
+        });
+
+        // Back-to-overview button: OGame ufficiale uses href="javascript:void(0)"
+        // with a JS-driven navigation, no extra attributes. We derive the destination
+        // from the current path: the /merchant hub returns to /overview; any other
+        // merchant-module page returns to /merchant.
+        function backToOverviewTarget() {
+            var p = window.location.pathname;
+            if (p === '/merchant' || p === '/merchant/') return '/overview';
+            return '/merchant';
+        }
+        document.addEventListener('click', function (e) {
+            const a = e.target.closest('a.js_backToOverview');
+            if (!a) return;
+            if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+            e.preventDefault();
+            window.location.href = backToOverviewTarget();
         });
 
         (function () {

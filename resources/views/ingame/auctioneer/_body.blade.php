@@ -132,9 +132,23 @@
                 </div>
                 <div id="header_text" style="display: block; background-position: 0px 0px;">
                     <h2>{{ __('t_auctioneer.title') }}</h2>
-                    <a class="back_to_overview js_backToOverview tooltip js_hideTipOnMobile left" href="{{ route('merchant.index') }}" title="{{ __('t_merchant.back') }}" style="display: inline;"></a>
-                    <a class="small_back_to_overview js_backToOverview tooltip js_hideTipOnMobile" href="{{ route('merchant.index') }}" title="{{ __('t_merchant.back') }}"></a>
+                    <a class="back_to_overview js_backToOverview tooltip js_hideTipOnMobile right" href="javascript:void(0)" data-tooltip-title="{{ __('t_merchant.back') }}" style="display: inline;"></a>
+                    <a class="small_back_to_overview js_backToOverview tooltip js_hideTipOnMobile" href="javascript:void(0)" data-tooltip-title="{{ __('t_merchant.back') }}"></a>
                 </div>
+                {{-- 4 hidden trader_link placeholders (OGame ufficiale 1:1) --}}
+                <div id="js_traderResources" class="js_trader trader_link tooltipLeft js_hideTipOnMobile ipiHintable" data-ipi-hint="ipiTraderResources" data-tooltip-title="{{ __('t_merchant.exchange_resources_desc') }}" style="display: none;">
+                    <h2>{{ __('t_merchant.resource_market') }}</h2>
+                </div>
+                <div id="js_traderAuctioneer" class="js_trader trader_link tooltipRight js_hideTipOnMobile ipiHintable" data-ipi-hint="ipiTraderAuctioneer" data-tooltip-title="{{ __('t_merchant.auctioneer_desc') }}" style="display: none;">
+                    <h2>{{ __('t_merchant.auctioneer') }}</h2>
+                </div>
+                <div id="js_traderScrap" class="js_trader trader_link tooltipLeft js_hideTipOnMobile ipiHintable" data-ipi-hint="ipiTraderScrap" data-tooltip-title="{{ __('t_merchant.scrap_merchant_desc') }}" style="display: none;">
+                    <h2>{{ __('t_merchant.scrap_merchant') }}</h2>
+                </div>
+                <div id="js_traderImportExport" class="js_trader trader_link tooltipRight js_hideTipOnMobile ipiHintable" data-ipi-hint="ipiTraderImportExport" data-tooltip-title="{{ __('t_merchant.import_export_desc') }}" style="display: none;">
+                    <h2>{{ __('t_merchant.import_export') }}</h2>
+                </div>
+                @include('ingame.merchant._merchant-handlers')
             </div>
 
             <div class="c-right c-small"></div>
