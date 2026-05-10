@@ -2190,6 +2190,18 @@ return [
         'tag_militaryHighscoreDestroyedDisplay' => '破壊したミリタリーポイント',
         'tag_militaryHighscoreLostDisplay' => '喪失したミリタリーポイント',
         'tag_honorHighscoreDisplay' => '名誉ポイント',
+        'honor' => '名誉',
+        'alliance' => '同盟',
+        'class' => 'クラス',
+        'score_total' => 'ハイスコアランキング',
+        'achievement_points' => '実績ポイント',
+        'score_economy' => 'エコノミーポイント',
+        'score_research' => 'リサーチポイント',
+        'score_military' => 'ミリタリーポイント',
+        'military_built' => '総合ミリタリーポイント',
+        'military_destroyed' => '破壊したミリタリーポイント',
+        'military_lost' => '喪失したミリタリーポイント',
+        'honor_points' => '名誉ポイント',
     ],
 
 

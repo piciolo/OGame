@@ -2190,6 +2190,18 @@ return [
         'tag_militaryHighscoreDestroyedDisplay' => 'Боевых очков уничтожено',
         'tag_militaryHighscoreLostDisplay' => 'Боевых очков потеряно',
         'tag_honorHighscoreDisplay' => 'Очки чести',
+        'honor' => 'Честь',
+        'alliance' => 'Альянс',
+        'class' => 'Класс',
+        'score_total' => 'Статистика',
+        'achievement_points' => 'Очки достижения',
+        'score_economy' => 'Экономический рейтинг',
+        'score_research' => 'Очки исследований',
+        'score_military' => 'Боевой рейтинг',
+        'military_built' => 'Боевых очков набрано',
+        'military_destroyed' => 'Боевых очков уничтожено',
+        'military_lost' => 'Боевых очков потеряно',
+        'honor_points' => 'Очки чести',
     ],
 
 

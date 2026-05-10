@@ -2512,6 +2512,18 @@ return [
         'tag_militaryHighscoreDestroyedDisplay' => 'Militaire punten vernietigd',
         'tag_militaryHighscoreLostDisplay' => 'Militaire punten verloren',
         'tag_honorHighscoreDisplay' => 'Erepunten',
+        'honor' => 'Eer',
+        'alliance' => 'Alliantie',
+        'class' => 'Klasse',
+        'score_total' => 'Highscore rang',
+        'achievement_points' => 'Prestatiepunten',
+        'score_economy' => 'Economiepunten',
+        'score_research' => 'Onderzoekspunten',
+        'score_military' => 'Militaire punten',
+        'military_built' => 'Militaire punten gebouwd',
+        'military_destroyed' => 'Militaire punten vernietigd',
+        'military_lost' => 'Militaire punten verloren',
+        'honor_points' => 'Erepunten',
     ],
 
 

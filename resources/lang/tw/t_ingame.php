@@ -2190,6 +2190,18 @@ return [
         'tag_militaryHighscoreDestroyedDisplay' => '擊毀軍事分數',
         'tag_militaryHighscoreLostDisplay' => '損失軍事分數',
         'tag_honorHighscoreDisplay' => '榮譽分數',
+        'honor' => '榮譽',
+        'alliance' => '聯盟',
+        'class' => '等級',
+        'score_total' => '排行榜排名',
+        'achievement_points' => '成就點數',
+        'score_economy' => '經濟分數',
+        'score_research' => '科技分數',
+        'score_military' => '軍事分數',
+        'military_built' => '建造軍事分數',
+        'military_destroyed' => '擊毀軍事分數',
+        'military_lost' => '損失軍事分數',
+        'honor_points' => '榮譽分數',
     ],
 
 

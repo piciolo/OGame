@@ -2190,6 +2190,18 @@ return [
         'tag_militaryHighscoreDestroyedDisplay' => 'Καταστροφή πόντων στρατού',
         'tag_militaryHighscoreLostDisplay' => 'Απώλεια πόντων στρατού',
         'tag_honorHighscoreDisplay' => 'Πόντοι τιμής (ΠΤ)',
+        'honor' => 'Τιμή',
+        'alliance' => 'Συμμαχία',
+        'class' => 'Κλάση',
+        'score_total' => 'Κατάταξη βαθμολογίας',
+        'achievement_points' => 'Πόντοι Επιτεύγματος',
+        'score_economy' => 'Πόντοι οικονομίας',
+        'score_research' => 'Βαθμοί έρευνας',
+        'score_military' => 'Εμφάνιση πόντων στρατού',
+        'military_built' => 'Δημιουργία πόντων στρατού',
+        'military_destroyed' => 'Καταστροφή πόντων στρατού',
+        'military_lost' => 'Απώλεια πόντων στρατού',
+        'honor_points' => 'Πόντοι τιμής (ΠΤ)',
     ],
 
 

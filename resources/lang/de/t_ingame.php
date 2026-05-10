@@ -2610,6 +2610,18 @@ return [
         'tag_militaryHighscoreDestroyedDisplay' => 'Militärpunkte zerstört',
         'tag_militaryHighscoreLostDisplay' => 'Militärpunkte verloren',
         'tag_honorHighscoreDisplay' => 'Ehrenpunkte',
+        'honor' => 'Ehre',
+        'alliance' => 'Allianz',
+        'class' => 'Klasse',
+        'score_total' => 'Highscoreplatz',
+        'achievement_points' => 'Achievement-Punkte',
+        'score_economy' => 'Ökonomiepunkte',
+        'score_research' => 'Forschungspunkte',
+        'score_military' => 'Militärpunkte',
+        'military_built' => 'Militärpunkte gebaut',
+        'military_destroyed' => 'Militärpunkte zerstört',
+        'military_lost' => 'Militärpunkte verloren',
+        'honor_points' => 'Ehrenpunkte',
     ],
 
 
