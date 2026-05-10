@@ -159,10 +159,36 @@ class AchievementService
 
         // Verifica se si sono completati nuovi tier.
         $tiers = $achievement->tiers->sortBy('tier');
+        $tierCount = $tiers->count();
         foreach ($tiers as $tier) {
             if ($tier->tier <= $progress->completed_tier) {
                 continue;
             }
+
+            // Tier event-based (target=0): in OGame ufficiale alcuni tier non
+            // hanno una soglia numerica ma si sbloccano al verificarsi di un
+            // evento specifico (es. scelta classe per #11, sblocco slot
+            // Forme di Vita per #50). Skip qui: vanno completati via metodo
+            // dedicato `markEventTier()` (TODO) quando l'evento si verifica.
+            if ((int) $tier->target <= 0) {
+                break;
+            }
+
+            // Meta-tier T5 con target = (tier_count - 1): in OGame il quinto
+            // grado di alcuni achievement (es. #11 Full House, #50 Voglio
+            // essere il migliore) recita "Completa dal grado 1 al grado N-1
+            // di questo Achievement". Sblocco SOLO quando completed_tier ha
+            // raggiunto N-1, indipendentemente dal newValue del tracker.
+            $isMetaTierTotal = ($tier->tier === $tierCount && (int) $tier->target === $tierCount - 1);
+            if ($isMetaTierTotal) {
+                if ($progress->completed_tier >= ($tierCount - 1)) {
+                    $this->unlockReward($player, $tier->reward_type, $tier->reward_machine_name);
+                    $progress->completed_tier = $tier->tier;
+                    $progress->completed_at = Date::now();
+                }
+                break;
+            }
+
             if ($newValue >= $tier->target) {
                 $this->unlockReward($player, $tier->reward_type, $tier->reward_machine_name);
                 $progress->completed_tier = $tier->tier;
@@ -180,9 +206,15 @@ class AchievementService
 
     /**
      * Sblocca una ricompensa generica per il giocatore.
+     *
+     * In OGame ufficiale ~36% dei tier non ha ricompense (rewardType e
+     * machineName null): in quel caso l'unlock è no-op.
      */
-    public function unlockReward(PlayerService $player, string $rewardType, string $machineName): void
+    public function unlockReward(PlayerService $player, string|null $rewardType, string|null $machineName): void
     {
+        if ($rewardType === null || $machineName === null) {
+            return;
+        }
         $now = Date::now();
         $playerId = $player->getId();
         match ($rewardType) {

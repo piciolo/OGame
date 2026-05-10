@@ -62,6 +62,7 @@ class AchievementProgressTracker
         $planetsCount = 0;
         $moonsCount = 0;
         $totalResources = 0;
+        $totalMissiles = 0;
 
         $buildings = [
             'metal_mine', 'crystal_mine', 'deuterium_synthesizer',
@@ -100,9 +101,23 @@ class AchievementProgressTracker
                     // Ship machine_name non valido in questo build OGameX → ignora.
                 }
             }
-            // Risorse correnti (proxy "well_equipped" senza event tracking).
+            // Risorse correnti (currently unused for any achievement metric;
+            // kept available if needed in future).
             $resources = $planetSvc->getResources();
             $totalResources += (int) $resources->sum();
+
+            // Missili (per #19 Ben equipaggiato): OGame ufficiale richiede
+            // "Disponi di Missile" — contiamo sia i Missili interplanetari
+            // sia gli ABM. T1-T2 chiedono per-pianeta, T3-T5 totale: usiamo
+            // il totale per coerenza con il modello stateless attuale (T1-T2
+            // saranno leggermente più lenti che in OGame).
+            foreach (['interplanetary_missile', 'anti_ballistic_missile'] as $m) {
+                try {
+                    $totalMissiles += $planetSvc->getObjectAmount($m);
+                } catch (Throwable $e) {
+                    // Defense object non riconosciuto, ignora.
+                }
+            }
         }
 
         // Ricerca: livelli di tech.
@@ -137,7 +152,7 @@ class AchievementProgressTracker
             'planet_expansion' => $planetsCount,
             'moon_walk' => $moonsCount,
             'full_house' => $totalBuildings,
-            'well_equipped' => $totalResources,
+            'well_equipped' => $totalMissiles,
             'magnetism' => $maxBuildLevels['metal_mine'] ?? 0,
             'crystal_magic' => $maxBuildLevels['crystal_mine'] ?? 0,
             'fusion_fan' => $maxBuildLevels['deuterium_synthesizer'] ?? 0,
