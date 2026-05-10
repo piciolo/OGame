@@ -254,6 +254,13 @@
                 'data-sufficient-dark-matter': sufficient ? '1' : '0'
             });
 
+            // Revert any prior "Acquista la Materia Oscura" upsell state if the user
+            // has now edited the amount down to something they can afford.
+            if (sufficient && $btn.hasClass('btn_premium')) {
+                $btn.removeClass('btn_premium small').addClass('btn_blue')
+                    .text(@json(__('t_merchant.refill_resources')));
+            }
+
             $box.find('.fillup_cost .premium_txt').text(formatTh(cost));
             $box.toggleClass('disabled', requested <= 0 || !sufficient);
         }
@@ -262,23 +269,39 @@
             recomputeBox($(this).closest('.roundBox.fillup'));
         });
 
-        // Buy click — server is the source of truth: we send only the package_type
-        // and the user-requested amount; the server recomputes cost and refuses if
-        // unaffordable, ignoring any client-supplied price.
+        // OGame ufficiale upsell flow: when DM is insufficient, the first click on
+        // the "Riempire risorse?" button (btn_blue) morphs it into a "Acquista la
+        // Materia Oscura" CTA (btn_premium small). A second click then navigates to
+        // the premium shop with showDarkMatter=1. Mirrors the live behaviour.
+        var BUY_DM_URL = @json(route('premium.index', ['showDarkMatter' => 1]));
+
         $(document).on('click', '.js_buyResourceBtn', function (e) {
             e.preventDefault();
             var $btn = $(this);
-            if ($btn.closest('.roundBox').hasClass('disabled')) return;
+            var $box = $btn.closest('.roundBox.fillup');
+
+            // OGame ufficiale: the .disabled class on the box is visual styling
+            // (greyed-out look when DM is insufficient or storage is capped) but the
+            // click is NOT blocked. We only short-circuit when there is genuinely
+            // nothing to deliver (zero daily production), otherwise we route through
+            // the buy / upsell logic below.
+            var dailyProd = parseInt0($box.find('input').first().attr('data-daily-production'));
+            if (dailyProd <= 0) return;
+
+            // Already morphed into the "Acquista MO" CTA? Second click → shop.
+            if ($btn.hasClass('btn_premium') && $btn.hasClass('small')) {
+                window.location.href = BUY_DM_URL;
+                return;
+            }
+
+            // First click with insufficient DM → morph into upsell CTA, no purchase.
             if ($btn.attr('data-sufficient-dark-matter') !== '1') {
-                if (typeof errorBoxNotify === 'function') {
-                    errorBoxNotify(LocalizationStrings.error,
-                        @json(__('t_merchant.error.buy.insufficient_dark_matter', ['cost' => '?'])));
-                }
+                $btn.removeClass('btn_blue').addClass('btn_premium small')
+                    .text(@json(__('t_merchant.buy_dark_matter')));
                 return;
             }
 
             var packageType = $btn.attr('data-package-type');
-            var $box = $btn.closest('.roundBox.fillup');
             var data = { package: packageType, _token: '{{ csrf_token() }}' };
 
             // For single-resource packages, send the user-edited amount so the
