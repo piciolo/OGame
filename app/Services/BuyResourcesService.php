@@ -145,6 +145,7 @@ class BuyResourcesService
         if (!in_array($package, $validPackages, true)) {
             return [
                 'success' => false,
+                'code' => 'invalid_package',
                 'message' => __('t_merchant.error.buy.invalid_package'),
             ];
         }
@@ -155,16 +156,22 @@ class BuyResourcesService
             $bundle = $this->calculateAllPackage($planet);
             $items = $bundle['packages'];
             $totalCost = $bundle['total_cost_dm'];
+            $totalDailyProduction = (int) array_sum(array_column($items, 'daily_production'));
         } else {
             $pkg = $this->calculatePackage($planet, $package);
 
-            // Partial buy: recompute amount + cost from the user-requested integer,
-            // capped at the daily production (and at storage headroom for delivery).
+            // Partial buy: recompute amount + cost from the user-requested integer.
+            // Cost is based on the REQUESTED amount (mirror OGame: pay for what you
+            // ask, even if storage can't fit it all). Deliverable caps the credited
+            // resources. The client cap min($requested, daily_production) is also
+            // enforced server-side as a sanity guard.
             if ($amountRequested !== null && $amountRequested > 0) {
                 $coef = self::COEFFICIENTS[$package];
                 $requested = min($amountRequested, $pkg['daily_production']);
                 $deliverable = min($requested, $pkg['storage_headroom']);
-                $cost = max(self::MIN_COST_DM, (int) ceil($requested * $coef));
+                $cost = $requested > 0
+                    ? max(self::MIN_COST_DM, (int) ceil($requested * $coef))
+                    : 0;
                 $pkg['amount'] = $deliverable;
                 $pkg['cost_dm'] = $cost;
                 $pkg['is_capped'] = $deliverable < $requested;
@@ -172,14 +179,34 @@ class BuyResourcesService
 
             $items = [$package => $pkg];
             $totalCost = $pkg['cost_dm'];
+            $totalDailyProduction = (int) $pkg['daily_production'];
         }
 
-        // Fast-fail when nothing can actually be delivered (e.g., zero production AND
-        // zero headroom on every entry). Charging DM for nothing would be a bug.
-        $totalAmount = array_sum(array_column($items, 'amount'));
-        if ($totalAmount <= 0 || $totalCost <= 0) {
+        // Differentiate the failure modes so the client can react appropriately
+        // (e.g., trigger the "Acquista la Materia Oscura" upsell on insufficient DM).
+        if ($totalDailyProduction <= 0) {
             return [
                 'success' => false,
+                'code' => 'no_production',
+                'message' => __('t_merchant.error.buy.no_production'),
+            ];
+        }
+
+        $totalAmount = array_sum(array_column($items, 'amount'));
+        if ($totalAmount <= 0) {
+            return [
+                'success' => false,
+                'code' => 'storage_full',
+                'message' => __('t_merchant.error.buy.storage_full'),
+            ];
+        }
+
+        if ($totalCost <= 0) {
+            // Defensive: should not happen given the checks above, but keep a
+            // dedicated branch so we never silently charge nothing.
+            return [
+                'success' => false,
+                'code' => 'nothing_to_buy',
                 'message' => __('t_merchant.error.buy.nothing_to_buy'),
             ];
         }
@@ -188,6 +215,7 @@ class BuyResourcesService
         if ($user->dark_matter < $totalCost) {
             return [
                 'success' => false,
+                'code' => 'insufficient_dark_matter',
                 'message' => __('t_merchant.error.buy.insufficient_dark_matter', [
                     'cost' => number_format($totalCost),
                 ]),

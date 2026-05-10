@@ -265,9 +265,26 @@
             $box.toggleClass('disabled', requested <= 0 || !sufficient);
         }
 
+        // Lock the input when the box has zero daily production: there is nothing
+        // to size, so leaving it editable would just confuse the user. The "all"
+        // bundle and the deuterium-of-no-fusion case both fall here.
+        $('#tabs-buyResource .resource_name input').each(function () {
+            var $i = $(this);
+            var daily = parseInt0($i.attr('data-daily-production'));
+            if (daily <= 0) $i.prop('readonly', true);
+        });
+
         $(document).on('input change', '#tabs-buyResource .resource_name input', function () {
             recomputeBox($(this).closest('.roundBox.fillup'));
         });
+
+        // Helper: morph a btn_blue button into the "Acquista la Materia Oscura"
+        // upsell CTA. Idempotent — calling it on an already-morphed button is a no-op.
+        function morphToUpsell($btn) {
+            if ($btn.hasClass('btn_premium') && $btn.hasClass('small')) return;
+            $btn.removeClass('btn_blue').addClass('btn_premium small')
+                .text(@json(__('t_merchant.buy_dark_matter')));
+        }
 
         // OGame ufficiale upsell flow: when DM is insufficient, the first click on
         // the "Riempire risorse?" button (btn_blue) morphs it into a "Acquista la
@@ -296,8 +313,7 @@
 
             // First click with insufficient DM → morph into upsell CTA, no purchase.
             if ($btn.attr('data-sufficient-dark-matter') !== '1') {
-                $btn.removeClass('btn_blue').addClass('btn_premium small')
-                    .text(@json(__('t_merchant.buy_dark_matter')));
+                morphToUpsell($btn);
                 return;
             }
 
@@ -354,7 +370,16 @@
                     }
                 },
                 error: function (xhr) {
-                    var msg = (xhr.responseJSON && xhr.responseJSON.message) ||
+                    var resp = xhr.responseJSON || {};
+                    // Server detected insufficient DM (e.g., DM dropped between the
+                    // page render and the click). Trigger the upsell morph instead
+                    // of showing a toast — matches OGame ufficiale behaviour.
+                    if (resp.code === 'insufficient_dark_matter') {
+                        $btn.attr('data-sufficient-dark-matter', '0').removeClass('disabled');
+                        morphToUpsell($btn);
+                        return;
+                    }
+                    var msg = resp.message ||
                               @json(__('t_merchant.error.buy.execution_failed', ['error' => '']));
                     if (typeof errorBoxNotify === 'function') {
                         errorBoxNotify(LocalizationStrings.error, msg);

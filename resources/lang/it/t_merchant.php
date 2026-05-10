@@ -137,6 +137,8 @@ return [
         ],
         'buy' => [
             'invalid_package'           => 'Pacchetto risorsa non valido.',
+            'no_production'             => 'Nessuna produzione su questo pianeta per questa risorsa.',
+            'storage_full'              => 'Deposito pieno: nessuno spazio disponibile per questa risorsa.',
             'nothing_to_buy'            => 'Niente da acquistare: nessuna produzione o deposito pieno.',
             'insufficient_dark_matter'  => 'Materia Oscura insufficiente. Servono :cost MO per questo pacchetto.',
             'execution_failed'          => 'Acquisto fallito: :error',

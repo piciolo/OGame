@@ -147,6 +147,8 @@ return [
         ],
         'buy' => [
             'invalid_package' => 'Invalid resource package.',
+            'no_production' => 'This planet has no production of that resource.',
+            'storage_full' => 'Storage is full: no space available for this resource.',
             'nothing_to_buy' => 'Nothing to buy: no production or storage is full.',
             'insufficient_dark_matter' => 'Insufficient dark matter. You need :cost DM for this package.',
             'execution_failed' => 'Purchase failed: :error',
