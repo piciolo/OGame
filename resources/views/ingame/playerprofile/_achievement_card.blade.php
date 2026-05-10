@@ -50,7 +50,17 @@
                     </div>
                     <div class="achievementTierContainerData">
                         <div class="achievementTierStatus">
-                            <div class="description">{{ $tier->description_text ?: __($achievement->description_key) }}</div>
+                            @php
+                                // Per-tier description key (es. t_ingame.achievements.desc_well_equipped_t1)
+                                // Sorgente: scraping live OGame multi-lingua (27 lingue × 51 ach × 5 tier)
+                                $tierDescKey = 't_ingame.achievements.desc_' . $achievement->machine_name . '_t' . $tier->tier;
+                                $tierDescTrans = __($tierDescKey);
+                                // Fallback: se la lang key per-tier non esiste, usa description_text (DB) o description_key generica
+                                $tierDesc = ($tierDescTrans !== $tierDescKey)
+                                    ? $tierDescTrans
+                                    : ($tier->description_text ?: __($achievement->description_key));
+                            @endphp
+                            <div class="description">{{ $tierDesc }}</div>
                             <div style="display: flex; justify-content: space-between;">
                                 <div class="unlockedOrProgress">
                                     <div class="progressParent" style="margin-bottom: 5px;">
