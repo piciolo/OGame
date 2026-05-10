@@ -106,8 +106,15 @@
                         </profile-picture>
                         <div class="rewardDescription">{{ __('t_ingame.achievements.reward_avatar') }}</div>
                     @else
+                        @php
+                            // Per-tier title text key (es. t_ingame.achievements.title_progress_base_t4)
+                            // Sorgente: scraping live OGame multi-lingua (27 lang × ~59 titoli)
+                            $tTitleKey = 't_ingame.achievements.title_' . $achievement->machine_name . '_t' . $tier->tier;
+                            $tTitleTrans = __($tTitleKey);
+                            $tTitle = ($tTitleTrans !== $tTitleKey) ? $tTitleTrans : ($tier->title_text ?: '');
+                        @endphp
                         <div sq100 class="rewardTypeTitleContainer {{ $tierUnlocked ? '' : 'locked' }}">
-                            <div class="rewardTypeTitle" lang="it">{{ $tier->title_text ?: '' }}</div>
+                            <div class="rewardTypeTitle">{{ $tTitle }}</div>
                         </div>
                         <div class="rewardDescription">{{ __('t_ingame.achievements.reward_title') }}</div>
                     @endif
