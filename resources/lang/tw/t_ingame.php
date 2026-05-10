@@ -2178,6 +2178,7 @@ return [
         'tab_achievements' => '成就',
         'global_profile' => '全球檔案',
         'tag_playerTitle' => '標題',
+        'no_title' => '標題:',
         'tag_honorDisplay' => '榮譽',
         'tag_allianceDisplay' => '聯盟',
         'tag_characterClassDisplay' => '等級',

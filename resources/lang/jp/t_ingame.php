@@ -2178,6 +2178,7 @@ return [
         'tab_achievements' => '実績',
         'global_profile' => 'グローバルプロフィール',
         'tag_playerTitle' => '称号',
+        'no_title' => '称号:',
         'tag_honorDisplay' => '名誉',
         'tag_allianceDisplay' => '同盟',
         'tag_characterClassDisplay' => 'クラス',

@@ -2178,6 +2178,7 @@ return [
         'tab_achievements' => 'Επιτεύγματα',
         'global_profile' => 'Παγκόσμιο προφίλ',
         'tag_playerTitle' => 'Τίτλος',
+        'no_title' => 'Τίτλος:',
         'tag_honorDisplay' => 'Τιμή',
         'tag_allianceDisplay' => 'Συμμαχία',
         'tag_characterClassDisplay' => 'Κλάση',

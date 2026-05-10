@@ -2598,6 +2598,7 @@ return [
         'tab_achievements' => 'Achievements',
         'global_profile' => 'Globales Profil',
         'tag_playerTitle' => 'Titel',
+        'no_title' => 'Titel:',
         'tag_honorDisplay' => 'Ehre',
         'tag_allianceDisplay' => 'Allianz',
         'tag_characterClassDisplay' => 'Klasse',

@@ -2178,6 +2178,7 @@ return [
         'tab_achievements' => 'Достижения',
         'global_profile' => 'Глобальный профиль',
         'tag_playerTitle' => 'Титул',
+        'no_title' => 'Титул:',
         'tag_honorDisplay' => 'Честь',
         'tag_allianceDisplay' => 'Альянс',
         'tag_characterClassDisplay' => 'Класс',

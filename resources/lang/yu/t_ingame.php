@@ -2178,6 +2178,7 @@ return [
         'tab_achievements' => 'Postignuća',
         'global_profile' => 'Globalni Profil',
         'tag_playerTitle' => 'Titula',
+        'no_title' => 'Titula:',
         'tag_honorDisplay' => 'Čast',
         'tag_allianceDisplay' => 'Savez',
         'tag_characterClassDisplay' => 'Klasa',

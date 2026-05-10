@@ -2500,6 +2500,7 @@ return [
         'tab_achievements' => 'Prestaties',
         'global_profile' => 'Globaal Profiel',
         'tag_playerTitle' => 'Titel',
+        'no_title' => 'Titel:',
         'tag_honorDisplay' => 'Eer',
         'tag_allianceDisplay' => 'Alliantie',
         'tag_characterClassDisplay' => 'Klasse',
