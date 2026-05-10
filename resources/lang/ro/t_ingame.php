@@ -2173,4 +2173,24 @@ Simulare de luptă salvare sloturi +20',
 
     ],
 
+    'profile' => [
+        'tab_profile' => 'Profil',
+        'tab_achievements' => 'Realizări',
+        'global_profile' => 'Profil Global',
+        'tag_playerTitle' => 'Titlu',
+        'tag_honorDisplay' => 'Onoare',
+        'tag_allianceDisplay' => 'Alianta',
+        'tag_characterClassDisplay' => 'Clasă',
+        'tag_totalHighscoreDisplay' => 'Rang Maxim',
+        'tag_achievementPointsDisplay' => 'Puncte Realizări',
+        'tag_economyHighscoreDisplay' => 'Puncte de economie',
+        'tag_researchHighscoreDisplay' => 'Puncte cercetari',
+        'tag_militaryHighscoreDisplay' => 'Puncte militare',
+        'tag_militaryHighscoreBuildDisplay' => 'Puncte de armata',
+        'tag_militaryHighscoreDestroyedDisplay' => 'Puncte de armata distrusa',
+        'tag_militaryHighscoreLostDisplay' => 'Puncte de armata pierdute',
+        'tag_honorHighscoreDisplay' => 'Puncte de Onoare',
+    ],
+
+
 ];

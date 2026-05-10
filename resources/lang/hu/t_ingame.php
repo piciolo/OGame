@@ -2173,4 +2173,24 @@ Harci szimuláció mentési helyek +20',
 
     ],
 
+    'profile' => [
+        'tab_profile' => 'Profil',
+        'tab_achievements' => 'Teljesítmények',
+        'global_profile' => 'Globális profil',
+        'tag_playerTitle' => 'Cím',
+        'tag_honorDisplay' => 'Becsület',
+        'tag_allianceDisplay' => 'Szövetség',
+        'tag_characterClassDisplay' => 'Osztály',
+        'tag_totalHighscoreDisplay' => 'Toplista',
+        'tag_achievementPointsDisplay' => 'Teljesítménypontok',
+        'tag_economyHighscoreDisplay' => 'Gazdasági pontok',
+        'tag_researchHighscoreDisplay' => 'Kutatás pontok',
+        'tag_militaryHighscoreDisplay' => 'Hadi pontok',
+        'tag_militaryHighscoreBuildDisplay' => 'Épített hadsereg pontok',
+        'tag_militaryHighscoreDestroyedDisplay' => 'Megsemmisített hadi pontok',
+        'tag_militaryHighscoreLostDisplay' => 'Elvesztett hadi pontok',
+        'tag_honorHighscoreDisplay' => 'Becsületpont',
+    ],
+
+
 ];

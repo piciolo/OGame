@@ -2173,4 +2173,24 @@ Espacios para guardar simulación de combate +20',
 
     ],
 
+    'profile' => [
+        'tab_profile' => 'Perfil',
+        'tab_achievements' => 'Logros',
+        'global_profile' => 'Perfil global',
+        'tag_playerTitle' => 'Título',
+        'tag_honorDisplay' => 'Gloria',
+        'tag_allianceDisplay' => 'Alianza',
+        'tag_characterClassDisplay' => 'Clase',
+        'tag_totalHighscoreDisplay' => 'Clasificación',
+        'tag_achievementPointsDisplay' => 'Puntos de logro',
+        'tag_economyHighscoreDisplay' => 'Puntos de economía',
+        'tag_researchHighscoreDisplay' => 'Puntos de investigación',
+        'tag_militaryHighscoreDisplay' => 'Puntos militares construidos',
+        'tag_militaryHighscoreBuildDisplay' => 'Puntos militares construidos',
+        'tag_militaryHighscoreDestroyedDisplay' => 'Puntos militares destruidos',
+        'tag_militaryHighscoreLostDisplay' => 'Puntos militares perdidos',
+        'tag_honorHighscoreDisplay' => 'Puntos de honor',
+    ],
+
+
 ];

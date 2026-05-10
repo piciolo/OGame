@@ -2173,4 +2173,24 @@ Emplacements de sauvegarde de simulation de combat +20',
 
     ],
 
+    'profile' => [
+        'tab_profile' => 'Profil',
+        'tab_achievements' => 'Succès',
+        'global_profile' => 'Profil global',
+        'tag_playerTitle' => 'Titre',
+        'tag_honorDisplay' => 'Honneur',
+        'tag_allianceDisplay' => 'Alliance',
+        'tag_characterClassDisplay' => 'Classe',
+        'tag_totalHighscoreDisplay' => 'Place dans le classement',
+        'tag_achievementPointsDisplay' => 'Points de succès',
+        'tag_economyHighscoreDisplay' => 'Points commerciaux',
+        'tag_researchHighscoreDisplay' => 'Points de recherche',
+        'tag_militaryHighscoreDisplay' => 'Afficher les points militaires',
+        'tag_militaryHighscoreBuildDisplay' => 'Points militaires construits',
+        'tag_militaryHighscoreDestroyedDisplay' => 'Points militaires détruits',
+        'tag_militaryHighscoreLostDisplay' => 'Points militaires perdus',
+        'tag_honorHighscoreDisplay' => 'Points honorifiques',
+    ],
+
+
 ];

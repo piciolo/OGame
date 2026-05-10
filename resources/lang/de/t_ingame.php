@@ -2593,4 +2593,24 @@ return [
 
     ],
 
+    'profile' => [
+        'tab_profile' => 'Profil',
+        'tab_achievements' => 'Achievements',
+        'global_profile' => 'Globales Profil',
+        'tag_playerTitle' => 'Titel',
+        'tag_honorDisplay' => 'Ehre',
+        'tag_allianceDisplay' => 'Allianz',
+        'tag_characterClassDisplay' => 'Klasse',
+        'tag_totalHighscoreDisplay' => 'Highscoreplatz',
+        'tag_achievementPointsDisplay' => 'Achievement-Punkte',
+        'tag_economyHighscoreDisplay' => 'Ökonomiepunkte',
+        'tag_researchHighscoreDisplay' => 'Forschungspunkte',
+        'tag_militaryHighscoreDisplay' => 'Militärpunkte',
+        'tag_militaryHighscoreBuildDisplay' => 'Militärpunkte gebaut',
+        'tag_militaryHighscoreDestroyedDisplay' => 'Militärpunkte zerstört',
+        'tag_militaryHighscoreLostDisplay' => 'Militärpunkte verloren',
+        'tag_honorHighscoreDisplay' => 'Ehrenpunkte',
+    ],
+
+
 ];

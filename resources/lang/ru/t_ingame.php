@@ -2173,4 +2173,24 @@ return [
 
     ],
 
+    'profile' => [
+        'tab_profile' => 'Профиль',
+        'tab_achievements' => 'Достижения',
+        'global_profile' => 'Глобальный профиль',
+        'tag_playerTitle' => 'Титул',
+        'tag_honorDisplay' => 'Честь',
+        'tag_allianceDisplay' => 'Альянс',
+        'tag_characterClassDisplay' => 'Класс',
+        'tag_totalHighscoreDisplay' => 'Статистика',
+        'tag_achievementPointsDisplay' => 'Очки достижения',
+        'tag_economyHighscoreDisplay' => 'Экономический рейтинг',
+        'tag_researchHighscoreDisplay' => 'Очки исследований',
+        'tag_militaryHighscoreDisplay' => 'Боевой рейтинг',
+        'tag_militaryHighscoreBuildDisplay' => 'Боевых очков набрано',
+        'tag_militaryHighscoreDestroyedDisplay' => 'Боевых очков уничтожено',
+        'tag_militaryHighscoreLostDisplay' => 'Боевых очков потеряно',
+        'tag_honorHighscoreDisplay' => 'Очки чести',
+    ],
+
+
 ];

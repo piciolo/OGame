@@ -2495,4 +2495,24 @@ return [
 
     ],
 
+    'profile' => [
+        'tab_profile' => 'Profiel',
+        'tab_achievements' => 'Prestaties',
+        'global_profile' => 'Globaal Profiel',
+        'tag_playerTitle' => 'Titel',
+        'tag_honorDisplay' => 'Eer',
+        'tag_allianceDisplay' => 'Alliantie',
+        'tag_characterClassDisplay' => 'Klasse',
+        'tag_totalHighscoreDisplay' => 'Highscore rang',
+        'tag_achievementPointsDisplay' => 'Prestatiepunten',
+        'tag_economyHighscoreDisplay' => 'Economiepunten',
+        'tag_researchHighscoreDisplay' => 'Onderzoekspunten',
+        'tag_militaryHighscoreDisplay' => 'Militaire punten',
+        'tag_militaryHighscoreBuildDisplay' => 'Militaire punten gebouwd',
+        'tag_militaryHighscoreDestroyedDisplay' => 'Militaire punten vernietigd',
+        'tag_militaryHighscoreLostDisplay' => 'Militaire punten verloren',
+        'tag_honorHighscoreDisplay' => 'Erepunten',
+    ],
+
+
 ];

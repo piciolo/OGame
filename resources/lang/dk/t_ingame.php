@@ -2173,4 +2173,24 @@ Kampsimulering gemmer slots +20',
 
     ],
 
+    'profile' => [
+        'tab_profile' => 'Profil',
+        'tab_achievements' => 'Præstationer',
+        'global_profile' => 'Global Profil',
+        'tag_playerTitle' => 'Title',
+        'tag_honorDisplay' => 'Honour',
+        'tag_allianceDisplay' => 'Alliance',
+        'tag_characterClassDisplay' => 'Klasse',
+        'tag_totalHighscoreDisplay' => 'Highscore listen',
+        'tag_achievementPointsDisplay' => 'Præstations Point',
+        'tag_economyHighscoreDisplay' => 'Økonomi points',
+        'tag_researchHighscoreDisplay' => 'Forskningspoint',
+        'tag_militaryHighscoreDisplay' => 'Vis Militær points',
+        'tag_militaryHighscoreBuildDisplay' => 'Militær points bygget',
+        'tag_militaryHighscoreDestroyedDisplay' => 'Militær point ødelagt',
+        'tag_militaryHighscoreLostDisplay' => 'Militær points tabt',
+        'tag_honorHighscoreDisplay' => 'Honour points',
+    ],
+
+
 ];

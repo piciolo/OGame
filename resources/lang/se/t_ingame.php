@@ -2174,4 +2174,24 @@ Stridssimulering spara platser +20',
 
     ],
 
+    'profile' => [
+        'tab_profile' => 'Profile',
+        'tab_achievements' => 'Achievements',
+        'global_profile' => 'Global Profile',
+        'tag_playerTitle' => 'Title',
+        'tag_honorDisplay' => 'Honour',
+        'tag_allianceDisplay' => 'Allians',
+        'tag_characterClassDisplay' => 'Klass',
+        'tag_totalHighscoreDisplay' => 'Topplisteranking',
+        'tag_achievementPointsDisplay' => 'Achievement Points',
+        'tag_economyHighscoreDisplay' => 'Ekonomi poäng',
+        'tag_researchHighscoreDisplay' => 'Forskningspoäng',
+        'tag_militaryHighscoreDisplay' => 'Visa militärpoäng',
+        'tag_militaryHighscoreBuildDisplay' => 'Militärpoäng byggda',
+        'tag_militaryHighscoreDestroyedDisplay' => 'Militärpoäng förstörda',
+        'tag_militaryHighscoreLostDisplay' => 'Militärpoäng förlorade',
+        'tag_honorHighscoreDisplay' => 'Hederspoäng',
+    ],
+
+
 ];

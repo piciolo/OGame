@@ -2173,4 +2173,24 @@ return [
 
     ],
 
+    'profile' => [
+        'tab_profile' => 'Προφίλ',
+        'tab_achievements' => 'Επιτεύγματα',
+        'global_profile' => 'Παγκόσμιο προφίλ',
+        'tag_playerTitle' => 'Τίτλος',
+        'tag_honorDisplay' => 'Τιμή',
+        'tag_allianceDisplay' => 'Συμμαχία',
+        'tag_characterClassDisplay' => 'Κλάση',
+        'tag_totalHighscoreDisplay' => 'Κατάταξη βαθμολογίας',
+        'tag_achievementPointsDisplay' => 'Πόντοι Επιτεύγματος',
+        'tag_economyHighscoreDisplay' => 'Πόντοι οικονομίας',
+        'tag_researchHighscoreDisplay' => 'Βαθμοί έρευνας',
+        'tag_militaryHighscoreDisplay' => 'Εμφάνιση πόντων στρατού',
+        'tag_militaryHighscoreBuildDisplay' => 'Δημιουργία πόντων στρατού',
+        'tag_militaryHighscoreDestroyedDisplay' => 'Καταστροφή πόντων στρατού',
+        'tag_militaryHighscoreLostDisplay' => 'Απώλεια πόντων στρατού',
+        'tag_honorHighscoreDisplay' => 'Πόντοι τιμής (ΠΤ)',
+    ],
+
+
 ];

@@ -2173,4 +2173,24 @@ return [
 
     ],
 
+    'profile' => [
+        'tab_profile' => '檔案',
+        'tab_achievements' => '成就',
+        'global_profile' => '全球檔案',
+        'tag_playerTitle' => '標題',
+        'tag_honorDisplay' => '榮譽',
+        'tag_allianceDisplay' => '聯盟',
+        'tag_characterClassDisplay' => '等級',
+        'tag_totalHighscoreDisplay' => '排行榜排名',
+        'tag_achievementPointsDisplay' => '成就點數',
+        'tag_economyHighscoreDisplay' => '經濟分數',
+        'tag_researchHighscoreDisplay' => '科技分數',
+        'tag_militaryHighscoreDisplay' => '軍事分數',
+        'tag_militaryHighscoreBuildDisplay' => '建造軍事分數',
+        'tag_militaryHighscoreDestroyedDisplay' => '擊毀軍事分數',
+        'tag_militaryHighscoreLostDisplay' => '損失軍事分數',
+        'tag_honorHighscoreDisplay' => '榮譽分數',
+    ],
+
+
 ];

@@ -2173,4 +2173,24 @@ Simulácia bitky ukladá sloty +20',
 
     ],
 
+    'profile' => [
+        'tab_profile' => 'Profil',
+        'tab_achievements' => 'Úspechy',
+        'global_profile' => 'Globálny profil',
+        'tag_playerTitle' => 'Titul',
+        'tag_honorDisplay' => 'Česť',
+        'tag_allianceDisplay' => 'Aliancia',
+        'tag_characterClassDisplay' => 'Kategória',
+        'tag_totalHighscoreDisplay' => 'Rebríček',
+        'tag_achievementPointsDisplay' => 'Body úspechov',
+        'tag_economyHighscoreDisplay' => 'Ekonomické body',
+        'tag_researchHighscoreDisplay' => 'Body vo výskume',
+        'tag_militaryHighscoreDisplay' => 'Vojenské body',
+        'tag_militaryHighscoreBuildDisplay' => 'Získané vojenské body',
+        'tag_militaryHighscoreDestroyedDisplay' => 'Zničené vojenské body',
+        'tag_militaryHighscoreLostDisplay' => 'Stratené vojenské body',
+        'tag_honorHighscoreDisplay' => 'Body cti',
+    ],
+
+
 ];

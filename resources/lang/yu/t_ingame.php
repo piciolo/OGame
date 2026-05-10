@@ -2173,4 +2173,24 @@ return [
 
     ],
 
+    'profile' => [
+        'tab_profile' => 'Profil',
+        'tab_achievements' => 'Postignuća',
+        'global_profile' => 'Globalni Profil',
+        'tag_playerTitle' => 'Titula',
+        'tag_honorDisplay' => 'Čast',
+        'tag_allianceDisplay' => 'Savez',
+        'tag_characterClassDisplay' => 'Klasa',
+        'tag_totalHighscoreDisplay' => 'Pozicija',
+        'tag_achievementPointsDisplay' => 'Bodovi postignuća',
+        'tag_economyHighscoreDisplay' => 'Bodovi ekonomije',
+        'tag_researchHighscoreDisplay' => 'Bodovi istraživanja',
+        'tag_militaryHighscoreDisplay' => 'Vojni bodovi',
+        'tag_militaryHighscoreBuildDisplay' => 'Napravljeno vojnih bodova',
+        'tag_militaryHighscoreDestroyedDisplay' => 'Uništeno vojnih bodova',
+        'tag_militaryHighscoreLostDisplay' => 'Izgubljeno vojnih bodova',
+        'tag_honorHighscoreDisplay' => 'Bodovi časti',
+    ],
+
+
 ];

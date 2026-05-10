@@ -2173,4 +2173,24 @@ Miejsca zapisu symulacji walki +20',
 
     ],
 
+    'profile' => [
+        'tab_profile' => 'Profil',
+        'tab_achievements' => 'Osiągnięcia',
+        'global_profile' => 'Profil globalny',
+        'tag_playerTitle' => 'Tytuł',
+        'tag_honorDisplay' => 'Honor',
+        'tag_allianceDisplay' => 'Sojusz',
+        'tag_characterClassDisplay' => 'Klasa',
+        'tag_totalHighscoreDisplay' => 'Statystyki',
+        'tag_achievementPointsDisplay' => 'Punkty osiągnięć',
+        'tag_economyHighscoreDisplay' => 'Punkty ekonomiczne',
+        'tag_researchHighscoreDisplay' => 'Punkt badań',
+        'tag_militaryHighscoreDisplay' => 'Punkty militarne',
+        'tag_militaryHighscoreBuildDisplay' => 'Zbudowane punkty militarne',
+        'tag_militaryHighscoreDestroyedDisplay' => 'Zniszczone punkty militarne',
+        'tag_militaryHighscoreLostDisplay' => 'Stracone punkty militarne',
+        'tag_honorHighscoreDisplay' => 'Punkty honoru',
+    ],
+
+
 ];

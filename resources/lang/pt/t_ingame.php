@@ -2173,4 +2173,24 @@ Simulação de combate salva slots +20',
 
     ],
 
+    'profile' => [
+        'tab_profile' => 'Perfil',
+        'tab_achievements' => 'Troféus',
+        'global_profile' => 'Perfil global',
+        'tag_playerTitle' => 'Título',
+        'tag_honorDisplay' => 'Honra',
+        'tag_allianceDisplay' => 'Aliança',
+        'tag_characterClassDisplay' => 'Classe',
+        'tag_totalHighscoreDisplay' => 'Pontuações',
+        'tag_achievementPointsDisplay' => 'Pontos de Façanha',
+        'tag_economyHighscoreDisplay' => 'Pontos da Economia',
+        'tag_researchHighscoreDisplay' => 'Pontos em pesquisas',
+        'tag_militaryHighscoreDisplay' => 'Pontos Militares',
+        'tag_militaryHighscoreBuildDisplay' => 'Pontos Militares construídos',
+        'tag_militaryHighscoreDestroyedDisplay' => 'Pontos Militares destruídos',
+        'tag_militaryHighscoreLostDisplay' => 'Pontos Militares perdidos',
+        'tag_honorHighscoreDisplay' => 'Pontos de honra',
+    ],
+
+
 ];

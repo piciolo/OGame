@@ -2173,4 +2173,24 @@ return [
 
     ],
 
+    'profile' => [
+        'tab_profile' => 'プロフィール',
+        'tab_achievements' => '実績',
+        'global_profile' => 'グローバルプロフィール',
+        'tag_playerTitle' => '称号',
+        'tag_honorDisplay' => '名誉',
+        'tag_allianceDisplay' => '同盟',
+        'tag_characterClassDisplay' => 'クラス',
+        'tag_totalHighscoreDisplay' => 'ハイスコアランキング',
+        'tag_achievementPointsDisplay' => '実績ポイント',
+        'tag_economyHighscoreDisplay' => 'エコノミーポイント',
+        'tag_researchHighscoreDisplay' => 'リサーチポイント',
+        'tag_militaryHighscoreDisplay' => 'ミリタリーポイント',
+        'tag_militaryHighscoreBuildDisplay' => '総合ミリタリーポイント',
+        'tag_militaryHighscoreDestroyedDisplay' => '破壊したミリタリーポイント',
+        'tag_militaryHighscoreLostDisplay' => '喪失したミリタリーポイント',
+        'tag_honorHighscoreDisplay' => '名誉ポイント',
+    ],
+
+
 ];

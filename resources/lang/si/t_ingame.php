@@ -2173,4 +2173,24 @@ Reže za shranjevanje simulacije boja +20',
 
     ],
 
+    'profile' => [
+        'tab_profile' => 'Profil',
+        'tab_achievements' => 'Dosežki',
+        'global_profile' => 'Globalni profil',
+        'tag_playerTitle' => 'Naslov',
+        'tag_honorDisplay' => 'Čast',
+        'tag_allianceDisplay' => 'Aliansa',
+        'tag_characterClassDisplay' => 'Razred',
+        'tag_totalHighscoreDisplay' => 'Pozicija',
+        'tag_achievementPointsDisplay' => 'Točke dosežkov',
+        'tag_economyHighscoreDisplay' => 'Ekonomske točke',
+        'tag_researchHighscoreDisplay' => 'Točke raziskovanja',
+        'tag_militaryHighscoreDisplay' => 'Vojaške točke',
+        'tag_militaryHighscoreBuildDisplay' => 'Zgrajene vojaške točke',
+        'tag_militaryHighscoreDestroyedDisplay' => 'Vojaške točke uničene',
+        'tag_militaryHighscoreLostDisplay' => 'Izgubljene vojaške točke',
+        'tag_honorHighscoreDisplay' => 'Častne točke',
+    ],
+
+
 ];

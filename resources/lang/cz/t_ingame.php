@@ -2173,4 +2173,24 @@ Simulace bitvy ukládání slotů +20',
 
     ],
 
+    'profile' => [
+        'tab_profile' => 'Profil',
+        'tab_achievements' => 'Úspěchy',
+        'global_profile' => 'Globální profil',
+        'tag_playerTitle' => 'Název',
+        'tag_honorDisplay' => 'Čest',
+        'tag_allianceDisplay' => 'Aliance',
+        'tag_characterClassDisplay' => 'Třída',
+        'tag_totalHighscoreDisplay' => 'Hodnocení',
+        'tag_achievementPointsDisplay' => 'Body úspěchu',
+        'tag_economyHighscoreDisplay' => 'Ekonomika',
+        'tag_researchHighscoreDisplay' => 'Body ve výzkumu',
+        'tag_militaryHighscoreDisplay' => 'Vojenské body',
+        'tag_militaryHighscoreBuildDisplay' => 'Získané vojenské body',
+        'tag_militaryHighscoreDestroyedDisplay' => 'Zničené vojenské body',
+        'tag_militaryHighscoreLostDisplay' => 'Ztracené vojenské body',
+        'tag_honorHighscoreDisplay' => 'Vyznamenání',
+    ],
+
+
 ];

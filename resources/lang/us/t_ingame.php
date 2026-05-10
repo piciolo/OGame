@@ -2161,4 +2161,24 @@ Combat simulation save slots +20',
 
     ],
 
+    'profile' => [
+        'tab_profile' => 'Profile',
+        'tab_achievements' => 'Achievements',
+        'global_profile' => 'Global Profile',
+        'tag_playerTitle' => 'Title',
+        'tag_honorDisplay' => 'Honor',
+        'tag_allianceDisplay' => 'Alliance',
+        'tag_characterClassDisplay' => 'Class',
+        'tag_totalHighscoreDisplay' => 'Highscore ranking',
+        'tag_achievementPointsDisplay' => 'Achievement Points',
+        'tag_economyHighscoreDisplay' => 'Economy points',
+        'tag_researchHighscoreDisplay' => 'Research points',
+        'tag_militaryHighscoreDisplay' => 'Military points',
+        'tag_militaryHighscoreBuildDisplay' => 'Military points built',
+        'tag_militaryHighscoreDestroyedDisplay' => 'Military points destroyed',
+        'tag_militaryHighscoreLostDisplay' => 'Military points lost',
+        'tag_honorHighscoreDisplay' => 'Honour points',
+    ],
+
+
 ];

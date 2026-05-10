@@ -2173,4 +2173,24 @@ Savaş simülasyonu kaydetme yuvaları +20',
 
     ],
 
+    'profile' => [
+        'tab_profile' => 'Profil',
+        'tab_achievements' => 'Başarılar',
+        'global_profile' => 'Global Profil',
+        'tag_playerTitle' => 'Ünvan',
+        'tag_honorDisplay' => 'Onur',
+        'tag_allianceDisplay' => 'İttifak',
+        'tag_characterClassDisplay' => 'Sınıf',
+        'tag_totalHighscoreDisplay' => 'Sıralama',
+        'tag_achievementPointsDisplay' => 'Başarı Puanı',
+        'tag_economyHighscoreDisplay' => 'Ekonomi Puanı',
+        'tag_researchHighscoreDisplay' => 'Araştırma Puanları',
+        'tag_militaryHighscoreDisplay' => 'Askeri Puanları göster',
+        'tag_militaryHighscoreBuildDisplay' => 'Askeri Puan Üretimi',
+        'tag_militaryHighscoreDestroyedDisplay' => 'Askeri Puan Tahribi',
+        'tag_militaryHighscoreLostDisplay' => 'Askeri Puan Kaybı',
+        'tag_honorHighscoreDisplay' => 'Şeref Puanı',
+    ],
+
+
 ];
