@@ -422,9 +422,18 @@
                             }
                         } catch (_) { /* best-effort UI updates */ }
 
-                        // Refresh the resource-market panel so the box reflects the
-                        // new planet state (DM debited, storage refilled). Failures
+                        // Refresh the resource-market panel so the boxes reflect the
+                        // new planet state (storage headroom decremented). Failures
                         // here are non-fatal — the buy already completed server-side.
+                        // BEFORE swapping, snapshot which boxes were in the upsell
+                        // morph state so we can re-apply it on the freshly rendered
+                        // markup (otherwise clicking another box silently resets the
+                        // user's previously-morphed buttons, which feels broken).
+                        var morphedKeys = $('.roundBox.fillup.premium').map(function () {
+                            var m = ($(this).attr('class') || '').match(/\bfillup\b\s+(metal|crystal|deuterium|allLocalResources)\b/);
+                            return m ? m[1] : null;
+                        }).get().filter(Boolean);
+
                         var ajaxUrl = '{{ route('merchant.resource-market.partial') }}';
                         $.get(ajaxUrl).done(function (html) {
                             var wrapper = document.getElementById('contentWrapper');
@@ -437,6 +446,17 @@
                                 }
                                 s.textContent = old.textContent;
                                 old.replaceWith(s);
+                            });
+
+                            // Re-apply morph state to boxes that were upsell-morphed
+                            // before the swap, but ONLY if they still can't afford the
+                            // package — otherwise the user has now earned the DM and
+                            // should see the normal btn_blue state.
+                            morphedKeys.forEach(function (key) {
+                                var $newBtn = $('.roundBox.fillup.' + key + ' a.js_buyResourceBtn');
+                                if (!$newBtn.length) return;
+                                if ($newBtn.attr('data-sufficient-dark-matter') === '1') return;
+                                morphToUpsell($newBtn);
                             });
                         });
                     } else {
