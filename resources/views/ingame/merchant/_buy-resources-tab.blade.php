@@ -221,39 +221,6 @@
         if (window.__buyResourcesBound) return;
         window.__buyResourcesBound = true;
 
-        // === DEBUG TRACING (temporary) ============================================
-        // Logs every event that could possibly revert a morphed box. Lascia attivo
-        // finche' identifichiamo cosa fa scattare il revert; rimuovilo poi.
-        var BR_DBG = true;
-        function brlog() {
-            if (!BR_DBG) return;
-            var args = ['[BUY-RES]'].concat(Array.prototype.slice.call(arguments));
-            try { console.log.apply(console, args); } catch (_) {}
-        }
-        // Snapshot the current morph state and dump it before/after each event.
-        function snapshot(tag) {
-            var s = $('.roundBox.fillup').map(function () {
-                var k = ($(this).attr('class') || '').match(/\bfillup\s+(metal|crystal|deuterium|allLocalResources)/);
-                return (k ? k[1] : '?') + ($(this).hasClass('premium') ? ':PREMIUM' : ':normal');
-            }).get().join(' | ');
-            brlog(tag, 's=', s);
-        }
-        // Hook click on document to see EVERY click that bubbles past our handlers.
-        document.addEventListener('click', function (e) {
-            var t = e.target;
-            var path = [];
-            var cur = t;
-            while (cur && cur !== document && path.length < 4) {
-                path.push((cur.tagName || '?') + (cur.id ? '#' + cur.id : '') + (cur.className ? '.' + String(cur.className).split(/\s+/).slice(0, 2).join('.') : ''));
-                cur = cur.parentNode;
-            }
-            brlog('click', path.join(' < '));
-            snapshot('  before-handlers');
-            setTimeout(function () { snapshot('  after-handlers'); }, 50);
-            setTimeout(function () { snapshot('  +500ms'); }, 500);
-        }, true);
-        // === END DEBUG ============================================================
-
 
         // Tab switching between #tabs-buyResource and #tabs-changeResource. Re-bound
         // every load to make sure the click handler attaches even after the partial
@@ -288,7 +255,6 @@
         function formatTh(n) { return Number(n).toLocaleString('it-IT'); }
 
         function recomputeBox($box) {
-            brlog('recomputeBox called', $box.find('input').first().attr('data-resource-type'));
             var $btn = $box.find('a.js_buyResourceBtn');
             var pkg = $btn.attr('data-package-type');
             if (pkg === 'allLocalResources') return;  // no live edit on bundle
@@ -327,10 +293,7 @@
             // Se l'utente edita verso un valore affordable dopo aver gia' visto
             // l'upsell morph, ripristiniamo lo stato iniziale btn_blue.
             if (sufficient && $btn.hasClass('btn_premium')) {
-                brlog('REVERT triggered by recomputeBox: sufficient=', sufficient, 'cost=', cost, 'dm=', dm);
-                $btn.removeClass('btn_premium small').addClass('btn_blue')
-                    .text(@json(__('t_merchant.refill_resources')));
-                $box.removeClass('premium');
+                unmorphBtn($btn);
             }
 
             $box.toggleClass('disabled', requested <= 0 || !sufficient);
@@ -355,30 +318,41 @@
         // displayed cost stays REAL (with overmark if capped) — OGame keeps the
         // price visible so the user sees what they would spend.
         function morphToUpsell($btn) {
-            brlog('morphToUpsell called', $btn.attr('data-package-type'));
             if ($btn.hasClass('btn_premium') && $btn.hasClass('small')) return;
             $btn.removeClass('btn_blue').addClass('btn_premium small')
                 .text(@json(__('t_merchant.buy_dark_matter')));
             $btn.closest('.roundBox.fillup').addClass('premium');
         }
 
-        // OGame ufficiale upsell flow: when DM is insufficient, the first click on
-        // the "Riempire risorse?" button (btn_blue) morphs it into a "Acquista la
-        // Materia Oscura" CTA (btn_premium small). A second click then navigates to
-        // the premium shop with showDarkMatter=1. Mirrors the live behaviour.
-        var BUY_DM_URL = @json(route('premium.index', ['showDarkMatter' => 1]));
+        // Inverse of morphToUpsell: return a btn_premium back to its initial
+        // btn_blue "Riempire risorse?" state, and remove .premium from the box.
+        // Used by the toggle UX (click on a morphed box reverts it).
+        function unmorphBtn($btn) {
+            if (!$btn.hasClass('btn_premium')) return;
+            $btn.removeClass('btn_premium small').addClass('btn_blue')
+                .text(@json(__('t_merchant.refill_resources')));
+            $btn.closest('.roundBox.fillup').removeClass('premium');
+        }
 
-        $(document).on('click', '.js_buyResourceBtn', function (e) {
+        // Click delegated on the WHOLE .roundBox.fillup (OGame ufficiale UX: click
+        // anywhere in the box area triggers the action, not just on the button).
+        // Behaviour:
+        //   • daily=0 (nulla da comprare)           → no-op (box completamente disabled)
+        //   • DM insufficient, NOT morphed yet      → morph upsell (warning visivo)
+        //   • DM insufficient, ALREADY morphed      → unmorph (toggle off, NO navigation)
+        //   • DM sufficient                         → AJAX buy
+        // Clicks inside the input field are ignored (the user is editing the amount).
+        $(document).on('click', '.roundBox.fillup', function (e) {
+            // Don't hijack clicks on the input — let the native focus / keyboard work.
+            if ($(e.target).is('input') || $(e.target).closest('input').length) return;
+
             e.preventDefault();
-            var $btn = $(this);
-            var $box = $btn.closest('.roundBox.fillup');
+            var $box = $(this);
+            var $btn = $box.find('a.js_buyResourceBtn').first();
+            if (!$btn.length) return;
 
-            // OGame ufficiale: the .disabled class on the box is visual styling
-            // (greyed-out look when DM is insufficient or storage is capped) but the
-            // click is NOT blocked. We only short-circuit when there is genuinely
-            // nothing to deliver. For the "all" bundle, that means ALL three
-            // sub-resources have daily=0 — if at least one sub-resource is buyable
-            // (e.g. metal is full but crystal has headroom), the click must proceed.
+            // Block the action only when the whole box is truly unbuyable (zero
+            // production AND zero headroom on every sub-resource).
             var pkgType = $btn.attr('data-package-type');
             var dailyProd = 0;
             if (pkgType === 'allLocalResources') {
@@ -390,18 +364,21 @@
             }
             if (dailyProd <= 0) return;
 
-            // Already morphed into the "Acquista MO" CTA? Second click → shop.
-            if ($btn.hasClass('btn_premium') && $btn.hasClass('small')) {
-                window.location.href = BUY_DM_URL;
-                return;
-            }
-
-            // First click with insufficient DM → morph into upsell CTA, no purchase.
+            // DM insufficient → toggle the upsell morph (no navigation).
             if ($btn.attr('data-sufficient-dark-matter') !== '1') {
-                morphToUpsell($btn);
+                if ($box.hasClass('premium')) {
+                    unmorphBtn($btn);
+                } else {
+                    // OGame keeps "one premium at a time": unmorph any other box first.
+                    $('.roundBox.fillup.premium').each(function () {
+                        unmorphBtn($(this).find('a.js_buyResourceBtn').first());
+                    });
+                    morphToUpsell($btn);
+                }
                 return;
             }
 
+            // DM sufficient → trigger the actual AJAX buy.
             var packageType = $btn.attr('data-package-type');
             var data = { package: packageType, _token: '{{ csrf_token() }}' };
 
