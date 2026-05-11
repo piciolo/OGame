@@ -376,12 +376,29 @@
                     $btn.removeClass('disabled');
 
                     if (response.success) {
+                        // Patch the top resource bar directly. window.reloadResources
+                        // in this project expects a full payload from a (currently
+                        // disabled) AJAX endpoint, so calling it without args silently
+                        // no-ops. We patch the counters from what the server told us
+                        // it credited / charged — this is what the user actually sees
+                        // when they ask "did the buy go through?".
                         try {
+                            var credited = response.credited || {};
+                            var cost = parseInt(response.cost_dm || 0, 10) || 0;
+                            var $bar = $('#resourcesbar, #resources, body');
+                            var update = function (sel, delta) {
+                                var $el = $(sel);
+                                if (!$el.length) return;
+                                var current = parseInt(String($el.text()).replace(/[^\d-]/g, ''), 10) || 0;
+                                $el.text((current + delta).toLocaleString('it-IT'));
+                            };
+                            update('#resources_metal',     parseInt(credited.metal || 0, 10) || 0);
+                            update('#resources_crystal',   parseInt(credited.crystal || 0, 10) || 0);
+                            update('#resources_deuterium', parseInt(credited.deuterium || 0, 10) || 0);
+                            update('#resources_darkmatter', -cost);
+
                             if (typeof messageBoxNotify === 'function') {
                                 messageBoxNotify(LocalizationStrings.success, response.message);
-                            }
-                            if (typeof window.reloadResources === 'function') {
-                                window.reloadResources();
                             }
                         } catch (_) { /* best-effort UI updates */ }
 
