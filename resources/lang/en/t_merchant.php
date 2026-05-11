@@ -167,7 +167,7 @@ return [
     'buy_resources' => 'Get more resources',
     'buy_action' => 'Buy',
     'refill_resources' => 'Refill resources?',
-    'buy_dark_matter' => 'Buy now',
+    'buy_dark_matter' => 'Buy Dark Matter',
     'dark_matter_short' => 'DM',
     'buy_capped_tooltip' => 'Warning: there is not enough space in the storage. If you activate the package now, you will only receive the amount that fits the storage. Surplus resources will be lost.',
     'buy_daily_production_title' => 'Buy a daily production directly from the merchant',

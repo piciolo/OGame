@@ -54,17 +54,14 @@
         // and on the button cost so the box is internally consistent (no "0 unità
         // / 500 MO" mismatch).
         $fullyUnbuyable = $dailyProduction <= 0 || $deliverableAmount <= 0;
-        // OGame ufficiale: when there IS something to buy but the player doesn't
-        // have enough Dark Matter, the box gets a `premium` class (cosmetic) and
-        // the button morphs to "Compra adesso" linking to the DM shop.
-        $premiumState = !$fullyUnbuyable && !$sufficient;
 
         $boxClasses = ['roundBox', 'fillup', $resourceKey];
+        // OGame ufficiale renders btn_blue "Riempire risorse?" as initial state
+        // even when DM is insufficient; the morph to "Acquista la Materia Oscura"
+        // + .premium class happens on the FIRST click (client-side animation).
+        // Box still gets .disabled when no DM (visual greyed-out cue).
         if ($fullyUnbuyable || !$sufficient) {
             $boxClasses[] = 'disabled';
-        }
-        if ($premiumState) {
-            $boxClasses[] = 'premium';
         }
 
         return [
@@ -73,19 +70,12 @@
             'resource_key'     => $resourceKey,
             'resource_type_id' => $resTypeId[$packageKey],
             'daily_production' => $dailyProduction,
-            // Real cost on data-* attributes (anti-tamper not needed but matches OGame).
+            // Real cost — stays visible (in overmark red when capped) even when
+            // DM is insufficient. OGame ufficiale keeps the real price on display:
+            // when the user clicks, the button morphs but the cost stays as-is.
             'cost_dm'          => $fullyUnbuyable ? 0 : $costDm,
-            // Displayed cost in the fillup_cost span: OGame teases the cheapest entry
-            // (MIN_COST_DM, e.g. 500 MO) when the box is in premium upsell state,
-            // otherwise shows the real package price.
-            'cost_dm_display'  => $premiumState
-                ? \OGame\Services\BuyResourcesService::MIN_COST_DM
-                : ($fullyUnbuyable ? 0 : $costDm),
-            // Overmark on the cost span only when capped AND still buyable (OGame
-            // hides it in the premium upsell state too).
-            'is_capped'        => ($isCapped && !$fullyUnbuyable && !$premiumState) ? '1' : '0',
+            'is_capped'        => ($isCapped && !$fullyUnbuyable) ? '1' : '0',
             'sufficient_dm'    => $sufficient ? '1' : '0',
-            'premium_state'    => $premiumState,
             'item_uuid'        => sha1('procura|'.$packageKey.'|planet:'.$planetId),
             'sub_resources'    => isset($pkg['packages']) ? array_keys($pkg['packages']) : [],
             'sub_packages'     => $pkg['packages'] ?? [],
@@ -191,17 +181,12 @@
                     </p>
                     <p class="fillup_cost">
                         {{ __('t_merchant.cost_dm_label') }} <br>
-                        <span class="premium_txt {{ $box['is_capped'] === '1' ? 'overmark' : '' }}">{{ number_format($box['cost_dm_display'], 0, ',', '.') }}</span> {{ __('t_merchant.dark_matter_short') }}
+                        <span class="premium_txt {{ $box['is_capped'] === '1' ? 'overmark' : '' }}">{{ number_format($box['cost_dm'], 0, ',', '.') }}</span> {{ __('t_merchant.dark_matter_short') }}
                     </p>
                     <div class="clearfix fill_resource_ctn">&nbsp;</div>
                     <div class="btn_wrap">
-                        @php
-                            $btnIsPremium = $box['premium_state'];
-                            $btnClasses = $btnIsPremium ? 'btn_premium small js_buyResourceBtn' : 'btn_blue js_buyResourceBtn';
-                            $btnLabel = $btnIsPremium ? __('t_merchant.buy_dark_matter') : __('t_merchant.refill_resources');
-                        @endphp
                         <a role="button"
-                           class="{{ $btnClasses }}"
+                           class="btn_blue js_buyResourceBtn"
                            data-itemuuid="{{ $box['item_uuid'] }}"
                            data-resource="{{ $box['package_key'] }}"
                            data-package-type="{{ $box['package_key'] }}"
@@ -215,7 +200,7 @@
                            data-is-capped="{{ $box['is_capped'] }}"
                            data-production-lowered="0"
                            data-sufficient-dark-matter="{{ $box['sufficient_dm'] }}"
-                           aria-label="{{ $box['package_key'] }} {{ __('t_merchant.refill_resources') }}">{{ $btnLabel }}</a>
+                           aria-label="{{ $box['package_key'] }} {{ __('t_merchant.refill_resources') }}">{{ __('t_merchant.refill_resources') }}</a>
                     </div>
                 </div>
             @endforeach
@@ -297,27 +282,21 @@
                 'data-sufficient-dark-matter': sufficient ? '1' : '0'
             });
 
-            // Premium / upsell state toggling — mirrors the server-side Blade logic:
-            //   * sufficient   → btn_blue "Riempire risorse?", no .premium on box,
-            //                    cost text = real cost (overmark if capped)
-            //   * !sufficient  → btn_premium small "Compra adesso", .premium class
-            //                    on box, cost text = MIN_COST (500) without overmark
-            var enteringPremium = !sufficient && requested > 0;
-            if (enteringPremium) {
-                if (!$btn.hasClass('btn_premium')) {
-                    $btn.removeClass('btn_blue').addClass('btn_premium small')
-                        .text(@json(__('t_merchant.buy_dark_matter')));
-                }
-                $box.addClass('premium');
-                $box.find('.fillup_cost .premium_txt').removeClass('overmark').text(formatTh(MIN_COST));
-            } else {
-                if ($btn.hasClass('btn_premium')) {
-                    $btn.removeClass('btn_premium small').addClass('btn_blue')
-                        .text(@json(__('t_merchant.refill_resources')));
-                }
+            // OGame ufficiale: il prezzo mostrato resta sempre il REALE (in
+            // overmark/rosso quando capped). Il morph del bottone in "Acquista
+            // la Materia Oscura" + classe .premium sul box avviene SOLO al click
+            // (vedi morphToUpsell) o se l'utente aveva gia' cliccato e poi edita
+            // l'input. Qui aggiorniamo solo il costo testuale e l'enable.
+            $box.find('.fillup_cost .premium_txt').text(formatTh(cost));
+
+            // Se l'utente edita verso un valore affordable dopo aver gia' visto
+            // l'upsell morph, ripristiniamo lo stato iniziale btn_blue.
+            if (sufficient && $btn.hasClass('btn_premium')) {
+                $btn.removeClass('btn_premium small').addClass('btn_blue')
+                    .text(@json(__('t_merchant.refill_resources')));
                 $box.removeClass('premium');
-                $box.find('.fillup_cost .premium_txt').text(formatTh(cost));
             }
+
             $box.toggleClass('disabled', requested <= 0 || !sufficient);
         }
 
@@ -334,18 +313,16 @@
             recomputeBox($(this).closest('.roundBox.fillup'));
         });
 
-        // Helper: morph a btn_blue button into the "Compra adesso" upsell CTA.
-        // Idempotent — calling it on an already-morphed button is a no-op. Also
-        // applies the `.premium` class to the box and overrides the fillup_cost
-        // span to MIN_COST without overmark, matching OGame ufficiale.
+        // Helper: morph a btn_blue button into the "Acquista la Materia Oscura"
+        // upsell CTA (OGame ufficiale). Idempotent — calling it on an already-
+        // morphed button is a no-op. Adds the `.premium` class on the box; the
+        // displayed cost stays REAL (with overmark if capped) — OGame keeps the
+        // price visible so the user sees what they would spend.
         function morphToUpsell($btn) {
-            var $box = $btn.closest('.roundBox.fillup');
-            if (!$btn.hasClass('btn_premium') || !$btn.hasClass('small')) {
-                $btn.removeClass('btn_blue').addClass('btn_premium small')
-                    .text(@json(__('t_merchant.buy_dark_matter')));
-            }
-            $box.addClass('premium');
-            $box.find('.fillup_cost .premium_txt').removeClass('overmark').text(MIN_COST.toLocaleString('it-IT'));
+            if ($btn.hasClass('btn_premium') && $btn.hasClass('small')) return;
+            $btn.removeClass('btn_blue').addClass('btn_premium small')
+                .text(@json(__('t_merchant.buy_dark_matter')));
+            $btn.closest('.roundBox.fillup').addClass('premium');
         }
 
         // OGame ufficiale upsell flow: when DM is insufficient, the first click on

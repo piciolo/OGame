@@ -155,7 +155,7 @@ return [
     'buy_resources'                 => 'Procura risorse',
     'buy_action'                    => 'Acquista',
     'refill_resources'              => 'Riempire risorse?',
-    'buy_dark_matter'               => 'Compra adesso',
+    'buy_dark_matter'               => 'Acquista la Materia Oscura',
     'dark_matter_short'             => 'MO',
     'buy_capped_tooltip'            => 'Attenzione: non hai spazio a sufficienza nel Deposito. Se ora attivi il pacchetto, riceverai una quantità di risorse pari alla quantità che può essere immagazzinata nei Depositi. Le eccedenze non verranno immagazzinate.',
     'buy_daily_production_title'    => 'Acquista una produzione giornaliera direttamente dal Mercante',
