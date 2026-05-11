@@ -56,15 +56,20 @@ class BuyResourcesTest extends AccountTestCase
                 'crystal'   => $planet->getCrystalProductionPerHour(),
                 'deuterium' => $planet->getDeuteriumProductionPerHour(),
             };
-            $expectedDaily = max(0, (int) floor($hourly) * 24);
-            $expectedCost = $expectedDaily > 0
-                ? max(BuyResourcesService::MIN_COST_DM, (int) ceil($expectedDaily * BuyResourcesService::COEFFICIENTS[$resource]))
+            $rawDaily = max(0, (int) floor($hourly) * 24);
+            $storageMax = (int) floor($planet->{$resource . 'Storage'}()->get());
+            // After emptyDeposits headroom == storageMax. Service semantic:
+            // when production > 0 the package = daily*24 (capped at headroom);
+            // when production == 0 the package = headroom (DM top-up fallback).
+            $expectedMax = $rawDaily > 0 ? $rawDaily : $storageMax;
+            $expectedCost = $expectedMax > 0
+                ? max(BuyResourcesService::MIN_COST_DM, (int) ceil($expectedMax * BuyResourcesService::COEFFICIENTS[$resource]))
                 : 0;
 
             $pkg = $this->buy->calculatePackage($planet, $resource);
 
-            $this->assertSame($expectedDaily, $pkg['daily_production'], "daily_production mismatch for {$resource}");
-            $this->assertSame($expectedDaily, $pkg['amount'], "amount mismatch for {$resource} (should equal daily when storage is empty)");
+            $this->assertSame($expectedMax, $pkg['daily_production'], "daily_production mismatch for {$resource}");
+            $this->assertSame($expectedMax, $pkg['amount'], "amount mismatch for {$resource} (should equal max purchasable when storage is empty)");
             $this->assertFalse($pkg['is_capped'], "should not be capped when deposits are empty for {$resource}");
             $this->assertSame($expectedCost, $pkg['cost_dm'], "cost_dm mismatch for {$resource}");
         }
@@ -100,6 +105,33 @@ class BuyResourcesTest extends AccountTestCase
         $this->assertLessThanOrEqual(100, $pkg['amount']);
         $this->assertTrue($pkg['is_capped']);
         $this->assertSame((int) ceil($expectedDaily * BuyResourcesService::COEFFICIENTS['metal']), $pkg['cost_dm']);
+    }
+
+    /**
+     * Top-up fallback: when production is zero but storage has headroom, the
+     * service must still allow the player to buy up to the headroom with DM
+     * (instead of returning a zero-amount unbuyable package). The test player's
+     * deuterium production is 0 by default — perfect to exercise this branch.
+     */
+    public function testZeroProductionFallsBackToStorageHeadroom(): void
+    {
+        $planet = $this->planetService;
+        if ($planet->getDeuteriumProductionPerHour() > 0) {
+            $this->markTestSkipped('Test planet has deuterium production; fallback path not exercised.');
+        }
+        $this->emptyDeposits();
+
+        $storageMax = (int) floor($planet->deuteriumStorage()->get());
+        $expectedCost = max(BuyResourcesService::MIN_COST_DM, (int) ceil($storageMax * BuyResourcesService::COEFFICIENTS['deuterium']));
+
+        $pkg = $this->buy->calculatePackage($planet, 'deuterium');
+
+        // Package "daily production" semantic shifts to the storage headroom when
+        // the planet produces no deuterium — UX requirement: DM top-up still works.
+        $this->assertSame($storageMax, $pkg['daily_production']);
+        $this->assertSame($storageMax, $pkg['amount']);
+        $this->assertSame($expectedCost, $pkg['cost_dm']);
+        $this->assertFalse($pkg['is_capped']);
     }
 
     /**

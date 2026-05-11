@@ -75,31 +75,44 @@ class BuyResourcesService
             'crystal'   => $planet->getCrystalProductionPerHour(),
             'deuterium' => $planet->getDeuteriumProductionPerHour(),
         };
-        $dailyProduction = max(0, (int) floor($hourly) * 24);
+        $rawDailyProduction = max(0, (int) floor($hourly) * 24);
 
         $storageMax = (int) floor($planet->{$resource . 'Storage'}()->get());
         $stockNow = (int) floor($planet->{$resource}()->get());
         $headroom = max(0, $storageMax - $stockNow);
 
-        $amount = min($dailyProduction, $headroom);
-        $isCapped = $headroom < $dailyProduction;
+        // "Procura risorse" mechanic: by default a player can buy up to ONE DAY of
+        // their own production. Fallback: when production = 0 (e.g. deuterium on a
+        // planet without a fusion plant) but the deposit has free space, allow buying
+        // up to the storage headroom anyway — otherwise the player has no way to top
+        // up an empty deposit on planets that lack the right mine. The unit price
+        // (coefficient × amount) is unchanged, so this is purely a UX relaxation.
+        $maxPurchasable = $rawDailyProduction > 0 ? $rawDailyProduction : $headroom;
+
+        $amount = min($maxPurchasable, $headroom);
+        $isCapped = $headroom < $maxPurchasable;
 
         $coef = self::COEFFICIENTS[$resource];
-        // Cost is always computed from the FULL daily production (not the capped amount):
-        // OGame charges the full package price even when storage forces partial delivery,
+        // Cost is always computed from the FULL package size (not the capped amount):
+        // OGame charges the full price even when storage forces partial delivery,
         // matching the warning tooltip "le eccedenze non verranno immagazzinate".
-        $cost = $dailyProduction > 0
-            ? max(self::MIN_COST_DM, (int) ceil($dailyProduction * $coef))
+        $cost = $maxPurchasable > 0
+            ? max(self::MIN_COST_DM, (int) ceil($maxPurchasable * $coef))
             : 0;
 
         return [
             'resource'         => $resource,
             'amount'           => $amount,
-            'daily_production' => $dailyProduction,
+            // `daily_production` here is the MAX PURCHASABLE in this transaction —
+            // either the real production*24 OR the storage headroom when production
+            // is zero (DM top-up fallback above). Kept under the original key for
+            // backwards compatibility with the Blade / JS data-* contract.
+            'daily_production' => $maxPurchasable,
             'storage_headroom' => $headroom,
             'is_capped'        => $isCapped,
             'cost_dm'          => $cost,
             'coefficient'      => $coef,
+            'hourly_production_per_hour' => max(0, (int) floor($hourly)),
         ];
     }
 
