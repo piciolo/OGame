@@ -316,9 +316,18 @@
             // OGame ufficiale: the .disabled class on the box is visual styling
             // (greyed-out look when DM is insufficient or storage is capped) but the
             // click is NOT blocked. We only short-circuit when there is genuinely
-            // nothing to deliver (zero daily production), otherwise we route through
-            // the buy / upsell logic below.
-            var dailyProd = parseInt0($box.find('input').first().attr('data-daily-production'));
+            // nothing to deliver. For the "all" bundle, that means ALL three
+            // sub-resources have daily=0 — if at least one sub-resource is buyable
+            // (e.g. metal is full but crystal has headroom), the click must proceed.
+            var pkgType = $btn.attr('data-package-type');
+            var dailyProd = 0;
+            if (pkgType === 'allLocalResources') {
+                $box.find('input').each(function () {
+                    dailyProd += parseInt0($(this).attr('data-daily-production'));
+                });
+            } else {
+                dailyProd = parseInt0($box.find('input').first().attr('data-daily-production'));
+            }
             if (dailyProd <= 0) return;
 
             // Already morphed into the "Acquista MO" CTA? Second click → shop.
