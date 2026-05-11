@@ -225,6 +225,11 @@ class BuyResourcesService
         }
 
         $user = $player->getUser();
+        // Refresh from DB: PlayerService may cache the User model across requests
+        // within the same PHP process (singleton-ish), so the in-memory dark_matter
+        // can lag behind the latest transaction. Reading authoritative DM here
+        // eliminates a class of "you have the DM but server says you don't" bugs.
+        $user->refresh();
         if ($user->dark_matter < $totalCost) {
             return [
                 'success' => false,
@@ -232,6 +237,8 @@ class BuyResourcesService
                 'message' => __('t_merchant.error.buy.insufficient_dark_matter', [
                     'cost' => number_format($totalCost),
                 ]),
+                'available_dm' => (int) $user->dark_matter,
+                'required_dm'  => $totalCost,
             ];
         }
 
@@ -264,15 +271,31 @@ class BuyResourcesService
                 return $credited;
             });
         } catch (RuntimeException $e) {
+            // PlanetService throws RuntimeException when resource deduction hits the
+            // atomic guard; in this flow we are crediting, not deducting, so this
+            // branch is mostly defensive.
             return [
                 'success' => false,
-                'message' => __('t_merchant.error.buy.insufficient_dark_matter', [
-                    'cost' => number_format($totalCost),
-                ]),
+                'code' => 'execution_failed',
+                'message' => __('t_merchant.error.buy.execution_failed', ['error' => $e->getMessage()]),
             ];
         } catch (Exception $e) {
+            // DarkMatterService::debit() throws a plain Exception when the atomic
+            // balance check inside the locked transaction sees insufficient DM
+            // (race condition between our pre-check and the row lock). Map that
+            // specific case to the upsell code so the UI morphs the button.
+            if (str_contains($e->getMessage(), 'Insufficient Dark Matter')) {
+                return [
+                    'success' => false,
+                    'code' => 'insufficient_dark_matter',
+                    'message' => __('t_merchant.error.buy.insufficient_dark_matter', [
+                        'cost' => number_format($totalCost),
+                    ]),
+                ];
+            }
             return [
                 'success' => false,
+                'code' => 'execution_failed',
                 'message' => __('t_merchant.error.buy.execution_failed', ['error' => $e->getMessage()]),
             ];
         }

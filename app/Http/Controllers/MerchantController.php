@@ -91,7 +91,12 @@ class MerchantController extends OGameController
     {
         $planet = $player->planets->current();
         $service = resolve(BuyResourcesService::class);
-        $dm = (int) $player->getUser()->dark_matter;
+        // Refresh the user model so the sufficient_dm flags are computed from the
+        // authoritative DM balance (the in-memory model can lag behind after
+        // earlier transactions in the same request lifecycle).
+        $user = $player->getUser();
+        $user->refresh();
+        $dm = (int) $user->dark_matter;
 
         $metal = $service->calculatePackage($planet, 'metal');
         $crystal = $service->calculatePackage($planet, 'crystal');
