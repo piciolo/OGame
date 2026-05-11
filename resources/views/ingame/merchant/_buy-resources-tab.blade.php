@@ -48,8 +48,15 @@
         $sufficient = !empty($pkg['sufficient_dm']);
         $isCapped = !empty($pkg['is_capped']);
 
+        // Fully unbuyable: nothing the player can actually receive (production AND
+        // storage both fully exhausted). The sub-inputs already render 0 via the
+        // closure's $fullyDisabled path — we mirror that on the outer fillup_cost
+        // and on the button cost so the box is internally consistent (no "0 unità
+        // / 500 MO" mismatch).
+        $fullyUnbuyable = $dailyProduction <= 0 || $deliverableAmount <= 0;
+
         $boxClasses = ['roundBox', 'fillup', $resourceKey];
-        if ($dailyProduction <= 0 || $deliverableAmount <= 0 || !$sufficient) {
+        if ($fullyUnbuyable || !$sufficient) {
             $boxClasses[] = 'disabled';
         }
 
@@ -59,8 +66,8 @@
             'resource_key'     => $resourceKey,
             'resource_type_id' => $resTypeId[$packageKey],
             'daily_production' => $dailyProduction,
-            'cost_dm'          => $costDm,
-            'is_capped'        => $isCapped ? '1' : '0',
+            'cost_dm'          => $fullyUnbuyable ? 0 : $costDm,
+            'is_capped'        => ($isCapped && !$fullyUnbuyable) ? '1' : '0',
             'sufficient_dm'    => $sufficient ? '1' : '0',
             'item_uuid'        => sha1('procura|'.$packageKey.'|planet:'.$planetId),
             'sub_resources'    => isset($pkg['packages']) ? array_keys($pkg['packages']) : [],
