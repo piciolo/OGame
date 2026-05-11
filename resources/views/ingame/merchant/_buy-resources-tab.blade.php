@@ -221,6 +221,40 @@
         if (window.__buyResourcesBound) return;
         window.__buyResourcesBound = true;
 
+        // === DEBUG TRACING (temporary) ============================================
+        // Logs every event that could possibly revert a morphed box. Lascia attivo
+        // finche' identifichiamo cosa fa scattare il revert; rimuovilo poi.
+        var BR_DBG = true;
+        function brlog() {
+            if (!BR_DBG) return;
+            var args = ['[BUY-RES]'].concat(Array.prototype.slice.call(arguments));
+            try { console.log.apply(console, args); } catch (_) {}
+        }
+        // Snapshot the current morph state and dump it before/after each event.
+        function snapshot(tag) {
+            var s = $('.roundBox.fillup').map(function () {
+                var k = ($(this).attr('class') || '').match(/\bfillup\s+(metal|crystal|deuterium|allLocalResources)/);
+                return (k ? k[1] : '?') + ($(this).hasClass('premium') ? ':PREMIUM' : ':normal');
+            }).get().join(' | ');
+            brlog(tag, 's=', s);
+        }
+        // Hook click on document to see EVERY click that bubbles past our handlers.
+        document.addEventListener('click', function (e) {
+            var t = e.target;
+            var path = [];
+            var cur = t;
+            while (cur && cur !== document && path.length < 4) {
+                path.push((cur.tagName || '?') + (cur.id ? '#' + cur.id : '') + (cur.className ? '.' + String(cur.className).split(/\s+/).slice(0, 2).join('.') : ''));
+                cur = cur.parentNode;
+            }
+            brlog('click', path.join(' < '));
+            snapshot('  before-handlers');
+            setTimeout(function () { snapshot('  after-handlers'); }, 50);
+            setTimeout(function () { snapshot('  +500ms'); }, 500);
+        }, true);
+        // === END DEBUG ============================================================
+
+
         // Tab switching between #tabs-buyResource and #tabs-changeResource. Re-bound
         // every load to make sure the click handler attaches even after the partial
         // is rendered into the AJAX-swapped #contentWrapper.
@@ -254,6 +288,7 @@
         function formatTh(n) { return Number(n).toLocaleString('it-IT'); }
 
         function recomputeBox($box) {
+            brlog('recomputeBox called', $box.find('input').first().attr('data-resource-type'));
             var $btn = $box.find('a.js_buyResourceBtn');
             var pkg = $btn.attr('data-package-type');
             if (pkg === 'allLocalResources') return;  // no live edit on bundle
@@ -292,6 +327,7 @@
             // Se l'utente edita verso un valore affordable dopo aver gia' visto
             // l'upsell morph, ripristiniamo lo stato iniziale btn_blue.
             if (sufficient && $btn.hasClass('btn_premium')) {
+                brlog('REVERT triggered by recomputeBox: sufficient=', sufficient, 'cost=', cost, 'dm=', dm);
                 $btn.removeClass('btn_premium small').addClass('btn_blue')
                     .text(@json(__('t_merchant.refill_resources')));
                 $box.removeClass('premium');
@@ -319,6 +355,7 @@
         // displayed cost stays REAL (with overmark if capped) — OGame keeps the
         // price visible so the user sees what they would spend.
         function morphToUpsell($btn) {
+            brlog('morphToUpsell called', $btn.attr('data-package-type'));
             if ($btn.hasClass('btn_premium') && $btn.hasClass('small')) return;
             $btn.removeClass('btn_blue').addClass('btn_premium small')
                 .text(@json(__('t_merchant.buy_dark_matter')));
