@@ -376,26 +376,30 @@
                     $btn.removeClass('disabled');
 
                     if (response.success) {
-                        // Patch the top resource bar directly. window.reloadResources
-                        // in this project expects a full payload from a (currently
-                        // disabled) AJAX endpoint, so calling it without args silently
-                        // no-ops. We patch the counters from what the server told us
-                        // it credited / charged — this is what the user actually sees
-                        // when they ask "did the buy go through?".
+                        // Patch the top resource bar so the user immediately sees the
+                        // package delivery / DM debit. window.reloadResources here is
+                        // currently a no-op (it needs a payload from getAjaxResourcebox,
+                        // which is commented out as TODO in resources/js/ingame/...js).
+                        // ResourceTicker (window.resourcesBar) keeps its own internal
+                        // `resources` state and rewrites the DOM each tick from there —
+                        // patching DOM text directly gets overwritten on the next tick.
+                        // So we mutate resourcesBar.resources[*].amount instead.
                         try {
                             var credited = response.credited || {};
                             var cost = parseInt(response.cost_dm || 0, 10) || 0;
-                            var $bar = $('#resourcesbar, #resources, body');
-                            var update = function (sel, delta) {
-                                var $el = $(sel);
-                                if (!$el.length) return;
-                                var current = parseInt(String($el.text()).replace(/[^\d-]/g, ''), 10) || 0;
-                                $el.text((current + delta).toLocaleString('it-IT'));
-                            };
-                            update('#resources_metal',     parseInt(credited.metal || 0, 10) || 0);
-                            update('#resources_crystal',   parseInt(credited.crystal || 0, 10) || 0);
-                            update('#resources_deuterium', parseInt(credited.deuterium || 0, 10) || 0);
-                            update('#resources_darkmatter', -cost);
+                            var rb = window.resourcesBar;
+                            if (rb && rb.resources) {
+                                if (rb.resources.metal)      rb.resources.metal.amount     += parseInt(credited.metal || 0, 10) || 0;
+                                if (rb.resources.crystal)    rb.resources.crystal.amount   += parseInt(credited.crystal || 0, 10) || 0;
+                                if (rb.resources.deuterium)  rb.resources.deuterium.amount += parseInt(credited.deuterium || 0, 10) || 0;
+                                if (rb.resources.darkmatter) rb.resources.darkmatter.amount -= cost;
+                                // Force one update tick so the user sees the new values
+                                // immediately (the ticker would do it within a fraction
+                                // of a second anyway, but lag is perceptible).
+                                if (typeof rb.update === 'function') {
+                                    try { rb.update(); } catch (_) {}
+                                }
+                            }
 
                             if (typeof messageBoxNotify === 'function') {
                                 messageBoxNotify(LocalizationStrings.success, response.message);
