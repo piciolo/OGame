@@ -42,4 +42,17 @@
         height: 16px;
     }
     #tabs-buyResource .resource_name input.overmark { color: #D43635; }
+
+    /* Disabled input — storage full or zero production. Dark grey style per
+       OGame ufficiale (see issue HTML on dev.ogamex.top): clearly signals the
+       package is unbuyable on this planet without freeing storage / building
+       the right mine. */
+    #tabs-buyResource .resource_name input:disabled,
+    #tabs-buyResource .resource_name input[disabled] {
+        background-color: #424548;
+        border: 1px solid #44484B;
+        border-bottom-color: #575C60;
+        box-shadow: inset 0 1px 3px 0 #27292B;
+        cursor: not-allowed;
+    }
 </style>

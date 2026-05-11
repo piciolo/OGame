@@ -78,15 +78,27 @@
     // Reusable closure that emits the .resource_box subtree (img + input) for a
     // single resource. Used once for single-resource boxes, three times in a row
     // for the "allLocalResources" composite box.
-    $renderResourceBox = function (string $resourceKey, int $dailyProduction, int $costDm, bool $isCapped) use ($resTypeId) {
+    // $offerable = 0 (zero production OR zero headroom) means the package is
+    // completely unbuyable → OGame ufficiale renders the input with the disabled
+    // attribute, value 0, dark grey CSS. Capped (headroom < daily but > 0) is a
+    // softer state: input editable up to daily, overmark CSS on the cost.
+    $renderResourceBox = function (string $resourceKey, int $dailyProduction, int $costDm, bool $isCapped, int $offerable = -1) use ($resTypeId) {
         $resourceTypeId = $resTypeId[$resourceKey] ?? 1;
+        // If caller didn't supply an explicit offerable (legacy callers), default
+        // to daily_production (= unbounded) to preserve previous behaviour.
+        if ($offerable < 0) { $offerable = $dailyProduction; }
+        $fullyDisabled = ($dailyProduction <= 0 || $offerable <= 0);
+
         $inputClasses = 'right checkThousandSeparator' . ($isCapped ? ' overmark' : '');
         $cappedTooltipText = __('t_merchant.buy_capped_tooltip');
+        // Displayed numerics: 0 across the board when fully disabled (mirrors live).
+        $shownDaily = $fullyDisabled ? 0 : $dailyProduction;
+        $shownCost = $fullyDisabled ? 0 : $costDm;
         ?>
         <div class="resource_box">
             <div class="sale_badge disabled"></div>
             <div class="resource_img resource_img_<?= e($resourceKey) ?>">
-                <?php if ($isCapped): ?>
+                <?php if ($isCapped && !$fullyDisabled): ?>
                     <div class="tooltip cappedToolTip"
                          aria-label="<?= e($cappedTooltipText) ?>"
                          data-tooltip-title="<?= e($cappedTooltipText) ?>"></div>
@@ -96,14 +108,15 @@
                 <input type="text"
                        class="<?= $inputClasses ?>"
                        min="0"
-                       max="<?= $dailyProduction ?>"
+                       max="<?= $shownDaily ?>"
                        aria-valuemin="0"
-                       aria-valuemax="<?= $dailyProduction ?>"
+                       aria-valuemax="<?= $shownDaily ?>"
                        data-resource-type="<?= $resourceTypeId ?>"
-                       data-original="<?= $dailyProduction ?>"
-                       data-original-price="<?= $costDm ?>"
-                       data-daily-production="<?= $dailyProduction ?>"
-                       value="<?= number_format($dailyProduction, 0, ',', '.') ?>">
+                       data-original="<?= $shownDaily ?>"
+                       data-original-price="<?= $shownCost ?>"
+                       data-daily-production="<?= $shownDaily ?>"
+                       value="<?= number_format($shownDaily, 0, ',', '.') ?>"
+                       <?= $fullyDisabled ? 'disabled aria-disabled="true"' : '' ?>>
             </div>
         </div>
         <?php
@@ -131,16 +144,19 @@
                                 $subDaily = (int) ($sub['daily_production'] ?? 0);
                                 $subCost = (int) ($sub['cost_dm'] ?? 0);
                                 $subCapped = !empty($sub['is_capped']);
-                                $renderResourceBox($subKey, $subDaily, $subCost, $subCapped);
+                                $subOfferable = (int) ($sub['amount'] ?? 0);
+                                $renderResourceBox($subKey, $subDaily, $subCost, $subCapped, $subOfferable);
                             @endphp
                         @endforeach
                     @else
                         @php
+                            $pkg = $buyPackages[$box['package_key'] === 'allLocalResources' ? 'all' : $box['resource_key']];
                             $renderResourceBox(
                                 $box['resource_key'],
                                 $box['daily_production'],
                                 $box['cost_dm'],
-                                $box['is_capped'] === '1'
+                                $box['is_capped'] === '1',
+                                (int) ($pkg['amount'] ?? 0)
                             );
                         @endphp
                     @endif
@@ -339,34 +355,42 @@
                 data: data,
                 dataType: 'json',
                 success: function (response) {
+                    // Always re-enable the button: if anything below throws (missing
+                    // helper, partial swap fails, etc.) we must not leave a frozen UI.
+                    $btn.removeClass('disabled');
+
                     if (response.success) {
-                        if (typeof messageBoxNotify === 'function') {
-                            messageBoxNotify(LocalizationStrings.success, response.message);
-                        }
-                        if (typeof window.reloadResources === 'function') {
-                            try { window.reloadResources(); } catch (_) {}
-                        }
-                        var ajaxUrl = '{{ route('merchant.resource-market.partial') }}';
-                        $.get(ajaxUrl, function (html) {
-                            var wrapper = document.getElementById('contentWrapper');
-                            if (wrapper) {
-                                wrapper.innerHTML = html;
-                                wrapper.querySelectorAll('script').forEach(function (old) {
-                                    var s = document.createElement('script');
-                                    for (var i = 0; i < old.attributes.length; i++) {
-                                        s.setAttribute(old.attributes[i].name, old.attributes[i].value);
-                                    }
-                                    s.textContent = old.textContent;
-                                    old.replaceWith(s);
-                                });
+                        try {
+                            if (typeof messageBoxNotify === 'function') {
+                                messageBoxNotify(LocalizationStrings.success, response.message);
                             }
+                            if (typeof window.reloadResources === 'function') {
+                                window.reloadResources();
+                            }
+                        } catch (_) { /* best-effort UI updates */ }
+
+                        // Refresh the resource-market panel so the box reflects the
+                        // new planet state (DM debited, storage refilled). Failures
+                        // here are non-fatal — the buy already completed server-side.
+                        var ajaxUrl = '{{ route('merchant.resource-market.partial') }}';
+                        $.get(ajaxUrl).done(function (html) {
+                            var wrapper = document.getElementById('contentWrapper');
+                            if (!wrapper) return;
+                            wrapper.innerHTML = html;
+                            wrapper.querySelectorAll('script').forEach(function (old) {
+                                var s = document.createElement('script');
+                                for (var i = 0; i < old.attributes.length; i++) {
+                                    s.setAttribute(old.attributes[i].name, old.attributes[i].value);
+                                }
+                                s.textContent = old.textContent;
+                                old.replaceWith(s);
+                            });
                         });
                     } else {
                         if (typeof errorBoxNotify === 'function') {
                             errorBoxNotify(LocalizationStrings.error,
                                 response.message || @json(__('t_merchant.error.buy.execution_failed', ['error' => ''])));
                         }
-                        $btn.removeClass('disabled');
                     }
                 },
                 error: function (xhr) {
