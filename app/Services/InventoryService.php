@@ -535,6 +535,8 @@ class InventoryService
                 'duration_seconds' => (int) ($si->duration_seconds ?? 0),
                 'title'            => $tTitle,
                 'description_html' => $tDesc,
+                'price_dm'         => (int) ($si->price_dm ?? 0),
+                'price_label'      => (string) ($si->price_label ?? ''),
             ];
         }
 

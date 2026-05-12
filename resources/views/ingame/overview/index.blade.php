@@ -483,6 +483,8 @@
                                                  data-duration="{{ $tile['duration_label'] }}"
                                                  data-owned="{{ $tile['owned'] }}"
                                                  data-can-activate="{{ $tile['can_activate'] ? 1 : 0 }}"
+                                                 data-price-dm="{{ $tile['price_dm'] ?? 0 }}"
+                                                 data-price-label="{{ $tile['price_label'] ?? '' }}"
                                                  style="background-image:url({{ $tile['image_url'] }}),url({{ $tile['image_url'] }});">
                                                 <div class="item_img_box">
                                                     <div class="activation {{ $tile['can_activate'] ? 'enabled' : 'disabled' }}"></div>
@@ -580,8 +582,17 @@
             window.__invOverlayInit = true;
 
             var activateUrl = @json(route('shop.activate'));
+            var buyUrl      = @json(route('shop.buy'));
             var activateToken = @json($activateToken);
+            var dmBalance     = {{ (int) ($dark_matter ?? 0) }};
             var selectedRef = null;
+            var T_BUY_ACTIVATE_FMT = @json(__('t_shop_items.btn_buy_and_activate_price'));
+            var T_DM_SHORT         = @json(__('t_shop_items.dm_short'));
+
+            function fmtIntIt(n) {
+                n = parseInt(n, 10) || 0;
+                return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+            }
 
             function root()    { return document.getElementById('invOverlayRoot'); }
             function ensureBodyParent() {
@@ -714,16 +725,30 @@
                     if (btn) {
                         btn.className = 'dm buyAndActivate build-it';
                         btn.setAttribute('ref', selectedRef);
+                        btn.dataset.mode = 'activate';
                         btn.querySelector('span').textContent = @json(__('t_shop_items.btn_extend'));
                         btn.dataset.ref = selectedRef;
                     }
                 } else {
                     if (timeRow) timeRow.style.display = 'none';
                     if (btn) {
-                        var can = tile.dataset.canActivate === '1';
-                        btn.className = 'dm buyAndActivate ' + (can ? 'build-it' : 'build-it_disabled');
+                        var owned = parseInt(tile.dataset.owned, 10) || 0;
+                        var priceDm = parseInt(tile.dataset.priceDm, 10) || 0;
+                        if (owned > 0) {
+                            // Owned: simple "Attiva", enabled
+                            btn.className = 'dm buyAndActivate build-it';
+                            btn.dataset.mode = 'activate';
+                            btn.querySelector('span').textContent = @json(__('t_shop_items.btn_activate'));
+                        } else {
+                            // Not owned: "Compra e Attiva per X MO" — enabled iff user can afford
+                            var canAfford = dmBalance >= priceDm;
+                            btn.className = 'dm buyAndActivate ' + (canAfford ? 'build-it' : 'build-it_disabled');
+                            btn.dataset.mode = 'buy_and_activate';
+                            var priceTxt = fmtIntIt(priceDm) + ' ' + T_DM_SHORT;
+                            // Use innerHTML to support <br> separators (1:1 OGame native).
+                            btn.querySelector('span').innerHTML = T_BUY_ACTIVATE_FMT.replace(':price', priceTxt);
+                        }
                         btn.setAttribute('ref', selectedRef);
-                        btn.querySelector('span').textContent = @json(__('t_shop_items.btn_activate'));
                         btn.dataset.ref = selectedRef;
                     }
                 }
@@ -739,22 +764,48 @@
                 span.textContent = fmtRemaining(remaining);
             }, 1000);
 
+            function postShop(url) {
+                var fd = new FormData();
+                fd.append('ref', selectedRef);
+                fd.append('ajax', '1');
+                fd.append('_token', activateToken);
+                fd.append('token', activateToken);
+                return fetch(url, { method: 'POST', body: fd, credentials: 'same-origin', headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+                    .then(function (r) { return r.json(); });
+            }
+
+            function doActivate() {
+                return postShop(activateUrl).then(function (res) {
+                    if (res && res.newToken) activateToken = res.newToken;
+                    var msg = (res && res.message && res.message.message) || (res && res.message) || '';
+                    if (typeof fadeBox === 'function') fadeBox(msg, !!(res && res.error));
+                    if (res && !res.error) setTimeout(function () { location.reload(); }, 800);
+                });
+            }
+
             function activate() {
                 var r = root(); if (!r || !selectedRef) return;
                 var btn = r.querySelector('#activationButton');
                 if (!btn || btn.classList.contains('build-it_disabled')) return;
-                var fd = new FormData();
-                fd.append('ref', selectedRef);
-                fd.append('_token', activateToken);
-                fetch(activateUrl, { method: 'POST', body: fd, credentials: 'same-origin', headers: { 'X-Requested-With': 'XMLHttpRequest' } })
-                    .then(function (r) { return r.json(); })
-                    .then(function (res) {
+                var mode = btn.dataset.mode || 'activate';
+                if (mode === 'buy_and_activate') {
+                    // Buy first, then activate the freshly acquired item.
+                    postShop(buyUrl).then(function (res) {
+                        if (res && res.error) {
+                            if (typeof fadeBox === 'function') fadeBox(res.message || 'Errore', true);
+                            return;
+                        }
                         if (res && res.newToken) activateToken = res.newToken;
-                        var msg = (res && res.message && res.message.message) || (res && res.message) || '';
-                        if (typeof fadeBox === 'function') fadeBox(msg, !!(res && res.error));
-                        if (res && !res.error) setTimeout(function () { location.reload(); }, 800);
-                    })
-                    .catch(function () { if (typeof fadeBox === 'function') fadeBox('Errore di rete', true); });
+                        if (res && typeof res.dark_matter !== 'undefined') {
+                            dmBalance = res.dark_matter;
+                            var topDm = document.getElementById('resources_darkmatter');
+                            if (topDm) topDm.textContent = fmtIntIt(dmBalance);
+                        }
+                        doActivate();
+                    }).catch(function () { if (typeof fadeBox === 'function') fadeBox('Errore di rete', true); });
+                } else {
+                    doActivate().catch(function () { if (typeof fadeBox === 'function') fadeBox('Errore di rete', true); });
+                }
             }
 
             document.addEventListener('click', function (e) {
