@@ -21,6 +21,7 @@ return [
     'btn_get_more_resources' => 'Få flere ressourcer',
     'btn_purchase_dark_matter' => 'Køb Mørk Materie',
     'btn_activate' => 'Aktivér',
+    'btn_deactivate' => 'Disattiva',
     'btn_buy_and_activate' => 'Køb og Aktivér',
     'btn_buy_at_cost' => 'Køb for prisen',
 

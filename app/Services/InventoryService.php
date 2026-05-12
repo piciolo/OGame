@@ -13,7 +13,6 @@ use OGame\Models\PlanetBoost;
 use OGame\Models\ShopItem;
 use OGame\Models\User;
 use OGame\Models\UserItem;
-use OGame\Models\Planet;
 
 class InventoryService
 {
@@ -75,9 +74,9 @@ class InventoryService
             $label = $resourceLabel . ' ' . __('t_shop_items.tier_' . $tier);
 
             $shop = $shopItems[$label] ?? null;
-            $description = $shop !== null ? ($shop->description ?? '') : '';
-            $priceLabel = $shop !== null ? ($shop->price_label ?? '—') : '—';
-            $durationLabel = $shop !== null ? ($shop->duration_label ?? '—') : '—';
+            $description = $shop?->description ?? '';
+            $priceLabel = $shop?->price_label ?? '—';
+            $durationLabel = $shop?->duration_label ?? '—';
             $inventoryKey = 'amplifier_' . $b->resource . ':' . $tier;
             $inventoryCount = (int) ($invByItemTypeTier[$inventoryKey] ?? 0);
 
@@ -123,9 +122,9 @@ class InventoryService
      * Resolve the registry key for an auction lot.
      * Returns null for lots that should not go into inventory (dark matter, ships).
      */
-    public function registryKeyForAuction(Auction $auction): string|null
+    public function registryKeyForAuction(Auction $auction): ?string
     {
-        $tier = $auction->tier->value;
+        $tier = $auction->tier?->value;
 
         return match ($auction->lot_type) {
             AuctionLotType::BoosterKraken   => 'booster_kraken:' . $tier,
@@ -137,11 +136,11 @@ class InventoryService
         };
     }
 
-    private function amplifierKey(Auction $auction): string|null
+    private function amplifierKey(Auction $auction): ?string
     {
         $payload = (array) $auction->lot_payload;
         $family = $payload['resource'] ?? $payload['amplifier_family'] ?? null; // metal | crystal | deuterium | energy
-        $tier = $auction->tier->value;
+        $tier = $auction->tier?->value;
         if ($family === null || $tier === null) {
             return null;
         }
@@ -152,7 +151,7 @@ class InventoryService
      * Grant the auction prize into the winner's inventory (if applicable).
      * Dark matter and ship lots bypass inventory — handled by the auctioneer directly.
      */
-    public function grantFromAuction(User $user, Auction $auction): UserItem|null
+    public function grantFromAuction(User $user, Auction $auction): ?UserItem
     {
         $key = $this->registryKeyForAuction($auction);
         if ($key === null) {
@@ -206,65 +205,23 @@ class InventoryService
         $result = [];
         $orders = [];
 
-        // Preload ShopItem rows for any shop_item / profile_avatar UserItem
-        // (source_ref -> ShopItem). I profile_avatar usano lo stesso lookup ma
-        // con un ramo dedicato (item_type='profile_avatar', category=Profile).
-        $shopIds = $rows->whereIn('item_type', ['shop_item', 'profile_avatar'])
-            ->pluck('source_ref')->filter()->unique()->values()->all();
+        // Preload ShopItem rows for any shop_item UserItem (source_ref -> ShopItem).
+        // Eager-load categories to detect profilo items (avatar) for is_active computation.
+        $shopIds = $rows->where('item_type', 'shop_item')->pluck('source_ref')->filter()->unique()->values()->all();
         $shopItems = [];
+        // Set of ShopItem IDs in the 'profilo' category (for avatar is_active logic)
+        $profiloShopIds = [];
         if (!empty($shopIds)) {
-            $shopItems = ShopItem::query()->whereIn('id', $shopIds)->get()->keyBy('id');
+            $shopItems = ShopItem::query()->with('categories')->whereIn('id', $shopIds)->get()->keyBy('id');
+            foreach ($shopItems as $si) {
+                if ($si->categories->contains('key', 'profilo')) {
+                    $profiloShopIds[$si->id] = true;
+                }
+            }
         }
+        $userActiveAvatar = $user->profile_avatar ?? null;
 
         foreach ($rows as $row) {
-            // Avatar profilo dallo shop: stesso pattern shop_item ma il `ref` dello
-            // stack è basato su tier (= shop_item.id) per discriminare avatar diversi.
-            // Differenza chiave: NON consumabile — il backend mantiene status='available'
-            // anche dopo l'attivazione (vedi InventoryActivationService::activateProfileAvatar).
-            // `is_active` = true se l'avatar attualmente selezionato dall'user è proprio
-            // questo (users.profile_avatar == "shop:<id>"), così il pulsante può
-            // mostrare "Disattiva" invece di "Attiva".
-            if ($row->item_type === 'profile_avatar') {
-                /** @var ShopItem|null $shop */
-                $shop = $shopItems[$row->source_ref] ?? null;
-                if ($shop === null) {
-                    continue;
-                }
-                $ref = UserItem::refFor('profile_avatar', $row->tier);
-                if (!isset($result[$ref])) {
-                    $profileRef = InventoryCategory::Profile->ref();
-                    $allRef = InventoryCategory::Items->ref();
-                    $tx = __('t_shop_items_data.' . $shop->ref);
-                    $hasTx = is_array($tx);
-                    $tName = $hasTx && isset($tx['name']) ? $tx['name'] : $shop->name;
-                    $tDesc = $hasTx && isset($tx['description']) ? $tx['description'] : ($shop->description ?? '');
-                    $isActive = ($user->profile_avatar ?? '') === ('shop:' . (int) $row->source_ref);
-                    $result[$ref] = [
-                        'ref' => $ref,
-                        'item_type' => 'profile_avatar',
-                        'tier' => $row->tier,
-                        'category' => [$profileRef, $allRef],
-                        'amount' => 0,
-                        'rarity' => $shop->rarity,
-                        'imageLarge' => $shop->ref,
-                        'image_override_url' => '/img/shop/' . $shop->image,
-                        'title' => $tName . '|' . $this->cleanDescription($tDesc),
-                        'description_ext' => $tDesc,
-                        'description_html' => $tDesc,
-                        'canBeActivated' => true,
-                        'canBeBoughtAndActivated' => false,
-                        'activation_type' => 'manual',
-                        'duration_seconds' => 0,
-                        'duration_label' => '',
-                        'payload' => $row->payload,
-                        'first_item_id' => (int) $row->id,
-                        'shop_image' => $shop->image,
-                        'is_active' => $isActive,
-                    ];
-                }
-                $result[$ref]['amount']++;
-                continue;
-            }
             if ($row->item_type === 'shop_item') {
                 /** @var ShopItem|null $shop */
                 $shop = $shopItems[$row->source_ref] ?? null;
@@ -284,13 +241,13 @@ class InventoryService
                     $tDur  = $hasTx && isset($tx['duration_label']) ? $tx['duration_label'] : $shop->duration_label;
                     $durationLabel = $tDur ?: ($durSec > 0 ? $this->humanizeDuration($durSec) : __('t_shop_items.duration_instant'));
                     // Long description: prefer translated extended_description, fall back to translated description, finally DB.
-                    $longDesc = match (true) {
-                        $hasTx => $tx['extended_description'] ?? ($tx['description'] ?? (!empty($shop->extended_description) ? $shop->extended_description : $this->cleanDescription($shop->description))),
-                        !empty($shop->extended_description) => $shop->extended_description,
-                        default => $this->cleanDescription($shop->description),
-                    };
+                    $longDesc = $hasTx
+                        ? ($tx['extended_description'] ?? ($tx['description'] ?? (!empty($shop->extended_description) ? $shop->extended_description : $this->cleanDescription($shop->description))))
+                        : (!empty($shop->extended_description) ? $shop->extended_description : $this->cleanDescription($shop->description));
                     // Runtime substitution for dynamic numeric placeholders (:metal/:crystal/:deuterium/:warning)
                     $longDesc = $this->substituteResourcePlaceholders($longDesc, $user, $shop);
+                    $isProfileItem = isset($profiloShopIds[$shop->id]);
+                    $machineName   = 'shop:' . $shop->id;
                     $result[$ref] = [
                         'ref' => $ref,
                         'item_type' => 'shop_item',
@@ -313,6 +270,12 @@ class InventoryService
                         'payload' => $row->payload,
                         'first_item_id' => (int) $row->id,
                         'shop_image' => $shop->image,
+                        // is_profile: true for items in the 'profilo' category (avatars)
+                        'is_profile' => $isProfileItem,
+                        // is_active: true if this shop avatar is the one currently equipped
+                        'is_active' => $isProfileItem && $userActiveAvatar === $machineName,
+                        // machine_name used to set/unset profile_avatar
+                        'machine_name' => $isProfileItem ? $machineName : null,
                     ];
                 }
                 $result[$ref]['amount']++;
@@ -352,10 +315,8 @@ class InventoryService
         }
 
         // Recompute tooltip with final amount for registry items only
-        // (skip shop_item e profile_avatar — il loro title viene già composto
-        // direttamente dal nome del ShopItem nel branch dedicato).
         foreach ($result as $ref => &$item) {
-            if (in_array($item['item_type'], ['shop_item', 'profile_avatar'], true)) {
+            if ($item['item_type'] === 'shop_item') {
                 continue;
             }
             $key = $item['item_type'] . ':' . ($item['tier'] ?? '');
@@ -389,7 +350,7 @@ class InventoryService
      */
     public function countsByRegistryKey(User $user): array
     {
-        $rows = DB::table('user_items')
+        $rows = UserItem::query()
             ->where('user_id', $user->id)
             ->where('status', 'available')
             ->whereNull('consumed_at')
@@ -399,7 +360,6 @@ class InventoryService
 
         $out = [];
         foreach ($rows as $r) {
-            /** @var object{item_type: string, tier: string|null, c: int} $r */
             $out[$r->item_type . ':' . ($r->tier ?? '')] = (int) $r->c;
         }
         return $out;
@@ -409,7 +369,7 @@ class InventoryService
      * Resolve a registry key from raw lot data (used to match auctioneer history
      * items against inventory counts without needing a loaded Auction model).
      */
-    public function registryKeyForLot(string $lotType, string $tier, array $payload = []): string|null
+    public function registryKeyForLot(string $lotType, string $tier, array $payload = []): ?string
     {
         return match ($lotType) {
             'booster_kraken'   => 'booster_kraken:' . $tier,
@@ -426,7 +386,7 @@ class InventoryService
     /**
      * Count available items for a (item_type, tier) stack.
      */
-    public function countStack(User $user, string $itemType, string|null $tier): int
+    public function countStack(User $user, string $itemType, ?string $tier): int
     {
         return UserItem::query()
             ->where('user_id', $user->id)
@@ -440,7 +400,7 @@ class InventoryService
      * Consume (mark used) a single item from a stack. Returns true if one was consumed.
      * This is a stub for PR1 — real activation effects land in PR boost.
      */
-    public function consumeOne(User $user, string $itemType, string|null $tier): UserItem|null
+    public function consumeOne(User $user, string $itemType, ?string $tier): ?UserItem
     {
         return DB::transaction(function () use ($user, $itemType, $tier) {
             $item = UserItem::query()
@@ -552,7 +512,7 @@ class InventoryService
         return ['pages' => $pages];
     }
 
-    private function composeTooltip(array $def, array|null $payload, int $amount): string
+    private function composeTooltip(array $def, ?array $payload, int $amount): string
     {
         $title = __('t_shop_items.' . $def['title_key']);
         if (!empty($def['tier'])) {
@@ -570,7 +530,7 @@ class InventoryService
         return $title . '|' . $body;
     }
 
-    private function cleanDescription(string|null $raw): string
+    private function cleanDescription(?string $raw): string
     {
         return (string) ($raw ?? '');
     }
@@ -590,7 +550,7 @@ class InventoryService
             return $template;
         }
 
-        $planets = Planet::query()->where('user_id', $user->id)->get();
+        $planets = \OGame\Models\Planet::query()->where('user_id', $user->id)->get();
         if ($planets->isEmpty()) {
             return $template;
         }

@@ -21,6 +21,7 @@ return [
     'btn_get_more_resources' => 'Nabavi više resursa',
     'btn_purchase_dark_matter' => 'Naruči Crnu Materiju',
     'btn_activate' => 'Aktiviraj',
+    'btn_deactivate' => 'Disattiva',
     'btn_buy_and_activate' => 'Kupi i aktiviraj',
     'btn_buy_at_cost' => 'Kupi za',
 

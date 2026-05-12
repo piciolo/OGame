@@ -163,23 +163,16 @@
                     @php
                         $playerLocale = $currentPlayer->getUser()->lang ?: app()->getLocale();
                         $userAvatar = $currentPlayer->getUser()->profile_avatar ?? null;
-                        // Supporta 2 formati di profile_avatar:
-                        //   - "shop:<id>"      → ShopItem image (acquistato dallo shop)
-                        //   - "A1_T2_Ava_ID1"  → reward Trofei (file locale .jpg/.png)
-                        $headerAvatarUrl = '/img/layout/profile-default.png';
-                        if (is_string($userAvatar) && str_starts_with($userAvatar, 'shop:')) {
-                            $shopAvId = (int) substr($userAvatar, 5);
-                            $shopAv = \OGame\Models\ShopItem::find($shopAvId);
-                            if ($shopAv && $shopAv->image) {
-                                $headerAvatarUrl = '/img/shop/'.$shopAv->image;
-                            }
-                        } elseif (is_string($userAvatar) && $userAvatar !== '') {
-                            foreach (['.jpg', '.png'] as $ext) {
-                                if (file_exists(public_path('img/achievements/avatars/'.$userAvatar.$ext))) {
-                                    $headerAvatarUrl = '/img/achievements/avatars/'.$userAvatar.$ext;
-                                    break;
-                                }
-                            }
+                        if ($userAvatar && str_starts_with($userAvatar, 'shop:')) {
+                            $shopAvatarId   = (int) substr($userAvatar, 5);
+                            $shopAvatarItem = \OGame\Models\ShopItem::find($shopAvatarId);
+                            $headerAvatarUrl = $shopAvatarItem
+                                ? '/img/shop/' . $shopAvatarItem->image
+                                : '/img/layout/profile-default.png';
+                        } else {
+                            $headerAvatarUrl = $userAvatar
+                                ? '/img/achievements/avatars/' . $userAvatar . '.jpg'
+                                : '/img/layout/profile-default.png';
                         }
                     @endphp
                     <a href="{{ route('playerprofile.index') }}" class="profile-picture-link"
@@ -542,21 +535,57 @@
 
 
     <div id="left">
+        @php
+            $ipiNextAction = app(\OGame\Services\IpiOverviewService::class)->getCurrentNextAction(auth()->id());
+        @endphp
         <div id="ipimenucomponent" class="">
             <div id="ipiMenuWrapper" class="ipiMenuTrackedAction ipiHintable " title="" data-ipi-hint="ipiMenu">
                 <div id="ipimenucontent"><a
-                            href="javascript:void(0);"
-                            class="textBeefy" data-overlay-title="" id="ipiInnerMenuContentHolder">
+                            href="{{ route('ipioverview.overlay') }}"
+                            class="overlay textBeefy" data-overlay-title="" id="ipiInnerMenuContentHolder">
                         <div class="ipiMenuHead">
                             {{ __('t_ingame.layout.menu_directives') }}
                         </div>
 
-                        <div class="ipiMenuBody hidden"></div>
-                        <div class="ipiMenuFooter hidden"></div>
+                        <div class="ipiMenuBody {{ $ipiNextAction ? '' : 'hidden' }}">{{ $ipiNextAction['title'] ?? '' }}</div>
+                        <div class="ipiMenuFooter {{ $ipiNextAction ? '' : 'hidden' }}"></div>
                     </a>
                 </div>
             </div>
         </div>
+        @if($ipiNextAction && !empty($ipiNextAction['highlights']))
+            <script>
+                // Activate IPI highlights for the currently tracked task on page load.
+                // IPI.updateCurrentAction() walks the .ipiHintable[data-ipi-hint=...] DOM
+                // elements and toggles .ipiHintActive (yellow blinking ring).
+                document.addEventListener('DOMContentLoaded', function () {
+                    if (typeof IPI !== 'undefined' && typeof IPI.updateCurrentAction === 'function') {
+                        IPI.updateCurrentAction(
+                            @json($ipiNextAction['title']),
+                            @json($ipiNextAction['highlights'])
+                        );
+                    }
+                });
+            </script>
+        @endif
+
+        <script>
+            // Topbar resource tiles → deep-link into Shop > resource amplifier item.
+            // Mirrors OGame's behavior of opening the corresponding "Pacchetto" panel.
+            document.addEventListener('DOMContentLoaded', function () {
+                var shopUrl = @json(route('shop.index'));
+                document.querySelectorAll('[data-shop-ref]').forEach(function (el) {
+                    el.addEventListener('click', function (e) {
+                        // Don't intercept clicks on the dark-matter "Buy" tooltip button
+                        // (it has its own data-tooltip-button handler that opens the DM panel).
+                        if (e.target.closest('[data-tooltip-button]')) return;
+                        var ref = el.getAttribute('data-shop-ref');
+                        if (!ref) return;
+                        window.location.href = shopUrl + '?ref=' + encodeURIComponent(ref);
+                    });
+                });
+            });
+        </script>
         <div id="toolbarcomponent" class="">
             <div id="links">
                 <ul id="menuTable" class="leftmenu">
@@ -570,7 +599,8 @@
                                 <div class="menuImage overview {{(Request::is('rewards') || Request::is('overview') ? 'highlighted' : '') }}"></div>
                             </a>
                         </span>
-                        <a class="menubutton {{(Request::is('overview') ? 'selected' : '') }}"
+                        <a class="menubutton ipiHintable {{(Request::is('overview') ? 'selected' : '') }}"
+                           data-ipi-hint="ipiToolbarOverview"
                            href="{{ route('overview.index') }}"
                            accesskey=""
                            target="_self"
@@ -588,7 +618,8 @@
                                 <div class="menuImage resources {{(Request::is('resources*') ? 'highlighted' : '') }}"></div>
                             </a>
                         </span>
-                        <a class="menubutton {{(Request::is('resources*') ? 'selected' : '') }}"
+                        <a class="menubutton ipiHintable {{(Request::is('resources*') ? 'selected' : '') }}"
+                           data-ipi-hint="ipiToolbarResourcebuildings"
                            href="{{ route('resources.index') }}"
                            accesskey=""
                            target="_self"
@@ -607,7 +638,8 @@
                                 <div class="menuImage station"></div>
                             @endif
                         </span>
-                        <a class="menubutton {{(Request::is('facilities') ? 'selected' : '') }}"
+                        <a class="menubutton ipiHintable {{(Request::is('facilities') ? 'selected' : '') }}"
+                           data-ipi-hint="ipiToolbarFacilities"
                            href="{{ route('facilities.index') }}"
                            accesskey=""
                            target="_self"
@@ -626,7 +658,8 @@
                                 </div>
                             </a>
                         </span>
-                        <a class="menubutton premiumHighligt {{(Request::is('merchant*') ? 'selected' : '') }}"
+                        <a class="menubutton premiumHighligt ipiHintable {{(Request::is('merchant*') ? 'selected' : '') }}"
+                           data-ipi-hint="ipiToolbarTrader"
                            href="{{ route('merchant.index') }}"
                            accesskey=""
                            target="_self"
@@ -645,7 +678,8 @@
                                 </div>
                             </a>
                         </span>
-                        <a class="menubutton {{(Request::is('research') ? 'selected' : '') }}"
+                        <a class="menubutton ipiHintable {{(Request::is('research') ? 'selected' : '') }}"
+                           data-ipi-hint="ipiToolbarResearch"
                            href="{{ route('research.index') }}"
                            accesskey=""
                            target="_self"
@@ -658,7 +692,8 @@
                         <span class="menu_icon">
                             <div class="menuImage shipyard {{(Request::is('shipyard') ? 'highlighted' : '') }}"></div>
                         </span>
-                        <a class="menubutton {{(Request::is('shipyard') ? 'selected' : '') }}"
+                        <a class="menubutton ipiHintable {{(Request::is('shipyard') ? 'selected' : '') }}"
+                           data-ipi-hint="ipiToolbarShipyard"
                            href="{{ route('shipyard.index') }}"
                            accesskey=""
                            target="_self"
@@ -671,7 +706,8 @@
                         <span class="menu_icon">
                             <div class="menuImage defense {{(Request::is('defense') ? 'highlighted' : '') }}"></div>
                         </span>
-                        <a class="menubutton {{(Request::is('defense') ? 'selected' : '') }}"
+                        <a class="menubutton ipiHintable {{(Request::is('defense') ? 'selected' : '') }}"
+                           data-ipi-hint="ipiToolbarDefense"
                            href="{{ route('defense.index') }}"
                            accesskey=""
                            target="_self"
@@ -690,7 +726,8 @@
                                 </div>
                             </a>
                         </span>
-                        <a class="menubutton {{(Request::is('fleet*') ? 'selected' : '') }}"
+                        <a class="menubutton ipiHintable {{(Request::is('fleet*') ? 'selected' : '') }}"
+                           data-ipi-hint="ipiToolbarFleet"
                            href="{{ route('fleet.index') }}"
                            accesskey=""
                            target="_self"
@@ -703,7 +740,8 @@
                         <span class="menu_icon">
                             <div class="menuImage galaxy {{(Request::is('galaxy') ? 'highlighted' : '') }}"></div>
                         </span>
-                        <a class="menubutton {{(Request::is('galaxy') ? 'selected' : '') }}"
+                        <a class="menubutton ipiHintable {{(Request::is('galaxy') ? 'selected' : '') }}"
+                           data-ipi-hint="ipiToolbarGalaxy"
                            href="{{ route('galaxy.index') }}"
                            accesskey=""
                            target="_self"
@@ -716,7 +754,8 @@
                         <span class="menu_icon">
                             <div class="menuImage alliance {{(Request::is('alliance') ? 'highlighted' : '') }}"></div>
                         </span>
-                        <a class="menubutton {{(Request::is('alliance') ? 'selected' : '') }}"
+                        <a class="menubutton ipiHintable {{(Request::is('alliance') ? 'selected' : '') }}"
+                           data-ipi-hint="ipiToolbarAlliance"
                            href="{{ route('alliance.index') }}"
                            accesskey=""
                            target="_self"
@@ -729,7 +768,8 @@
                         <span class="menu_icon">
                             <div class="menuImage premium {{(Request::is('premium') ? 'highlighted' : '') }}"></div>
                         </span>
-                        <a class="menubutton premiumHighligt officers {{(Request::is('premium') ? 'selected' : '') }}"
+                        <a class="menubutton premiumHighligt officers ipiHintable {{(Request::is('premium') ? 'selected' : '') }}"
+                           data-ipi-hint="ipiToolbarOfficers"
                            href="{{ route('premium.index') }}"
                            accesskey=""
                            target="_self"
@@ -747,7 +787,8 @@
                                 </div>
                             </a>
                         </span>
-                        <a class="menubutton premiumHighligt {{(Request::is('shop') ? 'selected' : '') }}"
+                        <a class="menubutton premiumHighligt ipiHintable {{(Request::is('shop') ? 'selected' : '') }}"
+                           data-ipi-hint="ipiToolbarShop"
                            href="{{ route('shop.index') }}"
                            accesskey=""
                            target="_self"
@@ -1756,16 +1797,13 @@ However, the Space Dock's engineers think that some of the remains can be salvag
                                                 <img id="planetBarSpaceObjectImg_{{ $planet->getPlanetId() }}"
                                                      class="planetPic js_replace2x"
                                                      alt="{{ $planet->getPlanetName() }}"
-                                                     src="{!! $planet->getPlanetImageUrl() !!}"
-                                                     data-default-src="{!! asset('img/planets/medium/' . $planet->getPlanetBiomeType() . '_' . $planet->getPlanetImageType() . '.png') !!}"
+                                                     src="{!! asset('img/planets/medium/' . $planet->getPlanetBiomeType() . '_' . $planet->getPlanetImageType() . '.png') !!}"
                                                      width="30" height="30">
                                             </div>
                                         @else
-                                            <img id="planetBarSpaceObjectImg_{{ $planet->getPlanetId() }}"
-                                                 class="planetPic js_replace2x"
+                                            <img class="planetPic js_replace2x"
                                                  alt="{{ $planet->getPlanetName() }}"
-                                                 src="{!! $planet->getPlanetImageUrl() !!}"
-                                                 data-default-src="{!! asset('img/planets/medium/' . $planet->getPlanetBiomeType() . '_' . $planet->getPlanetImageType() . '.png') !!}"
+                                                 src="{!! asset('img/planets/medium/' . $planet->getPlanetBiomeType() . '_' . $planet->getPlanetImageType() . '.png') !!}"
                                                  width="48" height="48">
                                         @endif
                                         <span class="planet-name ">{!! $planet->getPlanetName() !!}</span>

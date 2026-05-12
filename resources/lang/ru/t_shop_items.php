@@ -21,6 +21,7 @@ return [
     'btn_get_more_resources' => 'Получить больше ресурсов',
     'btn_purchase_dark_matter' => 'Купить Тём. мат.',
     'btn_activate' => 'Активировать',
+    'btn_deactivate' => 'Disattiva',
     'btn_buy_and_activate' => 'Купить и активировать',
     'btn_buy_at_cost' => 'Купить за',
 

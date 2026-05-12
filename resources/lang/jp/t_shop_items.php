@@ -21,6 +21,7 @@ return [
     'btn_get_more_resources' => 'さらに資源を手に入れる',
     'btn_purchase_dark_matter' => 'ダークマターを購入する',
     'btn_activate' => '有効化',
+    'btn_deactivate' => 'Disattiva',
     'btn_buy_and_activate' => '購入して有効化',
     'btn_buy_at_cost' => '次の価格で購入',
 

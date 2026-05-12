@@ -21,6 +21,7 @@ return [
     'btn_get_more_resources' => 'Získaj viacej surovín',
     'btn_purchase_dark_matter' => 'Nákup Temnej hmoty',
     'btn_activate' => 'Aktivovať',
+    'btn_deactivate' => 'Disattiva',
     'btn_buy_and_activate' => 'Kúpiť a aktivovať',
     'btn_buy_at_cost' => 'Kúpiť za',
 

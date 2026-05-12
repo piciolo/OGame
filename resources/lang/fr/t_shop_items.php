@@ -21,6 +21,7 @@ return [
     'btn_get_more_resources' => 'Me réapprovisionner',
     'btn_purchase_dark_matter' => 'Se procurer de l\'antimatière',
     'btn_activate' => 'Activer',
+    'btn_deactivate' => 'Disattiva',
     'btn_buy_and_activate' => 'Acheter & Activer',
     'btn_buy_at_cost' => 'Acheter pour',
 

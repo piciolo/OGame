@@ -21,6 +21,7 @@ return [
     'btn_get_more_resources' => 'Obține mai multe resurse',
     'btn_purchase_dark_matter' => 'Cumpara Materia Intunecata',
     'btn_activate' => 'Activează',
+    'btn_deactivate' => 'Disattiva',
     'btn_buy_and_activate' => 'Cumpără şi Activează',
     'btn_buy_at_cost' => 'Cumpără pentru',
 

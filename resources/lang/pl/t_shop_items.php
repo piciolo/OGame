@@ -21,6 +21,7 @@ return [
     'btn_get_more_resources' => 'Zdobądź surowce',
     'btn_purchase_dark_matter' => 'Kup Antymaterię',
     'btn_activate' => 'Aktywuj',
+    'btn_deactivate' => 'Disattiva',
     'btn_buy_and_activate' => 'Kup i aktywuj',
     'btn_buy_at_cost' => 'Kup za',
 

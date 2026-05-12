@@ -21,6 +21,7 @@ return [
     'btn_get_more_resources' => '獲取更多資源',
     'btn_purchase_dark_matter' => '購買暗物質',
     'btn_activate' => '啟動',
+    'btn_deactivate' => 'Disattiva',
     'btn_buy_and_activate' => '購買並啟動',
     'btn_buy_at_cost' => '以下列價格購買',
 

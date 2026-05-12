@@ -6,6 +6,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use OGame\Enums\InventoryCategory;
+use OGame\Models\PlayerUnlockedAvatar;
 use OGame\Models\ShopItem;
 use OGame\Models\UserItem;
 use OGame\Services\InventoryActivationService;
@@ -96,7 +97,7 @@ class ShopController extends OGameController
         if ($shop !== null) {
             $imgDir = '/cdn/img/item-images/';
             // Inventory count for shop items: how many UserItem stacks the user has with same ref
-            $invCount = (int) UserItem::query()
+            $invCount = (int) \OGame\Models\UserItem::query()
                 ->where('user_id', $user->id)
                 ->where('source', 'shop')
                 ->where('source_ref', $shop->id)
@@ -193,9 +194,35 @@ class ShopController extends OGameController
             ->where('status', 'available')
             ->get();
 
+        // First: try exact stackRef() match (registry items: amplifier, booster, etc.)
         $match = $available->first(fn (UserItem $i) => $i->stackRef() === $ref);
+
+        // Second: shop items use ref = sha1('user_item:shop_item:' . shop.ref) in the
+        // inventory display (InventoryService::shopPayload), but UserItem.tier stores
+        // tier_key (e.g. null/'bronze') — not shop.ref. Resolve by loading ShopItems.
+        if ($match === null) {
+            $shopUserItems = $available->filter(fn (UserItem $i) => $i->item_type === 'shop_item' && $i->source_ref);
+            if ($shopUserItems->isNotEmpty()) {
+                $shopItemIds  = $shopUserItems->pluck('source_ref')->unique()->all();
+                $shopRefMap   = ShopItem::whereIn('id', $shopItemIds)->pluck('ref', 'id'); // id => ref
+                $match = $shopUserItems->first(function (UserItem $i) use ($ref, $shopRefMap) {
+                    $shopRef = $shopRefMap[(int) $i->source_ref] ?? null;
+                    return $shopRef !== null && UserItem::refFor('shop_item', $shopRef) === $ref;
+                });
+            }
+        }
+
         if ($match === null) {
             return response()->json(['error' => true, 'message' => __('t_shop_items.activate_not_found')], 404);
+        }
+
+        // Handle shop profile items (avatar, etc.) — they are permanent (not consumed)
+        // and simply set/unset the user's equipped avatar.
+        if ($match->item_type === 'shop_item' && $match->source_ref) {
+            $shopItem = ShopItem::with('categories')->find($match->source_ref);
+            if ($shopItem && $shopItem->categories->contains('key', 'profilo')) {
+                return $this->activateProfileItem($user, $match, $shopItem, $ref);
+            }
         }
 
         $planetId = $player->planets->current()->getPlanetId();
@@ -213,15 +240,12 @@ class ShopController extends OGameController
         }
 
         $newCount = $this->inventory->countStack($user, $match->item_type, $match->tier);
-        $messageKey = $result['code'] === 'deactivated'
-            ? 't_shop_items.deactivate_success'
-            : 't_shop_items.activate_success';
 
         return response()->json([
             'error' => false,
             'newToken' => csrf_token(),
             'message' => [
-                'message' => __($messageKey),
+                'message' => __('t_shop_items.activate_success'),
                 'item' => [
                     'ref' => $ref,
                     'amount' => $newCount,
@@ -229,6 +253,62 @@ class ShopController extends OGameController
                     'activationTitle' => '',
                     'buyTitle' => '',
                     'hasEnoughCurrency' => false,
+                    'canBeActivated' => $newCount > 0,
+                    'canBeBoughtAndActivated' => false,
+                    'isAnUpgrade' => false,
+                    'extendable' => false,
+                    'timeLeft' => 0,
+                ],
+            ],
+        ]);
+    }
+
+    /**
+     * Handle activation of a shop profile item (avatar).
+     * These items are permanent — they are NOT consumed on activation.
+     * Toggling: if the avatar is currently equipped, it is removed; otherwise applied.
+     */
+    private function activateProfileItem(
+        \OGame\Models\User $user,
+        UserItem $item,
+        ShopItem $shopItem,
+        string $ref,
+    ): JsonResponse {
+        $machineName = 'shop:' . $shopItem->id;
+        $isCurrentlyActive = ($user->profile_avatar === $machineName);
+
+        if ($isCurrentlyActive) {
+            // Deactivate: remove the avatar
+            $user->profile_avatar = null;
+        } else {
+            // Activate: equip the avatar and unlock it (idempotent)
+            $user->profile_avatar = $machineName;
+            PlayerUnlockedAvatar::firstOrCreate(
+                ['player_id' => $user->id, 'avatar_machine_name' => $machineName],
+                ['unlocked_at' => now()],
+            );
+        }
+        $user->save();
+
+        $isActive = !$isCurrentlyActive;
+
+        // Amount stays the same — profile items are not consumed
+        $newCount = (int) UserItem::query()
+            ->where('user_id', $user->id)
+            ->where('item_type', 'shop_item')
+            ->where('source_ref', $shopItem->id)
+            ->where('status', 'available')
+            ->count();
+
+        return response()->json([
+            'error' => false,
+            'newToken' => csrf_token(),
+            'message' => [
+                'message' => __('t_shop_items.activate_success'),
+                'item' => [
+                    'ref' => $ref,
+                    'amount' => $newCount,
+                    'is_active' => $isActive,
                     'canBeActivated' => $newCount > 0,
                     'canBeBoughtAndActivated' => false,
                     'isAnUpgrade' => false,

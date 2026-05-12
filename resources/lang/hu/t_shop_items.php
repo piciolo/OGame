@@ -21,6 +21,7 @@ return [
     'btn_get_more_resources' => 'Vásárolj több Erőforrást',
     'btn_purchase_dark_matter' => 'Sötét anyag vásárlás',
     'btn_activate' => 'Aktiválás',
+    'btn_deactivate' => 'Disattiva',
     'btn_buy_and_activate' => 'Vásárlás és aktiválás',
     'btn_buy_at_cost' => 'Vásárolj ennyiért',
 

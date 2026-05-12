@@ -21,6 +21,7 @@ return [
     'btn_get_more_resources' => 'Krijg meer grondstoffen',
     'btn_purchase_dark_matter' => 'Donkere Materie bestellen',
     'btn_activate' => 'Activeren',
+    'btn_deactivate' => 'Disattiva',
     'btn_buy_and_activate' => 'Kopen & Activeren',
     'btn_buy_at_cost' => 'Kopen voor',
 

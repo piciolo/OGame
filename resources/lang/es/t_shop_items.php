@@ -21,6 +21,7 @@ return [
     'btn_get_more_resources' => 'Conseguir recursos',
     'btn_purchase_dark_matter' => 'Conseguir Materia Oscura',
     'btn_activate' => 'Activar',
+    'btn_deactivate' => 'Disattiva',
     'btn_buy_and_activate' => 'Comprar y activar',
     'btn_buy_at_cost' => 'Comprar al precio de',
 

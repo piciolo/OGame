@@ -21,6 +21,7 @@ return [
     'btn_get_more_resources' => 'Rohstoffe holen',
     'btn_purchase_dark_matter' => 'Dunkle Materie beschaffen',
     'btn_activate' => 'Aktivieren',
+    'btn_deactivate' => 'Disattiva',
     'btn_buy_and_activate' => 'Kaufen & Aktivieren',
     'btn_buy_at_cost' => 'Kaufen für',
 
