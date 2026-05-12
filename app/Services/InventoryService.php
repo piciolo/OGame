@@ -248,11 +248,15 @@ class InventoryService
                     $longDesc = $this->substituteResourcePlaceholders($longDesc, $user, $shop);
                     $isProfileItem = isset($profiloShopIds[$shop->id]);
                     $machineName   = 'shop:' . $shop->id;
+                    // Profile items (avatars) belong to both Profile category and the "tutto" bucket.
+                    $categoryRefs = $isProfileItem
+                        ? [InventoryCategory::Profile->ref(), $allRef]
+                        : [$allRef];
                     $result[$ref] = [
                         'ref' => $ref,
                         'item_type' => 'shop_item',
                         'tier' => $shop->ref,
-                        'category' => [$allRef],
+                        'category' => $categoryRefs,
                         'amount' => 0,
                         'rarity' => $shop->rarity,
                         'imageLarge' => $shop->ref,
