@@ -207,12 +207,13 @@ class InventoryService
         $result = [];
         $orders = [];
 
-        // Preload ShopItem rows for any shop_item UserItem (source_ref -> ShopItem)
-        $shopIds = $rows->where('item_type', 'shop_item')->pluck('source_ref')->filter()->unique()->values()->all();
+        // Preload ShopItem rows for shop_item and profile_avatar UserItems (source_ref -> ShopItem).
+        $shopIds = $rows->whereIn('item_type', ['shop_item', 'profile_avatar'])->pluck('source_ref')->filter()->unique()->values()->all();
         $shopItems = [];
         if (!empty($shopIds)) {
             $shopItems = ShopItem::query()->whereIn('id', $shopIds)->get()->keyBy('id');
         }
+        $userActiveAvatar = $user->profile_avatar ?? null;
 
         foreach ($rows as $row) {
             if ($row->item_type === 'shop_item') {
@@ -259,6 +260,60 @@ class InventoryService
                 continue;
             }
 
+            // Legacy profile_avatar items (created before the shop_item unification).
+            // Functionally identical to a shop_item in the 'profilo' category.
+            if ($row->item_type === 'profile_avatar' && $row->source_ref) {
+                /** @var ShopItem|null $shop */
+                $shop = $shopItems[$row->source_ref] ?? null;
+                if ($shop === null) {
+                    continue;
+                }
+                $ref = $row->stackRef(); // sha1('user_item:profile_avatar:<tier>')
+                if (!isset($result[$ref])) {
+                    $allRef = InventoryCategory::Items->ref();
+                    $durSec = (int) ($shop->duration_seconds ?? 0);
+                    $tx = __('t_shop_items_data.' . $shop->ref);
+                    $hasTx = is_array($tx);
+                    $tName = $hasTx && isset($tx['name']) ? $tx['name'] : $shop->name;
+                    $tDesc = $hasTx && isset($tx['description']) ? $tx['description'] : $shop->description;
+                    $tDur  = $hasTx && isset($tx['duration_label']) ? $tx['duration_label'] : $shop->duration_label;
+                    $durationLabel = $tDur ?: ($durSec > 0 ? $this->humanizeDuration($durSec) : __('t_shop_items.duration_instant'));
+                    $longDesc = $hasTx
+                        ? ($tx['extended_description'] ?? ($tx['description'] ?? (!empty($shop->extended_description) ? $shop->extended_description : $this->cleanDescription($shop->description))))
+                        : (!empty($shop->extended_description) ? $shop->extended_description : $this->cleanDescription($shop->description));
+                    $longDesc = $this->substituteResourcePlaceholders($longDesc, $user, $shop);
+                    $machineName = 'shop:' . $shop->id;
+                    $result[$ref] = [
+                        'ref'                  => $ref,
+                        'item_type'            => 'profile_avatar',
+                        'tier'                 => $row->tier,
+                        'category'             => [InventoryCategory::Profile->ref(), $allRef],
+                        'amount'               => 0,
+                        'rarity'               => $shop->rarity,
+                        'imageLarge'           => $shop->ref,
+                        'image_override_url'   => '/img/shop/' . $shop->image,
+                        'title'                => $tName . '|' . $this->cleanDescription($tDesc)
+                            . '<br /><br />'
+                            . __('t_shop_items.label_duration') . ': ' . $durationLabel,
+                        'description_ext'      => $longDesc,
+                        'description_html'     => $longDesc,
+                        'canBeActivated'       => true,
+                        'canBeBoughtAndActivated' => false,
+                        'activation_type'      => 'manual',
+                        'duration_seconds'     => $durSec,
+                        'duration_label'       => $durationLabel,
+                        'payload'              => $row->payload,
+                        'first_item_id'        => (int) $row->id,
+                        'shop_image'           => $shop->image,
+                        'is_profile'           => true,
+                        'is_active'            => $userActiveAvatar === $machineName,
+                        'machine_name'         => $machineName,
+                    ];
+                }
+                $result[$ref]['amount']++;
+                continue;
+            }
+
             $key = $row->item_type . ':' . ($row->tier ?? '');
             $def = $registry[$key] ?? null;
             if ($def === null) {
@@ -293,7 +348,7 @@ class InventoryService
 
         // Recompute tooltip with final amount for registry items only
         foreach ($result as $ref => &$item) {
-            if ($item['item_type'] === 'shop_item') {
+            if ($item['item_type'] === 'shop_item' || $item['item_type'] === 'profile_avatar') {
                 continue;
             }
             $key = $item['item_type'] . ':' . ($item['tier'] ?? '');

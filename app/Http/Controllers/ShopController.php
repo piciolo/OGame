@@ -6,6 +6,8 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use OGame\Enums\InventoryCategory;
+use OGame\Models\PlayerUnlockedAvatar;
+use OGame\Models\ShopItem;
 use OGame\Models\UserItem;
 use OGame\Services\InventoryService;
 use OGame\Services\PlayerService;
@@ -104,6 +106,23 @@ class ShopController extends OGameController
             return response()->json(['error' => true, 'message' => __('t_shop_items.activate_not_found')], 404);
         }
 
+        // Handle shop profile items (avatar, etc.) — they are permanent (not consumed)
+        // and simply set/unset the user's equipped avatar.
+        if ($match->item_type === 'shop_item' && $match->source_ref) {
+            $shopItem = ShopItem::with('categories')->find($match->source_ref);
+            if ($shopItem && $shopItem->categories->contains('key', 'profilo')) {
+                return $this->activateProfileItem($user, $match, $shopItem, $ref);
+            }
+        }
+
+        // Legacy profile_avatar items (created before shop_item unification) are also permanent.
+        if ($match->item_type === 'profile_avatar' && $match->source_ref) {
+            $shopItem = ShopItem::with('categories')->find($match->source_ref);
+            if ($shopItem) {
+                return $this->activateProfileItem($user, $match, $shopItem, $ref);
+            }
+        }
+
         $consumed = $this->inventory->consumeOne($user, $match->item_type, $match->tier);
         if ($consumed === null) {
             return response()->json(['error' => true, 'message' => __('t_shop_items.activate_not_found')], 404);
@@ -123,6 +142,59 @@ class ShopController extends OGameController
                     'activationTitle' => '',
                     'buyTitle' => '',
                     'hasEnoughCurrency' => false,
+                    'canBeActivated' => $newCount > 0,
+                    'canBeBoughtAndActivated' => false,
+                    'isAnUpgrade' => false,
+                    'extendable' => false,
+                    'timeLeft' => 0,
+                ],
+            ],
+        ]);
+    }
+
+    /**
+     * Handle activation of a shop profile item (avatar).
+     * These items are permanent — they are NOT consumed on activation.
+     * Toggling: if the avatar is currently equipped, it is removed; otherwise applied.
+     */
+    private function activateProfileItem(
+        \OGame\Models\User $user,
+        UserItem $item,
+        ShopItem $shopItem,
+        string $ref,
+    ): JsonResponse {
+        $machineName = 'shop:' . $shopItem->id;
+        $isCurrentlyActive = ($user->profile_avatar === $machineName);
+
+        if ($isCurrentlyActive) {
+            $user->profile_avatar = null;
+        } else {
+            $user->profile_avatar = $machineName;
+            PlayerUnlockedAvatar::firstOrCreate(
+                ['player_id' => $user->id, 'avatar_machine_name' => $machineName],
+                ['unlocked_at' => now()],
+            );
+        }
+        $user->save();
+
+        $isActive = !$isCurrentlyActive;
+
+        $newCount = (int) UserItem::query()
+            ->where('user_id', $user->id)
+            ->whereIn('item_type', ['shop_item', 'profile_avatar'])
+            ->where('source_ref', $shopItem->id)
+            ->where('status', 'available')
+            ->count();
+
+        return response()->json([
+            'error' => false,
+            'newToken' => csrf_token(),
+            'message' => [
+                'message' => __('t_shop_items.activate_success'),
+                'item' => [
+                    'ref' => $ref,
+                    'amount' => $newCount,
+                    'is_active' => $isActive,
                     'canBeActivated' => $newCount > 0,
                     'canBeBoughtAndActivated' => false,
                     'isAnUpgrade' => false,
