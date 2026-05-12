@@ -74,7 +74,7 @@
         #shop #detail .inventoryAmount { margin: 0; padding: 0; border: 0; z-index: 1; width: auto; position: absolute; right: 35px; font: 10px/22px Verdana, Arial, Helvetica, sans-serif; color: #d29d00; }
         #shop #detail #description { padding: 0; border: 0; font-weight: inherit; font-style: inherit; font-family: inherit; z-index: 1; color: #848484; height: 90px; line-height: 130%; margin: 3px 0 0 4px; }
         #shop #detail #description p { line-height: 130%; margin: 0; padding: 0; border: 0; font-style: inherit; font-size: 100%; font-family: inherit; z-index: 1; white-space: normal; color: #6F9FC8; font-weight: 700; }
-        #shop #detail #description a.help { line-height: 130%; padding: 0; border: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; z-index: 1; color: #848484; display: block; float: left; height: 18px; margin: 2px 5px 0 0; width: 18px; background: transparent; }
+        #shop #detail #description a.help { line-height: 130%; padding: 0; border: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; z-index: 1; color: #848484; display: block; float: left; height: 18px; margin: 2px 5px 0 0; width: 18px; background: transparent url('//gf3.geo.gfsrv.net/cdneb/f5f81e8302aaad56c958c033677fb8.png') -207px -34px no-repeat; }
         /* Native OGame label inside the buy buttons (#itemDetails .build-it span.textlabel)
            Verified live computed style (Apr 2026):
              font: 700 12px/14px Verdana, Arial, Helvetica, sans-serif (BOLD 12px)
@@ -127,7 +127,7 @@
             margin: 0;
             border: 0;
             background-color: #000;
-            background-image: none;
+            background-image: url("//gf3.geo.gfsrv.net/cdnea/8c3657fbb2a8808627f8a3dbedcb8c.png");
             background-repeat: repeat-x;
             background-position: 0 -228px;
             height: 38px;
@@ -273,7 +273,7 @@
 
                         <span id="js_dmBalance" style="display:none;">{{ number_format($darkMatter, 0, ',', '.') }}</span>
                         <div class="btn_wrap">
-                            <a href="#" tabindex="1" class="btn btn_confirm buyResourcesLink">
+                            <a href="{{ route('merchant.resource-market') }}" tabindex="1" class="btn btn_confirm buyResourcesLink">
                                 {{ __('t_shop_items.btn_get_more_resources') }}
                             </a>
                             <a href="{{ route('payment.overlay') }}" tabindex="1" class="btn btn_confirm buyDarkMatterLink overlay"
@@ -419,7 +419,6 @@
             function fmtInt(n) { return (Number(n) || 0).toLocaleString('it-IT'); }
 
             const T_ACTIVATE = @json(__('t_shop_items.btn_activate'));
-            const T_DEACTIVATE = @json(__('t_shop_items.btn_deactivate'));
             const T_BUY = @json(__('t_shop_items.btn_buy'));
             const T_CONFIRM_BUY = @json(__('t_shop_items.btn_confirm_buy'));
             const T_INVENTORY_EMPTY = @json(__('t_shop_items.inventory_empty'));
@@ -603,9 +602,6 @@
                 const body = item.description_ext || item.description_html || (parts[1] || '').split('<br')[0];
                 const imgUrl = item.image_override_url || ('/img/auctioneer/items/' + item.imageLarge + '.png');
                 const canActivate = item.canBeActivated && item.amount > 0;
-                // Toggle label per profile_avatar: "Disattiva" se l'avatar è
-                // attualmente in uso, altrimenti "Attiva" (riapplica).
-                const actLabel = (item.is_active ? T_DEACTIVATE : T_ACTIVATE);
                 // Prefer scraped duration_label ("ora", "Permanente"...) over auto-format.
                 const duration = item.duration_label || humanizeDuration(item.duration_seconds);
                 detailEl.innerHTML = `
@@ -621,7 +617,7 @@
                                     <div id="features">
                                         <p class="extended_description">${body} <span class="more_info blue_txt bold">${esc(T_DURATION_LABEL)}: ${esc(duration)}</span></p>
                                         <a class="${canActivate ? 'build-it' : 'build-it_disabled'} item activateItem js_activateItem" href="javascript:void(0);" data-ref="${esc(ref)}">
-                                            <span>${esc(actLabel)}</span>
+                                            <span>${esc(T_ACTIVATE)}</span>
                                         </a>
                                     </div>
                                 </div>
@@ -822,24 +818,6 @@
                             if (countEl) countEl.textContent = newAmount;
                             const detEl = document.querySelector('#itemDetails[data-uuid="' + ref + '"] .inventoryAmount .amount');
                             if (detEl) detEl.textContent = newAmount;
-                            // profile_avatar: toggle stato attivo + label bottone (Attiva/Disattiva)
-                            // + mini-avatar header (sq26).
-                            const it = inventoryItems[ref];
-                            if (it && it.item_type === 'profile_avatar') {
-                                Object.values(inventoryItems).forEach(other => {
-                                    if (other.item_type === 'profile_avatar' && other.ref !== ref) other.is_active = false;
-                                });
-                                it.is_active = !it.is_active;
-                                const btnSpan = document.querySelector('#itemDetails[data-uuid="' + ref + '"] .js_activateItem span');
-                                if (btnSpan) btnSpan.textContent = it.is_active ? T_DEACTIVATE : T_ACTIVATE;
-                                const headerAv = document.querySelector('.profile-picture.sq26');
-                                if (headerAv) {
-                                    const newUrl = it.is_active && it.image_override_url
-                                        ? it.image_override_url
-                                        : '/img/layout/profile-default.png';
-                                    headerAv.style.backgroundImage = "url('" + newUrl + "')";
-                                }
-                            }
                         }
                         fadeMsg((res.message && res.message.message) || 'OK', false);
                         updateCategoryCounts();
