@@ -473,13 +473,14 @@ class InventoryService
         $itemsPerSlide = 8;
         $imgDir = '/cdn/img/item-images/';
 
-        // Filter to match OGame ufficiale overlay (~64 items):
-        // exclude profile (avatar), class selection, and long-duration boosters
-        // (30g/90g) which are duplicates of the 7g amplifiers in Risorse.
-        // Also exclude Lifeform variants (mechanic not yet implemented).
+        // Inventory overlay mirrors the shop's main tabs:
+        // Offerte Speciali, Costruzione, Risorse, Booster 30 giorni, Booster 90 giorni.
+        // Excludes Profilo (avatar) and Seleziona classe (class selection) — these are
+        // handled separately. Also excludes Lifeform variants (not yet implemented).
+        // Whenever the shop catalog changes, this filter keeps the overlay in sync.
         $shopItems = ShopItem::query()
-            ->whereDoesntHave('categories', function ($q) {
-                $q->whereIn('key', ['booster_30', 'booster_90', 'profilo', 'seleziona_classe']);
+            ->whereHas('categories', function ($q) {
+                $q->whereIn('key', ['offerte_speciali', 'costruzione', 'risorse', 'booster_30', 'booster_90']);
             })
             ->where('name', 'not like', '%(Forme di vita)%')
             ->orderBy('sort_order')
