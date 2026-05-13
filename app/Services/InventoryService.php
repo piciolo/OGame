@@ -520,7 +520,16 @@ class InventoryService
             $hasTx = is_array($tx);
             $tTitle    = $hasTx && isset($tx['name'])           ? $tx['name']           : (string) $si->name;
             $tDesc     = $hasTx && isset($tx['description'])    ? $tx['description']    : (string) ($si->description ?? '');
-            $tDuration = $hasTx && isset($tx['duration_label']) ? $tx['duration_label'] : (string) ($si->duration_label ?? __('t_shop_items.duration_instant'));
+            // duration_label is locale-neutral ("1s"/"4s 2g"/...) — trust DB over stale translations.
+            $tDuration = (string) ($si->duration_label ?? '');
+            if ($tDuration === '') {
+                $tDuration = $hasTx && isset($tx['duration_label']) ? $tx['duration_label'] : __('t_shop_items.duration_instant');
+            }
+
+            // Disambiguate same-named variants by appending the duration (see ShopService::itemToArray).
+            if ((int) ($si->duration_seconds ?? 0) > 86400 && $tDuration !== '') {
+                $tTitle = $tTitle . ' (' . $tDuration . ')';
+            }
 
             $tiles[] = [
                 'ref'              => (string) $si->ref,
