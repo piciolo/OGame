@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Mail;
+use OGame\Mail\ResetPasswordMail;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
@@ -42,6 +44,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property int|null $planet_current
  * @property int $dark_matter
  * @property Carbon|null $dark_matter_last_regen
+ * @property int $honor_points
  * @property bool $vacation_mode
  * @property Carbon|null $vacation_mode_activated_at
  * @property Carbon|null $vacation_mode_until
@@ -140,6 +143,11 @@ class User extends Authenticatable
         'character_class_free_used' => 'boolean',
         'character_class_changed_at' => 'datetime',
         'alliance_left_at' => 'datetime',
+        'profile_visible' => 'boolean',
+        'achievements_visible' => 'boolean',
+        'global_profile' => 'boolean',
+        'profile_tags' => 'array',
+        'profile_gender' => 'string',
     ];
 
     /**
@@ -150,6 +158,11 @@ class User extends Authenticatable
     public function tech(): HasOne
     {
         return $this->hasOne(UserTech::class);
+    }
+
+    public function officer(): HasOne
+    {
+        return $this->hasOne(Officer::class);
     }
 
     /**
@@ -314,5 +327,18 @@ class User extends Authenticatable
     public function canBeImpersonated(): bool
     {
         return true;
+    }
+
+    /**
+     * Send the password reset notification using OGameX branded email.
+     */
+    public function sendPasswordResetNotification($token): void
+    {
+        $resetUrl = url(route('password.reset', [
+            'token' => $token,
+            'email' => $this->email,
+        ], false));
+
+        Mail::to($this->email)->send(new ResetPasswordMail($resetUrl, $this->username));
     }
 }

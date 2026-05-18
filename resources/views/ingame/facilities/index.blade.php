@@ -250,7 +250,7 @@
                     if (response.success) {
                         // Show success fadeBox
                         if (window.fadeBox) {
-                            fadeBox('Repairs started successfully!');
+                            fadeBox('{{ __('t_ingame.wreckage.repairs_started') }}');
                         }
                         // Reload wreck field data to show updated status
                         // Find the current space dock description and reload data
@@ -259,17 +259,17 @@
                         });
                     } else {
                         if (window.errorBox) {
-                            errorBoxDecision('Error', response.message || 'Error starting repairs', 'OK', null, null);
+                            errorBoxDecision('Error', response.message || '{{ __('t_ingame.wreckage.err_start_repairs') }}', 'OK', null, null);
                         } else {
-                            alert(response.message || 'Error starting repairs');
+                            alert(response.message || '{{ __('t_ingame.wreckage.err_start_repairs') }}');
                         }
                     }
                 })
                 .fail(function() {
                     if (window.errorBox) {
-                        errorBoxDecision('Error', 'Network error starting repairs', 'OK', null, null);
+                        errorBoxDecision('Error', '{{ __('t_ingame.wreckage.err_network_start') }}', 'OK', null, null);
                     } else {
-                        alert('Network error starting repairs');
+                        alert('{{ __('t_ingame.wreckage.err_network_start') }}');
                     }
                 });
             };
@@ -282,7 +282,7 @@
                     if (response.success) {
                         // Show success fadeBox
                         if (window.fadeBox) {
-                            fadeBox('Repairs completed and ships collected successfully!');
+                            fadeBox('{{ __('t_ingame.wreckage.repairs_completed') }}');
                         }
                         // Reload wreck field data - should hide section since wreck field is gone
                         $('.technology.space_dock .description, .technology[data-technology="36"] .description').each(function() {
@@ -290,17 +290,17 @@
                         });
                     } else {
                         if (window.errorBox) {
-                            errorBoxDecision('Error', response.message || 'Error completing repairs', 'OK', null, null);
+                            errorBoxDecision('Error', response.message || '{{ __('t_ingame.wreckage.err_complete_repairs') }}', 'OK', null, null);
                         } else {
-                            alert(response.message || 'Error completing repairs');
+                            alert(response.message || '{{ __('t_ingame.wreckage.err_complete_repairs') }}');
                         }
                     }
                 })
                 .fail(function() {
                     if (window.errorBox) {
-                        errorBoxDecision('Error', 'Network error completing repairs', 'OK', null, null);
+                        errorBoxDecision('Error', '{{ __('t_ingame.wreckage.err_network_complete') }}', 'OK', null, null);
                     } else {
-                        alert('Network error completing repairs');
+                        alert('{{ __('t_ingame.wreckage.err_network_complete') }}');
                     }
                 });
             };
@@ -331,7 +331,7 @@
                     if (response.success) {
                         // Show success fadeBox
                         if (window.fadeBox) {
-                            fadeBox('All ships have been put back into service');
+                            fadeBox('{{ __('t_ingame.wreckage.ships_back_service') }}');
                         }
                         // Auto-refresh page with space dock open
                         sessionStorage.setItem('triggerSpaceDock', 'true');
@@ -340,17 +340,17 @@
                         }, 2000); // 2 second delay to let user see the message
                     } else {
                         if (window.errorBox) {
-                            errorBoxDecision('Error', response.message || 'Error collecting ships', 'OK', null, null);
+                            errorBoxDecision('Error', response.message || '{{ __('t_ingame.wreckage.err_collect_ships') }}', 'OK', null, null);
                         } else {
-                            alert(response.message || 'Error collecting ships');
+                            alert(response.message || '{{ __('t_ingame.wreckage.err_collect_ships') }}');
                         }
                     }
                 })
                 .fail(function() {
                     if (window.errorBox) {
-                        errorBoxDecision('Error', 'Network error collecting ships', 'OK', null, null);
+                        errorBoxDecision('Error', '{{ __('t_ingame.wreckage.err_network_collect') }}', 'OK', null, null);
                     } else {
-                        alert('Network error collecting ships');
+                        alert('{{ __('t_ingame.wreckage.err_network_collect') }}');
                     }
                 });
             };
@@ -364,7 +364,7 @@
                         if (response.success) {
                             // Show success fadeBox
                             if (window.fadeBox) {
-                                fadeBox('Wreck field burned successfully!');
+                                fadeBox('{{ __('t_ingame.wreckage.wreck_burned') }}');
                             }
                             // Reload wreck field data - should hide section since wreck field is gone
                             $('.technology.space_dock .description, .technology[data-technology="36"] .description').each(function() {
@@ -372,17 +372,17 @@
                             });
                         } else {
                             if (window.errorBox) {
-                                errorBoxDecision('Error', response.message || 'Error burning wreck field', 'OK', null, null);
+                                errorBoxDecision('Error', response.message || '{{ __('t_ingame.wreckage.err_burn_wreck') }}', 'OK', null, null);
                             } else {
-                                alert(response.message || 'Error burning wreck field');
+                                alert(response.message || '{{ __('t_ingame.wreckage.err_burn_wreck') }}');
                             }
                         }
                     })
                     .fail(function() {
                         if (window.errorBox) {
-                            errorBoxDecision('Error', 'Network error burning wreck field', 'OK', null, null);
+                            errorBoxDecision('Error', '{{ __('t_ingame.wreckage.err_network_burn') }}', 'OK', null, null);
                         } else {
-                            alert('Network error burning wreck field');
+                            alert('{{ __('t_ingame.wreckage.err_network_burn') }}');
                         }
                     });
                 }
@@ -396,7 +396,7 @@
                     <div class="overlayDiv repairlayer" style="width: 656px; background: url('{{ asset('img/facilities/e9f54b10dc4e1140ce090106d2f528.jpg') }}') 100% 0% rgb(0, 0, 0);">
                           <div id="repairlayer" style="">
                             <div class="repairableShips">
-                                <span>${wreckFieldData.is_repairing ? 'There is no wreckage at this position.' : 'Wreckages can be repaired in the Space Dock.'}</span>
+                                <span>${wreckFieldData.is_repairing ? '{{ __('t_ingame.wreckage.no_wreckage') }}' : '{{ __('t_ingame.wreckage.can_be_repaired') }}'}</span>
                                 <div class="clearfix"></div>
                                 <br>
                                 <hr>
@@ -404,7 +404,7 @@
 
                 if (wreckFieldData.is_repairing) {
                     overlayHtml += `
-                        <h3>Ships being repaired:</h3>
+                        <h3>{{ __('t_ingame.wreckage.ships_being_repaired') }}</h3>
                         <div class="ships_wrapper clearfix">
                     `;
 
@@ -469,7 +469,7 @@
                             }
                         }
                     } else {
-                        overlayHtml += '<p>No ship data available</p>';
+                        overlayHtml += '<p>{{ __('t_ingame.wreckage.no_ship_data') }}</p>';
                     }
 
                     overlayHtml += `
@@ -487,7 +487,7 @@
                         const timeDisplay = `${hours}h ${minutes}m ${seconds}s`;
 
                         overlayHtml += `
-                            <p>Repair time remaining: <span id="repairTimeCountDownForRepairOverlay" data-duration="${remainingTime}">${timeDisplay}</span></p>
+                            <p>{{ __('t_ingame.wreckage.repair_time_remaining') }} <span id="repairTimeCountDownForRepairOverlay" data-duration="${remainingTime}">${timeDisplay}</span></p>
                         `;
                     }
                     // Add auto-return message if repairs are completed but not collected
@@ -505,7 +505,7 @@
                         });
 
                         overlayHtml += `
-                            <p>Your last ships will be automatically returned to service on ${formattedDate} ${formattedTime}.</p>
+                            <p>{{ __('t_ingame.wreckage.auto_return_service') }} ${formattedDate} ${formattedTime}.</p>
                         `;
                     }
 
@@ -531,7 +531,7 @@
                     if (totalRepaired > 0 && minTimePassed && !hasLateAddedShips) {
                         overlayHtml += `
                             <div class="btn btn_dark fright wreckfield-collect-btn-overlay">
-                                <input type="button" class="middlemark wreckfield-collect-btn-overlay-input" value="Put ships that are already repaired back into service" onclick="collectRepairedShips(); closeOverlay();">
+                                <input type="button" class="middlemark wreckfield-collect-btn-overlay-input" value="{{ __('t_ingame.wreckage.collect_back_service') }}" onclick="collectRepairedShips(); closeOverlay();">
                             </div>
                         `;
                     }
@@ -548,7 +548,7 @@
                 if (false) {
                     // Use jQuery UI dialog if available
                     $('<div>' + overlayHtml + '</div>').dialog({
-                        title: 'Space Dock',
+                        title: '{{ __('t_facilities.space_dock.name') }}',
                         width: 656,
                         modal: true,
                         resizable: false,
@@ -598,7 +598,7 @@
                     var overlay = $('<div id="wreckFieldDetailsOverlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 10000; display: flex; align-items: center; justify-content: center;">' +
                         '<div style="width: 656px; background: #000; border: 1px solid #333; padding: 20px;">' +
                         '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">' +
-                        '<h2 style="color: #fff; margin: 0;">Space Dock</h2>' +
+                        '<h2 style="color: #fff; margin: 0;">{{ __('t_facilities.space_dock.name') }}</h2>' +
                         '<button onclick="closeOverlay()" style="background: #333; color: #fff; border: 1px solid #555; padding: 5px 10px; cursor: pointer;">✕</button>' +
                         '</div>' +
                         overlayHtml +
@@ -665,7 +665,7 @@
 
                 if (!isActiveWreckField) {
                     // When repairing: create the exact OGame structure
-                    var $wreckFieldSpan = $('<span class="wreck_field" style="font-size: 7px !important;">There is no wreckage at this position.</span>');
+                    var $wreckFieldSpan = $('<span class="wreck_field" style="font-size: 7px !important;">{{ __('t_ingame.wreckage.no_wreckage') }}</span>');
                     var $separator = $('<hr>');
                     var $repairOrder = $('<span class="repair_order"></span>');
 
@@ -711,8 +711,8 @@
 
                   var $shipsSpan = $(`
                         <span class="ships" style="font-size: 7px;">
-                            ${repairTimerElement ? `Repair time remaining: ${repairTimerElement} ` : ''}
-                            Repaired Ships: <a href="javascript:void(0);" class="value tooltip" onclick="openWreckFieldDetailsPopup(); return false;" style="font-size: 7px; font-weight: bold;">${repairedShips} / ${totalShips}</a>
+                            ${repairTimerElement ? `{{ __('t_ingame.wreckage.repair_time_remaining') }} ${repairTimerElement} ` : ''}
+                            {{ __('t_ingame.wreckage.repaired_ships') }} <a href="javascript:void(0);" class="value tooltip" onclick="openWreckFieldDetailsPopup(); return false;" style="font-size: 7px; font-weight: bold;">${repairedShips} / ${totalShips}</a>
                         </span>
                     `);
 
@@ -749,13 +749,13 @@
                     var collectButtonTooltip = '';
                     if (!collectEnabled) {
                         if (hasLateAddedShips) {
-                            collectButtonTooltip = 'Ships added during ongoing repairs cannot be collected manually. You must wait until all repairs are automatically completed.';
+                            collectButtonTooltip = '{{ __('t_ingame.wreckage.tooltip_late_added') }}';
                         } else if (wreckFieldData.is_repairing) {
-                            collectButtonTooltip = 'Repairs are still in progress. Use the Details window for partial collection.';
+                            collectButtonTooltip = '{{ __('t_ingame.wreckage.tooltip_in_progress') }}';
                         } else if (!hasRepairedShips) {
-                            collectButtonTooltip = 'No ships repaired yet';
+                            collectButtonTooltip = '{{ __('t_ingame.wreckage.tooltip_no_repaired') }}';
                         } else {
-                            collectButtonTooltip = 'Repairs must be completed to collect ships from here.';
+                            collectButtonTooltip = '{{ __('t_ingame.wreckage.tooltip_must_complete') }}';
                         }
                     }
 
@@ -764,10 +764,10 @@
 
                     var $collectBtn = $(`
                         <button class="wreckfield-collect-btn" ${collectButtonOnclick}>
-                            <span class="btn btn_dark tooltip middlemark" title="${collectButtonTooltip}" style="${collectButtonStyle}">Collect</span>
+                            <span class="btn btn_dark tooltip middlemark" title="${collectButtonTooltip}" style="${collectButtonStyle}">{{ __('t_ingame.wreckage.collect') }}</span>
                         </button>
                     `);
-                    var $detailsBtn = $('<a class="btn btn_dark undermark fright" href="javascript:void(0);" onclick="openWreckFieldDetailsPopup(); return false;">Details</a>');
+                    var $detailsBtn = $('<a class="btn btn_dark undermark fright" href="javascript:void(0);" onclick="openWreckFieldDetailsPopup(); return false;">{{ __('t_ingame.wreckage.details') }}</a>');
 
                     $wreckfieldBtns.append($collectBtn);
                     $wreckfieldBtns.append($detailsBtn);
@@ -846,12 +846,12 @@
 
                     // Create the wreck field span with proper structure
                     var $wreckFieldSpan = $('<span class="wreck_field" style="font-size: 7px !important;"></span>');
-                    $wreckFieldSpan.text('Wreckage burns up in: ');
+                    $wreckFieldSpan.text('{{ __('t_ingame.wreckage.burns_up_in') }} ');
                     var $timeElement = $('<time id="burnUpCountDownForStationScreen" class="value countdown" datetime="P' + timeDisplay.replace(/\s/g, '') + '" style="font-size: 11px !important; font-weight: bold;">' + timeDisplay + '</time>');
                     $wreckFieldSpan.append($timeElement);
 
                     // Add Details link
-                    var $detailsLink = $('<a href="javascript:void(0);" class="fright tooltip" onclick="openWreckFieldDetailsPopup(); return false;">Details</a>');
+                    var $detailsLink = $('<a href="javascript:void(0);" class="fright tooltip" onclick="openWreckFieldDetailsPopup(); return false;">{{ __('t_ingame.wreckage.details') }}</a>');
 
                     var $separator = $('<hr>');
 
@@ -863,18 +863,18 @@
                             return shipName + ': ' + ship.quantity;
                         }).join('<br>');
                     } else {
-                        tooltipContent = 'No ships available for repair';
+                        tooltipContent = '{{ __('t_ingame.wreckage.no_ships_for_repair') }}';
                     }
 
                     // Use the same tooltip system as shipyard - simple title attribute with <br/> tags
-                    var $shipLink = $('<a href="javascript:void(0);" class="value tooltip hideTooltipOnMouseenter js_hideTipOnMobile" title="' + tooltipContent.replace(/<br>/g, '<br/>') + '" style="font-size: 8px !important; font-weight: bold;">' + totalShips + ' Ships</a>');
+                    var $shipLink = $('<a href="javascript:void(0);" class="value tooltip hideTooltipOnMouseenter js_hideTipOnMobile" title="' + tooltipContent.replace(/<br>/g, '<br/>') + '" style="font-size: 8px !important; font-weight: bold;">' + totalShips + ' {{ __('t_ingame.wreckage.ships_count') }}</a>');
 
-                    var $repairOrder = $('<span class="repair_order" style="font-size: 7px !important;">Repairable Ships: <i></i> in <time class="value" datetime="PT32M" style="font-size: 8px !important; font-weight: bold;">32m</time></span>');
+                    var $repairOrder = $('<span class="repair_order" style="font-size: 7px !important;">{{ __('t_ingame.wreckage.repairable_ships') }} <i></i> in <time class="value" datetime="PT32M" style="font-size: 8px !important; font-weight: bold;">32m</time></span>');
                     $repairOrder.find('i').append($shipLink);
 
                     var $wreckfieldBtns = $('<div id="wreckfield-btns"></div>');
-                    var $burnUpBtn = $('<a href="javascript:void(0);" class="btn btn_dark overmark burn_up" onclick="confirmBurnUpWreckField();">Leave to burn up</a>');
-                    var $repairBtn = $('<a href="javascript:void(0);" class="btn btn_dark undermark repair" onclick="startWreckFieldRepairs();">Start repairs</a>');
+                    var $burnUpBtn = $('<a href="javascript:void(0);" class="btn btn_dark overmark burn_up" onclick="confirmBurnUpWreckField();">{{ __('t_ingame.wreckage.leave_to_burn') }}</a>');
+                    var $repairBtn = $('<a href="javascript:void(0);" class="btn btn_dark undermark repair" onclick="startWreckFieldRepairs();">{{ __('t_ingame.wreckage.start_repairs') }}</a>');
 
                     $wreckfieldBtns.append($burnUpBtn);
                     $wreckfieldBtns.append($repairBtn);
@@ -959,10 +959,10 @@
             // Function to confirm burn up
             function confirmBurnUpWreckField() {
                 errorBoxDecision(
-                    "Leave to burn up",
-                    "The wreckage will descend into the planet's atmosphere and burn up. Once struck, a repair will no longer be possible. Are you sure you want to burn up the wreckage?",
-                    "yes",
-                    "No",
+                    "{{ __('t_ingame.wreckage.burn_confirm_title') }}",
+                    "{{ __('t_ingame.wreckage.burn_confirm_msg') }}",
+                    "{{ __('t_ingame.wreckage.burn_confirm_yes') }}",
+                    "{{ __('t_ingame.wreckage.burn_confirm_no') }}",
                     function() {
                         burnUpWreckField();
                     },
@@ -1000,7 +1000,7 @@
                         }
                     },
                     error: function(xhr, status, error) {
-                        fadeBox('Error burning up wreck field', true);
+                        fadeBox('{{ __('t_ingame.wreckage.err_burn_up') }}', true);
                     }
                 });
             }

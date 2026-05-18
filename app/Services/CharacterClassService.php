@@ -3,6 +3,7 @@
 namespace OGame\Services;
 
 use Exception;
+use Throwable;
 use OGame\Enums\CharacterClass;
 use OGame\Enums\DarkMatterTransactionType;
 use OGame\Models\FleetMission;
@@ -203,8 +204,14 @@ class CharacterClassService
         $user->character_class_changed_at = now();
         $user->save();
 
-        // Reset crawler overload when deactivating class
-        $this->resetCrawlerOverload($user);
+        // Reset crawler overload when deactivating class.
+        // This is a secondary operation; failures must not abort the primary deactivation.
+        try {
+            $this->resetCrawlerOverload($user);
+        } catch (Throwable $e) {
+            // Log the error but do not re-throw, so the deactivation still succeeds.
+            logger()->warning('Failed to reset crawler overload after class deactivation: ' . $e->getMessage());
+        }
     }
 
     /**

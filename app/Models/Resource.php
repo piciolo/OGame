@@ -43,13 +43,20 @@ class Resource
     }
 
     /**
-     * Get the rounded (floored) value of the resource as integer.
+     * Get the floored value of the resource as integer.
+     *
+     * Always round DOWN, never up: callers (notably the fleet dispatcher JS,
+     * "send all" cargo computations, tooltips) must never expose more resources
+     * than the planet actually holds. Using round() would report 1065158324.8
+     * as 1065158325, and the atomic backend deduction guarded by
+     * `WHERE crystal >= 1065158325` would then reject the dispatch with
+     * "Not enough resources or units on the planet to send the fleet." (#1131).
      *
      * @return int
      */
     public function getRounded(): int
     {
-        return (int) round($this->rawValue);
+        return (int) floor($this->rawValue);
     }
 
     /**

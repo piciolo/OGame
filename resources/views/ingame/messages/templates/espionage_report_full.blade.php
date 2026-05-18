@@ -11,7 +11,7 @@
     <div class="msg_actions clearfix">
         <div class="icon_nf_link fleft">
                     <span class="icon_nf icon_apikey tooltipCustom tooltip-width:400 fleft"
-                          title="This data can be entered into a compatible combat simulator:<br/><input value='sr-en-256-265b38b75e565e12526a560bf4f5c83bfce4c5c5' readonly onclick='select()' style='width:360px'></input>"></span>
+                          title="{{ __('t_ingame.fleet.api_data') }}<br/><input value='sr-en-256-265b38b75e565e12526a560bf4f5c83bfce4c5c5' readonly onclick='select()' style='width:360px'></input>"></span>
         </div>
         <a href="#TODOpage=shareReportOverlay&messageId=1645218"
            data-overlay-title="{{ __('t_ingame.messages.battle_share') }}" title='{{ __('t_ingame.messages.battle_share') }}'
@@ -42,7 +42,7 @@
         <span>{{ __('t_ingame.messages.spy_player') }}&nbsp;&nbsp;<span class="status_abbr_active">{!! $playername !!}</span></span>
     </div>
     <div class="detail_txt">
-        <span>{{ __('t_ingame.messages.spy_class') }}:<span class="status_abbr_inactive">&nbsp;{{ __('t_ingame.messages.spy_unknown') }}</span></span>
+        <span>{{ __('t_ingame.messages.spy_class') }}:<span class="status_abbr_inactive">&nbsp;{{ $character_class ?? __('t_ingame.messages.spy_unknown') }}</span></span>
     </div>
     <div class="detail_txt">
         <span>{{ __('t_ingame.messages.spy_alliance_class') }}:&nbsp;<span class="alliance_class small none">{{ __('t_ingame.messages.spy_no_alliance_class') }}</span></span>

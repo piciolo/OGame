@@ -146,7 +146,7 @@ abstract class AbstractUnitsController extends OGameController
         if (!hash_equals($request->session()->token(), $request->input('_token'))) {
             return response()->json([
                 'success' => false,
-                'message' => 'Invalid token.',
+                'message' => __('t_ingame.buildings.invalid_token'),
             ]);
         }
 
@@ -164,7 +164,7 @@ abstract class AbstractUnitsController extends OGameController
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Added to build order.',
+            'message' => __('t_ingame.buildings.added_to_queue'),
         ]);
     }
 }

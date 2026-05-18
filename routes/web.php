@@ -16,8 +16,10 @@ use OGame\Http\Controllers\DefenseController;
 use OGame\Http\Controllers\FacilitiesController;
 use OGame\Http\Controllers\FleetController;
 use OGame\Http\Controllers\FleetEventsController;
+use OGame\Http\Controllers\ForgotEmailController;
 use OGame\Http\Controllers\GalaxyController;
 use OGame\Http\Controllers\HighscoreController;
+use OGame\Http\Controllers\PlayerProfileController;
 use OGame\Http\Controllers\JumpGateController;
 use OGame\Http\Controllers\LanguageController;
 use OGame\Http\Controllers\MerchantController;
@@ -56,6 +58,10 @@ Route::redirect('/', '/overview', 301);
 // Language switcher — accessible to both guests and authenticated users.
 Route::get('/lang/{lang}', [LanguageController::class, 'switchLang'])->name('language.switch');
 
+// Forgot email lookup (guest only).
+Route::get('/forgot-email', [ForgotEmailController::class, 'show'])->name('password.email-lookup');
+Route::post('/forgot-email', [ForgotEmailController::class, 'send'])->middleware('throttle:forgot-email');
+
 // Public AJAX endpoints (no auth required).
 Route::get('/ajax/main/rules', [RulesController::class, 'ajaxRules'])->name('rules.ajax');
 Route::get('/ajax/main/legal', [RulesController::class, 'ajaxLegal'])->name('legal.ajax');
@@ -86,6 +92,7 @@ Route::middleware(['auth', 'banned', 'globalgame', 'locale', 'firstlogin'])->gro
     Route::post('/facilities/downgrade', [FacilitiesController::class, 'downgradeBuildRequest'])->name('facilities.downgrade');
     Route::post('/facilities/cancel-buildrequest', [FacilitiesController::class, 'cancelBuildRequest'])->name('facilities.cancelbuildrequest');
     Route::post('/ajax/facilities/halve-building', [FacilitiesController::class, 'halveBuilding'])->name('facilities.halvebuilding');
+    Route::post('/ajax/facilities/complete-building', [FacilitiesController::class, 'completeBuilding'])->name('facilities.completebuilding');
     Route::post('/ajax/facilities/start-repairs', [FacilitiesController::class, 'startRepairs'])->name('facilities.startrepairs');
     Route::post('/ajax/facilities/complete-repairs', [FacilitiesController::class, 'completeRepairs'])->name('facilities.completerepairs');
     Route::post('/ajax/facilities/burn-wreck-field', [FacilitiesController::class, 'burnWreckField'])->name('facilities.burnwreckfield');
@@ -115,6 +122,14 @@ Route::middleware(['auth', 'banned', 'globalgame', 'locale', 'firstlogin'])->gro
 
     // Techtree
     Route::get('/ajax/techtree', [TechtreeController::class, 'ajax'])->name('techtree.ajax');
+
+    // IPI / Panoramica direttive (Initial Player Instructions)
+    // GET routes match the original OGame IPI module's $.get(url + "&token=...") flow.
+    // CSRF is enforced via the token query param (validated server-side in IpiOverviewController).
+    Route::get('/ajax/ipioverview/overlay', [\OGame\Http\Controllers\IpiOverviewController::class, 'overlay'])->name('ipioverview.overlay');
+    Route::get('/ajax/ipioverview/track-task', [\OGame\Http\Controllers\IpiOverviewController::class, 'trackTask'])->name('ipioverview.tracktask');
+    Route::get('/ajax/ipioverview/collect-task', [\OGame\Http\Controllers\IpiOverviewController::class, 'collectTask'])->name('ipioverview.collecttask');
+    Route::get('/ajax/ipioverview/collect-chapter', [\OGame\Http\Controllers\IpiOverviewController::class, 'collectChapter'])->name('ipioverview.collectchapter');
 
     // Fleet
     Route::get('/fleet', [FleetController::class, 'index'])->name('fleet.index');
@@ -178,6 +193,21 @@ Route::middleware(['auth', 'banned', 'globalgame', 'locale', 'firstlogin'])->gro
     Route::post('/merchant/scrap/bargain', [MerchantController::class, 'scrapBargain'])->name('merchant.scrap.bargain');
     Route::post('/merchant/scrap/execute', [MerchantController::class, 'scrapExecute'])->name('merchant.scrap.execute');
 
+    // Import / Export
+    Route::get('/merchant/import-export', [\OGame\Http\Controllers\ImportExportController::class, 'index'])->name('importexport.index');
+    Route::get('/ajax/merchant/import-export', [\OGame\Http\Controllers\ImportExportController::class, 'partial'])->name('importexport.partial');
+    Route::post('/merchant/import-export/pay', [\OGame\Http\Controllers\ImportExportController::class, 'pay'])->name('importexport.pay');
+    Route::post('/merchant/import-export/change', [\OGame\Http\Controllers\ImportExportController::class, 'change'])->name('importexport.change');
+    Route::post('/merchant/import-export/take', [\OGame\Http\Controllers\ImportExportController::class, 'take'])->name('importexport.take');
+
+    // Auctioneer
+    Route::get('/auctioneer', [\OGame\Http\Controllers\AuctioneerController::class, 'index'])->name('auctioneer.index');
+    Route::get('/ajax/auctioneer', [\OGame\Http\Controllers\AuctioneerController::class, 'partial'])->name('auctioneer.partial');
+    Route::get('/ajax/auctioneer/status', [\OGame\Http\Controllers\AuctioneerController::class, 'status'])->name('auctioneer.status');
+    Route::post('/ajax/auctioneer/bid', [\OGame\Http\Controllers\AuctioneerController::class, 'bid'])
+        ->middleware('throttle:30,1')
+        ->name('auctioneer.bid');
+
     Route::get('/alliance', [AllianceController::class, 'index'])->name('alliance.index');
     Route::get('/alliance/apply/{alliance_id}', [AllianceController::class, 'showApplicationForm'])->name('alliance.application.form');
     Route::get('/alliance/info/{alliance_id}', [AllianceController::class, 'info'])->name('alliance.info');
@@ -196,9 +226,15 @@ Route::middleware(['auth', 'banned', 'globalgame', 'locale', 'firstlogin'])->gro
     Route::post('/alliance/members/kick', [AllianceController::class, 'kickMemberAction'])->name('alliance.members.kick');
     Route::post('/alliance/members/assign-rank', [AllianceController::class, 'assignRankAction'])->name('alliance.members.assign-rank');
     Route::post('/alliance/text/update', [AllianceController::class, 'updateAllianceText'])->name('alliance.text.update');
+    Route::post('/alliance/class/select', [AllianceController::class, 'selectClass'])->name('alliance.class.select');
 
     Route::get('/premium', [PremiumController::class, 'index'])->name('premium.index');
+    Route::get('/ajax/premium', [PremiumController::class, 'ajax'])->name('premium.ajax');
+    Route::get('/premium/purchase', [PremiumController::class, 'purchase'])->name('premium.purchase');
     Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
+    Route::post('/ajax/shop/detail', [ShopController::class, 'detail'])->name('shop.detail');
+    Route::post('/ajax/shop/activate', [ShopController::class, 'activate'])->middleware('throttle:30,1')->name('shop.activate');
+    Route::post('/ajax/shop/buy', [ShopController::class, 'buy'])->middleware('throttle:10,1')->name('shop.buy');
 
     // Character Class
     Route::get('/characterclass', [CharacterClassController::class, 'index'])->name('characterclass.index');
@@ -211,6 +247,12 @@ Route::middleware(['auth', 'banned', 'globalgame', 'locale', 'firstlogin'])->gro
     Route::get('/highscore', [HighscoreController::class, 'index'])->name('highscore.index');
     Route::post('/ajax/highscore', [HighscoreController::class, 'ajax'])->name('highscore.ajax');
 
+    Route::get('/playerprofile', [PlayerProfileController::class, 'index'])->name('playerprofile.index');
+    Route::post('/ajax/playerprofile/visibility', [PlayerProfileController::class, 'visibility'])->name('playerprofile.visibility');
+    Route::post('/ajax/playerprofile/tags', [PlayerProfileController::class, 'tags'])->name('playerprofile.tags');
+    Route::post('/ajax/playerprofile/gender', [PlayerProfileController::class, 'gender'])->name('playerprofile.gender');
+    Route::post('/ajax/playerprofile/select-reward', [PlayerProfileController::class, 'selectReward'])->name('playerprofile.selectreward');
+
     Route::impersonate();
 
     // Chat
@@ -220,6 +262,7 @@ Route::middleware(['auth', 'banned', 'globalgame', 'locale', 'firstlogin'])->gro
     Route::post('/chat/more', [ChatController::class, 'loadMore'])->name('chat.more');
     Route::post('/chat/read', [ChatController::class, 'markRead'])->name('chat.read');
     Route::post('/chat/visibility', [ChatController::class, 'toggleVisibility'])->name('chat.visibility');
+    Route::post('/chat/report/{id}', [ChatController::class, 'reportMessage'])->whereNumber('id')->name('chat.report');
 
     Route::get('/buddies', [BuddiesController::class, 'index'])->name('buddies.index');
     Route::post('/buddies', [BuddiesController::class, 'post'])->name('buddies.post');
@@ -281,6 +324,8 @@ Route::middleware(['auth', 'globalgame', 'locale', 'admin'])->group(function () 
     Route::post('/admin/server-administration/stuck-missions/settings', [ServerAdministrationController::class, 'saveStuckMissionSettings'])->name('admin.server-administration.stuck-missions.settings');
     Route::post('/admin/server-administration/stuck-missions/process', [ServerAdministrationController::class, 'processStuckMission'])->name('admin.server-administration.stuck-missions.process');
     Route::post('/admin/server-administration/stuck-missions/recover-homeworld', [ServerAdministrationController::class, 'recoverStuckMissionToHomeworld'])->name('admin.server-administration.stuck-missions.recover-homeworld');
+    Route::post('/admin/server-administration/chat-report/dismiss', [ServerAdministrationController::class, 'dismissChatReport'])->name('admin.server-administration.chat-report.dismiss');
+    Route::post('/admin/server-administration/broadcast', [ServerAdministrationController::class, 'sendBroadcast'])->name('admin.server-administration.broadcast');
 
     // Developer shortcuts
     Route::get('/admin/developer-shortcuts', [DeveloperShortcutsController::class, 'index'])->name('admin.developershortcuts.index');
@@ -290,4 +335,13 @@ Route::middleware(['auth', 'globalgame', 'locale', 'admin'])->group(function () 
     Route::post('/admin/developershortcuts/create-at-coords', [DeveloperShortcutsController::class, 'createAtCoords'])->name('admin.developershortcuts.create-at-coords');
     Route::post('/admin/developershortcuts/create-debris', [DeveloperShortcutsController::class, 'createDebris'])->name('admin.developershortcuts.create-debris');
     Route::post('/admin/developershortcuts/update-dark-matter', [DeveloperShortcutsController::class, 'updateDarkMatter'])->name('admin.developershortcuts.update-dark-matter');
+    Route::post('/admin/developershortcuts/activate-officer', [DeveloperShortcutsController::class, 'activateOfficer'])->name('admin.developershortcuts.activate-officer');
+
+    // Auctioneer test shortcuts
+    Route::post('/admin/developershortcuts/auctioneer/force-end', [DeveloperShortcutsController::class, 'auctioneerForceEnd'])->name('admin.developershortcuts.auctioneer.force-end');
+    Route::post('/admin/developershortcuts/auctioneer/force-start', [DeveloperShortcutsController::class, 'auctioneerForceStart'])->name('admin.developershortcuts.auctioneer.force-start');
+    Route::post('/admin/developershortcuts/auctioneer/spawn', [DeveloperShortcutsController::class, 'auctioneerSpawn'])->name('admin.developershortcuts.auctioneer.spawn');
+    Route::post('/admin/developershortcuts/auctioneer/spawn-specific', [DeveloperShortcutsController::class, 'auctioneerSpawnSpecific'])->name('admin.developershortcuts.auctioneer.spawn-specific');
+    Route::post('/admin/developershortcuts/auctioneer/cancel', [DeveloperShortcutsController::class, 'auctioneerCancel'])->name('admin.developershortcuts.auctioneer.cancel');
+    Route::post('/admin/developershortcuts/auctioneer/tick', [DeveloperShortcutsController::class, 'auctioneerTick'])->name('admin.developershortcuts.auctioneer.tick');
 });

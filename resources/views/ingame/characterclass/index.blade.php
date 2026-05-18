@@ -2,11 +2,20 @@
 
 @section('content')
 
+    <style>
+        /* Prevent the fleet event widget (#eventboxFilled) from clipping into
+           the Class Selection header when multiple fleet missions are active.
+           Bug #1004. */
+        #characterclassselectioncomponent {
+            margin-top: 40px;
+        }
+    </style>
+
     <div id="characterclassselectioncomponent" class="maincontent">
         <div id="characterclassselection">
             <div id="inhalt">
                 <div class="header small" id="planet">
-                    <h2>Class Selection</h2>
+                    <h2>{{ __('t_ingame.characterclass.page_title') }}</h2>
                 </div>
                 <div class="c-left shortCorner"></div>
                 <div class="c-right shortCorner"></div>
@@ -14,8 +23,8 @@
                     <div class="header">
                     </div>
                     <div class="content">
-                        <h2>Choose Your Class</h2>
-                        <p>Select a class to receive additional benefits. You can change your class in the class selection section in the top-right.</p>
+                        <h2>{{ __('t_ingame.characterclass.choose_your_class') }}</h2>
+                        <p>{{ __('t_ingame.characterclass.choose_description') }}</p>
                         <div class="characterclass boxes">
                             @foreach($classes as $class)
                                 <div class="characterclass box {{ $currentClass && $currentClass->value === $class->value ? 'selected' : '' }}"
@@ -25,20 +34,20 @@
                                     <div class="buttons">
                                         @if($currentClass && $currentClass->value === $class->value)
                                             <a class="deactivate-it deactivate" href="javascript:void(0);" onclick="deselectCharacterClass()">
-                                                <span>Deactivate</span>
+                                                <span>{{ __('t_ingame.characterclass.deactivate') }}</span>
                                             </a>
                                         @else
                                             @if($isFreeSelection)
                                                 <a class="build-it" href="javascript:void(0);" onclick="selectCharacterClass({{ $class->value }}, '{{ $class->getName() }}', {{ $changeCost }})">
-                                                    <span>Select for Free</span>
+                                                    <span>{{ __('t_ingame.characterclass.select_for_free') }}</span>
                                                 </a>
                                             @elseif($darkMatter >= $changeCost)
                                                 <a class="build-it" href="javascript:void(0);" onclick="selectCharacterClass({{ $class->value }}, '{{ $class->getName() }}', {{ $changeCost }})">
-                                                    <span>Buy for<br>{{ number_format($changeCost, 0, ',', '.') }} DM</span>
+                                                    <span>{{ __('t_ingame.characterclass.buy_for') }}<br>{{ number_format($changeCost, 0, ',', '.') }} DM</span>
                                                 </a>
                                             @else
                                                 <a class="build-it_disabled nodarkmatter" href="/premium">
-                                                    <span>Buy for<br>{{ number_format($changeCost, 0, ',', '.') }} DM</span>
+                                                    <span>{{ __('t_ingame.characterclass.buy_for') }}<br>{{ number_format($changeCost, 0, ',', '.') }} DM</span>
                                                 </a>
                                             @endif
                                         @endif
@@ -72,16 +81,16 @@
         function selectCharacterClass(classId, className, price) {
             let message = '';
             @if($isFreeSelection)
-                message = 'Do you want to activate the ' + className + ' class for free?';
+                message = @json(__('t_ingame.characterclass.activated_free_msg')).replace(':className', className);
             @else
-                message = 'Do you want to activate the ' + className + ' class for ' + price.toLocaleString() + ' Dark Matter? In doing so, you will lose your current class.';
+                message = @json(__('t_ingame.characterclass.activated_paid_msg')).replace(':className', className).replace(':price', price.toLocaleString());
             @endif
 
             errorBoxDecision(
-                'Select Character Class',
+                @json(__('t_ingame.characterclass.select_title')),
                 message,
-                'Confirm',
-                'Cancel',
+                @json(__('t_ingame.characterclass.confirm')),
+                @json(__('t_ingame.characterclass.cancel')),
                 function() {
                     fetch('{{ route('characterclass.select') }}', {
                         method: 'POST',
@@ -96,16 +105,16 @@
                     .then(response => response.json())
                     .then(data => {
                         if (data.status === 'success') {
-                            fadeBox('Character class selected successfully!', false);
+                            fadeBox(@json(__('t_ingame.characterclass.success_selected')), false);
                             setTimeout(function() {
                                 location.reload();
                             }, 1000);
                         } else if (data.lackingDM) {
                             errorBoxDecision(
-                                'Not enough Dark Matter',
-                                'Not enough Dark Matter available! Do you want to buy some now?',
-                                'Buy Dark Matter',
-                                'Cancel',
+                                @json(__('t_ingame.characterclass.not_enough_dm_title')),
+                                @json(__('t_ingame.characterclass.not_enough_dm_msg')),
+                                @json(__('t_ingame.characterclass.buy_dm')),
+                                @json(__('t_ingame.characterclass.cancel')),
                                 function() {
                                     window.location.href = '/premium';
                                 }
@@ -116,40 +125,44 @@
                     })
                     .catch(error => {
                         console.error('Error:', error);
-                        fadeBox('An error occurred. Please try again.', true);
+                        fadeBox(@json(__('t_ingame.characterclass.error_generic')), false);
                     });
                 }
             );
         }
 
+        @php
+            $deactivateConfirmMsg = __('t_ingame.characterclass.deactivate_confirm_msg', ['price' => number_format($changeCost, 0, ',', '.')]);
+        @endphp
         function deselectCharacterClass() {
             errorBoxDecision(
-                'Deactivate Character Class',
-                'Do you really want to deactivate your character class? Reactivation requires {{ number_format($changeCost, 0, ',', '.') }} Dark Matter.',
-                'Deactivate',
-                'Cancel',
+                @json(__('t_ingame.characterclass.deactivate_title')),
+                @json($deactivateConfirmMsg),
+                @json(__('t_ingame.characterclass.deactivate')),
+                @json(__('t_ingame.characterclass.cancel')),
                 function() {
                     fetch('{{ route('characterclass.deselect') }}', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
+                            'Accept': 'application/json',
                             'X-CSRF-TOKEN': '{{ csrf_token() }}'
                         }
                     })
                     .then(response => response.json())
                     .then(data => {
                         if (data.status === 'success') {
-                            fadeBox('Character class deactivated successfully!', false);
+                            fadeBox(@json(__('t_ingame.characterclass.success_deactivated')), true);
                             setTimeout(function() {
                                 location.reload();
                             }, 1000);
                         } else {
-                            fadeBox(data.message, true);
+                            fadeBox(data.message || 'An error occurred. Please try again.', true);
                         }
                     })
                     .catch(error => {
                         console.error('Error:', error);
-                        fadeBox('An error occurred. Please try again.', true);
+                        fadeBox(@json(__('t_ingame.characterclass.error_generic')), false);
                     });
                 }
             );

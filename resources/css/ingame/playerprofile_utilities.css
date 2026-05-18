@@ -1,0 +1,371 @@
+/* OGame: regole utility per attributi sq*/w*/h* (estratte da CSS principale) */
+
+*[sq12] {
+    width: 12px !important;
+    height: 12px !important;
+    --var-width: 12 !important;
+    --var-height: 12 !important;
+}
+*[sq16] {
+    width: 16px !important;
+    height: 16px !important;
+    --var-width: 16 !important;
+    --var-height: 16 !important;
+}
+*[sq20] {
+    width: 20px !important;
+    height: 20px !important;
+    --var-width: 20 !important;
+    --var-height: 20 !important;
+}
+*[sq22] {
+    width: 22px !important;
+    height: 22px !important;
+    --var-width: 22 !important;
+    --var-height: 22 !important;
+}
+*[sq24] {
+    width: 24px !important;
+    height: 24px !important;
+    --var-width: 24 !important;
+    --var-height: 24 !important;
+}
+*[sq26] {
+    width: 26px !important;
+    height: 26px !important;
+    --var-width: 26 !important;
+    --var-height: 26 !important;
+}
+*[sq28] {
+    width: 28px !important;
+    height: 28px !important;
+    --var-width: 28 !important;
+    --var-height: 28 !important;
+}
+*[sq30] {
+    width: 30px !important;
+    height: 30px !important;
+    --var-width: 30 !important;
+    --var-height: 30 !important;
+}
+*[sq36] {
+    width: 36px !important;
+    height: 36px !important;
+    --var-width: 36 !important;
+    --var-height: 36 !important;
+}
+*[sq40] {
+    width: 40px !important;
+    height: 40px !important;
+    --var-width: 40 !important;
+    --var-height: 40 !important;
+}
+*[sq44] {
+    width: 44px !important;
+    height: 44px !important;
+    --var-width: 44 !important;
+    --var-height: 44 !important;
+}
+*[sq50] {
+    width: 50px !important;
+    height: 50px !important;
+    --var-width: 50 !important;
+    --var-height: 50 !important;
+}
+*[sq55] {
+    width: 55px !important;
+    height: 55px !important;
+    --var-width: 55 !important;
+    --var-height: 55 !important;
+}
+*[sq70] {
+    width: 70px !important;
+    height: 70px !important;
+    --var-width: 70 !important;
+    --var-height: 70 !important;
+}
+*[sq100] {
+    width: 100px !important;
+    height: 100px !important;
+    --var-width: 100 !important;
+    --var-height: 100 !important;
+}
+*[sq180] {
+    width: 180px !important;
+    height: 180px !important;
+    --var-width: 180 !important;
+    --var-height: 180 !important;
+}
+*[sq200] {
+    width: 200px !important;
+    height: 200px !important;
+    --var-width: 200 !important;
+    --var-height: 200 !important;
+}
+*[w50] {
+    width: 50px !important;
+    --var-width: 50 !important;
+}
+*[w60] {
+    width: 60px !important;
+    --var-width: 60 !important;
+}
+*[w70] {
+    width: 70px !important;
+    --var-width: 70 !important;
+}
+*[w80] {
+    width: 80px !important;
+    --var-width: 80 !important;
+}
+*[w100] {
+    width: 100px !important;
+    --var-width: 100 !important;
+}
+*[w150] {
+    width: 150px !important;
+    --var-width: 150 !important;
+}
+*[w200] {
+    width: 200px !important;
+    --var-width: 200 !important;
+}
+*[h16] {
+    height: 16px !important;
+    --var-height: 16 !important;
+}
+*[h18] {
+    height: 18px !important;
+    --var-height: 18 !important;
+}
+*[h20] {
+    height: 20px !important;
+    --var-height: 20 !important;
+}
+*[h22] {
+    height: 22px !important;
+    --var-height: 22 !important;
+}
+*[h28] {
+    height: 28px !important;
+    --var-height: 28 !important;
+}
+*[h50] {
+    height: 50px !important;
+    --var-height: 50 !important;
+}
+*[w50] {
+    width: 50px;
+}
+*[w68] {
+    width: 68px;
+}
+*[w100] {
+    width: 100px;
+}
+*[w150] {
+    width: 150px;
+}
+*[w310] {
+    width: 310px;
+}
+*[w380] {
+    width: 380px;
+}
+*[w390] {
+    width: 390px;
+}
+*[w400] {
+    width: 400px;
+}
+*[w420] {
+    width: 420px;
+}
+*[w450] {
+    width: 450px;
+}
+*[h30] {
+    height: 30px;
+}
+
+/* gradient-button */
+gradient-button button,
+#achievementsOverviewList .achievementContentList.spaceObjectSkins .achievementOverviewSpaceObjectSkinHolder gradient-button button,
+#achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder gradient-button button {
+    padding: 0 5px;
+}
+gradient-button span,
+#achievementsOverviewList .achievementContentList.spaceObjectSkins .achievementOverviewSpaceObjectSkinHolder gradient-button span,
+#achievementsOverviewList .achievementContentList.titles .achievementOverviewProfileTitleHolder gradient-button span {
+    color: #f1f1f1;
+    font-family: Verdana, Arial, SunSans-Regular, sans-serif;
+    font-size: 9px;
+    font-weight: bold;
+    padding-bottom: 3px;
+}
+gradient-button span {
+    color: #f1f1f1;
+    font-family: Verdana, Arial, SunSans-Regular, sans-serif;
+    font-size: 9px;
+    font-weight: bold;
+    padding-bottom: 3px;
+}
+gradient-button .seasonExpiration span {
+    font-size: 16px;
+}
+gradient-button {
+    width: 120px;
+    height: 34px;
+}
+gradient-button .commandingStaffBonus {
+    border: 1px outset #ff9600 !important;
+    background: linear-gradient(160deg, #dd8301 0%, #b76d00 33%, #673b00 66%, #000000 100%);
+    color: antiquewhite;
+}
+gradient-button .commandingStaffBonus:hover {
+    filter: brightness(120%);
+}
+gradient-button .smallFont {
+    font-size: 12px !important;
+}
+gradient-button {
+    width: 100%;
+    height: 45px;
+}
+gradient-button {
+    margin-top: 6px;
+}
+gradient-button.newbutton .custom_btn span,
+gradient-button.savebutton .custom_btn span,
+gradient-button.deletebutton .custom_btn span,
+gradient-button.simulatebutton .custom_btn span,
+gradient-button.moredetails .custom_btn span,
+gradient-button.moreDetailsShortInfo .custom_btn span
+{
+    font-size: 12px !important;
+}
+gradient-button.moreDetailsShortInfo {
+    z-index: 3 !important;
+}
+gradient-button.moredetails .custom_btn span,
+gradient-button.moreDetailsShortInfo .custom_btn span {
+    max-width: 180px;
+}
+gradient-button */
+gradient-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+gradient-button .custom_btn {
+    width: 100%;
+    height: 100%;
+    border: 1px outset #696666 !important;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #bbb;
+    font-size: 17px;
+    background: linear-gradient(160deg, rgba(54,77,99,1) 0%, rgba(40,57,72,1) 33%, rgba(20,30,38,1) 66%, rgba(18,26,33,1) 100%);
+    box-shadow: 0px 2px 3px 1px #0000008c;
+    outline: none;
+    transition: 300ms;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-block: 0;
+    padding-inline: 0;
+    box-sizing: border-box;
+}
+gradient-button .custom_btn.send {
+    font-size: 11px;
+    font-weight: 700;
+}
+gradient-button .custom_btn.green,
+gradient-button .custom_btn.active {
+    border: 1px outset #66B817 !important;
+    background: linear-gradient(160deg, rgba(55, 99, 54, 1) 0%, rgba(40, 72, 40, 1) 33%, rgba(26, 38, 20, 1) 66%, rgba(24, 33, 18, 1) 100%);
+}
+gradient-button .custom_btn.red {
+    border: 1px outset rgb(161, 36, 36) !important;
+    background: linear-gradient(160deg, rgba(161, 36, 36, 1) 0%, rgba(144, 29, 29, 1) 33%, rgba(29, 18, 17, 1) 66%, rgba(33, 18, 18, 1) 100%);
+}
+gradient-button button:not(:disabled).selected {
+    border: 1px outset #dee3d8 !important;
+    background: linear-gradient(160deg, rgba(67,107,145,1) 0%, rgba(52,76,97,1) 33%, rgba(40,58,71,1) 66%, rgba(20,26,32,1) 100%);
+    box-shadow: 0px 0px 0px 0px transparent;
+}
+gradient-button button:not(:disabled).selected,
+.achievementOverviewTierSelectionContainer gradient-button button:not(:disabled).selected {
+    box-shadow: 0px 2px 3px 1px #0000008c;
+}
+gradient-button button:not(:disabled):hover {
+    background: linear-gradient(160deg, rgba(67,107,145,1) 0%, rgba(52,76,97,1) 33%, rgba(40,58,71,1) 66%, rgba(20,26,32,1) 100%);
+    box-shadow: 0px 0px 0px 0px transparent;
+}
+gradient-button button:not(:disabled).green.selected,
+gradient-button button:not(:disabled).active.selected {
+    border: 1px outset #dee3d8 !important;
+    background: linear-gradient(160deg, rgb(68, 121, 67) 0%, rgb(49, 87, 49) 33%, rgb(35, 52, 28) 66%, rgb(35, 49, 27) 100%);
+}
+gradient-button button:not(:disabled).green:hover,
+gradient-button button:not(:disabled).active:hover {
+    border: 1px outset #66B817 !important;
+    background: linear-gradient(160deg, rgb(68, 121, 67) 0%, rgb(49, 87, 49) 33%, rgb(35, 52, 28) 66%, rgb(35, 49, 27) 100%);
+}
+gradient-button button:not(:disabled).red:hover {
+    border: 1px outset #cb2323 !important;
+    background: linear-gradient(160deg, rgba(203, 35, 35, 1) 0%, rgba(200, 31, 31, 1) 33%, rgba(38, 21, 20, 1) 66%, rgba(33, 18, 18, 1) 100%);
+}
+gradient-button button:disabled,
+gradient-button button[disabled] {
+    border: 1px solid #999999 !important;
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+gradient-button */
+
+/* start group title */
+group-title {
+    display: flex;
+    justify-content: center;
+    background: url(/img/achievements/ui/profile-group-title-bg.png) -143px -162px no-repeat;
+    height: 25px;
+    width: 231px;
+    font-size: 11px;
+    line-height: 25px;
+    margin: 8px 0 5px -12px;
+    position: relative;
+}
+gradient-button {
+    height: 30px;
+    width: 150px;
+}
+gradient-button button img {
+    width: 8px !important;
+    height: 8px !important;
+}
+gradient-button span {
+    color: #f1f1f1;
+    font-family: Verdana, Arial, SunSans-Regular, sans-serif;
+    font-size: 9px;
+    font-weight: bold;
+    padding-bottom: 3px;
+}
+gradient-button span.icon {
+    padding-bottom: 0;
+}
+gradient-button button.custom_btn.active {
+    border: 1px outset #66B817 !important;
+    background: linear-gradient(160deg, rgba(55,99,54,1) 0%, rgba(40,72,40,1) 33%, rgba(26,38,20,1) 66%, rgba(24,33,18,1) 100%);
+}
+gradient-button span {
+    color: #f1f1f1;
+    font-family: Verdana, Arial, SunSans-Regular, sans-serif;
+    font-size: 9px;
+    font-weight: bold;
+    padding-bottom: 3px;
+}
+gradient-button .custom_btn.showPlanetProdOverviewBtn {
+    border: 1px outset #797979 !important;
+}

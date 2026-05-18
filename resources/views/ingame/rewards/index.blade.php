@@ -13,12 +13,12 @@
             <div id="inhalt">
                 <div id="planet" style="background-image:url(/img/headers/rewards/rewards.jpg);height:250px;">
                     <div id="header_text">
-                        <h2>Rewards</h2>
+                        <h2>{{ __('t_ingame.rewards.page_title') }}</h2>
                     </div>
                 </div>
                 <div id="buttonz">
                     <div class="header">
-                        <h2>Rewards</h2>
+                        <h2>{{ __('t_ingame.rewards.page_title') }}</h2>
                     </div>
                     <div class="content">
                         <div class="rewardhint rewardnotifyhidden">
@@ -29,13 +29,13 @@
                         </div>
 
                         <div class="rewardlist">
-                            <a class="tooltipLeft fright questionIcons" style="display: inline-block" title="Rewards will be dispatched every day and can be collected manually. From the 7th day on, no further rewards will be sent out. The first reward will be given on the 2nd day of registration.">
+                            <a class="tooltipLeft fright questionIcons" style="display: inline-block" title="{{ __('t_ingame.rewards.hint_tooltip') }}">
                                 <span class="rewardDetail"></span>
                             </a>
                             <br>
-                            <h3>New awards</h3>
+                            <h3>{{ __('t_ingame.rewards.new_awards') }}</h3>
 
-                            <h3>Awards not yet reached</h3>
+                            <h3>{{ __('t_ingame.rewards.not_yet_reached') }}</h3>
                             <div class="rewardlist-item">
                                 <div class="rewardlistimg rewardlistimg_1 rewardnotclaim">
                                     <div class="rewardlist-item-icon">
@@ -50,7 +50,7 @@
 
                                                 Good luck!
                                                 The OGame Starter Aid</p>
-                                            <a class="reward-button disabled" href="javascript:void(0)">Not fulfilled</a>
+                                            <a class="reward-button disabled" href="javascript:void(0)">{{ __('t_ingame.rewards.not_fulfilled') }}</a>
                                         </div>
                                         <div class="rewardlist-item-bottom"></div>
                                     </div>
@@ -71,7 +71,7 @@
 
                                                 Good luck!
                                                 The OGame Starter Aid</p>
-                                            <a class="reward-button disabled" href="javascript:void(0)">Not fulfilled</a>
+                                            <a class="reward-button disabled" href="javascript:void(0)">{{ __('t_ingame.rewards.not_fulfilled') }}</a>
                                         </div>
                                         <div class="rewardlist-item-bottom"></div>
                                     </div>
@@ -92,7 +92,7 @@
 
                                                 Good luck!
                                                 The OGame Starter Aid</p>
-                                            <a class="reward-button disabled" href="javascript:void(0)">Not fulfilled</a>
+                                            <a class="reward-button disabled" href="javascript:void(0)">{{ __('t_ingame.rewards.not_fulfilled') }}</a>
                                         </div>
                                         <div class="rewardlist-item-bottom"></div>
                                     </div>
@@ -113,7 +113,7 @@
 
                                                 Good luck!
                                                 The OGame Starter Aid</p>
-                                            <a class="reward-button disabled" href="javascript:void(0)">Not fulfilled</a>
+                                            <a class="reward-button disabled" href="javascript:void(0)">{{ __('t_ingame.rewards.not_fulfilled') }}</a>
                                         </div>
                                         <div class="rewardlist-item-bottom"></div>
                                     </div>
@@ -134,7 +134,7 @@
 
                                                 Good luck!
                                                 The OGame Starter Aid</p>
-                                            <a class="reward-button disabled" href="javascript:void(0)">Not fulfilled</a>
+                                            <a class="reward-button disabled" href="javascript:void(0)">{{ __('t_ingame.rewards.not_fulfilled') }}</a>
                                         </div>
                                         <div class="rewardlist-item-bottom"></div>
                                     </div>
@@ -155,7 +155,7 @@
 
                                                 Good luck!
                                                 The OGame Starter Aid</p>
-                                            <a class="reward-button disabled" href="javascript:void(0)">Not fulfilled</a>
+                                            <a class="reward-button disabled" href="javascript:void(0)">{{ __('t_ingame.rewards.not_fulfilled') }}</a>
                                         </div>
                                         <div class="rewardlist-item-bottom"></div>
                                     </div>
@@ -176,7 +176,7 @@
 
                                                 Good luck!
                                                 The OGame Starter Aid</p>
-                                            <a class="reward-button disabled" href="javascript:void(0)">Not fulfilled</a>
+                                            <a class="reward-button disabled" href="javascript:void(0)">{{ __('t_ingame.rewards.not_fulfilled') }}</a>
                                         </div>
                                         <div class="rewardlist-item-bottom"></div>
                                     </div>
@@ -184,7 +184,7 @@
                             </div>
                             <br>
 
-                            <h3>Collected awards</h3>
+                            <h3>{{ __('t_ingame.rewards.collected_awards') }}</h3>
                         </div>
                     </div>
                 </div>

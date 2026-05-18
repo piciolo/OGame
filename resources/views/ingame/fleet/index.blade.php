@@ -387,9 +387,9 @@
                 "LOCA_BASHING_SYSTEM_LIMIT_REACHED_ATTACK_MISSIONS_DISABLED": "{{ __('t_ingame.fleet.bashing_disabled') }}"
             };
             var locadyn = {
-                "locaAllOutlawWarning": "You are about to attack a stronger player. If you do this, your attack defenses will be shut down for 7 days and all players will be able to attack you without punishment. Are you sure you want to continue?",
-                "localBashWarning": "In this universe, 0 attacks are permitted within a 24-hour period. This attack would probably exceed this limit. Do you really wish to launch it?",
-                "locaOfficerbonusTooltipp": "+ 2 Fleet slots because of Admiral"
+                "locaAllOutlawWarning": "{{ __('t_ingame.layout.js_outlaw_warning') }}",
+                "localBashWarning": "{{ __('t_ingame.fleet.bash_warning') }}",
+                "locaOfficerbonusTooltipp": "{{ __('t_ingame.fleet.admiral_slot_bonus') }}"
             };
             var errorCodeMap = {
                 "601": "{{ __('t_ingame.fleet.err_generic') }}",
@@ -421,7 +421,7 @@
                 fleetDispatcher.init();
 
                 // Reserve exactly the class-adjusted fuel the PHP backend will deduct.
-                // Floor/ceil avoids float residuals that cause "not enough resources".
+                // Floor/ceil avoids float residuals that cause "not enough resources" (#1131).
                 fleetDispatcher.getDeuteriumOnPlanetWithoutConsumption = function () {
                     return Math.max(0, Math.floor(this.deuteriumOnPlanet) - Math.ceil(this.getConsumption()));
                 };
@@ -495,11 +495,11 @@
                                 <tbody>
                                 <tr class="separator alt">
                                     <th class="textCenter fleet_id">#</th>
-                                    <th class="fleet_name">Name</th>
-                                    <th class="fleet_actions">Actions</th>
+                                    <th class="fleet_name">{{ __('t_ingame.fleet_templates.name_col') }}</th>
+                                    <th class="fleet_actions">{{ __('t_ingame.fleet_templates.actions_col') }}</th>
                                     <th class="textCenter fleet_id">#</th>
-                                    <th class="fleet_name">Name</th>
-                                    <th class="fleet_actions">Actions</th>
+                                    <th class="fleet_name">{{ __('t_ingame.fleet_templates.name_col') }}</th>
+                                    <th class="fleet_actions">{{ __('t_ingame.fleet_templates.actions_col') }}</th>
                                 </tr>
                                 <tr>
                                     <td colspan="3"></td>
@@ -511,8 +511,8 @@
                             </table>
                             <a href="javascript: void(0);" class="btn_blue float_right overlay" id="addNewTpl"
                                onclick="setShipsFleet({&quot;202&quot;:0,&quot;203&quot;:0,&quot;204&quot;:0,&quot;205&quot;:0,&quot;206&quot;:0,&quot;207&quot;:0,&quot;208&quot;:0,&quot;209&quot;:0,&quot;210&quot;:0,&quot;211&quot;:0,&quot;212&quot;:0,&quot;213&quot;:0,&quot;214&quot;:0,&quot;215&quot;:0,&quot;218&quot;:0,&quot;219&quot;:0}, &quot;&quot;, 0)"
-                               data-overlay-inline="#fleetTemplatesEdit" data-overlay-title="Add new template">
-                                Add new template
+                               data-overlay-inline="#fleetTemplatesEdit" data-overlay-title="{{ __('t_ingame.fleet.add_new_template') }}">
+                                {{ __('t_ingame.fleet.add_new_template') }}
                             </a>
                             <br class="clearfloat">
                         </div><!-- #fleetzOverview -->
@@ -521,7 +521,7 @@
                                 <input type="hidden" name="open_std" value="1">
                                 <input type="hidden" name="template_id" id="template_id" value="0">
                                 <input type="hidden" name="mode" value="save">
-                                <label class="fleet_tpl_name">Name</label>
+                                <label class="fleet_tpl_name">{{ __('t_ingame.fleet_templates.template_name_label') }}</label>
                                 <input size="20" maxlength="30" type="text" class="w200 textinput" name="template_name"
                                        id="template_name">
                                 <table cellpadding="0" cellspacing="0" class="list ship_selection_table" id="mail">
@@ -529,12 +529,10 @@
                                     <tr class="alt">
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech204" width="28" height="28" alt="Light Fighter" title="Light Fighter"
+                                                <img class="tech204" width="28" height="28" alt="{{ __('t_resources.light_fighter.title') }}" title="{{ __('t_resources.light_fighter.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Light Fighter
-                                            </p>
+                                            <p>{{ __('t_resources.light_fighter.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -544,12 +542,10 @@
                                         </td>
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech205" width="28" height="28" alt="Heavy Fighter" title="Heavy Fighter"
+                                                <img class="tech205" width="28" height="28" alt="{{ __('t_resources.heavy_fighter.title') }}" title="{{ __('t_resources.heavy_fighter.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Heavy Fighter
-                                            </p>
+                                            <p>{{ __('t_resources.heavy_fighter.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -561,12 +557,10 @@
                                     <tr>
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech206" width="28" height="28" alt="Cruiser" title="Cruiser"
+                                                <img class="tech206" width="28" height="28" alt="{{ __('t_resources.cruiser.title') }}" title="{{ __('t_resources.cruiser.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Cruiser
-                                            </p>
+                                            <p>{{ __('t_resources.cruiser.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -576,12 +570,10 @@
                                         </td>
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech207" width="28" height="28" alt="Battleship" title="Battleship"
+                                                <img class="tech207" width="28" height="28" alt="{{ __('t_resources.battle_ship.title') }}" title="{{ __('t_resources.battle_ship.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Battleship
-                                            </p>
+                                            <p>{{ __('t_resources.battle_ship.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -593,12 +585,10 @@
                                     <tr class="alt">
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech215" width="28" height="28" alt="Battlecruiser" title="Battlecruiser"
+                                                <img class="tech215" width="28" height="28" alt="{{ __('t_resources.battlecruiser.title') }}" title="{{ __('t_resources.battlecruiser.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Battlecruiser
-                                            </p>
+                                            <p>{{ __('t_resources.battlecruiser.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -608,12 +598,10 @@
                                         </td>
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech211" width="28" height="28" alt="Bomber" title="Bomber"
+                                                <img class="tech211" width="28" height="28" alt="{{ __('t_resources.bomber.title') }}" title="{{ __('t_resources.bomber.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Bomber
-                                            </p>
+                                            <p>{{ __('t_resources.bomber.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -625,12 +613,10 @@
                                     <tr>
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech213" width="28" height="28" alt="Destroyer" title="Destroyer"
+                                                <img class="tech213" width="28" height="28" alt="{{ __('t_resources.destroyer.title') }}" title="{{ __('t_resources.destroyer.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Destroyer
-                                            </p>
+                                            <p>{{ __('t_resources.destroyer.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -640,12 +626,10 @@
                                         </td>
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech214" width="28" height="28" alt="Deathstar" title="Deathstar"
+                                                <img class="tech214" width="28" height="28" alt="{{ __('t_resources.deathstar.title') }}" title="{{ __('t_resources.deathstar.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Deathstar
-                                            </p>
+                                            <p>{{ __('t_resources.deathstar.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -657,12 +641,10 @@
                                     <tr class="alt">
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech218" width="28" height="28" alt="Reaper" title="Reaper"
+                                                <img class="tech218" width="28" height="28" alt="{{ __('t_resources.reaper.title') }}" title="{{ __('t_resources.reaper.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Reaper
-                                            </p>
+                                            <p>{{ __('t_resources.reaper.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -672,12 +654,10 @@
                                         </td>
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech219" width="28" height="28" alt="Pathfinder" title="Pathfinder"
+                                                <img class="tech219" width="28" height="28" alt="{{ __('t_resources.pathfinder.title') }}" title="{{ __('t_resources.pathfinder.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Pathfinder
-                                            </p>
+                                            <p>{{ __('t_resources.pathfinder.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -689,12 +669,10 @@
                                     <tr>
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech202" width="28" height="28" alt="Small Cargo" title="Small Cargo"
+                                                <img class="tech202" width="28" height="28" alt="{{ __('t_resources.small_cargo.title') }}" title="{{ __('t_resources.small_cargo.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Small Cargo
-                                            </p>
+                                            <p>{{ __('t_resources.small_cargo.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -704,12 +682,10 @@
                                         </td>
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech203" width="28" height="28" alt="Large Cargo" title="Large Cargo"
+                                                <img class="tech203" width="28" height="28" alt="{{ __('t_resources.large_cargo.title') }}" title="{{ __('t_resources.large_cargo.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Large Cargo
-                                            </p>
+                                            <p>{{ __('t_resources.large_cargo.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -721,12 +697,10 @@
                                     <tr class="alt">
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech208" width="28" height="28" alt="Colony Ship" title="Colony Ship"
+                                                <img class="tech208" width="28" height="28" alt="{{ __('t_resources.colony_ship.title') }}" title="{{ __('t_resources.colony_ship.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Colony Ship
-                                            </p>
+                                            <p>{{ __('t_resources.colony_ship.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -736,12 +710,10 @@
                                         </td>
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech209" width="28" height="28" alt="Recycler" title="Recycler"
+                                                <img class="tech209" width="28" height="28" alt="{{ __('t_resources.recycler.title') }}" title="{{ __('t_resources.recycler.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Recycler
-                                            </p>
+                                            <p>{{ __('t_resources.recycler.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -753,12 +725,10 @@
                                     <tr>
                                         <td class="ship_txt_row textLeft images">
                                             <div class="shipImage float_left">
-                                                <img class="tech210" width="28" height="28" alt="Espionage Probe" title="Espionage Probe"
+                                                <img class="tech210" width="28" height="28" alt="{{ __('t_resources.espionage_probe.title') }}" title="{{ __('t_resources.espionage_probe.title') }}"
                                                      src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                             </div>
-                                            <p>
-                                                Espionage Probe
-                                            </p>
+                                            <p>{{ __('t_resources.espionage_probe.title') }}</p>
                                         </td>
                                         <td class="ship_input_row shipValue">
                                             <input type="text" pattern="[0-9,.]*" class="textRight textinput" size="3"
@@ -771,12 +741,12 @@
                                         <td colspan="4" class="textRight name">
                                             <a href="javascript: void(0);"
                                                class="tooltip js_hideTipOnMobile standardFleetReset float_right icon_link"
-                                               title="Delete template/input">
+                                               title="{{ __('t_ingame.fleet_templates.delete_tooltip') }}">
                                                 <span class="icon icon_trash"></span>
                                             </a>
                                             <a href="javascript: void(0);"
                                                class="tooltip js_hideTipOnMobile standardFleetSubmit float_right icon_link"
-                                               title="Save template">
+                                               title="{{ __('t_ingame.fleet_templates.save_tooltip') }}">
                                                 <span class="icon icon_checkmark"></span>
                                             </a>
                                         </td>
@@ -794,7 +764,7 @@
                 </div>
 
                 <div id="planet" class="planet-header ">
-                    <h2>Fleet Dispatch I - {{ $planet->getPlanetName() }}</h2>
+                    <h2>{{ __('t_ingame.fleet.dispatch_1_title') }} - {{ $planet->getPlanetName() }}</h2>
                     <a class="toggleHeader" data-name="fleet1">
                         <img alt="" src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif" height="22" width="22">
                     </a>
@@ -802,24 +772,24 @@
                 <div class="fleetStatus">
                     <div id="slots" class="fleft">
                         <div class="fleft">
-                            <span class="tooltip advice {{ $fleetSlotsInUse >= $fleetSlotsMax ? 'overmark' : '' }}" title="Used/Total fleet slots"><span>Fleets:</span> {{ $fleetSlotsInUse }}/{{ $fleetSlotsMax }}</span>
-                            <div class="tooltip bonus dark_highlight_tablet" title="+ 2 Fleet slots because of General">
+                            <span class="tooltip advice {{ $fleetSlotsInUse >= $fleetSlotsMax ? 'overmark' : '' }}" title="{{ __('t_ingame.fleet.tooltip_slots') }}"><span>{{ __('t_ingame.fleet.fleets') }}:</span> {{ $fleetSlotsInUse }}/{{ $fleetSlotsMax }}</span>
+                            <div class="tooltip bonus dark_highlight_tablet" title="{{ __('t_ingame.fleet.general_slot_bonus') }}">
                                 <span class="sprite characterclass small warrior"></span>
                             </div>
                         </div>
                         <div class="fleft">
-                                        <span class="tooltip advice {{ $expeditionSlotsInUse >= $expeditionSlotsMax ? 'overmark' : '' }}" title="Used/Total expedition slots">
-                            <span>Expeditions:</span>
+                                        <span class="tooltip advice {{ $expeditionSlotsInUse >= $expeditionSlotsMax ? 'overmark' : '' }}" title="{{ __('t_ingame.fleet.tooltip_exp_slots') }}">
+                            <span>{{ __('t_ingame.fleet.expeditions') }}:</span>
                             {{ $expeditionSlotsInUse }}/{{ $expeditionSlotsMax }}
                         </span>
                         </div>
                     </div>
 
                     <div id="movements" class="fright">
-                        <a class="tooltip js_hideTipOnMobile dark_highlight_tablet" title="To fleet movement"
+                        <a class="tooltip js_hideTipOnMobile dark_highlight_tablet" title="{{ __('t_ingame.fleet.to_movement') }}"
                            href="{{ route('fleet.movement') }}">
                             <img src="/img/icons/f9cb590cdf265f499b0e2e5d91fc75.gif">
-                            <span>Fleet movement</span>
+                            <span>{{ __('t_ingame.fleet.movement_title') }}</span>
                         </a>
                     </div>
                     <br class="clearfloat">
@@ -827,48 +797,28 @@
                 <div class="fleetStatus">
                     <div id="slots" class="fleft">
                         <div class="fleft tactical_retreat">
-                            <a title="Tactical retreat|Fleets are able to automatically retreat if they are attacked by a superior force five times stronger than themselves. The crucial factor in this are the attacker&amp;#96;s fleet points in comparison to your fleet points. Defense facilities are not considered.<br />
-<br />
-Civil ships only count 25%, solar satellites and espionage probes are not considered. <br />
-<br />
-Select the option *never* if you would like to deactivate the automatic retreat.<br />
-<br />
-Held fleets are in principle not able to retreat. Death Stars, Espionage Probes and Solar Satellites are also unable to retreat.<br />
-<br />
-Use the Admiral to enable your fleets to retreat from forces three times bigger than your own.<br />
-<br />
-The &amp;#96;tactical retreat&amp;#96; option ends with 500,000 points." href="javascript:void(0);"
+                            <a title="{{ __('t_ingame.fleet.tactical_retreat_full_tooltip') }}" href="javascript:void(0);"
                                class="tooltipHTML tooltipRight help"></a>
                             <form class="fleft" name="tacticalRetreat" method="POST" action="">
-                            <span class="tooltipHTML tooltipRight" title="Tactical retreat|Fleets are able to automatically retreat if they are attacked by a superior force five times stronger than themselves. The crucial factor in this are the attacker&amp;#96;s fleet points in comparison to your fleet points. Defense facilities are not considered.<br />
-<br />
-Civil ships only count 25%, solar satellites and espionage probes are not considered. <br />
-<br />
-Select the option *never* if you would like to deactivate the automatic retreat.<br />
-<br />
-Held fleets are in principle not able to retreat. Death Stars, Espionage Probes and Solar Satellites are also unable to retreat.<br />
-<br />
-Use the Admiral to enable your fleets to retreat from forces three times bigger than your own.<br />
-<br />
-The &amp;#96;tactical retreat&amp;#96; option ends with 500,000 points.">
-                                Tactical retreat:
+                            <span class="tooltipHTML tooltipRight" title="{{ __('t_ingame.fleet.tactical_retreat_full_tooltip') }}">
+                                {{ __('t_ingame.fleet.tactical_retreat_label') }}
                             </span>
                                 <input onclick="ajaxFormSubmit('tacticalRetreat', '{{ route('overview.index') }}#TODO_tacticalRetreat&amp;tacticalRetreatState=0');"
                                        type="radio" name="tacticalRetreat" value="0">
-                                Never
+                                {{ __('t_ingame.fleet.never') }}
                                 <input onclick="ajaxFormSubmit('tacticalRetreat', '{{ route('overview.index') }}#TODO_tacticalRetreat&amp;tacticalRetreatState=5');"
                                        checked="&quot;checked&quot;" type="radio" name="tacticalRetreat" value="5"> 5:1
                                 <input type="radio" disabled="disabled" name="tacticalRetreat">
                                 <a href="{{ route('premium.index', ['openDetail' => '3']) }}"
                                    class="disabled tooltipHTML"
-                                   title="Tactical retreat|Use the Admiral to enable your fleets to retreat from forces three times bigger than your own.">
+                                   title="{{ __('t_ingame.fleet.tactical_retreat_admiral_tooltip') }}">
                                     3:1
                                 </a>
                             </form>
                         </div>
-                        <div class="fleft tooltip" title="Show Deuterium usage per tactical retreat">
+                        <div class="fleft tooltip" title="{{ __('t_ingame.fleet.tactical_retreat_tooltip') }}">
                         <span>
-                            Deuterium consumption:
+                            {{ __('t_ingame.fleet.deuterium_consumption') }}:
                         </span>
                             5
                         </div>
@@ -893,7 +843,7 @@ The &amp;#96;tactical retreat&amp;#96; option ends with 500,000 points.">
                                         class="missionName">{{ __('t_ingame.fleet.no_selection') }}</span></li>
                             <li><span class="title">{{ __('t_ingame.fleet.target_label') }}:</span> <span class="targetName">[{{ $planet->getPlanetCoordinates()->asString() }}] <figure
                                             class="planetIcon {{ $planet->isPlanet() ? 'planet' : 'moon' }} tooltip js_hideTipOnMobile"
-                                            title="{{ $planet->isPlanet() ? 'Planet' : 'Moon' }}"></figure>{{ $planet->getPlanetName() }}</span></li>
+                                            title="{{ $planet->isPlanet() ? __('t_ingame.fleet.planet') : __('t_ingame.fleet.moon') }}"></figure>{{ $planet->getPlanetName() }}</span></li>
                             <li><span class="title">{{ __('t_ingame.fleet.player_name_label') }}:</span> <span
                                         class="targetPlayerName">{{ $player->getUsername() }}</span></li>
                         </ul>
@@ -961,12 +911,12 @@ The &amp;#96;tactical retreat&amp;#96; option ends with 500,000 points.">
                                 <div class="allornonewrap">
                                     <div class="secondcol fleft">
                                 <span class="send_all">
-                                    <a id="sendall" class="tooltip js_hideTipOnMobile" title="Select all ships">
+                                    <a id="sendall" class="tooltip js_hideTipOnMobile" title="{{ __('t_ingame.fleet.select_all_ships') }}">
                                         <img src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                     </a>
                                 </span>
                                         <span class="send_none">
-                                    <a id="resetall" class="tooltip js_hideTipOnMobile" title="Reset choice">
+                                    <a id="resetall" class="tooltip js_hideTipOnMobile" title="{{ __('t_ingame.fleet.reset_choice') }}">
                                         <img src="/img/icons/3e567d6f16d040326c7a0ea29a4f41.gif">
                                     </a>
                                 </span>
@@ -974,7 +924,7 @@ The &amp;#96;tactical retreat&amp;#96; option ends with 500,000 points.">
                                     </div>
                                     <div class="firstcol fleft">
                                         <a id="combatunits" class="overlay dark_highlight_tablet"
-                                           data-overlay-inline="#zeuch666" data-overlay-title="Edit standard fleets">
+                                           data-overlay-inline="#zeuch666" data-overlay-title="{{ __('t_ingame.fleet.edit_standard_fleets') }}">
                                             <span class="icon icon_combatunits"></span>
                                             {{ __('t_ingame.fleet.standard_fleets') }}
                                         </a>
@@ -1017,7 +967,7 @@ The &amp;#96;tactical retreat&amp;#96; option ends with 500,000 points.">
                         <li><span class="title">{{ __('t_ingame.fleet.mission_label') }}:</span> <span
                                     class="missionName">{{ __('t_ingame.fleet.no_selection') }}</span></li>
                         <li><span class="title">{{ __('t_ingame.fleet.target_label') }}:</span> <span class="targetName">[{{ $planet->getPlanetCoordinates()->asString() }}] <figure
-                                        class="planetIcon {{ $planet->isPlanet() ? 'planet' : 'moon' }} tooltip js_hideTipOnMobile" title="{{ $planet->isPlanet() ? 'Planet' : 'Moon' }}"></figure>{{ $planet->getPlanetName() }}</span>
+                                        class="planetIcon {{ $planet->isPlanet() ? 'planet' : 'moon' }} tooltip js_hideTipOnMobile" title="{{ $planet->isPlanet() ? __('t_ingame.fleet.planet') : __('t_ingame.fleet.moon') }}"></figure>{{ $planet->getPlanetName() }}</span>
                         </li>
                         <li><span class="title">{{ __('t_ingame.fleet.player_name_label') }}:</span> <span
                                     class="targetPlayerName">{{ $player->getUsername() }}</span></li>
@@ -1118,7 +1068,7 @@ The &amp;#96;tactical retreat&amp;#96; option ends with 500,000 points.">
                                                         @if ($planet_record->getPlanetId() !== $planet->getPlanetId())
                                                         <option
                                                             value="{{ $planet_record->getPlanetCoordinates()->galaxy }}#{{ $planet_record->getPlanetCoordinates()->system }}#{{ $planet_record->getPlanetCoordinates()->position }}#{{ $planet_record->getPlanetType() }}#{{ $planet_record->getPlanetName() }}"
-                                                            data-html-prepend="<figure class=&quot;planetIcon {{ $planet_record->getPlanetType() === PlanetType::Planet ? 'planet' : 'moon' }} tooltip js_hideTipOnMobile&quot; title=&quot;{{ $planet_record->getPlanetType() === PlanetType::Planet ? 'Planet' : 'Moon' }}&quot;></figure>"
+                                                            data-html-prepend="<figure class=&quot;planetIcon {{ $planet_record->getPlanetType() === PlanetType::Planet ? 'planet' : 'moon' }} tooltip js_hideTipOnMobile&quot; title=&quot;{{ $planet_record->getPlanetType() === PlanetType::Planet ? __('t_ingame.fleet.planet') : __('t_ingame.fleet.moon') }}&quot;></figure>"
                                                             >
                                                             {{ $planet_record->getPlanetName() }} [{{ $planet_record->getPlanetCoordinates()->asString() }}]
                                                         </option>
@@ -1278,7 +1228,7 @@ The &amp;#96;tactical retreat&amp;#96; option ends with 500,000 points.">
                                         <ul id="fleetBriefingPart1" class="fleetBriefing">
                                             <li id="fightAfterRetreat" style="display: none;">
                                                 <span class="tooltip advice"
-                                                      title="If this option is activated, your fleet will also withdraw without a fight if your opponent flees.">Return upon retreat by defenders:</span>
+                                                      title="{{ __('t_ingame.fleet.retreat_tooltip') }}">{{ __('t_ingame.fleet.retreat_on_defender') }}:</span>
                                                 <span class="value" style="vertical-align: middle;">
                             <square-checkbox id="fleetRetreatSquareCheckbox">
                                 <input type="checkbox" value="None" id="square-checkboxRetreatAfterDefenderRetreat"
@@ -1345,7 +1295,7 @@ The &amp;#96;tactical retreat&amp;#96; option ends with 500,000 points.">
                                     <div class="border5px">
                                         <div id="resources" class="border5px lifeforms-enabled">
                                             <div class="res_wrap border3px">
-                                                <div class="resourceIcon metal tooltip" title="Metal"></div>
+                                                <div class="resourceIcon metal tooltip" title="{{ __('t_ingame.fleet.metal') }}"></div>
                                                 <div class="res">
                                                     <input type="text" pattern="[0-9,.]*"
                                                            class="checkThousandSeparator hideNumberSpin" name="metal"
@@ -1361,7 +1311,7 @@ The &amp;#96;tactical retreat&amp;#96; option ends with 500,000 points.">
                                                 </div>
                                             </div>
                                             <div class="res_wrap border3px">
-                                                <div class="resourceIcon crystal tooltip" title="Crystal"></div>
+                                                <div class="resourceIcon crystal tooltip" title="{{ __('t_ingame.fleet.crystal') }}"></div>
                                                 <div class="res">
                                                     <input type="text" pattern="[0-9,.]*"
                                                            class="checkThousandSeparator hideNumberSpin" name="crystal"
@@ -1376,7 +1326,7 @@ The &amp;#96;tactical retreat&amp;#96; option ends with 500,000 points.">
                                                 </div>
                                             </div>
                                             <div class="res_wrap border3px">
-                                                <div class="resourceIcon deuterium tooltip" title="Deuterium"></div>
+                                                <div class="resourceIcon deuterium tooltip" title="{{ __('t_ingame.fleet.deuterium') }}"></div>
                                                 <div class="res">
                                                     <input type="text" pattern="[0-9,.]*"
                                                            class="checkThousandSeparator hideNumberSpin"

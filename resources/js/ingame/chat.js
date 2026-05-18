@@ -1030,7 +1030,7 @@ ogame.chat = {
         if (c.hasClass("mCustomScrollbar")) {
             c.mCustomScrollbar("update")
         } else {
-            c.mCustomScrollbar({theme: "ogame"})
+            c.mCustomScrollbar({theme: "ogame", autohideScrollbar: true})
         }
         if (d !== true) {
             c.mCustomScrollbar("scrollTo", "bottom", {scrollInertia: 0})
@@ -1095,6 +1095,9 @@ ogame.chat = {
                     html += '<h2 class="header"><span class="c-right"></span><span class="c-left"></span>Player list</h2>';
                     html += '<div class="content">';
 
+                    // Search player link
+                    html += '<a href="' + chatSearchUrl + '" class="txt_link overlay pl_search_link">' + (chatLoca['SEARCH_PLAYER'] || 'Search player') + '</a>';
+
                     // Filter checkboxes
                     html += '<form id="playerlistFilters">';
                     html += '<p class="overlay pl_filter_title">Filter by:</p>';
@@ -1147,20 +1150,22 @@ ogame.chat = {
                         html += '</ul></div></div></div>';
                     }
 
-                    // Strangers section
-                    if (response.recentPartners && response.recentPartners.length > 0) {
-                        html += '<div class="playerlist_box js_accordion" style="overflow: hidden;">';
-                        html += '<h3>Strangers</h3>';
-                        html += '<div>';
-                        html += '<div class="playerlist_top_box"></div>';
-                        html += '<div class="scrollContainer"><ul class="playerlist">';
+                    // Strangers section (always shown)
+                    html += '<div id="plAliens" class="playerlist_box js_accordion" style="overflow: hidden;">';
+                    html += '<h3>Strangers</h3>';
+                    html += '<div>';
+                    html += '<div class="playerlist_top_box"></div>';
+                    html += '<div class="scrollContainer"><ul class="playerlist">';
 
+                    if (response.recentPartners && response.recentPartners.length > 0) {
                         response.recentPartners.forEach(function(partner, index) {
                             html += playerItem(partner, index, 'on', 'off', true);
                         });
-
-                        html += '</ul></div></div></div>';
+                    } else {
+                        html += '<li class="no_buddies">No strangers</li>';
                     }
+
+                    html += '</ul></div></div></div>';
 
                     html += '</div>';
                     html += '<div class="footer"><div class="c-right"></div><div class="c-left"></div></div>';

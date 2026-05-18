@@ -119,7 +119,7 @@ class RecycleMission extends GameMission
 
         // Send a message to the player that the mission has arrived and the resources (if any) have been collected.
         $this->messageService->sendSystemMessageToPlayer($originPlanet->getPlayer(), DebrisFieldHarvest::class, [
-            'from' => '[planet]' . $mission->planet_id_from . '[/planet]',
+            'from' => $this->formatOriginDescriptor($mission),
             'to' => '[debrisfield]' . $targetCoordinate->asString(). '[/debrisfield]',
             'coordinates' => '[coordinates]' . $targetCoordinate->asString() . '[/coordinates]',
             'ship_name' => $harvesterShip->title,

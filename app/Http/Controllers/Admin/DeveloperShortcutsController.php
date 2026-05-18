@@ -2,6 +2,7 @@
 
 namespace OGame\Http\Controllers\Admin;
 
+use Throwable;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -15,8 +16,11 @@ use OGame\Models\Resources;
 use OGame\Models\User;
 use OGame\Services\DarkMatterService;
 use OGame\Services\DebrisFieldService;
+use OGame\Models\AuctionLotTemplate;
+use OGame\Services\AuctioneerService;
 use OGame\Services\ObjectService;
 use OGame\Services\PlayerService;
+use OGame\Services\OfficerService;
 use OGame\Services\SettingsService;
 
 class DeveloperShortcutsController extends OGameController
@@ -31,12 +35,31 @@ class DeveloperShortcutsController extends OGameController
         // Get all unit objects
         $units = ObjectService::getUnitObjects();
 
+        $familyOrder = [
+            'resource_boost_metal', 'resource_boost_crystal',
+            'resource_boost_deuterium', 'resource_boost_energy',
+            'booster_kraken', 'booster_newtron', 'booster_detroid',
+        ];
+
+        $lotTemplates = AuctionLotTemplate::query()
+            ->where('enabled', true)
+            ->orderByRaw("FIELD(tier, 'bronze','silver','gold','platinum')")
+            ->get()
+            ->groupBy(function ($tpl) {
+                if ($tpl->lot_type->value === 'resource_boost') {
+                    return 'resource_boost_' . ($tpl->lot_payload['resource'] ?? 'unknown');
+                }
+                return $tpl->lot_type->value;
+            })
+            ->sortBy(fn ($_, $key) => array_search($key, $familyOrder));
+
         return view('ingame.admin.developershortcuts')->with([
             'units' => $units,
             'buildings' => [...ObjectService::getBuildingObjects(), ...ObjectService::getStationObjects()],
             'research' => ObjectService::getResearchObjects(),
             'currentPlanet' => $playerService->planets->current(),
             'settings' => $settingsService,
+            'lotTemplates' => $lotTemplates,
         ]);
     }
 
@@ -440,5 +463,121 @@ class DeveloperShortcutsController extends OGameController
 
         return redirect()->route('overview.index')
             ->with('success', __('Now impersonating :username', ['username' => $targetUser->username]));
+    }
+
+    /**
+     * Activate an officer for a player from the developer shortcuts page.
+     */
+    public function activateOfficer(Request $request, OfficerService $officerService): RedirectResponse
+    {
+        $validOfficerKeys = array_values(OfficerService::TYPE_MAP);
+        $validOfficerKeys[] = 'all_officers';
+
+        $validated = $request->validate([
+            'username'    => ['required', 'string'],
+            'officer_key' => ['required', 'string', 'in:' . implode(',', $validOfficerKeys)],
+            'days'        => ['required', 'integer', 'in:' . implode(',', OfficerService::DURATIONS)],
+        ]);
+
+        $user = User::where('username', $validated['username'])->first();
+        if (!$user) {
+            return redirect()->back()->with('error', 'Player "' . $validated['username'] . '" not found.');
+        }
+
+        $officer = $officerService->getOfficer($user);
+
+        if ($validated['officer_key'] === 'all_officers') {
+            foreach (array_values(OfficerService::TYPE_MAP) as $key) {
+                $officer->activate($key, (int)$validated['days']);
+            }
+        } else {
+            $officer->activate($validated['officer_key'], (int)$validated['days']);
+        }
+
+        $officer->save();
+        $officerService->clearCache($user);
+
+        return redirect()->back()->with('success', 'Officer "' . $validated['officer_key'] . '" activated for ' . $validated['days'] . ' days for player "' . $validated['username'] . '".');
+    }
+
+    // --- Auctioneer test shortcuts -----------------------------------------
+    //
+    // These let admins skip the natural Waiting/Running countdown so a full
+    // auction cycle can be tested in seconds instead of ~75 minutes.
+
+    public function auctioneerForceEnd(AuctioneerService $auctioneer): RedirectResponse
+    {
+        try {
+            $id = $auctioneer->devForceEndCurrent();
+        } catch (Throwable $e) {
+            return redirect()->back()->with('error', 'Auctioneer force-end failed: ' . $e->getMessage());
+        }
+        $msg = $id !== null
+            ? "Auction #{$id} force-ended. Prize delivered (if any) and history updated."
+            : 'No open auction to end.';
+        return redirect()->back()->with('success', $msg);
+    }
+
+    public function auctioneerForceStart(AuctioneerService $auctioneer): RedirectResponse
+    {
+        try {
+            $id = $auctioneer->devForceStartWaiting();
+        } catch (Throwable $e) {
+            return redirect()->back()->with('error', 'Auctioneer force-start failed: ' . $e->getMessage());
+        }
+        $msg = $id !== null
+            ? "Auction #{$id} promoted to Running."
+            : 'No waiting auction to promote.';
+        return redirect()->back()->with('success', $msg);
+    }
+
+    public function auctioneerSpawn(AuctioneerService $auctioneer): RedirectResponse
+    {
+        try {
+            $id = $auctioneer->devSpawnAuction();
+        } catch (Throwable $e) {
+            return redirect()->back()->with('error', 'Auctioneer spawn failed: ' . $e->getMessage());
+        }
+        $msg = $id !== null
+            ? "Auction #{$id} spawned (Waiting)."
+            : 'Spawn failed: no enabled lot template found.';
+        return redirect()->back()->with('success', $msg);
+    }
+
+    public function auctioneerCancel(AuctioneerService $auctioneer): RedirectResponse
+    {
+        try {
+            $id = $auctioneer->devCancelCurrent();
+        } catch (Throwable $e) {
+            return redirect()->back()->with('error', 'Auctioneer cancel failed: ' . $e->getMessage());
+        }
+        $msg = $id !== null
+            ? "Auction #{$id} cancelled."
+            : 'No open auction to cancel.';
+        return redirect()->back()->with('success', $msg);
+    }
+
+    public function auctioneerSpawnSpecific(Request $request, AuctioneerService $auctioneer): RedirectResponse
+    {
+        $validated = $request->validate(['template_id' => 'required|integer|min:1']);
+        try {
+            $id = $auctioneer->devSpawnAuctionForTemplate((int) $validated['template_id']);
+        } catch (Throwable $e) {
+            return redirect()->back()->with('error', 'Spawn failed: ' . $e->getMessage());
+        }
+        $msg = $id !== null
+            ? "Auction #{$id} spawned (Waiting) for the selected lot template."
+            : 'Template not found.';
+        return redirect()->back()->with('success', $msg);
+    }
+
+    public function auctioneerTick(AuctioneerService $auctioneer): RedirectResponse
+    {
+        try {
+            $auctioneer->tick();
+        } catch (Throwable $e) {
+            return redirect()->back()->with('error', 'Auctioneer tick failed: ' . $e->getMessage());
+        }
+        return redirect()->back()->with('success', 'Auctioneer tick executed.');
     }
 }

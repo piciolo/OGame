@@ -73,6 +73,14 @@ return [
             'replace_placeholders' => true,
         ],
 
+        'auctioneer' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/auctioneer.log'),
+            'level' => env('LOG_AUCTIONEER_LEVEL', 'debug'),
+            'days' => (int) env('LOG_AUCTIONEER_DAYS', 30),
+            'replace_placeholders' => true,
+        ],
+
         'slack' => [
             'driver' => 'slack',
             'url' => env('LOG_SLACK_WEBHOOK_URL'),

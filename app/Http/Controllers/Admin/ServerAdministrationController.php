@@ -9,11 +9,15 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use OGame\Factories\GameMissionFactory;
+use OGame\Factories\PlanetServiceFactory;
 use OGame\Factories\PlayerServiceFactory;
 use OGame\Http\Controllers\OGameController;
+use OGame\GameMessages\AdminBroadcast;
 use OGame\Models\Ban;
+use OGame\Models\ChatReport;
 use OGame\Models\Enums\PlanetType;
 use OGame\Models\FleetMission;
+use OGame\Models\Message;
 use OGame\Models\Planet;
 use OGame\Models\User;
 use OGame\Services\FleetMissionService;
@@ -139,6 +143,29 @@ class ServerAdministrationController extends OGameController
         $stuckMissionsSettings = $this->stuckMissionsSettings();
         $stuckMissions = $this->getStuckFleetMissions($stuckMissionsSettings['min_overdue_hours']);
 
+        // --- Reported chat messages (issue #1374) ---
+        // One row per reported chat message, with counts and all reporter usernames.
+        $reportedMessages = ChatReport::with(['chatMessage.sender', 'reporter'])
+            ->whereNull('reviewed_at')
+            ->whereHas('chatMessage')
+            ->get()
+            ->groupBy('chat_message_id')
+            ->map(function ($reports) {
+                /** @var ChatReport $first */
+                $first = $reports->first();
+                return [
+                    'chat_message_id' => $first->chat_message_id,
+                    'message'         => $first->chatMessage,
+                    'sender'          => $first->chatMessage->sender,
+                    'report_count'    => $reports->count(),
+                    'reporters'       => $reports->pluck('reporter.username')->filter()->unique()->values(),
+                    'first_reported'  => $reports->min('created_at'),
+                    'last_reported'   => $reports->max('created_at'),
+                ];
+            })
+            ->sortByDesc('last_reported')
+            ->values();
+
         return view('ingame.admin.server-administration', [
             'sharedIpGroups'        => $sharedIpGroups,
             'botSuspects'           => $botSuspects,
@@ -149,7 +176,68 @@ class ServerAdministrationController extends OGameController
             'detectionSettings'     => $settings,
             'dismissedIpCount'      => count($dismissedIps),
             'dismissedSuspectCount' => $allSuspects->filter(fn ($s) => in_array($s['user']->id, $dismissedUserIds, true))->count(),
+            'reportedMessages'      => $reportedMessages,
         ]);
+    }
+
+    /**
+     * Marks all reports for a chat message as reviewed (dismiss-from-queue action).
+     * The ChatMessage itself is left intact — the admin can ban the sender separately.
+     */
+    public function dismissChatReport(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'chat_message_id' => ['required', 'integer', 'exists:chat_messages,id'],
+        ]);
+
+        ChatReport::where('chat_message_id', $request->input('chat_message_id'))
+            ->whereNull('reviewed_at')
+            ->update(['reviewed_at' => now()]);
+
+        return redirect()->route('admin.server-administration.index')
+            ->with('status', 'Chat message report dismissed.');
+    }
+
+    /**
+     * Sends a broadcast message to all registered players.
+     * Message appears in each player's communication/messages inbox as "Game Operator".
+     */
+    public function sendBroadcast(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'subject' => ['required', 'string', 'max:255'],
+            'body'    => ['required', 'string', 'max:5000'],
+        ]);
+
+        $subject = $request->input('subject');
+        $body    = $request->input('body');
+        $now     = now()->toDateTimeString();
+
+        $userIds = User::pluck('id')->toArray();
+
+        if (empty($userIds)) {
+            return redirect()->route('admin.server-administration.index')
+                ->with('error', 'No players found to send the broadcast to.');
+        }
+
+        $key    = (new AdminBroadcast(new Message(), resolve(PlanetServiceFactory::class), resolve(PlayerServiceFactory::class)))->getKey();
+        $params = json_encode(['subject' => $subject, 'body' => $body]);
+
+        $rows = array_map(fn ($id) => [
+            'user_id'    => $id,
+            'key'        => $key,
+            'params'     => $params,
+            'viewed'     => 0,
+            'created_at' => $now,
+            'updated_at' => $now,
+        ], $userIds);
+
+        foreach (array_chunk($rows, 500) as $chunk) {
+            Message::insert($chunk);
+        }
+
+        return redirect()->route('admin.server-administration.index')
+            ->with('status', 'Broadcast sent to ' . count($userIds) . ' player(s).');
     }
 
     /**
@@ -640,6 +728,15 @@ class ServerAdministrationController extends OGameController
                 'canceled'   => true,
                 'canceled_at' => now(),
             ]);
+
+            // Lift the 48h minimum-vacation restriction that was imposed by the ban
+            // so the player can leave vacation mode immediately after being unbanned.
+            // The vacation_mode flag itself is left ON — the player chooses when to
+            // disable it; we only release the time-lock that the ban introduced.
+            if ($user->vacation_mode && $user->vacation_mode_until !== null && now()->lessThan($user->vacation_mode_until)) {
+                $user->vacation_mode_until = now();
+                $user->save();
+            }
         }
 
         return redirect()->route('admin.server-administration.index')

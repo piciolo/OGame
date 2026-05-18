@@ -345,6 +345,7 @@ class FleetEventsController extends OGameController
                 $waitEndRow->fleet_unit_count = $eventRowViewModel->fleet_unit_count;
                 $waitEndRow->fleet_units = $eventRowViewModel->fleet_units;
                 $waitEndRow->resources = $eventRowViewModel->resources;
+                $waitEndRow->friendly_status = $eventRowViewModel->friendly_status;
                 $fleet_events[] = $waitEndRow;
             }
 
@@ -381,6 +382,7 @@ class FleetEventsController extends OGameController
                 $returnTripRow->fleet_unit_count = $eventRowViewModel->fleet_unit_count;
                 $returnTripRow->fleet_units = $eventRowViewModel->fleet_units;
                 $returnTripRow->resources = new Resources(0, 0, 0, 0);
+                $returnTripRow->friendly_status = $eventRowViewModel->friendly_status;
                 $returnTripRow->destination_player_id = $eventRowViewModel->destination_player_id;
                 $returnTripRow->destination_player_name = $eventRowViewModel->destination_player_name;
                 $fleet_events[] = $returnTripRow;
@@ -499,7 +501,7 @@ class FleetEventsController extends OGameController
             $summaryRow->time_departure = $initiator->time_departure;
             $summaryRow->is_return_trip = false;
             $summaryRow->is_recallable = false;
-            $summaryRow->friendly_status = $initiator->friendly_status ?? 'friendly';
+            $summaryRow->friendly_status = $initiator->friendly_status;
 
             $summaryRow->destination_planet_name = $initiator->destination_planet_name;
             $summaryRow->destination_planet_coords = $initiator->destination_planet_coords;

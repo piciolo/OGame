@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Carbon;
+use OGame\Enums\AllianceClass;
 
 /**
  *
@@ -67,6 +68,9 @@ use Illuminate\Support\Carbon;
     'is_open',
     'founder_rank_name',
     'newcomer_rank_name',
+    'alliance_class',
+    'alliance_class_changed_at',
+    'alliance_class_free_used',
 ])]
 class Alliance extends Model
 {
@@ -79,7 +83,21 @@ class Alliance extends Model
      */
     protected $casts = [
         'is_open' => 'boolean',
+        'alliance_class' => 'integer',
+        'alliance_class_changed_at' => 'datetime',
+        'alliance_class_free_used' => 'boolean',
     ];
+
+    /**
+     * Get the alliance class as enum (or null if no class is set).
+     */
+    public function allianceClass(): AllianceClass|null
+    {
+        if ($this->alliance_class === null) {
+            return null;
+        }
+        return AllianceClass::tryFrom((int) $this->alliance_class);
+    }
 
     /**
      * Get the founder user of this alliance.

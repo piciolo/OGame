@@ -188,10 +188,25 @@ class DebrisFieldService
      */
     public function calculateRequiredRecyclers(): int
     {
-        $recycler = ObjectService::getUnitObjectByMachineName('recycler');
-        $recyclerCapacity = $recycler->properties->capacity->calculate($this->playerService)->totalValue;
+        return $this->calculateRequiredShips('recycler');
+    }
+
+    /**
+     * Calculate the number of ships (of the given type) needed to collect the
+     * entire debris field, using that ship's effective cargo capacity for the
+     * owning player.
+     *
+     * Expedition debris at position 16 is collected by Pathfinders, whose cargo
+     * capacity is half that of a Recycler. Computing with the wrong ship type
+     * under-estimates the required count and leads to only ~50% of the field
+     * being harvested (#1350).
+     */
+    public function calculateRequiredShips(string $machine_name): int
+    {
+        $ship = ObjectService::getUnitObjectByMachineName($machine_name);
+        $capacity = $ship->properties->capacity->calculate($this->playerService)->totalValue;
 
         $totalDebris = $this->debrisField->metal + $this->debrisField->crystal + $this->debrisField->deuterium;
-        return (int) ceil($totalDebris / $recyclerCapacity);
+        return (int) ceil($totalDebris / $capacity);
     }
 }

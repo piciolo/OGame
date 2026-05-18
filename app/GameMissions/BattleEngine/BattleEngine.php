@@ -20,6 +20,7 @@ use OGame\Services\PlanetService;
 use OGame\Services\PlayerService;
 use OGame\Services\SettingsService;
 use OGame\Services\WreckFieldService;
+use OGame\Services\AllianceClassService;
 
 /**
  * Abstract class BattleEngine.
@@ -109,10 +110,13 @@ abstract class BattleEngine
         $defenderShieldBase = $this->defenderPlanet->getPlayer()->getResearchLevel('shielding_technology');
         $defenderArmorBase = $this->defenderPlanet->getPlayer()->getResearchLevel('armor_technology');
 
-        // Apply General class combat research bonus (+2 levels)
+        // Apply General class combat research bonus (+2 levels) + Alliance Warrior class (+1 level).
         $characterClassService = app(CharacterClassService::class);
-        $attackerCombatBonus = $characterClassService->getAdditionalCombatResearchLevels($attackerPlayer->getUser());
-        $defenderCombatBonus = $characterClassService->getAdditionalCombatResearchLevels($this->defenderPlanet->getPlayer()->getUser());
+        $allianceClassService = app(AllianceClassService::class);
+        $attackerCombatBonus = $characterClassService->getAdditionalCombatResearchLevels($attackerPlayer->getUser())
+            + $allianceClassService->getAdditionalCombatResearchLevels($attackerPlayer->getUser());
+        $defenderCombatBonus = $characterClassService->getAdditionalCombatResearchLevels($this->defenderPlanet->getPlayer()->getUser())
+            + $allianceClassService->getAdditionalCombatResearchLevels($this->defenderPlanet->getPlayer()->getUser());
 
         $result->attackerWeaponLevel = $attackerWeaponBase + $attackerCombatBonus;
         $result->attackerShieldLevel = $attackerShieldBase + $attackerCombatBonus;

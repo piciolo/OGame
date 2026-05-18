@@ -24,8 +24,11 @@ use OGame\Models\ResearchQueue;
 use OGame\Models\Resource;
 use OGame\Models\Resources;
 use OGame\Models\UnitQueue;
+use OGame\Services\OfficerService;
 use RuntimeException;
 use Throwable;
+use OGame\Models\PlanetBoost;
+use OGame\Services\AllianceClassService;
 
 /**
  * Class PlanetService.
@@ -438,6 +441,43 @@ class PlanetService
      *
      * @return string
      */
+    /**
+     * Skin pianeta personalizzata (machine_name della reward Trofei) o null se default.
+     */
+    public function getSpaceObjectSkin(): string|null
+    {
+        $skin = $this->planet->space_object_skin ?? null;
+        return is_string($skin) && $skin !== '' ? $skin : null;
+    }
+
+    /**
+     * Imposta (o resetta a null) la skin pianeta. Persiste sul Planet model.
+     */
+    public function setSpaceObjectSkin(string|null $machineName): void
+    {
+        $this->planet->space_object_skin = $machineName;
+        $this->planet->save();
+    }
+
+    /**
+     * URL dell'immagine pianeta da renderizzare nel planet bar e overview.
+     * Se è settata una skin reward → usa quella; altrimenti l'immagine
+     * default basata su biome+type derivati dalle coordinate.
+     */
+    public function getPlanetImageUrl(): string
+    {
+        $skin = $this->getSpaceObjectSkin();
+        if ($skin !== null) {
+            // Cerca skin locale .png prima poi .jpg
+            foreach (['.png', '.jpg'] as $ext) {
+                if (file_exists(public_path('img/achievements/skins/' . $skin . $ext))) {
+                    return asset('img/achievements/skins/' . $skin . $ext);
+                }
+            }
+        }
+        return asset('img/planets/medium/' . $this->getPlanetBiomeType() . '_' . $this->getPlanetImageType() . '.png');
+    }
+
     public function getPlanetImageType(): string
     {
         // Get system and planet.
@@ -1002,6 +1042,13 @@ class PlanetService
         $timeMultiplier = $characterClassService->getResearchTimeMultiplier($this->player->getUser());
         if ($timeMultiplier != 1.0) {
             $time_seconds = (int)($time_seconds * $timeMultiplier);
+        }
+
+        // Apply Technocrat officer research time multiplier (-25%)
+        $officerService = app(OfficerService::class);
+        $technocratMultiplier = $officerService->getResearchTimeMultiplier($this->player->getUser());
+        if ($technocratMultiplier != 1.0) {
+            $time_seconds = (int)($time_seconds * $technocratMultiplier);
         }
 
         // Minimum time is always 1 second for all objects/units.
@@ -1638,7 +1685,11 @@ class PlanetService
     public function addUnit(string $machine_name, int $amount, bool $save_planet = true): void
     {
         $object = ObjectService::getUnitObjectByMachineName($machine_name);
-        $this->planet->{$object->machine_name} += $amount;
+        // Cap at MySQL INT max (2,147,483,647) to prevent out-of-range errors.
+        $this->planet->{$object->machine_name} = min(
+            $this->planet->{$object->machine_name} + $amount,
+            2147483647
+        );
 
         if ($save_planet) {
             $this->save();
@@ -2047,8 +2098,15 @@ class PlanetService
             }
         }
 
-        $this->planet->energy_used = (int) $energy_consumption_total;
-        $this->planet->energy_max  = (int) $energy_production_total;
+        // Apply active inventory amplifier (energy) before computing production_factor,
+        // so the boosted energy ratio properly influences mine output.
+        $boostMultipliers = $this->getActiveBoostMultipliers();
+        if ($boostMultipliers['energy'] > 1.0) {
+            $energy_production_total = $energy_production_total * $boostMultipliers['energy'];
+        }
+
+        $this->planet->energy_used = (int) min($energy_consumption_total, PHP_INT_MAX);
+        $this->planet->energy_max  = (int) min($energy_production_total, PHP_INT_MAX);
 
         $production_factor = $this->getResourceProductionFactor() / 100;
 
@@ -2060,11 +2118,49 @@ class PlanetService
         // add to $total_production, which contains the basic income
         $production_total->add($building_production_total);
 
+        // Apply active inventory amplifiers (metal/crystal/deuterium). Same-tier
+        // same-resource stacks duration (handled at activation); different tiers
+        // stack additively (e.g. Bronze 10% + Gold 30% = 40%).
+        $metalAfterBoost     = $production_total->metal->get()     * $boostMultipliers['metal'];
+        $crystalAfterBoost   = $production_total->crystal->get()   * $boostMultipliers['crystal'];
+        $deuteriumAfterBoost = $production_total->deuterium->get() * $boostMultipliers['deuterium'];
+
         // Write values to planet.
-        // Use ceil() for positive production to match getObjectProduction() rounding
-        $this->planet->metal_production     = (int) ceil($production_total->metal->get());
-        $this->planet->crystal_production   = (int) ceil($production_total->crystal->get());
-        $this->planet->deuterium_production = (int) ceil($production_total->deuterium->get());
+        // Use ceil() for positive production to match getObjectProduction() rounding.
+        // Cap at PHP_INT_MAX to prevent float-to-int overflow on high-level mines.
+        $this->planet->metal_production     = (int) min(ceil($metalAfterBoost), PHP_INT_MAX);
+        $this->planet->crystal_production   = (int) min(ceil($crystalAfterBoost), PHP_INT_MAX);
+        $this->planet->deuterium_production = (int) min(ceil($deuteriumAfterBoost), PHP_INT_MAX);
+    }
+
+    /**
+     * Sum of percent_bonus from active (non-expired) PlanetBoost rows for this planet,
+     * keyed by resource. Returned as multipliers (e.g. 30% bonus → 1.30).
+     *
+     * Boosts are activated by the InventoryActivationService when the user consumes
+     * an Amplifier (metal/crystal/deuterium/energy) from the Shop tab Inventario.
+     *
+     * @return array{metal:float,crystal:float,deuterium:float,energy:float}
+     */
+    private function getActiveBoostMultipliers(): array
+    {
+        $rows = PlanetBoost::query()
+            ->where('planet_id', $this->planet->id)
+            ->where('expires_at', '>', now())
+            ->get(['resource', 'percent_bonus']);
+
+        $sum = ['metal' => 0, 'crystal' => 0, 'deuterium' => 0, 'energy' => 0];
+        foreach ($rows as $r) {
+            if (isset($sum[$r->resource])) {
+                $sum[$r->resource] += (int) $r->percent_bonus;
+            }
+        }
+        return [
+            'metal'     => 1 + ($sum['metal']     / 100),
+            'crystal'   => 1 + ($sum['crystal']   / 100),
+            'deuterium' => 1 + ($sum['deuterium'] / 100),
+            'energy'    => 1 + ($sum['energy']    / 100),
+        ];
     }
 
     /**
@@ -2104,6 +2200,7 @@ class PlanetService
         $object->production->planetService = $this;
         $object->production->playerService = $this->player;
         $object->production->characterClassService = app(CharacterClassService::class);
+        $object->production->allianceClassService = app(AllianceClassService::class);
         $object->production->universe_speed = $this->settingsService->economySpeed();
 
         return $object->production->calculate($object_level, $resource_production_factor * $building_percentage);
@@ -2159,6 +2256,7 @@ class PlanetService
         $metalMine->production->planetService = $this;
         $metalMine->production->playerService = $this->player;
         $metalMine->production->characterClassService = app(CharacterClassService::class);
+        $metalMine->production->allianceClassService = app(AllianceClassService::class);
         $metalMine->production->universe_speed = $this->settingsService->economySpeed();
 
         return $metalMine->production->getCrawlerEnergyConsumption();
@@ -2370,6 +2468,16 @@ class PlanetService
             $storage_sum->add($storage);
         }
 
+        // Alliance class (Mercante / Trader): +10% capienza deposito (pianeti & lune).
+        // Verified on official OGame UI s274-it: applies to both planets and moons.
+        $allianceClassService = app(AllianceClassService::class);
+        $storageBonus = $allianceClassService->getStorageBonus($this->player->getUser());
+        if ($storageBonus > 1.0) {
+            $storage_sum->metal->set((int) floor($storage_sum->metal->get() * $storageBonus));
+            $storage_sum->crystal->set((int) floor($storage_sum->crystal->get() * $storageBonus));
+            $storage_sum->deuterium->set((int) floor($storage_sum->deuterium->get() * $storageBonus));
+        }
+
         // Write values to planet
         $this->planet->metal_max = $storage_sum->metal->get();
         $this->planet->crystal_max = $storage_sum->crystal->get();
@@ -2436,8 +2544,9 @@ class PlanetService
         }
 
         // Divide the score by 1000 to get the amount of points. Floor the result.
+        // Clamp to PHP_INT_MAX to avoid overflow with extremely large fleets.
         $resources_sum = $resources_spent->sum();
-        return (int)floor($resources_sum / 1000);
+        return (int)min(floor($resources_sum / 1000), PHP_INT_MAX);
     }
 
     /**

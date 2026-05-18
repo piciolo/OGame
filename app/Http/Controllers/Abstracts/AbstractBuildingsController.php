@@ -93,8 +93,7 @@ abstract class AbstractBuildingsController extends OGameController
                 $valid_planet_type = ObjectService::objectValidPlanetType($object_machine_name, $this->planet);
 
                 // Check if the current planet has enough resources to build this building.
-                $useProductionEnergy = in_array($object_machine_name, ['terraformer', 'space_dock']);
-                $enough_resources = $this->planet->hasResources(ObjectService::getObjectPrice($object_machine_name, $this->planet), $useProductionEnergy);
+                $enough_resources = $this->planet->hasResources(ObjectService::getObjectPrice($object_machine_name, $this->planet));
 
                 $view_model = new BuildingViewModel();
                 $view_model->count = $count;
@@ -256,7 +255,7 @@ abstract class AbstractBuildingsController extends OGameController
         if (!hash_equals($request->session()->token(), $request->input('_token'))) {
             return response()->json([
                 'success' => false,
-                'message' => 'Invalid token.',
+                'message' => __('t_ingame.buildings.invalid_token'),
             ]);
         }
 
@@ -273,7 +272,7 @@ abstract class AbstractBuildingsController extends OGameController
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Building construction started.',
+            'message' => __('t_ingame.buildings.building_started'),
         ]);
     }
 
@@ -299,7 +298,7 @@ abstract class AbstractBuildingsController extends OGameController
         if (!hash_equals($request->session()->token(), $request->input('_token'))) {
             return response()->json([
                 'success' => false,
-                'message' => 'Invalid token.',
+                'message' => __('t_ingame.buildings.invalid_token'),
             ]);
         }
 
@@ -310,7 +309,7 @@ abstract class AbstractBuildingsController extends OGameController
 
             return response()->json([
                 'status' => 'success',
-                'message' => 'Building downgrade started.',
+                'message' => __('t_ingame.buildings.downgrade_started'),
             ]);
         } catch (Exception $e) {
             return response()->json([
@@ -337,7 +336,7 @@ abstract class AbstractBuildingsController extends OGameController
 
         return response()->json([
             'status' => 'success',
-            'message' => 'Building construction canceled.',
+            'message' => __('t_ingame.buildings.construction_canceled'),
         ]);
     }
 }

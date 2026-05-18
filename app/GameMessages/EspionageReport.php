@@ -216,6 +216,7 @@ class EspionageReport extends GameMessage
             'subject' => $this->getSubject(),
             'from' => $this->getFrom(),
             'playername' => $player->getUsername(),
+            'character_class' => $this->espionageReportModel->player_info['character_class'] ?? null,
             'date' => $this->getDateFormatted(),
             'resources' => $resources,
             'debris' => $debris,

@@ -43,7 +43,15 @@
             @endfor
         </select>
         <div class="fleft" id="highscoreHeadline">
-            {{ __('t_ingame.highscore.points') }}
+            @if($highscoreCurrentType == 0)
+                {{ __('t_ingame.highscore.points') }}
+            @elseif($highscoreCurrentType == 1)
+                {{ __('t_ingame.highscore.economy') }}
+            @elseif($highscoreCurrentType == 2)
+                {{ __('t_ingame.highscore.research') }}
+            @elseif($highscoreCurrentType == 3)
+                {{ __('t_ingame.highscore.military') }}
+            @endif
         </div>
         <table id="ranks" class="userHighscore">
             <thead>

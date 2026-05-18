@@ -1,0 +1,316 @@
+.border5px, #activeBuffDetails .anythingWindow { border-radius: 5px; background-clip: padding-box; }
+div.detail_screen { background-repeat: no-repeat; height: 300px; width: 654px; background-image: url("/img/shop/ui/detail-screen-bg.gif"); z-index: 10; display: none; margin: 0px; position: absolute; top: 0px; }
+div.detail_screen.small { background-image: url("/img/shop/ui/detail-screen-small-bg.gif"); }
+.detail_screen #pic ul { list-style-type: none; }
+.detail_screen #pic .textLabel { position: absolute; text-indent: -9999px; }
+.detail_screen #content { width: 450px; height: 200px; overflow: hidden; float: left; }
+#planet .detail_screen #content h2 { font: bold 12px / 22px Verdana, Arial, Helvetica, sans-serif; color: rgb(210, 157, 0); display: inline-block; float: left; height: 22px; margin: 0px 0px 0px 25px; overflow: hidden; padding-top: 0px; width: auto; }
+.detail_screen #content .level { color: rgb(210, 157, 0); float: right; font-size: 11px; line-height: 22px; height: 22px; text-align: center; }
+.detail_screen #wrapper { color: rgb(132, 132, 132); font: 11px / 14px Verdana, Arial, Helvetica, sans-serif; margin-top: 30px; padding-left: 17px; }
+.detail_screen #action li.techtree, .detail_screen #action li.demolish { top: 20px; }
+#research .detail_screen #action .demolish { left: 316px; }
+#shipyard .detail_screen #action li.demolish { top: 0px; left: 316px; }
+#defense .detail_screen #action li.demolish { top: 0px; left: 315px; }
+.build-it_wrap { float: right; margin: 0px 8px 0px 0px; }
+a.build-it, a.build-it_disabled { background: url("/img/shop/ui/btn-build-it.png") 0px 0px no-repeat transparent; color: rgb(255, 255, 255); display: table; font-size: 16px; font-weight: bold; height: 54px; text-decoration: none; text-align: center; float: right; }
+a.build-it > span, a.build-it_disabled > span { display: table-cell; vertical-align: middle; width: 143px; height: 54px; }
+a.build-it_disabled { color: rgb(132, 132, 132); }
+.no-touch a.build-it:hover, a.build-it:active { background-position: 0px -54px; color: rgb(255, 255, 255); }
+a.build-it_disabled { background-position: 0px -108px; cursor: default; }
+.no-touch a.build-it_disabled:hover, a.build-it_disabled:active { background-position: 0px -108px; }
+a.build-it_premium { background: url("/img/shop/ui/btn-build-it-premium.png") 0px 0px no-repeat transparent; box-sizing: border-box; color: rgb(255, 255, 255); display: table-cell; font-size: 13px; font-weight: bold; height: 52px; padding: 0px 0px 0px 40px; text-decoration: none; text-align: center; vertical-align: middle; width: 204px; }
+a.build-it_premium:hover, a.build-it_premium:active { background-position: 0px -52px; color: rgb(255, 255, 255); }
+div#promotionCountdownBox a.build-it { position: static; font-weight: bold; margin: auto; }
+div#promotionCountdownBox a.build-it span { padding-top: 12px; }
+a.close_details { height: 16px; width: 16px; float: right; margin: 2px 0px 0px 5px; }
+a.close_details, a.close_details:link, a.close_details:visited { background: url("/img/shop/ui/btn-build-it.png") -207px 0px no-repeat transparent; }
+a.close_details:active, a.close_details:focus { background-position: -207px 0px; }
+a.close_details .textlabel { height: 1px; left: -9999px; overflow: hidden; position: absolute; width: 1px; }
+#RessLayer a.close_details, #rocketsilo a.close_details, #supplydepotlayer a.close_details, #jumpgate a.close_details, #sftcontainer a.close_details, #feedback a.close_details { float: right; margin: 3px 9px 0px 0px; display: inline; }
+.detail_screen a.close_details { margin: 1px; }
+#inhalt.officers .detail_screen div#description span { float: left; background: url("/img/shop/ui/overlay-bg-anim3.gif") 100% 70% no-repeat; color: rgb(111, 159, 200); height: 17px; line-height: 17px; padding-right: 15px; text-decoration: none; width: auto; margin-right: 25px; }
+.detail_screen div#description .benefitlist, .detail_screen div#description .benefits { float: left; color: rgb(111, 159, 200); font-weight: 700; padding: 0px; }
+.detail_screen div#description .benefitlist { width: 530px; white-space: normal; line-height: 15px; }
+.detail_screen div#description .benefits { margin: 0px 0px 0px 10px; width: 100px; }
+.detail_screen div#wrapper { color: rgb(132, 132, 132); font: 11px / 14px Verdana, Arial, Helvetica, sans-serif; margin-top: 10px; padding-left: 17px; }
+.detail_screen div#inhalt p.stimulus { padding: 10px 15px; }
+#features .build-it_wrap { display: table; float: right; height: 54px; margin: 10px 0px 0px; }
+.detail_screen div#features a.build-it, .detail_screen div#features a.build-it_disabled { font-size: 12px; }
+.detail_screen div#features p { float: left; width: 265px; height: 165px; }
+.detail_screen .level .overmark { color: rgb(212, 54, 53); font-weight: 700; padding: 0px 6px 2px; }
+.detail_screen .level .undermark { color: rgb(153, 204, 0); font-weight: 700; padding: 0px 6px 2px; }
+div#announcement a.close_details { margin: 0px; float: right; display: inline; }
+.item_img_box .event_active_hint { height: 25px; width: 25px; position: absolute; bottom: -4px; left: -4px; z-index: 10; }
+#activeBuffDetails .event_item_10p_discount { background-position: 25px -1px; height: 75px; width: 75px; }
+#shop #inhalt .item_img a, #activeBuffDetails .item_img a { z-index: 1; }
+button.build-it_premium { background: url("/img/shop/ui/btn-build-it-premium.png") 0px 0px no-repeat transparent; box-sizing: border-box; color: rgb(255, 255, 255); display: table-cell; font-size: 13px; font-weight: bold; height: 52px; padding: 0px 0px 0px 40px; text-decoration: none; text-align: center; vertical-align: middle; width: 204px; }
+button.build-it_premium:hover, button.build-it_premium:active { background-position: 0px -52px; color: rgb(255, 255, 255); }
+.allianceclass.box .build-it.deactivate { filter: hue-rotate(270deg); }
+div.anythingSlider { display: block; width: 475px; height: 390px; margin: 0px auto; overflow: hidden; }
+#buffBar div.anythingSlider { padding: 0px 15px; float: right; margin-right: 5px; }
+div.anythingSlider .thumbNav a.cur, div.anythingSlider .thumbNav a { background: rgb(52, 65, 79); color: rgb(132, 132, 132); }
+#shop div.anythingSlider.activeSlider .anythingWindow { border-color: rgb(23, 33, 37); }
+#overview div.anythingSlider.activeSlider .anythingWindow { border-color: rgb(23, 33, 37); }
+div.anythingSlider.activeSlider .thumbNav a.cur { background: rgb(70, 80, 89); color: rgb(255, 255, 255); }
+div.anythingSlider.activeSlider .thumbNav a { background: rgb(23, 33, 35); }
+div.anythingSlider .anythingWindow { overflow: hidden; position: relative; width: 100%; height: 100%; }
+div.anythingSlider { position: relative; padding: 0px 35px 28px; }
+.active_item_slider div.anythingSlider { padding: 0px 31px 25px 29px; }
+.anythingBase { background: transparent; list-style: none; position: absolute; top: 0px; left: 0px; margin: 0px; padding: 0px; }
+.anythingBase .panel { background: transparent; display: block; overflow: hidden; float: left; padding: 0px; margin: 0px; }
+div.anythingSlider .arrow { background: none; top: 50%; position: absolute; display: block; }
+div.anythingSlider .arrow a { background: url("/img/shop/ui/overlay-btn-close.png") no-repeat; display: block; height: 180px; margin: -90px 0px 0px; width: 30px; text-align: center; outline: 0px; }
+#buffBar div.anythingSlider .arrow a { height: 44px; width: 12px; margin: -26px 0px 0px; cursor: pointer; }
+.active_item_slider div.anythingSlider .arrow a { height: 135px; margin: -85px 0px 0px; width: 25px; }
+div.anythingSlider .arrow a span { display: block; text-indent: -9999px; }
+div.anythingSlider .forward { right: 0px; }
+div.anythingSlider .back { left: 0px; }
+div.anythingSlider .forward a { background-position: -120px 0px; }
+div.anythingSlider .back a { background-position: -30px 0px; }
+#buffBar div.anythingSlider .forward a { background-position: -151px -263px; }
+#buffBar div.anythingSlider .back a { background-position: -107px -263px; }
+.active_item_slider div.anythingSlider .forward a { background-position: -120px -310px; }
+.active_item_slider div.anythingSlider .back a { background-position: -30px -310px; }
+.no-touch div.anythingSlider .forward a:hover, div.anythingSlider .forward a.hover { background-position: -150px 0px; }
+.no-touch div.anythingSlider .back a:hover, div.anythingSlider .back a.hover { background-position: 0px 0px; }
+#buffBar div.anythingSlider .forward a.hover { background-position: -166px -263px; }
+#buffBar div.anythingSlider .back a.hover { background-position: -92px -263px; }
+.no-touch .active_item_slider div.anythingSlider .forward a:hover, .active_item_slider div.anythingSlider .forward a.hover { background-position: -150px -310px; }
+.no-touch .active_item_slider div.anythingSlider .back a:hover, .active_item_slider div.anythingSlider .back a.hover { background-position: 0px -310px; }
+div.anythingSlider .disabled a { cursor: default; }
+div.anythingSlider .forward.disabled a, .no-touch div.anythingSlider .forward.disabled a:hover, div.anythingSlider .forward.disabled a.hover { background-position: -90px 0px; }
+div.anythingSlider .back.disabled a, .no-touch div.anythingSlider .back.disabled a:hover, div.anythingSlider .back.disabled a.hover { background-position: -60px 0px; }
+#buffBar div.anythingSlider .forward.disabled a, #buffBar .no-touch div.anythingSlider .forward.disabled a:hover, #buffBar div.anythingSlider .forward.disabled a.hover { background-position: -136px -263px; }
+#buffBar div.anythingSlider .back.disabled a, #buffBar .no-touch div.anythingSlider .back.disabled a:hover, #buffBar div.anythingSlider .back.disabled a.hover { background-position: -122px -263px; }
+.active_item_slider div.anythingSlider .forward.disabled a, .no-touch .active_item_slider div.anythingSlider .forward.disabled a:hover, .active_item_slider div.anythingSlider .forward.disabled a.hover { background-position: -90px -310px; }
+.active_item_slider div.anythingSlider .back.disabled a, .no-touch .active_item_slider div.anythingSlider .back.disabled a:hover, .active_item_slider div.anythingSlider .back.disabled a.hover { background-position: -60px -310px; }
+div.anythingSlider .anythingControls { outline: 0px; display: none; top: 0px; }
+div.anythingSlider .thumbNav { margin: 0px; padding: 0px; text-align: left; }
+div.anythingSlider .thumbNav li { display: inline; }
+div.anythingSlider .thumbNav a { display: inline-block; text-decoration: none; padding: 3px 8px 1px; height: 18px; margin: 5px 3px; background: padding-box rgb(23, 33, 35); text-align: center; outline: 0px; box-shadow: rgb(0, 0, 0) 1px 1px 2px; border-radius: 3px; }
+.active_item_slider div.anythingSlider .thumbNav span { display: none; }
+.active_item_slider div.anythingSlider a { height: 16px; padding: 0px; width: 16px; }
+div.anythingSlider.rtl .thumbNav a { float: right; }
+div.anythingSlider.rtl .thumbNav { float: left; }
+div.anythingSlider.rtl .anythingWindow { direction: ltr; unicode-bidi: bidi-override; }
+.shopPaginator .buffPaginator { display: flex; justify-content: center; position: relative; bottom: 26px; }
+.buffPaginator { display: flex; position: absolute; top: 196px; }
+.buffPaginator button { background: rgb(52, 65, 79); color: rgb(132, 132, 132); display: flex; text-decoration: none; padding: 3px 8px 1px; height: 20px; width: 0px; margin: 5px 3px; border-radius: 5px; justify-content: center; }
+#activeBuffDetails .buffPaginator button.arrowPrev, #activeBuffDetails .buffPaginator button.arrowNext { padding: 1.3px 8px 1px; }
+.shopPaginator button:focus .buffPaginator button:focus { background: rgb(70, 80, 89); color: rgb(255, 255, 255); }
+.arrowNext { position: relative; }
+#artifactshop #artifactShopTierContent .anythingSlider { padding-bottom: 0px; height: 220px !important; }
+#artifactshop #artifactShopTierContent .item_img { cursor: pointer; width: 105px; height: 105px; background-position: center center; background-repeat: no-repeat; background-size: 100px 100px; }
+#artifactshop #artifactShopTierContent .item_img .ecke { color: rgb(255, 150, 0); position: absolute; bottom: 0px; right: 0px; width: 72px; text-align: right; display: flex; justify-content: flex-end; }
+#artifactshop #artifactShopTierContent .r_common .item_img_box { background-position: -210px 0px; }
+#artifactshop #artifactShopTierContent .r_epic .item_img_box { background-position: -420px 0px; }
+#artifactshop #artifactShopTierContent .item_img_box { background: url("/img/shop/ui/overlay-bg-item.png") 0px 0px no-repeat; height: 105px; width: 105px; margin: 0px 0px 2px; position: relative; z-index: 10; }
+div#banner_skyscraper a.close_details { position: relative; display: flex; align-items: flex-end; }
+div#banner_skyscraper a.close_details { display: flex; position: absolute; margin-top: 0px; justify-content: flex-end; z-index: 2; }
+.characterclass.box .build-it.deactivate { filter: hue-rotate(270deg); }
+#empireComponent .overview_equipment .anythingSlider { height: 186px; padding: 0px 35px; }
+#empireComponent .empireItems > li .item_img { margin: auto; }
+#empireComponent .overview_equipment .anythingSlider .arrow a { width: 20px; margin: -67px 0px 0px; }
+#empireComponent .middleSliderArrows .anythingSlider .arrow a { height: 130px; width: 22px; }
+#empireComponent .middleSliderArrows div.anythingSlider .back.disabled a, #empireComponent .no-touch .middleSliderArrows div.anythingSlider .back.disabled a:hover, #empireComponent .middleSliderArrows div.anythingSlider .back.disabled a.hover { background-position: -53px -310px; }
+#empireComponent .middleSliderArrows div.anythingSlider .back a { background-position: -23px -310px; }
+#empireComponent .no-touch .middleSliderArrows div.anythingSlider .back a:hover, #empireComponent .middleSliderArrows div.anythingSlider .back a.hover { background-position: 7px -310px; }
+#empireComponent .middleSliderArrows div.anythingSlider .forward.disabled a, #empireComponent .no-touch .middleSliderArrows div.anythingSlider .forward.disabled a:hover, #empireComponent .middleSliderArrows div.anythingSlider .forward.disabled a.hover { background-position: -88px -310px; }
+#empireComponent .middleSliderArrows div.anythingSlider .forward a { background-position: -118px -310px; }
+#empireComponent .no-touch .middleSliderArrows div.anythingSlider .forward a:hover, #empireComponent .middleSliderArrows div.anythingSlider .forward a.hover { background-position: -148px -310px; }
+#eventHeader a.close_details { right: 5px; position: absolute; margin: 7px 30px 7px 7px; }
+#eventHeader a.close_details:link, #eventHeader a.close_details:visited, .no-touch #eventHeader a.close_details:hover, #eventHeader a.close_details:active { background: url("/img/shop/ui/btn-build-it.png") -207px 0px no-repeat scroll transparent; }
+.no-touch #eventHeader a.close_details:hover { background: url("/img/shop/ui/btn-build-it.png") -207px -17px no-repeat scroll transparent; }
+#div_traderScrap div.anythingWindow li div.buildingimg { display: block; width: 80px; height: 80px; }
+#div_traderScrap div.anythingWindow li a:not(.dropdown a):link, #div_traderScrap div.anythingWindow li a:not(.dropdown a):visited { background: url("/img/shop/ui/overlay-bg-anim2.gif") no-repeat; color: rgb(255, 150, 0); text-decoration: none; }
+.no-touch #div_traderScrap div.anythingWindow li a:not(.dropdown a):hover { background: url("/img/shop/ui/overlay-spinner.gif") no-repeat; }
+#sftcontainer a.close_details { margin: -1px 8px 0px 0px; }
+#lfresearch a.build-it, #lfresearch a.build-it_disabled { background: url("/img/shop/ui/btn-build-it.png") 0px 0px no-repeat transparent; color: rgb(255, 255, 255); display: block; font-size: 16px; font-weight: bold; height: 54px; text-decoration: none; text-align: center; width: 142px; float: none; }
+#lfresearch a.build-it > span, #lfresearch a.build-it_disabled > span { display: table-cell; vertical-align: middle; width: 143px; height: 54px; }
+#lfresearch a.build-it_disabled, #lfresearch a.build-it_disabled:hover { color: rgb(132, 132, 132); }
+#lfresearch .no-touch a.build-it:hover, #lfresearch a.build-it:active { background-position: 0px -54px; color: rgb(255, 255, 255); cursor: pointer; }
+#lfresearch a.build-it_disabled { background-position: 0px -108px; cursor: default; }
+.activePager { border: 1px solid rgb(0, 0, 0); color: rgb(255, 255, 255); background: rgb(34, 49, 59); font-weight: bold; padding: 2px 6px; }
+#officersmess .detail_screen div#description span { float: left; background: url("/img/shop/ui/overlay-bg-anim3.gif") 100% 70% no-repeat; color: rgb(111, 159, 200); height: 17px; line-height: 17px; padding-right: 15px; text-decoration: none; width: auto; margin-right: 25px; }
+#officersmess .detail_screen div#description .benefitlist, #officersmess .detail_screen div#description .benefits { float: left; color: rgb(111, 159, 200); font-weight: 700; padding: 0px; }
+#officersmess .detail_screen div#description .benefitlist { width: 530px; white-space: normal; line-height: 15px; }
+#detailWrapper { position: absolute; width: 650px; }
+#activeBuffDetails .sale_badge, #activeBuffDetails .sale_badge.disabled { background: url("/img/shop/ui/overlay-btn-close.png") no-repeat; }
+#empire .item_img_box { border: 1px solid transparent; display: block; position: relative; opacity: 0.8; }
+#empire .r_epic .item_img_box { border-color: rgb(133, 65, 149); }
+#empire .r_buddy .item_img_box { border-color: rgb(55, 97, 142); }
+#buffBar .active_item.r_common, #empire .r_common .item_img_box { border-color: rgb(131, 75, 45); }
+#empire .r_uncommon .item_img_box { border-color: rgb(128, 134, 143); }
+#buffBar .active_item.r_rare, #empire .r_rare .item_img_box { border-color: rgb(186, 127, 35); }
+#empire .r_debuff .item_img_box { border-color: rgb(153, 0, 0); }
+#detailWrapper { height: 259px; }
+#activeBuffDetails, #overview div.detail_screen { background: url("/img/shop/ui/overlay-section-bg.png") 0px 0px no-repeat rgb(13, 16, 20); height: 258px; width: 654px; z-index: 11; }
+#activeBuffDetails h2 { font: bold 12px / 16px Verdana, Arial, Helvetica, sans-serif; color: rgb(210, 157, 0); padding: 0px; margin: 0px; height: auto; width: auto; white-space: normal; }
+#activeBuffDetails .detail_screen_h2 { padding: 3px 0px 0px 40px; }
+#activeBuffDetails .shop_link { color: rgb(255, 255, 255); float: right; margin: -18px 32px 0px 0px; position: relative; text-decoration: none; }
+.no-touch #activeBuffDetails .shop_link:hover, #activeBuffDetails .shop_link:active { text-decoration: underline; }
+#activeBuffDetails .active_item_slider { float: left; font-size: 11px; height: 225px; left: 10px; position: relative; text-align: center; top: 12px; width: 410px; }
+#activeBuffDetails .active_item_details { margin: 11px 0px 0px 425px; padding: 5px 7px; height: 209px; width: 197px; }
+#activeBuffDetails .item_detail_content { height: 156px; }
+#activeBuffDetails .active_item_details p { font-size: 11px; line-height: 13px; padding: 0px 0px 5px; }
+div.values .equipment .item_img a.timeLink span.time { left: 1px; }
+.item_img .pusher, #activeBuffDetails .active_item_slider .activation, #activeBuffDetails .pusher { height: 0px; left: 0px; position: absolute; top: 0px; width: 100%; opacity: 0.6; background-color: rgb(0, 0, 0); z-index: 1; border-top-left-radius: 3px; border-top-right-radius: 3px; }
+#activeBuffDetails .active_item_slider .activation { width: 100%; height: 100%; display: none; }
+#activeBuffDetails .active_item_slider .activation.disabled { display: block; }
+#phalanxWrap #eventHeader a.close_details { right: 13px; position: absolute; top: 6px; }
+#phalanxWrap #eventHeader a.close_details:link, #phalanxWrap #eventHeader a.close_details:visited, .no-touch #phalanxWrap #eventHeader a.close_details:hover, #phalanxWrap #eventHeader a.close_details:active { background: url("/img/shop/ui/btn-build-it.png") -207px 0px no-repeat scroll transparent; }
+.no-touch #phalanxWrap #eventHeader a.close_details:hover { background: url("/img/shop/ui/btn-build-it.png") -207px -17px no-repeat scroll transparent; }
+#shop .item_img, #activeBuffDetails .active_item_slider .item_img, div.values div.equipment .item_img { background-repeat: no-repeat; height: 75px; margin: 2px; position: relative; width: 75px; background-size: 71px; background-position: 2px 2px; display: block; float: left; }
+#empire div.values div.equipment .item_img { height: 34px; width: 34px; }
+#activeBuffDetails .active_item_slider .item_img { height: 90px; margin: 7px 0px 0px 10px; }
+#activeBuffDetails .item_img .empty { height: 75px; }
+#shop #inhalt .item_img { cursor: pointer; width: 105px; height: 105px; }
+div.values div.equipment .item_img { margin: 4px 2px 1px 1px; }
+#inhalt .item_img_box, div.values div.item_img_box { background: url("/img/shop/ui/overlay-panel-top.png") 0px 0px no-repeat; height: 75px; margin: 0px 0px 2px; position: relative; width: 75px; z-index: 10; }
+#empire div.values div.item_img_box { background: none; height: 32px; width: 32px; border-radius: 2px; }
+#shopcomponent #inhalt .item_img { background-position: center center; background-repeat: no-repeat; background-size: 100px 100px; }
+#shopcomponent #inhalt .item_img_box { background: url("/img/shop/ui/overlay-bg-item.png") 0px 0px no-repeat; height: 105px; width: 105px; box-shadow: rgb(0, 0, 0) 2px 2px 3px 0px; }
+#shopcomponent #inhalt .r_epic .item_img_box { background-position: -420px 0px; }
+#shopcomponent #inhalt .r_buddy .item_img_box { background-position: -315px 0px; }
+#shopcomponent #inhalt .r_common .item_img_box { background-position: -210px 0px; }
+#shopcomponent #inhalt .r_uncommon .item_img_box { background-position: -105px 0px; }
+#shopcomponent #inhalt .r_rare .item_img_box { background-position: 0px 0px; }
+#inhalt .r_buddy .item_img_box, div.values .r_buddy div.item_img_box { background-position: -225px 0px; }
+#inhalt .r_epic .item_img_box, div.values .r_epic div.item_img_box { background-position: -300px 0px; }
+#inhalt .r_common .item_img_box, div.values .r_common div.item_img_box { background-position: -150px 0px; }
+#inhalt .r_uncommon .item_img_box, div.values .r_uncommon div.item_img_box { background-position: -75px 0px; }
+#inhalt .r_rare .item_img_box, div.values .r_rare div.item_img_box { background-position: 0px 0px; }
+#shopcomponent #inhalt .item_img .empty, #activeBuffDetails .item_img .empty { background: rgb(0, 0, 0); cursor: default; opacity: 0.4; }
+#shopcomponent #inhalt .item_img a, #activeBuffDetails .item_img a { color: rgb(255, 150, 0); display: block; height: 75px; position: relative; text-decoration: none; text-indent: -9999px; width: 75px; }
+#shopcomponent #inhalt .item_img a, #shopcomponent #inhalt .item_img .empty { height: 105px; width: 105px; }
+#shopcomponent .item_img a.active, .no-touch#shopcomponent .item_img a:hover { background: url("/img/shop/ui/overlay-item-alt.png") no-repeat; }
+#activeBuffDetails .item_img a.active, .no-touch #activeBuffDetails .item_img a:hover { background: url("/img/shop/ui/overlay-panel-alt.png") no-repeat; }
+#shopcomponent .item_img .ecke { color: rgb(255, 150, 0); position: absolute; bottom: 0px; right: 0px; width: 72px; text-align: right; }
+#shopcomponent #inhalt .item_img { cursor: pointer; width: 105px; height: 105px; }
+#shopcomponent .anythingBase .panel { display: flex; flex-wrap: wrap; gap: 6px; }
+#shopcomponent #inhalt .item_img .seasonExpiration { display: block; position: absolute; right: 3px; bottom: 20px; font-size: 16px; align-content: center; }
+div.detail_screen { background-repeat: no-repeat; height: 300px; width: 654px; background-image: url("/img/shop/ui/detail-screen-bg.gif"); z-index: 10; display: none; margin: 0px; position: absolute; top: 0px; padding: 1px 0px 0px 3px; }
+.detail_screen #content h2 { font: bold 12px / 22px Verdana, Arial, Helvetica, sans-serif; color: rgb(210, 157, 0); display: inline-block; float: left; height: 22px; margin: 0px 0px 0px 25px; overflow: hidden; padding-top: 0px; width: auto; }
+.build-it_wrap { float: right; bottom: 0px; position: absolute; right: 0px; margin: 8px; }
+a.build-it_disabled, a.build-it_disabled:hover { color: rgb(132, 132, 132); }
+.detail_screen a.close_details { margin: 1px 4px 0px 0px; }
+#technologydetails a.build-it_premium span, #technologydetails button.build-it_premium span { width: 100%; height: 100%; color: rgb(255, 255, 255); font-size: 14px; font-weight: bold; text-align: center; display: table-cell; vertical-align: middle; padding-left: 6px; padding-top: 2px; }
+#technologydetails button.build-it_premium:disabled span { padding-left: 48px; }
+a.build-it_premium, button.build-it_premium { background: url("/img/shop/ui/btn-build-it-premium.png") 0px 0px no-repeat transparent; box-sizing: border-box; color: rgb(255, 255, 255); display: table-cell; font-size: 13px; font-weight: bold; height: 52px; padding: 0px 0px 0px 40px; text-decoration: none; text-align: center; vertical-align: middle; width: 204px; }
+a.build-it_premium:hover, a.build-it_premium:active, button.build-it_premium:hover, button.build-it_premium:active { background-position: 0px -52px; color: rgb(255, 255, 255); }
+#traderOverview .detail_screen #wrapper { margin-top: 10px; }
+#traderOverview .detail_screen #content h2 { margin: 2px 0px 0px 25px; width: auto; }
+#traderOverview .detail_screen #content span.level { float: right; text-align: right; width: auto; margin-right: 5px; }
+#traderOverview .detail_screen #content a.close_details { float: right; }
+#traderOverview div#features a.build-it, #traderOverview div#features a.build-it_disabled { display: table; float: right; font-size: 12px; left: auto; margin-top: 0px; position: static; }
+#traderOverview .div_trader .left_box .detail_button.r_rare_140px { background-position: 0px 0px; }
+#traderOverview .div_trader .left_box .detail_button.r_common_140px { background-position: -282px 0px; }
+#traderOverview .div_trader .auction_history .item_img { display: inline-block; float: left; height: 30px; margin: 0px; width: 30px; }
+#traderOverview div.anythingSlider { float: left; padding: 0px 25px 5px 22px; }
+* + html #traderOverview div.anythingSlider { margin: 0px 0px 0px -9px; }
+#traderOverview div.anythingSlider .anythingWindow { border-left: 1px solid rgb(34, 49, 59); border-right: 1px solid rgb(34, 49, 59); border-bottom: 1px solid rgb(34, 49, 59); }
+#traderOverview div.anythingSlider .arrow a { background: url("/img/shop/ui/overlay-panel-side.png") no-repeat; display: block; height: 168px; margin: -90px 0px 0px; text-align: center; outline: 0px; width: 16px; }
+#traderOverview div.anythingSlider .forward a { background-position: -67px 0px; margin-right: 2px; }
+#traderOverview div.anythingSlider .back a { background-position: -18px 0px; margin-left: 4px; }
+.no-touch #traderOverview div.anythingSlider .forward a:hover, #traderOverview div.anythingSlider .forward a.hover { background-position: -83px 0px; }
+#traderOverview div.anythingSlider .forward.disabled a, .no-touch #traderOverview div.anythingSlider .forward.disabled a:hover, #traderOverview div.anythingSlider .forward.disabled a.hover { background-position: -51px 0px; }
+#traderOverview div.anythingSlider .back.disabled a, .no-touch #traderOverview div.anythingSlider .back.disabled a:hover, #traderOverview div.anythingSlider .back.disabled a.hover { background-position: -34px 0px; }
+#merchant a.close_details { position: absolute; right: 70px; top: 9px; }
+#traderOverview .history_content .item_img { border-width: 1px; border-style: solid; border-radius: 3px; }
+#traderOverview .item_img.r_epic { border-color: rgb(133, 65, 149); }
+#traderOverview .history_content .item_img.r_buddy { border-color: rgb(55, 97, 142); }
+#traderOverview .history_content .item_img.r_common { border-color: rgb(131, 75, 45); }
+#traderOverview .history_content .item_img.r_uncommon { border-color: rgb(128, 134, 143); }
+#traderOverview .history_content .item_img.r_rare { border-color: rgb(186, 127, 35); }
+#activeBuffDetails .active_item_details, #activeBuffDetails .anythingWindow { background: -webkit-linear-gradient(top, rgb(28, 36, 45) 0%, rgb(16, 24, 30) 100%); }
+#shop #inhalt .item_img { background-position: center center; background-repeat: no-repeat; background-size: 100px 100px; }
+#shop #inhalt .item_img_box { background: url("/img/shop/ui/overlay-bg-item.png") 0px 0px no-repeat; height: 105px; width: 105px; box-shadow: rgb(0, 0, 0) 2px 2px 3px 0px; }
+#shop #inhalt .r_epic .item_img_box { background-position: -420px 0px; }
+#shop #inhalt .r_buddy .item_img_box { background-position: -315px 0px; }
+#shop #inhalt .r_common .item_img_box { background-position: -210px 0px; }
+#shop #inhalt .r_uncommon .item_img_box { background-position: -105px 0px; }
+#shop #inhalt .r_rare .item_img_box { background-position: 0px 0px; }
+#shop #inhalt .item_img .empty, #activeBuffDetails .item_img .empty { background: rgb(0, 0, 0); cursor: default; opacity: 0.4; }
+#shop #inhalt .item_img a, #activeBuffDetails .item_img a { color: rgb(255, 150, 0); display: block; height: 75px; position: relative; text-decoration: none; text-indent: -9999px; width: 75px; }
+#shop #inhalt .item_img a, #shop #inhalt .item_img .empty { height: 105px; width: 105px; }
+#shop .item_img a.active, .no-touch#shop .item_img a:hover { background: url("/img/shop/ui/overlay-item-alt.png") no-repeat; }
+#activeBuffDetails .item_img .ecke, div.values .item_img .ecke { color: rgb(255, 150, 0); float: left; left: 0px; position: relative; text-align: right; top: 60px; width: 72px; }
+#shop .item_img .ecke { top: 90px; width: 100px; }
+#activeBuffDetails .sale_badge { background-position: 0px -275px; height: 25px; right: -3px; position: absolute; top: -2px; width: 25px; z-index: 1; }
+#activeBuffDetails .sale_badge.disabled { background-position: -30px -275px; }
+#shop .detail_screen #content span.level { float: right; text-align: right; width: auto; margin-right: 5px; }
+#itemDetails a.build-it .textlabel, #activeBuffDetails a.build-it .textlabel { text-shadow: rgb(23, 30, 37) 1px 1px 2px, rgb(34, 96, 0) 0px 0px 8px; }
+#itemDetails #features a.build-it.activateItem, #itemDetails #features a.build-it_disabled.activateItem, #activeBuffDetails a.build-it.activateItem, #activeBuffDetails a.build-it_disabled.activateItem { background: url("/img/shop/ui/btn-build-it.png") 0px -188px no-repeat; font-size: 12px; height: 26px; left: auto; margin-top: 15px; position: relative; }
+#itemDetails #features a.build-it.activateItem, #activeBuffDetails a.build-it.activateItem { text-shadow: rgb(18, 43, 3) 1px 1px 2px, rgb(34, 96, 0) 0px 0px 8px; }
+#itemDetails #features a.build-it.activateItem span, #itemDetails #features a.build-it_disabled.activateItem span, #activeBuffDetails a.build-it.activateItem span, #activeBuffDetails a.build-it_disabled.activateItem span { height: 26px; }
+#activeBuffDetails a.build-it.activateItem, #activeBuffDetails a.build-it_disabled.activateItem { margin: 26px auto 0px; }
+#itemDetails #features a.build-it.buyAndActivate, #itemDetails #features a.build-it_disabled.buyAndActivate { margin-top: 15px; }
+#activeBuffDetails a.build-it.buyAndActivate, #activeBuffDetails a.build-it_disabled.buyAndActivate { font-size: 12px; height: 50px; left: auto; margin: 0px auto; position: relative; }
+#activeBuffDetails a.build-it.buyAndActivate { text-shadow: rgb(18, 43, 3) 1px 1px 2px, rgb(34, 96, 0) 0px 0px 8px; }
+#itemDetails #features a.build-it.activateItem.hover, .no-touch #itemDetails #features a.build-it.activateItem:hover, #activeBuffDetails a.build-it.activateItem.hover, .no-touch #activeBuffDetails a.build-it.activateItem:hover { background-position: 0px -214px; }
+#itemDetails #features a.build-it_disabled.activateItem, #activeBuffDetails a.build-it_disabled.activateItem { background-position: 0px -161px; }
+#activeBuffDetails .active_item_details p { line-height: 13px; padding: 0px 0px 5px; }
+#validate a.close_details img { cursor: pointer; }
+/* === buffBar trigger icon (Item attivabili) — native OGame sprite ===
+   Replicates exactly the OGame live computed style:
+   #pageContent > #middle > #overviewcomponent > #inhalt > #planet > #buffBar
+   position: absolute; top: 258px; left: 42px; right: 2px; bottom: 4px;
+   width: 610px; height: 38px (horizontal bar at the bottom of #planet header). */
+#planet { position: relative; }
+#buffBar {
+    position: absolute !important;
+    top: 258px !important;
+    left: 42px !important;
+    right: 2px !important;
+    bottom: 4px !important;
+    height: 38px;
+    padding: 0;
+    z-index: 50;
+}
+#buffBar .add_item { display: block; float: left; margin: 0; padding: 0; }
+#buffBar .activate_item {
+    display: block !important;
+    width: 32px !important;
+    height: 32px !important;
+    background-image: url("/img/inventory/buff_sprite.png") !important;
+    background-position: -59px -274px !important;
+    background-repeat: no-repeat !important;
+    opacity: 0.8;
+    cursor: pointer;
+    text-decoration: none;
+}
+#buffBar .activate_item:hover { opacity: 1; background-position: -59px -274px !important; }
+
+/* === Active buffs list — uses <div>s (not <ul>/<li>) to avoid anythingSlider hijack === */
+#buffBar .active_items_wrap {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    margin-left: 6px !important;
+    vertical-align: middle !important;
+}
+#buffBar .active_items_wrap.hidden { display: none !important; }
+#buffBar .active_boost {
+    position: relative !important;
+    width: 32px !important;
+    height: 32px !important;
+    flex: 0 0 32px !important;
+    display: inline-block !important;
+    float: none !important;
+    vertical-align: middle !important;
+}
+#buffBar .active_boost .item_img {
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: block;
+    border: 1px solid #555;
+    border-radius: 3px;
+    cursor: pointer;
+}
+#buffBar .active_boost.r_common .item_img { border-color: rgb(131, 75, 45); }
+#buffBar .active_boost.r_uncommon .item_img { border-color: rgb(128, 134, 143); }
+#buffBar .active_boost.r_rare .item_img { border-color: rgb(186, 127, 35); }
+#buffBar .active_boost.r_epic .item_img { border-color: rgb(133, 65, 149); }

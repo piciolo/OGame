@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use OGame\Events\ChatMessageSent;
 use OGame\Models\ChatMessage;
+use OGame\Models\ChatReport;
 use OGame\Models\IgnoredPlayer;
 use OGame\Models\User;
 
@@ -204,6 +205,40 @@ class ChatService
     }
 
     /**
+     * Report a chat message to game operators. Idempotent: a user
+     * reporting the same message twice is a silent no-op.
+     *
+     * @return bool True if a new report was created, false if reporter is
+     *              the message author or a duplicate report already exists.
+     */
+    public function reportMessage(int $messageId, int $reporterUserId): bool
+    {
+        $message = ChatMessage::find($messageId);
+        if ($message === null) {
+            return false;
+        }
+
+        // A user cannot report their own message.
+        if ($message->sender_id === $reporterUserId) {
+            return false;
+        }
+
+        $existing = ChatReport::where('chat_message_id', $messageId)
+            ->where('reporter_user_id', $reporterUserId)
+            ->exists();
+        if ($existing) {
+            return false;
+        }
+
+        ChatReport::create([
+            'chat_message_id'  => $messageId,
+            'reporter_user_id' => $reporterUserId,
+        ]);
+
+        return true;
+    }
+
+    /**
      * Format chat messages for the frontend response.
      *
      * @param Collection<int, ChatMessage> $messages
@@ -225,6 +260,7 @@ class ChatService
                 'altClass' => $isOwnMessage ? 'odd' : '',
                 'chatID' => $message->id,
                 'chatContent' => e($message->message),
+                'canReport' => !$isOwnMessage,
             ];
 
             // Add reply reference data if present
