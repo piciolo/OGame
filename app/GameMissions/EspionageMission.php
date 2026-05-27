@@ -170,8 +170,8 @@ class EspionageMission extends GameMission
 
             $params = [
                 // IMPORTANT: pass the raw mission planet id inside [planet]...[/planet]
-                'planet'        => '[planet]' . $mission->planet_id_from . '[/planet]',
-                'defender'      => '[planet]' . $mission->planet_id_to . '[/planet]',   // defender planet
+                'planet'        => $this->formatOriginDescriptor($mission),
+                'defender'      => $this->formatDestinationDescriptor($mission),   // defender planet
                 'attacker_name' => $attackerName,
                 'chance'        => $counterEspionageChance,
             ];

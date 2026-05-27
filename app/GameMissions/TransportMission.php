@@ -66,8 +66,8 @@ class TransportMission extends GameMission
 
         // Send a message to the origin player that the mission has arrived
         $this->messageService->sendSystemMessageToPlayer($origin_planet->getPlayer(), TransportArrived::class, [
-            'from' => '[planet]' . $mission->planet_id_from . '[/planet]',
-            'to' => '[planet]' . $mission->planet_id_to . '[/planet]',
+            'from' => $this->formatOriginDescriptor($mission),
+            'to' => $this->formatDestinationDescriptor($mission),
             'metal' => (string)$mission->metal,
             'crystal' => (string)$mission->crystal,
             'deuterium' => (string)$mission->deuterium,
