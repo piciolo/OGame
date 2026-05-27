@@ -76,6 +76,11 @@ class MoonDestructionMission extends GameMission
             return $vacationCheck;
         }
 
+        // Cannot destroy admin-protected moons.
+        if ($adminCheck = $this->checkAdminProtection($targetMoon, __('This moon belongs to an administrator and cannot be destroyed.'))) {
+            return $adminCheck;
+        }
+
         // If all checks pass, the mission is possible
         return new MissionPossibleStatus(true);
     }
