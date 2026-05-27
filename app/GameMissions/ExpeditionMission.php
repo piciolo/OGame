@@ -119,8 +119,15 @@ class ExpeditionMission extends GameMission
             return $parentCheck;
         }
 
-        // Expedition mission is only possible for position 16.
+        // Expedition mission is only possible for position 16 (deep space).
         if ($targetCoordinate->position !== 16) {
+            return new MissionPossibleStatus(false);
+        }
+
+        // Deep space expeditions target the planet slot at position 16, never a debris
+        // field or moon. Without this, adding a pathfinder to the selection would make
+        // the Expedition mission type selectable with the debris field selected.
+        if ($targetType !== PlanetType::Planet) {
             return new MissionPossibleStatus(false);
         }
 
