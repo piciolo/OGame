@@ -2,10 +2,12 @@
 
 namespace OGame\Models;
 
-use Illuminate\Database\Eloquent\Attributes\Fillable;
+
+use OGame\Enums\AllianceClass;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -29,6 +31,9 @@ use Illuminate\Support\Carbon;
  * @property string $newcomer_rank_name
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property int|null $alliance_class
+ * @property Carbon|null $alliance_class_changed_at
+ * @property bool $alliance_class_free_used
  * @property-read User $founder
  * @property-read Collection<int, AllianceMember> $members
  * @property-read int|null $members_count
@@ -56,21 +61,30 @@ use Illuminate\Support\Carbon;
  * @mixin \Eloquent
  */
 #[Fillable([
-    'alliance_tag',
-    'alliance_name',
-    'founder_user_id',
-    'internal_text',
-    'external_text',
-    'application_text',
-    'logo_url',
-    'homepage_url',
-    'is_open',
-    'founder_rank_name',
-    'newcomer_rank_name',
-])]
+        'alliance_tag',
+        'alliance_name',
+        'founder_user_id',
+        'internal_text',
+        'external_text',
+        'application_text',
+        'logo_url',
+        'homepage_url',
+        'is_open',
+        'founder_rank_name',
+        'newcomer_rank_name',
+        'alliance_class',
+        'alliance_class_changed_at',
+        'alliance_class_free_used',
+    ])]
 class Alliance extends Model
 {
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var list<string>
+     */
 
     /**
      * The attributes that should be cast.
@@ -79,7 +93,21 @@ class Alliance extends Model
      */
     protected $casts = [
         'is_open' => 'boolean',
+        'alliance_class' => 'integer',
+        'alliance_class_changed_at' => 'datetime',
+        'alliance_class_free_used' => 'boolean',
     ];
+
+    /**
+     * Get the alliance class as enum (or null if no class is set).
+     */
+    public function allianceClass(): AllianceClass|null
+    {
+        if ($this->alliance_class === null) {
+            return null;
+        }
+        return AllianceClass::tryFrom((int) $this->alliance_class);
+    }
 
     /**
      * Get the founder user of this alliance.

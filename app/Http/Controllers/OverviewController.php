@@ -15,6 +15,7 @@ use OGame\Services\PlanetMoveService;
 use OGame\Services\PlayerService;
 use OGame\Services\ResearchQueueService;
 use OGame\Services\UnitQueueService;
+use OGame\Services\InventoryService;
 use OGame\Services\WreckFieldService;
 
 class OverviewController extends OGameController
@@ -29,7 +30,7 @@ class OverviewController extends OGameController
      * @return View
      * @throws Exception
      */
-    public function index(PlayerService $player, BuildingQueueService $building_queue, ResearchQueueService $research_queue, UnitQueueService $unit_queue, WreckFieldService $wreckFieldService, PlanetMoveService $planetMoveService, FleetMissionService $fleetMissionService): View
+    public function index(PlayerService $player, BuildingQueueService $building_queue, ResearchQueueService $research_queue, UnitQueueService $unit_queue, WreckFieldService $wreckFieldService, PlanetMoveService $planetMoveService, FleetMissionService $fleetMissionService, InventoryService $inventoryService): View
     {
         $this->setBodyId('overview');
 
@@ -138,6 +139,11 @@ class OverviewController extends OGameController
             'planet_move_target' => $planetMoveTarget,
             'planet_move_blockers' => $planetMoveBlockers,
             'planet_move_cooldown' => $planetMoveCooldown,
+            'item_catalog' => $inventoryService->catalogForPlanet($player->getUser()),
+            'active_boosts' => $inventoryService->activeBoostsForPlanet($player->planets->current()->getPlanetId()),
+            'server_now_ts' => now()->timestamp,
+            'activateToken' => csrf_token(),
+            'dark_matter' => (int) $player->getUser()->dark_matter,
         ]);
     }
 }
