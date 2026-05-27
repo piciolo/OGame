@@ -417,7 +417,7 @@
             formatNumber(input, $(input).val());
 
             // Get the numeric value for calculations
-            var value = parseInt($(input).val().replace(/,/g, '')) || 0;
+            var value = parseInt($(input).val().replace(/[,.]/g, '')) || 0;
 
             // Calculate how much of the selling resource is needed
             var giveResourceId = {{ $resources[$merchantType] }};
@@ -446,7 +446,7 @@
             var totalNeeded = 0;
             @foreach(['metal' => 1, 'crystal' => 2, 'deuterium' => 3] as $resourceKey => $resourceId)
                 @if($resourceKey !== $merchantType)
-                    var val{{ $resourceId }} = parseInt($('#{{ $resourceId }}_value').val().replace(/,/g, '')) || 0;
+                    var val{{ $resourceId }} = parseInt($('#{{ $resourceId }}_value').val().replace(/[,.]/g, '')) || 0;
                     if (val{{ $resourceId }} > 0) {
                         var rate{{ $resourceId }} = factor[{{ $resourceId }}];
                         totalNeeded += Math.ceil(val{{ $resourceId }} * (giveRate / rate{{ $resourceId }}));
@@ -491,7 +491,7 @@
             // Note: exchange_rate is calculated server-side from cached merchant data to prevent spoofing
             @foreach(['metal' => 1, 'crystal' => 2, 'deuterium' => 3] as $resourceKey => $resourceId)
                 @if($resourceKey !== $merchantType)
-                    var value{{ $resourceId }} = parseInt($('#{{ $resourceId }}_value').val().replace(/,/g, '')) || 0;
+                    var value{{ $resourceId }} = parseInt($('#{{ $resourceId }}_value').val().replace(/[,.]/g, '')) || 0;
                     if (value{{ $resourceId }} > 0) {
                         formData.receive_resource = '{{ $resourceKey }}';
                         var giveRate = factor[{{ $resources[$merchantType] }}];
