@@ -8,7 +8,9 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Log;
+use OGame\Enums\AllianceClass;
 use OGame\Models\AllianceRank;
+use OGame\Services\AllianceClassService;
 use OGame\Services\AllianceService;
 use OGame\Services\HighscoreService;
 use OGame\Services\PlayerService;
@@ -380,11 +382,23 @@ class AllianceController extends OGameController
         $alliance = $allianceService->getAllianceById($userAllianceId);
         $member = $allianceService->getAllianceMember($userAllianceId, $userId);
 
+        $classService = resolve(AllianceClassService::class);
+        $currentClass = $classService->getAllianceClass($alliance);
+        $changeCost = $classService->getChangeCost($alliance);
+        $freeAvailable = $classService->isFreeActivationAvailable($alliance);
+        $freeAvailableAt = $classService->getFreeActivationAvailableAt($alliance);
+        $userDarkMatter = $player->getDarkMatter();
+
         return response()->json([
             'content' => [
                 'alliance/alliance_classes' => view('ingame.alliance.classes')->with([
                     'alliance' => $alliance,
                     'member' => $member,
+                    'currentClass' => $currentClass,
+                    'changeCost' => $changeCost,
+                    'freeAvailable' => $freeAvailable,
+                    'freeAvailableAt' => $freeAvailableAt,
+                    'userDarkMatter' => $userDarkMatter,
                 ])->render(),
             ],
             'files' => [
@@ -1075,5 +1089,48 @@ class AllianceController extends OGameController
             'allianceRank' => $allianceRank > 0 ? $allianceRank : null,
             'canApply' => $canApply,
         ]);
+    }
+
+    /**
+     * Activate / change alliance class (founder or member with PERMISSION_MANAGE_CLASSES).
+     * Pricing: first activation free after 14 days from alliance creation; otherwise 500.000 MO.
+     */
+    public function selectClass(
+        Request $request,
+        AllianceService $allianceService,
+        AllianceClassService $classService,
+        PlayerService $player
+    ): RedirectResponse {
+        $request->validate([
+            'class_id' => 'required|integer|in:1,2,3',
+        ]);
+
+        $userAllianceId = auth()->user()->alliance_id;
+        if (!$userAllianceId) {
+            return redirect()->route('alliance.index')
+                ->with('error', __('t_ingame.alliance.msg_not_in_alliance'));
+        }
+
+        $alliance = $allianceService->getAllianceById($userAllianceId);
+        if ($alliance === null) {
+            return redirect()->route('alliance.index')
+                ->with('error', __('t_ingame.alliance.msg_not_in_alliance'));
+        }
+
+        $newClass = AllianceClass::tryFrom((int) $request->input('class_id'));
+        if ($newClass === null) {
+            return redirect()->route('alliance.index')
+                ->with('error', __('t_ingame.alliance.class_invalid'));
+        }
+
+        try {
+            $classService->selectClass($alliance, $player->getUser(), $newClass);
+        } catch (Exception $e) {
+            return redirect()->route('alliance.index')
+                ->with('error', __('t_ingame.alliance.' . $e->getMessage()));
+        }
+
+        return redirect()->route('alliance.index')
+            ->with('success', __('t_ingame.alliance.class_activated'));
     }
 }
