@@ -1,0 +1,25 @@
+{
+  "lang": "en",
+  "source": "s274-it.ogame.gameforge.com (UI=en) / page=ingame#page=traderAuctioneer",
+  "captured_at": "2026-04-27",
+  "strings": {
+    "title": "Auctioneer",
+    "description_line1": "Items are offered here daily and can be purchased using resources.",
+    "description_line2": "If you are outbid, you can increase your previous bid.",
+    "description_warning": "However, bid resources and honour points will never be refunded.",
+    "auction_in_progress": "Auctions in progress",
+    "auction_completed": "Auction completed",
+    "submit_bid": "Submit bid",
+    "current_bid": "Current bid:",
+    "num_bids": "Number of bids:",
+    "highest_bidder": "Highest bidder:",
+    "bid_increased_by": "Bid increased by:",
+    "your_bid": "Your bid:",
+    "minimum_bid": "Minimum bid:",
+    "shortfall": "Shortfall:",
+    "overbid_message": "You have been outbid!",
+    "previous_auctions": "Previous auctions",
+    "show_more": "+",
+    "max_short": "(max."
+  }
+}

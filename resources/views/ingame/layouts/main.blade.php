@@ -1,5 +1,6 @@
 @php /** @var OGame\Services\PlayerService $currentPlayer */ @endphp
 @php /** @var OGame\Services\SettingsService $settings */ @endphp
+@php $shopAmpRefs = app(\OGame\Services\ShopService::class)->resourcePackageRefs(); @endphp
         <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
@@ -193,7 +194,7 @@
                 <div class="resource_tile metal">
                     <div id="metal_box" class="metal tooltipHTML resource ipiHintable tpd-hideOnClickOutside"
                          title="{{ __('t_ingame.layout.res_metal') }}|<table class=&quot;resourceTooltip&quot;><tr><th>{{ __('t_ingame.layout.res_available') }}:</th><td><span class=&quot;&quot;>{!! $resources['metal']['amount_formatted'] !!}</span></td></tr><tr><th>{{ __('t_ingame.layout.res_storage_capacity') }}</th><td><span class=&quot;&quot;>{!! $resources['metal']['storage_formatted'] !!}</span></td></tr><tr><th>{{ __('t_ingame.layout.res_current_production') }}:</th><td><span class=&quot;undermark&quot;>+{!! $resources['metal']['production_hour'] !!}</span></td></tr><tr><th>{{ __('t_ingame.layout.res_den_capacity') }}:</th><td><span class=&quot;middlemark&quot;>0</span></td></tr></table>"
-                         data-shop-url="#TODO_shop#category=d8d49c315fa620d9c7f1f19963970dea59a0e3be&amp;item=859d82d316b83848f7365d21949b3e1e63c7841f&amp;page=shop&amp;panel1-1="
+                         @if(!empty($shopAmpRefs['metal']))data-shop-ref="{{ $shopAmpRefs['metal'] }}" style="cursor:pointer"@endif
                          data-ipi-hint="ipiResourcemetal">
                         <div class="resourceIcon metal"></div>
                         <span class="value">
@@ -206,7 +207,7 @@
                 <div class="resource_tile crystal">
                     <div id="crystal_box" class="crystal tooltipHTML resource ipiHintable tpd-hideOnClickOutside"
                          title="{{ __('t_ingame.layout.res_crystal') }}|<table class=&quot;resourceTooltip&quot;><tr><th>{{ __('t_ingame.layout.res_available') }}:</th><td><span class=&quot;&quot;>{!! $resources['crystal']['amount_formatted'] !!}</span></td></tr><tr><th>{{ __('t_ingame.layout.res_storage_capacity') }}</th><td><span class=&quot;&quot;>{!! $resources['crystal']['storage_formatted'] !!}</span></td></tr><tr><th>{{ __('t_ingame.layout.res_current_production') }}:</th><td><span class=&quot;undermark&quot;>+{!! $resources['crystal']['production_hour'] !!}</span></td></tr><tr><th>{{ __('t_ingame.layout.res_den_capacity') }}:</th><td><span class=&quot;middlemark&quot;>0</span></td></tr></table>"
-                         data-shop-url="#TODO_shop#category=d8d49c315fa620d9c7f1f19963970dea59a0e3be&amp;item=859d82d316b83848f7365d21949b3e1e63c7841f&amp;page=shop&amp;panel1-1="
+                         @if(!empty($shopAmpRefs['crystal']))data-shop-ref="{{ $shopAmpRefs['crystal'] }}" style="cursor:pointer"@endif
                          data-ipi-hint="ipiResourcecrystal">
                         <div class="resourceIcon crystal"></div>
                         <span class="value">
@@ -219,7 +220,7 @@
                 <div class="resource_tile deuterium">
                     <div id="deuterium_box" class="deuterium tooltipHTML resource ipiHintable tpd-hideOnClickOutside"
                          title="{{ __('t_ingame.layout.res_deuterium') }}|<table class=&quot;resourceTooltip&quot;><tr><th>{{ __('t_ingame.layout.res_available') }}:</th><td><span class=&quot;&quot;>{!! $resources['deuterium']['amount_formatted'] !!}</span></td></tr><tr><th>{{ __('t_ingame.layout.res_storage_capacity') }}</th><td><span class=&quot;&quot;>{!! $resources['deuterium']['storage_formatted'] !!}</span></td></tr><tr><th>{{ __('t_ingame.layout.res_current_production') }}:</th><td><span class=&quot;undermark&quot;>+{!! $resources['deuterium']['production_hour'] !!}</span></td></tr><tr><th>{{ __('t_ingame.layout.res_den_capacity') }}:</th><td><span class=&quot;middlemark&quot;>0</span></td></tr></table>"
-                         data-shop-url="#TODO_shop#category=d8d49c315fa620d9c7f1f19963970dea59a0e3be&amp;item=859d82d316b83848f7365d21949b3e1e63c7841f&amp;page=shop&amp;panel1-1="
+                         @if(!empty($shopAmpRefs['deuterium']))data-shop-ref="{{ $shopAmpRefs['deuterium'] }}" style="cursor:pointer"@endif
                          data-ipi-hint="ipiResourcedeuterium">
                         <div class="resourceIcon deuterium"></div>
                         <span class="value">
@@ -2020,5 +2021,21 @@ However, the Space Dock's engineers think that some of the remains can be salvag
         'colorPicker'        => ['ok' => __('t_ingame.messages.bbcode_ok'), 'cancel' => __('t_ingame.messages.bbcode_cancel'), 'rgbR' => 'R', 'rgbG' => 'G', 'rgbB' => 'B'],
         'backgroundImagePicker' => ['ok' => __('t_ingame.messages.bbcode_ok'), 'repeatX' => __('t_ingame.messages.bbcode_repeat_x'), 'repeatY' => __('t_ingame.messages.bbcode_repeat_y')],
     ]) !!};</script>
+<script>
+    // Topbar resource icons → Shop deep-link (Pacchetto Metallo/Cristallo/Deuterio).
+    (function () {
+        var shopUrl = @json(route('shop.index'));
+        ['metal_box', 'crystal_box', 'deuterium_box'].forEach(function (id) {
+            var el = document.getElementById(id);
+            if (!el) return;
+            var ref = el.getAttribute('data-shop-ref');
+            if (!ref) return;
+            el.addEventListener('click', function (e) {
+                if (e.target.closest('.tooltip, .tpd-tooltip')) return;
+                window.location.href = shopUrl + '?ref=' + encodeURIComponent(ref);
+            });
+        });
+    })();
+</script>
 </body>
 </html>
