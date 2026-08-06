@@ -1,5 +1,6 @@
 <?php
 
+use OGame\Console\Commands\Scheduler\AuctioneerTickCommand;
 use OGame\Console\Commands\Scheduler\CleanupWreckFields;
 use OGame\Console\Commands\Scheduler\DarkMatterRegenerateCommand;
 use OGame\Console\Commands\Scheduler\DeleteOldMessages;
@@ -36,3 +37,6 @@ Schedule::command(DeleteOldMessages::class)->hourly()->withoutOverlapping();
 
 // Process Dark Matter regeneration every 5 minutes
 Schedule::command(DarkMatterRegenerateCommand::class)->everyFiveMinutes()->withoutOverlapping();
+
+// Advance auctioneer state machine every minute (spawn/start/close/assign)
+Schedule::command(AuctioneerTickCommand::class)->everyMinute()->withoutOverlapping();
