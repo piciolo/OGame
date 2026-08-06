@@ -30,7 +30,7 @@ jobs:
     # Note: Environment must be pre-configured in repo settings with required reviewers
     environment:
       name: pr-preview
-      url: https://pr-${{ github.event.pull_request.number || inputs.pr_number }}.preview.ogamex.dev
+      url: https://pr-${{ github.event.pull_request.number || inputs.pr_number }}.preview.youtubesoundbox.com
 
     steps:
       - name: Get PR details (for manual dispatch)
@@ -66,7 +66,7 @@ jobs:
         run: |
           PR=${{ steps.pr.outputs.pr_number }}
           echo "PR_NUMBER=$PR" >> $GITHUB_ENV
-          echo "PREVIEW_HOST=pr-$PR.preview.ogamex.dev" >> $GITHUB_ENV
+          echo "PREVIEW_HOST=pr-$PR.preview.youtubesoundbox.com" >> $GITHUB_ENV
           echo "PREVIEW_DIR=${{ env.PREVIEW_BASE_DIR }}/pr-$PR" >> $GITHUB_ENV
           echo "HEAD_REF=${{ steps.pr.outputs.head_ref }}" >> $GITHUB_ENV
           echo "HEAD_SHA=${{ steps.pr.outputs.head_sha }}" >> $GITHUB_ENV
@@ -101,7 +101,7 @@ jobs:
         working-directory: ${{ env.PREVIEW_DIR }}
         run: |
           cp .env.example .env
-          sed -i "s|APP_URL=.*|APP_URL=https://pr-${{ env.PR_NUMBER }}.preview.ogamex.dev|g" .env
+          sed -i "s|APP_URL=.*|APP_URL=https://pr-${{ env.PR_NUMBER }}.preview.youtubesoundbox.com|g" .env
           sed -i "s|APP_ENV=.*|APP_ENV=production|g" .env
           sed -i "s|APP_DEBUG=.*|APP_DEBUG=true|g" .env
 
@@ -174,7 +174,7 @@ jobs:
         with:
           script: |
             const prNumber = ${{ env.PR_NUMBER }};
-            const previewUrl = `https://pr-${prNumber}.preview.ogamex.dev`;
+            const previewUrl = `https://pr-${prNumber}.preview.youtubesoundbox.com`;
             const sha = '${{ env.HEAD_SHA }}'.substring(0, 7);
             const timestamp = new Date().toISOString().replace('T', ' ').substring(0, 19) + ' UTC';
 
@@ -239,4 +239,4 @@ jobs:
 
       - name: Output preview URL
         run: |
-          echo "::notice::Preview deployed at https://pr-${{ env.PR_NUMBER }}.preview.ogamex.dev"
+          echo "::notice::Preview deployed at https://pr-${{ env.PR_NUMBER }}.preview.youtubesoundbox.com"

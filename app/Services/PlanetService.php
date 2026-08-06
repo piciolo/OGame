@@ -2,6 +2,8 @@
 
 namespace OGame\Services;
 
+
+use OGame\Models\PlanetBoost;
 use Exception;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Date;
@@ -24,6 +26,7 @@ use OGame\Models\ResearchQueue;
 use OGame\Models\Resource;
 use OGame\Models\Resources;
 use OGame\Models\UnitQueue;
+use OGame\Services\OfficerService;
 use RuntimeException;
 use Throwable;
 
@@ -1005,6 +1008,13 @@ class PlanetService
             $time_seconds = (int)($time_seconds * $timeMultiplier);
         }
 
+        // Apply Technocrat officer research time multiplier (-25%)
+        $officerService = app(OfficerService::class);
+        $technocratMultiplier = $officerService->getResearchTimeMultiplier($this->player->getUser());
+        if ($technocratMultiplier != 1.0) {
+            $time_seconds = (int)($time_seconds * $technocratMultiplier);
+        }
+
         // Minimum time is always 1 second for all objects/units.
         if ($time_seconds < 1) {
             $time_seconds = 1;
@@ -1504,7 +1514,7 @@ class PlanetService
                 $item->save();
 
                 // Check if this is a downgrade
-                $is_downgrade = $item->is_downgrade ?? false;
+                $is_downgrade = $item->is_downgrade;
 
                 // Update building level. If the object type is invalid (e.g. a research object somehow
                 // ended up in the building queue due to a prior bug), skip it gracefully. The item is
@@ -1674,7 +1684,11 @@ class PlanetService
     public function addUnit(string $machine_name, int $amount, bool $save_planet = true): void
     {
         $object = ObjectService::getUnitObjectByMachineName($machine_name);
-        $this->planet->{$object->machine_name} += $amount;
+        // Cap at MySQL INT max (2,147,483,647) to prevent out-of-range errors.
+        $this->planet->{$object->machine_name} = min(
+            $this->planet->{$object->machine_name} + $amount,
+            2147483647
+        );
 
         if ($save_planet) {
             $this->save();
@@ -2088,8 +2102,15 @@ class PlanetService
             }
         }
 
-        $this->planet->energy_used = (int) $energy_consumption_total;
-        $this->planet->energy_max  = (int) $energy_production_total;
+        // Apply active inventory amplifier (energy) before computing production_factor,
+        // so the boosted energy ratio properly influences mine output.
+        $boostMultipliers = $this->getActiveBoostMultipliers();
+        if ($boostMultipliers['energy'] > 1.0) {
+            $energy_production_total = $energy_production_total * $boostMultipliers['energy'];
+        }
+
+        $this->planet->energy_used = (int) min($energy_consumption_total, PHP_INT_MAX);
+        $this->planet->energy_max  = (int) min($energy_production_total, PHP_INT_MAX);
 
         $production_factor = $this->getResourceProductionFactor() / 100;
 
@@ -2101,11 +2122,49 @@ class PlanetService
         // add to $total_production, which contains the basic income
         $production_total->add($building_production_total);
 
+        // Apply active inventory amplifiers (metal/crystal/deuterium). Same-tier
+        // same-resource stacks duration (handled at activation); different tiers
+        // stack additively (e.g. Bronze 10% + Gold 30% = 40%).
+        $metalAfterBoost     = $production_total->metal->get()     * $boostMultipliers['metal'];
+        $crystalAfterBoost   = $production_total->crystal->get()   * $boostMultipliers['crystal'];
+        $deuteriumAfterBoost = $production_total->deuterium->get() * $boostMultipliers['deuterium'];
+
         // Write values to planet.
-        // Use ceil() for positive production to match getObjectProduction() rounding
-        $this->planet->metal_production     = (int) ceil($production_total->metal->get());
-        $this->planet->crystal_production   = (int) ceil($production_total->crystal->get());
-        $this->planet->deuterium_production = (int) ceil($production_total->deuterium->get());
+        // Use ceil() for positive production to match getObjectProduction() rounding.
+        // Cap at PHP_INT_MAX to prevent float-to-int overflow on high-level mines.
+        $this->planet->metal_production     = (int) min(ceil($metalAfterBoost), PHP_INT_MAX);
+        $this->planet->crystal_production   = (int) min(ceil($crystalAfterBoost), PHP_INT_MAX);
+        $this->planet->deuterium_production = (int) min(ceil($deuteriumAfterBoost), PHP_INT_MAX);
+    }
+
+    /**
+     * Sum of percent_bonus from active (non-expired) PlanetBoost rows for this planet,
+     * keyed by resource. Returned as multipliers (e.g. 30% bonus → 1.30).
+     *
+     * Boosts are activated by the InventoryActivationService when the user consumes
+     * an Amplifier (metal/crystal/deuterium/energy) from the Shop tab Inventario.
+     *
+     * @return array{metal:float,crystal:float,deuterium:float,energy:float}
+     */
+    private function getActiveBoostMultipliers(): array
+    {
+        $rows = PlanetBoost::query()
+            ->where('planet_id', $this->planet->id)
+            ->where('expires_at', '>', now())
+            ->get(['resource', 'percent_bonus']);
+
+        $sum = ['metal' => 0, 'crystal' => 0, 'deuterium' => 0, 'energy' => 0];
+        foreach ($rows as $r) {
+            if (isset($sum[$r->resource])) {
+                $sum[$r->resource] += (int) $r->percent_bonus;
+            }
+        }
+        return [
+            'metal'     => 1 + ($sum['metal']     / 100),
+            'crystal'   => 1 + ($sum['crystal']   / 100),
+            'deuterium' => 1 + ($sum['deuterium'] / 100),
+            'energy'    => 1 + ($sum['energy']    / 100),
+        ];
     }
 
     /**
@@ -2477,8 +2536,9 @@ class PlanetService
         }
 
         // Divide the score by 1000 to get the amount of points. Floor the result.
+        // Clamp to PHP_INT_MAX to avoid overflow with extremely large fleets.
         $resources_sum = $resources_spent->sum();
-        return (int)floor($resources_sum / 1000);
+        return (int)min(floor($resources_sum / 1000), PHP_INT_MAX);
     }
 
     /**

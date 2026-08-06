@@ -281,24 +281,24 @@
                             </td>
                             <td>
                             </td>
-                            <td class="normalmark">
-                                <span class="tooltipCustom " title="0">
-                                    0
+                            <td class="{{ $production_total->items->metal->get() > 0 ? 'undermark' : 'normalmark' }}">
+                                <span class="tooltipCustom" title="{{ $production_total->items->metal->getFormattedFull() }}">
+                                    {{ $production_total->items->metal->getFormattedLong() }}
                                 </span>
                             </td>
-                            <td class="normalmark">
-                                <span class="tooltipCustom " title="0">
-                                    0
+                            <td class="{{ $production_total->items->crystal->get() > 0 ? 'undermark' : 'normalmark' }}">
+                                <span class="tooltipCustom" title="{{ $production_total->items->crystal->getFormattedFull() }}">
+                                    {{ $production_total->items->crystal->getFormattedLong() }}
                                 </span>
                             </td>
-                            <td class="normalmark">
-                                <span class="tooltipCustom " title="0">
-                                    0
+                            <td class="{{ $production_total->items->deuterium->get() > 0 ? 'undermark' : 'normalmark' }}">
+                                <span class="tooltipCustom" title="{{ $production_total->items->deuterium->getFormattedFull() }}">
+                                    {{ $production_total->items->deuterium->getFormattedLong() }}
                                 </span>
                             </td>
-                            <td class="normalmark">
-                                <span class="tooltipCustom " title="0">
-                                    0
+                            <td class="{{ $production_total->items->energy->get() > 0 ? 'undermark' : 'normalmark' }}">
+                                <span class="tooltipCustom" title="{{ $production_total->items->energy->getFormattedFull() }}">
+                                    {{ $production_total->items->energy->getFormattedLong() }}
                                 </span>
                             </td>
                             <td>
