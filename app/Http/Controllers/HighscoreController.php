@@ -81,12 +81,11 @@ class HighscoreController extends OGameController
         if ($searchRelId) {
             // Get the rank of the searched player
             $searchedPlayer = resolve(PlayerService::class, ['player_id' => (int)$searchRelId]);
-            $searchedPlayerRank = $highscoreService->getHighscorePlayerRank($searchedPlayer);
-            $page = (int) (floor($searchedPlayerRank / 100) + 1);
+            $page = $highscoreService->getHighscorePlayerPage($searchedPlayer);
         } else {
             // Current player rank.
             $currentPlayerRank = $highscoreService->getHighscorePlayerRank($player);
-            $currentPlayerPage = floor($currentPlayerRank / 100) + 1;
+            $currentPlayerPage = $highscoreService->getHighscorePlayerPage($player);
 
             // Check if we received a page number, if so, use it instead of the current player rank.
             $page = $request->input('page', null);
@@ -100,7 +99,7 @@ class HighscoreController extends OGameController
 
         // Current player rank (for highlighting purposes)
         $currentPlayerRank = $highscoreService->getHighscorePlayerRank($player);
-        $currentPlayerPage = floor($currentPlayerRank / 100) + 1;
+        $currentPlayerPage = $highscoreService->getHighscorePlayerPage($player);
 
         // Get highscore players content view statically to insert into page.
         return view('ingame.highscore.players_points')->with([

@@ -38,6 +38,7 @@ class HighscoreService
      */
     public function __construct(private PlayerServiceFactory $playerServiceFactory, private SettingsService $settingsService)
     {
+        $this->highscoreType = HighscoreTypeEnum::general;
     }
 
     /**
@@ -390,8 +391,50 @@ class HighscoreService
      */
     public function getHighscorePlayerRank(PlayerService $player): int
     {
-        // Find the player in the highscore list to determine its rank.
-        return Highscore::where('player_id', $player->getId())->first()->general_rank ?? 0;
+        $rankColumn = $this->highscoreType->name . '_rank';
+        return Highscore::where('player_id', $player->getId())->first()->{$rankColumn} ?? 0;
+    }
+
+    /**
+     * Compute the highscore page (1-indexed) where the player's row will be rendered,
+     * mirroring the filters applied by getHighscorePlayers() so auto-scroll lands on
+     * the correct page even when filtered rows shift the player's visible position.
+     *
+     * @param PlayerService $player
+     * @param int $perPage
+     * @return int
+     * @throws Exception
+     */
+    public function getHighscorePlayerPage(PlayerService $player, int $perPage = 100): int
+    {
+        $rank = $this->getHighscorePlayerRank($player);
+        if ($rank <= 0) {
+            return 1;
+        }
+
+        $rankColumn = $this->highscoreType->name . '_rank';
+        $adminVisible = $this->isAdminVisibleInHighscore();
+
+        $query = Highscore::query()
+            ->whereHas('player.tech')
+            ->validRanks()
+            ->where($rankColumn, '>', 0)
+            ->where($rankColumn, '<=', $rank);
+
+        if (!$adminVisible) {
+            $query->whereHas('player', function ($q) {
+                $q->whereDoesntHave('roles', function ($roleQuery) {
+                    $roleQuery->where('name', 'admin');
+                });
+            });
+        }
+
+        $position = $query->count();
+        if ($position < 1) {
+            $position = 1;
+        }
+
+        return (int) ceil($position / $perPage);
     }
 
     /**
