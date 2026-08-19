@@ -34209,7 +34209,7 @@ FleetDispatcher.prototype.selectMaxCrystal = function () {
 };
 
 FleetDispatcher.prototype.getDeuteriumOnPlanetWithoutConsumption = function () {
-  return Math.max(0, this.deuteriumOnPlanet - this.getConsumption());
+  return Math.max(0, Math.floor(this.deuteriumOnPlanet) - Math.ceil(this.getConsumption()));
 };
 
 FleetDispatcher.prototype.selectMinCrystal = function () {
@@ -35250,7 +35250,7 @@ function getPlanetOrMoonTooltipLinks(planet, galaxyContentObject, systemData) {
       }
     });
 
-    if (galaxyContentObject.actions.canMissileAttack && !player.isAdmin && systemData.availableMissiles > 0) {
+    if (galaxyContentObject.actions.canMissileAttack && !player.isAdmin) {
       let holdMissionAvailable = planet.availableMissions.find(availMission => availMission.missionType === 5);
 
       if (systemData.showOutlawWarning && !systemData.isOutlaw && player.isStrong && !holdMissionAvailable) {
@@ -35683,7 +35683,7 @@ function getActions(galaxyContentObject, systemData) {
 
   let missileLink = "";
 
-  if (galaxyContentObject.actions.canMissileAttack && !player.isAdmin && galaxy && system && position && systemData.availableMissiles > 0) {
+  if (galaxyContentObject.actions.canMissileAttack && !player.isAdmin && galaxy && system && position) {
     if (systemData.showOutlawWarning && !systemData.isOutlaw && player.isStrong && !holdMissionAvailable) {
       missileLink = `
                 <a class="tooltip js_hideTipOnMobile missleattack"
