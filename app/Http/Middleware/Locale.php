@@ -10,8 +10,21 @@ use Symfony\Component\HttpFoundation\Response;
 
 class Locale
 {
-    /** Supported application locales. */
-    public const SUPPORTED_LOCALES = ['en', 'it', 'nl', 'fr', 'zh-TW'];
+    /**
+     * Supported application locales — official OGame community languages.
+     *
+     * Codes are the OGame community-server short codes (e.g. 'ar' = Argentina,
+     * 'br' = Brazil, 'mx' = Mexico, 'us' = USA, 'yu' = ex-Yugoslavia/Serbian —
+     * server communities, not strict ISO codes). 'zh-TW' (Traditional Chinese)
+     * is kept for backward compatibility with the pre-existing locale.
+     */
+    public const SUPPORTED_LOCALES = [
+        'en', 'de', 'it', 'nl', 'fr', 'zh-TW',
+        'cs', 'da', 'el', 'es', 'es_AR', 'es_MX',
+        'fi', 'hr', 'hu', 'ja', 'pl', 'pt',
+        'pt_BR', 'ro', 'ru', 'sk', 'sl', 'sr',
+        'sv', 'tr',
+    ];
 
     /**
      * Handle an incoming request.
